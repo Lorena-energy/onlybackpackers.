@@ -97,26 +97,26 @@ footer {
   object-fit: cover;
 }
 
-.recommendation div {
+.recommendation-details {
   flex-grow: 1;
 }
 
-.recommendation h3 {
+.recommendation-details h3 {
   margin: 0 0 10px;
   color: #0077cc;
 }
 
-.recommendation p {
+.recommendation-details p {
   margin: 0 0 10px;
   color: #555;
 }
 
-.recommendation a {
+.recommendation-details a {
   text-decoration: none;
   color: #005fa3;
   font-weight: bold;
 }
 
-.recommendation a:hover {
+.recommendation-details a:hover {
   text-decoration: underline;
 }
