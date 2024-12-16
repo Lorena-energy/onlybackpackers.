@@ -3,33 +3,67 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OnlyBackpackers - Inicio</title>
+  <title>OnlyBackpackers - Bienvenido</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <script>
-    // Redirigir al muro si el usuario está autenticado
+    // Redirigir al muro si el usuario ya está autenticado
     if (localStorage.getItem("loggedIn") === "true") {
       window.location.href = "muro.html";
     }
   </script>
 
+  <header class="hero">
+    <h1>OnlyBackpackers</h1>
+    <p>Conecta, explora y comparte tu aventura.</p>
+    <a href="login-register.html" class="cta-button">¡Únete al viaje!</a>
+  </header>
+
   <nav>
-    <ul>
-      <li><a href="index.html">Inicio</a></li>
-      <li><a href="muro.html">Muro</a></li>
-      <li><a href="recomendaciones.html">Recomendaciones</a></li>
-      <li><a href="chats.html">Chats</a></li>
-      <li><a href="eventos.html">Eventos</a></li>
-      <li><a href="worldtrip.html">Worldtrip</a></li>
-      <li><a href="recompensas.html">Recompensas</a></li>
-      <li><a href="#" id="logout">Cerrar Sesión</a></li>
-    </ul>
+    <div class="menu-container">
+      <button class="menu-toggle">☰ Menú</button>
+      <ul class="menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="muro.html">Muro</a></li>
+        <li><a href="recomendaciones.html">Recomendaciones</a></li>
+        <li><a href="chats.html">Chats</a></li>
+        <li><a href="eventos.html">Eventos</a></li>
+        <li><a href="worldtrip.html">Worldtrip</a></li>
+        <li><a href="recompensas.html">Recompensas</a></li>
+      </ul>
+    </div>
   </nav>
 
-  <section>
-    <h1>Bienvenido a OnlyBackpackers</h1>
-    <p>Accede a tu cuenta o regístrate para comenzar a compartir experiencias.</p>
+  <section class="features">
+    <h2>¿Por qué OnlyBackpackers?</h2>
+    <div class="feature">
+      <h3>🌍 Conecta</h3>
+      <p>Encuentra mochileros que comparten tu pasión por explorar.</p>
+    </div>
+    <div class="feature">
+      <h3>🛏️ Descubre</h3>
+      <p>Obtén recomendaciones de hostels y rutas únicas.</p>
+    </div>
+    <div class="feature">
+      <h3>🎉 Participa</h3>
+      <p>Únete a eventos, chats y aventuras grupales inolvidables.</p>
+    </div>
   </section>
+
+  <footer>
+    <p>&copy; 2024 OnlyBackpackers. Vive tu aventura con nosotros.</p>
+  </footer>
+
+  <script>
+    // Lógica para abrir y cerrar el menú desplegable
+    const toggleButton = document.querySelector(".menu-toggle");
+    const menu = document.querySelector(".menu");
+    toggleButton.addEventListener("click", () => {
+      menu.classList.toggle("show");
+    });
+  </script>
 </body>
 </html>
+
+ 
