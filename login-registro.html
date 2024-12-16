@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OnlyBackpackers - Login y Registro</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav>
+    <div class="menu-container">
+      <button class="menu-toggle">☰ Menú</button>
+      <ul class="menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="muro.html">Muro</a></li>
+        <li><a href="recomendaciones.html">Recomendaciones</a></li>
+        <li><a href="chats.html">Chats</a></li>
+        <li><a href="eventos.html">Eventos</a></li>
+        <li><a href="worldtrip.html">Worldtrip</a></li>
+        <li><a href="recompensas.html">Recompensas</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="auth-section">
+    <h1>Accede o Regístrate</h1>
+    <div class="auth-container">
+      <form id="login-form">
+        <h2>Iniciar Sesión</h2>
+        <label for="login-username">Usuario:</label>
+        <input type="text" id="login-username" name="username" required>
+        <label for="login-password">Contraseña:</label>
+        <input type="password" id="login-password" name="password" required>
+        <button type="submit">Iniciar Sesión</button>
+      </form>
+
+      <form id="register-form">
+        <h2>Registrarse</h2>
+        <label for="register-username">Usuario:</label>
+        <input type="text" id="register-username" name="username" required>
+        <label for="register-email">Correo:</label>
+        <input type="email" id="register-email" name="email" required>
+        <label for="register-password">Contraseña:</label>
+        <input type="password" id="register-password" name="password" required>
+        <button type="submit">Registrarse</button>
+      </form>
+    </div>
+  </section>
+
+  <script>
+    // Lógica para mostrar el menú desplegable
+    const toggleButton = document.querySelector(".menu-toggle");
+    const menu = document.querySelector(".menu");
+    toggleButton.addEventListener("click", () => {
+      menu.classList.toggle("show");
+    });
+  </script>
+</body>
+</html>
