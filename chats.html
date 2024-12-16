@@ -10,3 +10,54 @@
     <li><a href="#" id="logout">Cerrar Sesión</a></li>
   </ul>
 </nav>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OnlyBackpackers - Chats por Destino</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav>
+    <div class="menu-container">
+      <button class="menu-toggle">☰ Menú</button>
+      <ul class="menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="muro.html">Muro</a></li>
+        <li><a href="recomendaciones.html">Recomendaciones</a></li>
+        <li><a href="chats.html">Chats</a></li>
+        <li><a href="eventos.html">Eventos</a></li>
+        <li><a href="worldtrip.html">Worldtrip</a></li>
+        <li><a href="recompensas.html">Recompensas</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="chats">
+    <h1>Chats por Destino</h1>
+    <p>Selecciona tu destino y conecta con otros viajeros.</p>
+
+    <!-- Lista de destinos -->
+    <div class="chat-destinations">
+      <button class="destination-button" onclick="openChat('Isla Mujeres')">🌴 Isla Mujeres</button>
+      <button class="destination-button" onclick="openChat('Islas Phi Phi')">🌊 Islas Phi Phi</button>
+      <button class="destination-button" onclick="openChat('Bali')">🏝️ Bali</button>
+      <button class="destination-button" onclick="openChat('Barcelona')">🌆 Barcelona</button>
+    </div>
+
+    <!-- Contenedor del chat -->
+    <div id="chat-container" class="hidden">
+      <h2 id="chat-title"></h2>
+      <div id="chat-box" class="chat-box"></div>
+      <form id="chat-form">
+        <input type="text" id="chat-message" placeholder="Escribe un mensaje..." required>
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
+  </section>
+
+  <script src="chats.js"></script>
+</body>
+</html>
