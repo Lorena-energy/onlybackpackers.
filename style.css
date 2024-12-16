@@ -189,3 +189,82 @@ form button {
 .cta-button.secondary:hover {
   background-color: #005fa3;
 }
+
+/* Formulario para crear publicaciones */
+.create-post {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.create-post h1 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+#create-post textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+#create-post input[type="file"] {
+  display: block;
+  margin-bottom: 10px;
+}
+
+#create-post button {
+  background-color: #0077cc;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Estilo de las publicaciones */
+.posts {
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+.posts h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.post {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.post-content {
+  margin-bottom: 10px;
+}
+
+.post-media {
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+.post-interactions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.post-interactions button {
+  background: none;
+  border: none;
+  color: #0077cc;
+  cursor: pointer;
+}
