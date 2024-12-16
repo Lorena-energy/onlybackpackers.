@@ -171,3 +171,24 @@ form button:hover {
   padding: 20px;
   text-align: center;
 }
+
+/* Estilo del muro */
+.post {
+  background: #f9f9f9; /* Fondo claro */
+  border: 1px solid #ddd; /* Borde sutil */
+  border-radius: 10px; /* Esquinas redondeadas */
+  padding: 15px; /* Espaciado interno */
+  margin: 15px auto; /* Espaciado entre publicaciones */
+  max-width: 600px; /* Ancho máximo de la tarjeta */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+.post h3 {
+  margin: 0 0 10px; /* Espaciado debajo del título */
+  color: #0077cc; /* Color azul para el título */
+}
+
+.post p {
+  margin: 0; /* Sin margen adicional */
+  color: #333; /* Texto en gris oscuro */
+}
