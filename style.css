@@ -150,3 +150,42 @@ form button {
 .cta-button:hover {
   background-color: #cc5200;
 }
+
+/* Sección de recompensas */
+.rewards {
+  background-color: #f9f9f9;
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.rewards h2 {
+  font-size: 2.5rem;
+  color: #ff6600;
+}
+
+.rewards p {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.rewards ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 30px;
+}
+
+.rewards ul li {
+  font-size: 1.1rem;
+  margin: 10px 0;
+}
+
+/* Botón secundario */
+.cta-button.secondary {
+  background-color: #0077cc;
+  color: white;
+}
+
+.cta-button.secondary:hover {
+  background-color: #005fa3;
+}
