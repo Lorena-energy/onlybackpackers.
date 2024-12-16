@@ -3,190 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OnlyBackpackers</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header>
-    <h1>OnlyBackpackers</h1>
-    <p>Conecta con viajeros, descubre rutas y comparte experiencias únicas.</p>
-  </header>
-  
-  <nav>
-    <a href="#about">Sobre Nosotros</a>
-    <a href="#features">Características</a>
-    <a href="#recommendations">Recomendaciones</a>
-    <a href="#map">Mapa</a>
-    <a href="#contact">Contacto</a>
-  </nav>
-  
-  <section id="about">
-    <h2>Sobre Nosotros</h2>
-    <p>Somos una plataforma para mochileros que quieren conectar con otros viajeros, explorar juntos y descubrir los mejores destinos.</p>
-  </section>
-  
-  <section id="features">
-    <h2>Características</h2>
-    <ul>
-      <li>Chat por destinos.</li>
-      <li>Recomendaciones de hostels y actividades.</li>
-      <li>Mapas interactivos para rutas.</li>
-    </ul>
-  </section>
-  
-  <section id="recommendations">
-    <h2>Recomendaciones</h2>
-    <ul>
-      <li><strong>Hostel A:</strong> Económico y con excelente ubicación.</li>
-      <li><strong>Hostel B:</strong> Ambiente juvenil y desayuno incluido.</li>
-      <li><strong>Ruta X:</strong> Perfecta para explorar en 3 días.</li>
-    </ul>
-  </section>
-  
-  <section id="map">
-    <h2>Mapa interactivo</h2>
-    <iframe 
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345096126!2d144.95373531531653!3d-37.81720997975159!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf5776cdd9f4b9e91!2sMelbourne%20City!5e0!3m2!1sen!2sau!4v1614158282630!5m2!1sen!2sau" 
-      width="100%" 
-      height="450" 
-      style="border:0;" 
-      allowfullscreen="" 
-      loading="lazy"></iframe>
-  </section>
-  
-  <section id="contact">
-    <h2>Contacto</h2>
-    <form action="https://formspree.io/f/tu-email" method="POST">
-      <label for="name">Nombre:</label>
-      <input type="text" id="name" name="name" required>
-      
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required>
-      
-      <label for="message">Mensaje:</label>
-      <textarea id="message" name="message" required></textarea>
-      
-      <button type="submit">Enviar</button>
-    </form>
-  </section>
-  
-  <footer>
-    <p>&copy; 2024 OnlyBackpackers. Todos los derechos reservados.</p>
-  </footer>
-</body>
-</html>
-
-<section id="recommendations">
-  <h2>Recomendaciones</h2>
-  <div class="recommendation">
-    <img src="https://via.placeholder.com/150" alt="Hostel A">
-    <div class="recommendation-details">
-      <h3>Hostel A</h3>
-      <p>Un lugar acogedor con excelente ubicación y precios económicos. Ideal para mochileros.</p>
-      <a href="https://example.com/hostel-a" target="_blank">Más información</a>
-    </div>
-  </div>
-  <div class="recommendation">
-    <img src="https://via.placeholder.com/150" alt="Hostel B">
-    <div class="recommendation-details">
-      <h3>Hostel B</h3>
-      <p>Ambiente juvenil, desayuno incluido y una terraza con vistas increíbles.</p>
-      <a href="https://example.com/hostel-b" target="_blank">Más información</a>
-    </div>
-  </div>
-  <div class="recommendation">
-    <img src="https://via.placeholder.com/150" alt="Ruta X">
-    <div class="recommendation-details">
-      <h3>Ruta X</h3>
-      <p>Explora esta ruta de 3 días con paisajes inolvidables y experiencias únicas.</p>
-      <a href="https://example.com/ruta-x" target="_blank">Más información</a>
-    </div>
-  </div>
-</section>
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OnlyBackpackers - Inicio</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>OnlyBackpackers</h1>
-    <p>Conecta con mochileros y comparte tus experiencias.</p>
-  </header>
+  <script>
+    // Redirigir al muro si el usuario está autenticado
+    if (localStorage.getItem("loggedIn") === "true") {
+      window.location.href = "muro.html";
+    }
+  </script>
 
-  <section id="login">
-    <h2>Accede a tu cuenta</h2>
-    <form id="login-form">
-      <label for="username">Usuario:</label>
-      <input type="text" id="username" name="username" required>
-      
-      <label for="password">Contraseña:</label>
-      <input type="password" id="password" name="password" required>
-      
-      <button type="submit">Iniciar Sesión</button>
-    </form>
-    <p>¿No tienes una cuenta? <a href="register.html">Regístrate aquí</a>.</p>
-  </section>
-</body>
-</html>
+  <nav>
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="muro.html">Muro</a></li>
+      <li><a href="recomendaciones.html">Recomendaciones</a></li>
+      <li><a href="chats.html">Chats</a></li>
+      <li><a href="eventos.html">Eventos</a></li>
+      <li><a href="worldtrip.html">Worldtrip</a></li>
+      <li><a href="recompensas.html">Recompensas</a></li>
+      <li><a href="#" id="logout">Cerrar Sesión</a></li>
+    </ul>
+  </nav>
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OnlyBackpackers - Registro</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header>
-    <h1>Registro - OnlyBackpackers</h1>
-  </header>
-
-  <section id="register">
-    <h2>Regístrate para unirte</h2>
-    <form id="register-form">
-      <label for="username">Usuario:</label>
-      <input type="text" id="username" name="username" required>
-      
-      <label for="email">Correo electrónico:</label>
-      <input type="email" id="email" name="email" required>
-      
-      <label for="password">Contraseña:</label>
-      <input type="password" id="password" name="password" required>
-      
-      <button type="submit">Registrarse</button>
-    </form>
-  </section>
-</body>
-</html>
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OnlyBackpackers - Muro</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header>
-    <h1>Muro de Publicaciones</h1>
-  </header>
-
-  <section id="muro">
-    <article class="post">
-      <h3>Juan: ¡Increíble experiencia en Tailandia!</h3>
-      <p>Recomiendo visitar las islas Phi Phi. ¡No te lo puedes perder!</p>
-    </article>
-    <article class="post">
-      <h3>Ana: Ruta por los Alpes</h3>
-      <p>He hecho una caminata espectacular en los Alpes suizos. Subiré fotos pronto.</p>
-    </article>
+  <section>
+    <h1>Bienvenido a OnlyBackpackers</h1>
+    <p>Accede a tu cuenta o regístrate para comenzar a compartir experiencias.</p>
   </section>
 </body>
 </html>
