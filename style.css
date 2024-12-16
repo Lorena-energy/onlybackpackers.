@@ -268,3 +268,72 @@ form button {
   color: #0077cc;
   cursor: pointer;
 }
+
+/* Estilos para Chats */
+.chats {
+  max-width: 800px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.chat-destinations {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.destination-button {
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.destination-button:hover {
+  background-color: #005fa3;
+}
+
+.hidden {
+  display: none;
+}
+
+.chat-box {
+  border: 1px solid #ddd;
+  padding: 10px;
+  height: 300px;
+  overflow-y: scroll;
+  margin-bottom: 10px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  text-align: left;
+}
+
+#chat-form {
+  display: flex;
+  gap: 10px;
+}
+
+#chat-message {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+#chat-form button {
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#chat-form button:hover {
+  background-color: #005fa3;
+}
