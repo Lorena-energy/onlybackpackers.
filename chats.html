@@ -20,10 +20,11 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Menú de navegación -->
   <nav>
     <div class="menu-container">
       <button class="menu-toggle">☰ Menú</button>
-      <ul class="menu">
+      <ul class="menu hidden">
         <li><a href="index.html">Inicio</a></li>
         <li><a href="muro.html">Muro</a></li>
         <li><a href="recomendaciones.html">Recomendaciones</a></li>
@@ -35,19 +36,20 @@
     </div>
   </nav>
 
+  <!-- Sección de Chats -->
   <section class="chats">
     <h1>Chats por Destino</h1>
     <p>Selecciona tu destino y conecta con otros viajeros.</p>
 
-    <!-- Lista de destinos -->
+    <!-- Botones para cada destino -->
     <div class="chat-destinations">
-      <button class="destination-button" onclick="openChat('Isla Mujeres')">🌴 Isla Mujeres</button>
-      <button class="destination-button" onclick="openChat('Islas Phi Phi')">🌊 Islas Phi Phi</button>
-      <button class="destination-button" onclick="openChat('Bali')">🏝️ Bali</button>
-      <button class="destination-button" onclick="openChat('Barcelona')">🌆 Barcelona</button>
+      <button onclick="openChat('Isla Mujeres')">🌴 Isla Mujeres</button>
+      <button onclick="openChat('Islas Phi Phi')">🌊 Islas Phi Phi</button>
+      <button onclick="openChat('Bali')">🏝️ Bali</button>
+      <button onclick="openChat('Barcelona')">🌆 Barcelona</button>
     </div>
 
-    <!-- Contenedor del chat -->
+    <!-- Contenedor del Chat -->
     <div id="chat-container" class="hidden">
       <h2 id="chat-title"></h2>
       <div id="chat-box" class="chat-box"></div>
@@ -58,6 +60,6 @@
     </div>
   </section>
 
-  <script src="chats.js"></script>
+  <script src="chat.js"></script>
 </body>
 </html>
