@@ -40,10 +40,13 @@
     <div id="chat-container" class="hidden">
       <h2 id="chat-title"></h2>
       <div id="chat-box" class="chat-box"></div>
+      
+      <!-- Área de texto y botón de enviar -->
       <form id="chat-form">
-        <!-- Cambié input por textarea -->
-        <textarea id="chat-message" placeholder="Escribe tu mensaje..." rows="3" required></textarea>
-        <button type="submit">Enviar</button>
+        <div class="input-container">
+          <textarea id="chat-message" placeholder="Escribe un mensaje..." rows="2"></textarea>
+          <button type="submit" id="send-button">➤</button>
+        </div>
       </form>
     </div>
   </section>
