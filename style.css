@@ -491,3 +491,39 @@ form button {
 #chat-form button:hover {
   background-color: #005fa3;
 }
+
+/* Estilos del área de texto */
+#chat-message {
+  width: 100%; /* Ancho completo */
+  padding: 12px; /* Espacio interno cómodo */
+  font-size: 1rem; /* Tamaño de letra legible */
+  border: 1px solid #ccc; /* Borde sutil */
+  border-radius: 5px; /* Bordes redondeados */
+  resize: none; /* Evita que el usuario redimensione manualmente */
+  box-sizing: border-box; /* Mantiene el ancho definido */
+}
+
+#chat-message:focus {
+  outline: 2px solid #0077cc; /* Resalta el campo al escribir */
+}
+
+/* Alinear el botón y el textarea */
+#chat-form {
+  display: flex; /* Input y botón en la misma línea */
+  gap: 10px; /* Espacio entre el textarea y el botón */
+  align-items: center; /* Alineación vertical */
+}
+
+#chat-form button {
+  background-color: #0077cc;
+  color: white;
+  padding: 12px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#chat-form button:hover {
+  background-color: #005fa3;
+}
