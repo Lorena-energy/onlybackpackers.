@@ -549,3 +549,115 @@ form button {
   outline: 2px solid #0077cc; /* Borde azul al escribir */
 }
 
+/* Contenedor del área de texto */
+.input-container {
+  display: flex;
+  align-items: center;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  padding: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin: 10px 0;
+}
+
+/* Área de texto */
+#chat-message {
+  flex: 1;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  font-size: 1rem;
+  resize: none; /* Evita redimensionar manualmente */
+  line-height: 1.5;
+  padding: 10px;
+  color: #333;
+}
+
+/* Botón de enviar */
+#send-button {
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#send-button:hover {
+  background-color: #005fa3;
+}
+
+/* Ajuste para responsive */
+@media (max-width: 600px) {
+  .input-container {
+    flex-direction: column;
+    padding: 5px;
+  }
+
+  #send-button {
+    margin-top: 10px;
+    width: 100%;
+  }
+}
+/* Contenedor del área de texto */
+.input-container {
+  display: flex;
+  align-items: center;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  padding: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin: 10px 0;
+}
+
+/* Área de texto */
+#chat-message {
+  flex: 1;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  font-size: 1rem;
+  resize: none; /* Evita redimensionar manualmente */
+  line-height: 1.5;
+  padding: 10px;
+  color: #333;
+}
+
+/* Botón de enviar */
+#send-button {
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#send-button:hover {
+  background-color: #005fa3;
+}
+
+/* Ajuste para responsive */
+@media (max-width: 600px) {
+  .input-container {
+    flex-direction: column;
+    padding: 5px;
+  }
+
+  #send-button {
+    margin-top: 10px;
+    width: 100%;
+  }
+}
