@@ -17,20 +17,18 @@ document.getElementById("chat-form").addEventListener("submit", (e) => {
   e.preventDefault();
 
   const messageInput = document.getElementById("chat-message");
-  const message = messageInput.value;
+  const chatBox = document.getElementById("chat-box");
+  const message = messageInput.value.trim();
 
-  if (message.trim() !== "") {
-    const chatBox = document.getElementById("chat-box");
-
-    // Crear un nuevo mensaje
+  if (message) {
+    // Crear y añadir el mensaje
     const newMessage = document.createElement("p");
     newMessage.textContent = `Tú: ${message}`;
     chatBox.appendChild(newMessage);
 
-    // Limpiar el campo de mensaje
+    // Limpiar el campo y hacer scroll hacia abajo
     messageInput.value = "";
-
-    // Desplazar el chat hacia abajo
     chatBox.scrollTop = chatBox.scrollHeight;
   }
 });
+
