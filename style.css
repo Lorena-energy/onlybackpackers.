@@ -531,7 +531,7 @@ form button {
 /* Estilo mejorado para el textarea */
 #chat-message {
   width: 100%; /* Ancho completo */
-  hight: 120px; /* Altura fija más grande */
+  height: 120px; /* Altura fija más grande */
   padding: 15px; /* Espacio interno más amplio */
   font-size: 1.2rem; /* Tamaño de letra grande */
   border: 1px solid #ccc;
@@ -539,6 +539,11 @@ form button {
   resize: none; /* Evita redimensionar */
   box-sizing: border-box; /* Asegura que el padding no afecte el tamaño */
 }
+
+#chat-message:focus {
+  outline: 2px solid #0077cc; /* Borde azul al escribir */
+}
+
 
 #chat-message:focus {
   outline: 2px solid #0077cc; /* Borde azul al escribir */
