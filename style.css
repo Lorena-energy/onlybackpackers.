@@ -25,16 +25,96 @@ nav ul li a:hover {
   border-radius: 5px;
 }
 
-/* Estilo del muro */
+/* Estilos del muro */
+#muro {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+#post-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
 .post {
   background: #f9f9f9;
+  padding: 15px;
   border: 1px solid #ddd;
   border-radius: 10px;
-  padding: 15px;
-  margin: 15px auto;
-  max-width: 600px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+}
+
+.post-content {
+  margin-top: 10px;
+}
+
+.post-media {
+  width: 100%;
+  height: auto;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+.post-interactions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+button {
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #005fa3;
+}
+
+/* Formulario para crear publicaciones */
+#create-post-form {
+  margin-top: 20px;
+}
+
+#create-post-form textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  resize: none;
+  height: 100px;
+}
+
+#create-post-form input[type="file"] {
+  margin-top: 10px;
+}
+
+#create-post-form button {
+  background-color: #0077cc;
+  color: white;
+  padding: 10px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#create-post-form button:hover {
+  background-color: #005fa3;
+}
+
 
 .post h3 {
   color: #0077cc;
