@@ -6,13 +6,15 @@ document.addEventListener("click", (e) => {
     emojiPanel.classList.toggle("hidden");
   }
 
-  // Añadir emoji al texto
-  if (e.target.closest(".emoji-panel")) {
-    const emoji = e.target.textContent;
+  // Añadir emoji al campo de texto
+  if (e.target.closest(".emoji-panel") && e.target.tagName === "SPAN") {
+    const emoji = e.target.textContent; // Obtén solo el emoji seleccionado
     const input = e.target.closest("form").querySelector("textarea, input[type='text']");
-    input.value += emoji;
+    input.value += emoji; // Añade el emoji al final del campo de texto
   }
 });
+
+  }
 
 // Manejo de la publicación
 document.getElementById("create-post-form").addEventListener("submit", (e) => {
