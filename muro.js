@@ -1,66 +1,47 @@
-// Manejo del formulario de publicación
-document.getElementById("post-form").addEventListener("submit", (e) => {
+// Manejo de la publicación
+document.getElementById("create-post-form").addEventListener("submit", (e) => {
   e.preventDefault();
 
-  // Obtener contenido y archivo multimedia del formulario
-  const content = document.getElementById("post-content").value;
-  const mediaFile = document.getElementById("post-media").files[0];
+  const postContent = document.getElementById("new-post-content").value.trim();
+  const postMedia = document.getElementById("post-media").files[0];
+  const postContainer = document.getElementById("post-container");
 
-  // Validar que haya contenido
-  if (!content && !mediaFile) {
-    alert("Por favor, escribe algo o sube una imagen/video.");
-    return;
-  }
+  if (postContent || postMedia) {
+    const newPost = document.createElement("div");
+    newPost.classList.add("post");
 
-  // Crear nueva publicación
-  const post = document.createElement("div");
-  post.classList.add("post");
+    // Añadir el contenido de la publicación
+    const postHeader = document.createElement("div");
+    postHeader.classList.add("post-header");
+    postHeader.innerHTML = `<h3>Tu nombre</h3><span>Ahora</span>`;
 
-  // Añadir contenido de texto
-  const postContent = document.createElement("p");
-  postContent.textContent = content;
-  post.appendChild(postContent);
+    const postBody = document.createElement("div");
+    postBody.classList.add("post-content");
 
-  // Añadir imagen o video si existe
-  if (mediaFile) {
-    const mediaElement = document.createElement(
-      mediaFile.type.startsWith("image/") ? "img" : "video"
-    );
-    mediaElement.src = URL.createObjectURL(mediaFile);
-    mediaElement.classList.add("post-media");
-    if (mediaFile.type.startsWith("video/")) mediaElement.controls = true;
-    post.appendChild(mediaElement);
-  }
+    const postText = document.createElement("p");
+    postText.textContent = postContent;
+    postBody.appendChild(postText);
 
-  // Añadir botones de interacción
-  const interactions = document.createElement("div");
-  interactions.classList.add("post-interactions");
-
-  const likeButton = document.createElement("button");
-  likeButton.textContent = "👍 Me gusta (0)";
-  likeButton.addEventListener("click", () => {
-    let likes = parseInt(likeButton.textContent.match(/\d+/)[0]) + 1;
-    likeButton.textContent = `👍 Me gusta (${likes})`;
-  });
-
-  const commentButton = document.createElement("button");
-  commentButton.textContent = "💬 Comentar";
-  commentButton.addEventListener("click", () => {
-    const comment = prompt("Escribe tu comentario:");
-    if (comment) {
-      const commentElement = document.createElement("p");
-      commentElement.textContent = `💬 ${comment}`;
-      post.appendChild(commentElement);
+    if (postMedia) {
+      const mediaElement = document.createElement(postMedia.type.startsWith("image") ? "img" : "video");
+      mediaElement.src = URL.createObjectURL(postMedia);
+      mediaElement.classList.add("post-media");
+      mediaElement.controls = true; // Habilita controles si es video
+      postBody.appendChild(mediaElement);
     }
-  });
 
-  interactions.appendChild(likeButton);
-  interactions.appendChild(commentButton);
-  post.appendChild(interactions);
+    const postInteractions = document.createElement("div");
+    postInteractions.classList.add("post-interactions");
+    postInteractions.innerHTML = `<button class="like-button">👍 Me gusta</button><button class="comment-button">💬 Comentar</button>`;
 
-  // Agregar la publicación al muro
-  document.getElementById("post-list").prepend(post);
+    newPost.appendChild(postHeader);
+    newPost.appendChild(postBody);
+    newPost.appendChild(postInteractions);
 
-  // Limpiar formulario
-  document.getElementById("post-form").reset();
+    postContainer.prepend(newPost);
+
+    // Limpiar el formulario
+    document.getElementById("new-post-content").value = "";
+    document.getElementById("post-media").value = "";
+  }
 });
