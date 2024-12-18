@@ -1,3 +1,68 @@
+// Manejo del selector de emojis
+document.addEventListener("click", (e) => {
+  // Mostrar/ocultar el panel de emojis
+  if (e.target.classList.contains("emoji-button")) {
+    const emojiPanel = e.target.nextElementSibling;
+    emojiPanel.classList.toggle("hidden");
+  }
+
+  // Añadir emoji al texto
+  if (e.target.closest(".emoji-panel")) {
+    const emoji = e.target.textContent;
+    const input = e.target.closest("form").querySelector("textarea, input[type='text']");
+    input.value += emoji;
+  }
+});
+
+// Manejo de la publicación
+document.getElementById("create-post-form").addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const postContent = document.getElementById("new-post-content").value.trim();
+  const postMedia = document.getElementById("post-media").files[0];
+  const postContainer = document.getElementById("post-container");
+
+  if (postContent || postMedia) {
+    const newPost = document.createElement("div");
+    newPost.classList.add("post");
+
+    const postHeader = document.createElement("div");
+    postHeader.classList.add("post-header");
+    postHeader.innerHTML = `<h3>Tu nombre</h3><span>Ahora</span>`;
+
+    const postBody = document.createElement("div");
+    postBody.classList.add("post-content");
+
+    const postText = document.createElement("p");
+    postText.textContent = postContent;
+    postBody.appendChild(postText);
+
+    if (postMedia) {
+      const mediaElement = document.createElement(postMedia.type.startsWith("image") ? "img" : "video");
+      mediaElement.src = URL.createObjectURL(postMedia);
+      mediaElement.classList.add("post-media");
+      if (postMedia.type.startsWith("video")) {
+        mediaElement.controls = true;
+      }
+      postBody.appendChild(mediaElement);
+    }
+
+    const postInteractions = document.createElement("div");
+    postInteractions.classList.add("post-interactions");
+    postInteractions.innerHTML = `<button class="like-button">👍 Me gusta <span class="like-count">0</span></button>`;
+
+    newPost.appendChild(postHeader);
+    newPost.appendChild(postBody);
+    newPost.appendChild(postInteractions);
+
+    postContainer.prepend(newPost);
+
+    document.getElementById("new-post-content").value = "";
+    document.getElementById("post-media").value = "";
+  }
+});
+
+
 // Manejo de la publicación
 document.getElementById("create-post-form").addEventListener("submit", (e) => {
   e.preventDefault();
