@@ -3,14 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OnlyBackpackers - Muro</title>
+  <title>OnlyBackpackers - Muro de Publicaciones</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Menú de navegación -->
   <nav>
     <div class="menu-container">
       <button class="menu-toggle">☰ Menú</button>
-      <ul class="menu">
+      <ul class="menu hidden">
         <li><a href="index.html">Inicio</a></li>
         <li><a href="muro.html">Muro</a></li>
         <li><a href="recomendaciones.html">Recomendaciones</a></li>
@@ -22,56 +23,36 @@
     </div>
   </nav>
 
-  <section class="create-post">
-  <h1>Crea una nueva publicación</h1>
-  <form id="post-form">
-    <textarea id="post-content" placeholder="Escribe algo..." required></textarea>
-    <input type="file" id="post-media" accept="image/*,video/*">
-    <button type="submit">Publicar</button>
-  </form>
-</section>
-
-  <section class="posts">
-    <h2>Publicaciones</h2>
-    <div id="post-list">
-      <!-- Ejemplo: Isla Mujeres -->
+  <!-- Muro de Publicaciones -->
+  <section id="muro">
+    <h2>Muro de Publicaciones</h2>
+    <div id="post-container">
+      <!-- Ejemplo de publicación -->
       <div class="post">
-        <p class="post-content"><strong>Isla Mujeres:</strong> Un destino paradisíaco con aguas cristalinas y paisajes únicos. ¡Perfecto para relajarse y desconectar!</p>
-        <img src="isla_mujeres.jpg" alt="Isla Mujeres" class="post-media">
-        <div class="post-interactions">
-          <button onclick="likePost(this)">👍 Me gusta (0)</button>
-          <button onclick="commentPost(this)">💬 Comentar</button>
+        <div class="post-header">
+          <h3>Juan</h3>
+          <span>2 horas atrás</span>
         </div>
-      </div>
-
-      <!-- Ejemplo: Islas Phi Phi -->
-      <div class="post">
-        <p class="post-content"><strong>Islas Phi Phi:</strong> Un paraíso en Tailandia con playas de arena blanca y acantilados impresionantes. ¡Imposible no enamorarse!</p>
-        <img src="islas_phi_phi.jpg" alt="Islas Phi Phi" class="post-media">
+        <div class="post-content">
+          <p>¡Increíble experiencia en las Islas Phi Phi! 💙</p>
+          <img src="https://via.placeholder.com/500" alt="Foto de ejemplo" class="post-media">
+        </div>
         <div class="post-interactions">
-          <button onclick="likePost(this)">👍 Me gusta (0)</button>
-          <button onclick="commentPost(this)">💬 Comentar</button>
+          <button class="like-button">👍 Me gusta</button>
+          <button class="comment-button">💬 Comentar</button>
         </div>
       </div>
     </div>
+
+    <!-- Formulario para crear publicaciones -->
+    <form id="create-post-form">
+      <textarea id="new-post-content" placeholder="Escribe algo..." required></textarea>
+      <input type="file" id="post-media" accept="image/*, video/*">
+      <button type="submit">Publicar</button>
+    </form>
   </section>
 
-  <script>
-    // Función para incrementar los "me gusta"
-    function likePost(button) {
-      let likes = parseInt(button.textContent.match(/\d+/)[0]) + 1;
-      button.textContent = `👍 Me gusta (${likes})`;
-    }
-
-    // Función para añadir comentarios
-    function commentPost(button) {
-      const comment = prompt("Escribe tu comentario:");
-      if (comment) {
-        const commentElement = document.createElement("p");
-        commentElement.textContent = `💬 ${comment}`;
-        button.parentElement.parentElement.appendChild(commentElement);
-      }
-    }
-  </script>
+  <!-- Archivo JavaScript -->
+  <script src="muro.js"></script>
 </body>
 </html>
