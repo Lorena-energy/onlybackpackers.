@@ -7,10 +7,9 @@ document.addEventListener("click", (e) => {
   }
 
   // Añadir emoji al campo de texto
-  if (e.target.closest(".emoji-panel") && e.target.tagName === "SPAN") {
-    const emoji = e.target.textContent; // Obtén solo el emoji seleccionado
-    const input = e.target.closest("form").querySelector("textarea, input[type='text']");
-    input.value += emoji; // Añade el emoji al final del campo de texto
+  if (e.target.closest(".emoji-panel") && e.target.tagName === "DIV") {
+    const emoji = e.target.textContent.trim();
+    console.log(e.target.textContent);
   }
 });
 
