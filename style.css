@@ -299,3 +299,87 @@ body {
 .redeem-button:hover {
   background: #005fa3;
 }
+
+/* Cabecera */
+header {
+  text-align: center;
+  padding: 20px;
+  background: #0077cc;
+  color: white;
+}
+
+header .logo {
+  max-width: 150px;
+  margin-bottom: 10px;
+}
+
+/* Menú */
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  background: #0077cc;
+  padding: 10px 0;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Recompensas */
+#rewards {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.reward-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 15px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+}
+
+.reward-item img {
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+}
+
+.reward-details {
+  flex: 1;
+  margin-left: 20px;
+  text-align: left;
+}
+
+.redeem-button {
+  background: #0077cc;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.redeem-button:hover {
+  background: #005fa3;
+}
