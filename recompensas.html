@@ -1,30 +1,101 @@
-<section id="rewards">
-  <h2>🎁 Gana Puntos y Canjea Recompensas</h2>
-  <p>Participa, acumula puntos y canjéalos por premios increíbles o sorteos exclusivos.</p>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OnlyBackpackers - Recompensas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Cabecera -->
+  <header>
+    <img src="logo.png" alt="OnlyBackpackers Logo" class="logo">
+    <h1>OnlyBackpackers</h1>
+    <p>¡Gana puntos y canjéalos por increíbles premios!</p>
+  </header>
 
-  <!-- Puntos actuales -->
-  <div id="user-points">
-    <h3>Tus puntos: <span id="points-count">0</span></h3>
-  </div>
+  <!-- Menú de navegación -->
+  <nav>
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="muro.html">Muro</a></li>
+      <li><a href="recomendaciones.html">Recomendaciones</a></li>
+      <li><a href="chats.html">Chats por destino</a></li>
+      <li><a href="eventos.html">Eventos por destino</a></li>
+      <li><a href="worldtrip.html">Worldtrip</a></li>
+      <li><a href="recompensas.html">Recompensas</a></li>
+      <li><a href="#" id="logout">Cerrar Sesión</a></li>
+    </ul>
+  </nav>
 
-  <!-- Recompensas directas -->
-  <div class="rewards-category">
-    <h3>🎯 Regalos Directos</h3>
-    <div class="reward-item">
-      <h4>Viaje directo</h4>
-      <p>75,000 puntos</p>
-      <button class="redeem-button" data-points="75000">Canjear</button>
+  <!-- Sección de Recompensas -->
+  <section id="rewards">
+    <h2>🎁 Gana Puntos y Canjea Recompensas</h2>
+    <p>Participa, acumula puntos y canjéalos por premios increíbles o sorteos exclusivos.</p>
+
+    <!-- Puntos actuales -->
+    <div id="user-points">
+      <h3>Tus puntos: <span id="points-count">0</span></h3>
     </div>
-  </div>
 
-  <!-- Sorteo de gran viaje -->
-  <div class="rewards-category">
-    <h3>🎟️ Sorteo de Gran Viaje</h3>
-    <div class="reward-item">
-      <h4>Sorteo de Gran Viaje</h4>
-      <p>25,000 puntos por entrada</p>
-      <p><strong>Entradas actuales:</strong> <span id="entries-count">0</span>/100</p>
-      <button class="redeem-button" data-points="25000" data-sorteo="gran-viaje">Participar</button>
+    <!-- Recompensas directas -->
+    <div class="rewards-category">
+      <h3>🎯 Regalos Directos</h3>
+      <div class="reward-item">
+        <img src="camiseta.png" alt="Camiseta OnlyBackpackers">
+        <div class="reward-details">
+          <h4>Camiseta OnlyBackpackers</h4>
+          <p>1,500 puntos</p>
+          <button class="redeem-button" data-points="1500">Canjear</button>
+        </div>
+      </div>
+      <div class="reward-item">
+        <img src="mochila.png" alt="Camiseta + Mochila tipo bolsa">
+        <div class="reward-details">
+          <h4>Camiseta + Mochila tipo bolsa</h4>
+          <p>3,000 puntos</p>
+          <button class="redeem-button" data-points="3000">Canjear</button>
+        </div>
+      </div>
+      <div class="reward-item">
+        <img src="mochila_viajera.png" alt="Mochila viajera">
+        <div class="reward-details">
+          <h4>Mochila viajera personalizada</h4>
+          <p>8,000 puntos</p>
+          <button class="redeem-button" data-points="8000">Canjear</button>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
+
+    <!-- Sorteos -->
+    <div class="rewards-category">
+      <h3>🎟️ Sorteos</h3>
+      <div class="reward-item">
+        <img src="gran_viaje.png" alt="Sorteo Gran Viaje">
+        <div class="reward-details">
+          <h4>Sorteo de Gran Viaje</h4>
+          <p>25,000 puntos por entrada</p>
+          <p><strong>Entradas actuales:</strong> <span id="entries-count">0</span>/100</p>
+          <button class="redeem-button" data-points="25000" data-sorteo="gran-viaje">Participar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Exclusivas -->
+    <div class="rewards-category">
+      <h3>🏆 Recompensas Exclusivas</h3>
+      <div class="reward-item">
+        <img src="viaje_directo.png" alt="Viaje directo">
+        <div class="reward-details">
+          <h4>Viaje directo</h4>
+          <p>75,000 puntos</p>
+          <button class="redeem-button" data-points="75000">Canjear</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Script de recompensas -->
+  <script src="recompensas.js"></script>
+</body>
+</html>
