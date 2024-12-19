@@ -1,57 +1,30 @@
-<nav>
-  <ul>
-    <li><a href="index.html">Inicio</a></li>
-    <li><a href="muro.html">Muro</a></li>
-    <li><a href="recomendaciones.html">Recomendaciones</a></li>
-    <li><a href="chats.html">Chats por destino</a></li>
-    <li><a href="eventos.html">Eventos por destino</a></li>
-    <li><a href="worldtrip.html">Worldtrip</a></li>
-    <li><a href="recompensas.html">Recompensas</a></li>
-    <li><a href="#" id="logout">Cerrar Sesión</a></li>
-  </ul>
-</nav>
-
 <section id="rewards">
-  <h2>Recompensas</h2>
-  <p>¡Gana puntos por participar y canjéalos por increíbles beneficios!</p>
+  <h2>🎁 Gana Puntos y Canjea Recompensas</h2>
+  <p>Participa, acumula puntos y canjéalos por premios increíbles o sorteos exclusivos.</p>
 
   <!-- Puntos actuales -->
   <div id="user-points">
     <h3>Tus puntos: <span id="points-count">0</span></h3>
   </div>
 
-  <!-- Lista de recompensas -->
-  <div id="rewards-list">
-    <h3>Canjea tus puntos:</h3>
-    <ul>
-      <li>
-        <strong>Camiseta OnlyBackpackers</strong> - 1,000 puntos
-        <button class="redeem-button" data-points="1000">Canjear</button>
-      </li>
-      <li>
-        <strong>Camiseta + Mochila tipo bolsa</strong> - 1,500 puntos
-        <button class="redeem-button" data-points="1500">Canjear</button>
-      </li>
-      <li>
-        <strong>Mochila viajera personalizada</strong> - 5,000 puntos
-        <button class="redeem-button" data-points="5000">Canjear</button>
-      </li>
-      <li>
-        <strong>Cena para dos</strong> - 7,500 puntos
-        <button class="redeem-button" data-points="7500">Canjear</button>
-      </li>
-      <li>
-        <strong>Fin de semana en hostels</strong> - 10,000 puntos
-        <button class="redeem-button" data-points="10000">Canjear</button>
-      </li>
-      <li>
-        <strong>Sorteo de gran viaje</strong> - 15,000 puntos
-        <button class="redeem-button" data-points="15000">Canjear</button>
-      </li>
-      <li>
-        <strong>Viaje directo</strong> - 20,000 puntos
-        <button class="redeem-button" data-points="20000">Canjear</button>
-      </li>
-    </ul>
+  <!-- Recompensas directas -->
+  <div class="rewards-category">
+    <h3>🎯 Regalos Directos</h3>
+    <div class="reward-item">
+      <h4>Viaje directo</h4>
+      <p>75,000 puntos</p>
+      <button class="redeem-button" data-points="75000">Canjear</button>
+    </div>
+  </div>
+
+  <!-- Sorteo de gran viaje -->
+  <div class="rewards-category">
+    <h3>🎟️ Sorteo de Gran Viaje</h3>
+    <div class="reward-item">
+      <h4>Sorteo de Gran Viaje</h4>
+      <p>25,000 puntos por entrada</p>
+      <p><strong>Entradas actuales:</strong> <span id="entries-count">0</span>/100</p>
+      <button class="redeem-button" data-points="25000" data-sorteo="gran-viaje">Participar</button>
+    </div>
   </div>
 </section>
