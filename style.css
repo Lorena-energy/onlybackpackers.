@@ -464,4 +464,61 @@ nav ul li a:hover {
 
 .redeem-button:hover {
   background: #005fa3;
+
+/* Recomendaciones */
+#write-recommendations, #user-recommendations, #monetized-recommendations {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+#recommendation-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#recommendation-category, #recommendation-text, button {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+button {
+  background: #0077cc;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #005fa3;
+}
+
+.recommendation-item {
+  text-align: left;
+  padding: 15px;
+  background: white;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.recommendation-item h3 {
+  font-size: 1.2rem;
+  color: #0077cc;
+}
+
+.recommendation-item a {
+  color: #0077cc;
+  text-decoration: underline;
+}
+
+
+  
 }
