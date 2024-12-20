@@ -24,6 +24,7 @@
       <li><a href="eventos.html">Eventos por destino</a></li>
       <li><a href="worldtrip.html">Worldtrip</a></li>
       <li><a href="recompensas.html">Recompensas</a></li>
+      <li><a href="rules.html">Bases y Condiciones</a></li>
       <li><a href="#" id="logout">Cerrar Sesión</a></li>
     </ul>
   </nav>
@@ -50,19 +51,35 @@
         </div>
       </div>
       <div class="reward-item">
-        <img src="mochila.png" alt="Camiseta + Mochila tipo bolsa">
+        <img src="mochila.png" alt="Mochila tipo bolsa">
         <div class="reward-details">
-          <h4>Camiseta + Mochila tipo bolsa</h4>
+          <h4>Mochila tipo bolsa</h4>
           <p>3,000 puntos</p>
           <button class="redeem-button" data-points="3000">Canjear</button>
         </div>
       </div>
       <div class="reward-item">
-        <img src="mochila_viajera.png" alt="Mochila viajera">
+        <img src="mochila_viajera.png" alt="Mochila viajera personalizada">
         <div class="reward-details">
           <h4>Mochila viajera personalizada</h4>
           <p>8,000 puntos</p>
           <button class="redeem-button" data-points="8000">Canjear</button>
+        </div>
+      </div>
+      <div class="reward-item">
+        <img src="experiencia.png" alt="Experiencia local">
+        <div class="reward-details">
+          <h4>Experiencia local</h4>
+          <p>15,000 puntos</p>
+          <button class="redeem-button" data-points="15000">Canjear</button>
+        </div>
+      </div>
+      <div class="reward-item">
+        <img src="fin_semana.png" alt="Fin de semana en hostels">
+        <div class="reward-details">
+          <h4>Fin de semana en hostels</h4>
+          <p>20,000 puntos</p>
+          <button class="redeem-button" data-points="20000">Canjear</button>
         </div>
       </div>
     </div>
@@ -79,57 +96,17 @@
           <button class="redeem-button" data-points="25000" data-sorteo="gran-viaje">Participar</button>
         </div>
       </div>
-    </div>
-
-    <!-- Exclusivas -->
-    <div class="rewards-category">
-      <h3>🏆 Recompensas Exclusivas</h3>
       <div class="reward-item">
-        <img src="viaje_directo.png" alt="Viaje directo">
+        <img src="sorteo_semana.png" alt="Sorteo Fin de Semana">
         <div class="reward-details">
-          <h4>Viaje directo</h4>
-          <p>75,000 puntos</p>
-          <button class="redeem-button" data-points="75000">Canjear</button>
+          <h4>Sorteo de Fin de Semana</h4>
+          <p>10,000 puntos por entrada</p>
+          <p><strong>Entradas actuales:</strong> <span id="weekend-entries">0</span>/100</p>
+          <button class="redeem-button" data-points="10000" data-sorteo="fin-semana">Participar</button>
         </div>
       </div>
     </div>
   </section>
-
-  <section id="rules">
-  <h2>📜 Bases y Condiciones</h2>
-  <p>Estas son las reglas para acumular puntos, participar en sorteos y canjear recompensas:</p>
-
-  <!-- Sistema de puntos -->
-  <h3>🎯 Cómo ganar puntos</h3>
-  <ul>
-    <li><strong>Invitar amigos:</strong> Ganas 100 puntos por cada amigo que se registre y active su cuenta usando tu código. Tu amigo también recibirá 25 puntos de bienvenida.</li>
-    <li><strong>Recomendaciones:</strong> Ganas 35 puntos por cada recomendación validada (bares, rutas, actividades, etc.).</li>
-    <li><strong>Publicar en el muro:</strong> Ganas 5 puntos por cada publicación.</li>
-    <li><strong>Comentar o reaccionar:</strong> Ganas 1 punto por cada acción (máximo 10 puntos diarios).</li>
-  </ul>
-
-  <!-- Sorteos -->
-  <h3>🎟️ Reglas de los sorteos</h3>
-  <ul>
-    <li>Los sorteos solo se activan cuando alcanzan un mínimo de <strong>100 entradas</strong>.</li>
-    <li>Si el sorteo no alcanza el mínimo en el tiempo establecido (30 días), puedes:
-      <ul>
-        <li>Solicitar el reembolso de tus puntos.</li>
-        <li>Dejar tus entradas para el próximo sorteo.</li>
-      </ul>
-    </li>
-    <li>Cada entrada al sorteo cuesta <strong>25,000 puntos</strong>.</li>
-    <li>Solo se puede participar en sorteos activos dentro del período establecido.</li>
-  </ul>
-
-  <!-- Recompensas -->
-  <h3>🎁 Canjeo de recompensas</h3>
-  <ul>
-    <li>Las recompensas están sujetas a disponibilidad. Nos reservamos el derecho de cambiar los premios en caso de que se agoten.</li>
-    <li>Los usuarios deben tener los puntos necesarios para canjear una recompensa.</li>
-    <li>Los premios físicos (camisetas, mochilas) se enviarán a la dirección proporcionada por el usuario. El costo de envío no está incluido en el canje.</li>
-  </ul>
-</section>
 
   <!-- Script de recompensas -->
   <script src="recompensas.js"></script>
