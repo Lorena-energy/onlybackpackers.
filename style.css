@@ -258,3 +258,23 @@ button:hover {
   text-decoration: underline;
 }
 
+/* Mensajes en el chat */
+.message {
+  max-width: 70%;
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 10px;
+  word-wrap: break-word;
+}
+
+.sent-message {
+  background-color: #0077cc;
+  color: white;
+  align-self: flex-end;
+}
+
+.received-message {
+  background-color: #f0f0f0;
+  color: #333;
+  align-self: flex-start;
+}
