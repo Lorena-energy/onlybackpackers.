@@ -16,22 +16,38 @@ function openChat(destination) {
 document.addEventListener("DOMContentLoaded", () => {
   const chatForm = document.getElementById("chat-form");
   const chatBox = document.getElementById("chat-box");
+  const messageInput = document.getElementById("chat-message");
 
+  // Escuchar el envío del formulario
   chatForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    const messageInput = document.getElementById("chat-message");
     const message = messageInput.value.trim();
 
     if (message) {
-      // Crear y añadir el mensaje
-      const newMessage = document.createElement("p");
-      newMessage.textContent = `Tú: ${message}`;
+      // Crear el contenedor del mensaje
+      const newMessage = document.createElement("div");
+      newMessage.classList.add("message", "sent-message");
+
+      // Añadir el texto del mensaje
+      const messageText = document.createElement("p");
+      messageText.textContent = message;
+      newMessage.appendChild(messageText);
+
+      // Añadir el mensaje al chat
       chatBox.appendChild(newMessage);
 
-      // Limpiar el campo y hacer scroll hacia abajo
+      // Limpiar el campo de entrada y hacer scroll hacia abajo
       messageInput.value = "";
       chatBox.scrollTop = chatBox.scrollHeight;
+    }
+  });
+
+  // Opción para presionar "Enter" para enviar mensajes
+  messageInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      chatForm.dispatchEvent(new Event("submit"));
     }
   });
 });
