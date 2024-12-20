@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
- <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OnlyBackpackers - Muro de Publicaciones</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
   <!-- Menú de navegación -->
@@ -26,36 +26,32 @@
 
   <!-- Muro de Publicaciones -->
   <section id="muro">
-    <h2>Muro de Publicaciones</h2>
+    <h1>Muro de Publicaciones</h1>
+    <p>Comparte tus aventuras con otros mochileros. Publica fotos, comentarios y mucho más.</p>
+    
+    <!-- Contenedor de publicaciones -->
     <div id="post-container">
       <!-- Ejemplo de publicación -->
       <div class="post">
         <div class="post-header">
           <h3>Juan</h3>
-          <span>2 horas atrás</span>
+          <span>Hace 2 horas</span>
         </div>
         <div class="post-content">
           <p>¡Increíble experiencia en las Islas Phi Phi! 💙</p>
           <img src="https://via.placeholder.com/300" alt="Foto de ejemplo" class="post-media">
         </div>
         <div class="post-interactions">
-          <button class="like-button">👍 Me gusta <span class="like-count">0</span></button>
+          <button class="like-button">👍 Me gusta <span class="like-count">5</span></button>
           <button class="comment-button">💬 Comentar</button>
         </div>
         <div class="post-comments">
-          <!-- Comentarios irán aquí -->
           <div class="comment">
             <strong>Laura:</strong> ¡Qué bonito lugar! 😍
           </div>
         </div>
         <form class="comment-form">
           <input type="text" placeholder="Escribe un comentario..." required>
-          <div class="emoji-picker">
-            <button type="button" class="emoji-button">😀</button>
-            <div class="emoji-panel hidden">
-              😀 😁 😂 🤣 😃 😄 😅 😆 😉 😊 😋 😎 😍 🥰 😘 😗 😚 😏 🤔 😮 😪 😴 🥳 🤗 😇 🤓 👻 💀 👽 💩 ❤️ 🧡 💛 💚 💙 💜 🌟 🎉 🎂 ✈️ 🚢 🌍 🏖️
-            </div>
-          </div>
           <button type="submit">Enviar</button>
         </form>
       </div>
@@ -63,7 +59,7 @@
 
     <!-- Formulario para crear publicaciones -->
     <form id="create-post-form">
-      <textarea id="new-post-content" placeholder="Escribe algo..." required></textarea>
+      <textarea id="new-post-content" placeholder="Escribe algo..." rows="3" required></textarea>
       <div class="emoji-picker">
         <button type="button" id="emoji-button">😀</button>
         <div id="emoji-panel" class="hidden">
@@ -75,7 +71,7 @@
     </form>
   </section>
 
-  <!-- Archivo JavaScript -->
+  <!-- Script para funcionalidad -->
   <script src="muro.js"></script>
 </body>
 </html>
