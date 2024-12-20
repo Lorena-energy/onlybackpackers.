@@ -1,12 +1,69 @@
-<nav>
-  <ul>
-    <li><a href="index.html">Inicio</a></li>
-    <li><a href="muro.html">Muro</a></li>
-    <li><a href="recomendaciones.html">Recomendaciones</a></li>
-    <li><a href="chats.html">Chats por destino</a></li>
-    <li><a href="eventos.html">Eventos por destino</a></li>
-    <li><a href="worldtrip.html">Worldtrip</a></li>
-    <li><a href="recompensas.html">Recompensas</a></li>
-    <li><a href="#" id="logout">Cerrar Sesión</a></li>
-  </ul>
-</nav>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OnlyBackpackers - Eventos por Destino</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Menú de navegación -->
+  <nav>
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="muro.html">Muro</a></li>
+      <li><a href="recomendaciones.html">Recomendaciones</a></li>
+      <li><a href="chats.html">Chats por destino</a></li>
+      <li><a href="eventos.html">Eventos por destino</a></li>
+      <li><a href="worldtrip.html">Worldtrip</a></li>
+      <li><a href="recompensas.html">Recompensas</a></li>
+      <li><a href="#" id="logout">Cerrar Sesión</a></li>
+    </ul>
+  </nav>
+
+  <!-- Cabecera -->
+  <header class="hero">
+    <h1>Eventos por Destino</h1>
+    <p>Encuentra eventos emocionantes en tus destinos favoritos y conecta con otros viajeros.</p>
+  </header>
+
+  <!-- Sección de eventos -->
+  <section id="events">
+    <h2>Próximos Eventos</h2>
+    <div class="event-container">
+      <!-- Ejemplo de evento -->
+      <div class="event-item">
+        <h3>🎉 Fiesta en la Playa - Isla Mujeres</h3>
+        <p><strong>Fecha:</strong> 25 de diciembre de 2024</p>
+        <p><strong>Descripción:</strong> Disfruta de una increíble fiesta con música, comida local y juegos en la playa.</p>
+        <button class="join-event">¡Únete!</button>
+      </div>
+
+      <div class="event-item">
+        <h3>🌄 Caminata al Amanecer - Islas Phi Phi</h3>
+        <p><strong>Fecha:</strong> 1 de enero de 2025</p>
+        <p><strong>Descripción:</strong> Explora los paisajes al amanecer con una caminata guiada por expertos.</p>
+        <button class="join-event">¡Únete!</button>
+      </div>
+
+      <div class="event-item">
+        <h3>🎶 Festival de Música - Barcelona</h3>
+        <p><strong>Fecha:</strong> 10 de enero de 2025</p>
+        <p><strong>Descripción:</strong> Vive una experiencia única con artistas locales e internacionales.</p>
+        <button class="join-event">¡Únete!</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Script para manejar los eventos -->
+  <script>
+    const joinButtons = document.querySelectorAll(".join-event");
+    joinButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        alert("¡Te has unido al evento! Nos vemos allí.");
+      });
+    });
+  </script>
+</body>
+</html>
