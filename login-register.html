@@ -3,64 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OnlyBackpackers - Login / Registro</title>
-  <link rel="stylesheet" href="style.css">
+  <title>OnlyBackpackers - Autenticación</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <script src="login-register.js"></script>
- <!-- Menú de navegación -->
-  <nav>
-    <ul>
-      <li><a href="index.html">Inicio</a></li>
-      <li><a href="muro.html">Muro</a></li>
-      <li><a href="recomendaciones.html">Recomendaciones</a></li>
-      <li><a href="chats.html">Chats por destino</a></li>
-      <li><a href="eventos.html">Eventos por destino</a></li>
-      <li><a href="worldtrip.html">Worldtrip</a></li>
-      <li><a href="recompensas.html">Recompensas</a></li>
-    </ul>
-  </nav>
-
-  <!-- Cabecera -->
+  <!-- Cabecera con logo -->
   <header class="hero">
+    <img src="logo.png" alt="OnlyBackpackers Logo" class="logo">
     <h1>Bienvenido a OnlyBackpackers</h1>
-    <p>Accede a tu cuenta o regístrate para comenzar tu aventura.</p>
+    <p>Regístrate o inicia sesión para disfrutar de todas las funcionalidades.</p>
   </header>
 
-  <!-- Contenedor para Login y Registro -->
-  <section id="login-register">
+  <!-- Contenedor de autenticación -->
+  <section id="auth-section">
     <div class="form-container">
-      <!-- Login -->
-      <div class="form-section">
-        <h2>Iniciar Sesión</h2>
-        <form id="login-form">
-          <label for="login-email">Correo Electrónico</label>
-          <input type="email" id="login-email" placeholder="Introduce tu correo" required>
-
-          <label for="login-password">Contraseña</label>
-          <input type="password" id="login-password" placeholder="Introduce tu contraseña" required>
-
-          <button type="submit">Iniciar Sesión</button>
-        </form>
-      </div>
-
       <!-- Registro -->
-      <div class="form-section">
+      <form id="register-form" class="auth-form">
         <h2>Regístrate</h2>
-        <form id="register-form">
-          <label for="register-name">Nombre Completo</label>
-          <input type="text" id="register-name" placeholder="Introduce tu nombre completo" required>
+        <input type="email" id="register-email" placeholder="Correo electrónico" required>
+        <input type="password" id="register-password" placeholder="Contraseña" required>
+        <button type="submit">Registrarse</button>
+        <p>¿Ya tienes una cuenta? <a href="#" id="show-login">Inicia Sesión</a></p>
+      </form>
 
-          <label for="register-email">Correo Electrónico</label>
-          <input type="email" id="register-email" placeholder="Introduce tu correo" required>
-
-          <label for="register-password">Contraseña</label>
-          <input type="password" id="register-password" placeholder="Crea una contraseña" required>
-
-          <button type="submit">Regístrate</button>
-        </form>
-      </div>
+      <!-- Inicio de sesión -->
+      <form id="login-form" class="auth-form hidden">
+        <h2>Inicia Sesión</h2>
+        <input type="email" id="login-email" placeholder="Correo electrónico" required>
+        <input type="password" id="login-password" placeholder="Contraseña" required>
+        <button type="submit">Iniciar Sesión</button>
+        <p>¿No tienes una cuenta? <a href="#" id="show-register">Regístrate</a></p>
+      </form>
     </div>
   </section>
 
@@ -68,17 +42,8 @@
     <p>&copy; 2024 OnlyBackpackers. Vive tu aventura con nosotros.</p>
   </footer>
 
-  <script>
-    // Lógica básica de manejo de formularios
-    document.getElementById("login-form").addEventListener("submit", (e) => {
-      e.preventDefault();
-      alert("Inicio de sesión exitoso. ¡Bienvenido!");
-    });
-
-    document.getElementById("register-form").addEventListener("submit", (e) => {
-      e.preventDefault();
-      alert("Registro completado. ¡Bienvenido a OnlyBackpackers!");
-    });
-  </script>
+  <script src="auth-interface.js"></script>
 </body>
 </html>
+
+   
