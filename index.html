@@ -1,31 +1,21 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OnlyBackpackers - Bienvenido</title>
+  <title>OnlyBackpackers</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <script>
-    // Redirigir al muro si el usuario ya está autenticado
-    if (localStorage.getItem("loggedIn") === "true") {
-      window.location.href = "muro.html";
-    }
-  </script>
-
-  <header class="hero">
-    <h1>OnlyBackpackers</h1>
-    <p>Conecta, explora y comparte tu aventura.</p>
-    <a href="login-register.html" class="cta-button">¡Únete al viaje!</a>
-  </header>
-
-  <nav>
-    <div class="menu-container">
-      <button class="menu-toggle">☰ Menú</button>
-      <ul class="menu">
-        <li><a href="index.html">Inicio</a></li>
+  <!-- Cabecera -->
+  <header>
+    <div class="logo-container">
+      <img src="logo.png" alt="OnlyBackpackers" class="logo">
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html" class="active">Inicio</a></li>
         <li><a href="muro.html">Muro</a></li>
         <li><a href="recomendaciones.html">Recomendaciones</a></li>
         <li><a href="chats.html">Chats</a></li>
@@ -33,50 +23,41 @@
         <li><a href="worldtrip.html">Worldtrip</a></li>
         <li><a href="recompensas.html">Recompensas</a></li>
       </ul>
-    </div>
-  </nav>
+    </nav>
+  </header>
 
+  <!-- Sección Hero -->
+  <section class="hero">
+    <h1>Descubre el mundo con OnlyBackpackers</h1>
+    <p>Conecta con mochileros, comparte tus aventuras y crea recuerdos inolvidables.</p>
+    <a href="login-register.html" class="cta-button">¡Únete ahora!</a>
+  </section>
+
+  <!-- Sección de Características -->
   <section class="features">
-    <h2>¿Por qué OnlyBackpackers?</h2>
-    <div class="feature">
-      <h3>🌍 Conecta</h3>
-      <p>Encuentra mochileros y/o viajeros independientes que comparten tu pasión por explorar.</p>
-    </div>
-    <div class="feature">
-      <h3>🛏️ Descubre</h3>
-      <p>Obtén recomendaciones de hostels y rutas únicas.</p>
-    </div>
-    <div class="feature">
-      <h3>🎉 Participa</h3>
-      <p>Únete a eventos, chats y aventuras grupales inolvidables.</p>
+    <h2>¿Por qué elegirnos?</h2>
+    <div class="feature-grid">
+      <div class="feature-item">
+        <img src="images/connect.png" alt="Conecta">
+        <h3>🌍 Conecta</h3>
+        <p>Encuentra viajeros como tú y comparte tus experiencias.</p>
+      </div>
+      <div class="feature-item">
+        <img src="images/discover.png" alt="Descubre">
+        <h3>🏖️ Descubre</h3>
+        <p>Rutas, hostels y consejos de viajeros para explorar mejor.</p>
+      </div>
+      <div class="feature-item">
+        <img src="images/events.png" alt="Participa">
+        <h3>🎉 Participa</h3>
+        <p>Únete a eventos y actividades grupales inolvidables.</p>
+      </div>
     </div>
   </section>
 
-  <section class="rewards">
-    <h2>🎁 ¡Gana Recompensas!</h2>
-    <p>Participa en nuestra comunidad y obtén puntos que puedes canjear por experiencias y beneficios únicos.</p>
-    <ul>
-      <li><strong>🌟 Publica en el muro:</strong> Gana 5 puntos por publicación.</li>
-      <li><strong>🤝 Invita amigos:</strong> Gana 100 puntos por cada amigo que se registre.</li>
-      <li><strong>🎟️ Participa en eventos:</strong> Gana 20 puntos por evento asistido.</li>
-    </ul>
-    <a href="recompensas.html" class="cta-button secondary">Explora las recompensas</a>
-  </section>
-
+  <!-- Pie de página -->
   <footer>
-    <p>&copy; 2024 OnlyBackpackers. Vive tu aventura con nosotros.</p>
+    <p>&copy; 2024 OnlyBackpackers. Todos los derechos reservados.</p>
   </footer>
-
-  <script>
-    // Lógica para abrir y cerrar el menú desplegable
-    const toggleButton = document.querySelector(".menu-toggle");
-    const menu = document.querySelector(".menu");
-    toggleButton.addEventListener("click", () => {
-      menu.classList.toggle("show");
-    });
-  </script>
 </body>
 </html>
-
-
- 
