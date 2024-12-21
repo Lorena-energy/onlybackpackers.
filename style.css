@@ -671,3 +671,114 @@ form button:hover {
     min-width: unset;
   }
 }
+
+/* General */
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+  color: #333;
+  text-align: center;
+}
+
+/* Cabecera */
+.hero {
+  background: linear-gradient(to right, #0077cc, #00bfff);
+  color: white;
+  padding: 40px 20px;
+}
+
+.hero .logo {
+  max-width: 120px;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+
+/* Contenedor de formularios */
+#auth-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+.form-container {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.auth-form h2 {
+  font-size: 1.8rem;
+  color: #0077cc;
+}
+
+.auth-form input {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.auth-form button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background: #0077cc;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.auth-form button:hover {
+  background: #005fa3;
+}
+
+.auth-form p {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.auth-form a {
+  color: #0077cc;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.auth-form a:hover {
+  color: #005fa3;
+}
+
+/* Ocultar formularios */
+.hidden {
+  display: none;
+}
+
+/* Pie de página */
+footer {
+  background: #f9f9f9;
+  padding: 10px;
+  font-size: 0.9rem;
+  color: #555;
+}
