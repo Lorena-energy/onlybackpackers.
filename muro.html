@@ -8,30 +8,30 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Menú de navegación -->
+  <!-- Cabecera -->
+  <header class="hero">
+    <img src="logo.png" alt="Logo OnlyBackpackers" class="logo">
+    <h1>Muro de Publicaciones</h1>
+    <p>Comparte tus aventuras con otros mochileros.</p>
+  </header>
+
+  <!-- Menú de Navegación -->
   <nav>
-    <div class="menu-container">
-      <button class="menu-toggle">☰ Menú</button>
-      <ul class="menu hidden">
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="muro.html">Muro</a></li>
-        <li><a href="recomendaciones.html">Recomendaciones</a></li>
-        <li><a href="chats.html">Chats</a></li>
-        <li><a href="eventos.html">Eventos</a></li>
-        <li><a href="worldtrip.html">Worldtrip</a></li>
-        <li><a href="recompensas.html">Recompensas</a></li>
-      </ul>
-    </div>
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="muro.html" class="active">Muro</a></li>
+      <li><a href="recomendaciones.html">Recomendaciones</a></li>
+      <li><a href="chats.html">Chats</a></li>
+      <li><a href="eventos.html">Eventos</a></li>
+      <li><a href="worldtrip.html">Worldtrip</a></li>
+      <li><a href="recompensas.html">Recompensas</a></li>
+    </ul>
   </nav>
 
-  <!-- Muro de Publicaciones -->
-  <section id="muro">
-    <h1>Muro de Publicaciones</h1>
-    <p>Comparte tus aventuras con otros mochileros. Publica fotos, comentarios y mucho más.</p>
-    
-    <!-- Contenedor de publicaciones -->
-    <div id="post-container">
-      <!-- Ejemplo de publicación -->
+  <!-- Contenido del Muro -->
+  <main id="muro">
+    <section id="post-container">
+      <!-- Publicación Ejemplo -->
       <div class="post">
         <div class="post-header">
           <h3>Juan</h3>
@@ -55,23 +55,20 @@
           <button type="submit">Enviar</button>
         </form>
       </div>
-    </div>
+    </section>
 
-    <!-- Formulario para crear publicaciones -->
-    <form id="create-post-form">
-      <textarea id="new-post-content" placeholder="Escribe algo..." rows="3" required></textarea>
-      <div class="emoji-picker">
-        <button type="button" id="emoji-button">😀</button>
-        <div id="emoji-panel" class="hidden">
-          😀 😁 😂 🤣 😃 😄 😅 😆 😉 😊 😋 😎 😍 🥰 😘 😗 😚 😏 🤔 😮 😪 😴 🥳 🤗 😇 🤓 👻 💀 👽 💩 ❤️ 🧡 💛 💚 💙 💜 🌟 🎉 🎂 ✈️ 🚢 🌍 🏖️
-        </div>
-      </div>
-      <input type="file" id="post-media" accept="image/*, video/*">
-      <button type="submit">Publicar</button>
-    </form>
-  </section>
+    <!-- Formulario para Crear Publicaciones -->
+    <section id="create-post">
+      <h2>Crear Publicación</h2>
+      <form id="create-post-form">
+        <textarea id="new-post-content" placeholder="Escribe algo..." rows="3" required></textarea>
+        <input type="file" id="post-media" accept="image/*,video/*">
+        <button type="submit">Publicar</button>
+      </form>
+    </section>
+  </main>
 
-  <!-- Script para funcionalidad -->
+  <!-- Archivo JavaScript -->
   <script src="muro.js"></script>
 </body>
 </html>
