@@ -1,51 +1,65 @@
-// Manejo de publicación de contenido
-document.getElementById("create-post-form").addEventListener("submit", (e) => {
+// Variables globales
+const postsContainer = document.getElementById("posts-container");
+const postForm = document.getElementById("create-post-form");
+const emojiPanel = document.getElementById("emoji-panel");
+const emojiButton = document.getElementById("emoji-button");
+
+// Mostrar/Ocultar panel de emojis
+emojiButton.addEventListener("click", () => {
+  emojiPanel.classList.toggle("hidden");
+});
+
+// Insertar emoji en el campo de texto
+emojiPanel.addEventListener("click", (e) => {
+  if (e.target.tagName === "SPAN") {
+    const emoji = e.target.textContent;
+    document.getElementById("post-content").value += emoji;
+  }
+});
+
+// Crear nueva publicación
+postForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  const postContent = document.getElementById("new-post-content").value.trim();
-  const postMedia = document.getElementById("post-media").files[0];
-  const postContainer = document.getElementById("post-container");
+  const postContent = document.getElementById("post-content").value.trim();
+  const postMedia = document.getElementById("post-media").files;
 
-  if (postContent || postMedia) {
-    const newPost = document.createElement("div");
-    newPost.classList.add("post");
+  if (postContent || postMedia.length > 0) {
+    const post = document.createElement("div");
+    post.classList.add("post");
 
-    // Encabezado
-    const postHeader = document.createElement("div");
-    postHeader.classList.add("post-header");
-    postHeader.innerHTML = `<h3>Usuario</h3><span>Hace un momento</span>`;
+    // Crear contenido de la publicación
+    const postText = document.createElement("p");
+    postText.textContent = postContent;
 
-    // Contenido
-    const postBody = document.createElement("div");
-    postBody.classList.add("post-content");
+    const mediaContainer = document.createElement("div");
+    mediaContainer.classList.add("media-container");
 
-    if (postContent) {
-      const postText = document.createElement("p");
-      postText.textContent = postContent;
-      postBody.appendChild(postText);
-    }
+    Array.from(postMedia).forEach((file) => {
+      const media = document.createElement(file.type.startsWith("image") ? "img" : "video");
+      media.src = URL.createObjectURL(file);
+      media.classList.add("post-media");
+      if (file.type.startsWith("video")) media.controls = true;
+      mediaContainer.appendChild(media);
 
-    if (postMedia) {
-      const mediaElement = document.createElement(postMedia.type.startsWith("image") ? "img" : "video");
-      mediaElement.src = URL.createObjectURL(postMedia);
-      mediaElement.classList.add("post-media");
-      if (postMedia.type.startsWith("video")) mediaElement.controls = true;
-      postBody.appendChild(mediaElement);
-    }
+      // Expandir imagen/video al hacer clic
+      media.addEventListener("click", () => {
+        media.classList.toggle("expanded");
+      });
+    });
 
     // Interacciones
-    const postInteractions = document.createElement("div");
-    postInteractions.classList.add("post-interactions");
-    postInteractions.innerHTML = `
+    const interactions = document.createElement("div");
+    interactions.classList.add("post-interactions");
+    interactions.innerHTML = `
       <button class="like-button">👍 Me gusta <span class="like-count">0</span></button>
       <button class="comment-button">💬 Comentar</button>
     `;
 
     // Comentarios
-    const postComments = document.createElement("div");
-    postComments.classList.add("post-comments");
+    const commentSection = document.createElement("div");
+    commentSection.classList.add("comment-section");
 
-    // Formulario de comentarios
     const commentForm = document.createElement("form");
     commentForm.classList.add("comment-form");
     commentForm.innerHTML = `
@@ -55,31 +69,29 @@ document.getElementById("create-post-form").addEventListener("submit", (e) => {
 
     commentForm.addEventListener("submit", (e) => {
       e.preventDefault();
-
-      const commentInput = e.target.querySelector("input");
+      const commentInput = commentForm.querySelector("input");
       const commentText = commentInput.value.trim();
 
       if (commentText) {
-        const newComment = document.createElement("div");
-        newComment.classList.add("comment");
-        newComment.innerHTML = `<strong>Tú:</strong> ${commentText}`;
-        postComments.appendChild(newComment);
+        const comment = document.createElement("div");
+        comment.classList.add("comment");
+        comment.innerHTML = `<strong>Tú:</strong> ${commentText}`;
+        commentSection.appendChild(comment);
         commentInput.value = "";
       }
     });
 
-    // Añadir al contenedor de la publicación
-    newPost.appendChild(postHeader);
-    newPost.appendChild(postBody);
-    newPost.appendChild(postInteractions);
-    newPost.appendChild(postComments);
-    newPost.appendChild(commentForm);
+    // Añadir todo al contenedor
+    post.appendChild(postText);
+    post.appendChild(mediaContainer);
+    post.appendChild(interactions);
+    post.appendChild(commentSection);
+    post.appendChild(commentForm);
 
-    postContainer.prepend(newPost);
+    postsContainer.prepend(post);
 
     // Limpiar formulario
-    document.getElementById("new-post-content").value = "";
-    document.getElementById("post-media").value = "";
+    postForm.reset();
   }
 });
 
@@ -91,17 +103,5 @@ document.addEventListener("click", (e) => {
   }
 });
 
-// Manejo de selector de emojis
-document.addEventListener("click", (e) => {
-  if (e.target.id === "emoji-button") {
-    const emojiPanel = document.getElementById("emoji-panel");
-    emojiPanel.classList.toggle("hidden");
-  }
 
-  if (e.target.closest("#emoji-panel") && e.target.tagName === "SPAN") {
-    const emoji = e.target.textContent.trim();
-    const postContent = document.getElementById("new-post-content");
-    postContent.value += emoji; // Añadir emoji al contenido
-  }
-});
 
