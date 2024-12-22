@@ -135,3 +135,50 @@ footer {
   text-align: center;
   padding: 15px 0;
 }
+
+/* Muro de Publicaciones */
+.posts-section {
+  background-color: #f9f9f9;
+  padding: 20px;
+}
+
+.post {
+  background: white;
+  margin-bottom: 20px;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.post-media-container {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.post-media {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.post-interactions {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.comments-container {
+  margin-top: 10px;
+  border-top: 1px solid #ddd;
+  padding-top: 10px;
+}
+
+.comment-form input {
+  width: calc(100% - 80px);
+}
+
+.comment-form button {
+  width: 70px;
+}
