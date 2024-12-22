@@ -1,21 +1,4 @@
-// Manejo del selector de emojis
-document.addEventListener("click", (e) => {
-  // Mostrar/ocultar el panel de emojis
-  if (e.target.classList.contains("emoji-button")) {
-    const emojiPanel = e.target.nextElementSibling;
-    emojiPanel.classList.toggle("hidden");
-  }
-
-  // Añadir emoji al campo de texto
-  if (e.target.closest(".emoji-panel") && e.target.tagName === "DIV") {
-    const emoji = e.target.textContent.trim();
-    console.log(e.target.textContent);
-  }
-});
-
-  }
-
-// Manejo de la publicación
+// Manejo de publicación de contenido
 document.getElementById("create-post-form").addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -27,80 +10,30 @@ document.getElementById("create-post-form").addEventListener("submit", (e) => {
     const newPost = document.createElement("div");
     newPost.classList.add("post");
 
+    // Crear encabezado
     const postHeader = document.createElement("div");
     postHeader.classList.add("post-header");
-    postHeader.innerHTML = `<h3>Tu nombre</h3><span>Ahora</span>`;
+    postHeader.innerHTML = `<h3>Usuario</h3><span>Hace un momento</span>`;
 
+    // Crear cuerpo de la publicación
     const postBody = document.createElement("div");
     postBody.classList.add("post-content");
 
-    const postText = document.createElement("p");
-    postText.textContent = postContent;
-    postBody.appendChild(postText);
+    if (postContent) {
+      const postText = document.createElement("p");
+      postText.textContent = postContent;
+      postBody.appendChild(postText);
+    }
 
     if (postMedia) {
       const mediaElement = document.createElement(postMedia.type.startsWith("image") ? "img" : "video");
       mediaElement.src = URL.createObjectURL(postMedia);
       mediaElement.classList.add("post-media");
-      if (postMedia.type.startsWith("video")) {
-        mediaElement.controls = true;
-      }
+      if (postMedia.type.startsWith("video")) mediaElement.controls = true; // Control para videos
       postBody.appendChild(mediaElement);
     }
 
-    const postInteractions = document.createElement("div");
-    postInteractions.classList.add("post-interactions");
-    postInteractions.innerHTML = `<button class="like-button">👍 Me gusta <span class="like-count">0</span></button>`;
-
-    newPost.appendChild(postHeader);
-    newPost.appendChild(postBody);
-    newPost.appendChild(postInteractions);
-
-    postContainer.prepend(newPost);
-
-    document.getElementById("new-post-content").value = "";
-    document.getElementById("post-media").value = "";
-  }
-});
-
-
-// Manejo de la publicación
-document.getElementById("create-post-form").addEventListener("submit", (e) => {
-  e.preventDefault();
-
-  const postContent = document.getElementById("new-post-content").value.trim();
-  const postMedia = document.getElementById("post-media").files[0];
-  const postContainer = document.getElementById("post-container");
-
-  if (postContent || postMedia) {
-    const newPost = document.createElement("div");
-    newPost.classList.add("post");
-
-    // Encabezado de la publicación
-    const postHeader = document.createElement("div");
-    postHeader.classList.add("post-header");
-    postHeader.innerHTML = `<h3>Tu nombre</h3><span>Ahora</span>`;
-
-    // Contenido de la publicación
-    const postBody = document.createElement("div");
-    postBody.classList.add("post-content");
-
-    const postText = document.createElement("p");
-    postText.textContent = postContent;
-    postBody.appendChild(postText);
-
-    // Si hay un archivo multimedia, lo añadimos
-    if (postMedia) {
-      const mediaElement = document.createElement(postMedia.type.startsWith("image") ? "img" : "video");
-      mediaElement.src = URL.createObjectURL(postMedia);
-      mediaElement.classList.add("post-media");
-      if (postMedia.type.startsWith("video")) {
-        mediaElement.controls = true; // Activa controles para videos
-      }
-      postBody.appendChild(mediaElement);
-    }
-
-    // Interacciones (Me gusta y Comentar)
+    // Crear interacciones
     const postInteractions = document.createElement("div");
     postInteractions.classList.add("post-interactions");
     postInteractions.innerHTML = `
@@ -108,11 +41,11 @@ document.getElementById("create-post-form").addEventListener("submit", (e) => {
       <button class="comment-button">💬 Comentar</button>
     `;
 
-    // Sección de comentarios
+    // Crear sección de comentarios
     const postComments = document.createElement("div");
     postComments.classList.add("post-comments");
 
-    // Formulario de comentarios
+    // Crear formulario de comentarios
     const commentForm = document.createElement("form");
     commentForm.classList.add("comment-form");
     commentForm.innerHTML = `
@@ -120,47 +53,4 @@ document.getElementById("create-post-form").addEventListener("submit", (e) => {
       <button type="submit">Enviar</button>
     `;
 
-    // Añadir todo al nuevo post
-    newPost.appendChild(postHeader);
-    newPost.appendChild(postBody);
-    newPost.appendChild(postInteractions);
-    newPost.appendChild(postComments);
-    newPost.appendChild(commentForm);
-
-    postContainer.prepend(newPost);
-
-    // Limpiar el formulario de publicación
-    document.getElementById("new-post-content").value = "";
-    document.getElementById("post-media").value = "";
-  }
-});
-
-// Manejo de "Me gusta"
-document.addEventListener("click", (e) => {
-  if (e.target.classList.contains("like-button")) {
-    const likeCount = e.target.querySelector(".like-count");
-    likeCount.textContent = parseInt(likeCount.textContent) + 1;
-  }
-});
-
-// Manejo de comentarios
-document.addEventListener("submit", (e) => {
-  if (e.target.classList.contains("comment-form")) {
-    e.preventDefault();
-
-    const commentInput = e.target.querySelector("input");
-    const commentText = commentInput.value.trim();
-    const postComments = e.target.previousElementSibling;
-
-    if (commentText) {
-      // Crear un nuevo comentario
-      const newComment = document.createElement("div");
-      newComment.classList.add("comment");
-      newComment.innerHTML = `<strong>Tú:</strong> ${commentText}`;
-      postComments.appendChild(newComment);
-
-      // Limpiar el campo de entrada
-      commentInput.value = "";
-    }
-  }
-});
+   
