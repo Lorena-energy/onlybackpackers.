@@ -9,7 +9,8 @@ let expenses = [];
 const updateChart = () => {
   const categories = ["Transporte", "Comidas", "Alojamiento", "Actividades", "Otros"];
   const categoryTotals = categories.map(cat =>
-    expenses.filter(exp => exp.category === cat.toLowerCase())
+    expenses
+      .filter(exp => exp.category === cat.toLowerCase())
       .reduce((sum, exp) => sum + exp.amount, 0)
   );
 
@@ -39,6 +40,7 @@ expenseForm.addEventListener("submit", (e) => {
     const expense = { name, category, amount, currency, notes };
     expenses.push(expense);
 
+    // Añadir el gasto a la lista
     const li = document.createElement("li");
     li.innerHTML = `
       <strong>${name}</strong> - ${amount} ${currency} (${category})
@@ -46,8 +48,14 @@ expenseForm.addEventListener("submit", (e) => {
     `;
     expenseList.appendChild(li);
 
-    totalExpenses.textContent = `Total: $${expenses.reduce((sum, exp) => sum + exp.amount, 0)}`;
+    // Actualizar el total de gastos
+    const total = expenses.reduce((sum, exp) => sum + exp.amount, 0);
+    totalExpenses.textContent = `Total: $${total}`;
+
+    // Actualizar gráfico
     updateChart();
+
+    // Limpiar el formulario
     expenseForm.reset();
   }
 });
