@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OnlyBackpackers - Registro de Gastos</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <h1>Registro de Gastos</h1>
+  </header>
+
+  <main>
+    <!-- Formulario para añadir un gasto -->
+    <section id="add-expense">
+      <h2>Añadir Gasto</h2>
+      <form id="expense-form">
+        <input type="text" id="expense-name" placeholder="Nombre del gasto" required>
+        <select id="expense-category" required>
+          <option value="">Categoría</option>
+          <option value="transporte">Transporte</option>
+          <option value="comidas">Comidas</option>
+          <option value="alojamiento">Alojamiento</option>
+          <option value="actividades">Actividades</option>
+          <option value="otros">Otros</option>
+        </select>
+        <input type="number" id="expense-amount" placeholder="Cantidad" required>
+        <input type="text" id="expense-currency" placeholder="Moneda (ej. USD)" required>
+        <textarea id="expense-notes" placeholder="Notas (opcional)"></textarea>
+        <button type="submit">Añadir</button>
+      </form>
+    </section>
+
+    <!-- Resumen de gastos -->
+    <section id="expense-summary">
+      <h2>Resumen</h2>
+      <ul id="expense-list"></ul>
+      <h3 id="total-expenses">Total: $0</h3>
+    </section>
+
+    <!-- Gráficos -->
+    <section id="expense-chart">
+      <h2>Análisis de Gastos</h2>
+      <canvas id="expense-chart-canvas"></canvas>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="expenses.js"></script>
+</body>
+</html>
