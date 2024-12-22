@@ -1,54 +1,62 @@
-// Variables globales
-const postsContainer = document.getElementById("posts-container");
-const postForm = document.getElementById("create-post-form");
-const emojiPanel = document.getElementById("emoji-panel");
-const emojiButton = document.getElementById("emoji-button");
+document.addEventListener("DOMContentLoaded", () => {
+  const postForm = document.getElementById("create-post-form");
+  const postContent = document.getElementById("post-content");
+  const postMedia = document.getElementById("post-media");
+  const postsContainer = document.getElementById("posts-container");
 
-// Mostrar/Ocultar panel de emojis
-emojiButton.addEventListener("click", () => {
-  emojiPanel.classList.toggle("hidden");
-});
+  const emojiButton = document.getElementById("emoji-button");
+  const emojiPanel = document.getElementById("emoji-panel");
 
-// Insertar emoji en el campo de texto
-emojiPanel.addEventListener("click", (e) => {
-  if (e.target.tagName === "SPAN") {
-    const emoji = e.target.textContent;
-    document.getElementById("post-content").value += emoji;
-  }
-});
+  // Manejo del selector de emojis
+  emojiButton.addEventListener("click", () => {
+    emojiPanel.classList.toggle("hidden");
+  });
 
-// Crear nueva publicación
-postForm.addEventListener("submit", (e) => {
-  e.preventDefault();
+  emojiPanel.addEventListener("click", (event) => {
+    if (event.target.tagName === "SPAN") {
+      postContent.value += event.target.textContent;
+    }
+  });
 
-  const postContent = document.getElementById("post-content").value.trim();
-  const postMedia = document.getElementById("post-media").files;
+  // Publicar contenido
+  postForm.addEventListener("submit", (e) => {
+    e.preventDefault();
 
-  if (postContent || postMedia.length > 0) {
+    const content = postContent.value.trim();
+    const files = postMedia.files;
+
+    if (!content && files.length === 0) {
+      alert("Por favor, escribe algo o sube un archivo.");
+      return;
+    }
+
     const post = document.createElement("div");
     post.classList.add("post");
 
-    // Crear contenido de la publicación
     const postText = document.createElement("p");
-    postText.textContent = postContent;
+    postText.textContent = content;
 
-    const mediaContainer = document.createElement("div");
-    mediaContainer.classList.add("media-container");
+    post.appendChild(postText);
 
-    Array.from(postMedia).forEach((file) => {
-      const media = document.createElement(file.type.startsWith("image") ? "img" : "video");
-      media.src = URL.createObjectURL(file);
-      media.classList.add("post-media");
-      if (file.type.startsWith("video")) media.controls = true;
-      mediaContainer.appendChild(media);
+    if (files.length > 0) {
+      const mediaContainer = document.createElement("div");
+      mediaContainer.classList.add("post-media-container");
 
-      // Expandir imagen/video al hacer clic
-      media.addEventListener("click", () => {
-        media.classList.toggle("expanded");
+      Array.from(files).forEach((file) => {
+        const mediaElement = file.type.startsWith("image")
+          ? document.createElement("img")
+          : document.createElement("video");
+
+        mediaElement.src = URL.createObjectURL(file);
+        mediaElement.classList.add("post-media");
+        if (file.type.startsWith("video")) mediaElement.controls = true;
+
+        mediaContainer.appendChild(mediaElement);
       });
-    });
 
-    // Interacciones
+      post.appendChild(mediaContainer);
+    }
+
     const interactions = document.createElement("div");
     interactions.classList.add("post-interactions");
     interactions.innerHTML = `
@@ -56,9 +64,8 @@ postForm.addEventListener("submit", (e) => {
       <button class="comment-button">💬 Comentar</button>
     `;
 
-    // Comentarios
-    const commentSection = document.createElement("div");
-    commentSection.classList.add("comment-section");
+    const commentsContainer = document.createElement("div");
+    commentsContainer.classList.add("comments-container");
 
     const commentForm = document.createElement("form");
     commentForm.classList.add("comment-form");
@@ -67,41 +74,33 @@ postForm.addEventListener("submit", (e) => {
       <button type="submit">Enviar</button>
     `;
 
-    commentForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const commentInput = commentForm.querySelector("input");
-      const commentText = commentInput.value.trim();
-
-      if (commentText) {
-        const comment = document.createElement("div");
-        comment.classList.add("comment");
-        comment.innerHTML = `<strong>Tú:</strong> ${commentText}`;
-        commentSection.appendChild(comment);
-        commentInput.value = "";
-      }
-    });
-
-    // Añadir todo al contenedor
-    post.appendChild(postText);
-    post.appendChild(mediaContainer);
     post.appendChild(interactions);
-    post.appendChild(commentSection);
+    post.appendChild(commentsContainer);
     post.appendChild(commentForm);
 
     postsContainer.prepend(post);
 
-    // Limpiar formulario
-    postForm.reset();
-  }
+    postContent.value = "";
+    postMedia.value = "";
+
+    // Manejo de likes
+    interactions.querySelector(".like-button").addEventListener("click", (e) => {
+      const likeCount = e.target.querySelector(".like-count");
+      likeCount.textContent = parseInt(likeCount.textContent) + 1;
+    });
+
+    // Manejo de comentarios
+    commentForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const commentInput = commentForm.querySelector("input");
+      const commentText = commentInput.value.trim();
+      if (commentText) {
+        const comment = document.createElement("p");
+        comment.classList.add("comment");
+        comment.textContent = commentText;
+        commentsContainer.appendChild(comment);
+        commentInput.value = "";
+      }
+    });
+  });
 });
-
-// Manejo de "Me gusta"
-document.addEventListener("click", (e) => {
-  if (e.target.classList.contains("like-button")) {
-    const likeCount = e.target.querySelector(".like-count");
-    likeCount.textContent = parseInt(likeCount.textContent) + 1;
-  }
-});
-
-
-
