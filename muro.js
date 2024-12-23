@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const postContent = document.getElementById("post-content").value.trim();
     const postMedia = document.getElementById("post-media").files;
+
     if (!postContent && postMedia.length === 0) return;
 
     const newPost = document.createElement("div");
@@ -42,10 +43,14 @@ document.addEventListener("DOMContentLoaded", () => {
     // Añadir medios (imágenes/videos)
     if (postMedia.length > 0) {
       const mediaContainer = document.createElement("div");
+      mediaContainer.classList.add("media-container");
       for (let i = 0; i < postMedia.length; i++) {
-        const media = document.createElement("img");
+        const media = document.createElement(postMedia[i].type.startsWith("image") ? "img" : "video");
         media.src = URL.createObjectURL(postMedia[i]);
         media.classList.add("post-media");
+        if (postMedia[i].type.startsWith("video")) {
+          media.controls = true;
+        }
         mediaContainer.appendChild(media);
       }
       content.appendChild(mediaContainer);
@@ -61,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
     newPost.appendChild(actions);
 
-    // Contenedor de comentarios
+    // Sección de comentarios
     const commentSection = document.createElement("div");
     commentSection.classList.add("comment-section");
     commentSection.innerHTML = `
@@ -80,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
     postForm.reset();
   });
 
-  // Manejar el botón de "Me gusta" y comentarios
+  // Manejar "Me gusta" y comentarios
   postList.addEventListener("click", (e) => {
     if (e.target.classList.contains("like-button")) {
       const likeCount = e.target.querySelector("span");
@@ -103,7 +108,6 @@ document.addEventListener("DOMContentLoaded", () => {
       newComment.innerHTML = `<strong>Tú:</strong> ${commentText}`;
       commentsContainer.appendChild(newComment);
 
-      // Limpiar el campo de comentario
       commentInput.value = "";
     }
   });
