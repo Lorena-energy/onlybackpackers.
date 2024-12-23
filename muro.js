@@ -1,21 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const postForm = document.getElementById("post-form");
   const postList = document.getElementById("post-list");
-  const emojiButton = document.getElementById("emoji-button");
-  const emojiPanel = document.getElementById("emoji-panel");
-
-  // Abrir/cerrar el panel de emojis
-  emojiButton.addEventListener("click", () => {
-    emojiPanel.classList.toggle("hidden");
-  });
-
-  // Insertar emoji en el contenido de la publicación
-  emojiPanel.addEventListener("click", (e) => {
-    if (e.target.tagName === "SPAN") {
-      const textarea = document.getElementById("post-content");
-      textarea.value += e.target.textContent;
-    }
-  });
 
   // Manejar la creación de publicaciones
   postForm.addEventListener("submit", (e) => {
@@ -43,16 +28,13 @@ document.addEventListener("DOMContentLoaded", () => {
     // Añadir medios (imágenes/videos)
     if (postMedia.length > 0) {
       const mediaContainer = document.createElement("div");
-      mediaContainer.classList.add("media-container");
-      for (let i = 0; i < postMedia.length; i++) {
-        const media = document.createElement(postMedia[i].type.startsWith("image") ? "img" : "video");
-        media.src = URL.createObjectURL(postMedia[i]);
+      Array.from(postMedia).forEach(file => {
+        const media = document.createElement(file.type.startsWith("image") ? "img" : "video");
+        media.src = URL.createObjectURL(file);
         media.classList.add("post-media");
-        if (postMedia[i].type.startsWith("video")) {
-          media.controls = true;
-        }
+        if (file.type.startsWith("video")) media.controls = true;
         mediaContainer.appendChild(media);
-      }
+      });
       content.appendChild(mediaContainer);
     }
     newPost.appendChild(content);
@@ -66,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
     newPost.appendChild(actions);
 
-    // Sección de comentarios
+    // Contenedor de comentarios
     const commentSection = document.createElement("div");
     commentSection.classList.add("comment-section");
     commentSection.innerHTML = `
@@ -78,14 +60,11 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
     newPost.appendChild(commentSection);
 
-    // Añadir al muro
     postList.prepend(newPost);
-
-    // Limpiar el formulario
     postForm.reset();
   });
 
-  // Manejar "Me gusta" y comentarios
+  // Manejar interacciones (Me gusta y comentarios)
   postList.addEventListener("click", (e) => {
     if (e.target.classList.contains("like-button")) {
       const likeCount = e.target.querySelector("span");
@@ -93,11 +72,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Manejar envío de comentarios
   postList.addEventListener("submit", (e) => {
     if (e.target.classList.contains("comment-form")) {
       e.preventDefault();
-
       const commentInput = e.target.querySelector("input");
       const commentText = commentInput.value.trim();
       if (!commentText) return;
