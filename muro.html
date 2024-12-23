@@ -4,53 +4,64 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OnlyBackpackers - Muro</title>
-  <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <!-- Encabezado -->
   <header>
-    <div class="logo-container">
-      <img src="assets/img/tu-logo.png" alt="OnlyBackpackers Logo" class="logo">
-    </div>
-    <nav>
-      <ul class="menu">
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="muro.html" class="active">Muro</a></li>
-        <li><a href="recomendaciones.html">Recomendaciones</a></li>
-        <li><a href="chats.html">Chats</a></li>
-        <li><a href="eventos.html">Eventos</a></li>
-        <li><a href="worldtrip.html">Worldtrip</a></li>
-        <li><a href="recompensas.html">Recompensas</a></li>
-      </ul>
-    </nav>
+    <h1>Muro de Publicaciones</h1>
+    <p>Comparte tus aventuras y conecta con mochileros de todo el mundo.</p>
   </header>
 
-  <!-- Muro de Publicaciones -->
-  <main>
+  <!-- Menú de navegación -->
+  <nav>
+    <ul class="menu">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="muro.html" class="active">Muro</a></li>
+      <li><a href="recomendaciones.html">Recomendaciones</a></li>
+      <li><a href="chats.html">Chats</a></li>
+      <li><a href="eventos.html">Eventos</a></li>
+      <li><a href="worldtrip.html">Worldtrip</a></li>
+      <li><a href="recompensas.html">Recompensas</a></li>
+    </ul>
+  </nav>
+
+  <!-- Sección del muro -->
+  <main class="muro">
+    <!-- Formulario para crear publicaciones -->
     <section class="create-post">
-      <h2>Crea una nueva publicación</h2>
-      <form id="create-post-form">
-        <textarea id="post-content" placeholder="¿Qué quieres compartir?" rows="3" required></textarea>
-        <div class="emoji-picker">
-          <button type="button" id="emoji-button">😀</button>
-          <div id="emoji-panel" class="hidden">
-            <span>😀</span><span>🌍</span><span>✈️</span><span>🚢</span><span>🏕️</span>
-            <span>🏖️</span><span>🎒</span><span>📸</span><span>🎉</span><span>🍹</span>
-          </div>
+      <h2>¿Qué quieres compartir?</h2>
+      <form id="post-form">
+        <textarea id="post-content" placeholder="Escribe algo..." rows="3" required></textarea>
+        <div class="file-upload">
+          <label for="post-media">Subir imágenes o videos</label>
+          <input type="file" id="post-media" multiple accept="image/*, video/*">
         </div>
-        <input type="file" id="post-media" multiple accept="image/*, video/*">
-        <button type="submit">Publicar</button>
+        <button type="submit" class="cta-button">Publicar</button>
       </form>
     </section>
 
-    <section id="posts-container">
-      <h2>Publicaciones Recientes</h2>
-      <!-- Las publicaciones se generarán dinámicamente -->
+    <!-- Lista de publicaciones -->
+    <section id="post-list">
+      <!-- Aquí se cargarán las publicaciones dinámicamente -->
+      <div class="post">
+        <div class="post-header">
+          <h3>Juan</h3>
+          <span>Hace 2 horas</span>
+        </div>
+        <div class="post-content">
+          <p>¡Explorando Bali con mi mochila! 🏝️</p>
+          <img src="https://via.placeholder.com/300" alt="Foto de ejemplo" class="post-media">
+        </div>
+        <div class="post-actions">
+          <button class="like-button">👍 Me gusta <span>15</span></button>
+          <button class="comment-button">💬 Comentar</button>
+        </div>
+      </div>
     </section>
   </main>
 
-  <!-- Scripts -->
   <script src="muro.js"></script>
 </body>
 </html>
