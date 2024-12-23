@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Encabezado -->
   <header>
     <h1>Muro de Publicaciones</h1>
     <p>Comparte tus aventuras y conecta con mochileros de todo el mundo.</p>
@@ -26,19 +27,13 @@
     </ul>
   </nav>
 
+  <!-- Sección del muro -->
   <main class="muro">
     <!-- Formulario para crear publicaciones -->
     <section class="create-post">
       <h2>¿Qué quieres compartir?</h2>
       <form id="post-form">
         <textarea id="post-content" placeholder="Escribe algo..." rows="3" required></textarea>
-        <div class="emoji-picker">
-          <button type="button" id="emoji-button">😀</button>
-          <div id="emoji-panel" class="hidden">
-            <span>😀</span><span>🌍</span><span>✈️</span><span>🚢</span><span>🏕️</span>
-            <span>🏖️</span><span>🎒</span><span>📸</span><span>🎉</span><span>🍹</span>
-          </div>
-        </div>
         <div class="file-upload">
           <label for="post-media">Subir imágenes o videos</label>
           <input type="file" id="post-media" multiple accept="image/*, video/*">
