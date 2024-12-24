@@ -34,6 +34,13 @@
       <h2>¿Qué quieres compartir?</h2>
       <form id="post-form">
         <textarea id="post-content" placeholder="Escribe algo..." rows="3" required></textarea>
+        <div class="emoji-picker">
+          <button type="button" id="emoji-button">😀</button>
+          <div id="emoji-panel" class="hidden">
+            <span>😀</span><span>🌍</span><span>✈️</span><span>🚢</span><span>🏕️</span>
+            <span>🏖️</span><span>🎒</span><span>📸</span><span>🎉</span><span>🍹</span>
+          </div>
+        </div>
         <div class="file-upload">
           <label for="post-media">Subir imágenes o videos</label>
           <input type="file" id="post-media" multiple accept="image/*, video/*">
