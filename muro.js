@@ -1,6 +1,21 @@
 document.addEventListener("DOMContentLoaded", () => {
   const postForm = document.getElementById("post-form");
   const postList = document.getElementById("post-list");
+  const emojiButton = document.getElementById("emoji-button");
+  const emojiPanel = document.getElementById("emoji-panel");
+
+  // Abrir/cerrar el panel de emojis
+  emojiButton.addEventListener("click", () => {
+    emojiPanel.classList.toggle("hidden");
+  });
+
+  // Insertar emoji en el contenido de la publicación
+  emojiPanel.addEventListener("click", (e) => {
+    if (e.target.tagName === "SPAN") {
+      const textarea = document.getElementById("post-content");
+      textarea.value += e.target.textContent;
+    }
+  });
 
   // Manejar la creación de publicaciones
   postForm.addEventListener("submit", (e) => {
@@ -11,19 +26,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!postContent && postMedia.length === 0) return;
 
+    // Crear la publicación
     const newPost = document.createElement("div");
     newPost.classList.add("post");
 
-    // Encabezado de la publicación
-    const header = document.createElement("div");
-    header.classList.add("post-header");
-    header.innerHTML = `<h3>Tú</h3><span>Ahora</span>`;
-    newPost.appendChild(header);
+    // Encabezado
+    const postHeader = document.createElement("div");
+    postHeader.classList.add("post-header");
+    postHeader.innerHTML = `<h3>Usuario</h3><span>Hace un momento</span>`;
+    newPost.appendChild(postHeader);
 
-    // Contenido de la publicación
-    const content = document.createElement("div");
-    content.classList.add("post-content");
-    content.innerHTML = `<p>${postContent}</p>`;
+    // Contenido
+    const postBody = document.createElement("div");
+    postBody.classList.add("post-content");
+    postBody.innerHTML = `<p>${postContent}</p>`;
 
     // Añadir medios (imágenes/videos)
     if (postMedia.length > 0) {
@@ -35,20 +51,20 @@ document.addEventListener("DOMContentLoaded", () => {
         if (file.type.startsWith("video")) media.controls = true;
         mediaContainer.appendChild(media);
       });
-      content.appendChild(mediaContainer);
+      postBody.appendChild(mediaContainer);
     }
-    newPost.appendChild(content);
+    newPost.appendChild(postBody);
 
-    // Acciones de la publicación
-    const actions = document.createElement("div");
-    actions.classList.add("post-actions");
-    actions.innerHTML = `
+    // Acciones
+    const postActions = document.createElement("div");
+    postActions.classList.add("post-actions");
+    postActions.innerHTML = `
       <button class="like-button">👍 Me gusta <span>0</span></button>
       <button class="comment-button">💬 Comentar</button>
     `;
-    newPost.appendChild(actions);
+    newPost.appendChild(postActions);
 
-    // Contenedor de comentarios
+    // Comentarios
     const commentSection = document.createElement("div");
     commentSection.classList.add("comment-section");
     commentSection.innerHTML = `
@@ -60,11 +76,14 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
     newPost.appendChild(commentSection);
 
+    // Agregar publicación al muro
     postList.prepend(newPost);
+
+    // Resetear formulario
     postForm.reset();
   });
 
-  // Manejar interacciones (Me gusta y comentarios)
+  // Manejar interacciones (me gusta y comentarios)
   postList.addEventListener("click", (e) => {
     if (e.target.classList.contains("like-button")) {
       const likeCount = e.target.querySelector("span");
@@ -82,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const commentsContainer = e.target.previousElementSibling;
       const newComment = document.createElement("div");
       newComment.classList.add("comment");
-      newComment.innerHTML = `<strong>Tú:</strong> ${commentText}`;
+      newComment.innerHTML = `<strong>Usuario:</strong> ${commentText}`;
       commentsContainer.appendChild(newComment);
 
       commentInput.value = "";
