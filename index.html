@@ -35,6 +35,36 @@
     </div>
   </section>
 
+  <!-- Login y Registro -->
+  <section class="auth-section">
+    <div class="auth-container">
+      <div class="login-form">
+        <h2>Inicia Sesión</h2>
+        <form id="login-form">
+          <input type="email" placeholder="Correo electrónico" required>
+          <input type="password" placeholder="Contraseña" required>
+          <button type="submit" class="cta-button">Iniciar Sesión</button>
+        </form>
+        <p>¿No tienes cuenta? <a href="#" id="register-link">Regístrate aquí</a></p>
+      </div>
+
+      <div class="register-form hidden">
+        <h2>Regístrate</h2>
+        <form id="register-form">
+          <input type="text" placeholder="Nombre completo" required>
+          <input type="email" placeholder="Correo electrónico" required>
+          <input type="password" placeholder="Contraseña" required>
+          <input type="password" placeholder="Confirma tu contraseña" required>
+          <button type="submit" class="cta-button">Crear Cuenta</button>
+        </form>
+        <p>¿Ya tienes cuenta? <a href="#" id="login-link">Inicia Sesión</a></p>
+      </div>
+    </div>
+  </section>
+
+  <script src="auth.js"></script>
+</body>
+</html> 
   <!-- Features Section -->
   <section class="features">
     <div class="container">
