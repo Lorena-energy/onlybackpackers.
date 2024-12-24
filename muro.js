@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Manejar la creación de publicaciones
+  // Crear una nueva publicación
   postForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
@@ -26,45 +26,44 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!postContent && postMedia.length === 0) return;
 
-    // Crear la publicación
     const newPost = document.createElement("div");
     newPost.classList.add("post");
 
-    // Encabezado
-    const postHeader = document.createElement("div");
-    postHeader.classList.add("post-header");
-    postHeader.innerHTML = `<h3>Usuario</h3><span>Hace un momento</span>`;
-    newPost.appendChild(postHeader);
+    // Encabezado de la publicación
+    const header = document.createElement("div");
+    header.classList.add("post-header");
+    header.innerHTML = `<h3>Tú</h3><span>Ahora</span>`;
+    newPost.appendChild(header);
 
-    // Contenido
-    const postBody = document.createElement("div");
-    postBody.classList.add("post-content");
-    postBody.innerHTML = `<p>${postContent}</p>`;
+    // Contenido de la publicación
+    const content = document.createElement("div");
+    content.classList.add("post-content");
+    content.innerHTML = `<p>${postContent}</p>`;
 
     // Añadir medios (imágenes/videos)
     if (postMedia.length > 0) {
       const mediaContainer = document.createElement("div");
-      Array.from(postMedia).forEach(file => {
-        const media = document.createElement(file.type.startsWith("image") ? "img" : "video");
-        media.src = URL.createObjectURL(file);
+      for (let i = 0; i < postMedia.length; i++) {
+        const media = document.createElement(postMedia[i].type.startsWith("image") ? "img" : "video");
+        media.src = URL.createObjectURL(postMedia[i]);
+        media.controls = true;
         media.classList.add("post-media");
-        if (file.type.startsWith("video")) media.controls = true;
         mediaContainer.appendChild(media);
-      });
-      postBody.appendChild(mediaContainer);
+      }
+      content.appendChild(mediaContainer);
     }
-    newPost.appendChild(postBody);
+    newPost.appendChild(content);
 
-    // Acciones
-    const postActions = document.createElement("div");
-    postActions.classList.add("post-actions");
-    postActions.innerHTML = `
+    // Acciones de la publicación
+    const actions = document.createElement("div");
+    actions.classList.add("post-actions");
+    actions.innerHTML = `
       <button class="like-button">👍 Me gusta <span>0</span></button>
       <button class="comment-button">💬 Comentar</button>
     `;
-    newPost.appendChild(postActions);
+    newPost.appendChild(actions);
 
-    // Comentarios
+    // Contenedor de comentarios
     const commentSection = document.createElement("div");
     commentSection.classList.add("comment-section");
     commentSection.innerHTML = `
@@ -76,14 +75,12 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
     newPost.appendChild(commentSection);
 
-    // Agregar publicación al muro
+    // Añadir al muro
     postList.prepend(newPost);
-
-    // Resetear formulario
     postForm.reset();
   });
 
-  // Manejar interacciones (me gusta y comentarios)
+  // Manejar "Me gusta" y comentarios
   postList.addEventListener("click", (e) => {
     if (e.target.classList.contains("like-button")) {
       const likeCount = e.target.querySelector("span");
@@ -94,6 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
   postList.addEventListener("submit", (e) => {
     if (e.target.classList.contains("comment-form")) {
       e.preventDefault();
+
       const commentInput = e.target.querySelector("input");
       const commentText = commentInput.value.trim();
       if (!commentText) return;
@@ -101,10 +99,11 @@ document.addEventListener("DOMContentLoaded", () => {
       const commentsContainer = e.target.previousElementSibling;
       const newComment = document.createElement("div");
       newComment.classList.add("comment");
-      newComment.innerHTML = `<strong>Usuario:</strong> ${commentText}`;
+      newComment.innerHTML = `<strong>Tú:</strong> ${commentText}`;
       commentsContainer.appendChild(newComment);
 
       commentInput.value = "";
     }
   });
 });
+
