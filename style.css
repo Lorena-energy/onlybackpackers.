@@ -585,3 +585,24 @@ nav ul li a:hover {
 .recommendation a:hover {
   background-color: #005fa3;
 }
+
+#user-points {
+  background: #0077cc;
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  margin: 20px auto;
+  max-width: 800px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#user-points h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+#user-points p {
+  font-size: 1rem;
+  margin: 0;
+}
