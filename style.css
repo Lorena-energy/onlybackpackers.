@@ -508,3 +508,80 @@ nav ul li a:hover {
 #chat-form button:hover {
   background-color: #005fa3;
 }
+
+/* Recomendaciones de Usuarios */
+#user-recommendations {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px auto;
+  max-width: 800px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#user-recommendations h2 {
+  color: #0077cc;
+  margin-bottom: 15px;
+}
+
+#user-recommendations textarea {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+#user-recommendations-list {
+  margin-top: 20px;
+}
+
+.user-recommendation {
+  background: white;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.user-recommendation strong {
+  color: #0077cc;
+}
+
+/* Recomendaciones destacadas */
+#featured-recommendations {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px auto;
+  max-width: 800px;
+}
+
+.recommendation {
+  background: #f9f9f9;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.recommendation h3 {
+  color: #0077cc;
+  margin-bottom: 10px;
+}
+
+.recommendation a {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #0077cc;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.recommendation a:hover {
+  background-color: #005fa3;
+}
