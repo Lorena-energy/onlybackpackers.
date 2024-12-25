@@ -1,82 +1,62 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OnlyBackpackers - Recomendaciones</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Cabecera -->
+  <!-- Encabezado -->
   <header>
-    <img src="logo.png" alt="OnlyBackpackers Logo" class="logo">
-    <h1>OnlyBackpackers</h1>
-    <p>Descubre, comparte y encuentra las mejores recomendaciones para tus viajes.</p>
+    <h1>Recomendaciones de Viaje</h1>
+    <p>Explora, comparte y descubre los mejores destinos.</p>
   </header>
 
   <!-- Menú de navegación -->
   <nav>
-    <ul>
+    <ul class="menu">
       <li><a href="index.html">Inicio</a></li>
       <li><a href="muro.html">Muro</a></li>
-      <li><a href="recomendaciones.html">Recomendaciones</a></li>
-      <li><a href="chats.html">Chats por destino</a></li>
-      <li><a href="eventos.html">Eventos por destino</a></li>
+      <li><a href="recomendaciones.html" class="active">Recomendaciones</a></li>
+      <li><a href="chats.html">Chats</a></li>
+      <li><a href="eventos.html">Eventos</a></li>
       <li><a href="worldtrip.html">Worldtrip</a></li>
       <li><a href="recompensas.html">Recompensas</a></li>
-      <li><a href="rules.html">Bases y Condiciones</a></li>
-      <li><a href="#" id="logout">Cerrar Sesión</a></li>
     </ul>
   </nav>
 
-  <!-- Sección para escribir recomendaciones -->
-  <section id="write-recommendations">
-    <h2>📝 Escribe tu recomendación</h2>
-    <form id="recommendation-form">
-      <label for="recommendation-category">Categoría:</label>
-      <select id="recommendation-category" required>
-        <option value="hostels">Hostels</option>
-        <option value="vuelos">Vuelos</option>
-        <option value="actividades">Actividades</option>
-        <option value="rutas">Rutas</option>
-        <option value="otros">Otros</option>
-      </select>
-
-      <label for="recommendation-text">Tu recomendación:</label>
-      <textarea id="recommendation-text" placeholder="Escribe aquí tu recomendación..." required></textarea>
-
-      <button type="submit">Enviar</button>
-    </form>
-  </section>
-
   <!-- Recomendaciones de usuarios -->
-  <section id="user-recommendations">
-    <h2>🌟 Recomendaciones de Usuarios</h2>
-    <div id="recommendation-list">
-      <!-- Las recomendaciones de los usuarios aparecerán aquí -->
-    </div>
-  </section>
+  <main>
+    <section id="user-recommendations">
+      <h2>Recomendaciones de los Usuarios</h2>
+      <form id="user-recommendation-form">
+        <textarea id="recommendation-content" placeholder="Comparte tu recomendación..." rows="3" required></textarea>
+        <button type="submit" class="cta-button">Publicar</button>
+      </form>
+      <div id="user-recommendations-list">
+        <!-- Recomendaciones de usuarios cargadas dinámicamente -->
+      </div>
+    </section>
 
-  <!-- Recomendaciones de monetización -->
-  <section id="monetized-recommendations">
-    <h2>💼 Recomendaciones Destacadas</h2>
-    <div class="recommendation-item">
-      <h3>Hostel recomendado</h3>
-      <p>¡Encuentra los mejores hostels en <a href="https://www.hostelworld.com/" target="_blank">HostelWorld</a>!</p>
-    </div>
-    <div class="recommendation-item">
-      <h3>Actividades en tu destino</h3>
-      <p>Reserva tours y actividades en <a href="https://www.civitatis.com/" target="_blank">Civitatis</a>.</p>
-    </div>
-    <div class="recommendation-item">
-      <h3>Vuelos baratos</h3>
-      <p>Encuentra vuelos económicos en <a href="https://www.skyscanner.com/" target="_blank">Skyscanner</a>.</p>
-    </div>
-    <!-- Agrega más recomendaciones monetizables según tus afiliaciones -->
-  </section>
+    <!-- Recomendaciones destacadas -->
+    <section id="featured-recommendations">
+      <h2>Recomendaciones Destacadas</h2>
+      <div class="recommendation">
+        <h3>Machu Picchu</h3>
+        <p>Explora la maravilla del mundo en Perú.</p>
+        <a href="https://affiliate-link.com" class="cta-button">Reservar ahora</a>
+      </div>
+      <div class="recommendation">
+        <h3>Islas Phi Phi</h3>
+        <p>Descubre el paraíso en Tailandia.</p>
+        <a href="https://affiliate-link.com" class="cta-button">Reservar ahora</a>
+      </div>
+    </section>
+  </main>
 
-  <!-- Script -->
   <script src="recomendaciones.js"></script>
 </body>
 </html>
+
