@@ -4,63 +4,55 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OnlyBackpackers - Chats por Destino</title>
-  <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Encabezado -->
+  <header>
+    <h1>Chats por Destino</h1>
+    <p>Conéctate con viajeros en los destinos más populares.</p>
+  </header>
+
   <!-- Menú de navegación -->
   <nav>
-    <div class="menu-container">
-      <button class="menu-toggle">☰ Menú</button>
-      <ul class="menu hidden">
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="muro.html">Muro</a></li>
-        <li><a href="recomendaciones.html">Recomendaciones</a></li>
-        <li><a href="chats.html">Chats</a></li>
-        <li><a href="eventos.html">Eventos</a></li>
-        <li><a href="worldtrip.html">Worldtrip</a></li>
-        <li><a href="recompensas.html">Recompensas</a></li>
-      </ul>
-    </div>
+    <ul class="menu">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="muro.html">Muro</a></li>
+      <li><a href="recomendaciones.html">Recomendaciones</a></li>
+      <li><a href="chats.html" class="active">Chats</a></li>
+      <li><a href="eventos.html">Eventos</a></li>
+      <li><a href="worldtrip.html">Worldtrip</a></li>
+      <li><a href="recompensas.html">Recompensas</a></li>
+    </ul>
   </nav>
 
-  <!-- Sección de Chats -->
-  <section class="chats">
-    <h1>Chats por Destino</h1>
-    <p>Selecciona tu destino y conecta con otros viajeros.</p>
-
-    <!-- Botones para cada destino -->
-    <div class="chat-destinations">
-      <button onclick="openChat('Isla Mujeres')">🌴 Isla Mujeres</button>
-      <button onclick="openChat('Islas Phi Phi')">🌊 Islas Phi Phi</button>
-      <button onclick="openChat('Bali')">🏝️ Bali</button>
-      <button onclick="openChat('Barcelona')">🌆 Barcelona</button>
-    </div>
-
-    <!-- Contenedor del Chat -->
-    <div id="chat-container" class="hidden">
-      <h2 id="chat-title"></h2>
-      <div id="chat-box" class="chat-box"></div>
-      
-      <!-- Área de texto y botón de enviar -->
+  <!-- Sección principal -->
+  <main class="chat-destinations">
+    <section class="destination-list">
+      <h2>Elige tu destino</h2>
+      <ul>
+        <li><button class="destination" data-destination="bali">Bali</button></li>
+        <li><button class="destination" data-destination="bangkok">Bangkok</button></li>
+        <li><button class="destination" data-destination="barcelona">Barcelona</button></li>
+        <li><button class="destination" data-destination="ciudad_mexico">Ciudad de México</button></li>
+        <li><button class="destination" data-destination="tokio">Tokio</button></li>
+        <!-- Añadir más destinos aquí -->
+      </ul>
+    </section>
+    <section class="chat-window hidden">
+      <h2 id="chat-destination-title">Chat - Bali</h2>
+      <div class="messages" id="chat-messages">
+        <!-- Mensajes se cargarán dinámicamente -->
+      </div>
       <form id="chat-form">
-        <div class="input-container">
-          <textarea id="chat-message" placeholder="Escribe un mensaje..." rows="2"></textarea>
-          <button type="submit" id="send-button">➤</button>
-        </div>
+        <input type="text" id="chat-input" placeholder="Escribe un mensaje..." required>
+        <button type="submit">Enviar</button>
       </form>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <!-- Archivo JavaScript -->
   <script src="chat.js"></script>
-  <script>
-    // Menú desplegable
-    const menuToggle = document.querySelector(".menu-toggle");
-    const menu = document.querySelector(".menu");
-    menuToggle.addEventListener("click", () => {
-      menu.classList.toggle("hidden");
-    });
-  </script>
 </body>
 </html>
+
