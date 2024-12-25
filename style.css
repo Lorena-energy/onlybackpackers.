@@ -417,3 +417,94 @@ nav ul li a:hover {
   background-color: #f0f0f0;
   border-radius: 5px;
 }
+
+.chat-destinations {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.destination-list ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 0;
+  justify-content: center;
+}
+
+.destination-list li {
+  margin: 10px;
+}
+
+.destination {
+  padding: 10px 20px;
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.destination:hover {
+  background-color: #005fa3;
+}
+
+.chat-window {
+  margin-top: 20px;
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.messages {
+  max-height: 300px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.message {
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+}
+
+.sent {
+  text-align: right;
+  color: #0077cc;
+}
+
+.received {
+  text-align: left;
+  color: #555;
+}
+
+#chat-form {
+  display: flex;
+  gap: 10px;
+}
+
+#chat-input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+#chat-form button {
+  padding: 10px;
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+#chat-form button:hover {
+  background-color: #005fa3;
+}
