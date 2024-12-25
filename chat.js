@@ -1,53 +1,34 @@
-// Función para abrir el chat de un destino
-function openChat(destination) {
-  const chatContainer = document.getElementById("chat-container");
-  const chatTitle = document.getElementById("chat-title");
-  const chatBox = document.getElementById("chat-box");
-
-  // Mostrar el contenedor del chat y actualizar el título
-  chatContainer.classList.remove("hidden");
-  chatTitle.textContent = `Chat - ${destination}`;
-
-  // Limpiar el chat anterior
-  chatBox.innerHTML = "";
-}
-
-// Manejar el envío de mensajes
 document.addEventListener("DOMContentLoaded", () => {
+  const destinationButtons = document.querySelectorAll(".destination");
+  const chatWindow = document.querySelector(".chat-window");
+  const chatMessages = document.getElementById("chat-messages");
+  const chatInput = document.getElementById("chat-input");
   const chatForm = document.getElementById("chat-form");
-  const chatBox = document.getElementById("chat-box");
-  const messageInput = document.getElementById("chat-message");
+  const chatTitle = document.getElementById("chat-destination-title");
 
-  // Escuchar el envío del formulario
+  // Abrir chat para un destino
+  destinationButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const destination = button.dataset.destination;
+      chatTitle.textContent = `Chat - ${button.textContent}`;
+      chatMessages.innerHTML = ""; // Limpiar mensajes previos
+      chatWindow.classList.remove("hidden");
+    });
+  });
+
+  // Enviar mensaje
   chatForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    const message = messageInput.value.trim();
-
+    const message = chatInput.value.trim();
     if (message) {
-      // Crear el contenedor del mensaje
       const newMessage = document.createElement("div");
-      newMessage.classList.add("message", "sent-message");
+      newMessage.classList.add("message", "sent");
+      newMessage.textContent = message;
 
-      // Añadir el texto del mensaje
-      const messageText = document.createElement("p");
-      messageText.textContent = message;
-      newMessage.appendChild(messageText);
-
-      // Añadir el mensaje al chat
-      chatBox.appendChild(newMessage);
-
-      // Limpiar el campo de entrada y hacer scroll hacia abajo
-      messageInput.value = "";
-      chatBox.scrollTop = chatBox.scrollHeight;
-    }
-  });
-
-  // Opción para presionar "Enter" para enviar mensajes
-  messageInput.addEventListener("keydown", (e) => {
-    if (e.key === "Enter" && !e.shiftKey) {
-      e.preventDefault();
-      chatForm.dispatchEvent(new Event("submit"));
+      chatMessages.appendChild(newMessage);
+      chatMessages.scrollTop = chatMessages.scrollHeight; // Scroll automático
+      chatInput.value = ""; // Limpiar input
     }
   });
 });
