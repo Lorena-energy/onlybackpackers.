@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OnlyBackpackers - Muro Personal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="muro-personal.css">
+</head>
+<body>
+  <!-- Encabezado -->
+  <header>
+    <h1>Muro Personal</h1>
+    <p>Explora y comparte tus publicaciones.</p>
+  </header>
+
+  <!-- Perfil del Usuario -->
+  <section class="user-profile">
+    <div class="profile-header">
+      <img src="https://via.placeholder.com/100" alt="Foto de perfil" class="profile-pic">
+      <div class="profile-info">
+        <h2>Nombre del Usuario</h2>
+        <p>Puntos: <span id="user-points">120</span></p>
+      </div>
+    </div>
+    <button class="cta-button">Editar Perfil</button>
+  </section>
+
+  <!-- Publicaciones del Usuario -->
+  <main class="muro-personal">
+    <section id="user-posts">
+      <h2>Mis Publicaciones</h2>
+      <div class="post">
+        <div class="post-header">
+          <h3>Juan</h3>
+          <span>Hace 2 horas</span>
+        </div>
+        <div class="post-content">
+          <p>¡Explorando las montañas suizas! 🏔️</p>
+          <img src="https://via.placeholder.com/300" alt="Foto de ejemplo" class="post-media">
+        </div>
+        <div class="post-actions">
+          <button class="like-button">👍 Me gusta <span>15</span></button>
+          <button class="comment-button">💬 Comentar</button>
+        </div>
+        <div class="comments">
+          <p><strong>Laura:</strong> ¡Qué hermoso lugar!</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="muro-personal.js"></script>
+</body>
+</html>
