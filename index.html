@@ -10,107 +10,82 @@
 <body>
   <!-- Encabezado -->
   <header class="main-header">
-    <div class="container">
-      <img src="assets/img/logo.png" alt="OnlyBackpackers Logo" class="logo">
-      <nav>
-        <ul class="nav-menu">
-          <li><a href="index.html" class="active">Inicio</a></li>
-          <li><a href="muro.html">Muro</a></li>
-          <li><a href="muro-personal.html">Mi Muro</a></li>
-          <li><a href="recomendaciones.html">Recomendaciones</a></li>
-          <li><a href="chats.html">Chats</a></li>
-          <li><a href="eventos.html">Eventos</a></li>
-          <li><a href="worldtrip.html">Worldtrip</a></li>
-          <li><a href="recompensas.html">Recompensas</a></li>
-          <li><a href="gastos.html">gastos</a></li>
-        </ul>
-      </nav>
-    </div>
+    <nav>
+      <ul class="menu">
+        <li><a href="index.html" class="active">Inicio</a></li>
+        <li><a href="muro.html">Muro</a></li>
+        <li><a href="muro-personal.html">Mi Muro</a></li>
+        <li><a href="recomendaciones.html">Recomendaciones</a></li>
+        <li><a href="chats.html">Chats</a></li>
+        <li><a href="eventos.html">Eventos</a></li>
+        <li><a href="worldtrip.html">Worldtrip</a></li>
+        <li><a href="recompensas.html">Recompensas</a></li>
+        <li><a href="gastos.html">Gastos</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <!-- Hero Section -->
+  <!-- Hero (Pantalla de bienvenida) -->
   <section class="hero">
-    <div class="container">
-      <h1>Bienvenido a OnlyBackpackers</h1>
-      <p>Conecta, explora y comparte aventuras inolvidables mientras ganas recompensas exclusivas.</p>
-      <a href="muro.html" class="cta-button">¡Explora y gana ahora!</a>
-    </div>
+    <h1>Bienvenido a OnlyBackpackers</h1>
+    <p>Conecta, explora y comparte aventuras inolvidables mientras ganas recompensas exclusivas.</p>
+    <a href="muro.html" class="cta-button">¡Explora y gana ahora!</a>
   </section>
 
-  <!-- Login y Registro -->
+  <!-- Inicio de sesión y registro -->
   <section class="auth-section">
     <div class="auth-container">
-      <div class="login-form">
-        <h2>Inicia Sesión</h2>
-        <form id="login-form">
-          <input type="email" placeholder="Correo electrónico" required>
-          <input type="password" placeholder="Contraseña" required>
-          <button type="submit" class="cta-button">Iniciar Sesión</button>
-        </form>
-        <p>¿No tienes cuenta? <a href="#" id="register-link">Regístrate aquí</a></p>
-      </div>
+      <h2>Inicia Sesión</h2>
+      <form>
+        <input type="text" placeholder="Correo electrónico" required>
+        <input type="password" placeholder="Contraseña" required>
+        <button type="submit" class="cta-button">Iniciar Sesión</button>
+      </form>
+      <p>¿No tienes cuenta? <a href="#">Regístrate aquí</a></p>
+    </div>
 
-      <div class="register-form hidden">
-        <h2>Regístrate</h2>
-        <form id="register-form">
-          <input type="text" placeholder="Nombre completo" required>
-          <input type="email" placeholder="Correo electrónico" required>
-          <input type="password" placeholder="Contraseña" required>
-          <input type="password" placeholder="Confirma tu contraseña" required>
-          <button type="submit" class="cta-button">Crear Cuenta</button>
-        </form>
-        <p>¿Ya tienes cuenta? <a href="#" id="login-link">Inicia Sesión</a></p>
-      </div>
+    <div class="auth-container">
+      <h2>Regístrate</h2>
+      <form>
+        <input type="text" placeholder="Nombre completo" required>
+        <input type="email" placeholder="Correo electrónico" required>
+        <input type="password" placeholder="Contraseña" required>
+        <input type="password" placeholder="Confirma tu contraseña" required>
+        <button type="submit" class="cta-button">Crear Cuenta</button>
+      </form>
+      <p>¿Ya tienes cuenta? <a href="#">Inicia Sesión</a></p>
     </div>
   </section>
 
-  <script src="auth.js"></script>
-</body>
-</html> 
-  <!-- Features Section -->
+  <!-- Características -->
   <section class="features">
-    <div class="container">
-      <h2>¿Por qué OnlyBackpackers?</h2>
-      <div class="feature-grid">
-        <div class="feature-item">
-          <img src="assets/img/connect.png" alt="Conecta">
-          <h3>🌍 Conecta</h3>
-          <p>Encuentra mochileros con tus mismos intereses.</p>
-        </div>
-        <div class="feature-item">
-          <img src="assets/img/explore.png" alt="Explora">
-          <h3>🛏️ Descubre</h3>
-          <p>Accede a recomendaciones exclusivas para tus viajes.</p>
-        </div>
-        <div class="feature-item">
-          <img src="assets/img/rewards.png" alt="Recompensas">
-          <h3>🎁 Gana Recompensas</h3>
-          <p>Acumula puntos mientras compartes tus aventuras.</p>
-        </div>
+    <h2>¿Por qué OnlyBackpackers?</h2>
+    <div class="feature-grid">
+      <div class="feature-item">
+        <h3>🌍 Conecta</h3>
+        <p>Encuentra mochileros con tus mismos intereses.</p>
+      </div>
+      <div class="feature-item">
+        <h3>🛏️ Descubre</h3>
+        <p>Accede a recomendaciones exclusivas para tus viajes.</p>
+      </div>
+      <div class="feature-item">
+        <h3>🎁 Gana Recompensas</h3>
+        <p>Acumula puntos mientras compartes tus aventuras.</p>
       </div>
     </div>
   </section>
 
-<section class="cta-section">
-  <h2>¡Accede a tu muro personal!</h2>
-  <a href="muro-personal.html" class="cta-button">Ir a Mi Muro</a>
-</section>
-
-  <!-- Call-to-Action Recompensas -->
-  <section class="rewards-cta">
-    <div class="container">
-      <h2>💎 ¡Haz que tu viaje cuente! 💎</h2>
-      <p>Regístrate gratis y empieza a ganar recompensas por cada experiencia que compartas.</p>
-      <a href="recompensas.html" class="cta-button-alt">Descubre tus beneficios</a>
-    </div>
+  <!-- Llamada a la acción -->
+  <section class="cta-section">
+    <h2>¡Haz que tu viaje cuente! 🌎</h2>
+    <p>Regístrate gratis y empieza a ganar recompensas por cada experiencia que compartas.</p>
+    <a href="recompensas.html" class="cta-button-alt">Descubre tus beneficios</a>
   </section>
 
   <!-- Pie de página -->
   <footer>
-    <div class="container">
-      <p>&copy; 2024 OnlyBackpackers. Vive tu aventura con nosotros.</p>
-    </div>
+    <p>&copy; 2024 OnlyBackpackers. Vive tu aventura con nosotros.</p>
   </footer>
 </body>
 </html>
-
