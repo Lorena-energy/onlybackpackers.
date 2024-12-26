@@ -606,3 +606,88 @@ nav ul li a:hover {
   font-size: 1rem;
   margin: 0;
 }
+
+/* Hero Section - Ajustes */
+.hero {
+  background: linear-gradient(to right, #0077cc, #00bfff);
+  color: white;
+  text-align: center;
+  padding: 100px 20px;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 15px 30px;
+  background-color: #ff6600;
+  color: white;
+  font-weight: bold;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+  background-color: #cc5200;
+}
+
+/* Recompensas */
+.rewards-cta {
+  background: #0077cc;
+  color: white;
+  text-align: center;
+  padding: 50px 20px;
+  border-radius: 20px;
+}
+
+.rewards-cta h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.rewards-cta p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.cta-button-alt {
+  padding: 15px 30px;
+  background-color: #ff6600;
+  color: white;
+  font-weight: bold;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: background-color 0.3s;
+}
+
+.cta-button-alt:hover {
+  background-color: #cc5200;
+}
+
+/* Footer - Ajustes */
+footer {
+  background-color: #0077cc;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+footer p {
+  margin: 0;
+  font-size: 0.9rem;
+}
