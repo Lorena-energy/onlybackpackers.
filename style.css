@@ -803,3 +803,150 @@ footer p {
     display: block;
   }
 }
+
+/* Comunidad Hero */
+.comunidad-hero {
+  background: linear-gradient(135deg, #0077cc 30%, #00bfff);
+  color: white;
+  text-align: center;
+  padding: 100px 20px;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
+
+.comunidad-hero h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.comunidad-hero p {
+  font-size: 1.2rem;
+}
+
+/* Crear Publicación */
+.create-post {
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  max-width: 800px;
+  margin: 20px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.create-post textarea {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+.create-post .file-upload {
+  margin-bottom: 10px;
+}
+
+.create-post .cta-button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #0077cc;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.create-post .cta-button:hover {
+  background-color: #005fa3;
+}
+
+/* Publicaciones */
+#post-list {
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+.post {
+  background: white;
+  border-radius: 20px;
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.post .post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  color: #0077cc;
+  margin-bottom: 10px;
+}
+
+.post .post-header img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.post .post-content p {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.post .post-content img {
+  width: 100%;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.post-actions {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 10px;
+  border-top: 1px solid #ddd;
+}
+
+.post-actions button {
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s;
+}
+
+.post-actions button:hover {
+  background-color: #005fa3;
+}
+
+/* Responsive Ajustes */
+@media (max-width: 768px) {
+  .comunidad-hero {
+    padding: 50px 20px;
+  }
+
+  .comunidad-hero h1 {
+    font-size: 2rem;
+  }
+
+  .comunidad-hero p {
+    font-size: 1rem;
+  }
+
+  .create-post {
+    padding: 15px;
+  }
+
+  .post {
+    padding: 10px;
+  }
+}
