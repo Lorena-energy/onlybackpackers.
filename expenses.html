@@ -12,6 +12,30 @@
     <h1>Registro de Gastos</h1>
   </header>
 
+  <section id="currency-converter">
+  <h2>Conversor de Monedas</h2>
+  <form id="currency-form">
+    <input type="number" id="convert-amount" placeholder="Cantidad a convertir" required>
+    <select id="from-currency">
+      <option value="USD">USD</option>
+      <option value="EUR">EUR</option>
+      <option value="GBP">GBP</option>
+      <option value="JPY">JPY</option>
+      <option value="MXN">MXN</option>
+      <!-- Agrega más monedas según sea necesario -->
+    </select>
+    <select id="to-currency">
+      <option value="USD">USD</option>
+      <option value="EUR">EUR</option>
+      <option value="GBP">GBP</option>
+      <option value="JPY">JPY</option>
+      <option value="MXN">MXN</option>
+    </select>
+    <button type="submit">Convertir</button>
+  </form>
+  <p id="conversion-result"></p>
+</section>
+
   <main>
     <!-- Formulario para añadir un gasto -->
     <section id="add-expense">
