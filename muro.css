@@ -1,0 +1,132 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to right, #0077cc, #00bfff);
+  color: #333;
+}
+
+header {
+  background-color: #005fa3;
+  padding: 10px 0;
+}
+
+header .menu {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+header .menu li a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  padding: 5px 15px;
+  border-radius: 5px;
+}
+
+header .menu li a.active,
+header .menu li a:hover {
+  background-color: #ff6600;
+  color: white;
+}
+
+.muro {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.create-post {
+  margin-bottom: 20px;
+}
+
+.create-post h2 {
+  font-size: 1.5rem;
+  color: #0077cc;
+  margin-bottom: 10px;
+}
+
+.create-post textarea {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.create-post .file-upload {
+  margin-bottom: 10px;
+}
+
+.create-post .cta-button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #0077cc;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.create-post .cta-button:hover {
+  background-color: #005fa3;
+}
+
+#post-list {
+  margin-top: 20px;
+}
+
+.post {
+  background-color: white;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.post-content {
+  margin-bottom: 10px;
+}
+
+.post-content img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.post-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.post-actions button {
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.post-actions button:hover {
+  background-color: #005fa3;
+}
