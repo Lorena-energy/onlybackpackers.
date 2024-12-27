@@ -72,3 +72,43 @@ expenseForm.addEventListener("submit", (e) => {
     expenseForm.reset();
   }
 });
+
+const currencyForm = document.getElementById("currency-form");
+const conversionResult = document.getElementById("conversion-result");
+
+// Función para realizar la conversión de monedas
+const convertCurrency = async (amount, from, to) => {
+  try {
+    const response = await fetch(`https://api.exchangerate-api.com/v4/latest/${from}`);
+    const data = await response.json();
+    const rate = data.rates[to];
+    if (!rate) {
+      conversionResult.textContent = `Error: no se encontró la tasa de cambio para ${to}`;
+      return null;
+    }
+    return (amount * rate).toFixed(2);
+  } catch (error) {
+    console.error("Error al convertir moneda:", error);
+    conversionResult.textContent = "Error al obtener las tasas de cambio.";
+    return null;
+  }
+};
+
+// Manejar el evento de conversión de monedas
+currencyForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  
+  const amount = parseFloat(document.getElementById("convert-amount").value);
+  const fromCurrency = document.getElementById("from-currency").value;
+  const toCurrency = document.getElementById("to-currency").value;
+
+  if (isNaN(amount) || amount <= 0) {
+    conversionResult.textContent = "Por favor, ingresa un monto válido.";
+    return;
+  }
+
+  const convertedAmount = await convertCurrency(amount, fromCurrency, toCurrency);
+  if (convertedAmount !== null) {
+    conversionResult.textContent = `${amount} ${fromCurrency} equivale a ${convertedAmount} ${toCurrency}`;
+  }
+});
