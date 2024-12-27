@@ -22,6 +22,18 @@
       <option value="GBP">GBP</option>
       <option value="JPY">JPY</option>
       <option value="MXN">MXN</option>
+      <section id="currency-converter">
+  <h2>Conversor de Monedas</h2>
+  <form id="converter-form">
+    <input type="number" id="amount-to-convert" placeholder="Monto" required>
+    <select id="currency-select" required>
+      <option value="">Selecciona una moneda</option>
+    </select>
+    <button type="submit">Convertir</button>
+  </form>
+  <p id="conversion-result"></p>
+</section>
+
       <!-- Agrega más monedas según sea necesario -->
     </select>
     <select id="to-currency">
