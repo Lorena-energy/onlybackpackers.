@@ -3,44 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OnlyBackpackers - Muro</title>
+  <title>OnlyBackpackers - Comunidad</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="muro.css">
 </head>
 <body>
   <!-- Encabezado -->
-  <header class="muro-header">
-    <h1>Muro de Publicaciones</h1>
-    <p>Conecta con mochileros y comparte tus aventuras más memorables.</p>
+  <header class="main-header">
+    <nav>
+      <ul class="menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="muro.html" class="active">Comunidad</a></li>
+        <li><a href="muro-personal.html">Mi Muro</a></li>
+        <li><a href="recomendaciones.html">Recomendaciones</a></li>
+        <li><a href="chats.html">Chats</a></li>
+        <li><a href="eventos.html">Eventos</a></li>
+        <li><a href="worldtrip.html">Worldtrip</a></li>
+        <li><a href="recompensas.html">Recompensas</a></li>
+        <li><a href="gastos.html">Gastos</a></li>
+      </ul>
+    </nav>
   </header>
-
-  <!-- Menú de navegación -->
-  <nav class="navbar">
-    <ul class="menu">
-      <li><a href="index.html">Inicio</a></li>
-      <li><a href="muro.html" class="active">Muro</a></li>
-      <li><a href="recomendaciones.html">Recomendaciones</a></li>
-      <li><a href="chats.html">Chats</a></li>
-      <li><a href="eventos.html">Eventos</a></li>
-      <li><a href="worldtrip.html">Worldtrip</a></li>
-      <li><a href="recompensas.html">Recompensas</a></li>
-    </ul>
-  </nav>
 
   <!-- Sección del muro -->
   <main class="muro">
-    <!-- Formulario para crear publicaciones -->
     <section class="create-post">
-      <h2>¿Qué quieres compartir?</h2>
+      <h2>Comparte tus aventuras</h2>
       <form id="post-form">
-        <textarea id="post-content" placeholder="Escribe algo..." rows="3" required></textarea>
-        <div class="emoji-picker">
-          <button type="button" id="emoji-button">😀</button>
-          <div id="emoji-panel" class="hidden">
-            <span>😀</span><span>🌍</span><span>✈️</span><span>🚢</span><span>🏕️</span>
-            <span>🏖️</span><span>🎒</span><span>📸</span><span>🎉</span><span>🍹</span>
-          </div>
-        </div>
+        <textarea id="post-content" placeholder="¿Qué quieres compartir?" rows="3" required></textarea>
         <div class="file-upload">
           <label for="post-media">Subir imágenes o videos</label>
           <input type="file" id="post-media" multiple accept="image/*, video/*">
@@ -50,16 +40,17 @@
     </section>
 
     <!-- Lista de publicaciones -->
-    <section id="post-list" class="post-list">
-      <!-- Publicaciones dinámicas -->
+    <section id="post-list">
+      <!-- Publicaciones cargadas dinámicamente -->
     </section>
   </main>
 
   <!-- Pie de página -->
   <footer>
-    <p>&copy; 2024 OnlyBackpackers. Vive tu aventura con nosotros.</p>
+    <p>&copy; 2024 OnlyBackpackers. Conecta y comparte el mundo.</p>
   </footer>
 
   <script src="muro.js"></script>
 </body>
 </html>
+
