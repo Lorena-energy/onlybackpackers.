@@ -106,3 +106,29 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const postForm = document.getElementById("post-form");
+  const postList = document.getElementById("post-list");
+
+  // Crear publicación
+  postForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const content = document.getElementById("post-content").value.trim();
+    if (content) {
+      const post = document.createElement("div");
+      post.className = "post";
+      post.innerHTML = `
+        <div class="post-header">
+          <h3>Usuario</h3>
+          <span>Justo ahora</span>
+        </div>
+        <div class="post-content">
+          <p>${content}</p>
+        </div>
+      `;
+      postList.prepend(post);
+      postForm.reset();
+    }
+  });
+});
