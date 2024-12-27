@@ -1,0 +1,82 @@
+/* Hero Section */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(to right, #0077cc, #00bfff);
+  color: white;
+  padding: 60px 20px;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
+
+.hero-content {
+  max-width: 50%;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.hero-image {
+  max-width: 40%;
+}
+
+.hero-image img {
+  width: 100%;
+  border-radius: 20px;
+}
+
+/* Auth Section */
+.auth-section {
+  display: flex;
+  justify-content: space-around;
+  padding: 40px 20px;
+  background-color: #f9f9f9;
+}
+
+.auth-container {
+  max-width: 400px;
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.auth-container h2 {
+  text-align: center;
+  color: #0077cc;
+  margin-bottom: 15px;
+}
+
+.auth-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.auth-container form input {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.auth-container form button {
+  padding: 10px;
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.auth-container form button:hover {
+  background-color: #005fa3;
+}
