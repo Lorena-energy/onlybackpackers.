@@ -2,6 +2,8 @@ const expenseForm = document.getElementById("expense-form");
 const expenseList = document.getElementById("expense-list");
 const totalExpenses = document.getElementById("total-expenses");
 const ctx = document.getElementById("expense-chart-canvas").getContext("2d");
+const currencyForm = document.getElementById("currency-form");
+const conversionResult = document.getElementById("conversion-result");
 
 let expenses = [];
 
@@ -27,14 +29,12 @@ const expenseChart = new Chart(ctx, {
 
 // Función para actualizar el gráfico
 const updateChart = () => {
-  // Calcular totales por categoría
   const categoryTotals = categories.map((cat) =>
     expenses
       .filter((exp) => exp.category === cat.toLowerCase())
       .reduce((sum, exp) => sum + exp.amount, 0)
   );
 
-  // Actualizar los datos del gráfico
   expenseChart.data.datasets[0].data = categoryTotals;
   expenseChart.update();
 };
@@ -53,7 +53,6 @@ expenseForm.addEventListener("submit", (e) => {
     const expense = { name, category, amount, currency, notes };
     expenses.push(expense);
 
-    // Añadir el gasto a la lista visual
     const li = document.createElement("li");
     li.innerHTML = `
       <strong>${name}</strong> - ${amount} ${currency} (${category})
@@ -61,31 +60,76 @@ expenseForm.addEventListener("submit", (e) => {
     `;
     expenseList.appendChild(li);
 
-    // Actualizar el total de gastos
     const total = expenses.reduce((sum, exp) => sum + exp.amount, 0);
     totalExpenses.textContent = `Total: $${total.toFixed(2)}`;
 
-    // Actualizar el gráfico
     updateChart();
-
-    // Limpiar el formulario
     expenseForm.reset();
   }
 });
 
-const currencyForm = document.getElementById("currency-form");
-const conversionResult = document.getElementById("conversion-result");
+// Tasa de cambio con soporte para destinos globales
+const supportedCurrencies = {
+  USD: "Dólar estadounidense",
+  EUR: "Euro",
+  GBP: "Libra esterlina",
+  JPY: "Yen japonés",
+  AUD: "Dólar australiano",
+  CAD: "Dólar canadiense",
+  CNY: "Yuan chino",
+  INR: "Rupia india",
+  MXN: "Peso mexicano",
+  ZAR: "Rand sudafricano",
+  MAD: "Dírham marroquí",
+  IDR: "Rupia indonesia (Bali)",
+  JMD: "Dólar jamaicano",
+  MUR: "Rupia de Mauricio",
+  MVR: "Rupia maldiva",
+  ARS: "Peso argentino",
+  CLP: "Peso chileno",
+  COP: "Peso colombiano",
+  PEN: "Sol peruano",
+  XCD: "Dólar del Caribe Oriental (Aruba)",
+  VND: "Dong vietnamita",
+  THB: "Baht tailandés",
+  XPF: "Franco CFP (Tahití)",
+};
 
-// Función para realizar la conversión de monedas
+// Rellenar opciones de moneda en el formulario
+const populateCurrencyOptions = () => {
+  const fromCurrency = document.getElementById("from-currency");
+  const toCurrency = document.getElementById("to-currency");
+
+  Object.keys(supportedCurrencies).forEach((currency) => {
+    const optionFrom = document.createElement("option");
+    const optionTo = document.createElement("option");
+
+    optionFrom.value = currency;
+    optionFrom.textContent = `${supportedCurrencies[currency]} (${currency})`;
+
+    optionTo.value = currency;
+    optionTo.textContent = `${supportedCurrencies[currency]} (${currency})`;
+
+    fromCurrency.appendChild(optionFrom);
+    toCurrency.appendChild(optionTo);
+  });
+};
+
+// Ejecutar al cargar
+populateCurrencyOptions();
+
+// Función para realizar conversión
 const convertCurrency = async (amount, from, to) => {
   try {
     const response = await fetch(`https://api.exchangerate-api.com/v4/latest/${from}`);
     const data = await response.json();
     const rate = data.rates[to];
+
     if (!rate) {
       conversionResult.textContent = `Error: no se encontró la tasa de cambio para ${to}`;
       return null;
     }
+
     return (amount * rate).toFixed(2);
   } catch (error) {
     console.error("Error al convertir moneda:", error);
@@ -94,10 +138,10 @@ const convertCurrency = async (amount, from, to) => {
   }
 };
 
-// Manejar el evento de conversión de monedas
+// Manejar conversión de moneda
 currencyForm.addEventListener("submit", async (e) => {
   e.preventDefault();
-  
+
   const amount = parseFloat(document.getElementById("convert-amount").value);
   const fromCurrency = document.getElementById("from-currency").value;
   const toCurrency = document.getElementById("to-currency").value;
@@ -108,6 +152,7 @@ currencyForm.addEventListener("submit", async (e) => {
   }
 
   const convertedAmount = await convertCurrency(amount, fromCurrency, toCurrency);
+
   if (convertedAmount !== null) {
     conversionResult.textContent = `${amount} ${fromCurrency} equivale a ${convertedAmount} ${toCurrency}`;
   }
