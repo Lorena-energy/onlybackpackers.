@@ -5,28 +5,41 @@ const ctx = document.getElementById("expense-chart-canvas").getContext("2d");
 
 let expenses = [];
 
-// Actualizar gráfico
+// Crear instancia del gráfico al inicio
+const categories = ["Transporte", "Comidas", "Alojamiento", "Actividades", "Otros"];
+const chartData = {
+  labels: categories,
+  datasets: [
+    {
+      data: [0, 0, 0, 0, 0], // Valores iniciales para cada categoría
+      backgroundColor: ["#0077cc", "#ff6600", "#00bfff", "#66cc66", "#cccccc"],
+    },
+  ],
+};
+
+const expenseChart = new Chart(ctx, {
+  type: "pie",
+  data: chartData,
+  options: {
+    responsive: true,
+  },
+});
+
+// Función para actualizar el gráfico
 const updateChart = () => {
-  const categories = ["Transporte", "Comidas", "Alojamiento", "Actividades", "Otros"];
-  const categoryTotals = categories.map(cat =>
+  // Calcular totales por categoría
+  const categoryTotals = categories.map((cat) =>
     expenses
-      .filter(exp => exp.category === cat.toLowerCase())
+      .filter((exp) => exp.category === cat.toLowerCase())
       .reduce((sum, exp) => sum + exp.amount, 0)
   );
 
-  new Chart(ctx, {
-    type: 'pie',
-    data: {
-      labels: categories,
-      datasets: [{
-        data: categoryTotals,
-        backgroundColor: ["#0077cc", "#ff6600", "#00bfff", "#66cc66", "#cccccc"],
-      }]
-    }
-  });
+  // Actualizar los datos del gráfico
+  expenseChart.data.datasets[0].data = categoryTotals;
+  expenseChart.update();
 };
 
-// Añadir gasto
+// Manejar la adición de un gasto
 expenseForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -40,7 +53,7 @@ expenseForm.addEventListener("submit", (e) => {
     const expense = { name, category, amount, currency, notes };
     expenses.push(expense);
 
-    // Añadir el gasto a la lista
+    // Añadir el gasto a la lista visual
     const li = document.createElement("li");
     li.innerHTML = `
       <strong>${name}</strong> - ${amount} ${currency} (${category})
@@ -50,9 +63,9 @@ expenseForm.addEventListener("submit", (e) => {
 
     // Actualizar el total de gastos
     const total = expenses.reduce((sum, exp) => sum + exp.amount, 0);
-    totalExpenses.textContent = `Total: $${total}`;
+    totalExpenses.textContent = `Total: $${total.toFixed(2)}`;
 
-    // Actualizar gráfico
+    // Actualizar el gráfico
     updateChart();
 
     // Limpiar el formulario
