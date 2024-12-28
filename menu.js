@@ -7,3 +7,10 @@ document.addEventListener("DOMContentLoaded", () => {
     mobileMenu.classList.toggle("open");
   });
 });
+
+const menuToggle = document.getElementById("menu-toggle");
+const menu = document.getElementById("menu");
+
+menuToggle.addEventListener("click", () => {
+  menu.classList.toggle("show");
+});
