@@ -950,3 +950,74 @@ footer p {
     padding: 10px;
   }
 }
+
+/* General */
+.menu {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 15px;
+}
+
+.menu li {
+  display: inline-block;
+}
+
+.menu a {
+  text-decoration: none;
+  color: white;
+  padding: 10px 15px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.menu a:hover,
+.menu a.active {
+  background-color: #ff6600;
+  border-radius: 5px;
+}
+
+/* Menú hamburguesa (para móviles) */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.menu-toggle span {
+  width: 30px;
+  height: 3px;
+  background-color: white;
+  border-radius: 3px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .menu {
+    display: none;
+    flex-direction: column;
+    background-color: #0077cc;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 200px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .menu li {
+    margin: 0;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .menu.show {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+}
