@@ -1021,3 +1021,66 @@ footer p {
     display: flex;
   }
 }
+
+/* Menú Responsive */
+.menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.menu li a {
+  text-decoration: none;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.menu li a.active,
+.menu li a:hover {
+  background-color: #ff6600;
+  color: white;
+}
+
+.menu-toggle {
+  display: none;
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  font-size: 1.5rem;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px;
+}
+
+/* Estilos para dispositivos pequeños */
+@media (max-width: 768px) {
+  .menu {
+    display: none;
+    flex-direction: column;
+    background-color: #0077cc;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+
+  .menu li {
+    text-align: center;
+    margin: 10px 0;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .menu.show {
+    display: flex;
+  }
+}
