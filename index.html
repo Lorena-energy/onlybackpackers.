@@ -10,6 +10,11 @@
 <body>
   <!-- Menú de navegación -->
   <nav class="main-nav">
+    <div class="menu-toggle" id="mobile-menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
     <ul class="menu">
       <li><a href="index.html" class="active">Inicio</a></li>
       <li><a href="muro.html">Comunidad</a></li>
@@ -79,5 +84,15 @@
   <footer>
     <p>&copy; 2024 OnlyBackpackers. Vive tu aventura con nosotros.</p>
   </footer>
+
+  <script>
+    // Activar menú móvil
+    const mobileMenu = document.getElementById("mobile-menu");
+    const menu = document.querySelector(".menu");
+
+    mobileMenu.addEventListener("click", () => {
+      menu.classList.toggle("active");
+    });
+  </script>
 </body>
 </html>
