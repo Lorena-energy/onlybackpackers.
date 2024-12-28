@@ -1084,3 +1084,74 @@ footer p {
     display: flex;
   }
 }
+
+/* Hero Content */
+.hero-content {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+/* Sección Auth (Inicio de sesión y registro) */
+.auth-section {
+  display: flex;
+  justify-content: space-around;
+  padding: 50px 20px;
+  background-color: #f9f9f9;
+}
+
+.auth-container {
+  width: 45%;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.auth-container h2 {
+  text-align: center;
+  color: #0077cc;
+}
+
+.auth-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-container form input {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.auth-container form button {
+  background-color: #0077cc;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.auth-container form button:hover {
+  background-color: #005fa3;
+}
+
+/* CTA Section */
+.cta-section {
+  text-align: center;
+  padding: 50px 20px;
+  background: linear-gradient(to right, #0077cc, #00bfff);
+  color: white;
+  border-radius: 10px;
+}
+
+.cta-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.cta-section p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
