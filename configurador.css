@@ -1,4 +1,11 @@
 /* General */
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+}
+
 .main-header {
   background-color: #0077cc;
   color: white;
@@ -66,7 +73,7 @@
   display: block;
 }
 
-/* Responsividad */
+/* Responsividad del menú */
 .menu-toggle {
   display: none;
   cursor: pointer;
@@ -99,3 +106,111 @@
   }
 }
 
+/* Estilos del Configurador */
+.configurator {
+  max-width: 800px;
+  margin: 20px auto;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.configurator h1 {
+  text-align: center;
+  color: #0077cc;
+  margin-bottom: 20px;
+}
+
+.configurator p {
+  text-align: center;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+label {
+  font-weight: bold;
+  color: #333;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+select[multiple] {
+  height: 100px;
+}
+
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.checkbox-group label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.cta-button {
+  padding: 10px 20px;
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+  background-color: #005fa3;
+}
+
+#route-results {
+  margin-top: 30px;
+}
+
+#route-results h2 {
+  text-align: center;
+  color: #0077cc;
+  margin-bottom: 20px;
+}
+
+#route-output {
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: #333;
+}
+
+/* Responsividad del Configurador */
+@media (max-width: 768px) {
+  .configurator {
+    padding: 10px;
+  }
+
+  form {
+    gap: 10px;
+  }
+
+  .checkbox-group {
+    flex-direction: column;
+  }
+}
