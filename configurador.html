@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OnlyBackpackers - Configurador de Rutas</title>
+  <title>Configurador de Rutas</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="configurador.css">
 </head>
 <body>
-  <!-- Encabezado con Menú -->
+  <!-- Encabezado -->
   <header class="main-header">
     <nav>
       <div class="menu-toggle" id="menu-toggle">
@@ -18,71 +19,51 @@
       </div>
       <ul class="menu" id="menu">
         <li><a href="index.html">Inicio</a></li>
-        <li class="dropdown">
-          <a href="muro.html">Comunidad</a>
-          <ul class="submenu">
-            <li><a href="muro-personal.html">Mi Muro</a></li>
-            <li><a href="chats.html">Chats</a></li>
-            <li><a href="eventos.html">Eventos</a></li>
-          </ul>
-        </li>
+        <li><a href="muro.html">Comunidad</a></li>
+        <li><a href="configurador.html" class="active">Configurador</a></li>
         <li><a href="recomendaciones.html">Recomendaciones</a></li>
-        <li><a href="configurador.html" class="active">Configurador de Rutas</a></li>
-        <li><a href="recompensas.html">Recompensas</a></li>
         <li><a href="gastos.html">Gastos</a></li>
-        <li><a href="worldtrip.html">Worldtrip</a></li>
-        <li><a href="perfil.html">Perfil</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- Configurador de Rutas -->
+  <!-- Configurador -->
   <main class="configurator">
     <h1>Configurador de Rutas</h1>
     <p>Personaliza tu viaje eligiendo tus destinos favoritos y actividades recomendadas.</p>
-    
-    <form id="route-configurator-form">
-      <!-- Días de viaje -->
-      <label for="trip-days">¿Cuántos días dura tu viaje?</label>
-      <input type="number" id="trip-days" name="trip-days" placeholder="Número de días" required>
-
-      <!-- Lista de ciudades -->
-      <label for="destinations">Elige tus destinos:</label>
-      <select id="destinations" name="destinations" multiple required>
-        <option value="paris">París</option>
-        <option value="londres">Londres</option>
-        <option value="roma">Roma</option>
-        <option value="amsterdam">Ámsterdam</option>
-        <option value="berlin">Berlín</option>
-        <option value="madrid">Madrid</option>
-        <option value="praga">Praga</option>
-      </select>
-
-      <!-- Sugerencias de actividades -->
-      <label for="activities">¿Qué actividades prefieres?</label>
-      <div class="checkbox-group">
-        <label><input type="checkbox" name="activities" value="museos"> Visitar museos</label>
-        <label><input type="checkbox" name="activities" value="gastronomia"> Gastronomía</label>
-        <label><input type="checkbox" name="activities" value="naturaleza"> Naturaleza</label>
-        <label><input type="checkbox" name="activities" value="playas"> Playas</label>
-        <label><input type="checkbox" name="activities" value="cultura"> Cultura</label>
+    <form id="route-form">
+      <div class="form-group">
+        <label for="trip-duration">¿Cuántos días dura tu viaje?</label>
+        <input type="number" id="trip-duration" placeholder="Número de días" required>
       </div>
-
-      <!-- Botón para generar ruta -->
+      <div class="form-group">
+        <label for="regions">Elige tus destinos:</label>
+        <select id="regions" multiple>
+          <option value="paris">París</option>
+          <option value="londres">Londres</option>
+          <option value="roma">Roma</option>
+          <option value="amsterdam">Ámsterdam</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>¿Qué actividades prefieres?</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" value="museos"> Visitar museos</label>
+          <label><input type="checkbox" value="gastronomia"> Gastronomía</label>
+          <label><input type="checkbox" value="naturaleza"> Naturaleza</label>
+          <label><input type="checkbox" value="playas"> Playas</label>
+          <label><input type="checkbox" value="cultura"> Cultura</label>
+        </div>
+      </div>
       <button type="submit" class="cta-button">Generar Ruta</button>
     </form>
 
-    <!-- Resultados -->
-    <section id="route-results">
+    <section id="route-results" class="hidden">
       <h2>Tu Ruta Personalizada</h2>
-      <div id="route-output">
-        <!-- Aquí se mostrarán los resultados generados -->
-      </div>
+      <div id="itinerary"></div>
     </section>
   </main>
 
-  <!-- JavaScript -->
-  <script src="menu.js"></script>
   <script src="configurador.js"></script>
 </body>
 </html>
