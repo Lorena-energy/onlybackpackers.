@@ -1,3 +1,4 @@
+/* Perfil del usuario */
 .user-profile {
   display: flex;
   align-items: center;
@@ -18,7 +19,6 @@
 
 .profile-info h2 {
   font-size: 1.5rem;
-  margin-bottom: 5px;
 }
 
 .profile-info p {
@@ -26,12 +26,48 @@
   color: #666;
 }
 
+.create-post {
+  background: #ffffff;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.create-post textarea {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+.create-post input {
+  margin-bottom: 10px;
+}
+
+.create-post button {
+  width: 100%;
+  padding: 10px;
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.create-post button:hover {
+  background-color: #005fa3;
+}
+
 .muro-personal .post {
   background-color: white;
   padding: 20px;
+  margin-bottom: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
 }
 
 .muro-personal .post-header {
@@ -43,27 +79,20 @@
 
 .muro-personal .post-content img {
   width: 100%;
-  border-radius: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.muro-personal .post-actions {
+  display: flex;
+  justify-content: space-between;
   margin-top: 10px;
 }
 
-.muro-personal .post-actions button {
-  background-color: #0077cc;
-  color: white;
-  border: none;
-  padding: 5px 10px;
+.muro-personal .comments {
+  margin-top: 10px;
+  background: #f9f9f9;
+  padding: 10px;
   border-radius: 5px;
-  cursor: pointer;
-  margin-right: 5px;
-}
-
-.muro-personal .post-actions button:hover {
-  background-color: #005fa3;
-}
-
-.muro-personal .comments p {
-  background-color: #f9f9f9;
-  padding: 5px 10px;
-  border-radius: 5px;
-  margin-top: 5px;
 }
