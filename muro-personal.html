@@ -3,39 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OnlyBackpackers - Muro Personal</title>
+  <title>OnlyBackpackers - Mi Muro</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="muro-personal.css">
 </head>
 <body>
   <!-- Encabezado -->
-  <header>
-    <h1>Muro Personal</h1>
-    <p>Explora y comparte tus publicaciones.</p>
-  </header>
-
   <header class="main-header">
-  <nav>
-    <div class="menu-toggle" id="menu-toggle">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <ul class="menu" id="menu">
-      <li><a href="index.html" class="active">Inicio</a></li>
-      <li><a href="muro.html">Muro</a></li>
-      <li><a href="muro-personal.html">Mi Muro</a></li>
-      <li><a href="recomendaciones.html">Recomendaciones</a></li>
-      <li><a href="chats.html">Chats</a></li>
-      <li><a href="eventos.html">Eventos</a></li>
-      <li><a href="worldtrip.html">Worldtrip</a></li>
-      <li><a href="recompensas.html">Recompensas</a></li>
-      <li><a href="expenses.html">Gastos</a></li>
-    </ul>
-  </nav>
-</header>
-
+    <nav>
+      <div class="menu-toggle" id="menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul class="menu" id="menu">
+        <li><a href="index.html" class="active">Inicio</a></li>
+        <li><a href="muro.html">Muro</a></li>
+        <li><a href="muro-personal.html">Mi Muro</a></li>
+        <li><a href="recomendaciones.html">Recomendaciones</a></li>
+        <li><a href="chats.html">Chats</a></li>
+        <li><a href="eventos.html">Eventos</a></li>
+        <li><a href="worldtrip.html">Worldtrip</a></li>
+        <li><a href="recompensas.html">Recompensas</a></li>
+        <li><a href="expenses.html">Gastos</a></li>
+      </ul>
+    </nav>
+  </header>
 
   <!-- Perfil del Usuario -->
   <section class="user-profile">
@@ -44,32 +38,26 @@
       <div class="profile-info">
         <h2>Nombre del Usuario</h2>
         <p>Puntos: <span id="user-points">120</span></p>
+        <button class="cta-button">Editar Perfil</button>
       </div>
     </div>
-    <button class="cta-button">Editar Perfil</button>
+  </section>
+
+  <!-- Formulario de Publicación -->
+  <section class="create-post">
+    <h2>Publica algo nuevo</h2>
+    <form id="post-form">
+      <textarea id="post-content" placeholder="Escribe algo..." rows="3" required></textarea>
+      <input type="file" id="post-media" accept="image/*, video/*" multiple>
+      <button type="submit" class="cta-button">Publicar</button>
+    </form>
   </section>
 
   <!-- Publicaciones del Usuario -->
   <main class="muro-personal">
     <section id="user-posts">
       <h2>Mis Publicaciones</h2>
-      <div class="post">
-        <div class="post-header">
-          <h3>Juan</h3>
-          <span>Hace 2 horas</span>
-        </div>
-        <div class="post-content">
-          <p>¡Explorando las montañas suizas! 🏔️</p>
-          <img src="https://via.placeholder.com/300" alt="Foto de ejemplo" class="post-media">
-        </div>
-        <div class="post-actions">
-          <button class="like-button">👍 Me gusta <span>15</span></button>
-          <button class="comment-button">💬 Comentar</button>
-        </div>
-        <div class="comments">
-          <p><strong>Laura:</strong> ¡Qué hermoso lugar!</p>
-        </div>
-      </div>
+      <!-- Publicaciones dinámicas -->
     </section>
   </main>
 
