@@ -1,3 +1,12 @@
+// Manejo del menú hamburguesa
+const menuToggle = document.getElementById("menu-toggle");
+const menu = document.getElementById("menu");
+
+menuToggle.addEventListener("click", () => {
+  menu.classList.toggle("active");
+});
+
+// Manejo del formulario de rutas
 document.getElementById("route-form").addEventListener("submit", (e) => {
   e.preventDefault();
 
