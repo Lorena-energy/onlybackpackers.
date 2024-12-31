@@ -9,22 +9,39 @@
 </head>
 <body>
   <header class="main-header">
-    <h1>Configurador de Rutas</h1>
-    <p>Personaliza tu viaje eligiendo tu ciudad de partida, destinos favoritos y actividades recomendadas.</p>
+    <div class="menu-toggle" id="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <nav>
+      <ul class="menu" id="menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="muro.html">Comunidad</a></li>
+        <li><a href="muro-personal.html">Mi Muro</a></li>
+        <li><a href="recomendaciones.html">Recomendaciones</a></li>
+        <li><a href="chats.html">Chats</a></li>
+        <li><a href="eventos.html">Eventos</a></li>
+        <li><a href="worldtrip.html">Worldtrip</a></li>
+        <li><a href="recompensas.html">Recompensas</a></li>
+        <li><a href="expenses.html">Gastos</a></li>
+        <li><a href="configurador.html" class="active">Configurador</a></li>
+      </ul>
+    </nav>
   </header>
 
   <main class="configurator">
+    <h1>Configurador de Rutas</h1>
+    <p>Personaliza tu viaje eligiendo tu ciudad de partida, destinos favoritos y actividades recomendadas.</p>
     <form id="route-form" class="form-container">
       <div class="form-group">
         <label for="departure-city">Ciudad de Partida:</label>
         <input type="text" id="departure-city" placeholder="Introduce tu ciudad de partida" required>
       </div>
-
       <div class="form-group">
         <label for="trip-duration">¿Cuántos días dura tu viaje?</label>
         <input type="number" id="trip-duration" placeholder="Número de días" required>
       </div>
-
       <div class="form-group">
         <label for="regions">Elige tus destinos:</label>
         <select id="regions" multiple>
@@ -39,7 +56,6 @@
           <option value="budapest">Budapest</option>
         </select>
       </div>
-
       <div class="form-group">
         <label>¿Qué actividades prefieres?</label>
         <div class="checkbox-container">
@@ -50,10 +66,8 @@
           <label><input type="checkbox" value="cultura"> Cultura</label>
         </div>
       </div>
-
       <button type="submit" class="cta-button">Generar Ruta</button>
     </form>
-
     <section id="route-results" class="hidden">
       <h2>Tu Ruta Personalizada</h2>
       <div id="itinerary"></div>
