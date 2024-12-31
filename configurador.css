@@ -1,80 +1,88 @@
-/* Configurador */
-.configurator {
-  max-width: 800px;
-  margin: 20px auto;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+body {
   font-family: 'Poppins', sans-serif;
-  text-align: center;
-}
-
-.configurator h1 {
-  color: #0077cc;
-  font-size: 2rem;
-  margin-bottom: 10px;
-}
-
-.configurator p {
-  margin-bottom: 20px;
-  font-size: 1.2rem;
+  margin: 0;
+  padding: 0;
+  background: #f9f9f9;
   color: #333;
 }
 
-.form-group {
-  margin-bottom: 20px;
-  text-align: left;
+.main-header {
+  background-color: #0077cc;
+  color: white;
+  padding: 15px 0;
 }
 
-label {
-  display: block;
-  margin-bottom: 5px;
+.menu {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li {
+  margin: 0 15px;
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
   font-weight: bold;
 }
 
-input, select {
-  width: 100%;
-  padding: 10px;
-  font-size: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  margin-bottom: 10px;
+.menu a.active {
+  border-bottom: 2px solid #ff6600;
 }
 
-.checkbox-group label {
+.configurator-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+h1 {
+  color: #0077cc;
+}
+
+form label {
   display: block;
-  margin-bottom: 5px;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+input, select, .preferences label {
+  display: block;
+  margin: 10px auto;
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
 }
 
 .cta-button {
-  background-color: #ff6600;
+  background: #0077cc;
   color: white;
   font-weight: bold;
   border: none;
   padding: 10px 20px;
   border-radius: 50px;
   cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.3s;
+  margin-top: 20px;
 }
 
 .cta-button:hover {
-  background-color: #cc5200;
+  background: #005fa3;
 }
 
 #route-results {
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
-#route-results.hidden {
+.hidden {
   display: none;
-}
-
-#itinerary {
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  text-align: left;
 }
