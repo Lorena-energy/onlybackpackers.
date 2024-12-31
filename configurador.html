@@ -3,49 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Configurador de Rutas</title>
-  <link rel="stylesheet" href="configurador.css">
+  <title>OnlyBackpackers - Configurador de Rutas</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="configurador.css">
 </head>
 <body>
   <header class="main-header">
-    <nav>
-      <ul class="menu">
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="muro.html">Comunidad</a></li>
-        <li><a href="configurador.html" class="active">Configurador</a></li>
-      </ul>
-    </nav>
+    <h1>Configurador de Rutas</h1>
+    <p>Personaliza tu viaje eligiendo tu ciudad de partida, destinos favoritos y actividades recomendadas.</p>
   </header>
 
-  <main class="configurator-container">
-    <h1>Personaliza tu Ruta de Viaje</h1>
-    <p>Selecciona tus preferencias y genera un itinerario a medida.</p>
-    <form id="route-form">
-      <label for="trip-duration">¿Cuántos días durará tu viaje?</label>
-      <input type="number" id="trip-duration" placeholder="Número de días" min="1" required>
+  <main class="configurator">
+    <form id="route-form" class="form-container">
+      <div class="form-group">
+        <label for="departure-city">Ciudad de Partida:</label>
+        <input type="text" id="departure-city" placeholder="Introduce tu ciudad de partida" required>
+      </div>
 
-      <label for="regions">Elige tus destinos:</label>
-      <select id="regions" multiple>
-        <option value="paris">París</option>
-        <option value="londres">Londres</option>
-        <option value="roma">Roma</option>
-        <option value="amsterdam">Ámsterdam</option>
-        <option value="madrid">Madrid</option>
-        <option value="berlin">Berlín</option>
-        <option value="tokio">Tokio</option>
-        <option value="dubai">Dubái</option>
-        <option value="newyork">Nueva York</option>
-        <option value="sydney">Sídney</option>
-      </select>
+      <div class="form-group">
+        <label for="trip-duration">¿Cuántos días dura tu viaje?</label>
+        <input type="number" id="trip-duration" placeholder="Número de días" required>
+      </div>
 
-      <label>¿Qué actividades prefieres?</label>
-      <div class="preferences">
-        <label><input type="checkbox" value="museos"> Visitar Museos</label>
-        <label><input type="checkbox" value="gastronomia"> Gastronomía</label>
-        <label><input type="checkbox" value="naturaleza"> Naturaleza</label>
-        <label><input type="checkbox" value="playas"> Playas</label>
-        <label><input type="checkbox" value="cultura"> Cultura</label>
+      <div class="form-group">
+        <label for="regions">Elige tus destinos:</label>
+        <select id="regions" multiple>
+          <option value="paris">París</option>
+          <option value="londres">Londres</option>
+          <option value="roma">Roma</option>
+          <option value="amsterdam">Ámsterdam</option>
+          <option value="berlin">Berlín</option>
+          <option value="praga">Praga</option>
+          <option value="barcelona">Barcelona</option>
+          <option value="venecia">Venecia</option>
+          <option value="budapest">Budapest</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>¿Qué actividades prefieres?</label>
+        <div class="checkbox-container">
+          <label><input type="checkbox" value="museos"> Visitar museos</label>
+          <label><input type="checkbox" value="gastronomia"> Gastronomía</label>
+          <label><input type="checkbox" value="naturaleza"> Naturaleza</label>
+          <label><input type="checkbox" value="playas"> Playas</label>
+          <label><input type="checkbox" value="cultura"> Cultura</label>
+        </div>
       </div>
 
       <button type="submit" class="cta-button">Generar Ruta</button>
