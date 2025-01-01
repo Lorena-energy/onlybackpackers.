@@ -8,50 +8,45 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Menú de navegación -->
-  <nav class="main-nav">
-    <div class="menu-toggle" id="mobile-menu">
-      <span class="bar"></span>
-      <span class="bar"></span>
-      <span class="bar"></span>
-    </div>
-    <ul class="menu">
-      <li><a href="index.html" class="active">Inicio</a></li>
-      <li><a href="muro.html">Comunidad</a></li>
-      <li><a href="muro-personal.html">Mi Muro</a></li>
-      <li><a href="recomendaciones.html">Recomendaciones</a></li>
-      <li><a href="configurador.html">Configurador de rutas</a></li>
-      <li><a href="chats.html">Chats</a></li>
-      <li><a href="eventos.html">Eventos</a></li>
-      <li><a href="worldtrip.html">Worldtrip</a></li>
-      <li><a href="recompensas.html">Recompensas</a></li>
-      <li><a href="expenses.html">Gastos</a></li>
-    </ul>
-  </nav>
+  <!-- Lienzo para el fondo animado -->
+  <canvas id="background-canvas"></canvas>
 
   <!-- Encabezado -->
-  <header class="hero">
-    <h1>Bienvenido a OnlyBackpackers</h1>
-    <p>Conecta, explora y comparte aventuras inolvidables mientras ganas recompensas exclusivas.</p>
-    <a href="muro.html" class="cta-button">Explora y Gana Ahora</a>
+  <header class="main-header">
+    <nav>
+      <div class="menu-toggle" id="menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul class="menu" id="menu">
+        <li><a href="index.html" class="active">Inicio</a></li>
+        <li><a href="muro.html">Comunidad</a></li>
+        <li><a href="muro-personal.html">Mi Muro</a></li>
+        <li><a href="recomendaciones.html">Recomendaciones</a></li>
+        <li><a href="chats.html">Chats</a></li>
+        <li><a href="eventos.html">Eventos</a></li>
+        <li><a href="worldtrip.html">Worldtrip</a></li>
+        <li><a href="recompensas.html">Recompensas</a></li>
+        <li><a href="expenses.html">Gastos</a></li>
+        <li><a href="configurador.html">Configurador</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <!-- Registro -->
-  <section class="registration">
-    <div class="form-container">
-      <h2>Regístrate</h2>
-      <form>
-        <input type="text" placeholder="Nombre completo" required>
-        <input type="email" placeholder="Correo electrónico" required>
-        <input type="password" placeholder="Contraseña" required>
-        <input type="password" placeholder="Confirma tu contraseña" required>
-        <button type="submit" class="cta-button">Crear Cuenta</button>
-      </form>
-      <p>¿Ya tienes cuenta? <a href="#">Inicia Sesión</a></p>
+  <!-- Sección de bienvenida -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Bienvenido a OnlyBackpackers</h1>
+      <p>Conecta, explora y comparte tus aventuras mientras ganas recompensas exclusivas.</p>
+      <div class="buttons">
+        <a href="muro.html" class="cta-button">Explorar Comunidad</a>
+        <a href="recompensas.html" class="cta-button-alt">Descubre Recompensas</a>
+      </div>
     </div>
   </section>
 
-  <!-- ¿Por qué OnlyBackpackers? -->
+  <!-- Características -->
   <section class="features">
     <h2>¿Por qué OnlyBackpackers?</h2>
     <div class="feature-grid">
@@ -60,25 +55,14 @@
         <p>Encuentra mochileros con tus mismos intereses.</p>
       </div>
       <div class="feature-item">
-        <h3>🛫 Explora</h3>
+        <h3>🛏️ Descubre</h3>
         <p>Accede a recomendaciones exclusivas para tus viajes.</p>
       </div>
       <div class="feature-item">
-        <h3>🤝 Comunícate</h3>
-        <p>Crea conexiones únicas y compártelas en nuestra comunidad.</p>
-      </div>
-      <div class="feature-item">
-        <h3>🎁 Gana</h3>
+        <h3>🎁 Gana Recompensas</h3>
         <p>Acumula puntos mientras compartes tus aventuras.</p>
       </div>
     </div>
-  </section>
-
-  <!-- Llamada a la acción -->
-  <section class="cta-section">
-    <h2>¡Haz que tus viajes cuenten! 🌎</h2>
-    <p>Crea tu red: recomienda, publica y gana recompensas.</p>
-    <a href="recompensas.html" class="cta-button-alt">Empezar Ahora</a>
   </section>
 
   <!-- Pie de página -->
@@ -86,14 +70,7 @@
     <p>&copy; 2024 OnlyBackpackers. Vive tu aventura con nosotros.</p>
   </footer>
 
-  <script>
-    // Activar menú móvil
-    const mobileMenu = document.getElementById("mobile-menu");
-    const menu = document.querySelector(".menu");
-
-    mobileMenu.addEventListener("click", () => {
-      menu.classList.toggle("active");
-    });
-  </script>
+  <script src="menu.js"></script>
+  <script src="canvas-background.js"></script>
 </body>
 </html>
