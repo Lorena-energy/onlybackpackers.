@@ -1,1 +1,126 @@
+/* Hero Section */
+.hero {
+  background: linear-gradient(to right, #0077cc, #00bfff);
+  color: white;
+  text-align: center;
+  padding: 100px 20px;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.cta-button,
+.cta-button-alt {
+  padding: 15px 30px;
+  font-weight: bold;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: background-color 0.3s;
+}
+
+.cta-button {
+  background-color: #ff6600;
+  color: white;
+}
+
+.cta-button-alt {
+  background-color: white;
+  color: #0077cc;
+  border: 2px solid #0077cc;
+}
+
+.cta-button:hover {
+  background-color: #cc5200;
+}
+
+.cta-button-alt:hover {
+  background-color: #0077cc;
+  color: white;
+}
+
+/* Categorías */
+#group-trips {
+  padding: 50px 20px;
+}
+
+.categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.category-card {
+  background: white;
+  border-radius: 10px;
+  text-align: center;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.category-card:hover {
+  transform: translateY(-10px);
+}
+
+.category-card h3 {
+  color: #0077cc;
+}
+
+/* Viaje a Medida */
+#custom-trip {
+  padding: 50px 20px;
+  background: #f9f9f9;
+}
+
+#custom-trip h2 {
+  text-align: center;
+  color: #0077cc;
+  margin-bottom: 20px;
+}
+
+#custom-trip-form {
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#custom-trip-form input,
+#custom-trip-form textarea {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+#custom-trip-form button {
+  background-color: #0077cc;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+#custom-trip-form button:hover {
+  background-color: #005fa3;
+}
 
