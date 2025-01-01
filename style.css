@@ -1155,3 +1155,114 @@ footer p {
   font-size: 1.2rem;
   margin-bottom: 20px;
 }
+
+/* Fondo animado */
+#background-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(45deg, #0077cc, #00bfff);
+}
+
+/* Hero */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 50px 20px;
+  color: white;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.hero .buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.cta-button,
+.cta-button-alt {
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.cta-button {
+  background-color: #ff6600;
+  color: white;
+}
+
+.cta-button:hover {
+  background-color: #cc5200;
+}
+
+.cta-button-alt {
+  background-color: white;
+  color: #0077cc;
+  border: 2px solid #0077cc;
+}
+
+.cta-button-alt:hover {
+  background-color: #e0f3ff;
+}
+
+/* Menú */
+.main-header {
+  position: sticky;
+  top: 0;
+  background: #0077cc;
+  color: white;
+  padding: 10px 0;
+  z-index: 10;
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li {
+  margin: 0 10px;
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 15px;
+}
+
+.menu a:hover,
+.menu a.active {
+  background-color: #005fa3;
+  border-radius: 5px;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .menu {
+    flex-direction: column;
+    display: none;
+  }
+
+  .menu.active {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+    cursor: pointer;
+    margin-left: 20px;
+  }
+}
