@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OnlyBackpackers - Worldtrip</title>
+  <title>Worldtrip by OnlyBackpackers</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="worldtrip.css">
@@ -11,81 +11,74 @@
 <body>
   <!-- Encabezado -->
   <header class="main-header">
-    <nav>
-      <div class="menu-toggle" id="menu-toggle">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-      <ul class="menu" id="menu">
-        <li><a href="index.html" class="active">Inicio</a></li>
-        <li><a href="muro.html">Muro</a></li>
-        <li><a href="recomendaciones.html">Recomendaciones</a></li>
-        <li><a href="chats.html">Chats</a></li>
-        <li><a href="eventos.html">Eventos</a></li>
-        <li><a href="worldtrip.html">Worldtrip</a></li>
-        <li><a href="recompensas.html">Recompensas</a></li>
-        <li><a href="expenses.html">Gastos</a></li>
-      </ul>
-    </nav>
+    <h1>Worldtrip by OnlyBackpackers</h1>
+    <p>¡Explora el mundo con viajes grupales y personalizados únicos!</p>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <h1>Worldtrip: Viajes Grupales y a Medida</h1>
-    <p>Explora el mundo con nuestros viajes cuidadosamente diseñados. Desde lujo hasta económicos, tenemos el viaje perfecto para ti.</p>
-    <div class="hero-buttons">
-      <a href="#group-trips" class="cta-button">Explorar Viajes</a>
-      <a href="#custom-trip" class="cta-button-alt">Crea tu Viaje</a>
+  <!-- Menú -->
+  <nav class="menu-container">
+    <div class="menu-toggle" id="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
-  </section>
+    <ul class="menu" id="menu">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="muro.html">Muro</a></li>
+      <li><a href="recomendaciones.html">Recomendaciones</a></li>
+      <li><a href="worldtrip.html" class="active">Worldtrip</a></li>
+      <li><a href="chats.html">Chats</a></li>
+      <li><a href="expenses.html">Gastos</a></li>
+    </ul>
+  </nav>
 
-  <!-- Categorías de Viajes -->
-  <section id="group-trips">
-    <h2>Categorías de Viajes</h2>
+  <!-- Categorías de Viajes Grupales -->
+  <section class="group-trips">
+    <h2>Viajes Grupales</h2>
     <div class="categories">
-      <div class="category-card">
+      <div class="category" style="background-image: url('https://via.placeholder.com/500x300');">
         <h3>Económicos</h3>
-        <p>Viajes increíbles a precios accesibles.</p>
+        <p>Viajes accesibles con experiencias inolvidables.</p>
       </div>
-      <div class="category-card">
-        <h3>Lujo</h3>
-        <p>Experiencias exclusivas y premium.</p>
+      <div class="category" style="background-image: url('https://via.placeholder.com/500x300');">
+        <h3>De Lujo</h3>
+        <p>Estilo, exclusividad y destinos impresionantes.</p>
       </div>
-      <div class="category-card">
+      <div class="category" style="background-image: url('https://via.placeholder.com/500x300');">
         <h3>Solo Mujeres</h3>
-        <p>Viajes seguros y empoderados.</p>
+        <p>Aventura y seguridad para mujeres viajeras.</p>
       </div>
-      <div class="category-card">
-        <h3>Familias</h3>
-        <p>Planes ideales para viajeros con hijos.</p>
+      <div class="category" style="background-image: url('https://via.placeholder.com/500x300');">
+        <h3>Viajeros con Hijos</h3>
+        <p>Destinos diseñados para disfrutar en familia.</p>
       </div>
-      <div class="category-card">
-        <h3>LGTBI</h3>
-        <p>Espacios inclusivos y cómodos.</p>
+      <div class="category" style="background-image: url('https://via.placeholder.com/500x300');">
+        <h3>Grupo LGTBI</h3>
+        <p>Inclusión y seguridad en cada viaje.</p>
       </div>
-      <div class="category-card">
+      <div class="category" style="background-image: url('https://via.placeholder.com/500x300');">
         <h3>Singles</h3>
-        <p>Conoce nuevas personas mientras viajas.</p>
+        <p>Conoce a otros viajeros y haz nuevas amistades.</p>
       </div>
     </div>
   </section>
 
-  <!-- Viaje a Medida -->
-  <section id="custom-trip">
-    <h2>Crea tu Viaje Personalizado</h2>
+  <!-- Viajes a Medida -->
+  <section class="custom-trips">
+    <h2>Viajes a Medida</h2>
+    <p>Crea tu viaje ideal con ayuda de nuestros expertos.</p>
     <form id="custom-trip-form">
-      <input type="text" placeholder="Destinos deseados (ej. París, Roma)" required>
-      <input type="number" placeholder="Duración del viaje (días)" required>
-      <input type="text" placeholder="Presupuesto aproximado (euros)" required>
-      <textarea placeholder="Cuéntanos tus preferencias" rows="4"></textarea>
-      <button type="submit" class="cta-button">Enviar</button>
+      <input type="text" placeholder="Nombre completo" required>
+      <input type="email" placeholder="Correo electrónico" required>
+      <textarea placeholder="Describe tu idea de viaje..." required></textarea>
+      <button type="submit" class="cta-button">Enviar Solicitud</button>
     </form>
   </section>
 
+  <!-- Pie de página -->
   <footer>
-    <p>&copy; 2024 OnlyBackpackers - Worldtrip. Todos los derechos reservados.</p>
+    <p>&copy; 2024 Worldtrip by OnlyBackpackers. Todos los derechos reservados.</p>
   </footer>
 </body>
+<script src="menu.js"></script>
 </html>
-
