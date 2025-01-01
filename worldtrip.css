@@ -1,126 +1,130 @@
-/* Hero Section */
-.hero {
+/* General */
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
   background: linear-gradient(to right, #0077cc, #00bfff);
-  color: white;
+  color: #333;
+}
+
+.main-header {
   text-align: center;
-  padding: 100px 20px;
-  border-bottom-left-radius: 50px;
-  border-bottom-right-radius: 50px;
+  padding: 40px 20px;
+  color: white;
+  background: linear-gradient(to right, #0077cc, #005fa3);
 }
 
-.hero h1 {
-  font-size: 3rem;
-  margin-bottom: 20px;
+.main-header h1 {
+  font-size: 2.5rem;
 }
 
-.hero p {
+.main-header p {
   font-size: 1.2rem;
-  margin-bottom: 30px;
 }
 
-.hero-buttons {
+.menu-container {
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.menu {
+  list-style: none;
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 15px;
+  padding: 10px 0;
 }
 
-.cta-button,
-.cta-button-alt {
-  padding: 15px 30px;
-  font-weight: bold;
-  border-radius: 50px;
+.menu li {
+  display: inline;
+}
+
+.menu a {
   text-decoration: none;
-  font-size: 1.2rem;
-  transition: background-color 0.3s;
-}
-
-.cta-button {
-  background-color: #ff6600;
-  color: white;
-}
-
-.cta-button-alt {
-  background-color: white;
   color: #0077cc;
-  border: 2px solid #0077cc;
+  font-weight: bold;
 }
 
-.cta-button:hover {
-  background-color: #cc5200;
+.menu a.active {
+  color: #ff6600;
 }
 
-.cta-button-alt:hover {
-  background-color: #0077cc;
-  color: white;
+.group-trips {
+  padding: 40px 20px;
+  text-align: center;
 }
 
-/* Categorías */
-#group-trips {
-  padding: 50px 20px;
+.group-trips h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
 }
 
 .categories {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   gap: 20px;
+  justify-content: center;
 }
 
-.category-card {
-  background: white;
+.category {
+  width: 300px;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
   border-radius: 10px;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   padding: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s;
+  color: white;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.category-card:hover {
-  transform: translateY(-10px);
+.category h3 {
+  font-size: 1.5rem;
+  margin-bottom: 5px;
 }
 
-.category-card h3 {
-  color: #0077cc;
+.category p {
+  font-size: 1rem;
 }
 
-/* Viaje a Medida */
-#custom-trip {
-  padding: 50px 20px;
-  background: #f9f9f9;
-}
-
-#custom-trip h2 {
+.custom-trips {
+  padding: 40px 20px;
   text-align: center;
-  color: #0077cc;
-  margin-bottom: 20px;
 }
 
-#custom-trip-form {
+.custom-trips h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.custom-trips form {
   max-width: 500px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 10px;
 }
 
-#custom-trip-form input,
-#custom-trip-form textarea {
+.custom-trips input, .custom-trips textarea {
+  width: 100%;
   padding: 10px;
-  border: 1px solid #ddd;
   border-radius: 5px;
-  font-size: 1rem;
+  border: 1px solid #ddd;
 }
 
-#custom-trip-form button {
-  background-color: #0077cc;
-  color: white;
-  padding: 10px;
+.custom-trips button {
+  padding: 10px 20px;
   border: none;
   border-radius: 5px;
+  background-color: #0077cc;
+  color: white;
   font-size: 1rem;
   cursor: pointer;
 }
 
-#custom-trip-form button:hover {
+.custom-trips button:hover {
   background-color: #005fa3;
 }
-
