@@ -186,22 +186,3 @@ footer p {
   margin: 0;
   font-size: 0.9rem;
 }
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-  .hero h1 {
-    font-size: 2rem;
-  }
-
-  .hero p {
-    font-size: 1rem;
-  }
-
-  .hero .buttons {
-    flex-direction: column;
-  }
-
-  .feature-item {
-    width: 100%;
-  }
-}
