@@ -4,24 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OnlyBackpackers - Inicio</title>
-  <div class="main-header">
-  <p>Más que una comunidad, mucho más que una red social.</p>
-</div>
-
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="index.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Lienzo para el fondo animado -->
+  <!-- Fondo animado -->
   <canvas id="background-canvas"></canvas>
 
-  <!-- Encabezado -->
+  <!-- Encabezado con menú -->
   <header class="main-header">
     <nav>
       <div class="menu-toggle" id="menu-toggle">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
       </div>
       <ul class="menu" id="menu">
         <li><a href="index.html" class="active">Inicio</a></li>
@@ -38,11 +35,11 @@
     </nav>
   </header>
 
-  <!-- Sección de bienvenida -->
+  <!-- Hero Section -->
   <section class="hero">
     <div class="hero-content">
       <h1>Bienvenido a OnlyBackpackers</h1>
-      <p>Conecta, explora y comparte tus aventuras mientras ganas recompensas exclusivas.</p>
+      <p>Más que una comunidad, mucho más que una red social.</p>
       <div class="buttons">
         <a href="muro.html" class="cta-button">Explorar Comunidad</a>
         <a href="recompensas.html" class="cta-button-alt">Descubre Recompensas</a>
@@ -74,6 +71,7 @@
     <p>&copy; 2024 OnlyBackpackers. Vive tu aventura con nosotros.</p>
   </footer>
 
+  <!-- Scripts -->
   <script src="menu.js"></script>
   <script src="canvas-background.js"></script>
 </body>
