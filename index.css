@@ -1,188 +1,81 @@
-/* General */
-body {
-  font-family: 'Poppins', sans-serif;
-  margin: 0;
-  padding: 0;
-  color: #333;
-  background-color: #f9f9f9;
-}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OnlyBackpackers - Inicio</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="index.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Fondo animado -->
+  <canvas id="background-canvas"></canvas>
 
-/* Header */
-.main-header {
-  background-color: #0077cc;
-  color: white;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  padding: 10px 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
+  <!-- Encabezado con menú -->
+  <header class="main-header">
+    <nav>
+      <div class="menu-toggle" id="menu-toggle">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+      <ul class="menu" id="menu">
+        <li><a href="index.html" class="active">Inicio</a></li>
+        <li><a href="muro.html">Comunidad</a></li>
+        <li><a href="muro-personal.html">Mi Muro</a></li>
+        <li><a href="recomendaciones.html">Recomendaciones</a></li>
+        <li><a href="chats.html">Chats</a></li>
+        <li><a href="eventos.html">Eventos</a></li>
+        <li><a href="worldtrip.html">Worldtrip</a></li>
+        <li><a href="recompensas.html">Recompensas</a></li>
+        <li><a href="expenses.html">Gastos</a></li>
+        <li><a href="configurador.html">Configurador</a></li>
+        <li><a href="login.html">Iniciar Sesión</a></li>
+        <li><a href="register.html">Registrarse</a></li>
+      </ul>
+    </nav>
+  </header>
 
-.main-header .menu-toggle {
-  display: none;
-  cursor: pointer;
-}
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Bienvenido a OnlyBackpackers</h1>
+      <p>Más que una comunidad, mucho más que una red social.</p>
+      <div class="buttons">
+        <a href="muro.html" class="cta-button">Explorar Comunidad</a>
+        <a href="recompensas.html" class="cta-button-alt">Descubre Recompensas</a>
+      </div>
+    </div>
+  </section>
 
-.main-header .menu-toggle .bar {
-  display: block;
-  width: 25px;
-  height: 3px;
-  margin: 5px auto;
-  background-color: white;
-  transition: all 0.3s;
-}
+  <!-- Características -->
+  <section class="features">
+    <h2>¿Por qué OnlyBackpackers?</h2>
+    <div class="feature-grid">
+      <div class="feature-item">
+        <h3>🌍 Conecta</h3>
+        <p>Encuentra mochileros con tus mismos intereses.</p>
+      </div>
+      <div class="feature-item">
+        <h3>🛏️ Descubre</h3>
+        <p>Accede a recomendaciones exclusivas para tus viajes.</p>
+      </div>
+      <div class="feature-item">
+        <h3>🎁 Gana Recompensas</h3>
+        <p>Acumula puntos mientras compartes tus aventuras.</p>
+      </div>
+    </div>
+  </section>
 
-.menu {
-  list-style: none;
-  display: flex;
-  gap: 15px;
-  justify-content: center;
-  margin: 0;
-  padding: 0;
-}
+  <!-- Pie de página -->
+  <footer>
+    <p>&copy; 2024 OnlyBackpackers. Vive tu aventura con nosotros.</p>
+  </footer>
 
-.menu li {
-  margin: 0;
-}
-
-.menu a {
-  color: white;
-  text-decoration: none;
-  padding: 10px 15px;
-  border-radius: 5px;
-  transition: background-color 0.3s;
-}
-
-.menu a:hover,
-.menu a.active {
-  background-color: #005fa3;
-}
-
-/* Responsive Menu */
-@media (max-width: 768px) {
-  .menu {
-    display: none;
-    flex-direction: column;
-    background-color: #0077cc;
-    position: absolute;
-    top: 50px;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    padding: 10px 0;
-  }
-
-  .menu.active {
-    display: flex;
-  }
-
-  .menu-toggle {
-    display: block;
-  }
-}
-
-/* Hero Section */
-.hero {
-  background: linear-gradient(to right, #0077cc, #00bfff);
-  color: white;
-  text-align: center;
-  padding: 80px 20px;
-}
-
-.hero h1 {
-  font-size: 2.5rem;
-  margin-bottom: 15px;
-}
-
-.hero p {
-  font-size: 1.2rem;
-  margin-bottom: 20px;
-}
-
-.hero .buttons {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
-
-.cta-button {
-  background-color: #ff6600;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 50px;
-  font-size: 1.2rem;
-  text-decoration: none;
-  transition: background-color 0.3s;
-}
-
-.cta-button:hover {
-  background-color: #cc5200;
-}
-
-.cta-button-alt {
-  background-color: white;
-  color: #0077cc;
-  border: 2px solid #0077cc;
-  padding: 10px 20px;
-  border-radius: 50px;
-  font-size: 1.2rem;
-  text-decoration: none;
-  transition: background-color 0.3s;
-}
-
-.cta-button-alt:hover {
-  background-color: #e0f3ff;
-}
-
-/* Features Section */
-.features {
-  padding: 50px 20px;
-  background-color: #ffffff;
-}
-
-.features h2 {
-  text-align: center;
-  color: #0077cc;
-  margin-bottom: 30px;
-}
-
-.feature-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-}
-
-.feature-item {
-  background: #f9f9f9;
-  border-radius: 10px;
-  text-align: center;
-  padding: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s;
-  width: 300px;
-}
-
-.feature-item:hover {
-  transform: translateY(-5px);
-}
-
-.feature-item h3 {
-  color: #0077cc;
-  margin-bottom: 10px;
-}
-
-/* Footer */
-footer {
-  background-color: #0077cc;
-  color: white;
-  text-align: center;
-  padding: 20px 0;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-}
-
-footer p {
-  margin: 0;
-  font-size: 0.9rem;
-}
+  <!-- Scripts -->
+  <script src="menu.js"></script>
+  <script src="canvas-background.js"></script>
+  <script src="index.js"></script>
+</body>
+</html>
