@@ -9,7 +9,7 @@ document.getElementById("menu-toggle").addEventListener("click", () => {
 // Simulación de autenticación
 const isAuthenticated = false; // Cambia a true después del inicio de sesión.
 
-if (!isAuthenticated) {
+if (!isAuthenticated && window.location.pathname !== '/login.html') {
   window.location.href = "login.html"; // Redirige a la página de inicio de sesión si no está autenticado.
 }
 
