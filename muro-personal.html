@@ -7,6 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="muro-personal.css">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <!-- Encabezado -->
@@ -33,18 +34,23 @@
 
   <!-- Perfil del Usuario -->
   <section class="user-profile">
-    <div class="cover-photo" id="cover-photo">
-      <label for="cover-upload">
-        <i class="fa fa-camera"></i> Cambiar portada
+    <div class="cover-photo">
+      <label for="cover-upload" class="upload-label">
+        <i class="fas fa-camera"></i> Cambiar portada
       </label>
       <input type="file" id="cover-upload" accept="image/*">
     </div>
     <div class="profile-header">
       <div class="profile-pic-container">
-        <img src="https://via.placeholder.com/100" alt="Foto de perfil" id="profile-pic" class="profile-pic">
+        <img src="https://via.placeholder.com/100" alt="Foto de perfil" id="profile-pic">
+        <label for="profile-upload" class="upload-label">
+          <i class="fas fa-camera"></i>
+        </label>
+        <input type="file" id="profile-upload" accept="image/*">
       </div>
       <div class="profile-info">
         <h2 id="username">Nombre del Usuario</h2>
+        <button id="add-friend" class="cta-button">Agregar como amigo/a</button>
         <p>Puntos: <span id="user-points">120</span></p>
         <p>Tu código de invitación: <strong id="invite-code">ABCD1234</strong></p>
         <button id="invite-link" class="cta-button">Compartir Enlace de Invitación</button>
@@ -53,12 +59,12 @@
   </section>
 
   <!-- Información adicional -->
-  <section class="user-details">
+  <aside class="user-details">
     <h3>Detalles de tu perfil</h3>
-    <p><strong>Idiomas:</strong> Español, Inglés</p>
-    <p><strong>País:</strong> España</p>
-    <p><strong>Intereses:</strong> Senderismo, Fotografía, Cultura</p>
-  </section>
+    <p><strong>Idiomas:</strong> <span id="user-languages">Español, Inglés</span></p>
+    <p><strong>País:</strong> <span id="user-country">España</span></p>
+    <p><strong>Intereses:</strong> <span id="user-interests">Senderismo, Fotografía, Cultura</span></p>
+  </aside>
 
   <!-- Formulario de Publicación -->
   <section class="create-post">
@@ -66,7 +72,7 @@
     <form id="post-form">
       <textarea id="post-content" placeholder="Escribe algo..." rows="3" required></textarea>
       <label for="post-media" class="upload-label">
-        <i class="fa fa-camera"></i> Añadir fotos o videos
+        <i class="fas fa-camera"></i> Subir fotos/videos
       </label>
       <input type="file" id="post-media" accept="image/*, video/*" multiple>
       <button type="submit" class="cta-button">Publicar</button>
@@ -80,12 +86,6 @@
       <!-- Publicaciones dinámicas -->
     </section>
   </main>
-
-  <!-- Modal para fotos -->
-  <div id="photo-modal" class="hidden">
-    <span id="close-photo-modal">&times;</span>
-    <img id="modal-photo" alt="Foto ampliada">
-  </div>
 
   <script src="muro-personal.js"></script>
 </body>
