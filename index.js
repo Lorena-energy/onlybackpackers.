@@ -6,6 +6,21 @@ document.addEventListener("DOMContentLoaded", () => {
   if (menuToggle && menu) {
     menuToggle.addEventListener("click", () => {
       menu.classList.toggle("active");
+
+   // Al iniciar sesión
+localStorage.setItem("isAuthenticated", true);
+
+// Verificar sesión en cada página
+if (!localStorage.getItem("isAuthenticated")) {
+  window.location.href = "login-register.html";
+}
+
+// Cerrar sesión
+document.getElementById("logout").addEventListener("click", () => {
+  localStorage.removeItem("isAuthenticated");
+  window.location.href = "login-register.html";
+});
+
     });
   }
 });
