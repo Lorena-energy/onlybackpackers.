@@ -32,35 +32,35 @@
     </nav>
   </header>
 
+  <!-- Foto de Portada -->
+  <div class="cover-photo">
+    <label for="cover-upload" class="upload-label">
+      <i class="fas fa-camera"></i> Cambiar portada
+    </label>
+    <input type="file" id="cover-upload" accept="image/*" hidden>
+  </div>
+
   <!-- Perfil del Usuario -->
-  <section class="user-profile">
-    <div class="cover-photo">
-      <label for="cover-upload" class="upload-label">
-        <i class="fas fa-camera"></i> Cambiar portada
-      </label>
-      <input type="file" id="cover-upload" accept="image/*">
-    </div>
-    <div class="profile-header">
-      <div class="profile-pic-container">
-        <img src="https://via.placeholder.com/100" alt="Foto de perfil" id="profile-pic">
+  <section class="profile-section">
+    <div class="profile-container">
+      <div class="profile-pic-wrapper">
+        <img src="https://via.placeholder.com/100" alt="Foto de perfil" class="profile-pic" id="profile-pic">
         <label for="profile-upload" class="upload-label">
           <i class="fas fa-camera"></i>
         </label>
-        <input type="file" id="profile-upload" accept="image/*">
+        <input type="file" id="profile-upload" accept="image/*" hidden>
       </div>
       <div class="profile-info">
         <h2 id="username">Nombre del Usuario</h2>
-        <button id="add-friend" class="cta-button">Agregar como amigo/a</button>
         <p>Puntos: <span id="user-points">120</span></p>
-        <p>Tu código de invitación: <strong id="invite-code">ABCD1234</strong></p>
-        <button id="invite-link" class="cta-button">Compartir Enlace de Invitación</button>
+        <button id="add-friend" class="cta-button">Agregar amigo/a</button>
       </div>
     </div>
   </section>
 
   <!-- Información adicional -->
   <aside class="user-details">
-    <h3>Detalles de tu perfil</h3>
+    <h3>Detalles del Usuario</h3>
     <p><strong>Idiomas:</strong> <span id="user-languages">Español, Inglés</span></p>
     <p><strong>País:</strong> <span id="user-country">España</span></p>
     <p><strong>Intereses:</strong> <span id="user-interests">Senderismo, Fotografía, Cultura</span></p>
@@ -74,19 +74,20 @@
       <label for="post-media" class="upload-label">
         <i class="fas fa-camera"></i> Subir fotos/videos
       </label>
-      <input type="file" id="post-media" accept="image/*, video/*" multiple>
+      <input type="file" id="post-media" accept="image/*, video/*" multiple hidden>
       <button type="submit" class="cta-button">Publicar</button>
     </form>
   </section>
 
-  <!-- Publicaciones del Usuario -->
+  <!-- Publicaciones -->
   <main class="muro-personal">
     <section id="user-posts">
       <h2>Mis Publicaciones</h2>
-      <!-- Publicaciones dinámicas -->
+      <!-- Contenido dinámico de publicaciones -->
     </section>
   </main>
 
+  <!-- Scripts -->
   <script src="muro-personal.js"></script>
 </body>
 </html>
