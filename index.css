@@ -9,7 +9,7 @@ body {
 
 /* Cabecera */
 .main-header {
-  background-color: #0077cc;
+  background-color: #003366; /* Azul oscuro */
   color: white;
   position: sticky;
   top: 0;
@@ -41,12 +41,48 @@ body {
 
 .menu a:hover,
 .menu a.active {
-  background-color: #005fa3;
+  background-color: #005fa3; /* Azul turquesa */
+}
+
+/* Menú hamburguesa */
+.menu-toggle {
+  display: none;
+  cursor: pointer;
+}
+
+.menu-toggle .bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  background-color: white;
+}
+
+@media (max-width: 768px) {
+  .menu {
+    display: none;
+    flex-direction: column;
+    background-color: #003366;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 10px 0;
+  }
+
+  .menu.active {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
 }
 
 /* Hero */
 .hero {
-  background: linear-gradient(to right, #0077cc, #00bfff);
+  background: linear-gradient(to right, #003366, #00bfff); /* Azul oscuro a turquesa */
   color: white;
   text-align: center;
   padding: 80px 20px;
@@ -62,6 +98,41 @@ body {
   margin-bottom: 20px;
 }
 
+.hero .buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.cta-button {
+  background-color: #ff6600; /* Naranja */
+  color: white;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+  background-color: #cc5200; /* Naranja oscuro */
+}
+
+.cta-button-alt {
+  background-color: white;
+  color: #003366;
+  border: 2px solid #003366;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.cta-button-alt:hover {
+  background-color: #e0f3ff;
+}
+
 /* Features */
 .features {
   padding: 50px 20px;
@@ -70,7 +141,7 @@ body {
 
 .features h2 {
   text-align: center;
-  color: #0077cc;
+  color: #003366;
   margin-bottom: 30px;
 }
 
@@ -96,13 +167,13 @@ body {
 }
 
 .feature-item h3 {
-  color: #0077cc;
+  color: #003366;
   margin-bottom: 10px;
 }
 
 /* Footer */
 footer {
-  background-color: #0077cc;
+  background-color: #003366;
   color: white;
   text-align: center;
   padding: 20px 0;
