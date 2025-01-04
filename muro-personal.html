@@ -33,7 +33,7 @@
 
   <!-- Perfil del Usuario -->
   <section class="user-profile">
-    <div class="cover-photo">
+    <div class="cover-photo" id="cover-photo">
       <label for="cover-upload">
         <i class="fa fa-camera"></i> Cambiar portada
       </label>
@@ -41,11 +41,7 @@
     </div>
     <div class="profile-header">
       <div class="profile-pic-container">
-        <img src="https://via.placeholder.com/100" alt="Foto de perfil" id="profile-pic">
-        <label for="profile-upload" class="profile-edit">
-          <i class="fa fa-camera"></i>
-        </label>
-        <input type="file" id="profile-upload" accept="image/*">
+        <img src="https://via.placeholder.com/100" alt="Foto de perfil" id="profile-pic" class="profile-pic">
       </div>
       <div class="profile-info">
         <h2 id="username">Nombre del Usuario</h2>
@@ -84,6 +80,12 @@
       <!-- Publicaciones dinámicas -->
     </section>
   </main>
+
+  <!-- Modal para fotos -->
+  <div id="photo-modal" class="hidden">
+    <span id="close-photo-modal">&times;</span>
+    <img id="modal-photo" alt="Foto ampliada">
+  </div>
 
   <script src="muro-personal.js"></script>
 </body>
