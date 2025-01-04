@@ -29,20 +29,24 @@ document.addEventListener("DOMContentLoaded", () => {
     forgotPasswordForm.classList.remove("hidden");
   });
 
-  // Simulación de eventos de envío (puedes conectar con tu backend aquí)
+  // Simulación de envío de formularios
   registerForm.addEventListener("submit", (e) => {
     e.preventDefault();
+    // Aquí conectarías con tu backend para registrar al usuario
     alert("¡Registro exitoso!");
+    window.location.href = "muro-personal.html"; // Redirige al muro personal
   });
 
   loginForm.addEventListener("submit", (e) => {
     e.preventDefault();
+    // Aquí conectarías con tu backend para verificar credenciales
     alert("¡Inicio de sesión exitoso!");
+    window.location.href = "muro-personal.html"; // Redirige al muro personal
   });
 
   forgotPasswordForm.addEventListener("submit", (e) => {
     e.preventDefault();
+    // Aquí enviarías el correo de recuperación
     alert("Se ha enviado un correo para recuperar tu contraseña.");
   });
 });
-
