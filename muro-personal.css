@@ -10,11 +10,13 @@ body {
 .cover-photo {
   height: 200px;
   background: #0077cc;
+  position: relative;
   display: flex;
   align-items: flex-end;
   justify-content: center;
   color: white;
-  position: relative;
+  background-size: cover;
+  background-position: center;
 }
 
 .cover-photo label {
@@ -38,24 +40,21 @@ body {
 
 .profile-pic-container {
   position: relative;
+  width: 80px;
+  height: 80px;
 }
 
 .profile-pic {
-  width: 100px;
-  height: 100px;
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
   object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.3s;
 }
 
-.profile-edit {
-  position: absolute;
-  bottom: 5px;
-  right: 5px;
-  background: #ff6600;
-  color: white;
-  border-radius: 50%;
-  padding: 5px;
-  cursor: pointer;
+.profile-pic:hover {
+  transform: scale(1.05);
 }
 
 .profile-info h2 {
@@ -64,28 +63,14 @@ body {
 
 /* Información adicional */
 .user-details {
+  position: relative;
+  width: 30%;
   background: rgba(255, 255, 255, 0.2);
   border-radius: 10px;
   padding: 20px;
   margin: 20px;
   color: white;
-}
-
-/* Publicaciones */
-.create-post textarea {
-  width: 100%;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  padding: 10px;
-}
-
-.upload-label {
-  cursor: pointer;
-  color: #0077cc;
-}
-
-.upload-label i {
-  font-size: 1.5rem;
+  float: right;
 }
 
 /* Botón */
