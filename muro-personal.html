@@ -13,14 +13,14 @@
   <header class="main-header">
     <nav>
       <div class="menu-toggle" id="menu-toggle">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
       </div>
       <ul class="menu" id="menu">
-        <li><a href="index.html" class="active">Inicio</a></li>
+        <li><a href="index.html">Inicio</a></li>
         <li><a href="muro.html">Muro</a></li>
-        <li><a href="muro-personal.html">Mi Muro</a></li>
+        <li><a href="muro-personal.html" class="active">Mi Muro</a></li>
         <li><a href="recomendaciones.html">Recomendaciones</a></li>
         <li><a href="chats.html">Chats</a></li>
         <li><a href="eventos.html">Eventos</a></li>
@@ -33,12 +33,25 @@
 
   <!-- Perfil del Usuario -->
   <section class="user-profile">
+    <div class="cover-photo">
+      <label for="cover-upload">
+        <i class="fa fa-camera"></i> Cambiar portada
+      </label>
+      <input type="file" id="cover-upload" accept="image/*">
+    </div>
     <div class="profile-header">
-      <img src="https://via.placeholder.com/100" alt="Foto de perfil" class="profile-pic">
+      <div class="profile-pic-container">
+        <img src="https://via.placeholder.com/100" alt="Foto de perfil" class="profile-pic">
+        <label for="profile-upload" class="profile-edit">
+          <i class="fa fa-camera"></i>
+        </label>
+        <input type="file" id="profile-upload" accept="image/*">
+      </div>
       <div class="profile-info">
         <h2>Nombre del Usuario</h2>
         <p>Puntos: <span id="user-points">120</span></p>
-        <button class="cta-button">Añadir Amigos</button>
+        <p>Tu código de invitación: <strong id="invite-code">ABCD1234</strong></p>
+        <button id="invite-link" class="cta-button">Compartir Enlace de Invitación</button>
       </div>
     </div>
   </section>
@@ -48,6 +61,9 @@
     <h2>Publica algo nuevo</h2>
     <form id="post-form">
       <textarea id="post-content" placeholder="Escribe algo..." rows="3" required></textarea>
+      <label for="post-media" class="upload-label">
+        <i class="fa fa-camera"></i> Añadir fotos o videos
+      </label>
       <input type="file" id="post-media" accept="image/*, video/*" multiple>
       <button type="submit" class="cta-button">Publicar</button>
     </form>
@@ -61,13 +77,6 @@
     </section>
   </main>
 
-  <!-- Modal para ampliar imágenes -->
-  <div id="image-modal" class="hidden">
-    <span id="close-modal">&times;</span>
-    <img id="modal-image" alt="Imagen ampliada">
-  </div>
-
   <script src="muro-personal.js"></script>
 </body>
 </html>
-
