@@ -38,7 +38,7 @@
       <i class="fas fa-camera"></i> Cambiar portada
     </label>
     <input type="file" id="cover-upload" accept="image/*" hidden>
-    <img src="https://via.placeholder.com/1200x300" alt="Portada" class="cover-image" id="cover-image">
+    <img src="https://via.placeholder.com/1500x400" alt="Portada" class="cover-image" id="cover-image">
   </div>
 
   <!-- Perfil del Usuario -->
@@ -105,6 +105,39 @@
   </main>
 
   <!-- Scripts -->
-  <script src="muro-personal.js"></script>
+  <script>
+    // Ajuste dinámico para fotos de perfil y portada
+    const coverUpload = document.getElementById('cover-upload');
+    const coverImage = document.getElementById('cover-image');
+    const profileUpload = document.getElementById('profile-upload');
+    const profilePic = document.getElementById('profile-pic');
+
+    coverUpload.addEventListener('change', (event) => {
+      const file = event.target.files[0];
+      if (file) {
+        coverImage.src = URL.createObjectURL(file);
+      }
+    });
+
+    profileUpload.addEventListener('change', (event) => {
+      const file = event.target.files[0];
+      if (file) {
+        profilePic.src = URL.createObjectURL(file);
+      }
+    });
+
+    // Función de comentarios y "Me gusta"
+    document.querySelector('#user-posts').addEventListener('click', (e) => {
+      if (e.target.classList.contains('like-button')) {
+        const likeSpan = e.target.querySelector('span');
+        likeSpan.textContent = parseInt(likeSpan.textContent) + 1;
+      }
+
+      if (e.target.classList.contains('comment-button')) {
+        const commentInput = e.target.parentElement.nextElementSibling.querySelector('.comment-input');
+        commentInput.focus();
+      }
+    });
+  </script>
 </body>
 </html>
