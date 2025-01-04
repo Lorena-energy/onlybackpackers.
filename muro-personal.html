@@ -41,19 +41,27 @@
     </div>
     <div class="profile-header">
       <div class="profile-pic-container">
-        <img src="https://via.placeholder.com/100" alt="Foto de perfil" class="profile-pic">
+        <img src="https://via.placeholder.com/100" alt="Foto de perfil" id="profile-pic">
         <label for="profile-upload" class="profile-edit">
           <i class="fa fa-camera"></i>
         </label>
         <input type="file" id="profile-upload" accept="image/*">
       </div>
       <div class="profile-info">
-        <h2>Nombre del Usuario</h2>
+        <h2 id="username">Nombre del Usuario</h2>
         <p>Puntos: <span id="user-points">120</span></p>
         <p>Tu código de invitación: <strong id="invite-code">ABCD1234</strong></p>
         <button id="invite-link" class="cta-button">Compartir Enlace de Invitación</button>
       </div>
     </div>
+  </section>
+
+  <!-- Información adicional -->
+  <section class="user-details">
+    <h3>Detalles de tu perfil</h3>
+    <p><strong>Idiomas:</strong> Español, Inglés</p>
+    <p><strong>País:</strong> España</p>
+    <p><strong>Intereses:</strong> Senderismo, Fotografía, Cultura</p>
   </section>
 
   <!-- Formulario de Publicación -->
