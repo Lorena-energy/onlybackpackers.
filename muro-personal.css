@@ -1,19 +1,20 @@
 /* Fondo */
 body {
-  background: linear-gradient(to bottom right, #003366, #00bfff);
+  background: linear-gradient(to bottom right, #005f99, #00c8e0);
   font-family: 'Poppins', sans-serif;
   margin: 0;
+  color: white;
 }
 
 /* Foto de portada */
 .cover-photo {
   height: 200px;
   background: #0077cc;
-  position: relative;
   display: flex;
   align-items: flex-end;
   justify-content: center;
   color: white;
+  position: relative;
 }
 
 .cover-photo label {
@@ -57,7 +58,16 @@ body {
   cursor: pointer;
 }
 
-.profile-info {
+.profile-info h2 {
+  color: white;
+}
+
+/* Información adicional */
+.user-details {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px;
   color: white;
 }
 
