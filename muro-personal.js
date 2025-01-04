@@ -4,6 +4,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const inviteLinkButton = document.getElementById("invite-link");
   const postForm = document.getElementById("post-form");
   const userPostsContainer = document.getElementById("user-posts");
+  const profileUpload = document.getElementById("profile-upload");
+  const profilePic = document.getElementById("profile-pic");
+  const coverUpload = document.getElementById("cover-upload");
 
   let points = 120;
 
@@ -15,11 +18,21 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Agregar puntos
-  const addPoints = (amount) => {
-    points += amount;
-    userPoints.textContent = points;
-  };
+  // Subir foto de perfil
+  profileUpload.addEventListener("change", (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      profilePic.src = URL.createObjectURL(file);
+    }
+  });
+
+  // Subir foto de portada
+  coverUpload.addEventListener("change", (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      document.querySelector(".cover-photo").style.backgroundImage = `url(${URL.createObjectURL(file)})`;
+    }
+  });
 
   // Crear publicaciones
   postForm.addEventListener("submit", (e) => {
@@ -37,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
 
     userPostsContainer.prepend(post);
-    addPoints(10);
+    userPoints.textContent = (points += 10);
     postForm.reset();
   });
 });
