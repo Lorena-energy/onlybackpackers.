@@ -35,7 +35,7 @@
   <!-- Foto de Portada -->
   <div class="cover-photo" id="cover-photo">
     <label for="cover-upload" class="upload-label">
-      <i class="fas fa-camera"></i> Cambiar portada
+      <i class="fas fa-camera"></i>
     </label>
     <input type="file" id="cover-upload" accept="image/*" hidden>
     <img src="https://via.placeholder.com/1500x400" alt="Portada" class="cover-image" id="cover-image">
@@ -63,9 +63,9 @@
   <!-- Información adicional -->
   <aside class="user-details">
     <h3>Detalles del Usuario</h3>
-    <p><strong>Idiomas:</strong> <span id="user-languages">Español, Inglés</span></p>
-    <p><strong>País:</strong> <span id="user-country">España</span></p>
-    <p><strong>Intereses:</strong> <span id="user-interests">Senderismo, Fotografía, Cultura</span></p>
+    <p><strong>Idiomas:</strong> <input type="text" id="user-languages" placeholder="Añade tus idiomas"></p>
+    <p><strong>País:</strong> <input type="text" id="user-country" placeholder="Añade tu país"></p>
+    <p><strong>Intereses:</strong> <input type="text" id="user-interests" placeholder="Añade tus intereses"></p>
   </aside>
 
   <!-- Formulario de Publicación -->
@@ -85,82 +85,4 @@
   <main class="muro-personal">
     <section id="user-posts">
       <h2>Mis Publicaciones</h2>
-      <!-- Publicaciones dinámicas -->
-    </section>
-  </main>
-
-  <!-- Scripts -->
-  <script>
-    // Ajuste dinámico para fotos de perfil y portada
-    const coverUpload = document.getElementById('cover-upload');
-    const coverImage = document.getElementById('cover-image');
-    const profileUpload = document.getElementById('profile-upload');
-    const profilePic = document.getElementById('profile-pic');
-
-    coverUpload.addEventListener('change', (event) => {
-      const file = event.target.files[0];
-      if (file) {
-        coverImage.src = URL.createObjectURL(file);
-      }
-    });
-
-    profileUpload.addEventListener('change', (event) => {
-      const file = event.target.files[0];
-      if (file) {
-        profilePic.src = URL.createObjectURL(file);
-      }
-    });
-
-    // Función para publicar contenido
-    document.getElementById('post-form').addEventListener('submit', (event) => {
-      event.preventDefault();
-      const postContent = document.getElementById('post-content').value;
-      const postMedia = document.getElementById('post-media').files;
-      const userPosts = document.getElementById('user-posts');
-
-      const post = document.createElement('div');
-      post.classList.add('post');
-
-      let mediaContent = '';
-      for (let i = 0; i < postMedia.length; i++) {
-        mediaContent += `<img src="${URL.createObjectURL(postMedia[i])}" alt="Media">`;
-      }
-
-      post.innerHTML = `
-        <div class="post-header">
-          <h3>Tú</h3>
-          <span>Ahora</span>
-        </div>
-        <div class="post-content">
-          <p>${postContent}</p>
-          ${mediaContent}
-        </div>
-        <div class="post-actions">
-          <button class="like-button">👍 Me gusta <span>0</span></button>
-          <button class="comment-button">💬 Comentar</button>
-        </div>
-        <div class="comments">
-          <input type="text" class="comment-input" placeholder="Escribe un comentario...">
-        </div>
-      `;
-
-      userPosts.prepend(post);
-      document.getElementById('post-form').reset();
-    });
-
-    // Función de "Me gusta" y comentarios
-    document.getElementById('user-posts').addEventListener('click', (event) => {
-      if (event.target.classList.contains('like-button')) {
-        const likeCount = event.target.querySelector('span');
-        likeCount.textContent = parseInt(likeCount.textContent) + 1;
-      }
-
-      if (event.target.classList.contains('comment-button')) {
-        const commentInput = event.target.closest('.post').querySelector('.comment-input');
-        commentInput.focus();
-      }
-    });
-  </script>
-</body>
-</html>
-
+     
