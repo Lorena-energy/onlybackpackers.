@@ -25,6 +25,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // Ampliar y reducir tamaño de foto de perfil
+  profilePic.addEventListener("click", () => {
+    profilePic.classList.toggle("enlarged");
+  });
+
   // Crear publicaciones
   postForm.addEventListener("submit", (e) => {
     e.preventDefault();
