@@ -1,36 +1,27 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const userPoints = document.getElementById("user-points");
-  const inviteCode = document.getElementById("invite-code");
-  const postForm = document.getElementById("post-form");
-  const userPostsContainer = document.getElementById("user-posts");
-  const profileUpload = document.getElementById("profile-upload");
-  const profilePic = document.getElementById("profile-pic");
   const coverUpload = document.getElementById("cover-upload");
   const coverImage = document.getElementById("cover-image");
+  const profileUpload = document.getElementById("profile-upload");
+  const profilePic = document.getElementById("profile-pic");
+  const userPoints = document.getElementById("user-points");
+  const postForm = document.getElementById("post-form");
+  const userPosts = document.getElementById("user-posts");
 
   let points = 120;
 
-  // Generar enlace de invitación
-  document.getElementById("add-friend").addEventListener("click", () => {
-    const link = `${window.location.origin}/register.html?invite=${inviteCode.textContent}`;
-    navigator.clipboard.writeText(link).then(() => {
-      alert("¡Enlace de invitación copiado!");
-    });
-  });
-
-  // Subir foto de perfil
-  profileUpload.addEventListener("change", (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      profilePic.src = URL.createObjectURL(file);
-    }
-  });
-
-  // Subir foto de portada
+  // Cambiar foto de portada
   coverUpload.addEventListener("change", (e) => {
     const file = e.target.files[0];
     if (file) {
       coverImage.src = URL.createObjectURL(file);
+    }
+  });
+
+  // Cambiar foto de perfil
+  profileUpload.addEventListener("change", (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      profilePic.src = URL.createObjectURL(file);
     }
   });
 
@@ -44,10 +35,9 @@ document.addEventListener("DOMContentLoaded", () => {
     post.classList.add("post");
 
     let mediaContent = "";
-    for (let i = 0; i < mediaFiles.length; i++) {
-      const mediaType = mediaFiles[i].type.startsWith("image") ? "img" : "video";
-      mediaContent += `<${mediaType} src="${URL.createObjectURL(mediaFiles[i])}" controls></${mediaType}>`;
-    }
+    Array.from(mediaFiles).forEach((file) => {
+      mediaContent += `<img src="${URL.createObjectURL(file)}" alt="Media">`;
+    });
 
     post.innerHTML = `
       <div class="post-header">
@@ -67,13 +57,14 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
     `;
 
-    userPostsContainer.prepend(post);
-    userPoints.textContent = ++points;
+    userPosts.prepend(post);
+    points += 5;
+    userPoints.textContent = points;
     postForm.reset();
   });
 
-  // Función de "Me gusta" y comentarios
-  userPostsContainer.addEventListener("click", (e) => {
+  // "Me gusta" y comentarios
+  userPosts.addEventListener("click", (e) => {
     if (e.target.classList.contains("like-button")) {
       const likeCount = e.target.querySelector("span");
       likeCount.textContent = parseInt(likeCount.textContent) + 1;
@@ -82,6 +73,15 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.target.classList.contains("comment-button")) {
       const commentInput = e.target.closest(".post").querySelector(".comment-input");
       commentInput.focus();
+
+      commentInput.addEventListener("keypress", (event) => {
+        if (event.key === "Enter") {
+          const comment = document.createElement("p");
+          comment.textContent = commentInput.value;
+          e.target.closest(".comments").appendChild(comment);
+          commentInput.value = "";
+        }
+      });
     }
   });
 });
