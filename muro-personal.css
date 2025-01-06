@@ -1,4 +1,3 @@
-/* General */
 body {
   background: linear-gradient(to bottom right, #0077cc, #00c8e0);
   font-family: 'Poppins', sans-serif;
@@ -7,43 +6,6 @@ body {
   color: white;
 }
 
-/* Encabezado */
-.main-header {
-  background: #004f8c;
-  padding: 10px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.menu {
-  list-style: none;
-  display: flex;
-  gap: 15px;
-  padding: 0;
-}
-
-.menu li {
-  margin: 0;
-}
-
-.menu a {
-  text-decoration: none;
-  color: white;
-  padding: 8px 15px;
-  border-radius: 5px;
-}
-
-.menu a.active {
-  background: #ff6600;
-}
-
-.menu-toggle {
-  display: none;
-  cursor: pointer;
-}
-
-/* Foto de portada */
 .cover-photo {
   height: 300px;
   width: 100%;
@@ -63,17 +25,16 @@ body {
 
 .cover-photo label {
   cursor: pointer;
-  padding: 10px;
-  background: rgba(0, 0, 0, 0.6);
-  border-radius: 5px;
   position: absolute;
   bottom: 10px;
   left: 10px;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
 }
 
-/* Foto de perfil */
 .profile-pic-wrapper {
-  position: relative;
   text-align: center;
   margin-top: -50px;
 }
@@ -84,96 +45,10 @@ body {
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid white;
+  cursor: pointer;
   transition: transform 0.3s;
 }
 
-.profile-pic:hover {
-  transform: scale(1.2);
-}
-
-.upload-label {
-  position: absolute;
-  bottom: 5px;
-  right: 5px;
-  background: #ff6600;
-  color: white;
-  border-radius: 50%;
-  padding: 5px;
-  cursor: pointer;
-}
-
-/* Detalles del usuario */
-.user-details {
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 10px;
-  padding: 20px;
-  margin: 20px;
-  color: white;
-  float: left;
-  width: 25%;
-}
-
-/* Crear publicaciones */
-.create-post textarea {
-  width: 100%;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  padding: 10px;
-  margin-bottom: 10px;
-  font-family: 'Poppins', sans-serif;
-}
-
-.upload-label {
-  cursor: pointer;
-  color: #0077cc;
-}
-
-.upload-label i {
-  font-size: 1.5rem;
-}
-
-/* Botón */
-.cta-button {
-  background: #ff6600;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.cta-button:hover {
-  background: #cc5200;
-}
-
-/* Publicaciones */
-.muro-personal .post {
-  background-color: white;
-  color: #333;
-  border-radius: 10px;
-  padding: 20px;
-  margin: 20px 0;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.muro-personal .post img {
-  width: 100%;
-  height: auto;
-  border-radius: 5px;
-  margin-top: 10px;
-}
-
-.post-actions {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
-}
-
-.comment-input {
-  width: 100%;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  padding: 10px;
-  margin-top: 10px;
+.profile-pic.enlarged {
+  transform: scale(1.5);
 }
