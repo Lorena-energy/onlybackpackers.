@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lan
-g="es">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,7 +33,7 @@ g="es">
   </header>
 
   <!-- Foto de Portada -->
-  <div class="cover-photo">
+  <div class="cover-photo" id="cover-photo">
     <label for="cover-upload" class="upload-label">
       <i class="fas fa-camera"></i> Cambiar portada
     </label>
@@ -86,23 +85,7 @@ g="es">
   <main class="muro-personal">
     <section id="user-posts">
       <h2>Mis Publicaciones</h2>
-      <div class="post">
-        <div class="post-header">
-          <h3>Tú</h3>
-          <span>Hace un momento</span>
-        </div>
-        <div class="post-content">
-          <p>Esta es una publicación de prueba.</p>
-          <img src="https://via.placeholder.com/200" alt="Publicación">
-        </div>
-        <div class="post-actions">
-          <button class="like-button">👍 Me gusta <span>0</span></button>
-          <button class="comment-button">💬 Comentar</button>
-        </div>
-        <div class="comments">
-          <input type="text" class="comment-input" placeholder="Escribe un comentario...">
-        </div>
-      </div>
+      <!-- Publicaciones dinámicas -->
     </section>
   </main>
 
@@ -121,14 +104,6 @@ g="es">
       }
     });
 
-    profileUpload.addEventListener('click', () => {
-      if (profilePic.classList.contains('enlarged')) {
-        profilePic.classList.remove('enlarged');
-      } else {
-        profilePic.classList.add('enlarged');
-      }
-    });
-
     profileUpload.addEventListener('change', (event) => {
       const file = event.target.files[0];
       if (file) {
@@ -136,18 +111,56 @@ g="es">
       }
     });
 
-    // Función de comentarios y "Me gusta"
-    document.querySelector('#user-posts').addEventListener('click', (e) => {
-      if (e.target.classList.contains('like-button')) {
-        const likeSpan = e.target.querySelector('span');
-        likeSpan.textContent = parseInt(likeSpan.textContent) + 1;
+    // Función para publicar contenido
+    document.getElementById('post-form').addEventListener('submit', (event) => {
+      event.preventDefault();
+      const postContent = document.getElementById('post-content').value;
+      const postMedia = document.getElementById('post-media').files;
+      const userPosts = document.getElementById('user-posts');
+
+      const post = document.createElement('div');
+      post.classList.add('post');
+
+      let mediaContent = '';
+      for (let i = 0; i < postMedia.length; i++) {
+        mediaContent += `<img src="${URL.createObjectURL(postMedia[i])}" alt="Media">`;
       }
 
-      if (e.target.classList.contains('comment-button')) {
-        const commentInput = e.target.parentElement.nextElementSibling.querySelector('.comment-input');
+      post.innerHTML = `
+        <div class="post-header">
+          <h3>Tú</h3>
+          <span>Ahora</span>
+        </div>
+        <div class="post-content">
+          <p>${postContent}</p>
+          ${mediaContent}
+        </div>
+        <div class="post-actions">
+          <button class="like-button">👍 Me gusta <span>0</span></button>
+          <button class="comment-button">💬 Comentar</button>
+        </div>
+        <div class="comments">
+          <input type="text" class="comment-input" placeholder="Escribe un comentario...">
+        </div>
+      `;
+
+      userPosts.prepend(post);
+      document.getElementById('post-form').reset();
+    });
+
+    // Función de "Me gusta" y comentarios
+    document.getElementById('user-posts').addEventListener('click', (event) => {
+      if (event.target.classList.contains('like-button')) {
+        const likeCount = event.target.querySelector('span');
+        likeCount.textContent = parseInt(likeCount.textContent) + 1;
+      }
+
+      if (event.target.classList.contains('comment-button')) {
+        const commentInput = event.target.closest('.post').querySelector('.comment-input');
         commentInput.focus();
       }
     });
   </script>
 </body>
 </html>
+
