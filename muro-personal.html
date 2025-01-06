@@ -35,7 +35,7 @@
   <!-- Foto de Portada -->
   <div class="cover-photo" id="cover-photo">
     <label for="cover-upload" class="upload-label">
-      <i class="fas fa-camera"></i>
+      <i class="fas fa-camera"></i> Cambiar portada
     </label>
     <input type="file" id="cover-upload" accept="image/*" hidden>
     <img src="https://via.placeholder.com/1500x400" alt="Portada" class="cover-image" id="cover-image">
@@ -60,29 +60,14 @@
     </div>
   </section>
 
-  <!-- Información adicional -->
-  <aside class="user-details">
-    <h3>Detalles del Usuario</h3>
-    <p><strong>Idiomas:</strong> <input type="text" id="user-languages" placeholder="Añade tus idiomas"></p>
-    <p><strong>País:</strong> <input type="text" id="user-country" placeholder="Añade tu país"></p>
-    <p><strong>Intereses:</strong> <input type="text" id="user-interests" placeholder="Añade tus intereses"></p>
-  </aside>
-
-  <!-- Formulario de Publicación -->
-  <section class="create-post">
-    <h2>Publica algo nuevo</h2>
-    <form id="post-form">
-      <textarea id="post-content" placeholder="Escribe algo..." rows="3" required></textarea>
-      <label for="post-media" class="upload-label">
-        <i class="fas fa-camera"></i> Subir fotos/videos
-      </label>
-      <input type="file" id="post-media" accept="image/*, video/*" multiple hidden>
-      <button type="submit" class="cta-button">Publicar</button>
-    </form>
-  </section>
-
   <!-- Publicaciones -->
   <main class="muro-personal">
     <section id="user-posts">
       <h2>Mis Publicaciones</h2>
-     
+      <!-- Publicaciones dinámicas -->
+    </section>
+  </main>
+
+  <script src="muro-personal.js"></script>
+</body>
+</html>
