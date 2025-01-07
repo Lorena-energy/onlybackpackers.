@@ -50,12 +50,12 @@ body {
 .cover-photo {
   height: 300px;
   width: 100%;
-  background: #0077cc;
   position: relative;
   display: flex;
   align-items: flex-end;
   justify-content: center;
   overflow: hidden;
+  background: none;
 }
 
 .cover-photo img {
@@ -66,12 +66,20 @@ body {
 
 .cover-photo label {
   cursor: pointer;
-  padding: 10px;
-  background: rgba(0, 0, 0, 0.6);
+  padding: 10px 15px;
+  background: #ff6600;
   border-radius: 5px;
   position: absolute;
   bottom: 10px;
   left: 10px;
+  color: white;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.cover-photo label i {
+  margin-right: 5px;
 }
 
 /* Foto de perfil */
@@ -96,13 +104,20 @@ body {
 
 .upload-label {
   position: absolute;
-  bottom: 5px;
-  right: 5px;
+  bottom: -5px;
+  right: -5px;
   background: #ff6600;
   color: white;
   border-radius: 50%;
-  padding: 5px;
+  padding: 8px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.upload-label i {
+  font-size: 16px;
 }
 
 /* Detalles del usuario */
@@ -114,6 +129,7 @@ body {
   color: white;
   float: left;
   width: 25%;
+  margin-right: 30px; /* Espaciado entre detalles y publicaciones */
 }
 
 .user-details label {
@@ -131,6 +147,10 @@ body {
 }
 
 /* Crear publicaciones */
+.create-post {
+  margin-bottom: 30px;
+}
+
 .create-post textarea {
   width: 100%;
   border: 1px solid #ddd;
@@ -140,13 +160,18 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
-.upload-label {
+.create-post .upload-label {
   cursor: pointer;
-  color: #0077cc;
+  color: white;
+  background: #ff6600;
+  padding: 8px 15px;
+  border-radius: 5px;
+  display: inline-block;
+  font-size: 14px;
 }
 
-.upload-label i {
-  font-size: 1.5rem;
+.create-post .upload-label i {
+  margin-right: 5px;
 }
 
 /* Botón */
