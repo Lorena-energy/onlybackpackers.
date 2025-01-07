@@ -7,6 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="muro-personal.css">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <!-- Encabezado -->
@@ -32,19 +33,19 @@
   </header>
 
   <!-- Foto de Portada -->
-  <div class="cover-photo">
+  <div class="cover-photo" id="cover-photo">
     <label for="cover-upload" class="upload-label">
       <i class="fas fa-camera"></i> Cambiar portada
     </label>
     <input type="file" id="cover-upload" accept="image/*" hidden>
-    <img src="https://via.placeholder.com/1500x400" alt="Portada" id="cover-image">
+    <img src="https://via.placeholder.com/1500x400" alt="Portada" class="cover-image" id="cover-image">
   </div>
 
-  <!-- Foto de Perfil -->
+  <!-- Perfil del Usuario -->
   <section class="profile-section">
     <div class="profile-container">
       <div class="profile-pic-wrapper">
-        <img src="https://via.placeholder.com/150" alt="Foto de perfil" id="profile-pic" class="profile-pic">
+        <img src="https://via.placeholder.com/150" alt="Foto de perfil" class="profile-pic" id="profile-pic">
         <label for="profile-upload" class="upload-label">
           <i class="fas fa-camera"></i>
         </label>
@@ -52,29 +53,32 @@
       </div>
       <div class="profile-info">
         <h2 id="username">Nombre del Usuario</h2>
-        <p>Puntos: <span id="user-points">120</span></p>
-        <button class="cta-button">Agregar amigo/a</button>
+        <p>Puntos: <span id="user-points">125</span></p>
+        <button id="add-friend" class="cta-button">Agregar amigo/a</button>
+        <p><strong>Código de invitación:</strong> <span id="invite-code">ABCD1234</span></p>
       </div>
     </div>
   </section>
 
-  <!-- Formulario para detalles -->
+  <!-- Información adicional -->
   <aside class="user-details">
+    <h3>Detalles del Usuario</h3>
     <form id="details-form">
-      <label>Idiomas:</label>
-      <input type="text" id="user-languages" placeholder="Idiomas">
-      <label>País:</label>
-      <input type="text" id="user-country" placeholder="País">
-      <label>Intereses:</label>
-      <input type="text" id="user-interests" placeholder="Intereses">
+      <label for="user-interests">Intereses:</label>
+      <input type="text" id="user-interests" placeholder="Escribe tus intereses...">
+      <label for="user-country">País:</label>
+      <input type="text" id="user-country" placeholder="Escribe tu país...">
+      <label for="user-languages">Idiomas:</label>
+      <input type="text" id="user-languages" placeholder="Escribe tus idiomas...">
       <button type="submit" class="cta-button">Guardar</button>
     </form>
   </aside>
 
-  <!-- Publicaciones -->
+  <!-- Formulario de Publicación -->
   <section class="create-post">
+    <h2>Publica algo nuevo</h2>
     <form id="post-form">
-      <textarea id="post-content" placeholder="Escribe algo..." required></textarea>
+      <textarea id="post-content" placeholder="Escribe algo..." rows="3" required></textarea>
       <label for="post-media" class="upload-label">
         <i class="fas fa-camera"></i> Subir fotos/videos
       </label>
@@ -83,12 +87,12 @@
     </form>
   </section>
 
+  <!-- Publicaciones -->
   <main class="muro-personal">
     <section id="user-posts">
       <h2>Mis Publicaciones</h2>
+      <!-- Publicaciones dinámicas -->
     </section>
   </main>
-
-  <script src="muro-personal.js"></script>
 </body>
 </html>
