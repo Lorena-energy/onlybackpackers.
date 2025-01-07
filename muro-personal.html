@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OnlyBackpackers - Mi Muro</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="muro-personal.css">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <!-- Encabezado -->
@@ -26,54 +26,62 @@
         <li><a href="eventos.html">Eventos</a></li>
         <li><a href="worldtrip.html">Worldtrip</a></li>
         <li><a href="recompensas.html">Recompensas</a></li>
-        <li><a href="expenses.html">Gastos</a></li>
       </ul>
     </nav>
   </header>
 
   <!-- Foto de Portada -->
   <div class="cover-photo">
+    <label for="cover-upload" class="upload-label">
+      <i class="fas fa-camera"></i>
+    </label>
     <input type="file" id="cover-upload" accept="image/*" hidden>
-    <img src="https://via.placeholder.com/1500x400" alt="Portada" id="cover-image" class="cover-image">
-    <label for="cover-upload" class="upload-label">📷 Cambiar portada</label>
+    <img src="https://via.placeholder.com/1500x400" alt="Portada" id="cover-image">
   </div>
 
   <!-- Perfil del Usuario -->
   <section class="profile-section">
     <div class="profile-container">
       <div class="profile-pic-wrapper">
-        <img src="https://via.placeholder.com/150" alt="Foto de perfil" id="profile-pic" class="profile-pic">
-        <label for="profile-upload" class="upload-label">📷</label>
+        <img src="https://via.placeholder.com/150" alt="Foto de perfil" id="profile-pic">
+        <label for="profile-upload" class="upload-label">
+          <i class="fas fa-camera"></i>
+        </label>
         <input type="file" id="profile-upload" accept="image/*" hidden>
       </div>
       <div class="profile-info">
         <h2 id="username">Nombre del Usuario</h2>
         <p>Puntos: <span id="user-points">120</span></p>
-        <p><strong>Código de invitación:</strong> <span id="invite-code">ABCD1234</span></p>
       </div>
     </div>
   </section>
 
-  <!-- Formulario de Publicación -->
+  <!-- Detalles del Usuario -->
+  <aside class="user-details">
+    <h3>Detalles del Usuario</h3>
+    <p><strong>Idiomas:</strong> <input type="text" id="user-languages"></p>
+    <p><strong>País:</strong> <input type="text" id="user-country"></p>
+    <p><strong>Intereses:</strong> <input type="text" id="user-interests"></p>
+  </aside>
+
+  <!-- Crear Publicaciones -->
   <section class="create-post">
     <h2>Publica algo nuevo</h2>
     <form id="post-form">
       <textarea id="post-content" placeholder="Escribe algo..." rows="3" required></textarea>
-      <label for="post-media" class="upload-label">📷 Subir fotos/videos</label>
+      <label for="post-media" class="upload-label">
+        <i class="fas fa-camera"></i>
+      </label>
       <input type="file" id="post-media" accept="image/*, video/*" multiple hidden>
       <button type="submit" class="cta-button">Publicar</button>
     </form>
   </section>
 
   <!-- Publicaciones -->
-  <main class="muro-personal">
-    <section id="user-posts">
-      <h2>Mis Publicaciones</h2>
-      <!-- Aquí se generarán dinámicamente las publicaciones -->
-    </section>
-  </main>
+  <section id="user-posts">
+    <h2>Mis Publicaciones</h2>
+  </section>
 
-  <!-- Scripts -->
   <script src="muro-personal.js"></script>
 </body>
 </html>
