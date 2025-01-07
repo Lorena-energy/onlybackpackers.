@@ -14,6 +14,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .menu {
@@ -79,8 +82,8 @@ body {
 }
 
 .profile-pic {
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid white;
@@ -111,6 +114,20 @@ body {
   color: white;
   float: left;
   width: 25%;
+}
+
+.user-details label {
+  display: block;
+  margin: 10px 0 5px;
+}
+
+.user-details input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-family: 'Poppins', sans-serif;
 }
 
 /* Crear publicaciones */
@@ -178,18 +195,33 @@ body {
   margin-top: 10px;
 }
 
-/* Responsive */
+/* Responsive Design */
 @media (max-width: 768px) {
-  .main-header {
+  .menu {
+    display: none;
     flex-direction: column;
+    background: #004f8c;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 20px 0;
   }
 
-  .menu {
-    flex-direction: column;
-    align-items: center;
+  .menu-toggle {
+    display: block;
+  }
+
+  .menu-toggle.active + .menu {
+    display: flex;
   }
 
   .user-details {
+    width: 100%;
+    margin: 0;
+  }
+
+  .muro-personal {
     width: 100%;
   }
 }
