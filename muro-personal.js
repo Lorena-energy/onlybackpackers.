@@ -21,6 +21,8 @@ coverUpload?.addEventListener("change", (event) => {
       coverImage.src = e.target.result;
     };
     reader.readAsDataURL(file);
+  } else {
+    alert("No se pudo cargar la imagen de portada.");
   }
 });
 
@@ -35,6 +37,8 @@ profileUpload?.addEventListener("change", (event) => {
       profilePic.src = e.target.result;
     };
     reader.readAsDataURL(file);
+  } else {
+    alert("No se pudo cargar la foto de perfil.");
   }
 });
 
@@ -117,9 +121,11 @@ document.getElementById("user-posts")?.addEventListener("click", (event) => {
 // Código de invitación
 const inviteCode = document.getElementById("invite-code");
 document.getElementById("copy-invite-link")?.addEventListener("click", () => {
-  const link = `${window.location.origin}/register.html?invite=${inviteCode.textContent}`;
+  const link = `https://lorena-energy.github.io/onlybackpackers./login-register.html?invite=${inviteCode.textContent}`;
   navigator.clipboard.writeText(link).then(() => {
     alert("¡Enlace de invitación copiado!");
+  }).catch(() => {
+    alert("No se pudo copiar el enlace de invitación.");
   });
 });
 
