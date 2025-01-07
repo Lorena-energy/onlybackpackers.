@@ -12,7 +12,11 @@ const coverImage = document.getElementById("cover-image");
 coverUpload.addEventListener("change", (event) => {
   const file = event.target.files[0];
   if (file) {
-    coverImage.src = URL.createObjectURL(file);
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      coverImage.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
   }
 });
 
@@ -22,7 +26,11 @@ const profilePic = document.getElementById("profile-pic");
 profileUpload.addEventListener("change", (event) => {
   const file = event.target.files[0];
   if (file) {
-    profilePic.src = URL.createObjectURL(file);
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      profilePic.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
   }
 });
 
@@ -31,36 +39,6 @@ profilePic.addEventListener("click", () => {
     profilePic.classList.remove("enlarged");
   } else {
     profilePic.classList.add("enlarged");
-  }
-});
-
-// Código de invitación
-const inviteCode = document.getElementById("invite-code");
-const inviteLinkButton = document.getElementById("invite-link");
-if (inviteLinkButton) {
-  inviteLinkButton.addEventListener("click", () => {
-    const link = `${window.location.origin}/register.html?invite=${inviteCode.textContent}`;
-    navigator.clipboard.writeText(link).then(() => {
-      alert("¡Enlace de invitación copiado!");
-    });
-  });
-}
-
-// Incrementar puntos al registrar un usuario nuevo
-document.addEventListener("DOMContentLoaded", () => {
-  const urlParams = new URLSearchParams(window.location.search);
-  const inviteParam = urlParams.get("invite");
-
-  if (inviteParam) {
-    // Simular la adición de puntos (en un entorno real, esto sería manejado por el servidor)
-    const userPoints = document.getElementById("user-points");
-    let points = parseInt(userPoints.textContent) || 0;
-
-    points += 100; // Sumar puntos por registro usando el código de invitación
-    userPoints.textContent = points;
-
-    // Notificar al usuario que los puntos han sido actualizados
-    alert("¡Registro exitoso! Se han sumado 100 puntos.");
   }
 });
 
