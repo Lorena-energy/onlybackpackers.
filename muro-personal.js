@@ -34,14 +34,6 @@ profileUpload.addEventListener("change", (event) => {
   }
 });
 
-profilePic.addEventListener("click", () => {
-  if (profilePic.classList.contains("enlarged")) {
-    profilePic.classList.remove("enlarged");
-  } else {
-    profilePic.classList.add("enlarged");
-  }
-});
-
 // Publicaciones
 document.getElementById("post-form").addEventListener("submit", (event) => {
   event.preventDefault();
@@ -89,7 +81,7 @@ document.getElementById("post-form").addEventListener("submit", (event) => {
   document.getElementById("post-form").reset();
 });
 
-// Función de "Me gusta" y comentarios
+// Funcionalidades de "Me gusta" y comentarios
 document.getElementById("user-posts").addEventListener("click", (event) => {
   if (event.target.classList.contains("like-button")) {
     const likeCount = event.target.querySelector("span");
@@ -113,15 +105,12 @@ document.getElementById("user-posts").addEventListener("click", (event) => {
 
 // Código de invitación
 const inviteCode = document.getElementById("invite-code");
-const inviteLinkButton = document.getElementById("invite-link");
-if (inviteLinkButton) {
-  inviteLinkButton.addEventListener("click", () => {
-    const link = `${window.location.origin}/register.html?invite=${inviteCode.textContent}`;
-    navigator.clipboard.writeText(link).then(() => {
-      alert("¡Enlace de invitación copiado!");
-    });
+document.getElementById("copy-invite-link").addEventListener("click", () => {
+  const link = `${window.location.origin}/register.html?invite=${inviteCode.textContent}`;
+  navigator.clipboard.writeText(link).then(() => {
+    alert("¡Enlace de invitación copiado!");
   });
-}
+});
 
 // Guardar detalles del usuario
 document.querySelectorAll(".user-details input").forEach((input) => {
