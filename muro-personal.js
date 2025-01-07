@@ -29,6 +29,8 @@ coverUpload?.addEventListener("change", (event) => {
 // Foto de perfil
 const profileUpload = document.getElementById("profile-upload");
 const profilePic = document.getElementById("profile-pic");
+const profileIcon = document.getElementById("profile-icon");
+
 profileUpload?.addEventListener("change", (event) => {
   const file = event.target.files[0];
   if (file) {
@@ -40,6 +42,10 @@ profileUpload?.addEventListener("change", (event) => {
   } else {
     alert("No se pudo cargar la foto de perfil.");
   }
+});
+
+profileIcon?.addEventListener("click", () => {
+  profileUpload.click();
 });
 
 // Publicaciones con soporte para fotos y videos
@@ -94,6 +100,11 @@ document.getElementById("post-form")?.addEventListener("submit", (event) => {
   points += 5;
   userPoints.textContent = points;
   document.getElementById("post-form").reset();
+});
+
+// Botón para subir fotos/videos en publicaciones
+document.getElementById("post-media-button")?.addEventListener("click", () => {
+  document.getElementById("post-media").click();
 });
 
 // Funcionalidades de "Me gusta" y comentarios
