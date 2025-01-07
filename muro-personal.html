@@ -5,9 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OnlyBackpackers - Mi Muro</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="muro-personal.css">
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <!-- Encabezado -->
@@ -27,7 +25,6 @@
         <li><a href="eventos.html">Eventos</a></li>
         <li><a href="worldtrip.html">Worldtrip</a></li>
         <li><a href="recompensas.html">Recompensas</a></li>
-        <li><a href="expenses.html">Gastos</a></li>
       </ul>
     </nav>
   </header>
@@ -38,28 +35,27 @@
       <i class="fas fa-camera"></i> Cambiar portada
     </label>
     <input type="file" id="cover-upload" accept="image/*" hidden>
-    <img src="https://via.placeholder.com/1500x400" alt="Portada" id="cover-image">
+    <img src="https://via.placeholder.com/1500x400" alt="Portada" class="cover-image" id="cover-image">
   </div>
 
   <!-- Perfil del Usuario -->
   <section class="profile-section">
     <div class="profile-container">
       <div class="profile-pic-wrapper">
-        <img src="https://via.placeholder.com/150" alt="Foto de perfil" id="profile-pic">
+        <img src="https://via.placeholder.com/150" alt="Foto de perfil" class="profile-pic" id="profile-pic">
         <label for="profile-upload" class="upload-label">
           <i class="fas fa-camera"></i>
         </label>
         <input type="file" id="profile-upload" accept="image/*" hidden>
       </div>
       <div class="profile-info">
-        <h2>Nombre del Usuario</h2>
+        <h2 id="username">Nombre del Usuario</h2>
         <p>Puntos: <span id="user-points">120</span></p>
-        <button class="cta-button">Agregar amigo/a</button>
       </div>
     </div>
   </section>
 
-  <!-- Publicaciones -->
+  <!-- Formulario de Publicación -->
   <section class="create-post">
     <h2>Publica algo nuevo</h2>
     <form id="post-form">
@@ -72,13 +68,14 @@
     </form>
   </section>
 
-  <!-- Sección de Publicaciones -->
+  <!-- Publicaciones -->
   <main class="muro-personal">
     <section id="user-posts">
       <h2>Mis Publicaciones</h2>
     </section>
   </main>
 
+  <!-- Scripts -->
   <script src="muro-personal.js"></script>
 </body>
 </html>
