@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let mediaContent = "";
     Array.from(mediaFiles).forEach((file) => {
-      mediaContent += `<img src="${URL.createObjectURL(file)}" alt="Media">`;
+      mediaContent += `<img src="${URL.createObjectURL(file)}" alt="Media" class="post-media">`;
     });
 
     post.innerHTML = `
