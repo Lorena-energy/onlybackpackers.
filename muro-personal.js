@@ -34,6 +34,36 @@ profilePic.addEventListener("click", () => {
   }
 });
 
+// Código de invitación
+const inviteCode = document.getElementById("invite-code");
+const inviteLinkButton = document.getElementById("invite-link");
+if (inviteLinkButton) {
+  inviteLinkButton.addEventListener("click", () => {
+    const link = `${window.location.origin}/register.html?invite=${inviteCode.textContent}`;
+    navigator.clipboard.writeText(link).then(() => {
+      alert("¡Enlace de invitación copiado!");
+    });
+  });
+}
+
+// Incrementar puntos al registrar un usuario nuevo
+document.addEventListener("DOMContentLoaded", () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const inviteParam = urlParams.get("invite");
+
+  if (inviteParam) {
+    // Simular la adición de puntos (en un entorno real, esto sería manejado por el servidor)
+    const userPoints = document.getElementById("user-points");
+    let points = parseInt(userPoints.textContent) || 0;
+
+    points += 100; // Sumar puntos por registro usando el código de invitación
+    userPoints.textContent = points;
+
+    // Notificar al usuario que los puntos han sido actualizados
+    alert("¡Registro exitoso! Se han sumado 100 puntos.");
+  }
+});
+
 // Publicaciones
 document.getElementById("post-form").addEventListener("submit", (event) => {
   event.preventDefault();
@@ -91,6 +121,15 @@ document.getElementById("user-posts").addEventListener("click", (event) => {
   if (event.target.classList.contains("comment-button")) {
     const commentInput = event.target.closest(".post").querySelector(".comment-input");
     commentInput.focus();
+
+    commentInput.addEventListener("keypress", (e) => {
+      if (e.key === "Enter" && commentInput.value.trim() !== "") {
+        const commentText = document.createElement("p");
+        commentText.textContent = commentInput.value;
+        commentInput.value = "";
+        commentInput.parentNode.insertBefore(commentText, commentInput);
+      }
+    });
   }
 });
 
