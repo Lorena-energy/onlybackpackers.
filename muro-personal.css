@@ -1,22 +1,59 @@
-/* Fondo */
+/* General */
 body {
-  background: linear-gradient(to bottom right, #0077cc, #00c8e0);
   font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
+  color: #333;
+  background: linear-gradient(to bottom right, #0077cc, #00bfff);
+}
+
+/* Encabezado */
+.main-header {
+  background: #004f8c;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  padding: 0;
+}
+
+.menu li {
+  margin: 0;
+}
+
+.menu a {
+  text-decoration: none;
   color: white;
+  padding: 8px 15px;
+  border-radius: 5px;
+}
+
+.menu a.active {
+  background: #ff6600;
+}
+
+.menu-toggle {
+  display: none;
+  cursor: pointer;
+}
+
+.menu.active {
+  display: block;
 }
 
 /* Foto de portada */
 .cover-photo {
-  height: 300px;
-  width: 100%;
-  background: #0077cc;
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
+  height: 300px;
   overflow: hidden;
+  background: #004f8c;
 }
 
 .cover-photo img {
@@ -28,41 +65,65 @@ body {
 .cover-photo label {
   position: absolute;
   bottom: 10px;
-  right: 10px;
-  background: #ff6600;
+  left: 10px;
+  padding: 5px 10px;
+  background: rgba(0, 0, 0, 0.6);
   color: white;
-  padding: 10px;
-  border-radius: 50%;
+  border-radius: 5px;
   cursor: pointer;
 }
 
 /* Foto de perfil */
 .profile-pic-wrapper {
   position: relative;
-  text-align: center;
   margin-top: -50px;
+  text-align: center;
 }
 
 .profile-pic {
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
-  object-fit: cover;
   border: 3px solid white;
-  transition: transform 0.3s;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
-.profile-pic:hover {
-  transform: scale(1.2);
+.profile-pic.enlarged {
+  transform: scale(1.5);
+}
+
+.profile-pic-wrapper label {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  background: #ff6600;
+  padding: 5px;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+}
+
+/* Información adicional */
+.user-details {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px;
+  color: white;
+}
+
+.user-details h3 {
+  margin-bottom: 15px;
 }
 
 /* Crear publicaciones */
 .create-post {
-  background: white;
   padding: 20px;
+  background: white;
   border-radius: 10px;
   margin: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .create-post textarea {
@@ -70,19 +131,16 @@ body {
   border: 1px solid #ddd;
   border-radius: 10px;
   padding: 10px;
-  font-family: 'Poppins', sans-serif;
+  margin-bottom: 10px;
+  resize: none;
 }
 
-.upload-label {
+.create-post label {
   cursor: pointer;
   color: #0077cc;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 10px;
 }
 
-.cta-button {
+.create-post .cta-button {
   background: #ff6600;
   color: white;
   padding: 10px 20px;
@@ -92,28 +150,60 @@ body {
   transition: background 0.3s;
 }
 
-.cta-button:hover {
+.create-post .cta-button:hover {
   background: #cc5200;
 }
 
 /* Publicaciones */
-.muro-personal .post {
+.post {
   background: white;
-  color: #333;
   padding: 20px;
-  margin: 20px 0;
   border-radius: 10px;
+  margin: 20px 0;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.muro-personal .post img {
+.post-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.post-content img {
   width: 100%;
   height: auto;
-  border-radius: 5px;
+  border-radius: 10px;
+  margin-top: 10px;
 }
 
 .post-actions {
   display: flex;
-  justify-content: space-between;
+  gap: 10px;
   margin-top: 10px;
+}
+
+.post-actions button {
+  background: #f1f1f1;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.post-actions button:hover {
+  background: #ddd;
+}
+
+/* Comentarios */
+.comments {
+  margin-top: 10px;
+}
+
+.comment-input {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 10px;
+  font-family: 'Poppins', sans-serif;
 }
