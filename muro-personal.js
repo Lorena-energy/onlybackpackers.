@@ -1,117 +1,119 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const coverUpload = document.getElementById("cover-upload");
-  const coverImage = document.getElementById("cover-image");
-  const profileUpload = document.getElementById("profile-upload");
-  const profilePic = document.getElementById("profile-pic");
-  const userPoints = document.getElementById("user-points");
-  const postForm = document.getElementById("post-form");
-  const userPosts = document.getElementById("user-posts");
-  const detailsForm = document.getElementById("details-form");
+// JavaScript - Muro Personal
 
-  let points = 120;
-
-  // Cambiar foto de portada
-  coverUpload.addEventListener("change", (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      coverImage.src = URL.createObjectURL(file);
-    }
-  });
-
-  // Cambiar foto de perfil desde el círculo
-  profileUpload.addEventListener("change", (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      profilePic.src = URL.createObjectURL(file);
-    }
-  });
-
-  // Ampliar y reducir tamaño de foto de perfil
-  profilePic.addEventListener("click", () => {
-    profilePic.classList.toggle("enlarged");
-  });
-
-  // Crear publicaciones
-  postForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const content = document.getElementById("post-content").value;
-    const mediaFiles = document.getElementById("post-media").files;
-
-    const post = document.createElement("div");
-    post.classList.add("post");
-
-    let mediaContent = "";
-    Array.from(mediaFiles).forEach((file) => {
-      mediaContent += `<img src="${URL.createObjectURL(file)}" alt="Media" class="post-media">`;
-    });
-
-    post.innerHTML = `
-      <div class="post-header">
-        <h3>Tú</h3>
-        <span>Ahora</span>
-      </div>
-      <div class="post-content">
-        <p>${content}</p>
-        ${mediaContent}
-      </div>
-      <div class="post-actions">
-        <button class="like-button">👍 Me gusta <span>0</span></button>
-        <button class="comment-button">💬 Comentar</button>
-      </div>
-      <div class="comments">
-        <input type="text" class="comment-input" placeholder="Escribe un comentario...">
-      </div>
-    `;
-
-    userPosts.prepend(post);
-    points += 5;
-    userPoints.textContent = points;
-    postForm.reset();
-  });
-
-  // "Me gusta" y comentarios
-  userPosts.addEventListener("click", (e) => {
-    if (e.target.classList.contains("like-button")) {
-      const likeCount = e.target.querySelector("span");
-      likeCount.textContent = parseInt(likeCount.textContent) + 1;
-    }
-
-    if (e.target.classList.contains("comment-button")) {
-      const commentInput = e.target.closest(".post").querySelector(".comment-input");
-      commentInput.focus();
-
-      commentInput.addEventListener("keypress", (event) => {
-        if (event.key === "Enter" && commentInput.value.trim() !== "") {
-          const comment = document.createElement("p");
-          comment.textContent = commentInput.value;
-          e.target.closest(".comments").appendChild(comment);
-          commentInput.value = "";
-        }
-      });
-    }
-  });
-
-  // Guardar detalles del usuario
-  detailsForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const interests = document.getElementById("user-interests").value;
-    const country = document.getElementById("user-country").value;
-    const languages = document.getElementById("user-languages").value;
-
-    document.querySelector("#display-interests").textContent = interests;
-    document.querySelector("#display-country").textContent = country;
-    document.querySelector("#display-languages").textContent = languages;
-  });
-
-  // Responsive menú hamburguesa
-  const menuToggle = document.getElementById("menu-toggle");
+// Menú responsive
+document.getElementById("menu-toggle").addEventListener("click", () => {
   const menu = document.getElementById("menu");
+  menu.classList.toggle("active");
+});
 
-  menuToggle.addEventListener("click", () => {
-    menu.classList.toggle("active");
+// Foto de portada
+const coverUpload = document.getElementById("cover-upload");
+const coverImage = document.getElementById("cover-image");
+coverUpload.addEventListener("change", (event) => {
+  const file = event.target.files[0];
+  if (file) {
+    coverImage.src = URL.createObjectURL(file);
+  }
+});
+
+// Foto de perfil
+const profileUpload = document.getElementById("profile-upload");
+const profilePic = document.getElementById("profile-pic");
+profileUpload.addEventListener("change", (event) => {
+  const file = event.target.files[0];
+  if (file) {
+    profilePic.src = URL.createObjectURL(file);
+  }
+});
+
+profilePic.addEventListener("click", () => {
+  if (profilePic.classList.contains("enlarged")) {
+    profilePic.classList.remove("enlarged");
+  } else {
+    profilePic.classList.add("enlarged");
+  }
+});
+
+// Publicaciones
+document.getElementById("post-form").addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const content = document.getElementById("post-content").value;
+  const mediaFiles = document.getElementById("post-media").files;
+  const userPosts = document.getElementById("user-posts");
+  const userPoints = document.getElementById("user-points");
+
+  let points = parseInt(userPoints.textContent);
+
+  const post = document.createElement("div");
+  post.classList.add("post");
+
+  let mediaContent = "";
+  Array.from(mediaFiles).forEach((file) => {
+    const media = document.createElement("img");
+    media.src = URL.createObjectURL(file);
+    media.alt = "Media";
+    mediaContent += media.outerHTML;
   });
 
-  menu.addEventListener("click", () => {
-    menu.classList.remove("active");
+  post.innerHTML = `
+    <div class="post-header">
+      <h3>Tú</h3>
+      <span>Hace un momento</span>
+    </div>
+    <div class="post-content">
+      <p>${content}</p>
+      ${mediaContent}
+    </div>
+    <div class="post-actions">
+      <button class="like-button">👍 Me gusta <span>0</span></button>
+      <button class="comment-button">💬 Comentar</button>
+    </div>
+    <div class="comments">
+      <input type="text" class="comment-input" placeholder="Escribe un comentario...">
+    </div>
+  `;
+
+  userPosts.prepend(post);
+
+  points += 5;
+  userPoints.textContent = points;
+  document.getElementById("post-form").reset();
+});
+
+// Función de "Me gusta" y comentarios
+document.getElementById("user-posts").addEventListener("click", (event) => {
+  if (event.target.classList.contains("like-button")) {
+    const likeCount = event.target.querySelector("span");
+    likeCount.textContent = parseInt(likeCount.textContent) + 1;
+  }
+
+  if (event.target.classList.contains("comment-button")) {
+    const commentInput = event.target.closest(".post").querySelector(".comment-input");
+    commentInput.focus();
+  }
+});
+
+// Código de invitación
+const inviteCode = document.getElementById("invite-code");
+const inviteLinkButton = document.getElementById("invite-link");
+if (inviteLinkButton) {
+  inviteLinkButton.addEventListener("click", () => {
+    const link = `${window.location.origin}/register.html?invite=${inviteCode.textContent}`;
+    navigator.clipboard.writeText(link).then(() => {
+      alert("¡Enlace de invitación copiado!");
+    });
   });
+}
+
+// Guardar detalles del usuario
+document.querySelectorAll(".user-details input").forEach((input) => {
+  input.addEventListener("change", () => {
+    localStorage.setItem(input.id, input.value);
+  });
+
+  const savedValue = localStorage.getItem(input.id);
+  if (savedValue) {
+    input.value = savedValue;
+  }
 });
