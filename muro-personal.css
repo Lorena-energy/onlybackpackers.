@@ -1,4 +1,4 @@
-/* General */
+/* Fondo */
 body {
   background: linear-gradient(to bottom right, #0077cc, #00c8e0);
   font-family: 'Poppins', sans-serif;
@@ -7,40 +7,14 @@ body {
   color: white;
 }
 
-.main-header {
-  background: #004f8c;
-  padding: 10px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.menu {
-  list-style: none;
-  display: flex;
-  gap: 15px;
-  padding: 0;
-}
-
-.menu li a {
-  text-decoration: none;
-  color: white;
-  padding: 10px;
-  border-radius: 5px;
-}
-
-.menu li a.active {
-  background: #ff6600;
-}
-
-/* Foto de Portada */
+/* Foto de portada */
 .cover-photo {
   height: 300px;
   width: 100%;
   background: #0077cc;
   position: relative;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
   overflow: hidden;
 }
@@ -51,7 +25,18 @@ body {
   object-fit: cover;
 }
 
-/* Foto de Perfil */
+.cover-photo label {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: #ff6600;
+  color: white;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Foto de perfil */
 .profile-pic-wrapper {
   position: relative;
   text-align: center;
@@ -64,46 +49,71 @@ body {
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid white;
-  cursor: pointer;
-}
-
-.profile-pic.enlarged {
-  width: 150px;
-  height: 150px;
   transition: transform 0.3s;
 }
 
-/* Publicaciones */
+.profile-pic:hover {
+  transform: scale(1.2);
+}
+
+/* Crear publicaciones */
+.create-post {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 .create-post textarea {
   width: 100%;
-  border: none;
+  border: 1px solid #ddd;
   border-radius: 10px;
   padding: 10px;
-  margin-bottom: 10px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.upload-label {
+  cursor: pointer;
+  color: #0077cc;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
 }
 
 .cta-button {
   background: #ff6600;
   color: white;
+  padding: 10px 20px;
   border: none;
-  padding: 10px 15px;
   border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
 }
 
-.post {
+.cta-button:hover {
+  background: #cc5200;
+}
+
+/* Publicaciones */
+.muro-personal .post {
   background: white;
   color: #333;
-  margin: 15px;
-  padding: 15px;
+  padding: 20px;
+  margin: 20px 0;
   border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.post img {
+.muro-personal .post img {
   width: 100%;
+  height: auto;
   border-radius: 5px;
 }
 
-.comment-input {
-  width: 100%;
+.post-actions {
+  display: flex;
+  justify-content: space-between;
   margin-top: 10px;
 }
