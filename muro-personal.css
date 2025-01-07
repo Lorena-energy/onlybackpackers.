@@ -86,7 +86,7 @@ body {
 .profile-pic-wrapper {
   position: relative;
   text-align: center;
-  margin-top: -50px;
+  margin-top: -60px;
 }
 
 .profile-pic {
@@ -129,7 +129,7 @@ body {
   color: white;
   float: left;
   width: 25%;
-  margin-right: 30px; /* Espaciado entre detalles y publicaciones */
+  margin-right: 40px; /* Ajuste de espaciado */
 }
 
 .user-details label {
@@ -168,6 +168,7 @@ body {
   border-radius: 5px;
   display: inline-block;
   font-size: 14px;
+  margin-left: 10px;
 }
 
 .create-post .upload-label i {
