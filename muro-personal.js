@@ -1,15 +1,19 @@
 // JavaScript - Muro Personal
 
 // Menú responsive
-document.getElementById("menu-toggle").addEventListener("click", () => {
+document.getElementById("menu-toggle")?.addEventListener("click", () => {
   const menu = document.getElementById("menu");
-  menu.classList.toggle("active");
+  if (menu) {
+    menu.classList.toggle("active");
+  } else {
+    console.error("Menu element not found.");
+  }
 });
 
 // Foto de portada
 const coverUpload = document.getElementById("cover-upload");
 const coverImage = document.getElementById("cover-image");
-coverUpload.addEventListener("change", (event) => {
+coverUpload?.addEventListener("change", (event) => {
   const file = event.target.files[0];
   if (file) {
     const reader = new FileReader();
@@ -23,7 +27,7 @@ coverUpload.addEventListener("change", (event) => {
 // Foto de perfil
 const profileUpload = document.getElementById("profile-upload");
 const profilePic = document.getElementById("profile-pic");
-profileUpload.addEventListener("change", (event) => {
+profileUpload?.addEventListener("change", (event) => {
   const file = event.target.files[0];
   if (file) {
     const reader = new FileReader();
@@ -34,14 +38,19 @@ profileUpload.addEventListener("change", (event) => {
   }
 });
 
-// Publicaciones
-document.getElementById("post-form").addEventListener("submit", (event) => {
+// Publicaciones con soporte para fotos y videos
+document.getElementById("post-form")?.addEventListener("submit", (event) => {
   event.preventDefault();
 
   const content = document.getElementById("post-content").value;
   const mediaFiles = document.getElementById("post-media").files;
   const userPosts = document.getElementById("user-posts");
   const userPoints = document.getElementById("user-points");
+
+  if (!content.trim() && mediaFiles.length === 0) {
+    alert("Por favor, escribe algo o sube una imagen/video.");
+    return;
+  }
 
   let points = parseInt(userPoints.textContent);
 
@@ -50,9 +59,11 @@ document.getElementById("post-form").addEventListener("submit", (event) => {
 
   let mediaContent = "";
   Array.from(mediaFiles).forEach((file) => {
-    const media = document.createElement("img");
+    const media = document.createElement(file.type.startsWith("video") ? "video" : "img");
     media.src = URL.createObjectURL(file);
+    media.controls = file.type.startsWith("video");
     media.alt = "Media";
+    media.classList.add("post-media");
     mediaContent += media.outerHTML;
   });
 
@@ -63,7 +74,7 @@ document.getElementById("post-form").addEventListener("submit", (event) => {
     </div>
     <div class="post-content">
       <p>${content}</p>
-      ${mediaContent}
+      <div class="media-container">${mediaContent}</div>
     </div>
     <div class="post-actions">
       <button class="like-button">👍 Me gusta <span>0</span></button>
@@ -82,7 +93,7 @@ document.getElementById("post-form").addEventListener("submit", (event) => {
 });
 
 // Funcionalidades de "Me gusta" y comentarios
-document.getElementById("user-posts").addEventListener("click", (event) => {
+document.getElementById("user-posts")?.addEventListener("click", (event) => {
   if (event.target.classList.contains("like-button")) {
     const likeCount = event.target.querySelector("span");
     likeCount.textContent = parseInt(likeCount.textContent) + 1;
@@ -105,7 +116,7 @@ document.getElementById("user-posts").addEventListener("click", (event) => {
 
 // Código de invitación
 const inviteCode = document.getElementById("invite-code");
-document.getElementById("copy-invite-link").addEventListener("click", () => {
+document.getElementById("copy-invite-link")?.addEventListener("click", () => {
   const link = `${window.location.origin}/register.html?invite=${inviteCode.textContent}`;
   navigator.clipboard.writeText(link).then(() => {
     alert("¡Enlace de invitación copiado!");
