@@ -6,10 +6,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const userPoints = document.getElementById("user-points");
   const postForm = document.getElementById("post-form");
   const userPosts = document.getElementById("user-posts");
+  const detailsForm = document.getElementById("details-form");
 
   let points = 120;
 
-  // Cambiar portada
+  // Cambiar foto de portada
   coverUpload.addEventListener("change", (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -17,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Cambiar foto de perfil
+  // Cambiar foto de perfil desde el círculo
   profileUpload.addEventListener("change", (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -25,10 +26,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Publicar contenido
+  // Ampliar y reducir tamaño de foto de perfil
+  profilePic.addEventListener("click", () => {
+    profilePic.classList.toggle("enlarged");
+  });
+
+  // Crear publicaciones
   postForm.addEventListener("submit", (e) => {
     e.preventDefault();
-
     const content = document.getElementById("post-content").value;
     const mediaFiles = document.getElementById("post-media").files;
 
@@ -37,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let mediaContent = "";
     Array.from(mediaFiles).forEach((file) => {
-      mediaContent += `<img src="${URL.createObjectURL(file)}" alt="Media">`;
+      mediaContent += `<img src="${URL.createObjectURL(file)}" alt="Media" class="post-media">`;
     });
 
     post.innerHTML = `
@@ -64,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
     postForm.reset();
   });
 
-  // Funcionalidades de "Me gusta" y comentarios
+  // "Me gusta" y comentarios
   userPosts.addEventListener("click", (e) => {
     if (e.target.classList.contains("like-button")) {
       const likeCount = e.target.querySelector("span");
@@ -74,6 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.target.classList.contains("comment-button")) {
       const commentInput = e.target.closest(".post").querySelector(".comment-input");
       commentInput.focus();
+
       commentInput.addEventListener("keypress", (event) => {
         if (event.key === "Enter" && commentInput.value.trim() !== "") {
           const comment = document.createElement("p");
@@ -83,5 +89,29 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
     }
+  });
+
+  // Guardar detalles del usuario
+  detailsForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const interests = document.getElementById("user-interests").value;
+    const country = document.getElementById("user-country").value;
+    const languages = document.getElementById("user-languages").value;
+
+    document.querySelector("#display-interests").textContent = interests;
+    document.querySelector("#display-country").textContent = country;
+    document.querySelector("#display-languages").textContent = languages;
+  });
+
+  // Responsive menú hamburguesa
+  const menuToggle = document.getElementById("menu-toggle");
+  const menu = document.getElementById("menu");
+
+  menuToggle.addEventListener("click", () => {
+    menu.classList.toggle("active");
+  });
+
+  menu.addEventListener("click", () => {
+    menu.classList.remove("active");
   });
 });
