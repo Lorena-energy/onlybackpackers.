@@ -1,3 +1,4 @@
+/* General */
 body {
   background: linear-gradient(to bottom right, #0077cc, #00c8e0);
   font-family: 'Poppins', sans-serif;
@@ -6,6 +7,33 @@ body {
   color: white;
 }
 
+.main-header {
+  background: #004f8c;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  padding: 0;
+}
+
+.menu li a {
+  text-decoration: none;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.menu li a.active {
+  background: #ff6600;
+}
+
+/* Foto de Portada */
 .cover-photo {
   height: 300px;
   width: 100%;
@@ -23,18 +51,9 @@ body {
   object-fit: cover;
 }
 
-.cover-photo label {
-  cursor: pointer;
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  background: rgba(0, 0, 0, 0.6);
-  color: white;
-  padding: 10px;
-  border-radius: 5px;
-}
-
+/* Foto de Perfil */
 .profile-pic-wrapper {
+  position: relative;
   text-align: center;
   margin-top: -50px;
 }
@@ -46,9 +65,45 @@ body {
   object-fit: cover;
   border: 3px solid white;
   cursor: pointer;
-  transition: transform 0.3s;
 }
 
 .profile-pic.enlarged {
-  transform: scale(1.5);
+  width: 150px;
+  height: 150px;
+  transition: transform 0.3s;
+}
+
+/* Publicaciones */
+.create-post textarea {
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.cta-button {
+  background: #ff6600;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+}
+
+.post {
+  background: white;
+  color: #333;
+  margin: 15px;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.post img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.comment-input {
+  width: 100%;
+  margin-top: 10px;
 }
