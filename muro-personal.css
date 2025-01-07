@@ -129,7 +129,7 @@ body {
   color: white;
   float: left;
   width: 25%;
-  margin-right: 40px; /* Ajuste de espaciado */
+  margin-right: 50px; /* Incrementar espaciado entre detalles y publicaciones */
 }
 
 .user-details label {
@@ -169,6 +169,9 @@ body {
   display: inline-block;
   font-size: 14px;
   margin-left: 10px;
+  position: relative;
+  float: left;
+  margin-top: 10px;
 }
 
 .create-post .upload-label i {
@@ -178,6 +181,7 @@ body {
 .create-post .cta-button {
   margin-top: 10px;
   display: inline-block;
+  float: right;
 }
 
 /* Botón */
