@@ -123,3 +123,16 @@ document.querySelectorAll(".user-details input").forEach((input) => {
     input.value = savedValue;
   }
 });
+
+// Botón para limpiar detalles del usuario
+const resetDetailsButton = document.createElement("button");
+resetDetailsButton.textContent = "Resetear Detalles";
+resetDetailsButton.classList.add("cta-button");
+resetDetailsButton.addEventListener("click", () => {
+  document.querySelectorAll(".user-details input").forEach((input) => {
+    input.value = "";
+    localStorage.removeItem(input.id);
+  });
+  alert("Detalles del usuario reseteados.");
+});
+document.querySelector(".user-details")?.appendChild(resetDetailsButton);
