@@ -53,7 +53,7 @@
       </div>
       <div class="profile-info">
         <h2 id="username">Nombre del Usuario</h2>
-        <p>Puntos: <span id="user-points">125</span></p>
+        <p>Puntos: <span id="user-points">120</span></p>
         <button id="add-friend" class="cta-button">Agregar amigo/a</button>
         <p><strong>Código de invitación:</strong> <span id="invite-code">ABCD1234</span></p>
       </div>
@@ -66,10 +66,22 @@
     <form id="details-form">
       <label for="user-interests">Intereses:</label>
       <input type="text" id="user-interests" placeholder="Escribe tus intereses...">
+
       <label for="user-country">País:</label>
       <input type="text" id="user-country" placeholder="Escribe tu país...">
+
       <label for="user-languages">Idiomas:</label>
-      <input type="text" id="user-languages" placeholder="Escribe tus idiomas...">
+      <input type="text" id="user-languages" placeholder="Escribe los idiomas que hablas...">
+
+      <label for="user-preferred-destinations">Destinos preferidos:</label>
+      <input type="text" id="user-preferred-destinations" placeholder="Escribe tus destinos preferidos...">
+
+      <label for="user-next-destinations">Próximos destinos:</label>
+      <input type="text" id="user-next-destinations" placeholder="Escribe tus próximos destinos...">
+
+      <label for="user-favorite-destination">Destino que más te ha gustado:</label>
+      <input type="text" id="user-favorite-destination" placeholder="Escribe tu destino favorito...">
+
       <button type="submit" class="cta-button">Guardar</button>
     </form>
   </aside>
@@ -94,5 +106,8 @@
       <!-- Publicaciones dinámicas -->
     </section>
   </main>
+
+  <!-- Scripts -->
+  <script src="muro-personal.js"></script>
 </body>
 </html>
