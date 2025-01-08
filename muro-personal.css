@@ -89,11 +89,12 @@ body {
   position: relative;
   text-align: center;
   margin-top: -60px;
+  left: -30%; /* Mover la foto de perfil a la izquierda */
 }
 
 .profile-pic {
-  width: 120px;
-  height: 120px;
+  width: 150px; /* Incrementar tamaño de la foto de perfil */
+  height: 150px;
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid white;
@@ -204,7 +205,7 @@ body {
 
 /* Publicaciones */
 .muro-personal {
-  margin-left: 30%; /* Separar publicaciones de la barra lateral izquierda */
+  margin-left: 35%; /* Separar publicaciones de la barra lateral izquierda */
 }
 
 .muro-personal .post {
