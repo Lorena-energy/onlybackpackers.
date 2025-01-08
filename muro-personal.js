@@ -62,6 +62,74 @@ document.getElementById("post-form")?.addEventListener("submit", (event) => {
     return;
   }
 
+  // Publicaciones con soporte para fotos y videos
+document.getElementById("post-form")?.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const content = document.getElementById("post-content").value;
+  const mediaFiles = document.getElementById("post-media").files;
+  const userPosts = document.getElementById("user-posts");
+  const userPoints = document.getElementById("user-points");
+
+  if (!content.trim() && mediaFiles.length === 0) {
+    alert("Por favor, escribe algo o sube una imagen/video.");
+    return;
+  }
+
+  let points = parseInt(userPoints.textContent);
+
+  // Crear una nueva publicación
+  const post = document.createElement("div");
+  post.classList.add("post");
+
+  // Miniatura de la foto de perfil
+  const profileThumbnail = `
+    <img class="profile-thumbnail" src="${document.getElementById('profile-pic').src}" alt="Foto de perfil">
+  `;
+
+  // Contenido multimedia
+  let mediaContent = "";
+  Array.from(mediaFiles).forEach((file) => {
+    const media = document.createElement(file.type.startsWith("video") ? "video" : "img");
+    media.src = URL.createObjectURL(file);
+    media.controls = file.type.startsWith("video");
+    media.alt = "Media";
+    media.classList.add("post-media");
+    mediaContent += media.outerHTML;
+  });
+
+  // Construcción de la publicación
+  post.innerHTML = `
+    <div class="post-header">
+      ${profileThumbnail}
+      <div>
+        <h3>Tú</h3>
+        <span>Hace un momento</span>
+      </div>
+    </div>
+    <div class="post-content">
+      <p>${content}</p>
+      <div class="media-container">${mediaContent}</div>
+    </div>
+    <div class="post-actions">
+      <button class="like-button">👍 Me gusta <span>0</span></button>
+      <button class="comment-button">💬 Comentar</button>
+    </div>
+    <div class="comments">
+      <input type="text" class="comment-input" placeholder="Escribe un comentario...">
+    </div>
+  `;
+
+  userPosts.prepend(post);
+
+  // Incrementar los puntos del usuario
+  points += 5;
+  userPoints.textContent = points;
+
+  // Reiniciar el formulario
+  document.getElementById("post-form").reset();
+});
+
   let points = parseInt(userPoints.textContent);
 
   const post = document.createElement("div");
