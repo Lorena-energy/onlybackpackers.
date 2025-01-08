@@ -196,7 +196,7 @@ body {
 
 /* Publicaciones */
 .muro-personal {
-  margin-left: 32%; /* Separar publicaciones de la barra lateral izquierda */
+  margin-left: 35%; /* Ajustar separación entre publicaciones y barra lateral */
 }
 
 .muro-personal .post {
@@ -206,6 +206,20 @@ body {
   padding: 20px;
   margin: 20px 0;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.muro-personal .post img.profile-thumbnail {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.muro-personal .post .post-content {
+  flex-grow: 1;
 }
 
 .muro-personal .post img {
