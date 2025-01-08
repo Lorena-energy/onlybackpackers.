@@ -196,7 +196,7 @@ body {
 
 /* Publicaciones */
 .muro-personal {
-  margin-left: 35%; /* Ajustar separación entre publicaciones y barra lateral */
+  margin-left: 30%; /* Ajustar separación entre publicaciones y barra lateral */
 }
 
 .muro-personal .post {
@@ -207,7 +207,7 @@ body {
   margin: 20px 0;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: flex;
-  gap: 10px;
+  gap: 15px; /* Espaciado entre la miniatura y el contenido */
   align-items: flex-start;
 }
 
@@ -227,6 +227,13 @@ body {
   height: auto;
   border-radius: 5px;
   margin-top: 10px;
+}
+
+.muro-personal .post .media-container img {
+  margin: 5px;
+  border-radius: 5px;
+  width: calc(100% / 3 - 10px); /* Permitir hasta 3 imágenes por fila */
+  height: auto;
 }
 
 .post-actions {
