@@ -52,10 +52,10 @@ body {
   width: 100%;
   position: relative;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: transparent; /* Eliminamos la franja gris */
+  background: transparent;
 }
 
 .cover-photo img {
@@ -77,6 +77,7 @@ body {
   font-size: 14px;
   display: flex;
   align-items: center;
+  z-index: 10;
 }
 
 .cover-photo label i {
@@ -97,16 +98,22 @@ body {
   object-fit: cover;
   border: 3px solid white;
   transition: transform 0.3s;
+  background-color: #ddd;
 }
 
-.profile-pic:hover {
-  transform: scale(1.2);
+.profile-pic-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: -60px;
+  z-index: 10;
 }
 
-.upload-label {
+.profile-pic-wrapper .upload-label {
   position: absolute;
-  bottom: 0;
-  right: 0;
+  bottom: 10px;
+  right: calc(50% - 40px);
   background: #ff6600;
   color: white;
   border-radius: 50%;
@@ -115,10 +122,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.upload-label i {
-  font-size: 16px;
+  z-index: 20;
 }
 
 /* Detalles del usuario */
@@ -130,7 +134,7 @@ body {
   color: white;
   float: left;
   width: 25%;
-  margin-right: 50px; /* Incrementar espaciado entre detalles y publicaciones */
+  margin-right: 70px; /* Incrementar espaciado entre detalles y publicaciones */
 }
 
 .user-details label {
@@ -199,6 +203,10 @@ body {
 }
 
 /* Publicaciones */
+.muro-personal {
+  margin-left: 30%; /* Separar publicaciones de la barra lateral izquierda */
+}
+
 .muro-personal .post {
   background-color: white;
   color: #333;
@@ -256,6 +264,7 @@ body {
   }
 
   .muro-personal {
+    margin-left: 0;
     width: 100%;
   }
 }
