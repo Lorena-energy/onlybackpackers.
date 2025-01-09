@@ -29,9 +29,27 @@
         <li><a href="recompensas.html">Recompensas</a></li>
         <li><a href="expenses.html">Gastos</a></li>
       </ul>
-      <button class="user-details-toggle">
-  <i class="fas fa-user"></i>
-</button>
+      
+      <!-- Botón flotante -->
+    <button class="user-details-toggle" aria-label="Detalles del usuario">
+      <i class="fas fa-user"></i>
+    </button>
+  </nav>
+</header>
+
+<!-- Contenedor desplegable de detalles -->
+<div class="user-details">
+  <h3>Detalles del Usuario</h3>
+  <form id="details-form">
+    <label for="user-interests">Intereses:</label>
+    <input type="text" id="user-interests" placeholder="Escribe tus intereses...">
+    <label for="user-country">País:</label>
+    <input type="text" id="user-country" placeholder="Escribe tu país...">
+    <label for="user-languages">Idiomas:</label>
+    <input type="text" id="user-languages" placeholder="Escribe los idiomas que hablas...">
+    <button type="submit" class="cta-button">Guardar</button>
+  </form>
+</div>
 
     </nav>
   </header>
