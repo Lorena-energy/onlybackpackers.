@@ -50,7 +50,7 @@ body {
 .user-details-toggle {
   position: fixed;
   top: 15px;
-  right: 60px;
+  right: 15px;
   background: #ff6600;
   color: white;
   border: none;
@@ -74,16 +74,15 @@ body {
   position: fixed;
   top: 0;
   right: 0;
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 0.95);
   color: white;
-  width: 100%;
-  max-width: 300px;
+  width: 300px;
   height: 100%;
-  overflow-y: auto;
   transform: translateX(100%);
   transition: transform 0.3s ease-in-out;
   z-index: 99;
   padding: 20px;
+  overflow-y: auto;
 }
 
 .user-details.open {
@@ -149,13 +148,13 @@ body {
 .profile-pic-wrapper {
   position: absolute;
   top: 240px;
-  right: 10%; /* Mover la foto de perfil a la derecha */
+  right: 10%;
   text-align: center;
   z-index: 20;
 }
 
 .profile-pic {
-  width: 180px; /* Incrementar tamaño de la foto de perfil */
+  width: 180px;
   height: 180px;
   border-radius: 50%;
   object-fit: cover;
@@ -232,7 +231,7 @@ body {
 
 /* Publicaciones */
 .muro-personal {
-  margin-left: 30%; /* Ajustar separación entre publicaciones y barra lateral */
+  margin-left: 20%;
 }
 
 .muro-personal .post {
@@ -243,7 +242,7 @@ body {
   margin: 20px 0;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: flex;
-  gap: 15px; /* Espaciado entre la miniatura y el contenido */
+  gap: 15px;
   align-items: flex-start;
 }
 
@@ -268,7 +267,7 @@ body {
 .muro-personal .post .media-container img {
   margin: 5px;
   border-radius: 5px;
-  width: calc(100% / 3 - 10px); /* Permitir hasta 3 imágenes por fila */
+  width: calc(100% / 3 - 10px);
   height: auto;
 }
 
@@ -316,41 +315,4 @@ body {
     margin-left: 0;
     width: 100%;
   }
-}
-
-.user-details-toggle {
-  position: fixed;
-  top: 15px;
-  right: 15px; /* Asegura que esté alineado correctamente */
-  background: #ff6600;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 100;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.user-details {
-  position: fixed;
-  top: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 0.95);
-  color: white;
-  width: 300px;
-  height: 100%;
-  transform: translateX(100%);
-  transition: transform 0.3s ease-in-out;
-  z-index: 99;
-  padding: 20px;
-  overflow-y: auto;
-}
-
-.user-details.open {
-  transform: translateX(0);
 }
