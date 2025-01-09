@@ -231,7 +231,8 @@ body {
 
 /* Publicaciones */
 .muro-personal {
-  margin-left: 20%;
+  margin-left: 25%; /* Ajustar margen izquierdo */
+  margin-right: 5%; /* Añadir margen derecho para equilibrio visual */
 }
 
 .muro-personal .post {
@@ -316,3 +317,4 @@ body {
     width: 100%;
   }
 }
+
