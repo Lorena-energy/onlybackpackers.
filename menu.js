@@ -112,3 +112,13 @@ const menu = document.getElementById("menu");
 menuToggle.addEventListener("click", () => {
   menu.classList.toggle("active");
 });
+
+// Botón flotante para detalles del usuario
+const userDetailsToggle = document.querySelector('.user-details-toggle');
+const userDetailsPanel = document.querySelector('.user-details');
+
+if (userDetailsToggle && userDetailsPanel) {
+  userDetailsToggle.addEventListener('click', () => {
+    userDetailsPanel.classList.toggle('open');
+  });
+}
