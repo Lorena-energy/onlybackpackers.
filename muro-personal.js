@@ -232,3 +232,12 @@ resetDetailsButton.addEventListener("click", () => {
   alert("Detalles del usuario reseteados.");
 });
 document.querySelector(".user-details")?.appendChild(resetDetailsButton);
+
+const userDetailsToggle = document.querySelector('.user-details-toggle');
+const userDetailsPanel = document.querySelector('.user-details');
+
+if (userDetailsToggle && userDetailsPanel) {
+  userDetailsToggle.addEventListener('click', () => {
+    userDetailsPanel.classList.toggle('open');
+  });
+}
