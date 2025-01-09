@@ -46,6 +46,68 @@ body {
   cursor: pointer;
 }
 
+/* Botón flotante para detalles del usuario */
+.user-details-toggle {
+  position: fixed;
+  top: 15px;
+  right: 60px;
+  background: #ff6600;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 100;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.user-details-toggle i {
+  font-size: 20px;
+}
+
+/* Contenedor desplegable de detalles del usuario */
+.user-details {
+  position: fixed;
+  top: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  width: 100%;
+  max-width: 300px;
+  height: 100%;
+  overflow-y: auto;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 99;
+  padding: 20px;
+}
+
+.user-details.open {
+  transform: translateX(0);
+}
+
+.user-details h3 {
+  margin-top: 0;
+}
+
+.user-details label {
+  display: block;
+  margin: 10px 0 5px;
+}
+
+.user-details input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-family: 'Poppins', sans-serif;
+}
+
 /* Foto de portada */
 .cover-photo {
   height: 300px;
@@ -115,32 +177,6 @@ body {
   align-items: center;
   justify-content: center;
   z-index: 20;
-}
-
-/* Detalles del usuario */
-.user-details {
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 10px;
-  padding: 20px;
-  margin: 20px;
-  color: white;
-  float: left;
-  width: 25%;
-  margin-right: 70px; /* Incrementar espaciado entre detalles y publicaciones */
-}
-
-.user-details label {
-  display: block;
-  margin: 10px 0 5px;
-}
-
-.user-details input {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  margin-bottom: 10px;
-  font-family: 'Poppins', sans-serif;
 }
 
 /* Crear publicaciones */
@@ -274,14 +310,6 @@ body {
   .user-details {
     width: 100%;
     margin: 0;
-    position: fixed;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.8);
-    z-index: 50;
-    padding: 10px;
-    color: white;
-    overflow-y: auto;
-    max-height: 50%;
   }
 
   .muro-personal {
