@@ -3,17 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>OnlyBackpackers - Mi Muro</title>
-
-  <!-- Fuente Poppins -->
+  <title>OnlyBackpackers - Mi Muro (Con ajuste para móvil)</title>
+  
+  <!-- Fuentes y estilos -->
   <link
     href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
     rel="stylesheet"
   />
-  <!-- Hoja de estilos principal -->
   <link rel="stylesheet" href="muro-personal.css" />
 
-  <!-- Iconos FontAwesome -->
   <script
     src="https://kit.fontawesome.com/a076d05399.js"
     crossorigin="anonymous"
@@ -41,8 +39,7 @@
         <li><a href="recompensas.html">Recompensas</a></li>
         <li><a href="expenses.html">Gastos</a></li>
       </ul>
-
-      <!-- Botón flotante (oval) para Detalles de Usuario -->
+      <!-- Botón flotante de detalles -->
       <button class="user-details-toggle" aria-label="Detalles del usuario">
         <i class="fas fa-user"></i>
         <span id="user-details-btn-text">Detalles del usuario</span>
@@ -50,54 +47,16 @@
     </nav>
   </header>
 
-  <!-- Panel desplegable de usuario -->
+  <!-- Panel de usuario -->
   <div class="user-details">
     <h3>Detalles del Usuario</h3>
     <form id="details-form">
+      <!-- Tus campos (p.ej. “Sobre mí”, “Intereses”, etc.) -->
       <label for="user-about">Sobre mí:</label>
       <textarea id="user-about" placeholder="Escribe algo sobre ti..."></textarea>
 
-      <label for="user-interests">Intereses:</label>
-      <input
-        type="text"
-        id="user-interests"
-        placeholder="Ej: senderismo, gastronomía..."
-      />
-
-      <label for="user-fav-destinations">Destinos favoritos:</label>
-      <input
-        type="text"
-        id="user-fav-destinations"
-        placeholder="Ej: Bali, México..."
-      />
-
-      <label for="user-fav-route">Tu ruta preferida:</label>
-      <input
-        type="text"
-        id="user-fav-route"
-        placeholder="Ej: Camino de Santiago..."
-      />
-
       <label for="user-country">País:</label>
-      <input
-        type="text"
-        id="user-country"
-        placeholder="Ej: España..."
-      />
-
-      <label for="user-languages">Idiomas:</label>
-      <input
-        type="text"
-        id="user-languages"
-        placeholder="Ej: español, inglés..."
-      />
-
-      <label for="user-travel-style">Forma preferida de viajar:</label>
-      <input
-        type="text"
-        id="user-travel-style"
-        placeholder="Ej: mochilero, hotel..."
-      />
+      <input type="text" id="user-country" placeholder="Ej: España..." />
 
       <button type="submit" class="cta-button">Guardar</button>
     </form>
@@ -109,7 +68,6 @@
       <i class="fas fa-camera"></i> Cambiar portada
     </label>
     <input type="file" id="cover-upload" accept="image/*" hidden />
-    <!-- Al hacer clic en esta imagen, también se amplía -->
     <img
       src="https://via.placeholder.com/1500x400"
       alt="Portada"
@@ -118,18 +76,18 @@
     />
   </div>
 
-  <!-- Perfil del Usuario -->
+  <!-- Perfil de Usuario -->
   <section class="profile-section">
     <div class="profile-container">
       <div class="profile-pic-wrapper">
-        <!-- También se amplía esta foto al hacer clic -->
+        <!-- Foto de perfil -->
         <img
           src="https://via.placeholder.com/150"
           alt="Foto de perfil"
           class="profile-pic"
           id="profile-pic"
         />
-        <!-- Ícono cámara para cambiar foto -->
+        <!-- Ícono de cámara en la esquina inferior derecha -->
         <label for="profile-upload" class="upload-label upload-label-profile">
           <i class="fas fa-camera"></i>
         </label>
@@ -140,13 +98,8 @@
         <p>Puntos: <span id="user-points">125</span></p>
         <button id="add-friend" class="cta-button">Agregar amigo/a</button>
 
-        <p>
-          <strong>Código de invitación:</strong>
-          <span id="invite-code">ABCD1234</span>
-        </p>
-        <button id="copy-invite-link" class="cta-button">
-          Copiar enlace de invitación
-        </button>
+        <p><strong>Código de invitación:</strong> <span id="invite-code">ABCD1234</span></p>
+        <button id="copy-invite-link" class="cta-button">Copiar enlace de invitación</button>
       </div>
     </div>
   </section>
@@ -161,13 +114,7 @@
         rows="3"
         required
       ></textarea>
-
-      <!-- Botón de emojis para la publicación -->
-      <button type="button" class="emoji-toggle-post">😀</button>
-      <div class="emoji-panel-post" style="display: none;">
-        <span>😀</span><span>😁</span><span>🤣</span><span>❤️</span><span>🥰</span>
-      </div>
-
+      <!-- Subir fotos/videos -->
       <label for="post-media" class="upload-label">
         <i class="fas fa-camera"></i> Subir fotos/videos
       </label>
@@ -178,13 +125,6 @@
         multiple
         hidden
       />
-
-      <!-- Checkbox para publicar en la comunidad, si lo usas luego -->
-      <div class="post-visibility">
-        <input type="checkbox" id="post-community" />
-        <label for="post-community">Publicar también en la comunidad</label>
-      </div>
-
       <button type="submit" class="cta-button">Publicar</button>
     </form>
   </section>
@@ -197,13 +137,13 @@
     </section>
   </main>
 
-  <!-- Modal para ver imágenes ampliadas -->
+  <!-- Modal para fotos ampliadas -->
   <div id="image-modal" class="image-modal" style="display: none;">
     <span id="close-modal" class="close-modal">&times;</span>
     <img id="modal-image" class="modal-image" alt="Imagen ampliada" />
   </div>
 
-  <!-- Script principal -->
+  <!-- Script -->
   <script src="muro-personal.js"></script>
 </body>
 </html>
