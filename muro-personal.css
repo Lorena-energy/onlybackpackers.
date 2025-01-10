@@ -1,10 +1,10 @@
-/* ================ REGLAS GENERALES ================ */
+/* ============ REGLAS GENERALES ============ */
 body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
-  color: white;
   background: linear-gradient(to bottom right, #0077cc, #00c8e0);
+  color: white;
 }
 .cta-button {
   background: #ff6600;
@@ -56,7 +56,7 @@ body {
   background-color: white;
 }
 
-/* BOTÓN FLOTANTE */
+/* BOTÓN FLOTANTE DETALLES */
 .user-details-toggle {
   position: fixed;
   top: 15px;
@@ -74,7 +74,7 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* PANEL DE USUARIO */
+/* PANEL DETALLES */
 .user-details {
   position: fixed;
   top: 0;
@@ -93,7 +93,7 @@ body {
   transform: translateX(0);
 }
 
-/* FOTO DE PORTADA */
+/* PORTADA */
 .cover-photo {
   height: 300px;
   width: 100%;
@@ -107,7 +107,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  cursor: pointer; /* Ampliar al hacer click */
+  cursor: pointer; /* Para ampliar la portada al hacer clic */
 }
 .cover-photo label {
   cursor: pointer;
@@ -119,12 +119,13 @@ body {
   right: 10px;
 }
 
-/* PERFIL DE USUARIO */
+/* PERFIL USUARIO */
 .profile-container {
   margin-bottom: 30px;
   position: relative;
 }
 .profile-pic-wrapper {
+  /* Por defecto, en escritorio, la foto flota con absolute */
   position: absolute;
   top: 240px;
   right: 10%;
@@ -138,12 +139,12 @@ body {
   object-fit: cover;
   border: 4px solid white;
   background-color: #ddd;
-  cursor: pointer; /* Ampliar al hacer click */
+  cursor: pointer; /* Ampliable */
 }
 .upload-label-profile {
   position: absolute;
-  bottom: 0; /* Ajustamos para que se pegue al borde */
-  right: 0;  /* y no quede separación */
+  bottom: 0; 
+  right: 0; 
   background: #0077cc;
   color: white;
   border-radius: 50%;
@@ -155,7 +156,7 @@ body {
   z-index: 20;
 }
 
-/* FORMULARIO DE PUBLICACIÓN */
+/* FORM PUBLICACIÓN */
 .create-post {
   margin: 30px 5%;
   padding: 20px;
@@ -227,7 +228,7 @@ body {
   cursor: pointer;
 }
 
-/* ================= RESPONSIVE ================= */
+/* ============ RESPONSIVE ============ */
 @media (max-width: 768px) {
   /* Menú en columna */
   .menu {
@@ -244,20 +245,25 @@ body {
     display: block;
   }
 
-  /* Ajuste de Muro */
-  .muro-personal {
-    margin-left: 0;
-    margin-right: 0;
-    padding: 0 10px;
+  /* Ajustar portada a menos altura en móvil */
+  .cover-photo {
+    height: 220px; /* o el valor que desees */
   }
 
-  /* Ajuste foto de perfil */
+  /* Ajustar la foto flotante sobre la portada */
   .profile-pic-wrapper {
-    position: relative; /* en móvil, ya no absolute */
-    margin: 20px auto 0;
+    /* Volvemos a usar absolute, 
+       pero con un top más pequeño, 
+       y centramos o ajustamos según prefieras */
+    position: absolute;
+    top: 150px; /* Ajusta este valor para subir/bajar la foto */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+    text-align: center;
   }
   .profile-pic {
-    width: 120px; /* un poco más pequeño en móvil */
+    width: 120px;
     height: 120px;
   }
   .upload-label-profile {
@@ -265,8 +271,15 @@ body {
     right: 0;
   }
 
-  /* Ajustar la portada */
-  .cover-photo {
-    height: 200px;
+  /* Ajustar la info de perfil para que no se monte con la foto */
+  .profile-info {
+    margin-top: 90px; /* Deja un hueco para la foto flotante */
+    text-align: center; /* Opcional */
+  }
+
+  .muro-personal {
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0 10px;
   }
 }
