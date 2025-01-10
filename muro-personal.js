@@ -5,7 +5,8 @@ const toggleBtn = document.getElementById("menu-toggle");
 const menu = document.getElementById("menu");
 
 toggleBtn?.addEventListener("click", () => {
-  menu.classList.toggle("active");
+  // Cambiar 'show' si tu CSS dice .menu.show { display: flex; }
+  menu.classList.toggle("show");
 });
 
 /************************************************************
@@ -36,9 +37,8 @@ profileUpload?.addEventListener("change", (event) => {
   if (file) {
     const reader = new FileReader();
     reader.onload = (e) => {
-      // Actualiza la foto de perfil
       profilePic.src = e.target.result;
-      // Si tienes miniaturas en posts, actualízalas también
+      // Si hay miniaturas en publicaciones, actualízalas:
       document.querySelectorAll(".profile-thumbnail").forEach((thumb) => {
         thumb.src = e.target.result;
       });
@@ -48,7 +48,7 @@ profileUpload?.addEventListener("change", (event) => {
 });
 
 /************************************************************
- * CREAR PUBLICACIONES (EJEMPLO)
+ * FORM PUBLICACIÓN
  ************************************************************/
 const postForm = document.getElementById("post-form");
 const userPosts = document.getElementById("user-posts");
@@ -58,21 +58,21 @@ postForm?.addEventListener("submit", (event) => {
   event.preventDefault();
   const content = document.getElementById("post-content")?.value.trim();
   const mediaFiles = document.getElementById("post-media")?.files;
-
   if (!content && (!mediaFiles || mediaFiles.length === 0)) {
-    alert("Por favor, escribe algo o sube una imagen/video.");
+    alert("Escribe algo o sube un archivo.");
     return;
   }
 
   const post = document.createElement("div");
   post.classList.add("post");
 
-  const thumbnailSrc = profilePic?.src || "https://via.placeholder.com/150";
+  const thumbSrc = profilePic?.src || "https://via.placeholder.com/150";
   let mediaContent = "";
-
   if (mediaFiles) {
     Array.from(mediaFiles).forEach((file) => {
-      const media = document.createElement(file.type.startsWith("video") ? "video" : "img");
+      const media = document.createElement(
+        file.type.startsWith("video") ? "video" : "img"
+      );
       media.src = URL.createObjectURL(file);
       media.controls = file.type.startsWith("video");
       media.alt = "Media";
@@ -83,7 +83,7 @@ postForm?.addEventListener("submit", (event) => {
 
   post.innerHTML = `
     <div class="post-header">
-      <img class="profile-thumbnail" src="${thumbnailSrc}" alt="Foto de perfil">
+      <img class="profile-thumbnail" src="${thumbSrc}" alt="Foto de perfil" />
       <div>
         <h3>Tú</h3>
         <span>Hace un momento</span>
@@ -95,21 +95,20 @@ postForm?.addEventListener("submit", (event) => {
     </div>
   `;
 
-  // Insertar en "Mi Muro"
   userPosts.prepend(post);
 
   // Sumar puntos
   if (userPoints) {
-    let points = parseInt(userPoints.textContent) || 0;
-    points += 5;
-    userPoints.textContent = points;
+    let pts = parseInt(userPoints.textContent) || 0;
+    pts += 5;
+    userPoints.textContent = pts;
   }
 
   postForm.reset();
 });
 
 /************************************************************
- * MODAL PARA VER FOTOS (Portada, Perfil y .post-media)
+ * MODAL PARA FOTOS (portada, perfil, .post-media)
  ************************************************************/
 const imageModal = document.getElementById("image-modal");
 const modalImage = document.getElementById("modal-image");
@@ -121,12 +120,12 @@ document.addEventListener("click", (e) => {
     modalImage.src = e.target.src;
     imageModal.style.display = "flex";
   }
-  // Foto de perfil
+  // Perfil
   if (e.target.id === "profile-pic") {
     modalImage.src = e.target.src;
     imageModal.style.display = "flex";
   }
-  // Imágenes de publicaciones
+  // Publicaciones
   if (e.target.classList.contains("post-media") && e.target.tagName === "IMG") {
     modalImage.src = e.target.src;
     imageModal.style.display = "flex";
@@ -136,14 +135,14 @@ document.addEventListener("click", (e) => {
 closeModalBtn.addEventListener("click", () => {
   imageModal.style.display = "none";
 });
-imageModal.addEventListener("click", (event) => {
-  if (event.target === imageModal) {
+imageModal.addEventListener("click", (ev) => {
+  if (ev.target === imageModal) {
     imageModal.style.display = "none";
   }
 });
 
 /************************************************************
- * PANEL DE USUARIO (TOGGLE)
+ * PANEL DE USUARIO
  ************************************************************/
 const userDetailsToggle = document.querySelector(".user-details-toggle");
 const userDetailsPanel = document.querySelector(".user-details");
@@ -153,7 +152,7 @@ userDetailsToggle?.addEventListener("click", () => {
 });
 
 /************************************************************
- * GUARDAR DETALLES (LOCALSTORAGE) - OPCIONAL
+ * LOCALSTORAGE (OPCIONAL)
  ************************************************************/
 document
   .querySelectorAll(".user-details input, .user-details textarea")
@@ -161,11 +160,11 @@ document
     el.addEventListener("change", () => {
       localStorage.setItem(el.id, el.value);
     });
-    const savedValue = localStorage.getItem(el.id);
-    if (savedValue) el.value = savedValue;
+    const savedVal = localStorage.getItem(el.id);
+    if (savedVal) el.value = savedVal;
   });
 
-// Botón reset - opcional
+// Botón reset
 const resetButton = document.createElement("button");
 resetButton.textContent = "Resetear Detalles";
 resetButton.classList.add("cta-button");
@@ -182,7 +181,7 @@ resetButton.addEventListener("click", () => {
 userDetailsPanel?.appendChild(resetButton);
 
 /************************************************************
- * MOSTRAR NOMBRE EN BOTÓN (SI LO GUARDAS EN LOCALSTORAGE)
+ * MOSTRAR NOMBRE EN EL BOTÓN (SI LO GUARDAS EN localStorage)
  ************************************************************/
 const savedName = localStorage.getItem("username");
 if (savedName) {
