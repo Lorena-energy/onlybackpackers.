@@ -101,4 +101,53 @@
         <p>Puntos: <span id="user-points">125</span></p>
         <button id="add-friend" class="cta-button">Agregar amigo/a</button>
 
-        <p><strong>Código de invitación:</strong> <span
+        <p><strong>Código de invitación:</strong> <span id="invite-code">ABCD1234</span></p>
+        <button id="copy-invite-link" class="cta-button">Copiar enlace de invitación</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Formulario de Publicación -->
+  <section class="create-post">
+    <h2>Publica algo nuevo</h2>
+    <form id="post-form">
+      <textarea
+        id="post-content"
+        placeholder="Escribe algo..."
+        rows="3"
+        required
+      ></textarea>
+
+      <label for="post-media" class="upload-label">
+        <i class="fas fa-camera"></i> Subir fotos/videos
+      </label>
+      <input
+        type="file"
+        id="post-media"
+        accept="image/*, video/*"
+        multiple
+        hidden
+      />
+
+      <button type="submit" class="cta-button">Publicar</button>
+    </form>
+  </section>
+
+  <!-- Muro Personal -->
+  <main class="muro-personal">
+    <section id="user-posts">
+      <h2>Mis Publicaciones</h2>
+      <!-- Publicaciones dinámicas -->
+    </section>
+  </main>
+
+  <!-- Modal para ver fotos ampliadas -->
+  <div id="image-modal" class="image-modal" style="display: none;">
+    <span id="close-modal" class="close-modal">&times;</span>
+    <img id="modal-image" class="modal-image" alt="Imagen ampliada" />
+  </div>
+
+  <!-- Script principal -->
+  <script src="muro-personal.js"></script>
+</body>
+</html>
