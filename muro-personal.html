@@ -23,7 +23,7 @@
   <!-- Encabezado -->
   <header class="main-header">
     <nav>
-      <!-- Menú hamburguesa -->
+      <!-- Botón hamburguesa -->
       <div class="menu-toggle" id="menu-toggle">
         <span class="bar"></span>
         <span class="bar"></span>
@@ -42,7 +42,7 @@
         <li><a href="expenses.html">Gastos</a></li>
       </ul>
 
-      <!-- Botón flotante de detalles -->
+      <!-- Botón flotante (Detalles del usuario) -->
       <button class="user-details-toggle" aria-label="Detalles del usuario">
         <i class="fas fa-user"></i>
         <span id="user-details-btn-text">Detalles del usuario</span>
@@ -60,6 +60,7 @@
       <label for="user-country">País:</label>
       <input type="text" id="user-country" placeholder="Ej: España..." />
 
+      <!-- Añade más campos aquí si los necesitas: Intereses, Ruta preferida, etc. -->
       <button type="submit" class="cta-button">Guardar</button>
     </form>
   </div>
@@ -81,7 +82,7 @@
   <!-- Perfil del Usuario -->
   <section class="profile-section">
     <div class="profile-container">
-      <!-- El contenedor de la foto estará ABSOLUTE sobre la portada -->
+      <!-- Foto de perfil flotante -->
       <div class="profile-pic-wrapper">
         <img
           src="https://via.placeholder.com/150"
@@ -89,7 +90,7 @@
           class="profile-pic"
           id="profile-pic"
         />
-        <!-- Ícono de cámara en la esquina inferior derecha -->
+        <!-- Ícono de la cámara bien pegado en la esquina inferior derecha -->
         <label for="profile-upload" class="upload-label upload-label-profile">
           <i class="fas fa-camera"></i>
         </label>
@@ -116,7 +117,6 @@
         rows="3"
         required
       ></textarea>
-
       <label for="post-media" class="upload-label">
         <i class="fas fa-camera"></i> Subir fotos/videos
       </label>
@@ -127,7 +127,6 @@
         multiple
         hidden
       />
-
       <button type="submit" class="cta-button">Publicar</button>
     </form>
   </section>
@@ -140,7 +139,7 @@
     </section>
   </main>
 
-  <!-- Modal para fotos ampliadas -->
+  <!-- Modal para ampliar fotos -->
   <div id="image-modal" class="image-modal" style="display: none;">
     <span id="close-modal" class="close-modal">&times;</span>
     <img id="modal-image" class="modal-image" alt="Imagen ampliada" />
