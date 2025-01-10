@@ -5,22 +5,18 @@ body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
-  /* Gradiente estilo “viajero” */
   background: linear-gradient(to bottom right, #0077cc, #00c8e0);
   color: white;
 }
 
-/* Títulos más destacados */
 h1, h2, h3 {
-  font-weight: 600; /* o 700 para aún más impacto */
+  font-weight: 600;
 }
-
-/* Texto base */
-p, label, span, input, button, textarea {
+p, label, input, button, textarea, span {
   font-weight: 300;
 }
 
-/* Botones de llamada a la acción */
+/* Botón CTA */
 .cta-button {
   background: #ff6600;
   color: white;
@@ -36,7 +32,7 @@ p, label, span, input, button, textarea {
 }
 
 /* ---------------------------------------------------------
-   ENCABEZADO (HEADER) Y MENÚ
+   ENCABEZADO Y MENÚ
    --------------------------------------------------------- */
 .main-header {
   background: #004f8c;
@@ -55,7 +51,7 @@ p, label, span, input, button, textarea {
   margin: 0;
   padding: 0;
 }
-.menu a {
+.menu li a {
   text-decoration: none;
   color: white;
   padding: 8px 15px;
@@ -70,15 +66,15 @@ p, label, span, input, button, textarea {
   cursor: pointer;
 }
 .menu-toggle .bar {
-  display: block;
   width: 25px;
   height: 3px;
-  margin: 5px auto;
   background-color: white;
+  margin: 5px auto;
+  display: block;
   transition: 0.3s;
 }
 
-/* Botón flotante (oval) “Detalles del usuario” */
+/* Botón flotante (oval) */
 .user-details-toggle {
   position: fixed;
   top: 15px;
@@ -86,7 +82,7 @@ p, label, span, input, button, textarea {
   background: #ff6600;
   color: white;
   border: none;
-  border-radius: 30px; /* Oval */
+  border-radius: 30px;
   padding: 10px 20px;
   display: flex;
   align-items: center;
@@ -124,8 +120,8 @@ p, label, span, input, button, textarea {
   display: block;
   margin: 10px 0 5px;
 }
-.user-details textarea,
-.user-details input {
+.user-details input,
+.user-details textarea {
   width: 100%;
   padding: 8px;
   border: 1px solid #ddd;
@@ -153,6 +149,7 @@ p, label, span, input, button, textarea {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  cursor: pointer; /* Para indicar que se puede hacer clic y ampliar */
 }
 .cover-photo label {
   cursor: pointer;
@@ -174,7 +171,7 @@ p, label, span, input, button, textarea {
    SECCIÓN PERFIL DEL USUARIO
    --------------------------------------------------------- */
 .profile-container {
-  margin-bottom: 30px; /* Más espacio debajo */
+  margin-bottom: 30px;
   position: relative;
 }
 .profile-pic-wrapper {
@@ -185,12 +182,13 @@ p, label, span, input, button, textarea {
   z-index: 20;
 }
 .profile-pic {
-  width: 140px; /* Reducido de 180px */
+  width: 140px;
   height: 140px;
   border-radius: 50%;
   object-fit: cover;
   border: 4px solid white;
   background-color: #ddd;
+  cursor: pointer; /* Amplía la foto al hacer clic */
 }
 .upload-label-profile {
   position: absolute;
@@ -207,15 +205,15 @@ p, label, span, input, button, textarea {
   z-index: 20;
 }
 .profile-info {
-  margin-top: 100px; /* Para bajar el texto si la foto está encima */
+  margin-top: 100px;
   padding: 20px;
 }
 
 /* ---------------------------------------------------------
-   PUBLICAR (FORMULARIO)
+   CREAR PUBLICACIÓN
    --------------------------------------------------------- */
 .create-post {
-  margin: 40px 5% 30px; /* Más aire */
+  margin: 40px 5% 30px;
   padding: 20px;
   background: rgba(255, 255, 255, 0.2);
   border-radius: 10px;
@@ -279,7 +277,7 @@ p, label, span, input, button, textarea {
 }
 
 /* ---------------------------------------------------------
-   MURO PERSONAL (PUBLICACIONES)
+   MURO PERSONAL
    --------------------------------------------------------- */
 .muro-personal {
   margin-left: 25%;
@@ -297,7 +295,6 @@ p, label, span, input, button, textarea {
   margin: 20px 0;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
-  /* Para apilar el header, contenido y acciones en vertical */
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -325,6 +322,7 @@ p, label, span, input, button, textarea {
 .post-media {
   width: calc(100% / 3 - 10px);
   border-radius: 5px;
+  cursor: pointer; /* se puede ampliar */
 }
 .post-actions {
   display: flex;
@@ -355,17 +353,17 @@ p, label, span, input, button, textarea {
 }
 
 /* ---------------------------------------------------------
-   MODAL (LIGHTBOX) PARA VER FOTOS AMPLIADAS
+   MODAL (LIGHTBOX) PARA FOTOS
    --------------------------------------------------------- */
 .image-modal {
   position: fixed;
-  z-index: 9999; /* Por encima del resto */
+  z-index: 9999;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro semi-transparente */
+  background-color: rgba(0, 0, 0, 0.8);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -407,6 +405,7 @@ p, label, span, input, button, textarea {
   .menu-toggle {
     display: block;
   }
+
   .muro-personal {
     margin-left: 0;
     margin-right: 0;
