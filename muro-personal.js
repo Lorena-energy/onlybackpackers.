@@ -7,7 +7,6 @@ const toggleBtn = document.getElementById("menu-toggle");
 const menu = document.getElementById("menu");
 
 toggleBtn?.addEventListener("click", () => {
-  // Añade o quita la clase "active" a ul.menu
   menu.classList.toggle("active");
 });
 
@@ -42,7 +41,14 @@ profileUpload?.addEventListener("change", (event) => {
   if (file) {
     const reader = new FileReader();
     reader.onload = (e) => {
+      // Cambiar la foto de perfil
       profilePic.src = e.target.result;
+
+      // Actualizar TODAS las miniaturas de publicaciones anteriores
+      const thumbnails = document.querySelectorAll(".profile-thumbnail");
+      thumbnails.forEach((thumb) => {
+        thumb.src = e.target.result;
+      });
     };
     reader.readAsDataURL(file);
   } else {
@@ -66,6 +72,7 @@ postForm?.addEventListener("submit", (event) => {
 
   const content = document.getElementById("post-content").value.trim();
   const mediaFiles = document.getElementById("post-media").files;
+  const alsoCommunity = document.getElementById("post-community").checked;
 
   if (!content && mediaFiles.length === 0) {
     alert("Por favor, escribe algo o sube una imagen/video.");
@@ -76,7 +83,7 @@ postForm?.addEventListener("submit", (event) => {
   const post = document.createElement("div");
   post.classList.add("post");
 
-  // Miniatura de la foto de perfil
+  // Miniatura de la foto de perfil actual
   const profileThumbnail = `
     <img class="profile-thumbnail" 
          src="${profilePic?.src || "https://via.placeholder.com/150"}" 
@@ -116,8 +123,17 @@ postForm?.addEventListener("submit", (event) => {
     </div>
   `;
 
-  // Agregamos la publicación arriba de todo
+  // Agregar la publicación a "Mi Muro"
   userPosts.prepend(post);
+
+  // Si está marcado el checkbox, la copiamos al Muro-Comunidad
+  if (alsoCommunity) {
+    const communitySection = document.getElementById("community-posts");
+    if (communitySection) {
+      const clonePost = post.cloneNode(true);
+      communitySection.prepend(clonePost);
+    }
+  }
 
   // Incrementar los puntos del usuario
   let points = parseInt(userPoints.textContent) || 0;
@@ -127,14 +143,6 @@ postForm?.addEventListener("submit", (event) => {
   // Limpiar el formulario
   postForm.reset();
 });
-
-/************************************************************
- * Botón para subir fotos/videos (opcional si lo usas)
- ************************************************************/
-// const postMediaButton = document.getElementById("post-media-button");
-// postMediaButton?.addEventListener("click", () => {
-//   document.getElementById("post-media").click();
-// });
 
 /************************************************************
  * Funcionalidades de "Me gusta" y comentarios
@@ -152,17 +160,19 @@ userPosts?.addEventListener("click", (event) => {
     const commentInput = post.querySelector(".comment-input");
     commentInput.focus();
 
-    // Para no registrar el mismo keypress en cada clic, 
-    // puedes usar un addEventListener fuera, 
-    // pero aquí está simplificado.
-    commentInput.addEventListener("keypress", (e) => {
+    // Para no registrar infinitos "keypress",
+    // se puede usar { once: true } o algo más complejo.
+    commentInput.addEventListener("keypress", function handleEnter(e) {
       if (e.key === "Enter" && commentInput.value.trim() !== "") {
         const commentText = document.createElement("p");
         commentText.textContent = commentInput.value;
         commentInput.value = "";
         commentInput.parentNode.insertBefore(commentText, commentInput);
+
+        // Solo disparar una vez
+        commentInput.removeEventListener("keypress", handleEnter);
       }
-    }, { once: true });
+    });
   }
 });
 
@@ -174,26 +184,33 @@ const copyInviteLink = document.getElementById("copy-invite-link");
 
 copyInviteLink?.addEventListener("click", () => {
   const link = `https://lorena-energy.github.io/onlybackpackers./login-register.html?invite=${inviteCode.textContent}`;
-  navigator.clipboard.writeText(link).then(() => {
-    alert("¡Enlace de invitación copiado!");
-  }).catch(() => {
-    alert("No se pudo copiar el enlace de invitación.");
-  });
+  navigator.clipboard
+    .writeText(link)
+    .then(() => {
+      alert("¡Enlace de invitación copiado!");
+    })
+    .catch(() => {
+      alert("No se pudo copiar el enlace de invitación.");
+    });
 });
 
 /************************************************************
- * Guardar detalles del usuario en localStorage
+ * Guardar y cargar detalles del usuario en localStorage
  ************************************************************/
-document.querySelectorAll(".user-details input").forEach((input) => {
-  input.addEventListener("change", () => {
-    localStorage.setItem(input.id, input.value);
-  });
+document
+  .querySelectorAll(".user-details input, .user-details textarea")
+  .forEach((el) => {
+    // Al cambiar un campo, lo guardamos
+    el.addEventListener("change", () => {
+      localStorage.setItem(el.id, el.value);
+    });
 
-  const savedValue = localStorage.getItem(input.id);
-  if (savedValue) {
-    input.value = savedValue;
-  }
-});
+    // Al cargar la página, restauramos los valores si existen
+    const savedValue = localStorage.getItem(el.id);
+    if (savedValue) {
+      el.value = savedValue;
+    }
+  });
 
 /************************************************************
  * Botón para limpiar detalles del usuario
@@ -201,17 +218,20 @@ document.querySelectorAll(".user-details input").forEach((input) => {
 const resetDetailsButton = document.createElement("button");
 resetDetailsButton.textContent = "Resetear Detalles";
 resetDetailsButton.classList.add("cta-button");
+resetDetailsButton.style.marginTop = "10px";
 resetDetailsButton.addEventListener("click", () => {
-  document.querySelectorAll(".user-details input").forEach((input) => {
-    input.value = "";
-    localStorage.removeItem(input.id);
-  });
+  document
+    .querySelectorAll(".user-details input, .user-details textarea")
+    .forEach((input) => {
+      input.value = "";
+      localStorage.removeItem(input.id);
+    });
   alert("Detalles del usuario reseteados.");
 });
 document.querySelector(".user-details")?.appendChild(resetDetailsButton);
 
 /************************************************************
- * Botón flotante para mostrar/ocultar detalles del usuario
+ * Botón flotante para mostrar/ocultar el panel de usuario
  ************************************************************/
 const userDetailsToggle = document.querySelector(".user-details-toggle");
 const userDetailsPanel = document.querySelector(".user-details");
@@ -219,3 +239,15 @@ const userDetailsPanel = document.querySelector(".user-details");
 userDetailsToggle?.addEventListener("click", () => {
   userDetailsPanel?.classList.toggle("open");
 });
+
+/************************************************************
+ * Mostrar nombre de usuario en el botón flotante (opcional)
+ ************************************************************/
+// Imaginemos que guardas el nombre del usuario en localStorage con key "username"
+const savedName = localStorage.getItem("username");
+if (savedName) {
+  const userDetailsBtnText = document.getElementById("user-details-btn-text");
+  if (userDetailsBtnText) {
+    userDetailsBtnText.textContent = savedName;
+  }
+}
