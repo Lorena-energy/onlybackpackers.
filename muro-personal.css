@@ -19,7 +19,6 @@ body {
   z-index: 1000;
 }
 
-/* Menú */
 .menu {
   list-style: none;
   display: flex;
@@ -43,11 +42,11 @@ body {
   background: #ff6600;
 }
 
-/* Botón hamburguesa (solo se muestra en pantallas pequeñas) */
 .menu-toggle {
   display: none;
   cursor: pointer;
 }
+
 .menu-toggle .bar {
   display: block;
   width: 25px;
@@ -57,7 +56,7 @@ body {
   transition: 0.3s;
 }
 
-/* Botón flotante para detalles del usuario */
+/* Botón flotante oval con texto */
 .user-details-toggle {
   position: fixed;
   top: 15px;
@@ -65,17 +64,15 @@ body {
   background: #ff6600;
   color: white;
   border: none;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  border-radius: 30px; /* Para hacerlo oval */
+  padding: 10px 20px;  /* Añade “acolchado” */
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 10px;
   cursor: pointer;
   z-index: 100;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-
 .user-details-toggle i {
   font-size: 20px;
 }
@@ -109,13 +106,15 @@ body {
   margin: 10px 0 5px;
 }
 
-.user-details input {
+.user-details input,
+.user-details textarea {
   width: 100%;
   padding: 8px;
   border: 1px solid #ddd;
   border-radius: 5px;
   margin-bottom: 10px;
   font-family: 'Poppins', sans-serif;
+  color: #333;
 }
 
 /* Foto de portada */
@@ -150,6 +149,7 @@ body {
   align-items: center;
   z-index: 10;
 }
+
 .cover-photo label i {
   margin-right: 5px;
 }
@@ -173,11 +173,12 @@ body {
   background-color: #ddd;
 }
 
-.profile-pic-wrapper .upload-label {
+/* El label con icono de cámara en la esquina */
+.upload-label-profile {
   position: absolute;
-  bottom: 10px;
-  right: -15px;
-  background: #ff6600;
+  bottom: 0;
+  right: 0;
+  background: #0077cc; /* Cambia a tu gusto (#ff6600, etc.) */
   color: white;
   border-radius: 50%;
   padding: 8px;
@@ -188,13 +189,15 @@ body {
   z-index: 20;
 }
 
-/* Crear publicaciones */
+/* Sección de publicación */
 .create-post {
   margin-bottom: 30px;
   padding: 0 5%;
 }
+
 .create-post h2 {
   margin-left: 5%;
+  font-weight: 600;
 }
 
 .create-post textarea {
@@ -223,9 +226,15 @@ body {
   margin-right: 5px;
 }
 
+.post-visibility {
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
 .create-post .cta-button {
   margin-top: 10px;
-  display: inline-block;
   float: right;
 }
 
@@ -244,7 +253,7 @@ body {
   background: #cc5200;
 }
 
-/* Publicaciones */
+/* Publicaciones del muro */
 .muro-personal {
   margin-left: 25%;
   margin-right: 5%;
@@ -262,42 +271,53 @@ body {
   align-items: flex-start;
 }
 
-.muro-personal .post-header {
+.post-header {
   display: flex;
   align-items: center;
   gap: 10px;
+  margin-bottom: 10px;
 }
 
-.muro-personal .post img.profile-thumbnail {
+.post-header h3 {
+  color: #333;
+  margin: 0;
+}
+
+.post-header span {
+  font-size: 0.8rem;
+  color: #777;
+}
+
+.profile-thumbnail {
   width: 50px;
   height: 50px;
   border-radius: 50%;
   object-fit: cover;
 }
 
-.muro-personal .post .post-content {
+.post-content {
   flex-grow: 1;
 }
 
-.muro-personal .post .media-container {
+.media-container {
   margin-top: 10px;
   display: flex;
   flex-wrap: wrap;
   gap: 5px;
 }
 
-.muro-personal .post .post-media {
+.post-media {
   width: calc(100% / 3 - 10px);
   border-radius: 5px;
 }
 
-.muro-personal .post-actions {
+.post-actions {
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
 }
 
-.muro-personal .comments {
+.comments {
   margin-top: 10px;
 }
 
@@ -308,9 +328,16 @@ body {
   padding: 10px;
 }
 
-/* -------------- Responsive -------------- */
+/* Sección de comunidad (si la usas) */
+#community-posts {
+  margin: 20px 5%;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
-  /* El menú se oculta por defecto */
   .menu {
     display: none;
     flex-direction: column;
@@ -322,28 +349,25 @@ body {
     padding: 20px 0;
   }
 
-  /* Cuando ul.menu tiene .active, se muestra */
-  .menu.active {
-    display: flex;
-  }
-
   .menu-toggle {
     display: block;
   }
 
-  /* Ajustamos el muro en móvil */
+  .menu-toggle.active + .menu {
+    display: flex;
+  }
+
   .muro-personal {
     margin-left: 0;
     margin-right: 0;
     padding: 0 10px;
   }
 
-  /* La foto de perfil y portada se pueden superponer de forma distinta en móvil */
   .profile-pic-wrapper {
     position: static;
-    margin: 20px auto;
-    transform: translateY(-50%);
+    margin-top: 20px;
   }
+
   .cover-photo {
     height: 200px;
   }
