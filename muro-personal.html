@@ -5,13 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>OnlyBackpackers - Mi Muro</title>
 
-  <!-- Fuentes y estilos -->
+  <!-- Fuente Poppins -->
   <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
     rel="stylesheet"
   />
-  <!-- Ajusta la ruta si tu CSS está en otra carpeta -->
+  <!-- Hoja de estilos principal -->
   <link rel="stylesheet" href="muro-personal.css" />
+
+  <!-- Iconos FontAwesome (para íconos de cámara, user, etc.) -->
   <script
     src="https://kit.fontawesome.com/a076d05399.js"
     crossorigin="anonymous"
@@ -21,7 +23,7 @@
   <!-- Encabezado -->
   <header class="main-header">
     <nav>
-      <!-- Botón hamburguesa -->
+      <!-- Menú hamburguesa -->
       <div class="menu-toggle" id="menu-toggle">
         <span class="bar"></span>
         <span class="bar"></span>
@@ -48,19 +50,17 @@
     </nav>
   </header>
 
-  <!-- Contenedor desplegable con info de usuario -->
+  <!-- Panel desplegable de usuario -->
   <div class="user-details">
     <h3>Detalles del Usuario</h3>
     <form id="details-form">
-      <!-- Ajusta los campos según tus necesidades -->
       <label for="user-about">Sobre mí:</label>
       <textarea id="user-about" placeholder="Escribe algo sobre ti..."></textarea>
 
       <label for="user-country">País:</label>
       <input type="text" id="user-country" placeholder="Ej: España..." />
 
-      <!-- ... otros campos ... -->
-
+      <!-- Añade más campos a tu gusto -->
       <button type="submit" class="cta-button">Guardar</button>
     </form>
   </div>
@@ -97,7 +97,7 @@
       </div>
       <div class="profile-info">
         <h2 id="username">Nombre del Usuario</h2>
-        <p>Puntos: <span id="user-points">120</span></p>
+        <p>Puntos: <span id="user-points">125</span></p>
         <button id="add-friend" class="cta-button">Agregar amigo/a</button>
 
         <p><strong>Código de invitación:</strong> <span id="invite-code">ABCD1234</span></p>
@@ -117,10 +117,9 @@
         required
       ></textarea>
 
-      <!-- Botón para mostrar panel de emojis en la publicación -->
+      <!-- Botón de emojis para la publicación -->
       <button type="button" class="emoji-toggle-post">😀</button>
       <div class="emoji-panel-post" style="display: none;">
-        <!-- Pequeña lista de emojis (ejemplo) -->
         <span>😀</span><span>😁</span><span>🤣</span><span>❤️</span><span>🥰</span>
       </div>
 
@@ -135,7 +134,7 @@
         hidden
       />
 
-      <!-- Checkbox para publicar también en la comunidad -->
+      <!-- Checkbox para publicar en la comunidad (si luego lo usas en otra página) -->
       <div class="post-visibility">
         <input type="checkbox" id="post-community" />
         <label for="post-community">Publicar también en la comunidad</label>
@@ -153,11 +152,13 @@
     </section>
   </main>
 
-  <!-- Muro-Comunidad (opcional) -->
-  <section id="community-posts">
-    <h2>Muro-Comunidad</h2>
-    <!-- Se clonan las publicaciones si se elige "publicar también en comunidad" -->
-  </section>
+  <!-- (Opcional) Muro-Comunidad en otra página. Aquí no lo usamos. -->
+
+  <!-- MODAL para ampliar fotos -->
+  <div id="image-modal" class="image-modal" style="display: none;">
+    <span id="close-modal" class="close-modal">&times;</span>
+    <img id="modal-image" class="modal-image" alt="Imagen ampliada" />
+  </div>
 
   <!-- Script principal -->
   <script src="muro-personal.js"></script>
