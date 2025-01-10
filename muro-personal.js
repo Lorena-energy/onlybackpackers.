@@ -1,6 +1,14 @@
-// Menú responsive
+// Menú hamburguesa
 document.getElementById("menu-toggle").addEventListener("click", () => {
   document.getElementById("menu").classList.toggle("show");
+});
+
+// Botón "Detalles del usuario"
+const userDetailsToggle = document.querySelector(".user-details-toggle");
+const userDetailsPanel = document.querySelector(".user-details");
+
+userDetailsToggle.addEventListener("click", () => {
+  userDetailsPanel.classList.toggle("open");
 });
 
 // Cambiar foto de portada
