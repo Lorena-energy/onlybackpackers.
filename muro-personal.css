@@ -7,22 +7,24 @@ body {
   padding: 0;
 }
 
-/* Menú hamburguesa */
+/* Menú */
 .menu-toggle {
   cursor: pointer;
 }
 .menu-toggle .bar {
   width: 25px;
   height: 3px;
-  background-color: white;
   margin: 5px auto;
+  background-color: white;
 }
 .menu {
   display: none;
-  list-style: none;
 }
 .menu.show {
   display: flex;
+  flex-direction: column;
+  background-color: #004f8c;
+  padding: 10px;
 }
 
 /* Portada */
@@ -49,9 +51,9 @@ body {
 /* Foto de perfil */
 .profile-pic-wrapper {
   position: absolute;
-  top: 220px;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: -50px;
+  left: 20px;
+  text-align: center;
 }
 .profile-pic {
   width: 150px;
@@ -59,8 +61,38 @@ body {
   border-radius: 50%;
   border: 5px solid white;
 }
+.upload-label-profile {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: #ff6600;
+  padding: 5px;
+  border-radius: 50%;
+  cursor: pointer;
+}
 
-/* Muro personal */
-.muro-personal {
-  padding: 20px;
+/* Botón Detalles del Usuario */
+.user-details-toggle {
+  position: absolute;
+  right: 20px;
+  top: 15px;
+  background: #ff6600;
+  padding: 10px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+/* Desplegable del Usuario */
+.user-details {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+}
+.user-details.open {
+  transform: translateX(0);
 }
