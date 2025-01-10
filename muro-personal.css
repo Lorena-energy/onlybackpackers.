@@ -1,39 +1,24 @@
-/* ---------------------------------------------------------
-   REGLAS GENERALES
-   --------------------------------------------------------- */
+/* ================ REGLAS GENERALES ================ */
 body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
-  background: linear-gradient(to bottom right, #0077cc, #00c8e0);
   color: white;
+  background: linear-gradient(to bottom right, #0077cc, #00c8e0);
 }
-
-h1, h2, h3 {
-  font-weight: 600;
-}
-p, label, input, button, textarea, span {
-  font-weight: 300;
-}
-
-/* Botón CTA */
 .cta-button {
   background: #ff6600;
   color: white;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  font-weight: 600;
   cursor: pointer;
-  transition: background 0.3s;
 }
 .cta-button:hover {
   background: #cc5200;
 }
 
-/* ---------------------------------------------------------
-   ENCABEZADO Y MENÚ
-   --------------------------------------------------------- */
+/* HEADER Y MENÚ */
 .main-header {
   background: #004f8c;
   padding: 10px 20px;
@@ -51,12 +36,11 @@ p, label, input, button, textarea, span {
   margin: 0;
   padding: 0;
 }
-.menu li a {
+.menu a {
   text-decoration: none;
   color: white;
   padding: 8px 15px;
   border-radius: 5px;
-  font-weight: 400;
 }
 .menu a.active {
   background: #ff6600;
@@ -68,13 +52,11 @@ p, label, input, button, textarea, span {
 .menu-toggle .bar {
   width: 25px;
   height: 3px;
-  background-color: white;
   margin: 5px auto;
-  display: block;
-  transition: 0.3s;
+  background-color: white;
 }
 
-/* Botón flotante (oval) */
+/* BOTÓN FLOTANTE */
 .user-details-toggle {
   position: fixed;
   top: 15px;
@@ -92,9 +74,7 @@ p, label, input, button, textarea, span {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* ---------------------------------------------------------
-   PANEL DETALLES DEL USUARIO
-   --------------------------------------------------------- */
+/* PANEL DE USUARIO */
 .user-details {
   position: fixed;
   top: 0;
@@ -112,44 +92,22 @@ p, label, input, button, textarea, span {
 .user-details.open {
   transform: translateX(0);
 }
-.user-details h3 {
-  margin-top: 0;
-  font-weight: 600;
-}
-.user-details label {
-  display: block;
-  margin: 10px 0 5px;
-}
-.user-details input,
-.user-details textarea {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  margin-bottom: 10px;
-  font-family: 'Poppins', sans-serif;
-  color: #333;
-  font-weight: 400;
-}
 
-/* ---------------------------------------------------------
-   FOTO DE PORTADA
-   --------------------------------------------------------- */
+/* FOTO DE PORTADA */
 .cover-photo {
   height: 300px;
   width: 100%;
   position: relative;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
-  background: transparent;
 }
 .cover-photo img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  cursor: pointer; /* Para indicar que se puede hacer clic y ampliar */
+  cursor: pointer; /* Ampliar al hacer click */
 }
 .cover-photo label {
   cursor: pointer;
@@ -159,17 +117,9 @@ p, label, input, button, textarea, span {
   position: absolute;
   bottom: 10px;
   right: 10px;
-  color: white;
-  font-size: 14px;
-  display: flex;
-  align-items: center;
-  z-index: 10;
-  font-weight: 400;
 }
 
-/* ---------------------------------------------------------
-   SECCIÓN PERFIL DEL USUARIO
-   --------------------------------------------------------- */
+/* PERFIL DE USUARIO */
 .profile-container {
   margin-bottom: 30px;
   position: relative;
@@ -188,12 +138,12 @@ p, label, input, button, textarea, span {
   object-fit: cover;
   border: 4px solid white;
   background-color: #ddd;
-  cursor: pointer; /* Amplía la foto al hacer clic */
+  cursor: pointer; /* Ampliar al hacer click */
 }
 .upload-label-profile {
   position: absolute;
-  bottom: 0;
-  right: 0;
+  bottom: 0; /* Ajustamos para que se pegue al borde */
+  right: 0;  /* y no quede separación */
   background: #0077cc;
   color: white;
   border-radius: 50%;
@@ -204,32 +154,20 @@ p, label, input, button, textarea, span {
   justify-content: center;
   z-index: 20;
 }
-.profile-info {
-  margin-top: 100px;
-  padding: 20px;
-}
 
-/* ---------------------------------------------------------
-   CREAR PUBLICACIÓN
-   --------------------------------------------------------- */
+/* FORMULARIO DE PUBLICACIÓN */
 .create-post {
-  margin: 40px 5% 30px;
+  margin: 30px 5%;
   padding: 20px;
   background: rgba(255, 255, 255, 0.2);
   border-radius: 10px;
-}
-.create-post h2 {
-  font-weight: 700;
-  margin-bottom: 15px;
 }
 .create-post textarea {
   width: 100%;
   border: 1px solid #ddd;
   border-radius: 10px;
   padding: 10px;
-  margin-bottom: 10px;
   color: #333;
-  font-weight: 400;
 }
 .upload-label {
   cursor: pointer;
@@ -240,52 +178,12 @@ p, label, input, button, textarea, span {
   margin-top: 10px;
   display: inline-block;
   font-size: 14px;
-  font-weight: 400;
-}
-.post-visibility {
-  margin: 10px 0;
-  display: flex;
-  align-items: center;
-  gap: 5px;
 }
 
-/* Emojis en la publicación */
-.emoji-toggle-post {
-  background: #fff;
-  color: #333;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  margin-right: 10px;
-  cursor: pointer;
-  font-size: 1.2rem;
-  font-weight: 400;
-}
-.emoji-panel-post {
-  border: 1px solid #ddd;
-  background-color: white;
-  padding: 10px;
-  display: none;
-  border-radius: 5px;
-  margin-bottom: 10px;
-  flex-wrap: wrap;
-  gap: 5px;
-}
-.emoji-panel-post span {
-  font-size: 1.4rem;
-  cursor: pointer;
-  margin: 5px;
-}
-
-/* ---------------------------------------------------------
-   MURO PERSONAL
-   --------------------------------------------------------- */
+/* MURO PERSONAL */
 .muro-personal {
   margin-left: 25%;
   margin-right: 5%;
-}
-.muro-personal h2 {
-  font-weight: 700;
-  margin-left: 5px;
 }
 .muro-personal .post {
   background-color: white;
@@ -293,16 +191,6 @@ p, label, input, button, textarea, span {
   border-radius: 10px;
   padding: 20px;
   margin: 20px 0;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-.post-header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
 }
 .profile-thumbnail {
   width: 50px;
@@ -310,51 +198,8 @@ p, label, input, button, textarea, span {
   border-radius: 50%;
   object-fit: cover;
 }
-.post-content {
-  flex-grow: 1;
-}
-.media-container {
-  margin-top: 10px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-}
-.post-media {
-  width: calc(100% / 3 - 10px);
-  border-radius: 5px;
-  cursor: pointer; /* se puede ampliar */
-}
-.post-actions {
-  display: flex;
-  gap: 10px;
-}
-.like-button,
-.comment-button,
-.emoji-toggle {
-  background-color: #0077cc;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 5px 10px;
-  font-weight: 400;
-  cursor: pointer;
-}
-.like-button:hover,
-.comment-button:hover,
-.emoji-toggle:hover {
-  background-color: #005fa3;
-}
-.comments .comment-input {
-  width: 100%;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  padding: 10px;
-  font-weight: 400;
-}
 
-/* ---------------------------------------------------------
-   MODAL (LIGHTBOX) PARA FOTOS
-   --------------------------------------------------------- */
+/* MODAL PARA AMPLIAR FOTOS */
 .image-modal {
   position: fixed;
   z-index: 9999;
@@ -372,7 +217,6 @@ p, label, input, button, textarea, span {
   max-width: 90%;
   max-height: 90%;
   border-radius: 10px;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
 }
 .close-modal {
   position: absolute;
@@ -381,17 +225,11 @@ p, label, input, button, textarea, span {
   font-size: 3rem;
   color: #fff;
   cursor: pointer;
-  font-weight: bold;
-  transition: color 0.3s;
-}
-.close-modal:hover {
-  color: #ff6600;
 }
 
-/* ---------------------------------------------------------
-   RESPONSIVE
-   --------------------------------------------------------- */
+/* ================= RESPONSIVE ================= */
 @media (max-width: 768px) {
+  /* Menú en columna */
   .menu {
     display: none;
     flex-direction: column;
@@ -406,15 +244,28 @@ p, label, input, button, textarea, span {
     display: block;
   }
 
+  /* Ajuste de Muro */
   .muro-personal {
     margin-left: 0;
     margin-right: 0;
     padding: 0 10px;
   }
+
+  /* Ajuste foto de perfil */
   .profile-pic-wrapper {
-    position: static;
-    margin-top: 20px;
+    position: relative; /* en móvil, ya no absolute */
+    margin: 20px auto 0;
   }
+  .profile-pic {
+    width: 120px; /* un poco más pequeño en móvil */
+    height: 120px;
+  }
+  .upload-label-profile {
+    bottom: 0;
+    right: 0;
+  }
+
+  /* Ajustar la portada */
   .cover-photo {
     height: 200px;
   }
