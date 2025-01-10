@@ -2,14 +2,15 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>OnlyBackpackers - Mi Muro</title>
+
   <!-- Fuentes y estilos -->
   <link
     href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
     rel="stylesheet"
   />
-  <!-- Ajusta las rutas si tu CSS está en otra carpeta o unificado -->
+  <!-- Ajusta la ruta si tu CSS está en otra carpeta -->
   <link rel="stylesheet" href="muro-personal.css" />
   <script
     src="https://kit.fontawesome.com/a076d05399.js"
@@ -39,7 +40,7 @@
         <li><a href="expenses.html">Gastos</a></li>
       </ul>
 
-      <!-- Botón flotante en forma oval -->
+      <!-- Botón flotante (oval) para Detalles de Usuario -->
       <button class="user-details-toggle" aria-label="Detalles del usuario">
         <i class="fas fa-user"></i>
         <span id="user-details-btn-text">Detalles del usuario</span>
@@ -47,57 +48,18 @@
     </nav>
   </header>
 
-  <!-- Panel desplegable con campos ampliados -->
+  <!-- Contenedor desplegable con info de usuario -->
   <div class="user-details">
     <h3>Detalles del Usuario</h3>
     <form id="details-form">
+      <!-- Ajusta los campos según tus necesidades -->
       <label for="user-about">Sobre mí:</label>
-      <textarea
-        id="user-about"
-        placeholder="Escribe algo sobre ti..."
-      ></textarea>
-
-      <label for="user-interests">Intereses:</label>
-      <input
-        type="text"
-        id="user-interests"
-        placeholder="Ej: senderismo, gastronomía..."
-      />
-
-      <label for="user-fav-destinations">Destinos favoritos:</label>
-      <input
-        type="text"
-        id="user-fav-destinations"
-        placeholder="Ej: Bali, México..."
-      />
-
-      <label for="user-fav-route">Tu ruta preferida:</label>
-      <input
-        type="text"
-        id="user-fav-route"
-        placeholder="Ej: Camino de Santiago..."
-      />
+      <textarea id="user-about" placeholder="Escribe algo sobre ti..."></textarea>
 
       <label for="user-country">País:</label>
-      <input
-        type="text"
-        id="user-country"
-        placeholder="Ej: España..."
-      />
+      <input type="text" id="user-country" placeholder="Ej: España..." />
 
-      <label for="user-languages">Idiomas:</label>
-      <input
-        type="text"
-        id="user-languages"
-        placeholder="Ej: español, inglés..."
-      />
-
-      <label for="user-travel-style">Forma preferida de viajar:</label>
-      <input
-        type="text"
-        id="user-travel-style"
-        placeholder="Ej: mochilero, hotel..."
-      />
+      <!-- ... otros campos ... -->
 
       <button type="submit" class="cta-button">Guardar</button>
     </form>
@@ -127,7 +89,7 @@
           class="profile-pic"
           id="profile-pic"
         />
-        <!-- Etiqueta con ícono de cámara en la esquina -->
+        <!-- Ícono cámara en la esquina inferior derecha -->
         <label for="profile-upload" class="upload-label upload-label-profile">
           <i class="fas fa-camera"></i>
         </label>
@@ -135,17 +97,11 @@
       </div>
       <div class="profile-info">
         <h2 id="username">Nombre del Usuario</h2>
-        <p>
-          Puntos: <span id="user-points">120</span>
-        </p>
+        <p>Puntos: <span id="user-points">120</span></p>
         <button id="add-friend" class="cta-button">Agregar amigo/a</button>
-        <p>
-          <strong>Código de invitación:</strong>
-          <span id="invite-code">ABCD1234</span>
-        </p>
-        <button id="copy-invite-link" class="cta-button">
-          Copiar enlace de invitación
-        </button>
+
+        <p><strong>Código de invitación:</strong> <span id="invite-code">ABCD1234</span></p>
+        <button id="copy-invite-link" class="cta-button">Copiar enlace de invitación</button>
       </div>
     </div>
   </section>
@@ -160,6 +116,14 @@
         rows="3"
         required
       ></textarea>
+
+      <!-- Botón para mostrar panel de emojis en la publicación -->
+      <button type="button" class="emoji-toggle-post">😀</button>
+      <div class="emoji-panel-post" style="display: none;">
+        <!-- Pequeña lista de emojis (ejemplo) -->
+        <span>😀</span><span>😁</span><span>🤣</span><span>❤️</span><span>🥰</span>
+      </div>
+
       <label for="post-media" class="upload-label">
         <i class="fas fa-camera"></i> Subir fotos/videos
       </label>
@@ -181,7 +145,7 @@
     </form>
   </section>
 
-  <!-- Contenedor principal del Muro Personal -->
+  <!-- Muro Personal -->
   <main class="muro-personal">
     <section id="user-posts">
       <h2>Mis Publicaciones</h2>
@@ -189,10 +153,10 @@
     </section>
   </main>
 
-  <!-- Contenedor extra para "Muro-Comunidad" (si lo deseas) -->
+  <!-- Muro-Comunidad (opcional) -->
   <section id="community-posts">
     <h2>Muro-Comunidad</h2>
-    <!-- Aquí se clonan las publicaciones marcadas para la comunidad -->
+    <!-- Se clonan las publicaciones si se elige "publicar también en comunidad" -->
   </section>
 
   <!-- Script principal -->
