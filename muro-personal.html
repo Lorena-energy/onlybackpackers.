@@ -42,7 +42,7 @@
         <li><a href="expenses.html">Gastos</a></li>
       </ul>
 
-      <!-- Botón flotante (Detalles del usuario) -->
+      <!-- Botón flotante para Detalles de usuario -->
       <button class="user-details-toggle" aria-label="Detalles del usuario">
         <i class="fas fa-user"></i>
         <span id="user-details-btn-text">Detalles del usuario</span>
@@ -50,7 +50,7 @@
     </nav>
   </header>
 
-  <!-- Panel desplegable de usuario -->
+  <!-- Panel lateral de detalles -->
   <div class="user-details">
     <h3>Detalles del Usuario</h3>
     <form id="details-form">
@@ -60,12 +60,11 @@
       <label for="user-country">País:</label>
       <input type="text" id="user-country" placeholder="Ej: España..." />
 
-      <!-- Añade más campos aquí si los necesitas: Intereses, Ruta preferida, etc. -->
       <button type="submit" class="cta-button">Guardar</button>
     </form>
   </div>
 
-  <!-- Foto de Portada -->
+  <!-- Portada -->
   <div class="cover-photo" id="cover-photo">
     <label for="cover-upload" class="upload-label">
       <i class="fas fa-camera"></i> Cambiar portada
@@ -79,18 +78,18 @@
     />
   </div>
 
-  <!-- Perfil del Usuario -->
+  <!-- Sección Perfil -->
   <section class="profile-section">
     <div class="profile-container">
-      <!-- Foto de perfil flotante -->
       <div class="profile-pic-wrapper">
+        <!-- Foto de perfil -->
         <img
           src="https://via.placeholder.com/150"
           alt="Foto de perfil"
           class="profile-pic"
           id="profile-pic"
         />
-        <!-- Ícono de la cámara bien pegado en la esquina inferior derecha -->
+        <!-- Icono cámara en la esquina inferior derecha -->
         <label for="profile-upload" class="upload-label upload-label-profile">
           <i class="fas fa-camera"></i>
         </label>
@@ -101,8 +100,13 @@
         <p>Puntos: <span id="user-points">125</span></p>
         <button id="add-friend" class="cta-button">Agregar amigo/a</button>
 
-        <p><strong>Código de invitación:</strong> <span id="invite-code">ABCD1234</span></p>
-        <button id="copy-invite-link" class="cta-button">Copiar enlace de invitación</button>
+        <p>
+          <strong>Código de invitación:</strong>
+          <span id="invite-code">ABCD1234</span>
+        </p>
+        <button id="copy-invite-link" class="cta-button">
+          Copiar enlace de invitación
+        </button>
       </div>
     </div>
   </section>
@@ -139,7 +143,7 @@
     </section>
   </main>
 
-  <!-- Modal para ampliar fotos -->
+  <!-- Modal para ver fotos ampliadas -->
   <div id="image-modal" class="image-modal" style="display: none;">
     <span id="close-modal" class="close-modal">&times;</span>
     <img id="modal-image" class="modal-image" alt="Imagen ampliada" />
