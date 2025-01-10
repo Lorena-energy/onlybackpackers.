@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>OnlyBackpackers - Mi Muro</title>
   <!-- Fuentes y estilos -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <!-- Ajusta la ruta si tu css está en otra carpeta -->
-  <link rel="stylesheet" href="muro-personal.css">
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+    rel="stylesheet"
+  />
+  <!-- Ajusta las rutas si tu CSS está en otra carpeta o unificado -->
+  <link rel="stylesheet" href="muro-personal.css" />
+  <script
+    src="https://kit.fontawesome.com/a076d05399.js"
+    crossorigin="anonymous"
+  ></script>
 </head>
 <body>
   <!-- Encabezado -->
@@ -32,23 +38,67 @@
         <li><a href="recompensas.html">Recompensas</a></li>
         <li><a href="expenses.html">Gastos</a></li>
       </ul>
-      <!-- Botón flotante -->
+
+      <!-- Botón flotante en forma oval -->
       <button class="user-details-toggle" aria-label="Detalles del usuario">
         <i class="fas fa-user"></i>
+        <span id="user-details-btn-text">Detalles del usuario</span>
       </button>
     </nav>
   </header>
 
-  <!-- Contenedor desplegable de detalles -->
+  <!-- Panel desplegable con campos ampliados -->
   <div class="user-details">
     <h3>Detalles del Usuario</h3>
     <form id="details-form">
+      <label for="user-about">Sobre mí:</label>
+      <textarea
+        id="user-about"
+        placeholder="Escribe algo sobre ti..."
+      ></textarea>
+
       <label for="user-interests">Intereses:</label>
-      <input type="text" id="user-interests" placeholder="Escribe tus intereses...">
+      <input
+        type="text"
+        id="user-interests"
+        placeholder="Ej: senderismo, gastronomía..."
+      />
+
+      <label for="user-fav-destinations">Destinos favoritos:</label>
+      <input
+        type="text"
+        id="user-fav-destinations"
+        placeholder="Ej: Bali, México..."
+      />
+
+      <label for="user-fav-route">Tu ruta preferida:</label>
+      <input
+        type="text"
+        id="user-fav-route"
+        placeholder="Ej: Camino de Santiago..."
+      />
+
       <label for="user-country">País:</label>
-      <input type="text" id="user-country" placeholder="Escribe tu país...">
+      <input
+        type="text"
+        id="user-country"
+        placeholder="Ej: España..."
+      />
+
       <label for="user-languages">Idiomas:</label>
-      <input type="text" id="user-languages" placeholder="Escribe los idiomas que hablas...">
+      <input
+        type="text"
+        id="user-languages"
+        placeholder="Ej: español, inglés..."
+      />
+
+      <label for="user-travel-style">Forma preferida de viajar:</label>
+      <input
+        type="text"
+        id="user-travel-style"
+        placeholder="Ej: mochilero, hotel..."
+      />
+
       <button type="submit" class="cta-button">Guardar</button>
     </form>
   </div>
@@ -58,26 +108,44 @@
     <label for="cover-upload" class="upload-label">
       <i class="fas fa-camera"></i> Cambiar portada
     </label>
-    <input type="file" id="cover-upload" accept="image/*" hidden>
-    <img src="https://via.placeholder.com/1500x400" alt="Portada" class="cover-image" id="cover-image">
+    <input type="file" id="cover-upload" accept="image/*" hidden />
+    <img
+      src="https://via.placeholder.com/1500x400"
+      alt="Portada"
+      class="cover-image"
+      id="cover-image"
+    />
   </div>
 
   <!-- Perfil del Usuario -->
   <section class="profile-section">
     <div class="profile-container">
       <div class="profile-pic-wrapper">
-        <img src="https://via.placeholder.com/150" alt="Foto de perfil" class="profile-pic" id="profile-pic">
-        <label for="profile-upload" class="upload-label">
+        <img
+          src="https://via.placeholder.com/150"
+          alt="Foto de perfil"
+          class="profile-pic"
+          id="profile-pic"
+        />
+        <!-- Etiqueta con ícono de cámara en la esquina -->
+        <label for="profile-upload" class="upload-label upload-label-profile">
           <i class="fas fa-camera"></i>
         </label>
-        <input type="file" id="profile-upload" accept="image/*" hidden>
+        <input type="file" id="profile-upload" accept="image/*" hidden />
       </div>
       <div class="profile-info">
         <h2 id="username">Nombre del Usuario</h2>
-        <p>Puntos: <span id="user-points">120</span></p>
+        <p>
+          Puntos: <span id="user-points">120</span>
+        </p>
         <button id="add-friend" class="cta-button">Agregar amigo/a</button>
-        <p><strong>Código de invitación:</strong> <span id="invite-code">ABCD1234</span></p>
-        <button id="copy-invite-link" class="cta-button">Copiar enlace de invitación</button>
+        <p>
+          <strong>Código de invitación:</strong>
+          <span id="invite-code">ABCD1234</span>
+        </p>
+        <button id="copy-invite-link" class="cta-button">
+          Copiar enlace de invitación
+        </button>
       </div>
     </div>
   </section>
@@ -86,16 +154,34 @@
   <section class="create-post">
     <h2>Publica algo nuevo</h2>
     <form id="post-form">
-      <textarea id="post-content" placeholder="Escribe algo..." rows="3" required></textarea>
+      <textarea
+        id="post-content"
+        placeholder="Escribe algo..."
+        rows="3"
+        required
+      ></textarea>
       <label for="post-media" class="upload-label">
         <i class="fas fa-camera"></i> Subir fotos/videos
       </label>
-      <input type="file" id="post-media" accept="image/*, video/*" multiple hidden>
+      <input
+        type="file"
+        id="post-media"
+        accept="image/*, video/*"
+        multiple
+        hidden
+      />
+
+      <!-- Checkbox para publicar también en la comunidad -->
+      <div class="post-visibility">
+        <input type="checkbox" id="post-community" />
+        <label for="post-community">Publicar también en la comunidad</label>
+      </div>
+
       <button type="submit" class="cta-button">Publicar</button>
     </form>
   </section>
 
-  <!-- Publicaciones -->
+  <!-- Contenedor principal del Muro Personal -->
   <main class="muro-personal">
     <section id="user-posts">
       <h2>Mis Publicaciones</h2>
@@ -103,7 +189,13 @@
     </section>
   </main>
 
-  <!-- Script principal (ajusta la ruta si tu JS está en otra carpeta) -->
+  <!-- Contenedor extra para "Muro-Comunidad" (si lo deseas) -->
+  <section id="community-posts">
+    <h2>Muro-Comunidad</h2>
+    <!-- Aquí se clonan las publicaciones marcadas para la comunidad -->
+  </section>
+
+  <!-- Script principal -->
   <script src="muro-personal.js"></script>
 </body>
 </html>
