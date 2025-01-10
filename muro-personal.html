@@ -1,24 +1,17 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OnlyBackpackers - Mi Muro</title>
-
-  <!-- Fuente Poppins -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
-  
-  <!-- Estilos -->
-  <link rel="stylesheet" href="muro-personal.css" />
-
-  <!-- Iconos FontAwesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="muro-personal.css">
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <!-- Encabezado -->
   <header class="main-header">
     <nav>
-      <!-- Menú hamburguesa -->
       <div class="menu-toggle" id="menu-toggle">
         <span class="bar"></span>
         <span class="bar"></span>
@@ -35,11 +28,8 @@
         <li><a href="recompensas.html">Recompensas</a></li>
         <li><a href="expenses.html">Gastos</a></li>
       </ul>
-
-      <!-- Botón flotante para detalles del usuario -->
       <button class="user-details-toggle" aria-label="Detalles del usuario">
-        <i class="fas fa-user"></i>
-        <span id="user-details-btn-text">Detalles del usuario</span>
+        <i class="fas fa-user"></i> Detalles del usuario
       </button>
     </nav>
   </header>
@@ -50,10 +40,8 @@
     <form id="details-form">
       <label for="user-about">Sobre mí:</label>
       <textarea id="user-about" placeholder="Escribe algo sobre ti..."></textarea>
-
       <label for="user-country">País:</label>
-      <input type="text" id="user-country" placeholder="Ej: España..." />
-
+      <input type="text" id="user-country" placeholder="Escribe tu país...">
       <button type="submit" class="cta-button">Guardar</button>
     </form>
   </div>
@@ -63,24 +51,23 @@
     <label for="cover-upload" class="upload-label">
       <i class="fas fa-camera"></i> Cambiar portada
     </label>
-    <input type="file" id="cover-upload" accept="image/*" hidden />
-    <img src="https://via.placeholder.com/1500x400" alt="Portada" class="cover-image" id="cover-image" />
+    <input type="file" id="cover-upload" accept="image/*" hidden>
+    <img src="https://via.placeholder.com/1500x400" alt="Portada" class="cover-image" id="cover-image">
   </div>
 
-  <!-- Sección de perfil -->
+  <!-- Sección Perfil -->
   <section class="profile-section">
     <div class="profile-container">
       <div class="profile-pic-wrapper">
-        <img src="https://via.placeholder.com/150" alt="Foto de perfil" class="profile-pic" id="profile-pic" />
+        <img src="https://via.placeholder.com/150" alt="Foto de perfil" class="profile-pic" id="profile-pic">
         <label for="profile-upload" class="upload-label upload-label-profile">
           <i class="fas fa-camera"></i>
         </label>
-        <input type="file" id="profile-upload" accept="image/*" hidden />
+        <input type="file" id="profile-upload" accept="image/*" hidden>
       </div>
     </div>
   </section>
 
-  <!-- Formulario de publicación -->
   <section class="create-post">
     <h2>Publica algo nuevo</h2>
     <form id="post-form">
@@ -88,12 +75,11 @@
       <label for="post-media" class="upload-label">
         <i class="fas fa-camera"></i> Subir fotos/videos
       </label>
-      <input type="file" id="post-media" accept="image/*, video/*" multiple hidden />
+      <input type="file" id="post-media" accept="image/*, video/*" multiple hidden>
       <button type="submit" class="cta-button">Publicar</button>
     </form>
   </section>
 
-  <!-- Muro Personal -->
   <main class="muro-personal">
     <section id="user-posts">
       <h2>Mis Publicaciones</h2>
