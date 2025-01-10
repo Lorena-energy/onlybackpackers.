@@ -23,8 +23,8 @@
   <!-- Encabezado -->
   <header class="main-header">
     <nav>
-      <!-- Botón hamburguesa -->
-      <div class="menu-toggle" id="menu-toggle">
+      <!-- Menú hamburguesa A LA IZQUIERDA -->
+      <div class="menu-toggle" id="menu-toggle" style="float: left;">
         <span class="bar"></span>
         <span class="bar"></span>
         <span class="bar"></span>
@@ -42,7 +42,7 @@
         <li><a href="expenses.html">Gastos</a></li>
       </ul>
 
-      <!-- Botón flotante para Detalles de usuario -->
+      <!-- Botón flotante (Detalles del usuario) en la derecha -->
       <button class="user-details-toggle" aria-label="Detalles del usuario">
         <i class="fas fa-user"></i>
         <span id="user-details-btn-text">Detalles del usuario</span>
@@ -50,7 +50,7 @@
     </nav>
   </header>
 
-  <!-- Panel lateral de detalles -->
+  <!-- Panel del usuario -->
   <div class="user-details">
     <h3>Detalles del Usuario</h3>
     <form id="details-form">
@@ -82,14 +82,13 @@
   <section class="profile-section">
     <div class="profile-container">
       <div class="profile-pic-wrapper">
-        <!-- Foto de perfil -->
         <img
           src="https://via.placeholder.com/150"
           alt="Foto de perfil"
           class="profile-pic"
           id="profile-pic"
         />
-        <!-- Icono cámara en la esquina inferior derecha -->
+        <!-- Ícono de cámara pegado en la esquina inferior derecha -->
         <label for="profile-upload" class="upload-label upload-label-profile">
           <i class="fas fa-camera"></i>
         </label>
@@ -100,13 +99,8 @@
         <p>Puntos: <span id="user-points">125</span></p>
         <button id="add-friend" class="cta-button">Agregar amigo/a</button>
 
-        <p>
-          <strong>Código de invitación:</strong>
-          <span id="invite-code">ABCD1234</span>
-        </p>
-        <button id="copy-invite-link" class="cta-button">
-          Copiar enlace de invitación
-        </button>
+        <p><strong>Código de invitación:</strong> <span id="invite-code">ABCD1234</span></p>
+        <button id="copy-invite-link" class="cta-button">Copiar enlace de invitación</button>
       </div>
     </div>
   </section>
@@ -143,7 +137,7 @@
     </section>
   </main>
 
-  <!-- Modal para ver fotos ampliadas -->
+  <!-- Modal para ampliar fotos -->
   <div id="image-modal" class="image-modal" style="display: none;">
     <span id="close-modal" class="close-modal">&times;</span>
     <img id="modal-image" class="modal-image" alt="Imagen ampliada" />
