@@ -1,4 +1,4 @@
-/* ===================== REGLAS BÁSICAS ===================== */
+/* ========================= REGLAS BÁSICAS ========================= */
 
 body {
   font-family: 'Poppins', sans-serif;
@@ -8,7 +8,6 @@ body {
   color: white;
 }
 
-/* Botón CTA */
 .cta-button {
   background: #ff6600;
   color: white;
@@ -21,20 +20,41 @@ body {
   background: #cc5200;
 }
 
-/* HEADER (Menú) */
+/* HEADER */
 .main-header {
   background: #004f8c;
   padding: 10px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: block; /* Dejamos block para poder alinear elementos, 
+                     hamburguesa a la izquierda */
   position: sticky;
   top: 0;
   z-index: 1000;
 }
+
+/* Contenedor del nav */
+.main-header nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+/* Menú hamburguesa a la izquierda */
+.menu-toggle {
+  display: block;
+  float: left; /* Forzamos a la izquierda */
+  cursor: pointer;
+  margin-right: 15px;
+}
+.menu-toggle .bar {
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  background-color: white;
+}
 .menu {
   list-style: none;
-  display: flex;
+  display: none; /* Oculto por defecto */
   gap: 15px;
   margin: 0;
   padding: 0;
@@ -48,24 +68,17 @@ body {
 .menu a.active {
   background: #ff6600;
 }
-
-/* Hamburguesa */
-.menu-toggle {
-  display: none;
-  cursor: pointer;
-}
-.menu-toggle .bar {
-  width: 25px;
-  height: 3px;
-  margin: 5px auto;
-  background-color: white;
+/* Cuando .menu tiene la clase .show se ve */
+.menu.show {
+  display: flex;
+  gap: 15px;
 }
 
-/* Panel usuario */
+/* Botón flotante (Detalles usuario) a la derecha */
 .user-details-toggle {
-  position: fixed;
-  top: 15px;
+  position: absolute;
   right: 15px;
+  top: 10px;
   background: #ff6600;
   color: white;
   border: none;
@@ -75,14 +88,15 @@ body {
   align-items: center;
   gap: 10px;
   cursor: pointer;
-  z-index: 100;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
+/* Panel usuario */
 .user-details {
   position: fixed;
   top: 0;
   right: 0;
-  background: rgba(0, 0, 0, 0.95);
+  background: rgba(0,0,0,0.95);
   color: white;
   width: 300px;
   height: 100%;
@@ -128,11 +142,11 @@ body {
   position: relative;
 }
 
-/* Formulario de publicación */
+/* Form crear post */
 .create-post {
   margin: 30px 5%;
   padding: 20px;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255,255,255,0.2);
   border-radius: 10px;
 }
 .create-post textarea {
@@ -166,14 +180,12 @@ body {
   margin: 20px 0;
 }
 
-/* Modal para fotos */
+/* Modal */
 .image-modal {
   position: fixed;
   z-index: 9999;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
   overflow: auto;
   background-color: rgba(0,0,0,0.8);
   display: flex;
@@ -187,56 +199,49 @@ body {
 }
 .close-modal {
   position: absolute;
-  top: 20px;
-  right: 35px;
+  top: 20px; right: 35px;
   font-size: 3rem;
   color: #fff;
   cursor: pointer;
 }
 
-/* RESPONSIVE */
+/* =========== MEDIA QUERY MOVIL =========== */
 @media (max-width: 768px) {
   .menu {
-    display: none;
-    flex-direction: column;
-    background: #004f8c;
     position: absolute;
     top: 60px;
     left: 0;
+    background: #004f8c;
     width: 100%;
-    padding: 20px 0;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px 0;
   }
-  .menu.show {
-    display: flex;
-  }
-  .menu-toggle {
-    display: block;
-  }
-
   .muro-personal {
     margin-left: 0;
     margin-right: 0;
     padding: 0 10px;
   }
+  .cover-photo {
+    height: 200px;
+  }
 }
 
-/*****************************************************************
-   PARTE FORZADA: Foto de perfil invadiendo la zona,
-   ícono pegado en la esquina inferior derecha, etc.
- *****************************************************************/
+/*******************************************************************
+  BLOQUE FORZADO: Foto de perfil + icono de la cámara
+  (Tal como tus flechas: en la derecha, invadiendo la franja azul)
+*******************************************************************/
+
+/* Foto en escritorio */
 .profile-pic-wrapper {
   position: absolute !important;
-  /* Ajusta: sube/baja la foto. 
-     Si la portada es 300px, top=220 la deja un poco dentro del color azul. */
-  top: 220px !important; 
-  /* Desplaza la foto a la derecha, con negativo 
-     para que “invada” la zona azul. Ajusta a gusto. */
-  right: -30px !important;
-
+  top: 240px !important;   /* Bajamos ~240px (portada es 300px) */
+  right: -30px !important; /* Invade 30px en la zona azul */
   text-align: center !important;
   z-index: 20 !important;
 }
 
+/* Foto tamaño 150x150 */
 .profile-pic {
   width: 150px !important;
   height: 150px !important;
@@ -246,7 +251,7 @@ body {
   cursor: pointer !important;
 }
 
-/* Ícono de cámara en la esquina inferior derecha de la foto */
+/* Ícono cámara en esquina inferior derecha de la foto */
 .upload-label-profile {
   position: absolute !important;
   bottom: 0 !important;
@@ -262,17 +267,13 @@ body {
   z-index: 20 !important;
 }
 
-/* FORZADO EN MÓVILES: portada más pequeña, foto más pequeña */
+/* Ajuste en móvil => portada 200, foto 120, top 170, 
+   e invade -20px a la derecha (ajusta a gusto) */
 @media (max-width: 768px) {
-  .cover-photo {
-    height: 200px !important;
-  }
-
   .profile-pic-wrapper {
-    top: 140px !important;
+    top: 170px !important; 
     right: -20px !important; 
   }
-
   .profile-pic {
     width: 120px !important;
     height: 120px !important;
