@@ -5,6 +5,7 @@ const toggleBtn = document.getElementById("menu-toggle");
 const menu = document.getElementById("menu");
 
 toggleBtn?.addEventListener("click", () => {
+  // Clase .show en el CSS
   menu.classList.toggle("show");
 });
 
@@ -36,8 +37,9 @@ profileUpload?.addEventListener("change", (event) => {
   if (file) {
     const reader = new FileReader();
     reader.onload = (e) => {
+      // Cambia la foto de perfil
       profilePic.src = e.target.result;
-      // Si tienes miniaturas en posts, actualízalas:
+      // Actualiza miniaturas si las hubiera
       document.querySelectorAll(".profile-thumbnail").forEach((thumb) => {
         thumb.src = e.target.result;
       });
@@ -69,9 +71,7 @@ postForm?.addEventListener("submit", (event) => {
   let mediaContent = "";
   if (mediaFiles) {
     Array.from(mediaFiles).forEach((file) => {
-      const media = document.createElement(
-        file.type.startsWith("video") ? "video" : "img"
-      );
+      const media = document.createElement(file.type.startsWith("video") ? "video" : "img");
       media.src = URL.createObjectURL(file);
       media.controls = file.type.startsWith("video");
       media.alt = "Media";
@@ -102,36 +102,35 @@ postForm?.addEventListener("submit", (event) => {
     pts += 5;
     userPoints.textContent = pts;
   }
-  
+
   postForm.reset();
 });
 
 /************************************************************
- * MODAL PARA FOTOS
+ * MODAL PARA FOTOS (Portada, Perfil, .post-media)
  ************************************************************/
 const imageModal = document.getElementById("image-modal");
 const modalImage = document.getElementById("modal-image");
 const closeModalBtn = document.getElementById("close-modal");
 
 document.addEventListener("click", (e) => {
-  // Portada
   if (e.target.id === "cover-image") {
+    // Portada
     modalImage.src = e.target.src;
     imageModal.style.display = "flex";
   }
-  // Perfil
   if (e.target.id === "profile-pic") {
+    // Perfil
     modalImage.src = e.target.src;
     imageModal.style.display = "flex";
   }
-  // Imágenes de publicaciones
   if (e.target.classList.contains("post-media") && e.target.tagName === "IMG") {
+    // Fotos de publicaciones
     modalImage.src = e.target.src;
     imageModal.style.display = "flex";
   }
 });
 
-// Cerrar modal
 closeModalBtn.addEventListener("click", () => {
   imageModal.style.display = "none";
 });
@@ -142,7 +141,7 @@ imageModal.addEventListener("click", (ev) => {
 });
 
 /************************************************************
- * PANEL DE USUARIO
+ * PANEL DEL USUARIO (TOGGLE)
  ************************************************************/
 const userDetailsToggle = document.querySelector(".user-details-toggle");
 const userDetailsPanel = document.querySelector(".user-details");
@@ -152,7 +151,7 @@ userDetailsToggle?.addEventListener("click", () => {
 });
 
 /************************************************************
- * LOCALSTORAGE (OPCIONAL)
+ * GUARDAR DETALLES EN LOCALSTORAGE (OPCIONAL)
  ************************************************************/
 document
   .querySelectorAll(".user-details input, .user-details textarea")
