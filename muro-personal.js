@@ -112,10 +112,9 @@ postForm?.addEventListener("submit", (event) => {
   // Añade la publicación a tu muro personal
   userPosts.prepend(post);
 
-  // Publicar también en la comunidad (si lo deseas en otra página)
+  // (Opcional) Publicar también en la comunidad
   if (alsoCommunity) {
     // Podrías guardar en localStorage o enviar al servidor.
-    // Por ahora, lo omitimos, ya que dijiste que está en otra página.
     // Ejemplo:
     // localStorage.setItem("communityPost", post.innerHTML);
   }
@@ -159,14 +158,14 @@ document.addEventListener("click", (e) => {
     span.textContent = parseInt(span.textContent) + 1;
   }
 
-  // Botón "Comentar" => enfocar input
+  // Botón "Comentar"
   if (e.target.classList.contains("comment-button")) {
     const post = e.target.closest(".post");
     const commentInput = post.querySelector(".comment-input");
     commentInput.focus();
   }
 
-  // Botón "😀" en la post-actions => panel de emojis para comentarios
+  // Botón "😀" en .post-actions => Panel de emojis para comentarios
   if (e.target.classList.contains("emoji-toggle")) {
     const post = e.target.closest(".post");
     const emojiPanel = post.querySelector(".emoji-panel");
@@ -210,7 +209,7 @@ document
   });
 
 /************************************************************
- * BOTÓN RESET DE DETALLES (OPCIONAL)
+ * BOTÓN RESET DE DETALLES
  ************************************************************/
 const userDetailsPanel = document.querySelector(".user-details");
 const resetButton = document.createElement("button");
@@ -246,29 +245,36 @@ if (savedName) {
 }
 
 /************************************************************
- * MODAL PARA AMPLIAR FOTOS
+ * MODAL PARA AMPLIAR FOTOS (INCLUYENDO PORTADA Y PERFIL)
  ************************************************************/
 const imageModal = document.getElementById("image-modal");
 const modalImage = document.getElementById("modal-image");
 const closeModalBtn = document.getElementById("close-modal");
 
-// Detectar clic en imágenes con clase .post-media
 document.addEventListener("click", (e) => {
-  if (
-    e.target.classList.contains("post-media") &&
-    e.target.tagName === "IMG"
-  ) {
+  // 1. Si clic en .post-media (imágenes de publicaciones)
+  if (e.target.classList.contains("post-media") && e.target.tagName === "IMG") {
+    modalImage.src = e.target.src;
+    imageModal.style.display = "flex";
+  }
+  // 2. Si clic en la portada (id="cover-image")
+  if (e.target.id === "cover-image") {
+    modalImage.src = e.target.src;
+    imageModal.style.display = "flex";
+  }
+  // 3. Si clic en la foto de perfil (id="profile-pic")
+  if (e.target.id === "profile-pic") {
     modalImage.src = e.target.src;
     imageModal.style.display = "flex";
   }
 });
 
-// Cerrar modal al hacer clic en la X
+// Botón X para cerrar
 closeModalBtn.addEventListener("click", () => {
   imageModal.style.display = "none";
 });
 
-// Cerrar modal al hacer clic fuera de la imagen
+// Cerrar al hacer clic fuera de la imagen
 imageModal.addEventListener("click", (event) => {
   if (event.target === imageModal) {
     imageModal.style.display = "none";
