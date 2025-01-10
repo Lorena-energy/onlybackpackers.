@@ -1,13 +1,43 @@
-/* General */
+/* ---------------------------------------------------------
+   REGLAS GENERALES
+   --------------------------------------------------------- */
 body {
-  background: linear-gradient(to bottom right, #0077cc, #00c8e0);
   font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
+  /* Gradiente estilo “viajero” */
+  background: linear-gradient(to bottom right, #0077cc, #00c8e0);
   color: white;
 }
 
-/* Encabezado */
+/* Títulos más destacados */
+h1, h2, h3 {
+  font-weight: 600; /* o 700 para aún más impacto */
+}
+
+/* Texto base */
+p, label, span, input, button, textarea {
+  font-weight: 300;
+}
+
+/* Botones de llamada a la acción */
+.cta-button {
+  background: #ff6600;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.cta-button:hover {
+  background: #cc5200;
+}
+
+/* ---------------------------------------------------------
+   ENCABEZADO (HEADER) Y MENÚ
+   --------------------------------------------------------- */
 .main-header {
   background: #004f8c;
   padding: 10px 20px;
@@ -18,7 +48,6 @@ body {
   top: 0;
   z-index: 1000;
 }
-
 .menu {
   list-style: none;
   display: flex;
@@ -26,32 +55,30 @@ body {
   margin: 0;
   padding: 0;
 }
-
-.menu li a {
+.menu a {
   text-decoration: none;
   color: white;
   padding: 8px 15px;
   border-radius: 5px;
+  font-weight: 400;
 }
 .menu a.active {
   background: #ff6600;
 }
-
-/* Menú Hamburguesa */
 .menu-toggle {
   display: none;
   cursor: pointer;
 }
 .menu-toggle .bar {
+  display: block;
   width: 25px;
   height: 3px;
-  background-color: white;
   margin: 5px auto;
-  display: block;
+  background-color: white;
   transition: 0.3s;
 }
 
-/* Botón flotante (Oval) */
+/* Botón flotante (oval) “Detalles del usuario” */
 .user-details-toggle {
   position: fixed;
   top: 15px;
@@ -59,7 +86,7 @@ body {
   background: #ff6600;
   color: white;
   border: none;
-  border-radius: 30px; /* Para oval */
+  border-radius: 30px; /* Oval */
   padding: 10px 20px;
   display: flex;
   align-items: center;
@@ -69,7 +96,9 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Panel Detalles del Usuario */
+/* ---------------------------------------------------------
+   PANEL DETALLES DEL USUARIO
+   --------------------------------------------------------- */
 .user-details {
   position: fixed;
   top: 0;
@@ -87,17 +116,29 @@ body {
 .user-details.open {
   transform: translateX(0);
 }
-.user-details input,
-.user-details textarea {
+.user-details h3 {
+  margin-top: 0;
+  font-weight: 600;
+}
+.user-details label {
+  display: block;
+  margin: 10px 0 5px;
+}
+.user-details textarea,
+.user-details input {
   width: 100%;
   padding: 8px;
   border: 1px solid #ddd;
   border-radius: 5px;
   margin-bottom: 10px;
+  font-family: 'Poppins', sans-serif;
   color: #333;
+  font-weight: 400;
 }
 
-/* Foto de portada */
+/* ---------------------------------------------------------
+   FOTO DE PORTADA
+   --------------------------------------------------------- */
 .cover-photo {
   height: 300px;
   width: 100%;
@@ -106,6 +147,7 @@ body {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  background: transparent;
 }
 .cover-photo img {
   width: 100%;
@@ -125,9 +167,16 @@ body {
   display: flex;
   align-items: center;
   z-index: 10;
+  font-weight: 400;
 }
 
-/* Foto de perfil */
+/* ---------------------------------------------------------
+   SECCIÓN PERFIL DEL USUARIO
+   --------------------------------------------------------- */
+.profile-container {
+  margin-bottom: 30px; /* Más espacio debajo */
+  position: relative;
+}
 .profile-pic-wrapper {
   position: absolute;
   top: 240px;
@@ -136,15 +185,13 @@ body {
   z-index: 20;
 }
 .profile-pic {
-  width: 180px;
-  height: 180px;
+  width: 140px; /* Reducido de 180px */
+  height: 140px;
   border-radius: 50%;
   object-fit: cover;
   border: 4px solid white;
   background-color: #ddd;
 }
-
-/* Ícono cámara en la esquina */
 .upload-label-profile {
   position: absolute;
   bottom: 0;
@@ -159,15 +206,23 @@ body {
   justify-content: center;
   z-index: 20;
 }
+.profile-info {
+  margin-top: 100px; /* Para bajar el texto si la foto está encima */
+  padding: 20px;
+}
 
-/* Publicar */
+/* ---------------------------------------------------------
+   PUBLICAR (FORMULARIO)
+   --------------------------------------------------------- */
 .create-post {
-  margin-bottom: 30px;
-  padding: 0 5%;
+  margin: 40px 5% 30px; /* Más aire */
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
 }
 .create-post h2 {
-  margin-left: 5%;
-  font-weight: 600;
+  font-weight: 700;
+  margin-bottom: 15px;
 }
 .create-post textarea {
   width: 100%;
@@ -176,6 +231,7 @@ body {
   padding: 10px;
   margin-bottom: 10px;
   color: #333;
+  font-weight: 400;
 }
 .upload-label {
   cursor: pointer;
@@ -185,6 +241,8 @@ body {
   border-radius: 5px;
   margin-top: 10px;
   display: inline-block;
+  font-size: 14px;
+  font-weight: 400;
 }
 .post-visibility {
   margin: 10px 0;
@@ -192,20 +250,8 @@ body {
   align-items: center;
   gap: 5px;
 }
-.cta-button {
-  background: #ff6600;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-.cta-button:hover {
-  background: #cc5200;
-}
 
-/* Panel de emojis (publicación) */
+/* Emojis en la publicación */
 .emoji-toggle-post {
   background: #fff;
   color: #333;
@@ -214,6 +260,7 @@ body {
   margin-right: 10px;
   cursor: pointer;
   font-size: 1.2rem;
+  font-weight: 400;
 }
 .emoji-panel-post {
   border: 1px solid #ddd;
@@ -231,10 +278,16 @@ body {
   margin: 5px;
 }
 
-/* Muro Personal */
+/* ---------------------------------------------------------
+   MURO PERSONAL (PUBLICACIONES)
+   --------------------------------------------------------- */
 .muro-personal {
   margin-left: 25%;
   margin-right: 5%;
+}
+.muro-personal h2 {
+  font-weight: 700;
+  margin-left: 5px;
 }
 .muro-personal .post {
   background-color: white;
@@ -244,14 +297,11 @@ body {
   margin: 20px 0;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
-  /* Cambiar de "display: flex" a "flex-direction: column"
-     para que las acciones y comentarios queden debajo */
+  /* Para apilar el header, contenido y acciones en vertical */
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
-
-/* Encabezado de la publicación */
 .post-header {
   display: flex;
   align-items: center;
@@ -263,8 +313,6 @@ body {
   border-radius: 50%;
   object-fit: cover;
 }
-
-/* Contenido de la publicación */
 .post-content {
   flex-grow: 1;
 }
@@ -278,8 +326,6 @@ body {
   width: calc(100% / 3 - 10px);
   border-radius: 5px;
 }
-
-/* Acciones y comentarios debajo */
 .post-actions {
   display: flex;
   gap: 10px;
@@ -292,6 +338,7 @@ body {
   border: none;
   border-radius: 5px;
   padding: 5px 10px;
+  font-weight: 400;
   cursor: pointer;
 }
 .like-button:hover,
@@ -299,42 +346,53 @@ body {
 .emoji-toggle:hover {
   background-color: #005fa3;
 }
-.comments {
-  margin-top: 5px;
-}
-.comment-input {
+.comments .comment-input {
   width: 100%;
   border: 1px solid #ddd;
   border-radius: 10px;
   padding: 10px;
+  font-weight: 400;
 }
 
-/* Panel de emojis (comentarios), si lo usas */
-.emoji-panel {
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  padding: 10px;
-  display: none;
-  flex-wrap: wrap;
-  gap: 5px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+/* ---------------------------------------------------------
+   MODAL (LIGHTBOX) PARA VER FOTOS AMPLIADAS
+   --------------------------------------------------------- */
+.image-modal {
+  position: fixed;
+  z-index: 9999; /* Por encima del resto */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro semi-transparente */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.emoji-panel span {
-  font-size: 1.4rem;
+.modal-image {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+.close-modal {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  font-size: 3rem;
+  color: #fff;
   cursor: pointer;
-  margin: 5px;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+.close-modal:hover {
+  color: #ff6600;
 }
 
-/* Muro-Comunidad (opcional) */
-#community-posts {
-  margin: 20px 5%;
-  background-color: rgba(255, 255, 255, 0.2);
-  padding: 10px;
-  border-radius: 5px;
-}
-
-/* Responsive */
+/* ---------------------------------------------------------
+   RESPONSIVE
+   --------------------------------------------------------- */
 @media (max-width: 768px) {
   .menu {
     display: none;
