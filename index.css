@@ -178,3 +178,11 @@ footer {
   text-align: center;
   padding: 20px 0;
 }
+
+.feature-item h3 {
+  color: #ff6600; /* Cambiar a naranja */
+}
+
+.feature-item p {
+  color: #0077cc; /* Cambiar a azul turquesa */
+}
