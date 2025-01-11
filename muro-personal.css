@@ -1,98 +1,421 @@
-/* General */
+/* ---------------------------------------------------------
+   REGLAS GENERALES
+   --------------------------------------------------------- */
 body {
   font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
   background: linear-gradient(to bottom right, #0077cc, #00c8e0);
   color: white;
+}
+
+h1, h2, h3 {
+  font-weight: 600;
+}
+p, label, input, button, textarea, span {
+  font-weight: 300;
+}
+
+/* Botón CTA */
+.cta-button {
+  background: #ff6600;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.cta-button:hover {
+  background: #cc5200;
+}
+
+/* ---------------------------------------------------------
+   ENCABEZADO Y MENÚ
+   --------------------------------------------------------- */
+.main-header {
+  background: #004f8c;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 15px;
   margin: 0;
   padding: 0;
 }
-
-/* Menú */
+.menu li a {
+  text-decoration: none;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 5px;
+  font-weight: 400;
+}
+.menu a.active {
+  background: #ff6600;
+}
 .menu-toggle {
+  display: none;
   cursor: pointer;
 }
 .menu-toggle .bar {
   width: 25px;
   height: 3px;
-  margin: 5px auto;
   background-color: white;
-}
-.menu {
-  display: none;
-}
-.menu.show {
-  display: flex;
-  flex-direction: column;
-  background-color: #004f8c;
-  padding: 10px;
+  margin: 5px auto;
+  display: block;
+  transition: 0.3s;
 }
 
-/* Portada */
+/* Botón flotante (oval) */
+.user-details-toggle {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  background: #ff6600;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  z-index: 100;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ---------------------------------------------------------
+   PANEL DETALLES DEL USUARIO
+   --------------------------------------------------------- */
+.user-details {
+  position: fixed;
+  top: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.95);
+  color: white;
+  width: 300px;
+  height: 100%;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 99;
+  padding: 20px;
+  overflow-y: auto;
+}
+.user-details.open {
+  transform: translateX(0);
+}
+.user-details h3 {
+  margin-top: 0;
+  font-weight: 600;
+}
+.user-details label {
+  display: block;
+  margin: 10px 0 5px;
+}
+.user-details input,
+.user-details textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  font-weight: 400;
+}
+
+/* ---------------------------------------------------------
+   FOTO DE PORTADA
+   --------------------------------------------------------- */
 .cover-photo {
-  position: relative;
   height: 300px;
   width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: transparent;
 }
 .cover-photo img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  cursor: pointer; /* Para indicar que se puede hacer clic y ampliar */
 }
-.cover-photo .upload-label {
+.cover-photo label {
+  cursor: pointer;
+  padding: 10px 15px;
+  background: #ff6600;
+  border-radius: 5px;
   position: absolute;
   bottom: 10px;
   right: 10px;
-  background: #ff6600;
-  padding: 10px 15px;
-  border-radius: 5px;
-  cursor: pointer;
+  color: white;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  z-index: 10;
+  font-weight: 400;
 }
 
-/* Foto de perfil */
+/* ---------------------------------------------------------
+   SECCIÓN PERFIL DEL USUARIO
+   --------------------------------------------------------- */
+.profile-container {
+  margin-bottom: 30px;
+  position: relative;
+}
 .profile-pic-wrapper {
   position: absolute;
-  bottom: -50px;
-  left: 20px;
+  top: 240px;
+  right: 10%;
   text-align: center;
+  z-index: 20;
 }
 .profile-pic {
-  width: 150px;
-  height: 150px;
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
-  border: 5px solid white;
+  object-fit: cover;
+  border: 4px solid white;
+  background-color: #ddd;
+  cursor: pointer; /* Amplía la foto al hacer clic */
 }
 .upload-label-profile {
   position: absolute;
   bottom: 0;
   right: 0;
-  background: #ff6600;
-  padding: 5px;
+  background: #0077cc;
+  color: white;
   border-radius: 50%;
+  padding: 8px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+}
+.profile-info {
+  margin-top: 100px;
+  padding: 20px;
 }
 
-/* Botón Detalles del Usuario */
-.user-details-toggle {
-  position: absolute;
-  right: 20px;
-  top: 15px;
+/* ---------------------------------------------------------
+   CREAR PUBLICACIÓN
+   --------------------------------------------------------- */
+.create-post {
+  margin: 40px 5% 30px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+.create-post h2 {
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+.create-post textarea {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+  color: #333;
+  font-weight: 400;
+}
+.upload-label {
+  cursor: pointer;
+  color: white;
   background: #ff6600;
-  padding: 10px 20px;
-  border-radius: 30px;
-  cursor: pointer;
+  padding: 8px 15px;
+  border-radius: 5px;
+  margin-top: 10px;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 400;
+}
+.post-visibility {
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
-/* Desplegable del Usuario */
-.user-details {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 300px;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.9);
-  transform: translateX(100%);
-  transition: transform 0.3s ease-in-out;
+/* Emojis en la publicación */
+.emoji-toggle-post {
+  background: #fff;
+  color: #333;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-right: 10px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: 400;
 }
-.user-details.open {
-  transform: translateX(0);
+.emoji-panel-post {
+  border: 1px solid #ddd;
+  background-color: white;
+  padding: 10px;
+  display: none;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.emoji-panel-post span {
+  font-size: 1.4rem;
+  cursor: pointer;
+  margin: 5px;
+}
+
+/* ---------------------------------------------------------
+   MURO PERSONAL
+   --------------------------------------------------------- */
+.muro-personal {
+  margin-left: 25%;
+  margin-right: 5%;
+}
+.muro-personal h2 {
+  font-weight: 700;
+  margin-left: 5px;
+}
+.muro-personal .post {
+  background-color: white;
+  color: #333;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.post-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.profile-thumbnail {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.post-content {
+  flex-grow: 1;
+}
+.media-container {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.post-media {
+  width: calc(100% / 3 - 10px);
+  border-radius: 5px;
+  cursor: pointer; /* se puede ampliar */
+}
+.post-actions {
+  display: flex;
+  gap: 10px;
+}
+.like-button,
+.comment-button,
+.emoji-toggle {
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-weight: 400;
+  cursor: pointer;
+}
+.like-button:hover,
+.comment-button:hover,
+.emoji-toggle:hover {
+  background-color: #005fa3;
+}
+.comments .comment-input {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 10px;
+  font-weight: 400;
+}
+
+/* ---------------------------------------------------------
+   MODAL (LIGHTBOX) PARA FOTOS
+   --------------------------------------------------------- */
+.image-modal {
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-image {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+.close-modal {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  font-size: 3rem;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+.close-modal:hover {
+  color: #ff6600;
+}
+
+/* ---------------------------------------------------------
+   RESPONSIVE
+   --------------------------------------------------------- */
+@media (max-width: 768px) {
+  .menu {
+    display: none;
+    flex-direction: column;
+    background: #004f8c;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 20px 0;
+  }
+  .menu-toggle {
+    display: block;
+  }
+
+  .muro-personal {
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0 10px;
+  }
+  .profile-pic-wrapper {
+    position: static;
+    margin-top: 20px;
+  }
+  .cover-photo {
+    height: 200px;
+  }
 }
