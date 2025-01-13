@@ -10,8 +10,8 @@ body {
 /* Cabecera */
 .main-header {
   background-color: #003366;
-  color: white;
   padding: 10px 20px;
+  color: white;
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -21,23 +21,18 @@ body {
   list-style: none;
   display: flex;
   gap: 15px;
-  justify-content: center;
   margin: 0;
   padding: 0;
-}
-
-.menu li {
-  margin: 0;
 }
 
 .menu a {
   color: white;
   text-decoration: none;
-  padding: 8px 15px;
+  padding: 10px 15px;
   border-radius: 5px;
+  transition: background-color 0.3s;
 }
 
-.menu a:hover,
 .menu a.active {
   background-color: #005fa3;
 }
@@ -50,8 +45,8 @@ body {
 .menu-toggle .bar {
   width: 25px;
   height: 3px;
-  margin: 5px auto;
   background-color: white;
+  margin: 5px 0;
 }
 
 @media (max-width: 768px) {
@@ -60,10 +55,11 @@ body {
     flex-direction: column;
     background-color: #003366;
     position: absolute;
-    top: 60px;
+    top: 100%;
     left: 0;
     width: 100%;
     padding: 10px 0;
+    z-index: 1000;
   }
 
   .menu.active {
@@ -80,78 +76,53 @@ body {
   padding: 20px;
 }
 
-.destination-list h2 {
-  color: #003366;
-}
-
-.destination-list ul {
+.chat-destinations .destination-list ul {
   list-style: none;
   padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
-.destination-list button {
+.chat-destinations .destination-list button {
+  padding: 10px 20px;
   background-color: #005fa3;
   color: white;
   border: none;
   border-radius: 5px;
-  padding: 10px 20px;
   cursor: pointer;
-  margin: 5px 0;
   transition: background-color 0.3s;
 }
 
-.destination-list button:hover {
+.chat-destinations .destination-list button:hover {
   background-color: #003366;
 }
 
 .chat-window {
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
   margin-top: 20px;
-  background-color: white;
 }
 
 .chat-window.hidden {
   display: none;
 }
 
-.messages {
+.chat-window .messages {
   max-height: 300px;
   overflow-y: auto;
-  margin-bottom: 10px;
-  padding: 10px;
-  border: 1px solid #ddd;
+  background-color: #e6f7ff;
   border-radius: 5px;
-  background-color: #f9f9f9;
-}
-
-.message {
+  padding: 10px;
   margin-bottom: 10px;
 }
 
-.message.sent {
-  text-align: right;
-  color: #003366;
-}
-
-#chat-form {
-  display: flex;
-  gap: 10px;
-}
-
-#chat-form input {
-  flex-grow: 1;
-  padding: 10px;
-  border: 1px solid #ddd;
+.chat-window .messages .message {
+  padding: 8px 10px;
   border-radius: 5px;
+  margin-bottom: 5px;
 }
 
-#chat-form button {
-  background-color: #ff6600;
+.chat-window .messages .sent {
+  background-color: #005fa3;
   color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 10px;
-  cursor: pointer;
+  align-self: flex-end;
 }
