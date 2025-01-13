@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Menú hamburguesa
   const menuToggle = document.getElementById("menu-toggle");
   const menu = document.getElementById("menu");
 
+  // Menú hamburguesa
   menuToggle.addEventListener("click", () => {
     menu.classList.toggle("active");
   });
