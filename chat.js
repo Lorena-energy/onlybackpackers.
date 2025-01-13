@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
   // Menú hamburguesa
-  const toggleBtn = document.getElementById("menu-toggle");
+  const menuToggle = document.getElementById("menu-toggle");
   const menu = document.getElementById("menu");
 
-  toggleBtn?.addEventListener("click", () => {
+  menuToggle.addEventListener("click", () => {
     menu.classList.toggle("active");
   });
 
@@ -15,17 +15,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const chatForm = document.getElementById("chat-form");
   const chatTitle = document.getElementById("chat-destination-title");
 
-  // Abrir chat para un destino
   destinationButtons.forEach((button) => {
     button.addEventListener("click", () => {
-      const destination = button.dataset.destination;
       chatTitle.textContent = `Chat - ${button.textContent}`;
-      chatMessages.innerHTML = ""; // Limpiar mensajes previos
+      chatMessages.innerHTML = "";
       chatWindow.classList.remove("hidden");
     });
   });
 
-  // Enviar mensaje
   chatForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
@@ -34,11 +31,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const newMessage = document.createElement("div");
       newMessage.classList.add("message", "sent");
       newMessage.textContent = message;
-
       chatMessages.appendChild(newMessage);
-      chatMessages.scrollTop = chatMessages.scrollHeight; // Scroll automático
-      chatInput.value = ""; // Limpiar input
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+      chatInput.value = "";
     }
   });
 });
-
