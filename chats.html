@@ -12,9 +12,9 @@
   <header class="main-header">
     <nav>
       <div class="menu-toggle" id="menu-toggle">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
       <ul class="menu" id="menu">
         <li><a href="index.html">Inicio</a></li>
@@ -32,44 +32,66 @@
 
   <!-- Sección principal -->
   <main class="chat-destinations">
-    <section class="destination-list">
-      <h2>Elige tu destino</h2>
-      <input type="text" id="search-bar" placeholder="Busca tu destino...">
-      <ul id="destination-list">
-        <!-- Europa -->
-        <li><button class="destination" data-destination="paris">París</button></li>
-        <li><button class="destination" data-destination="roma">Roma</button></li>
-        <li><button class="destination" data-destination="amsterdam">Ámsterdam</button></li>
-        <li><button class="destination" data-destination="praga">Praga</button></li>
-        <li><button class="destination" data-destination="londres">Londres</button></li>
-        <li><button class="destination" data-destination="barcelona">Barcelona</button></li>
-        <!-- Asia -->
-        <li><button class="destination" data-destination="tokio">Tokio</button></li>
-        <li><button class="destination" data-destination="bali">Bali</button></li>
-        <li><button class="destination" data-destination="bangkok">Bangkok</button></li>
-        <li><button class="destination" data-destination="seul">Seúl</button></li>
-        <li><button class="destination" data-destination="nueva_delhi">Nueva Delhi</button></li>
-        <!-- África -->
-        <li><button class="destination" data-destination="el_cairo">El Cairo</button></li>
-        <li><button class="destination" data-destination="ciudad_cabo">Ciudad del Cabo</button></li>
-        <li><button class="destination" data-destination="marrakech">Marrakech</button></li>
-        <li><button class="destination" data-destination="nairobi">Nairobi</button></li>
-        <li><button class="destination" data-destination="zanzibar">Zanzíbar</button></li>
-        <!-- América del Norte -->
-        <li><button class="destination" data-destination="nueva_york">Nueva York</button></li>
-        <li><button class="destination" data-destination="los_angeles">Los Ángeles</button></li>
-        <li><button class="destination" data-destination="ciudad_mexico">Ciudad de México</button></li>
-        <li><button class="destination" data-destination="toronto">Toronto</button></li>
-        <!-- América Central y del Sur -->
-        <li><button class="destination" data-destination="cancun">Cancún</button></li>
-        <li><button class="destination" data-destination="san_jose">San José</button></li>
-        <li><button class="destination" data-destination="rio">Río de Janeiro</button></li>
-        <li><button class="destination" data-destination="buenos_aires">Buenos Aires</button></li>
+    <h1>Chats por Destino</h1>
+    <p>Conéctate con viajeros en los destinos más populares.</p>
+    
+    <section class="destination-menu">
+      <h2>Explora por Continentes</h2>
+      <ul class="continent-list">
+        <li>
+          <button class="continent" data-continent="europe">Europa</button>
+          <ul class="city-list hidden" id="europe">
+            <li><button class="city">París</button></li>
+            <li><button class="city">Roma</button></li>
+            <li><button class="city">Ámsterdam</button></li>
+            <li><button class="city">Praga</button></li>
+            <li><button class="city">Londres</button></li>
+            <li><button class="city">Barcelona</button></li>
+          </ul>
+        </li>
+        <li>
+          <button class="continent" data-continent="asia">Asia</button>
+          <ul class="city-list hidden" id="asia">
+            <li><button class="city">Tokio</button></li>
+            <li><button class="city">Bali</button></li>
+            <li><button class="city">Bangkok</button></li>
+            <li><button class="city">Seúl</button></li>
+            <li><button class="city">Nueva Delhi</button></li>
+          </ul>
+        </li>
+        <li>
+          <button class="continent" data-continent="africa">África</button>
+          <ul class="city-list hidden" id="africa">
+            <li><button class="city">El Cairo</button></li>
+            <li><button class="city">Ciudad del Cabo</button></li>
+            <li><button class="city">Marrakech</button></li>
+            <li><button class="city">Nairobi</button></li>
+            <li><button class="city">Zanzíbar</button></li>
+          </ul>
+        </li>
+        <li>
+          <button class="continent" data-continent="north-america">América del Norte</button>
+          <ul class="city-list hidden" id="north-america">
+            <li><button class="city">Nueva York</button></li>
+            <li><button class="city">Los Ángeles</button></li>
+            <li><button class="city">Ciudad de México</button></li>
+            <li><button class="city">Toronto</button></li>
+          </ul>
+        </li>
+        <li>
+          <button class="continent" data-continent="central-south-america">América Central y del Sur</button>
+          <ul class="city-list hidden" id="central-south-america">
+            <li><button class="city">Cancún</button></li>
+            <li><button class="city">San José</button></li>
+            <li><button class="city">Río de Janeiro</button></li>
+            <li><button class="city">Buenos Aires</button></li>
+          </ul>
+        </li>
       </ul>
     </section>
 
     <section class="chat-window hidden">
-      <h2 id="chat-destination-title">Chat - París</h2>
+      <h2 id="chat-destination-title">Chat - [Destino]</h2>
       <div class="messages" id="chat-messages">
         <!-- Mensajes se cargarán dinámicamente -->
       </div>
@@ -80,7 +102,6 @@
     </section>
   </main>
 
-  <!-- Script principal -->
-  <script src="chats.js"></script>
+  <script src="chat.js"></script>
 </body>
 </html>
