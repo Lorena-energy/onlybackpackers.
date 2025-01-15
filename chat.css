@@ -3,8 +3,8 @@ body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f9f9f9;
   color: #333;
+  background: linear-gradient(to bottom, #003366, #00bfff); /* Azul degradado */
 }
 
 /* Encabezado */
@@ -12,28 +12,9 @@ body {
   background: #003366;
   color: white;
   padding: 10px 20px;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-.menu {
-  list-style: none;
   display: flex;
-  gap: 15px;
-  margin: 0;
-  padding: 0;
-}
-
-.menu li a {
-  color: white;
-  text-decoration: none;
-  padding: 10px 15px;
-  border-radius: 5px;
-}
-
-.menu li a.active {
-  background: #00bfff;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .menu-toggle {
@@ -41,71 +22,103 @@ body {
   cursor: pointer;
 }
 
-.menu-toggle .bar {
+.menu-toggle span {
   display: block;
   width: 25px;
   height: 3px;
-  margin: 5px 0;
-  background-color: white;
+  margin: 5px auto;
+  background: white;
 }
 
-/* Responsive */
+ul.menu {
+  display: flex;
+  list-style: none;
+  gap: 15px;
+}
+
+ul.menu li a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+}
+
+ul.menu li a:hover,
+ul.menu li a.active {
+  background-color: #005fa3; /* Azul turquesa */
+}
+
+/* Botones de continentes */
+.continent-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.continent-button {
+  background-color: #ff6600; /* Naranja */
+  color: white;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s;
+}
+
+.continent-button:hover {
+  background-color: #cc5200; /* Naranja oscuro */
+}
+
+/* Lista de destinos */
+.destination-list {
+  display: none; /* Oculto por defecto */
+  list-style: none;
+  padding: 0;
+  margin: 10px auto;
+  max-width: 600px;
+}
+
+.destination-list li {
+  margin: 5px 0;
+}
+
+.destination-list li button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background: #005fa3; /* Azul turquesa */
+  color: white;
+  cursor: pointer;
+  text-align: left;
+}
+
+.destination-list li button:hover {
+  background: #003366; /* Azul oscuro */
+}
+
+/* Menú hamburguesa para móvil */
 @media (max-width: 768px) {
   .menu {
     display: none;
     flex-direction: column;
-    background-color: #003366;
+    background: #003366;
+    position: absolute;
+    top: 50px;
+    left: 0;
     width: 100%;
+    z-index: 1000;
+    gap: 10px;
+    padding: 10px 0;
   }
 
-  .menu.active {
+  .menu.show {
     display: flex;
   }
 
   .menu-toggle {
     display: block;
   }
-}
-
-/* Sección de destinos */
-.chat-destinations {
-  padding: 20px;
-}
-
-.destination-list h2 {
-  color: #003366;
-}
-
-.destination-list ul {
-  list-style: none;
-  padding: 0;
-}
-
-.destination-list ul li {
-  margin: 10px 0;
-}
-
-.destination-list ul li button {
-  background: #0077cc;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.destination-list ul li button:hover {
-  background: #005fa3;
-}
-
-/* Ventana de chat */
-.chat-window {
-  padding: 20px;
-  background: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.chat-window.hidden {
-  display: none;
 }
