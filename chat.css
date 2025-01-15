@@ -7,11 +7,11 @@ body {
   color: #333;
 }
 
-/* Cabecera */
+/* Encabezado */
 .main-header {
-  background-color: #003366;
-  padding: 10px 20px;
+  background: #003366;
   color: white;
+  padding: 10px 20px;
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -25,16 +25,15 @@ body {
   padding: 0;
 }
 
-.menu a {
+.menu li a {
   color: white;
   text-decoration: none;
   padding: 10px 15px;
   border-radius: 5px;
-  transition: background-color 0.3s;
 }
 
-.menu a.active {
-  background-color: #005fa3;
+.menu li a.active {
+  background: #00bfff;
 }
 
 .menu-toggle {
@@ -43,24 +42,20 @@ body {
 }
 
 .menu-toggle .bar {
+  display: block;
   width: 25px;
   height: 3px;
-  background-color: white;
   margin: 5px 0;
+  background-color: white;
 }
 
+/* Responsive */
 @media (max-width: 768px) {
   .menu {
     display: none;
     flex-direction: column;
     background-color: #003366;
-    position: absolute;
-    top: 60px;
-    left: 0;
     width: 100%;
-    z-index: 1000;
-    gap: 10px;
-    padding: 10px 0;
   }
 
   .menu.active {
@@ -72,58 +67,45 @@ body {
   }
 }
 
-/* Chats */
+/* Sección de destinos */
 .chat-destinations {
   padding: 20px;
 }
 
-.chat-destinations .destination-list ul {
+.destination-list h2 {
+  color: #003366;
+}
+
+.destination-list ul {
   list-style: none;
   padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
 }
 
-.chat-destinations .destination-list button {
-  padding: 10px 20px;
-  background-color: #005fa3;
+.destination-list ul li {
+  margin: 10px 0;
+}
+
+.destination-list ul li button {
+  background: #0077cc;
   color: white;
   border: none;
+  padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s;
 }
 
-.chat-destinations .destination-list button:hover {
-  background-color: #003366;
+.destination-list ul li button:hover {
+  background: #005fa3;
 }
 
+/* Ventana de chat */
 .chat-window {
-  margin-top: 20px;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .chat-window.hidden {
   display: none;
-}
-
-.chat-window .messages {
-  max-height: 300px;
-  overflow-y: auto;
-  background-color: #e6f7ff;
-  border-radius: 5px;
-  padding: 10px;
-  margin-bottom: 10px;
-}
-
-.chat-window .messages .message {
-  padding: 8px 10px;
-  border-radius: 5px;
-  margin-bottom: 5px;
-}
-
-.chat-window .messages .sent {
-  background-color: #005fa3;
-  color: white;
-  align-self: flex-end;
 }
