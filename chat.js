@@ -1,47 +1,32 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const toggleBtn = document.getElementById("menu-toggle");
-  const menu = document.getElementById("menu");
+// Menú hamburguesa para móviles
+document.querySelector('.menu-toggle').addEventListener('click', () => {
+  document.querySelector('.menu').classList.toggle('show');
+});
 
-  // Menú hamburguesa
-  toggleBtn.addEventListener("click", () => {
-    menu.classList.toggle("active");
-  });
+// Función para manejar el despliegue de destinos por continente
+const continentButtons = document.querySelectorAll('.continent-button');
+continentButtons.forEach((button) => {
+  button.addEventListener('click', () => {
+    const continent = button.dataset.continent;
+    const list = document.getElementById(`${continent}-list`);
 
-  // Barra de búsqueda
-  const searchBar = document.getElementById("search-bar");
-  const destinations = document.querySelectorAll(".destination");
-
-  searchBar.addEventListener("input", (e) => {
-    const query = e.target.value.toLowerCase();
-    destinations.forEach((dest) => {
-      const text = dest.textContent.toLowerCase();
-      dest.closest("li").style.display = text.includes(query) ? "" : "none";
+    // Ocultar todas las listas excepto la seleccionada
+    document.querySelectorAll('.destination-list').forEach((list) => {
+      if (list !== list) {
+        list.style.display = 'none';
+      }
     });
-  });
 
-  // Chat funcionalidad
-  const chatWindow = document.querySelector(".chat-window");
-  const chatMessages = document.getElementById("chat-messages");
-  const chatInput = document.getElementById("chat-input");
-  const chatForm = document.getElementById("chat-form");
-  const chatTitle = document.getElementById("chat-destination-title");
-
-  destinations.forEach((button) => {
-    button.addEventListener("click", () => {
-      chatTitle.textContent = `Chat - ${button.textContent}`;
-      chatMessages.innerHTML = ""; // Limpiar mensajes previos
-      chatWindow.classList.remove("hidden");
-    });
-  });
-
-  chatForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const message = chatInput.value.trim();
-    if (message) {
-      const newMessage = document.createElement("div");
-      newMessage.textContent = message;
-      chatMessages.appendChild(newMessage);
-      chatInput.value = "";
+    // Alternar la visibilidad de la lista seleccionada
+    if (list) {
+      list.style.display = list.style.display === 'block' ? 'none' : 'block';
     }
+  });
+});
+
+// Opcional: Animación de scroll al abrir listas largas
+document.querySelectorAll('.destination-list button').forEach((destination) => {
+  destination.addEventListener('click', () => {
+    window.scrollTo({ top: destination.offsetTop - 50, behavior: 'smooth' });
   });
 });
