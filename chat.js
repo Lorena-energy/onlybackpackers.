@@ -1,8 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Menú hamburguesa
   const menuToggle = document.getElementById("menu-toggle");
   const menu = document.getElementById("menu");
-
-  // Mostrar/Ocultar menú en móvil
   menuToggle.addEventListener("click", () => {
     menu.classList.toggle("show");
   });
@@ -28,23 +27,31 @@ document.addEventListener("DOMContentLoaded", () => {
   cityButtons.forEach((button) => {
     button.addEventListener("click", () => {
       const cityName = button.textContent;
-      chatTitle.textContent = `Chat - ${cityName}`;
-      chatMessages.innerHTML = ""; // Limpiar mensajes previos
-      chatWindow.classList.remove("hidden");
+      if (chatTitle) {
+        chatTitle.textContent = `Chat - ${cityName}`;
+      }
+      if (chatMessages) {
+        chatMessages.innerHTML = ""; // limpiar chat
+      }
+      if (chatWindow) {
+        chatWindow.classList.remove("hidden");
+      }
     });
   });
 
   // Enviar mensaje
-  chatForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const message = chatInput.value.trim();
-    if (message) {
-      const newMessage = document.createElement("div");
-      newMessage.textContent = message;
-      newMessage.classList.add("sent-message");
-      chatMessages.appendChild(newMessage);
-      chatMessages.scrollTop = chatMessages.scrollHeight; // Scroll automático
-      chatInput.value = ""; // Limpiar input
-    }
-  });
+  if (chatForm) {
+    chatForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const message = chatInput.value.trim();
+      if (message) {
+        const newMessage = document.createElement("div");
+        newMessage.textContent = message;
+        newMessage.classList.add("sent-message");
+        chatMessages.appendChild(newMessage);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+        chatInput.value = "";
+      }
+    });
+  }
 });
