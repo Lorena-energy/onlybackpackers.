@@ -1,32 +1,50 @@
-// Menú hamburguesa para móviles
-document.querySelector('.menu-toggle').addEventListener('click', () => {
-  document.querySelector('.menu').classList.toggle('show');
-});
+document.addEventListener("DOMContentLoaded", () => {
+  const menuToggle = document.getElementById("menu-toggle");
+  const menu = document.getElementById("menu");
 
-// Función para manejar el despliegue de destinos por continente
-const continentButtons = document.querySelectorAll('.continent-button');
-continentButtons.forEach((button) => {
-  button.addEventListener('click', () => {
-    const continent = button.dataset.continent;
-    const list = document.getElementById(`${continent}-list`);
-
-    // Ocultar todas las listas excepto la seleccionada
-    document.querySelectorAll('.destination-list').forEach((list) => {
-      if (list !== list) {
-        list.style.display = 'none';
-      }
-    });
-
-    // Alternar la visibilidad de la lista seleccionada
-    if (list) {
-      list.style.display = list.style.display === 'block' ? 'none' : 'block';
-    }
+  // Mostrar/Ocultar menú en móvil
+  menuToggle.addEventListener("click", () => {
+    menu.classList.toggle("show");
   });
-});
 
-// Opcional: Animación de scroll al abrir listas largas
-document.querySelectorAll('.destination-list button').forEach((destination) => {
-  destination.addEventListener('click', () => {
-    window.scrollTo({ top: destination.offsetTop - 50, behavior: 'smooth' });
+  // Gestionar desplegables de continentes
+  const continentButtons = document.querySelectorAll(".continent");
+  continentButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const continentId = button.dataset.continent;
+      const continentCities = document.getElementById(continentId);
+      continentCities.classList.toggle("hidden");
+    });
+  });
+
+  // Chat funcional
+  const cityButtons = document.querySelectorAll(".city");
+  const chatWindow = document.querySelector(".chat-window");
+  const chatMessages = document.getElementById("chat-messages");
+  const chatInput = document.getElementById("chat-input");
+  const chatForm = document.getElementById("chat-form");
+  const chatTitle = document.getElementById("chat-destination-title");
+
+  cityButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const cityName = button.textContent;
+      chatTitle.textContent = `Chat - ${cityName}`;
+      chatMessages.innerHTML = ""; // Limpiar mensajes previos
+      chatWindow.classList.remove("hidden");
+    });
+  });
+
+  // Enviar mensaje
+  chatForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const message = chatInput.value.trim();
+    if (message) {
+      const newMessage = document.createElement("div");
+      newMessage.textContent = message;
+      newMessage.classList.add("sent-message");
+      chatMessages.appendChild(newMessage);
+      chatMessages.scrollTop = chatMessages.scrollHeight; // Scroll automático
+      chatInput.value = ""; // Limpiar input
+    }
   });
 });
