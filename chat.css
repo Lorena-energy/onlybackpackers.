@@ -4,47 +4,53 @@ body {
   margin: 0;
   padding: 0;
   color: #333;
+  /* Degradado azul oscuro a turquesa */
   background: linear-gradient(to bottom right, #004f8c, #00c8e0);
 }
 
 /* Encabezado */
 .main-header {
-  background-color: #004f8c;
+  background-color: #004f8c; /* barrita superior */
   padding: 10px 20px;
   position: sticky;
   top: 0;
   z-index: 1000;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
+.main-header nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Menú y hamburguesa */
 .menu {
   list-style: none;
   display: flex;
   gap: 15px;
+  margin: 0;
+  padding: 0;
 }
-
-.menu a {
+.menu li a {
   text-decoration: none;
   color: white;
   padding: 8px 15px;
   border-radius: 5px;
   transition: background-color 0.3s ease;
 }
-
 .menu a:hover,
 .menu a.active {
   background-color: #005fa3;
 }
 
+/* Hamburguesa */
 .menu-toggle {
   display: none;
   flex-direction: column;
   cursor: pointer;
+  margin-right: 10px;
 }
-
-.menu-toggle span {
+.menu-toggle .bar {
   width: 25px;
   height: 3px;
   background: white;
@@ -61,12 +67,11 @@ body {
     right: 0;
     width: 100%;
     z-index: 1000;
+    padding: 10px 0;
   }
-
   .menu.show {
     display: flex;
   }
-
   .menu-toggle {
     display: flex;
   }
@@ -75,17 +80,44 @@ body {
 /* Contenido principal */
 .chat-destinations {
   padding: 20px;
+  /* Fondo blanco para ver la sección, 
+     o si quieres transparente, quita background. */
+  background: #fff;
+  border-radius: 10px;
+  margin: 20px auto;
+  max-width: 1200px;
+  min-height: 80vh;
 }
 
-.destination-menu {
-  margin: 20px 0;
-}
-
-.destination-menu h2 {
+.chat-destinations h1 {
   text-align: center;
-  color: white;
+  color: #004f8c;
+  margin-bottom: 10px;
+}
+.chat-destinations p {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
 }
 
+/* Menú de continentes */
+.destination-menu {
+  margin: 20px auto;
+  max-width: 800px;
+  text-align: center;
+}
+.destination-menu h2 {
+  color: #004f8c;
+  margin-bottom: 15px;
+}
+.continent-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  padding: 0;
+}
 .continent {
   background: #ff6600;
   color: white;
@@ -93,67 +125,76 @@ body {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  margin: 10px;
+  min-width: 120px;
   transition: background-color 0.3s ease;
 }
-
 .continent:hover {
   background: #cc5200;
 }
 
+/* Ciudades (dropdown) */
 .city-list {
   list-style: none;
   padding-left: 20px;
+  margin: 10px auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
 }
-
+.city-list.hidden {
+  display: none;
+}
 .city {
   background: white;
   color: #004f8c;
   padding: 5px 10px;
   border: none;
   border-radius: 3px;
-  margin: 5px 0;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
-
 .city:hover {
   background: #e0f3ff;
 }
 
-/* Chat Window */
+/* Ventana de Chat */
 .chat-window {
-  margin-top: 20px;
+  margin-top: 30px;
   padding: 20px;
   background: white;
   border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: 30px auto 50px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
-
 .chat-window.hidden {
   display: none;
 }
-
-#chat-messages {
+.chat-window h2 {
+  color: #004f8c;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.messages {
   height: 300px;
   overflow-y: scroll;
   border: 1px solid #ccc;
   margin-bottom: 15px;
   padding: 10px;
+  background: #f9f9f9;
 }
-
 #chat-form {
   display: flex;
   gap: 10px;
+  justify-content: center;
 }
-
 #chat-input {
-  flex-grow: 1;
+  flex: 1;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
-
 #chat-form button {
   background: #004f8c;
   color: white;
@@ -163,7 +204,17 @@ body {
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
-
 #chat-form button:hover {
   background: #005fa3;
+}
+
+/* Mensajes Enviados */
+.sent-message {
+  background-color: #d1ecf1;
+  border-radius: 5px;
+  margin: 5px 0;
+  padding: 8px;
+  width: fit-content;
+  max-width: 80%;
+  /* Podrías alinear a la derecha si deseas: margin-left: auto; */
 }
