@@ -4,114 +4,63 @@ body {
   margin: 0;
   padding: 0;
   color: #333;
-  background: linear-gradient(to bottom, #003366, #00bfff); /* Azul degradado */
+  background: linear-gradient(to bottom right, #004f8c, #00c8e0);
 }
 
 /* Encabezado */
 .main-header {
-  background: #003366;
-  color: white;
+  background-color: #004f8c;
   padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+}
+
+.menu a {
+  text-decoration: none;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.menu a:hover,
+.menu a.active {
+  background-color: #005fa3;
 }
 
 .menu-toggle {
   display: none;
+  flex-direction: column;
   cursor: pointer;
 }
 
 .menu-toggle span {
-  display: block;
   width: 25px;
   height: 3px;
-  margin: 5px auto;
   background: white;
+  margin: 4px 0;
 }
 
-ul.menu {
-  display: flex;
-  list-style: none;
-  gap: 15px;
-}
-
-ul.menu li a {
-  color: white;
-  text-decoration: none;
-  padding: 10px 15px;
-  border-radius: 5px;
-}
-
-ul.menu li a:hover,
-ul.menu li a.active {
-  background-color: #005fa3; /* Azul turquesa */
-}
-
-/* Botones de continentes */
-.continent-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin: 20px 0;
-}
-
-.continent-button {
-  background-color: #ff6600; /* Naranja */
-  color: white;
-  padding: 10px 20px;
-  border-radius: 50px;
-  font-size: 1rem;
-  cursor: pointer;
-  border: none;
-  transition: background-color 0.3s;
-}
-
-.continent-button:hover {
-  background-color: #cc5200; /* Naranja oscuro */
-}
-
-/* Lista de destinos */
-.destination-list {
-  display: none; /* Oculto por defecto */
-  list-style: none;
-  padding: 0;
-  margin: 10px auto;
-  max-width: 600px;
-}
-
-.destination-list li {
-  margin: 5px 0;
-}
-
-.destination-list li button {
-  width: 100%;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  background: #005fa3; /* Azul turquesa */
-  color: white;
-  cursor: pointer;
-  text-align: left;
-}
-
-.destination-list li button:hover {
-  background: #003366; /* Azul oscuro */
-}
-
-/* Menú hamburguesa para móvil */
 @media (max-width: 768px) {
   .menu {
     display: none;
     flex-direction: column;
-    background: #003366;
+    background-color: #004f8c;
     position: absolute;
-    top: 50px;
-    left: 0;
+    top: 60px;
+    right: 0;
     width: 100%;
     z-index: 1000;
-    gap: 10px;
-    padding: 10px 0;
   }
 
   .menu.show {
@@ -119,6 +68,102 @@ ul.menu li a.active {
   }
 
   .menu-toggle {
-    display: block;
+    display: flex;
   }
+}
+
+/* Contenido principal */
+.chat-destinations {
+  padding: 20px;
+}
+
+.destination-menu {
+  margin: 20px 0;
+}
+
+.destination-menu h2 {
+  text-align: center;
+  color: white;
+}
+
+.continent {
+  background: #ff6600;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.continent:hover {
+  background: #cc5200;
+}
+
+.city-list {
+  list-style: none;
+  padding-left: 20px;
+}
+
+.city {
+  background: white;
+  color: #004f8c;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 3px;
+  margin: 5px 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.city:hover {
+  background: #e0f3ff;
+}
+
+/* Chat Window */
+.chat-window {
+  margin-top: 20px;
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.chat-window.hidden {
+  display: none;
+}
+
+#chat-messages {
+  height: 300px;
+  overflow-y: scroll;
+  border: 1px solid #ccc;
+  margin-bottom: 15px;
+  padding: 10px;
+}
+
+#chat-form {
+  display: flex;
+  gap: 10px;
+}
+
+#chat-input {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#chat-form button {
+  background: #004f8c;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#chat-form button:hover {
+  background: #005fa3;
 }
