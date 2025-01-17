@@ -1,8 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
   const postForm = document.getElementById("post-form");
   const postList = document.getElementById("post-list");
+  const questionForm = document.getElementById("question-form");
+  const questionList = document.getElementById("question-list");
 
   let posts = []; // Array para almacenar las publicaciones
+  let questions = []; // Array para almacenar las preguntas
 
   // Manejar la creación de publicaciones
   postForm.addEventListener("submit", (e) => {
@@ -108,6 +111,88 @@ document.addEventListener("DOMContentLoaded", () => {
       post.comments.push(commentText);
 
       renderPosts();
+    }
+  });
+
+  // Manejar la creación de preguntas
+  questionForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const questionContent = document.getElementById("question-content").value.trim();
+
+    if (!questionContent) return;
+
+    // Crear objeto de pregunta
+    const newQuestion = {
+      id: Date.now(),
+      content: questionContent,
+      answers: [],
+    };
+
+    // Añadir pregunta al array
+    questions.unshift(newQuestion);
+
+    // Renderizar preguntas
+    renderQuestions();
+
+    // Limpiar el formulario
+    questionForm.reset();
+  });
+
+  // Renderizar preguntas
+  function renderQuestions() {
+    questionList.innerHTML = ""; // Limpiar preguntas existentes
+
+    questions.forEach((question) => {
+      const questionElement = document.createElement("div");
+      questionElement.classList.add("question");
+      questionElement.setAttribute("data-id", question.id);
+
+      // Contenido de la pregunta
+      const contentHTML = `
+        <div class="question-header">
+          <h3>Usuario Anónimo</h3>
+          <span>Hace unos momentos</span>
+        </div>
+        <div class="question-content">
+          <p>${question.content}</p>
+        </div>
+        <div class="answer-section">
+          <div class="answers">
+            ${question.answers
+              .map(
+                (answer) =>
+                  `<div class="answer"><strong>Usuario:</strong> ${answer}</div>`
+              )
+              .join("")}
+          </div>
+          <form class="answer-form">
+            <input type="text" placeholder="Escribe una respuesta..." required>
+            <button type="submit">Responder</button>
+          </form>
+        </div>
+      `;
+
+      questionElement.innerHTML = contentHTML;
+      questionList.appendChild(questionElement);
+    });
+  }
+
+  // Manejar envío de respuestas
+  questionList.addEventListener("submit", (e) => {
+    if (e.target.classList.contains("answer-form")) {
+      e.preventDefault();
+
+      const questionId = e.target.closest(".question").getAttribute("data-id");
+      const answerInput = e.target.querySelector("input");
+      const answerText = answerInput.value.trim();
+
+      if (!answerText) return;
+
+      const question = questions.find((q) => q.id === Number(questionId));
+      question.answers.push(answerText);
+
+      renderQuestions();
     }
   });
 });
