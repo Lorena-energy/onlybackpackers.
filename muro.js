@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const menu = document.getElementById("menu");
 
   menuToggle.addEventListener("click", () => {
-    menu.classList.toggle("show"); // usar ".show" en CSS
+    menu.classList.toggle("show");
   });
 
   /************************************************************
