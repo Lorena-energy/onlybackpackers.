@@ -11,7 +11,12 @@
   <!-- Encabezado -->
   <header class="main-header">
     <nav>
-      <ul class="menu">
+      <div class="menu-toggle" id="menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul class="menu" id="menu">
         <li><a href="index.html">Inicio</a></li>
         <li><a href="muro.html" class="active">Comunidad</a></li>
         <li><a href="muro-personal.html">Mi Muro</a></li>
@@ -27,6 +32,19 @@
 
   <!-- Sección del muro -->
   <main class="muro">
+    <!-- Sección de Preguntas a la Comunidad -->
+    <section class="community-questions">
+      <h2>¿Tienes dudas? ¡Pregunta a la comunidad!</h2>
+      <form id="question-form">
+        <textarea id="question-content" placeholder="Escribe tu pregunta aquí..." rows="3" required></textarea>
+        <button type="submit" class="cta-button">Publicar pregunta</button>
+      </form>
+      <div id="question-list">
+        <!-- Preguntas cargadas dinámicamente -->
+      </div>
+    </section>
+
+    <!-- Sección de publicaciones -->
     <section class="create-post">
       <h2>Comparte tus aventuras</h2>
       <form id="post-form">
@@ -53,4 +71,3 @@
   <script src="muro.js"></script>
 </body>
 </html>
-
