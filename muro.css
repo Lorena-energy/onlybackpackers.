@@ -97,11 +97,12 @@ body {
   color: #333;
   font-weight: bold;
 }
+/* Botón principal (naranja) */
 .cta-button {
   display: inline-block;
   width: 100%;
   padding: 10px;
-  background-color: #0077cc;
+  background-color: #ff6600; /* NARANJA */
   color: white;
   font-size: 1rem;
   font-weight: bold;
@@ -111,7 +112,7 @@ body {
   transition: background-color 0.3s, transform 0.2s;
 }
 .cta-button:hover {
-  background-color: #005fa3;
+  background-color: #cc5200; /* NARANJA OSCURO */
   transform: scale(1.03);
 }
 
@@ -129,13 +130,14 @@ body {
   font-weight: bold;
   margin-bottom: 10px;
 }
+/* Botones de la publicación (Me gusta, Comentar) -> también naranjas */
 .post-actions {
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
 }
 .post-actions button {
-  background-color: #0077cc;
+  background-color: #ff6600; /* NARANJA */
   color: white;
   border: none;
   padding: 5px 10px;
@@ -145,13 +147,14 @@ body {
   transition: background-color 0.3s;
 }
 .post-actions button:hover {
-  background-color: #005fa3;
+  background-color: #cc5200; /* NARANJA OSCURO */
 }
 .comment-section {
   margin-top: 10px;
   border-top: 1px solid #ddd;
   padding-top: 10px;
 }
+/* Formulario de comentarios */
 .comment-form {
   display: flex;
   gap: 5px;
@@ -163,7 +166,7 @@ body {
   padding: 5px;
 }
 .comment-form button {
-  background-color: #0077cc;
+  background-color: #ff6600; /* NARANJA */
   color: white;
   border: none;
   border-radius: 5px;
@@ -171,7 +174,7 @@ body {
   cursor: pointer;
 }
 .comment-form button:hover {
-  background-color: #005fa3;
+  background-color: #cc5200;
 }
 
 /* Preguntas (comunidad) */
@@ -211,8 +214,9 @@ body {
   border-radius: 5px;
   padding: 5px;
 }
+/* Botón de respuestas (también naranja) */
 .answer-form button {
-  background-color: #0077cc;
+  background-color: #ff6600;
   color: white;
   border: none;
   border-radius: 5px;
@@ -220,7 +224,7 @@ body {
   cursor: pointer;
 }
 .answer-form button:hover {
-  background-color: #005fa3;
+  background-color: #cc5200;
 }
 
 /* FOOTER */
@@ -268,3 +272,4 @@ footer {
     margin: 3px 0;
   }
 }
+
