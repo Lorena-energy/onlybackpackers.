@@ -36,7 +36,7 @@ header .menu li a:hover {
 
 main {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   gap: 20px;
   margin: 20px auto;
   max-width: 1200px;
@@ -45,8 +45,8 @@ main {
 }
 
 .muro {
-  flex: 2;
-  min-width: 65%;
+  flex: 1;
+  min-width: 48%; /* Mitad del ancho */
   background-color: white;
   border-radius: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -139,7 +139,7 @@ main {
 /* Sección Preguntas a la Comunidad */
 .community-questions {
   flex: 1;
-  min-width: 30%;
+  min-width: 48%; /* Mitad del ancho */
   background-color: #f9f9f9;
   border-radius: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
