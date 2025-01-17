@@ -1,20 +1,26 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>OnlyBackpackers - Comunidad</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="muro.css">
+  <!-- Fuente Poppins -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+    rel="stylesheet"
+  />
+  <!-- Hoja de estilos -->
+  <link rel="stylesheet" href="muro-comunidad.css" />
 </head>
 <body>
   <!-- Encabezado -->
   <header class="main-header">
     <nav>
+      <!-- Botón hamburguesa -->
       <div class="menu-toggle" id="menu-toggle">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
       </div>
       <ul class="menu" id="menu">
         <li><a href="index.html">Inicio</a></li>
@@ -30,37 +36,42 @@
     </nav>
   </header>
 
-  <!-- Sección del muro -->
+  <!-- Sección principal (2 columnas en desktop) -->
   <main class="muro">
-    <!-- Sección de Preguntas a la Comunidad -->
-    <section class="community-questions">
-      <h2>¿Tienes dudas? ¡Pregunta a la comunidad!</h2>
-      <form id="question-form">
-        <textarea id="question-content" placeholder="Escribe tu pregunta aquí..." rows="3" required></textarea>
-        <button type="submit" class="cta-button">Publicar pregunta</button>
-      </form>
-      <div id="question-list">
-        <!-- Preguntas cargadas dinámicamente -->
-      </div>
-    </section>
+    <!-- Columna Izquierda: Crear Post + Lista de Posts -->
+    <div class="left-column">
+      <!-- Sección de publicaciones -->
+      <section class="create-post">
+        <h2>Comparte tus aventuras</h2>
+        <form id="post-form">
+          <textarea id="post-content" placeholder="¿Qué quieres compartir?" rows="3" required></textarea>
+          <div class="file-upload">
+            <label for="post-media">Subir imágenes o videos</label>
+            <input type="file" id="post-media" multiple accept="image/*, video/*">
+          </div>
+          <button type="submit" class="cta-button">Publicar</button>
+        </form>
+      </section>
 
-    <!-- Sección de publicaciones -->
-    <section class="create-post">
-      <h2>Comparte tus aventuras</h2>
-      <form id="post-form">
-        <textarea id="post-content" placeholder="¿Qué quieres compartir?" rows="3" required></textarea>
-        <div class="file-upload">
-          <label for="post-media">Subir imágenes o videos</label>
-          <input type="file" id="post-media" multiple accept="image/*, video/*">
+      <!-- Lista de publicaciones -->
+      <section id="post-list">
+        <!-- Publicaciones cargadas dinámicamente -->
+      </section>
+    </div>
+
+    <!-- Columna Derecha: Preguntas a la comunidad -->
+    <div class="right-column">
+      <section class="community-questions">
+        <h2>¿Tienes dudas? ¡Pregunta a la comunidad!</h2>
+        <form id="question-form">
+          <textarea id="question-content" placeholder="Escribe tu pregunta aquí..." rows="3" required></textarea>
+          <button type="submit" class="cta-button">Publicar pregunta</button>
+        </form>
+        <div id="question-list">
+          <!-- Preguntas cargadas dinámicamente -->
         </div>
-        <button type="submit" class="cta-button">Publicar</button>
-      </form>
-    </section>
-
-    <!-- Lista de publicaciones -->
-    <section id="post-list">
-      <!-- Publicaciones cargadas dinámicamente -->
-    </section>
+      </section>
+    </div>
   </main>
 
   <!-- Pie de página -->
@@ -68,6 +79,7 @@
     <p>&copy; 2024 OnlyBackpackers. Conecta y comparte el mundo.</p>
   </footer>
 
-  <script src="muro.js"></script>
+  <!-- Script principal -->
+  <script src="muro-comunidad.js"></script>
 </body>
 </html>
