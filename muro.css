@@ -36,7 +36,7 @@ header .menu li a:hover {
 
 main {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   gap: 20px;
   margin: 20px auto;
   max-width: 1200px;
@@ -46,7 +46,7 @@ main {
 
 .muro {
   flex: 2;
-  min-width: 60%;
+  min-width: 65%;
   background-color: white;
   border-radius: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -139,7 +139,7 @@ main {
 /* Sección Preguntas a la Comunidad */
 .community-questions {
   flex: 1;
-  min-width: 35%;
+  min-width: 30%;
   background-color: #f9f9f9;
   border-radius: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -179,23 +179,6 @@ main {
   transform: scale(1.03);
 }
 
-.community-questions .question-list {
-  margin-top: 20px;
-}
-
-.question {
-  background-color: white;
-  border-radius: 10px;
-  padding: 15px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-}
-
-.question-header {
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
 footer {
   text-align: center;
   padding: 20px;
@@ -215,6 +198,10 @@ footer {
   .muro,
   .community-questions {
     min-width: 100%;
+    margin: 0 auto;
+  }
+
+  .create-post textarea {
+    font-size: 0.9rem;
   }
 }
-
