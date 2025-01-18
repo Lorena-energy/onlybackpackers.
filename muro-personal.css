@@ -31,9 +31,7 @@ p, label, input, button, textarea, span {
   background: #cc5200;
 }
 
-/* ---------------------------------------------------------
-   ENCABEZADO Y MENÚ
-   --------------------------------------------------------- */
+/* Encabezado (Header) */
 .main-header {
   background: #004f8c;
   padding: 10px 20px;
@@ -74,7 +72,7 @@ p, label, input, button, textarea, span {
   transition: 0.3s;
 }
 
-/* Botón flotante (oval) */
+/* Botón flotante (oval) de Detalles de Usuario */
 .user-details-toggle {
   position: fixed;
   top: 15px;
@@ -92,9 +90,7 @@ p, label, input, button, textarea, span {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* ---------------------------------------------------------
-   PANEL DETALLES DEL USUARIO
-   --------------------------------------------------------- */
+/* Panel Detalles del Usuario */
 .user-details {
   position: fixed;
   top: 0;
@@ -132,9 +128,7 @@ p, label, input, button, textarea, span {
   font-weight: 400;
 }
 
-/* ---------------------------------------------------------
-   FOTO DE PORTADA
-   --------------------------------------------------------- */
+/* Foto de portada */
 .cover-photo {
   height: 300px;
   width: 100%;
@@ -149,7 +143,7 @@ p, label, input, button, textarea, span {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  cursor: pointer; /* Para indicar que se puede hacer clic y ampliar */
+  cursor: pointer; /* Amplía al hacer clic */
 }
 .cover-photo label {
   cursor: pointer;
@@ -167,9 +161,7 @@ p, label, input, button, textarea, span {
   font-weight: 400;
 }
 
-/* ---------------------------------------------------------
-   SECCIÓN PERFIL DEL USUARIO
-   --------------------------------------------------------- */
+/* Sección Perfil de Usuario */
 .profile-container {
   margin-bottom: 30px;
   position: relative;
@@ -188,7 +180,7 @@ p, label, input, button, textarea, span {
   object-fit: cover;
   border: 4px solid white;
   background-color: #ddd;
-  cursor: pointer; /* Amplía la foto al hacer clic */
+  cursor: pointer; /* Amplía al hacer clic */
 }
 .upload-label-profile {
   position: absolute;
@@ -209,9 +201,7 @@ p, label, input, button, textarea, span {
   padding: 20px;
 }
 
-/* ---------------------------------------------------------
-   CREAR PUBLICACIÓN
-   --------------------------------------------------------- */
+/* Crear Publicación */
 .create-post {
   margin: 40px 5% 30px;
   padding: 20px;
@@ -249,36 +239,7 @@ p, label, input, button, textarea, span {
   gap: 5px;
 }
 
-/* Emojis en la publicación */
-.emoji-toggle-post {
-  background: #fff;
-  color: #333;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  margin-right: 10px;
-  cursor: pointer;
-  font-size: 1.2rem;
-  font-weight: 400;
-}
-.emoji-panel-post {
-  border: 1px solid #ddd;
-  background-color: white;
-  padding: 10px;
-  display: none;
-  border-radius: 5px;
-  margin-bottom: 10px;
-  flex-wrap: wrap;
-  gap: 5px;
-}
-.emoji-panel-post span {
-  font-size: 1.4rem;
-  cursor: pointer;
-  margin: 5px;
-}
-
-/* ---------------------------------------------------------
-   MURO PERSONAL
-   --------------------------------------------------------- */
+/* Muro Personal (Publicaciones) */
 .muro-personal {
   margin-left: 25%;
   margin-right: 5%;
@@ -295,6 +256,7 @@ p, label, input, button, textarea, span {
   margin: 20px 0;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
+  /* Apilamos contenido en columna */
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -322,7 +284,7 @@ p, label, input, button, textarea, span {
 .post-media {
   width: calc(100% / 3 - 10px);
   border-radius: 5px;
-  cursor: pointer; /* se puede ampliar */
+  cursor: pointer; /* se amplía al hacer clic */
 }
 .post-actions {
   display: flex;
@@ -352,9 +314,7 @@ p, label, input, button, textarea, span {
   font-weight: 400;
 }
 
-/* ---------------------------------------------------------
-   MODAL (LIGHTBOX) PARA FOTOS
-   --------------------------------------------------------- */
+/* Modal (Lightbox) */
 .image-modal {
   position: fixed;
   z-index: 9999;
@@ -388,9 +348,7 @@ p, label, input, button, textarea, span {
   color: #ff6600;
 }
 
-/* ---------------------------------------------------------
-   RESPONSIVE
-   --------------------------------------------------------- */
+/* Responsivo */
 @media (max-width: 768px) {
   .menu {
     display: none;
@@ -402,6 +360,11 @@ p, label, input, button, textarea, span {
     width: 100%;
     padding: 20px 0;
   }
+  /* Clase que mostraremos con JS */
+  .menu.active {
+    display: flex;
+  }
+
   .menu-toggle {
     display: block;
   }
