@@ -42,7 +42,7 @@
         <li><a href="expenses.html">Gastos</a></li>
       </ul>
 
-      <!-- Botón flotante (oval) para Detalles de Usuario -->
+      <!-- Botón flotante (oval) para Detalles del usuario -->
       <button class="user-details-toggle" aria-label="Detalles del usuario">
         <i class="fas fa-user"></i>
         <span id="user-details-btn-text">Detalles del usuario</span>
@@ -109,7 +109,7 @@
       <i class="fas fa-camera"></i> Cambiar portada
     </label>
     <input type="file" id="cover-upload" accept="image/*" hidden />
-    <!-- Al hacer clic en esta imagen, también se amplía -->
+    <!-- Al hacer clic en esta imagen, se amplía -->
     <img
       src="https://via.placeholder.com/1500x400"
       alt="Portada"
@@ -129,7 +129,7 @@
           class="profile-pic"
           id="profile-pic"
         />
-        <!-- Ícono cámara para cambiar foto -->
+        <!-- Ícono de cámara para cambiar foto -->
         <label for="profile-upload" class="upload-label upload-label-profile">
           <i class="fas fa-camera"></i>
         </label>
@@ -140,13 +140,8 @@
         <p>Puntos: <span id="user-points">125</span></p>
         <button id="add-friend" class="cta-button">Agregar amigo/a</button>
 
-        <p>
-          <strong>Código de invitación:</strong>
-          <span id="invite-code">ABCD1234</span>
-        </p>
-        <button id="copy-invite-link" class="cta-button">
-          Copiar enlace de invitación
-        </button>
+        <p><strong>Código de invitación:</strong> <span id="invite-code">ABCD1234</span></p>
+        <button id="copy-invite-link" class="cta-button">Copiar enlace de invitación</button>
       </div>
     </div>
   </section>
@@ -179,7 +174,7 @@
         hidden
       />
 
-      <!-- Checkbox para publicar en la comunidad, si lo usas luego -->
+      <!-- Checkbox para publicar en la comunidad (opcional) -->
       <div class="post-visibility">
         <input type="checkbox" id="post-community" />
         <label for="post-community">Publicar también en la comunidad</label>
