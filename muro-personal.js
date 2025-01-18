@@ -5,6 +5,8 @@ const toggleBtn = document.getElementById("menu-toggle");
 const menu = document.getElementById("menu");
 
 toggleBtn?.addEventListener("click", () => {
+  // Al hacer clic en el menú hamburguesa,
+  // se alterna la clase "active" en el <ul class="menu" id="menu">
   menu.classList.toggle("active");
 });
 
@@ -165,14 +167,14 @@ document.addEventListener("click", (e) => {
     commentInput.focus();
   }
 
-  // Botón "😀" en .post-actions => Panel de emojis para comentarios
+  // Botón "😀" (emoji-toggle) => muestra panel .emoji-panel
   if (e.target.classList.contains("emoji-toggle")) {
     const post = e.target.closest(".post");
     const emojiPanel = post.querySelector(".emoji-panel");
     emojiPanel.style.display = emojiPanel.style.display === "none" ? "flex" : "none";
   }
 
-  // Insertar emoji en el input de comentarios
+  // Insertar emoji en input de comentarios
   if (e.target.closest(".emoji-panel") && e.target.tagName === "SPAN") {
     const emoji = e.target.textContent;
     const post = e.target.closest(".post");
@@ -252,17 +254,17 @@ const modalImage = document.getElementById("modal-image");
 const closeModalBtn = document.getElementById("close-modal");
 
 document.addEventListener("click", (e) => {
-  // 1. Si clic en .post-media (imágenes de publicaciones)
+  // 1. Clic en .post-media (imágenes de posts)
   if (e.target.classList.contains("post-media") && e.target.tagName === "IMG") {
     modalImage.src = e.target.src;
     imageModal.style.display = "flex";
   }
-  // 2. Si clic en la portada (id="cover-image")
+  // 2. Clic en la portada (id="cover-image")
   if (e.target.id === "cover-image") {
     modalImage.src = e.target.src;
     imageModal.style.display = "flex";
   }
-  // 3. Si clic en la foto de perfil (id="profile-pic")
+  // 3. Clic en foto de perfil (id="profile-pic")
   if (e.target.id === "profile-pic") {
     modalImage.src = e.target.src;
     imageModal.style.display = "flex";
@@ -274,7 +276,7 @@ closeModalBtn.addEventListener("click", () => {
   imageModal.style.display = "none";
 });
 
-// Cerrar al hacer clic fuera de la imagen
+// Cerrar modal clicando fuera de la imagen
 imageModal.addEventListener("click", (event) => {
   if (event.target === imageModal) {
     imageModal.style.display = "none";
