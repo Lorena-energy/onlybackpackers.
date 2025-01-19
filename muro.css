@@ -1,275 +1,82 @@
-/* ============= REGLAS GENERALES ============= */
 body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
-  /* Fondo degradado */
-  background: linear-gradient(to right, #0077cc, #00bfff);
-  color: #333;
+  background: linear-gradient(to bottom right, #0077cc, #00c8e0);
+  color: white;
 }
 
-/* ENCABEZADO */
 .main-header {
-  background-color: #005fa3;
-  padding: 10px 0;
-}
-
-.main-header nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
+  background: #004f8c;
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .menu {
-  list-style: none;
   display: flex;
-  gap: 20px;
-  margin: 0; 
-  padding: 0;
-}
-.menu li a {
-  text-decoration: none;
-  color: white;
-  font-weight: bold;
-  padding: 5px 15px;
-  border-radius: 5px;
-  transition: background-color 0.3s;
-}
-.menu li a.active,
-.menu li a:hover {
-  background-color: #ff6600;
-  color: white;
+  list-style: none;
+  gap: 15px;
 }
 
-/* Botón hamburguesa */
+.menu li a {
+  color: white;
+  text-decoration: none;
+}
+
 .menu-toggle {
   display: none;
-  cursor: pointer;
-}
-.menu-toggle .bar {
-  width: 25px;
-  height: 3px;
-  background: white;
-  margin: 4px 0;
-  transition: all 0.3s;
 }
 
-/* MAIN (2 COLUMNAS) */
-.muro {
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-  margin: 20px auto;
-  max-width: 1200px;
-  padding: 20px;
-}
-.left-column,
-.right-column {
-  flex: 1;
-  background-color: white;
-  border-radius: 20px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  padding: 20px;
-  overflow: hidden;
+@media (max-width: 768px) {
+  .menu {
+    display: none;
+    flex-direction: column;
+    background: #0077cc;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+  }
+
+  .menu.active {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+    cursor: pointer;
+  }
+
+  .menu-toggle .bar {
+    width: 25px;
+    height: 3px;
+    background: white;
+    margin: 5px 0;
+  }
 }
 
-/* Títulos de secciones */
-.create-post h2,
-.community-questions h2 {
-  font-size: 1.5rem;
-  color: #0077cc;
-  margin-bottom: 15px;
-}
-
-/* Crear publicación */
-.create-post textarea {
-  width: 100%;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  padding: 10px;
-  margin-bottom: 15px;
-}
-.file-upload {
-  margin-bottom: 15px;
-  color: #333;
-  font-weight: bold;
-}
-/* Botón principal (naranja) */
 .cta-button {
-  display: inline-block;
-  width: 100%;
-  padding: 10px;
-  background-color: #ff6600; /* NARANJA */
+  background: #ff6600;
   color: white;
-  font-size: 1rem;
-  font-weight: bold;
+  padding: 10px 15px;
   border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
-}
-.cta-button:hover {
-  background-color: #cc5200; /* NARANJA OSCURO */
-  transform: scale(1.03);
-}
-
-/* Lista de publicaciones */
-#post-list .post {
-  background-color: #fff;
-  border-radius: 10px;
-  padding: 15px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  margin-bottom: 20px;
-}
-.post-header {
-  display: flex;
-  justify-content: space-between;
+  border-radius: 5px;
   font-weight: bold;
-  margin-bottom: 10px;
-}
-/* Botones de la publicación (Me gusta, Comentar) -> también naranjas */
-.post-actions {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
-}
-.post-actions button {
-  background-color: #ff6600; /* NARANJA */
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 10px;
-  font-size: 0.9rem;
   cursor: pointer;
   transition: background-color 0.3s;
 }
-.post-actions button:hover {
-  background-color: #cc5200; /* NARANJA OSCURO */
-}
-.comment-section {
-  margin-top: 10px;
-  border-top: 1px solid #ddd;
-  padding-top: 10px;
-}
-/* Formulario de comentarios */
-.comment-form {
-  display: flex;
-  gap: 5px;
-}
-.comment-form input {
-  flex: 1;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  padding: 5px;
-}
-.comment-form button {
-  background-color: #ff6600; /* NARANJA */
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 5px 10px;
-  cursor: pointer;
-}
-.comment-form button:hover {
-  background-color: #cc5200;
+
+.cta-button:hover {
+  background: #cc5200;
 }
 
-/* Preguntas (comunidad) */
-.community-questions textarea {
-  width: 100%;
-  border: 1px solid #ddd;
-  border-radius: 10px;
+.recommendation {
+  background: white;
+  color: #333;
   padding: 10px;
-  margin-bottom: 15px;
-}
-#question-list .question {
-  background-color: #fff;
-  border-radius: 10px;
-  padding: 15px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  margin-bottom: 20px;
-}
-.question-header {
-  display: flex;
-  justify-content: space-between;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-.answer-section {
-  margin-top: 10px;
-  border-top: 1px solid #ddd;
-  padding-top: 10px;
-}
-.answer-form {
-  display: flex;
-  gap: 5px;
-  margin-top: 10px;
-}
-.answer-form input {
-  flex: 1;
-  border: 1px solid #ddd;
+  margin: 10px 0;
   border-radius: 5px;
-  padding: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-/* Botón de respuestas (también naranja) */
-.answer-form button {
-  background-color: #ff6600;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 5px 10px;
-  cursor: pointer;
-}
-.answer-form button:hover {
-  background-color: #cc5200;
-}
-
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 20px;
-  background-color: #005fa3;
-  color: white;
-  margin-top: 20px;
-}
-
-/* RESPONSIVE (móvil) */
-@media (max-width: 768px) {
-  .muro {
-    flex-direction: column;
-    gap: 10px;
-    padding: 10px;
-  }
-  .left-column,
-  .right-column {
-    width: 100%;
-    margin: 0 auto;
-  }
-
-  /* Menú Hamburguesa en móvil */
-  .menu {
-    display: none; /* Oculto por defecto */
-    flex-direction: column;
-    background-color: #005fa3;
-    position: absolute;
-    top: 60px;
-    right: 0;
-    width: 100%;
-    z-index: 1000;
-    padding: 10px 0;
-  }
-  .menu.show {
-    display: flex; /* se ve al togglear */
-  }
-  .menu-toggle {
-    display: flex;
-    flex-direction: column;
-  }
-  .bar {
-    margin: 3px 0;
-  }
-}
-
