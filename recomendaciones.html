@@ -31,11 +31,11 @@
   </header>
 
   <main>
-    <!-- Mensaje de obtención de puntos -->
+    <!-- Mensaje de puntos -->
     <section id="instructions">
       <p>
-        Gana 10 puntos recomendando destinos, restaurantes, lugares increíbles, ese chiringuito que tanto te gustó, etc.
-        ¡Comparte tu experiencia!
+        Gana 10 puntos recomendando destinos, restaurantes, lugares increíbles, ese chiringuito que tanto te gustó. 
+        Puedes incluir un enlace de Google Maps o simplemente describirlo.
       </p>
     </section>
 
@@ -44,6 +44,7 @@
       <h2>Recomendaciones de los Usuarios</h2>
       <form id="user-recommendation-form">
         <textarea id="recommendation-content" placeholder="Comparte tu recomendación..." rows="3" required></textarea>
+        <input type="url" id="recommendation-link" placeholder="Enlace de Google Maps (opcional)">
         <button type="submit" class="cta-button">Publicar</button>
       </form>
       <div id="user-recommendations-list">
