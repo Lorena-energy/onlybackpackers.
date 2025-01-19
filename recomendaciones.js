@@ -1,11 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const menuToggle = document.getElementById("menu-toggle");
+  const menu = document.getElementById("menu");
+
+  menuToggle.addEventListener("click", () => {
+    menu.classList.toggle("active");
+  });
+
   const userRecommendationForm = document.getElementById("user-recommendation-form");
   const userRecommendationsList = document.getElementById("user-recommendations-list");
-  const pointsCount = document.getElementById("points-count");
 
-  let userPoints = 0;
-
-  // Manejar la publicación de recomendaciones de usuarios
   userRecommendationForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
@@ -15,13 +18,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const recommendation = document.createElement("div");
     recommendation.classList.add("user-recommendation");
     recommendation.innerHTML = `<strong>Tú:</strong> ${content}`;
+
     userRecommendationsList.prepend(recommendation);
+    alert("¡Has ganado 10 puntos de recompensa!");
 
-    // Incrementar puntos
-    userPoints += 10; // Cada recomendación vale 10 puntos
-    pointsCount.textContent = userPoints;
-
-    // Limpiar el formulario
     userRecommendationForm.reset();
   });
 });
