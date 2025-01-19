@@ -57,11 +57,6 @@ body {
   }
 }
 
-textarea, input, button {
-  font-size: 1rem;
-  margin: 10px 0;
-}
-
 .recommendation {
   background: white;
   color: #333;
@@ -69,17 +64,4 @@ textarea, input, button {
   margin: 10px 0;
   border-radius: 5px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.cta-button {
-  background: #ff6600;
-  color: white;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  text-decoration: none;
-}
-
-.cta-button:hover {
-  background: #cc5200;
 }
