@@ -1,15 +1,13 @@
-/* Fondo y tipografía */
 body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
   background: linear-gradient(to bottom right, #0077cc, #00c8e0);
-  color: #333;
+  color: white;
 }
 
-/* Encabezado */
 .main-header {
-  background-color: #004f8c;
+  background: #004f8c;
   padding: 10px 20px;
   position: sticky;
   top: 0;
@@ -17,86 +15,29 @@ body {
 }
 
 .menu {
-  list-style: none;
   display: flex;
-  justify-content: space-around;
-  margin: 0;
-  padding: 0;
+  list-style: none;
+  gap: 15px;
 }
 
 .menu li a {
-  text-decoration: none;
   color: white;
-  font-weight: bold;
-  padding: 8px 15px;
-  border-radius: 5px;
+  text-decoration: none;
 }
 
-.menu li a.active,
-.menu li a:hover {
-  background-color: #ff6600;
-}
-
-/* Menú hamburguesa */
 .menu-toggle {
   display: none;
-  cursor: pointer;
 }
 
-.menu-toggle .bar {
-  width: 25px;
-  height: 3px;
-  background-color: white;
-  margin: 5px auto;
-}
-
-/* Secciones */
-main {
-  padding: 20px;
-}
-
-h2 {
-  color: #005fa3;
-}
-
-textarea {
-  width: 100%;
-  padding: 10px;
-  border-radius: 5px;
-  margin-bottom: 10px;
-}
-
-.cta-button {
-  background-color: #ff6600;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.cta-button:hover {
-  background-color: #cc5200;
-}
-
-/* Recomendaciones destacadas */
-.recommendation {
-  background-color: white;
-  padding: 15px;
-  border-radius: 5px;
-  margin-bottom: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-/* Responsive */
 @media (max-width: 768px) {
   .menu {
     display: none;
     flex-direction: column;
-    background-color: #004f8c;
-    padding: 10px;
+    background: #0077cc;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
   }
 
   .menu.active {
@@ -105,5 +46,40 @@ textarea {
 
   .menu-toggle {
     display: block;
+    cursor: pointer;
   }
+
+  .menu-toggle .bar {
+    width: 25px;
+    height: 3px;
+    background: white;
+    margin: 5px 0;
+  }
+}
+
+textarea, input, button {
+  font-size: 1rem;
+  margin: 10px 0;
+}
+
+.recommendation {
+  background: white;
+  color: #333;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cta-button {
+  background: #ff6600;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.cta-button:hover {
+  background: #cc5200;
 }
