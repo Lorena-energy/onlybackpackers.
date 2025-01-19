@@ -1,13 +1,13 @@
-/* Estilos generales */
+/* Fondo y tipografías */
 body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
   color: #333;
-  background: linear-gradient(to bottom right, #004f8c, #00c8e0);
+  background: linear-gradient(to bottom right, #0077cc, #00c8e0);
 }
 
-/* HEADER PRINCIPAL */
+/* Cabecera principal */
 .main-header {
   background-color: #004f8c;
   padding: 10px 20px;
@@ -16,12 +16,13 @@ body {
   justify-content: space-between;
 }
 .main-header nav {
-  width: 100%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  width: 100%;
+  justify-content: space-between;
 }
-/* Menú */
+
+/* Menú y hamburguesa */
 .menu {
   list-style: none;
   display: flex;
@@ -40,8 +41,7 @@ body {
 .menu li a.active {
   background-color: #005fa3;
 }
-
-/* Menú hamburguesa (invisible en desktop) */
+/* Hamburguesa (por defecto, oculto en desktop) */
 .menu-toggle {
   display: none;
   flex-direction: column;
@@ -63,68 +63,127 @@ h1 {
 
 /* Sección del conversor */
 #currency-converter {
-  background: white;
-  border-radius: 10px;
+  background: #0077cc;
+  color: white;
   padding: 20px;
-  max-width: 600px;
+  border-radius: 10px;
+  max-width: 500px;
   margin: 20px auto;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-#currency-converter h2 {
-  color: #004f8c;
-  margin-bottom: 15px;
   text-align: center;
 }
-#currency-converter form {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+#currency-converter h2 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
 }
 #currency-converter input,
-#currency-converter select {
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  flex: 1;
-}
+#currency-converter select,
 #currency-converter button {
   padding: 10px;
-  background-color: #ff6600;
-  color: white;
-  border: none;
+  font-size: 1rem;
+  margin: 5px 0;
   border-radius: 5px;
+  border: none;
+}
+#currency-converter button {
+  background: #ff6600;
+  color: white;
+  font-weight: bold;
   cursor: pointer;
+  transition: background-color 0.3s;
 }
 #currency-converter button:hover {
   background-color: #cc5200;
 }
 #conversion-result {
+  margin-top: 15px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* Contenedor del gráfico */
+#expense-chart {
+  padding: 20px;
+  text-align: center;
+}
+#expense-chart h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+#expense-chart-canvas {
+  max-width: 100%;
+  max-height: 400px;
+  margin: 0 auto;
+  display: block;
+}
+
+/* Lista de gastos */
+#expense-list {
+  padding: 0;
+  margin: 20px 0;
+  list-style: none;
+}
+#expense-list li {
+  background-color: #f9f9f9;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Formulario de gastos */
+#expense-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+#expense-form input,
+#expense-form select,
+#expense-form textarea,
+#expense-form button {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+#expense-form button {
+  background-color: #0077cc;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+#expense-form button:hover {
+  background-color: #005fa3;
+}
+
+/* Total de gastos */
+#total-expenses {
+  font-size: 1.2rem;
+  font-weight: bold;
   margin-top: 10px;
-  font-size: 1.1rem;
-  color: #333;
   text-align: center;
 }
 
 /* RESPONSIVE (móvil) */
 @media (max-width: 768px) {
   .menu {
-    display: none; /* oculto por defecto en mobile */
+    display: none; /* Oculto en móviles hasta que hagamos clic */
     flex-direction: column;
     background-color: #004f8c;
     position: absolute;
-    top: 60px; 
+    top: 60px;
     right: 0;
     width: 100%;
     z-index: 1000;
     padding: 10px 0;
   }
-
-  /* Clase que mostraremos con JS */
+  /* Clase que activamos con JS */
   .menu.active {
     display: flex;
   }
 
   .menu-toggle {
-    display: flex; /* hamburguesa se ve en mobile */
+    display: flex; /* hamburguesa se muestra en móvil */
   }
 }
