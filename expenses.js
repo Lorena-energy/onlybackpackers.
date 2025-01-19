@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const expenseList = document.getElementById("expense-list");
   const totalExpenses = document.getElementById("total-expenses");
   const ctx = document.getElementById("expense-chart-canvas")?.getContext("2d");
-  
+
   let expenses = [];
 
   // Categorías usadas en el gráfico
