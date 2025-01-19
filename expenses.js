@@ -1,107 +1,133 @@
-// Manejo del formulario de conversión de monedas
-const currencyForm = document.getElementById("currency-form");
-const conversionResult = document.getElementById("conversion-result");
+document.addEventListener("DOMContentLoaded", () => {
+  /************************************************************
+   * MENÚ HAMBURGUESA
+   ************************************************************/
+  const menuToggle = document.getElementById("menu-toggle");
+  const menu = document.getElementById("menu");
 
-currencyForm.addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const amount = parseFloat(document.getElementById("convert-amount").value);
-  const fromCurrency = document.getElementById("from-currency").value;
-  const toCurrency = document.getElementById("to-currency").value;
+  menuToggle?.addEventListener("click", () => {
+    // Alternar la clase 'active' para mostrar/ocultar en móvil
+    menu.classList.toggle("active");
+  });
 
-  if (isNaN(amount) || amount <= 0) {
-    conversionResult.textContent = "Por favor, ingresa un monto válido.";
-    return;
+  /************************************************************
+   * CONVERSOR DE MONEDA
+   ************************************************************/
+  const currencyForm = document.getElementById("currency-form");
+  const conversionResult = document.getElementById("conversion-result");
+
+  async function convertCurrency(amount, from, to) {
+    try {
+      const response = await fetch(`https://api.exchangerate-api.com/v4/latest/${from}`);
+      const data = await response.json();
+      const rate = data.rates[to];
+      if (!rate) {
+        conversionResult.textContent = `Error: no se encontró la tasa de cambio para ${to}`;
+        return null;
+      }
+      return (amount * rate).toFixed(2);
+    } catch (error) {
+      console.error("Error al convertir moneda:", error);
+      conversionResult.textContent = "Error al obtener las tasas de cambio.";
+      return null;
+    }
   }
 
-  try {
-    const response = await fetch(`https://api.exchangerate-api.com/v4/latest/${fromCurrency}`);
-    const data = await response.json();
-    const rate = data.rates[toCurrency];
+  currencyForm?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const amount = parseFloat(document.getElementById("convert-amount").value);
+    const fromCurrency = document.getElementById("from-currency").value;
+    const toCurrency = document.getElementById("to-currency").value;
 
-    if (!rate) {
-      conversionResult.textContent = `Error: no se encontró la tasa de cambio para ${toCurrency}`;
+    if (isNaN(amount) || amount <= 0) {
+      conversionResult.textContent = "Por favor, ingresa un monto válido.";
       return;
     }
 
-    const convertedAmount = (amount * rate).toFixed(2);
-    conversionResult.textContent = `${amount} ${fromCurrency} equivale a ${convertedAmount} ${toCurrency}`;
-  } catch (error) {
-    console.error("Error al convertir moneda:", error);
-    conversionResult.textContent = "Error al obtener las tasas de cambio.";
+    const convertedAmount = await convertCurrency(amount, fromCurrency, toCurrency);
+    if (convertedAmount !== null) {
+      conversionResult.textContent = `${amount} ${fromCurrency} equivale a ${convertedAmount} ${toCurrency}`;
+    }
+  });
+
+  /************************************************************
+   * FORMULARIO DE GASTOS (con CHART.JS)
+   ************************************************************/
+  const expenseForm = document.getElementById("expense-form");
+  const expenseList = document.getElementById("expense-list");
+  const totalExpenses = document.getElementById("total-expenses");
+  const ctx = document.getElementById("expense-chart-canvas")?.getContext("2d");
+  
+  let expenses = [];
+
+  // Categorías usadas en el gráfico
+  const categories = ["transporte", "comidas", "alojamiento", "actividades", "otros"];
+  const chartData = {
+    labels: ["Transporte", "Comidas", "Alojamiento", "Actividades", "Otros"],
+    datasets: [
+      {
+        data: [0, 0, 0, 0, 0],
+        backgroundColor: ["#0077cc", "#ff6600", "#00bfff", "#66cc66", "#cccccc"],
+      },
+    ],
+  };
+
+  let expenseChart = null;
+  if (ctx) {
+    expenseChart = new Chart(ctx, {
+      type: "pie",
+      data: chartData,
+      options: { responsive: true },
+    });
   }
-});
 
-// Manejo del formulario de gastos
-const expenseForm = document.getElementById("expense-form");
-const expenseList = document.getElementById("expense-list");
-const totalExpenses = document.getElementById("total-expenses");
-const ctx = document.getElementById("expense-chart-canvas").getContext("2d");
+  const updateChart = () => {
+    if (!expenseChart) return;
+    const categoryTotals = categories.map((cat) =>
+      expenses
+        .filter((exp) => exp.category === cat)
+        .reduce((sum, exp) => sum + exp.amount, 0)
+    );
+    expenseChart.data.datasets[0].data = categoryTotals;
+    expenseChart.update();
+  };
 
-let expenses = [];
+  // Manejar nuevo gasto
+  expenseForm?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const nameField = document.getElementById("expense-name");
+    const catField = document.getElementById("expense-category");
+    const amountField = document.getElementById("expense-amount");
+    const currField = document.getElementById("expense-currency");
+    const notesField = document.getElementById("expense-notes");
 
-// Crear gráfico inicial
-const categories = ["Transporte", "Comidas", "Alojamiento", "Actividades", "Otros"];
-const chartData = {
-  labels: categories,
-  datasets: [
-    {
-      data: [0, 0, 0, 0, 0],
-      backgroundColor: ["#0077cc", "#ff6600", "#00bfff", "#66cc66", "#cccccc"],
-    },
-  ],
-};
+    const name = nameField.value.trim();
+    const category = catField.value;
+    const amount = parseFloat(amountField.value);
+    const currency = currField.value.trim();
+    const notes = notesField.value.trim();
 
-const expenseChart = new Chart(ctx, {
-  type: "pie",
-  data: chartData,
-  options: {
-    responsive: true,
-  },
-});
+    if (name && category && !isNaN(amount) && currency) {
+      const expense = { name, category, amount, currency, notes };
+      expenses.push(expense);
 
-// Actualizar el gráfico
-const updateChart = () => {
-  const categoryTotals = categories.map((cat) =>
-    expenses
-      .filter((exp) => exp.category === cat.toLowerCase())
-      .reduce((sum, exp) => sum + exp.amount, 0)
-  );
-  expenseChart.data.datasets[0].data = categoryTotals;
-  expenseChart.update();
-};
+      // Añadir a la lista visual
+      const li = document.createElement("li");
+      li.innerHTML = `
+        <strong>${name}</strong> - ${amount} ${currency} (${category})
+        <br>${notes ? notes : ""}
+      `;
+      expenseList.appendChild(li);
 
-// Manejar la adición de un gasto
-expenseForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const name = document.getElementById("expense-name").value;
-  const category = document.getElementById("expense-category").value;
-  const amount = parseFloat(document.getElementById("expense-amount").value);
-  const currency = document.getElementById("expense-currency").value;
-  const notes = document.getElementById("expense-notes").value;
+      // Calcular total
+      const total = expenses.reduce((sum, exp) => sum + exp.amount, 0);
+      totalExpenses.textContent = `Total: $${total.toFixed(2)}`;
 
-  if (name && category && amount && currency) {
-    const expense = { name, category, amount, currency, notes };
-    expenses.push(expense);
+      // Actualizar gráfico
+      updateChart();
 
-    const li = document.createElement("li");
-    li.innerHTML = `
-      <strong>${name}</strong> - ${amount} ${currency} (${category})
-      <br>${notes ? notes : ""}
-    `;
-    expenseList.appendChild(li);
-
-    const total = expenses.reduce((sum, exp) => sum + exp.amount, 0);
-    totalExpenses.textContent = `Total: $${total.toFixed(2)}`;
-    updateChart();
-
-    expenseForm.reset();
-  }
-});
-
-// Menú hamburguesa en dispositivos móviles
-const toggleBtn = document.getElementById("menu-toggle");
-const menu = document.getElementById("menu");
-
-toggleBtn.addEventListener("click", () => {
-  menu.classList.toggle("active");
+      // Reset
+      expenseForm.reset();
+    }
+  });
 });
