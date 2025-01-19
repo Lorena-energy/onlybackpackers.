@@ -4,11 +4,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const adminRecommendationForm = document.getElementById("admin-recommendation-form");
   const featuredList = document.getElementById("featured-list");
 
+  const isAdmin = true; // Cambiar a false para ocultar el formulario de administradora
+
+  // Mostrar formulario de administradora solo si es admin
+  if (!isAdmin) {
+    document.getElementById("add-featured-recommendations").style.display = "none";
+  }
+
   // Manejar publicaciones de usuarios
   userRecommendationForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
     const content = document.getElementById("recommendation-content").value.trim();
+    const link = document.getElementById("recommendation-link").value.trim();
     if (!content) return;
 
     const recommendation = document.createElement("div");
@@ -16,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     recommendation.innerHTML = `
       <strong>Tú:</strong>
       <p>${content}</p>
+      ${link ? `<a href="${link}" target="_blank">Ver en Google Maps</a>` : ""}
       <button class="like-button">Me gusta <span>0</span></button>
       <button class="comment-button">Comentar</button>
     `;
@@ -27,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
     userRecommendationForm.reset();
   });
 
-  // Manejar recomendaciones destacadas (administradora)
+  // Manejar recomendaciones destacadas
   adminRecommendationForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
