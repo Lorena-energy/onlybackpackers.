@@ -1,23 +1,34 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>OnlyBackpackers - Registro de Gastos</title>
-  <link rel="stylesheet" href="expenses.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- Fuente Poppins -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Hoja de estilos -->
+  <link rel="stylesheet" href="expenses.css" />
+
+  <!-- Script principal (defer) -->
   <script src="expenses.js" defer></script>
 </head>
 <body>
   <header>
+    <!-- Cabecera con menú -->
     <header class="main-header">
       <nav>
-        <!-- Menú hamburguesa -->
+        <!-- Menú hamburguesa (3 barras) -->
         <div class="menu-toggle" id="menu-toggle">
           <span class="bar"></span>
           <span class="bar"></span>
           <span class="bar"></span>
         </div>
+        <!-- Menú principal -->
         <ul class="menu" id="menu">
           <li><a href="index.html" class="active">Inicio</a></li>
           <li><a href="muro.html">Muro</a></li>
@@ -31,14 +42,18 @@
         </ul>
       </nav>
     </header>
+
     <h1>Registro de Gastos</h1>
   </header>
 
+  <!-- Sección de conversor de moneda -->
   <section id="currency-converter">
     <h2>Conversor de Monedas</h2>
     <form id="currency-form">
       <input type="number" id="convert-amount" placeholder="Cantidad a convertir" required>
       <select id="from-currency">
+        <!-- Opciones se añaden también en "expenses.js" si quieres, 
+             pero aquí ya tienes varias por defecto -->
         <option value="USD">USD - Dólar estadounidense</option>
         <option value="EUR">EUR - Euro</option>
         <option value="GBP">GBP - Libra esterlina</option>
@@ -117,6 +132,6 @@
     <p id="conversion-result"></p>
   </section>
 
-  <!-- Contenido adicional (gastos, gráficos, etc.) -->
+  <!-- Contenido adicional: gastos, gráficos, etc. -->
 </body>
 </html>
