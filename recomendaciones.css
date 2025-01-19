@@ -57,6 +57,21 @@ body {
   }
 }
 
+.cta-button {
+  background: #ff6600;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+  background: #cc5200;
+}
+
 .recommendation {
   background: white;
   color: #333;
@@ -65,3 +80,4 @@ body {
   border-radius: 5px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
