@@ -33,13 +33,16 @@
   <main>
     <!-- Recomendaciones de usuarios -->
     <section id="user-recommendations">
-      <h2>Gana puntos recomendando destinos</h2>
-      <p>Comparte enlaces de Google Maps de sitios increíbles. ¡Obtén 10 puntos por cada recomendación!</p>
+      <h2>Gana puntos recomendando lugares</h2>
+      <p>¡Comparte destinos, restaurantes, lugares increíbles o ese chiringuito que tanto te gustó! No es obligatorio incluir un enlace de Google Maps, pero si lo haces, será más útil para otros viajeros. Obtén <strong>10 puntos</strong> por cada recomendación.</p>
       <form id="user-recommendation-form">
         <textarea id="recommendation-content" placeholder="Comparte tu recomendación..." rows="3" required></textarea>
+        <input type="url" id="recommendation-link" placeholder="Enlace de Google Maps (opcional)">
         <button type="submit" class="cta-button">Publicar</button>
       </form>
-      <div id="user-recommendations-list"></div>
+      <div id="user-recommendations-list">
+        <!-- Recomendaciones de usuarios -->
+      </div>
     </section>
 
     <!-- Recomendaciones destacadas -->
