@@ -4,14 +4,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const adminRecommendationForm = document.getElementById("admin-recommendation-form");
   const featuredList = document.getElementById("featured-list");
 
-  const isAdmin = true; // Cambiar a false para ocultar el formulario de administradora
+  const isAdmin = true; // Cambia a false para probar sin acceso de admin
 
   // Mostrar formulario de administradora solo si es admin
   if (!isAdmin) {
     document.getElementById("add-featured-recommendations").style.display = "none";
   }
 
-  // Manejar publicaciones de usuarios
+  // Publicar recomendaciones de usuarios
   userRecommendationForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
@@ -30,13 +30,13 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
     userRecommendationsList.prepend(recommendation);
 
-    // Mostrar mensaje de puntos
+    // Mensaje de puntos
     alert("¡Has ganado 10 puntos de recompensa!");
 
     userRecommendationForm.reset();
   });
 
-  // Manejar recomendaciones destacadas
+  // Publicar recomendaciones destacadas
   adminRecommendationForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
@@ -63,5 +63,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
   menuToggle.addEventListener("click", () => {
     menu.classList.toggle("active");
+  });
+
+  // Like y comentarios en las recomendaciones
+  document.addEventListener("click", (e) => {
+    if (e.target.classList.contains("like-button")) {
+      const span = e.target.querySelector("span");
+      span.textContent = parseInt(span.textContent) + 1;
+    }
+
+    if (e.target.classList.contains("comment-button")) {
+      const commentBox = document.createElement("textarea");
+      commentBox.placeholder = "Escribe un comentario...";
+      e.target.parentElement.appendChild(commentBox);
+    }
   });
 });
