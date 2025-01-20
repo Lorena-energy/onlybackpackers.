@@ -44,7 +44,8 @@
       <p>
         Gana 10 puntos recomendando destinos, restaurantes, lugares increíbles 
         o ese chiringuito que tanto te gustó.  
-        Puedes incluir un enlace de Google Maps, pero no es obligatorio.
+        Puedes incluir un enlace de Google Maps, **no** es obligatorio.  
+        ¡También puedes agregar fotos o videos!
       </p>
     </section>
 
@@ -63,6 +64,14 @@
           id="recommendation-link"
           placeholder="Enlace de Google Maps (opcional)"
         />
+        <!-- Campo para fotos o videos -->
+        <input
+          type="file"
+          id="recommendation-media"
+          accept="image/*,video/*"
+          multiple
+        />
+
         <button type="submit" class="cta-button">Publicar</button>
       </form>
       <div id="user-recommendations-list"></div>
