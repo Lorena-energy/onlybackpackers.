@@ -1,6 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("JS Recomendaciones cargado");
-
   const menuToggle = document.getElementById("menu-toggle");
   const menu = document.getElementById("menu");
 
@@ -10,16 +8,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const userRecommendationForm = document.getElementById("user-recommendation-form");
   const userRecommendationsList = document.getElementById("user-recommendations-list");
-
   const adminRecommendationForm = document.getElementById("admin-recommendation-form");
   const featuredList = document.getElementById("featured-list");
 
+  // Simulación de admin
   const isAdmin = true;
 
   if (!isAdmin) {
     document.getElementById("add-featured-recommendations").style.display = "none";
   }
 
+  // Publicar recomendaciones de usuarios
   userRecommendationForm.addEventListener("submit", (e) => {
     e.preventDefault();
     const content = document.getElementById("recommendation-content").value.trim();
@@ -34,6 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
     userRecommendationForm.reset();
   });
 
+  // Publicar recomendaciones destacadas (solo admin)
   adminRecommendationForm.addEventListener("submit", (e) => {
     e.preventDefault();
     const title = document.getElementById("recommendation-title").value.trim();
