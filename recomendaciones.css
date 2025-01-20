@@ -1,4 +1,4 @@
-/* Fondo y tipografías */
+/* ========= Reglas Generales ========= */
 body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
@@ -15,13 +15,11 @@ body {
   top: 0;
   z-index: 1000;
 }
-
-/* Menú */
 .menu {
-  display: flex;
   list-style: none;
+  display: flex;
   gap: 15px;
-  margin: 0;
+  margin: 0; 
   padding: 0;
 }
 .menu li a {
@@ -36,15 +34,32 @@ body {
   background-color: #005fa3;
 }
 
-/* Menú hamburguesa */
+/* Hamburguesa */
 .menu-toggle {
-  display: none; /* Oculto en desktop */
+  display: none; /* solo aparece en mobile */
 }
 .menu-toggle .bar {
   width: 25px;
   height: 3px;
   background: white;
   margin: 5px 0;
+}
+
+/* Columnas en escritorio */
+.columns-container {
+  display: flex;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 0 20px;
+}
+.left-column,
+.right-column {
+  flex: 1;
+  background: rgba(255,255,255,0.15);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
 /* Botón CTA */
@@ -69,7 +84,7 @@ body {
   padding: 10px;
   margin: 10px 0;
   border-radius: 5px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 .recommendation img,
 .recommendation video {
@@ -82,9 +97,9 @@ body {
 /* Responsive (mobile) */
 @media (max-width: 768px) {
   .menu {
-    display: none; /* No se ve menú en mobile hasta clic */
+    display: none;
     flex-direction: column;
-    background: #0077cc;
+    background: #004f8c;
     position: absolute;
     top: 100%;
     left: 0;
@@ -93,8 +108,15 @@ body {
   .menu.active {
     display: flex;
   }
+
   .menu-toggle {
-    display: block; /* Hamburguesa visible en mobile */
+    display: block;
     cursor: pointer;
+  }
+
+  /* Las columnas se apilan en mobile */
+  .columns-container {
+    flex-direction: column;
+    padding: 10px;
   }
 }
