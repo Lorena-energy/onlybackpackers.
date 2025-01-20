@@ -1,136 +1,70 @@
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("JS Recomendaciones cargado");
-
-  /************************************************************
-   * MENÚ HAMBURGUESA
-   ************************************************************/
   const menuToggle = document.getElementById("menu-toggle");
   const menu = document.getElementById("menu");
+  const userRecommendationForm = document.getElementById("user-recommendation-form");
+  const userRecommendationsList = document.getElementById("user-recommendations-list");
+  const adminRecommendationForm = document.getElementById("admin-recommendation-form");
+  const featuredList = document.getElementById("featured-list");
 
   menuToggle.addEventListener("click", () => {
     menu.classList.toggle("active");
   });
 
-  /************************************************************
-   * LÓGICA DE RECOMENDACIONES
-   ************************************************************/
-  const userRecommendationForm = document.getElementById("user-recommendation-form");
-  const userRecommendationsList = document.getElementById("user-recommendations-list");
-
-  const adminRecommendationForm = document.getElementById("admin-recommendation-form");
-  const featuredList = document.getElementById("featured-list");
-
-  // Simulación: si es admin o no
-  const isAdmin = true; // Cambia a false si quieres ocultar la sección "destacadas"
-
-  // Mostrar formulario de admin solo si es admin
-  if (!isAdmin) {
-    document.getElementById("add-featured-recommendations").style.display = "none";
-  }
-
-  // Publicar recomendaciones de usuarios
   userRecommendationForm.addEventListener("submit", (e) => {
     e.preventDefault();
-
-    const contentField = document.getElementById("recommendation-content");
-    const linkField = document.getElementById("recommendation-link");
-    const mediaField = document.getElementById("recommendation-media");
-
-    const content = contentField.value.trim();
-    const link = linkField.value.trim();
-    const mediaFiles = mediaField.files;
+    const content = document.getElementById("recommendation-content").value.trim();
+    const link = document.getElementById("recommendation-link").value.trim();
+    const mediaFiles = document.getElementById("recommendation-media").files;
 
     if (!content) return;
 
-    // Crear bloque de recomendación
     const recommendation = document.createElement("div");
     recommendation.classList.add("recommendation");
 
-    // Generar HTML para archivos (fotos o videos)
     let mediaHTML = "";
-    if (mediaFiles && mediaFiles.length > 0) {
-      mediaHTML += '<div class="media-container">';
+    if (mediaFiles.length > 0) {
       Array.from(mediaFiles).forEach((file) => {
         const fileURL = URL.createObjectURL(file);
-        if (file.type.startsWith("video")) {
-          mediaHTML += `<video src="${fileURL}" controls></video>`;
-        } else {
-          mediaHTML += `<img src="${fileURL}" alt="Media" />`;
-        }
+        mediaHTML += file.type.startsWith("video")
+          ? `<video src="${fileURL}" controls></video>`
+          : `<img src="${fileURL}" alt="Media">`;
       });
-      mediaHTML += "</div>";
     }
 
-    // Construir el contenido final
     recommendation.innerHTML = `
-      <strong>Tú:</strong>
-      <p>${content}</p>
-      ${
-        link
-          ? `<a href="${link}" target="_blank" style="color: #0077cc">Ver en Google Maps</a>`
-          : ""
-      }
-      <br>
+      <p><strong>Tú:</strong> ${content}</p>
+      ${link ? `<a href="${link}" target="_blank">Ver en Google Maps</a>` : ""}
       ${mediaHTML}
-      <button class="like-button">Me gusta <span>0</span></button>
-      <button class="comment-button">Comentar</button>
+      <button class="cta-button like-button">Me gusta</button>
+      <button class="cta-button comment-button">Comentar</button>
     `;
 
-    // Prepend en la lista de recomendaciones de usuarios
     userRecommendationsList.prepend(recommendation);
-
-    // Simular suma de 10 puntos
     alert("¡Has ganado 10 puntos de recompensa!");
-
-    // Reset form
     userRecommendationForm.reset();
   });
 
-  // Publicar recomendaciones destacadas (admin)
   adminRecommendationForm.addEventListener("submit", (e) => {
     e.preventDefault();
+    const title = document.getElementById("recommendation-title").value.trim();
+    const description = document.getElementById("recommendation-description").value.trim();
+    const link = document.getElementById("recommendation-affiliate-link").value.trim();
+    const photoFile = document.getElementById("recommendation-photo").files[0];
 
-    const titleField = document.getElementById("recommendation-title");
-    const descField = document.getElementById("recommendation-description");
-    const linkField = document.getElementById("recommendation-affiliate-link");
+    if (!title || !description || !link || !photoFile) return;
 
-    const title = titleField.value.trim();
-    const description = descField.value.trim();
-    const link = linkField.value.trim();
-
-    if (!title || !description || !link) return;
+    const photoURL = URL.createObjectURL(photoFile);
 
     const featured = document.createElement("div");
     featured.classList.add("recommendation");
     featured.innerHTML = `
       <h3>${title}</h3>
+      <img src="${photoURL}" alt="Recomendación destacada">
       <p>${description}</p>
-      <!-- Botón de reserva (afiliado) -->
-      <a href="${link}" class="cta-button" target="_blank">Reservar ahora</a>
+      <a href="${link}" target="_blank" class="cta-button">Reservar ahora</a>
     `;
 
     featuredList.prepend(featured);
     adminRecommendationForm.reset();
-
-    // Futuras push notifications a usuarios (en PWA)...
-  });
-
-  // Like y comentarios en las recomendaciones
-  document.addEventListener("click", (e) => {
-    if (e.target.classList.contains("like-button")) {
-      const span = e.target.querySelector("span");
-      span.textContent = parseInt(span.textContent) + 1;
-    }
-
-    if (e.target.classList.contains("comment-button")) {
-      const parent = e.target.parentElement;
-      if (!parent.querySelector("textarea")) {
-        const commentBox = document.createElement("textarea");
-        commentBox.placeholder = "Escribe un comentario...";
-        commentBox.style.display = "block";
-        commentBox.style.marginTop = "10px";
-        parent.appendChild(commentBox);
-      }
-    }
   });
 });
