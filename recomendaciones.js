@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("JS cargado - Recomendaciones");
+  console.log("JS Recomendaciones cargado");
 
   /************************************************************
    * MENÚ HAMBURGUESA
@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const featuredList = document.getElementById("featured-list");
 
   // Simulación: si es admin o no
-  const isAdmin = true; // Cambia a false para probar sin acceso de admin
+  const isAdmin = true; // Cambia a false si quieres ocultar la sección "destacadas"
 
   // Mostrar formulario de admin solo si es admin
   if (!isAdmin) {
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const recommendation = document.createElement("div");
     recommendation.classList.add("recommendation");
 
-    // Media (fotos o videos)
+    // Generar HTML para archivos (fotos o videos)
     let mediaHTML = "";
     if (mediaFiles && mediaFiles.length > 0) {
       mediaHTML += '<div class="media-container">';
@@ -61,22 +61,28 @@ document.addEventListener("DOMContentLoaded", () => {
       mediaHTML += "</div>";
     }
 
+    // Construir el contenido final
     recommendation.innerHTML = `
       <strong>Tú:</strong>
       <p>${content}</p>
-      ${link ? `<a href="${link}" target="_blank" style="color: #0077cc">Ver en Google Maps</a>` : ""}
+      ${
+        link
+          ? `<a href="${link}" target="_blank" style="color: #0077cc">Ver en Google Maps</a>`
+          : ""
+      }
       <br>
       ${mediaHTML}
       <button class="like-button">Me gusta <span>0</span></button>
       <button class="comment-button">Comentar</button>
     `;
 
+    // Prepend en la lista de recomendaciones de usuarios
     userRecommendationsList.prepend(recommendation);
 
-    // Sumar 10 puntos (lógica real se hará más adelante)
+    // Simular suma de 10 puntos
     alert("¡Has ganado 10 puntos de recompensa!");
 
-    // Resetear form
+    // Reset form
     userRecommendationForm.reset();
   });
 
@@ -91,6 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const title = titleField.value.trim();
     const description = descField.value.trim();
     const link = linkField.value.trim();
+
     if (!title || !description || !link) return;
 
     const featured = document.createElement("div");
@@ -117,7 +124,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (e.target.classList.contains("comment-button")) {
       const parent = e.target.parentElement;
-      // Evitar duplicar un <textarea> si ya existe
       if (!parent.querySelector("textarea")) {
         const commentBox = document.createElement("textarea");
         commentBox.placeholder = "Escribe un comentario...";
