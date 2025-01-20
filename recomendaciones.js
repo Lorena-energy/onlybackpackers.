@@ -1,14 +1,13 @@
-/***************************************************
- * RECOMENDACIONES.JS 
- * con humor, por Sheldon ;)
- ***************************************************/
+/**************************************************************
+ * RECOMENDACIONES.JS
+ * Sheldon con humor para Lorena :)
+ **************************************************************/
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("Hola, Lorena. Sheldon con humor: Si no sale la hamburguesa, ¡llamamos a los Cazafantasmas CSS!");
+  console.log("Recomendaciones.js cargado con humor. ¡Ánimo Lorena!");
 
   // ================== MENÚ HAMBURGUESA ==================
   const menuToggle = document.getElementById("menu-toggle");
   const menu = document.getElementById("menu");
-
   menuToggle.addEventListener("click", () => {
     menu.classList.toggle("active");
   });
@@ -20,18 +19,23 @@ document.addEventListener("DOMContentLoaded", () => {
   userRecommendationForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    const content = document.getElementById("recommendation-content").value.trim();
-    const mediaFiles = document.getElementById("recommendation-media").files;
-    const link = document.getElementById("recommendation-link").value.trim();
+    // Recogemos datos
+    const contentField = document.getElementById("recommendation-content");
+    const mediaField = document.getElementById("recommendation-media");
+    const linkField = document.getElementById("recommendation-link");
     const alsoCommunity = document.getElementById("also-community").checked;
 
-    if (!content) return;
+    const content = contentField.value.trim();
+    const mediaFiles = mediaField.files;
+    const link = linkField.value.trim();
 
-    // Creamos el contenedor
-    const recommendationDiv = document.createElement("div");
-    recommendationDiv.classList.add("recommendation");
+    if (!content) return; // no se publica si está vacío
 
-    // Manejar archivos
+    // Creamos bloque de recomendación
+    const recDiv = document.createElement("div");
+    recDiv.classList.add("recommendation");
+
+    // Generar HTML de media
     let mediaHTML = "";
     if (mediaFiles && mediaFiles.length > 0) {
       mediaHTML += '<div class="media-container">';
@@ -46,35 +50,35 @@ document.addEventListener("DOMContentLoaded", () => {
       mediaHTML += "</div>";
     }
 
-    // Cálculo de puntos
-    let basePoints = 10;
-    if (alsoCommunity) basePoints += 5;
+    // Puntos base = 10, +5 si publica en comunidad
+    let points = 10;
+    if (alsoCommunity) points += 5;
 
-    // HTML final
-    let htmlContent = `
+    // Montamos HTML final
+    let finalHTML = `
       <p><strong>Tú:</strong> ${content}</p>
       ${link ? `<p><a href="${link}" target="_blank" style="color:#0077cc;">Ver en Google Maps</a></p>` : ""}
       ${mediaHTML}
-      <p>¡Has ganado ${basePoints} puntos!</p>
+      <p>¡Has ganado ${points} puntos!</p>
       <button class="cta-button like-button" data-likes="0">Me gusta (0)</button>
       <button class="cta-button comment-button">Comentar</button>
     `;
 
-    recommendationDiv.innerHTML = htmlContent;
-    userRecommendationsList.prepend(recommendationDiv);
+    recDiv.innerHTML = finalHTML;
+    userRecommendationsList.prepend(recDiv);
 
-    alert(`¡Has ganado ${basePoints} puntos de recompensa!`);
+    alert(`¡Has ganado ${points} puntos de recompensa!`);
     userRecommendationForm.reset();
   });
 
   // ================== LÓGICA DE DESTACADAS (ADMIN) ==================
-  const isAdmin = true; // Cambiar a false si quieres ocultar el form
-  const adminRecommendationForm = document.getElementById("admin-recommendation-form");
-  const featuredList = document.getElementById("featured-list");
-
+  const isAdmin = true; // cámbialo a false para ocultar
   if (!isAdmin) {
     document.getElementById("add-featured-recommendations").style.display = "none";
   }
+
+  const adminRecommendationForm = document.getElementById("admin-recommendation-form");
+  const featuredList = document.getElementById("featured-list");
 
   adminRecommendationForm.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -88,30 +92,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const photoURL = URL.createObjectURL(photoFile);
 
-    const featuredDiv = document.createElement("div");
-    featuredDiv.classList.add("recommendation");
-    featuredDiv.innerHTML = `
+    const featDiv = document.createElement("div");
+    featDiv.classList.add("recommendation");
+    featDiv.innerHTML = `
       <h3>${title}</h3>
       <img src="${photoURL}" alt="Recomendación destacada" style="max-width:100%; border-radius:5px; margin-top:10px;" />
       <p>${description}</p>
       <a href="${link}" target="_blank" class="cta-button" style="margin-top:10px; display:inline-block;">Reservar ahora</a>
     `;
 
-    featuredList.prepend(featuredDiv);
+    featuredList.prepend(featDiv);
     adminRecommendationForm.reset();
   });
 
   // ================== CONTADOR DE "ME GUSTA" Y COMENTARIOS ==================
   document.addEventListener("click", (e) => {
-    // Contador real de "Me gusta"
     if (e.target.classList.contains("like-button")) {
-      let currentLikes = parseInt(e.target.getAttribute("data-likes")) || 0;
-      currentLikes++;
-      e.target.setAttribute("data-likes", currentLikes);
-      e.target.textContent = `Me gusta (${currentLikes})`;
+      let likes = parseInt(e.target.getAttribute("data-likes")) || 0;
+      likes++;
+      e.target.setAttribute("data-likes", likes);
+      e.target.textContent = `Me gusta (${likes})`;
     }
 
-    // Comentarios
     if (e.target.classList.contains("comment-button")) {
       const parent = e.target.parentElement;
       if (!parent.querySelector("textarea")) {
@@ -123,4 +125,4 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
   });
-})();
+});
