@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
   <title>OnlyBackpackers - Recomendaciones</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Fuente Poppins -->
   <link
@@ -11,17 +11,14 @@
     rel="stylesheet"
   />
 
-  <!-- =============================================
-       HOJA DE ESTILOS
-       ============================================= -->
-  <link rel="stylesheet" href="recomendaciones.css">
+  <!-- Hoja de estilos -->
+  <link rel="stylesheet" href="recomendaciones.css" />
 </head>
 <body>
-  <!-- =============================================
-       ENCABEZADO CON MENÚ
-       ============================================= -->
+  <!-- Encabezado con menú -->
   <header class="main-header">
     <nav>
+      <!-- Menú hamburguesa -->
       <div class="menu-toggle" id="menu-toggle">
         <span class="bar"></span>
         <span class="bar"></span>
@@ -41,101 +38,101 @@
     </nav>
   </header>
 
-  <!-- =============================================
-       TÍTULO GRANDE ONLYBACKPACKERS
-       ============================================= -->
+  <!-- Título grande ONLYBACKPACKERS -->
   <div class="big-title">OnlyBackpackers</div>
 
-  <!-- =============================================
-       CONTENIDO PRINCIPAL
-       ============================================= -->
-  <main>
-    <!-- Texto de puntos -->
-    <section class="section-block">
-      <p>
-        ¡Gana <strong>10 puntos</strong> (o <strong>15</strong> si marcas el check) recomendando destinos, 
-        restaurantes o sitios increíbles! Comparte ese chiringuito que tanto te gustó o 
-        ese lugar especial. También puedes incluir enlaces de Google Maps o adjuntar fotos/videos.
-      </p>
-    </section>
+  <!-- Contenido principal -->
+  <main class="columns-container">
+    <!-- Columna Izquierda -->
+    <div class="left-column">
+      <!-- Bloque de texto/puntos -->
+      <section class="section-block">
+        <p>
+          ¡Gana <strong>10 puntos</strong> (o <strong>15</strong> si tildas el check) recomendando destinos, 
+          restaurantes o sitios increíbles!  
+          Comparte ese chiringuito que tanto te gustó o ese lugar especial.  
+          También puedes incluir enlaces de Google Maps o adjuntar fotos/videos.
+        </p>
+      </section>
 
-    <!-- Recomendaciones de usuarios -->
-    <section class="section-block">
-      <h2>Recomendaciones de los Usuarios</h2>
-      <form id="user-recommendation-form">
-        <textarea
-          id="recommendation-content"
-          placeholder="Comparte tu recomendación..."
-          rows="3"
-          required
-        ></textarea>
-        <br/>
-        <input
-          type="file"
-          id="recommendation-media"
-          accept="image/*,video/*"
-          multiple
-        />
-        <br/>
-        <input
-          type="url"
-          id="recommendation-link"
-          placeholder="Enlace de Google Maps (opcional)"
-        />
-        <br/>
-        <!-- Checkbox para publicar en la comunidad -->
-        <label class="checkbox-label">
-          <input type="checkbox" id="also-community" />
-          Publicar también en la comunidad (+5 puntos extra)
-        </label>
-        <br/><br/>
-        <button type="submit" class="cta-button">Publicar</button>
-      </form>
-      <div id="user-recommendations-list"></div>
-    </section>
+      <!-- Recomendaciones de usuarios -->
+      <section class="section-block">
+        <h2>Recomendaciones de los Usuarios</h2>
+        <form id="user-recommendation-form">
+          <textarea
+            id="recommendation-content"
+            placeholder="Comparte tu recomendación..."
+            rows="3"
+            required
+          ></textarea>
+          <br/>
+          <input
+            type="file"
+            id="recommendation-media"
+            accept="image/*,video/*"
+            multiple
+          />
+          <br/>
+          <input
+            type="url"
+            id="recommendation-link"
+            placeholder="Enlace de Google Maps (opcional)"
+          />
+          <br/>
+          <!-- Checkbox para publicar en comunidad -->
+          <label class="checkbox-label">
+            <input type="checkbox" id="also-community" />
+            Publicar también en la comunidad (+5 puntos extra)
+          </label>
+          <br/><br/>
+          <button type="submit" class="cta-button">Publicar</button>
+        </form>
+        <div id="user-recommendations-list"></div>
+      </section>
+    </div>
 
-    <!-- Recomendaciones Destacadas (Solo Admin) -->
-    <section class="section-block" id="add-featured-recommendations">
-      <h2>Agregar Recomendación Destacada</h2>
-      <form id="admin-recommendation-form">
-        <input
-          type="text"
-          id="recommendation-title"
-          placeholder="Título"
-          required
-        /><br/><br/>
-        <textarea
-          id="recommendation-description"
-          placeholder="Descripción"
-          rows="2"
-          required
-        ></textarea><br/><br/>
-        <input
-          type="url"
-          id="recommendation-affiliate-link"
-          placeholder="Enlace de afiliado"
-          required
-        /><br/><br/>
-        <input
-          type="file"
-          id="recommendation-photo"
-          accept="image/*"
-          required
-        /><br/><br/>
-        <button type="submit" class="cta-button">Agregar</button>
-      </form>
-    </section>
+    <!-- Columna Derecha -->
+    <div class="right-column">
+      <!-- Recomendaciones Destacadas (solo admin) -->
+      <section class="section-block" id="add-featured-recommendations">
+        <h2>Agregar Recomendación Destacada</h2>
+        <form id="admin-recommendation-form">
+          <input
+            type="text"
+            id="recommendation-title"
+            placeholder="Título"
+            required
+          /><br/><br/>
+          <textarea
+            id="recommendation-description"
+            placeholder="Descripción"
+            rows="2"
+            required
+          ></textarea><br/><br/>
+          <input
+            type="url"
+            id="recommendation-affiliate-link"
+            placeholder="Enlace de afiliado"
+            required
+          /><br/><br/>
+          <input
+            type="file"
+            id="recommendation-photo"
+            accept="image/*"
+            required
+          /><br/><br/>
+          <button type="submit" class="cta-button">Agregar</button>
+        </form>
+      </section>
 
-    <!-- Lista de Destacadas -->
-    <section class="section-block">
-      <h2>Recomendaciones Destacadas</h2>
-      <div id="featured-list"></div>
-    </section>
+      <section class="section-block">
+        <h2>Recomendaciones Destacadas</h2>
+        <div id="featured-list"></div>
+      </section>
+    </div>
   </main>
 
-  <!-- =============================================
-       SCRIPT PRINCIPAL
-       ============================================= -->
+  <!-- Script principal -->
   <script src="recomendaciones.js"></script>
 </body>
 </html>
