@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OnlyBackpackers - Recomendaciones</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="recomendaciones.css">
 </head>
 <body>
@@ -32,41 +31,40 @@
   </header>
 
   <main>
-    <!-- Publicar recomendación -->
-    <section id="create-recommendation">
-      <h2>Publica algo nuevo</h2>
-      <form id="user-recommendation-form">
-        <textarea id="recommendation-content" placeholder="Escribe algo..." rows="3" required></textarea>
-        <label for="recommendation-media" class="cta-button">Subir fotos/videos</label>
-        <input type="file" id="recommendation-media" accept="image/*, video/*" hidden multiple>
-        <label>
-          <input type="checkbox" id="recommendation-link">
-          Publicar también en la comunidad
-        </label>
-        <button type="submit" class="cta-button">Publicar</button>
-      </form>
+    <!-- Logo -->
+    <section id="logo-section">
+      <img src="Onlybackpackers.jpg" alt="OnlyBackpackers" class="logo">
+    </section>
+
+    <!-- Gana puntos -->
+    <section id="user-points">
+      <p>
+        ¡Gana 10 puntos y 15 compartiendo con la comunidad, recomendando destinos, restaurantes o sitios increíbles! Comparte el chiringuito que tanto te gustó o ese lugar especial. También puedes incluir enlaces de Google Maps.
+      </p>
     </section>
 
     <!-- Recomendaciones de usuarios -->
     <section id="user-recommendations">
       <h2>Recomendaciones de los Usuarios</h2>
-      <div id="user-recommendations-list"></div>
+      <form id="user-recommendation-form">
+        <textarea id="recommendation-content" placeholder="Comparte tu recomendación..." rows="3" required></textarea>
+        <input type="url" id="recommendation-link" placeholder="Enlace de Google Maps (opcional)">
+        <input type="file" id="recommendation-media" accept="image/*,video/*" multiple>
+        <label>
+          <input type="checkbox" id="publish-community"> Publicar también en la comunidad (+5 puntos)
+        </label>
+        <button type="submit" class="cta-button">Publicar</button>
+      </form>
+      <div id="user-recommendations-list">
+        <!-- Recomendaciones de usuarios cargadas dinámicamente -->
+      </div>
     </section>
 
     <!-- Recomendaciones destacadas -->
     <section id="featured-recommendations">
       <h2>Recomendaciones Destacadas</h2>
       <div id="featured-list">
-        <div class="recommendation">
-          <h3>Machu Picchu</h3>
-          <p>Explora la maravilla del mundo en Perú.</p>
-          <a href="https://affiliate-link.com" class="cta-button" target="_blank">Reservar ahora</a>
-        </div>
-        <div class="recommendation">
-          <h3>Islas Phi Phi</h3>
-          <p>Descubre el paraíso en Tailandia.</p>
-          <a href="https://affiliate-link.com" class="cta-button" target="_blank">Reservar ahora</a>
-        </div>
+        <!-- Destacadas cargadas dinámicamente -->
       </div>
     </section>
   </main>
@@ -74,4 +72,3 @@
   <script src="recomendaciones.js"></script>
 </body>
 </html>
-
