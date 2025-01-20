@@ -38,7 +38,7 @@ body {
 
 /* Menú hamburguesa */
 .menu-toggle {
-  display: none;
+  display: none; /* Oculto en desktop */
 }
 .menu-toggle .bar {
   width: 25px;
@@ -71,11 +71,18 @@ body {
   border-radius: 5px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+.recommendation img,
+.recommendation video {
+  display: block;
+  margin-top: 10px;
+  max-width: 100%;
+  border-radius: 5px;
+}
 
 /* Responsive (mobile) */
 @media (max-width: 768px) {
   .menu {
-    display: none;
+    display: none; /* No se ve menú en mobile hasta clic */
     flex-direction: column;
     background: #0077cc;
     position: absolute;
@@ -86,9 +93,8 @@ body {
   .menu.active {
     display: flex;
   }
-
   .menu-toggle {
-    display: block;
+    display: block; /* Hamburguesa visible en mobile */
     cursor: pointer;
   }
 }
