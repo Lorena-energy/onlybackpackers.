@@ -11,7 +11,7 @@
     rel="stylesheet"
   />
 
-  <!-- Hoja de estilos -->
+  <!-- Hoja de estilos principal -->
   <link rel="stylesheet" href="recomendaciones.css" />
 </head>
 <body>
@@ -38,75 +38,83 @@
     </nav>
   </header>
 
-  <main>
-    <!-- Instrucciones para los usuarios -->
-    <section id="instructions">
-      <p>
-        Gana 10 puntos recomendando destinos, restaurantes, lugares increíbles 
-        o ese chiringuito que tanto te gustó.  
-        Puedes incluir un enlace de Google Maps, **no** es obligatorio.  
-        ¡También puedes agregar fotos o videos!
-      </p>
-    </section>
+  <!-- Dos columnas en escritorio -->
+  <main class="columns-container">
 
-    <!-- Recomendaciones de usuarios -->
-    <section id="user-recommendations">
-      <h2>Recomendaciones de los Usuarios</h2>
-      <form id="user-recommendation-form">
-        <textarea
-          id="recommendation-content"
-          placeholder="Comparte tu recomendación..."
-          rows="3"
-          required
-        ></textarea>
-        <input
-          type="url"
-          id="recommendation-link"
-          placeholder="Enlace de Google Maps (opcional)"
-        />
-        <!-- Campo para fotos o videos -->
-        <input
-          type="file"
-          id="recommendation-media"
-          accept="image/*,video/*"
-          multiple
-        />
+    <!-- Columna Izquierda: Instrucciones + Recomendaciones de Usuarios -->
+    <div class="left-column">
+      <section id="instructions">
+        <p>
+          Gana 10 puntos recomendando destinos, restaurantes, lugares increíbles 
+          o ese chiringuito que tanto te gustó.  
+          Puedes incluir un enlace de Google Maps, **no** es obligatorio.  
+          ¡También puedes agregar fotos o videos!
+        </p>
+      </section>
 
-        <button type="submit" class="cta-button">Publicar</button>
-      </form>
-      <div id="user-recommendations-list"></div>
-    </section>
+      <!-- Recomendaciones de usuarios -->
+      <section id="user-recommendations">
+        <h2>Recomendaciones de los Usuarios</h2>
+        <form id="user-recommendation-form">
+          <textarea
+            id="recommendation-content"
+            placeholder="Comparte tu recomendación..."
+            rows="3"
+            required
+          ></textarea>
+          <input
+            type="url"
+            id="recommendation-link"
+            placeholder="Enlace de Google Maps (opcional)"
+          />
+          <!-- Campo para fotos o videos -->
+          <input
+            type="file"
+            id="recommendation-media"
+            accept="image/*,video/*"
+            multiple
+          />
 
-    <!-- Recomendaciones destacadas (solo admin) -->
-    <section id="add-featured-recommendations">
-      <h2>Agregar Recomendación Destacada</h2>
-      <form id="admin-recommendation-form">
-        <input
-          type="text"
-          id="recommendation-title"
-          placeholder="Título"
-          required
-        />
-        <textarea
-          id="recommendation-description"
-          placeholder="Descripción"
-          rows="2"
-          required
-        ></textarea>
-        <input
-          type="url"
-          id="recommendation-affiliate-link"
-          placeholder="Enlace de afiliado"
-          required
-        />
-        <button type="submit" class="cta-button">Agregar</button>
-      </form>
-    </section>
+          <button type="submit" class="cta-button">Publicar</button>
+        </form>
+        <div id="user-recommendations-list"></div>
+      </section>
+    </div>
 
-    <section id="featured-recommendations">
-      <h2>Recomendaciones Destacadas</h2>
-      <div id="featured-list"></div>
-    </section>
+    <!-- Columna Derecha: Añadir + Lista de Destacadas -->
+    <div class="right-column">
+      <!-- Recomendaciones destacadas (solo admin) -->
+      <section id="add-featured-recommendations">
+        <h2>Agregar Recomendación Destacada</h2>
+        <form id="admin-recommendation-form">
+          <input
+            type="text"
+            id="recommendation-title"
+            placeholder="Título"
+            required
+          />
+          <textarea
+            id="recommendation-description"
+            placeholder="Descripción"
+            rows="2"
+            required
+          ></textarea>
+          <input
+            type="url"
+            id="recommendation-affiliate-link"
+            placeholder="Enlace de afiliado"
+            required
+          />
+          <button type="submit" class="cta-button">Agregar</button>
+        </form>
+      </section>
+
+      <section id="featured-recommendations">
+        <h2>Recomendaciones Destacadas</h2>
+        <div id="featured-list"></div>
+      </section>
+    </div>
+    
   </main>
 
   <!-- Script principal -->
