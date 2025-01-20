@@ -45,15 +45,7 @@ input[type="checkbox"] {
   background: #cc5200;
 }
 
-#user-recommendations-list .recommendation {
-  background: white;
-  color: #333;
-  margin: 15px auto;
-  padding: 15px;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
+#user-recommendations-list .recommendation,
 #featured-recommendations .recommendation {
   background: white;
   color: #333;
@@ -61,7 +53,6 @@ input[type="checkbox"] {
   padding: 15px;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  text-align: center;
 }
 
 .media-container img,
