@@ -1,9 +1,5 @@
-/**************************************************************
- * RECOMENDACIONES.JS
- * Sheldon con humor para Lorena :)
- **************************************************************/
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("Recomendaciones.js cargado con humor. ¡Ánimo Lorena!");
+  console.log("Recomendaciones.js: si no sale la hamburguesa, ¡llamamos a Scooby!");
 
   // ================== MENÚ HAMBURGUESA ==================
   const menuToggle = document.getElementById("menu-toggle");
@@ -12,14 +8,13 @@ document.addEventListener("DOMContentLoaded", () => {
     menu.classList.toggle("active");
   });
 
-  // ================== LÓGICA DE USUARIOS ==================
+  // ================== FORMULARIO USUARIOS ==================
   const userRecommendationForm = document.getElementById("user-recommendation-form");
   const userRecommendationsList = document.getElementById("user-recommendations-list");
 
   userRecommendationForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    // Recogemos datos
     const contentField = document.getElementById("recommendation-content");
     const mediaField = document.getElementById("recommendation-media");
     const linkField = document.getElementById("recommendation-link");
@@ -29,13 +24,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const mediaFiles = mediaField.files;
     const link = linkField.value.trim();
 
-    if (!content) return; // no se publica si está vacío
+    if (!content) return;
 
-    // Creamos bloque de recomendación
-    const recDiv = document.createElement("div");
-    recDiv.classList.add("recommendation");
+    const recommendationDiv = document.createElement("div");
+    recommendationDiv.classList.add("recommendation");
 
-    // Generar HTML de media
+    // Manejo de media (fotos/videos)
     let mediaHTML = "";
     if (mediaFiles && mediaFiles.length > 0) {
       mediaHTML += '<div class="media-container">';
@@ -50,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
       mediaHTML += "</div>";
     }
 
-    // Puntos base = 10, +5 si publica en comunidad
+    // Puntos: 10 o 15
     let points = 10;
     if (alsoCommunity) points += 5;
 
@@ -64,15 +58,17 @@ document.addEventListener("DOMContentLoaded", () => {
       <button class="cta-button comment-button">Comentar</button>
     `;
 
-    recDiv.innerHTML = finalHTML;
-    userRecommendationsList.prepend(recDiv);
+    recommendationDiv.innerHTML = finalHTML;
+    userRecommendationsList.prepend(recommendationDiv);
 
+    // Mensaje
     alert(`¡Has ganado ${points} puntos de recompensa!`);
+
     userRecommendationForm.reset();
   });
 
-  // ================== LÓGICA DE DESTACADAS (ADMIN) ==================
-  const isAdmin = true; // cámbialo a false para ocultar
+  // ================== FORMULARIO ADMIN ==================
+  const isAdmin = true; // Cambia a false si NO es admin
   if (!isAdmin) {
     document.getElementById("add-featured-recommendations").style.display = "none";
   }
@@ -83,10 +79,14 @@ document.addEventListener("DOMContentLoaded", () => {
   adminRecommendationForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    const title = document.getElementById("recommendation-title").value.trim();
-    const description = document.getElementById("recommendation-description").value.trim();
-    const link = document.getElementById("recommendation-affiliate-link").value.trim();
+    const titleField = document.getElementById("recommendation-title");
+    const descField = document.getElementById("recommendation-description");
+    const linkField = document.getElementById("recommendation-affiliate-link");
     const photoFile = document.getElementById("recommendation-photo").files[0];
+
+    const title = titleField.value.trim();
+    const description = descField.value.trim();
+    const link = linkField.value.trim();
 
     if (!title || !description || !link || !photoFile) return;
 
@@ -105,23 +105,55 @@ document.addEventListener("DOMContentLoaded", () => {
     adminRecommendationForm.reset();
   });
 
-  // ================== CONTADOR DE "ME GUSTA" Y COMENTARIOS ==================
+  // ================== “ME GUSTA” CON CONTADOR Y COMENTARIOS ==================
   document.addEventListener("click", (e) => {
+    // Contador real de “Me gusta”
     if (e.target.classList.contains("like-button")) {
-      let likes = parseInt(e.target.getAttribute("data-likes")) || 0;
-      likes++;
-      e.target.setAttribute("data-likes", likes);
-      e.target.textContent = `Me gusta (${likes})`;
+      let currentLikes = parseInt(e.target.getAttribute("data-likes")) || 0;
+      currentLikes++;
+      e.target.setAttribute("data-likes", currentLikes);
+      e.target.textContent = `Me gusta (${currentLikes})`;
     }
 
+    // Botón “Comentar” => crea textarea y un botón “Publicar comentario”
     if (e.target.classList.contains("comment-button")) {
       const parent = e.target.parentElement;
-      if (!parent.querySelector("textarea")) {
+
+      // Si no existe un “commentBox” + “commentSubmitButton”, los creamos
+      if (!parent.querySelector(".comment-box")) {
         const commentBox = document.createElement("textarea");
         commentBox.placeholder = "Escribe un comentario...";
+        commentBox.classList.add("comment-box");
         commentBox.style.display = "block";
         commentBox.style.marginTop = "10px";
+
+        const commentSubmitBtn = document.createElement("button");
+        commentSubmitBtn.textContent = "Publicar comentario";
+        commentSubmitBtn.classList.add("cta-button", "comment-submit-button");
+        commentSubmitBtn.style.marginTop = "5px";
+
         parent.appendChild(commentBox);
+        parent.appendChild(commentSubmitBtn);
+      }
+    }
+
+    // Botón “Publicar comentario”
+    if (e.target.classList.contains("comment-submit-button")) {
+      const parent = e.target.parentElement;
+      const textArea = parent.querySelector(".comment-box");
+      if (textArea && textArea.value.trim() !== "") {
+        // Crear un div para el comentario
+        const commentText = textArea.value.trim();
+        const commentDiv = document.createElement("div");
+        commentDiv.style.marginTop = "5px";
+        commentDiv.innerHTML = `<strong>Comentario:</strong> ${commentText}`;
+
+        parent.insertBefore(commentDiv, textArea);
+
+        // Limpiar el textarea
+        textArea.value = "";
+      } else {
+        alert("No puedes publicar un comentario vacío...");
       }
     }
   });
