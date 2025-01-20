@@ -2,96 +2,94 @@ body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
-  background: linear-gradient(to bottom right, #0077cc, #00c8e0);
+  background: linear-gradient(to bottom right, #0077cc, #00bfff);
   color: white;
 }
 
-h2 {
-  font-weight: 600;
-  text-align: center;
-  margin: 20px 0;
+.main-header {
+  background: #004f8c;
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-#user-recommendation-form,
-#admin-recommendation-form {
+.menu {
+  list-style: none;
   display: flex;
-  flex-direction: column;
-  gap: 15px;
-  margin: 20px auto;
-  width: 90%;
-  max-width: 600px;
-}
-
-textarea,
-input[type="file"],
-input[type="checkbox"] {
-  font-family: 'Poppins', sans-serif;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-}
-
-.cta-button {
-  background: #ff6600;
-  color: white;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  text-align: center;
-}
-
-.cta-button:hover {
-  background: #cc5200;
-}
-
-#user-recommendations-list .recommendation,
-#featured-recommendations .recommendation {
-  background: white;
-  color: #333;
-  margin: 15px auto;
-  padding: 15px;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.media-container img,
-.media-container video {
-  max-width: 100%;
-  border-radius: 5px;
-  margin-top: 10px;
+  gap: 10px;
 }
 
 .menu-toggle {
   display: none;
-  cursor: pointer;
 }
 
-.menu-toggle .bar {
-  width: 25px;
-  height: 3px;
+.menu li a {
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  padding: 8px 15px;
+  border-radius: 5px;
+}
+
+.menu li a.active {
+  background-color: #ff6600;
+}
+
+#logo-section {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.logo {
+  width: 150px;
+  height: auto;
+}
+
+h2 {
+  color: white;
+  font-weight: 700;
+  text-align: center;
+}
+
+.cta-button {
+  background-color: #ff6600;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.cta-button:hover {
+  background-color: #cc5200;
+}
+
+.recommendation {
   background-color: white;
-  margin: 5px 0;
-  display: block;
+  color: #333;
+  padding: 15px;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.recommendation img {
+  max-width: 100%;
+  border-radius: 10px;
 }
 
 @media (max-width: 768px) {
   .menu {
     display: none;
     flex-direction: column;
-    background: #004f8c;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    padding: 20px 0;
   }
-
   .menu.active {
     display: flex;
   }
-
   .menu-toggle {
     display: block;
+    cursor: pointer;
   }
 }
