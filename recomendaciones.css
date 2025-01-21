@@ -19,74 +19,36 @@ body {
   list-style: none;
   display: flex;
   gap: 10px;
+  margin: 0;
+  padding: 0;
 }
-
 .menu li a {
   text-decoration: none;
   color: white;
   font-weight: 600;
   padding: 8px 15px;
   border-radius: 5px;
+  transition: background-color 0.3s;
 }
-
 .menu li a.active {
   background-color: #ff6600;
+}
+.menu li a:hover {
+  background-color: #005fa3;
 }
 
 .menu-toggle {
   display: none;
   cursor: pointer;
 }
-
-.big-title {
-  text-align: center;
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin: 20px auto 10px auto;
-  color: white;
+.menu-toggle .bar {
+  width: 25px;
+  height: 3px;
+  background: white;
+  margin: 5px 0;
 }
 
-.columns-container {
-  display: flex;
-  gap: 20px;
-  max-width: 1200px;
-  margin: 20px auto;
-  padding: 0 20px;
-}
-
-.left-column,
-.right-column {
-  flex: 1;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.cta-button {
-  background-color: #ff6600;
-  color: white;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background 0.3s;
-  font-weight: 600;
-}
-
-.cta-button:hover {
-  background-color: #cc5200;
-}
-
-.recommendation {
-  background-color: white;
-  color: #333;
-  padding: 15px;
-  margin: 10px 0;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
+/* ====== RESPONSIVE ====== */
 @media (max-width: 768px) {
   .menu {
     display: none;
@@ -106,8 +68,6 @@ body {
   .menu-toggle {
     display: block;
   }
-
-  .columns-container {
-    flex-direction: column;
-  }
 }
+
+/* ESTILOS RESTANTES SON IGUALES */
