@@ -1,3 +1,4 @@
+/* ============ REGLAS GENERALES ============ */
 body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
@@ -6,6 +7,7 @@ body {
   color: white;
 }
 
+/* ENCABEZADO Y MENÚ */
 .main-header {
   background: #004f8c;
   padding: 10px 20px;
@@ -13,50 +15,36 @@ body {
   top: 0;
   z-index: 1000;
 }
-
 .menu {
   display: flex;
   list-style: none;
   gap: 15px;
+  margin: 0;
+  padding: 0;
 }
-
 .menu li a {
   color: white;
   text-decoration: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+}
+.menu li a.active {
+  background-color: #ff6600;
 }
 
+/* Hamburguesa usando "show" (como la de chats) */
 .menu-toggle {
   display: none;
+  cursor: pointer;
+}
+.menu-toggle .bar {
+  width: 25px;
+  height: 3px;
+  background: white;
+  margin: 5px 0;
 }
 
-@media (max-width: 768px) {
-  .menu {
-    display: none;
-    flex-direction: column;
-    background: #0077cc;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-  }
-
-  .menu.active {
-    display: flex;
-  }
-
-  .menu-toggle {
-    display: block;
-    cursor: pointer;
-  }
-
-  .menu-toggle .bar {
-    width: 25px;
-    height: 3px;
-    background: white;
-    margin: 5px 0;
-  }
-}
-
+/* BOTÓN CTA */
 .cta-button {
   background: #ff6600;
   color: white;
@@ -67,16 +55,186 @@ body {
   cursor: pointer;
   transition: background-color 0.3s;
 }
-
 .cta-button:hover {
   background: #cc5200;
 }
 
-.recommendation {
-  background: white;
-  color: #333;
-  padding: 10px;
-  margin: 10px 0;
+/* CONTENEDOR 2 COLUMNAS EN ESCRITORIO */
+.muro-container {
+  display: flex;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 0 20px;
+}
+.left-column,
+.right-column {
+  flex: 1;
+  background: rgba(255,255,255,0.1);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* PUBLICACIONES */
+.create-post {
+  margin-bottom: 30px;
+}
+.create-post textarea {
+  width: 100%;
+  border: 1px solid #ddd;
   border-radius: 5px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  margin-bottom: 10px;
+  font-family: inherit;
+  color: #333;
+}
+.file-upload {
+  margin-bottom: 10px;
+  color: white;
+  font-weight: bold;
+}
+
+/* LISTA DE POSTS */
+.post {
+  background-color: white;
+  color: #333;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.post-content {
+  margin-bottom: 10px;
+}
+.post-actions {
+  display: flex;
+  gap: 10px;
+}
+.post-actions button {
+  background: #0077cc;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+.post-actions button:hover {
+  background: #005fa3;
+}
+.comment-section {
+  margin-top: 10px;
+  border-top: 1px solid #ddd;
+  padding-top: 10px;
+}
+.comment-form {
+  display: flex;
+  gap: 5px;
+  margin-top: 10px;
+}
+.comment-form input {
+  flex: 1;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+.comment-form button {
+  background: #0077cc;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+/* PREGUNTAS */
+.community-questions textarea {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-family: inherit;
+  color: #333;
+}
+.question {
+  background-color: white;
+  color: #333;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.question-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.question-content {
+  margin-bottom: 10px;
+}
+.answer-section {
+  margin-top: 10px;
+  border-top: 1px solid #ddd;
+  padding-top: 10px;
+}
+.answer-form {
+  display: flex;
+  gap: 5px;
+  margin-top: 10px;
+}
+.answer-form input {
+  flex: 1;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+.answer-form button {
+  background: #0077cc;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #004f8c;
+  color: white;
+  margin-top: 20px;
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 768px) {
+  .menu {
+    display: none;
+    flex-direction: column;
+    background: #0077cc;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+  }
+  /* Usa .show en lugar de .active */
+  .menu.show {
+    display: flex;
+  }
+  .menu-toggle {
+    display: flex;
+  }
+
+  .muro-container {
+    flex-direction: column;
+    padding: 10px;
+  }
 }
