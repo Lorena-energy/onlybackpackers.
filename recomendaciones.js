@@ -1,13 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // MENÚ HAMBURGUESA
+  // Menú hamburguesa
   const menuToggle = document.getElementById("menu-toggle");
   const menu = document.getElementById("menu");
-  
+
   menuToggle.addEventListener("click", () => {
     menu.classList.toggle("active");
   });
 
-  // RECOMENDACIONES DE USUARIOS
+  // Publicar recomendaciones de usuarios
   const userRecommendationForm = document.getElementById("user-recommendation-form");
   const userRecommendationsList = document.getElementById("user-recommendations-list");
 
@@ -15,32 +15,32 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
 
     const content = document.getElementById("recommendation-content").value.trim();
-    const link = document.getElementById("recommendation-link").value.trim();
-    const mediaFiles = document.getElementById("recommendation-media").files;
-    const alsoCommunity = document.getElementById("also-community").checked;
-
     if (!content) return;
 
     const recommendationDiv = document.createElement("div");
     recommendationDiv.classList.add("recommendation");
+    recommendationDiv.innerHTML = `<p>${content}</p>`;
 
-    let mediaHTML = "";
-    Array.from(mediaFiles).forEach((file) => {
-      const fileURL = URL.createObjectURL(file);
-      mediaHTML += file.type.startsWith("video")
-        ? `<video src="${fileURL}" controls></video>`
-        : `<img src="${fileURL}" alt="Media">`;
-    });
-
-    recommendationDiv.innerHTML = `
-      <p><strong>Tú:</strong> ${content}</p>
-      ${link ? `<a href="${link}" target="_blank" style="color:#0077cc;">Ver en Google Maps</a>` : ""}
-      ${mediaHTML}
-      <p>¡Has ganado ${alsoCommunity ? 15 : 10} puntos!</p>
-    `;
-
-    userRecommendationsList.prepend(recommendationDiv);
-    alert(`¡Has ganado ${alsoCommunity ? 15 : 10} puntos de recompensa!`);
+    userRecommendationsList.appendChild(recommendationDiv);
     userRecommendationForm.reset();
+  });
+
+  // Publicar recomendaciones destacadas
+  const adminRecommendationForm = document.getElementById("admin-recommendation-form");
+  const featuredList = document.getElementById("featured-list");
+
+  adminRecommendationForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const title = document.getElementById("recommendation-title").value.trim();
+    const description = document.getElementById("recommendation-description").value.trim();
+    if (!title || !description) return;
+
+    const featuredDiv = document.createElement("div");
+    featuredDiv.classList.add("recommendation");
+    featuredDiv.innerHTML = `<h3>${title}</h3><p>${description}</p>`;
+
+    featuredList.appendChild(featuredDiv);
+    adminRecommendationForm.reset();
   });
 });
