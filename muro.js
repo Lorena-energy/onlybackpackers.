@@ -1,43 +1,41 @@
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("muro.js: usando 'show' en lugar de 'active' para hamburguesa.");
+  console.log("muro.js: con fotos en comentarios y respuestas + puntos ajustados.");
 
   /************************************************************
-   * MENÚ HAMBURGUESA
+   * MENÚ HAMBURGUESA (con .show)
    ************************************************************/
   const menuToggle = document.getElementById("menu-toggle");
   const menu = document.getElementById("menu");
-
-  // Igual que en tu chats page => .show
   menuToggle.addEventListener("click", () => {
     menu.classList.toggle("show");
   });
 
   /************************************************************
-   * LÓGICA DE POSTS (+10 puntos)
+   * LÓGICA DE POSTS (+10 al publicar)
    ************************************************************/
   const postForm = document.getElementById("post-form");
   const postList = document.getElementById("post-list");
-  let posts = [];
 
-  // Nuevo post => +10 puntos
+  // Estructura de posts
+  let posts = []; // Each post: { id, content, media[], likes, comments[] }
+
   postForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    const postContent = document.getElementById("post-content").value.trim();
-    const postMedia = document.getElementById("post-media").files;
+    const content = document.getElementById("post-content").value.trim();
+    const mediaFiles = document.getElementById("post-media").files;
+    if (!content && mediaFiles.length === 0) return;
 
-    if (!postContent && postMedia.length === 0) return;
+    // +10 puntos al publicar
+    alert("¡Has ganado 10 puntos por publicar tu aventura!");
 
-    // Simular +10 puntos => alert
-    alert("¡Has ganado 10 puntos por compartir tu aventura!");
-
-    // Creamos el objeto post
+    // Crear post
     const newPost = {
       id: Date.now(),
-      content: postContent,
+      content,
+      media: Array.from(mediaFiles).map((file) => URL.createObjectURL(file)),
       likes: 0,
-      comments: [],
-      media: [...postMedia].map((file) => URL.createObjectURL(file)),
+      comments: [], // cada comment: { text, media[] }
     };
 
     posts.unshift(newPost);
@@ -47,105 +45,123 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function renderPosts() {
     postList.innerHTML = "";
-    posts.forEach((post) => {
-      const postElement = document.createElement("div");
-      postElement.classList.add("post");
-      postElement.dataset.id = post.id;
+    posts.forEach((p) => {
+      const postDiv = document.createElement("div");
+      postDiv.classList.add("post");
+      postDiv.dataset.id = p.id;
 
-      // Media
+      // Generar media
       let mediaHTML = "";
-      if (post.media && post.media.length > 0) {
-        mediaHTML = post.media.map((src) => `<img src="${src}" alt="Media" class="post-media">`).join("");
+      if (p.media && p.media.length > 0) {
+        mediaHTML = p.media.map(src => `<img src="${src}" alt="Media" class="post-media">`).join("");
       }
 
-      postElement.innerHTML = `
+      // Generar comentarios
+      let commentsHTML = "";
+      p.comments.forEach((c) => {
+        // c: { text, media[] }
+        let cmediaHTML = "";
+        if (c.media && c.media.length > 0) {
+          cmediaHTML = c.media.map(m => `<img src="${m}" alt="Cmedia" style="max-width:100px; margin-top:5px;"/>`).join("");
+        }
+        commentsHTML += `
+          <div class="comment">
+            <strong>Usuario:</strong> ${c.text}
+            <div>${cmediaHTML}</div>
+          </div>
+        `;
+      });
+
+      postDiv.innerHTML = `
         <div class="post-header">
           <h3>Usuario Anónimo</h3>
-          <span>Hace unos momentos</span>
+          <span>Hace un momento</span>
         </div>
         <div class="post-content">
-          <p>${post.content}</p>
+          <p>${p.content}</p>
           ${mediaHTML}
         </div>
         <div class="post-actions">
-          <button class="like-button">👍 Me gusta <span>${post.likes}</span></button>
+          <button class="like-button">👍 Me gusta <span>${p.likes}</span></button>
           <button class="comment-button">💬 Comentar</button>
         </div>
         <div class="comment-section">
-          <div class="comments">
-            ${post.comments
-              .map(
-                (c) => `<div class="comment"><strong>Usuario:</strong> ${c}</div>`
-              )
-              .join("")}
-          </div>
+          <div class="comments">${commentsHTML}</div>
           <form class="comment-form">
             <input type="text" placeholder="Escribe un comentario..." required>
+            <!-- input para adjuntar imagen/video en el comentario -->
+            <input type="file" multiple accept="image/*,video/*" class="comment-media">
             <button type="submit">Enviar</button>
           </form>
         </div>
       `;
 
-      postList.appendChild(postElement);
+      postList.appendChild(postDiv);
     });
   }
 
-  // Manejar interacciones en la lista de posts
+  // Manejar interacciones en posts
   postList.addEventListener("click", (e) => {
     const postElement = e.target.closest(".post");
     if (!postElement) return;
     const postId = postElement.dataset.id;
-    const post = posts.find((p) => p.id == postId);
+    const postObj = posts.find((p) => p.id == postId);
 
     // Me gusta
     if (e.target.classList.contains("like-button")) {
-      post.likes++;
+      postObj.likes++;
       renderPosts();
     }
   });
 
-  // Manejar envío de comentarios
+  // Manejar envío de comentarios => +5 puntos
   postList.addEventListener("submit", (e) => {
     if (e.target.classList.contains("comment-form")) {
       e.preventDefault();
-
       const postElement = e.target.closest(".post");
       const postId = postElement.dataset.id;
-      const post = posts.find((p) => p.id == postId);
+      const postObj = posts.find((p) => p.id == postId);
 
-      const commentInput = e.target.querySelector("input");
+      const commentInput = e.target.querySelector("input[type='text']");
       const commentText = commentInput.value.trim();
-      if (!commentText) return;
+      const commentMediaFiles = e.target.querySelector(".comment-media").files;
 
-      post.comments.push(commentText);
+      if (!commentText && commentMediaFiles.length === 0) return;
+
+      // +5 puntos al comentar
+      alert("¡Has ganado 5 puntos por tu comentario!");
+
+      const commentMediaURLs = Array.from(commentMediaFiles).map(f => URL.createObjectURL(f));
+
+      postObj.comments.push({
+        text: commentText,
+        media: commentMediaURLs
+      });
+
       renderPosts();
     }
   });
 
   /************************************************************
-   * LÓGICA DE PREGUNTAS (+10 puntos)
+   * LÓGICA DE PREGUNTAS (0 al preguntar, +10 al responder)
    ************************************************************/
   const questionForm = document.getElementById("question-form");
   const questionList = document.getElementById("question-list");
-  let questions = [];
 
-  // Nuevo question => +10 puntos
+  let questions = []; // each question: { id, content, answers: [ { text, media[] }, ... ] }
+
+  // El que pregunta no gana puntos
   questionForm.addEventListener("submit", (e) => {
     e.preventDefault();
+    const qContent = document.getElementById("question-content").value.trim();
+    if (!qContent) return;
 
-    const questionContent = document.getElementById("question-content").value.trim();
-    if (!questionContent) return;
-
-    // Simular +10 puntos => alert
-    alert("¡Has ganado 10 puntos por tu pregunta!");
-
-    const newQuestion = {
+    const newQ = {
       id: Date.now(),
-      content: questionContent,
+      content: qContent,
       answers: [],
     };
-
-    questions.unshift(newQuestion);
+    questions.unshift(newQ);
     renderQuestions();
     questionForm.reset();
   });
@@ -153,50 +169,71 @@ document.addEventListener("DOMContentLoaded", () => {
   function renderQuestions() {
     questionList.innerHTML = "";
     questions.forEach((q) => {
-      const questionElement = document.createElement("div");
-      questionElement.classList.add("question");
-      questionElement.dataset.id = q.id;
+      const qDiv = document.createElement("div");
+      qDiv.classList.add("question");
+      qDiv.dataset.id = q.id;
 
-      questionElement.innerHTML = `
+      let answersHTML = "";
+      q.answers.forEach((ans) => {
+        // ans: { text, media[] }
+        let ansMediaHTML = "";
+        if (ans.media && ans.media.length > 0) {
+          ansMediaHTML = ans.media.map(m => `<img src="${m}" alt="AnsMedia" style="max-width:100px; margin-top:5px;"/>`).join("");
+        }
+        answersHTML += `
+          <div class="answer">
+            <strong>Usuario:</strong> ${ans.text}
+            <div>${ansMediaHTML}</div>
+          </div>
+        `;
+      });
+
+      qDiv.innerHTML = `
         <div class="question-header">
           <h3>Usuario Anónimo</h3>
-          <span>Hace unos momentos</span>
+          <span>Hace un momento</span>
         </div>
         <div class="question-content">
           <p>${q.content}</p>
         </div>
         <div class="answer-section">
-          <div class="answers">
-            ${q.answers
-              .map(
-                (ans) => `<div class="answer"><strong>Usuario:</strong> ${ans}</div>`
-              )
-              .join("")}
-          </div>
+          <div class="answers">${answersHTML}</div>
           <form class="answer-form">
             <input type="text" placeholder="Escribe una respuesta..." required>
+            <!-- input para adjuntar media en la respuesta -->
+            <input type="file" multiple accept="image/*,video/*" class="answer-media">
             <button type="submit">Responder</button>
           </form>
         </div>
       `;
-      questionList.appendChild(questionElement);
+      questionList.appendChild(qDiv);
     });
   }
 
-  // Manejar envío de respuestas
+  // Quien RESPONDE gana +10 puntos
   questionList.addEventListener("submit", (e) => {
     if (e.target.classList.contains("answer-form")) {
       e.preventDefault();
-
       const questionElement = e.target.closest(".question");
       const questionId = questionElement.dataset.id;
-      const question = questions.find((qq) => qq.id == questionId);
+      const questionObj = questions.find((qq) => qq.id == questionId);
 
-      const answerInput = e.target.querySelector("input");
+      const answerInput = e.target.querySelector("input[type='text']");
       const answerText = answerInput.value.trim();
-      if (!answerText) return;
+      const answerMediaFiles = e.target.querySelector(".answer-media").files;
 
-      question.answers.push(answerText);
+      if (!answerText && answerMediaFiles.length === 0) return;
+
+      // +10 puntos a quien responde
+      alert("¡Has ganado 10 puntos por tu respuesta!");
+
+      const ansMediaURLs = Array.from(answerMediaFiles).map(f => URL.createObjectURL(f));
+
+      questionObj.answers.push({
+        text: answerText,
+        media: ansMediaURLs,
+      });
+
       renderQuestions();
     }
   });
