@@ -36,9 +36,10 @@ body {
   background-color: #005fa3;
 }
 
-/* Hamburguesa */
+/* Hamburguesa (igual que en tu chats) */
 .menu-toggle {
-  display: none; /* oculto en desktop */
+  display: none;
+  flex-direction: column;
   cursor: pointer;
 }
 .menu-toggle .bar {
@@ -48,7 +49,7 @@ body {
   margin: 5px 0;
 }
 
-/* TÍTULO GRANDE */
+/* TITULO GRANDE */
 .big-title {
   text-align: center;
   font-size: 2.5rem;
@@ -68,7 +69,7 @@ body {
 .left-column,
 .right-column {
   flex: 1;
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
@@ -123,26 +124,30 @@ body {
   gap: 5px;
   margin-top: 10px;
   color: white;
+  font-weight: 400;
 }
 
-/* RESPONSIVE */
-@media (max-width: 992px) {
+/* ============ RESPONSIVE (MÓVIL) ============ */
+@media (max-width: 768px) {
   .menu {
     display: none;
     flex-direction: column;
-    background: #004f8c;
+    background-color: #004f8c;
     position: absolute;
     top: 60px;
-    left: 0;
+    right: 0;
     width: 100%;
+    z-index: 1000;
     padding: 10px 0;
   }
-  .menu.active {
+  /* Usar .show en lugar de .active */
+  .menu.show {
     display: flex;
   }
   .menu-toggle {
-    display: block; /* hamburguesa en móvil */
+    display: flex; /* Hamburguesa visible en móvil */
   }
+
   .content-container {
     flex-direction: column;
     padding: 10px;
