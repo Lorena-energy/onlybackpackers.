@@ -1,11 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // MENÚ HAMBURGUESA
   const menuToggle = document.getElementById("menu-toggle");
   const menu = document.getElementById("menu");
-
+  
   menuToggle.addEventListener("click", () => {
     menu.classList.toggle("active");
   });
 
+  // RECOMENDACIONES DE USUARIOS
   const userRecommendationForm = document.getElementById("user-recommendation-form");
   const userRecommendationsList = document.getElementById("user-recommendations-list");
 
