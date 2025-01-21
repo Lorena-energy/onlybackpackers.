@@ -1,22 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OnlyBackpackers - Recomendaciones</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Fuente Poppins -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
-    rel="stylesheet"
-  />
-  <!-- CSS -->
-  <link rel="stylesheet" href="recomendaciones.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="recomendaciones.css">
 </head>
 <body>
-  <!-- ENCABEZADO (MENÚ) -->
+  <!-- ENCABEZADO -->
   <header class="main-header">
     <nav>
-      <!-- Hamburguesa -->
       <div class="menu-toggle" id="menu-toggle">
         <span class="bar"></span>
         <span class="bar"></span>
@@ -36,51 +30,31 @@
     </nav>
   </header>
 
-  <!-- TÍTULO GRANDE -->
+  <!-- TÍTULO -->
   <div class="big-title">OnlyBackpackers</div>
 
-  <!-- 2 Columnas en escritorio -->
+  <!-- CONTENIDO PRINCIPAL -->
   <main class="columns-container">
-    <!-- Columna Izquierda -->
+    <!-- COLUMNA IZQUIERDA -->
     <div class="left-column">
-      <!-- Texto de puntos -->
       <section class="section-block">
         <p>
           ¡Gana <strong>10 puntos</strong> (o <strong>15</strong> si publicas también en la comunidad) 
-          recomendando destinos, restaurantes o sitios increíbles!
-          Incluye enlaces de Google Maps, fotos o videos. 
+          recomendando destinos, restaurantes o sitios increíbles! Incluye enlaces de Google Maps, fotos o videos. 
           ¡Anímate a compartir!
         </p>
       </section>
-
-      <!-- Recomendaciones de usuarios -->
       <section class="section-block">
         <h2>Recomendaciones de los Usuarios</h2>
         <form id="user-recommendation-form">
-          <textarea
-            id="recommendation-content"
-            placeholder="Comparte tu recomendación..."
-            rows="3"
-            required
-          ></textarea>
+          <textarea id="recommendation-content" placeholder="Comparte tu recomendación..." rows="3" required></textarea>
           <br/>
-          <input
-            type="file"
-            id="recommendation-media"
-            accept="image/*,video/*"
-            multiple
-          />
+          <input type="file" id="recommendation-media" accept="image/*,video/*" multiple>
           <br/>
-          <input
-            type="url"
-            id="recommendation-link"
-            placeholder="Enlace de Google Maps (opcional)"
-          />
+          <input type="url" id="recommendation-link" placeholder="Enlace de Google Maps (opcional)">
           <br/>
-          <!-- Checkbox extra +5 puntos -->
           <label class="checkbox-label">
-            <input type="checkbox" id="also-community" />
-            Publicar también en la comunidad (+5 puntos)
+            <input type="checkbox" id="also-community"> Publicar también en la comunidad (+5 puntos)
           </label>
           <br/><br/>
           <button type="submit" class="cta-button">Publicar</button>
@@ -89,40 +63,18 @@
       </section>
     </div>
 
-    <!-- Columna Derecha -->
+    <!-- COLUMNA DERECHA -->
     <div class="right-column">
-      <!-- Recomendaciones Destacadas -->
       <section class="section-block" id="add-featured-recommendations">
         <h2>Agregar Recomendación Destacada</h2>
         <form id="admin-recommendation-form">
-          <input
-            type="text"
-            id="recommendation-title"
-            placeholder="Título"
-            required
-          /><br/><br/>
-          <textarea
-            id="recommendation-description"
-            placeholder="Descripción"
-            rows="2"
-            required
-          ></textarea><br/><br/>
-          <input
-            type="url"
-            id="recommendation-affiliate-link"
-            placeholder="Enlace de afiliado"
-            required
-          /><br/><br/>
-          <input
-            type="file"
-            id="recommendation-photo"
-            accept="image/*"
-            required
-          /><br/><br/>
+          <input type="text" id="recommendation-title" placeholder="Título" required><br/><br/>
+          <textarea id="recommendation-description" placeholder="Descripción" rows="2" required></textarea><br/><br/>
+          <input type="url" id="recommendation-affiliate-link" placeholder="Enlace de afiliado" required><br/><br/>
+          <input type="file" id="recommendation-photo" accept="image/*" required><br/><br/>
           <button type="submit" class="cta-button">Agregar</button>
         </form>
       </section>
-
       <section class="section-block">
         <h2>Recomendaciones Destacadas</h2>
         <div id="featured-list"></div>
@@ -130,7 +82,6 @@
     </div>
   </main>
 
-  <!-- JS -->
   <script src="recomendaciones.js"></script>
 </body>
 </html>
