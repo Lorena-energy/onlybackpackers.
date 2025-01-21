@@ -1,60 +1,127 @@
-/* ESTILOS GENERALES */
-body {
-  font-family: 'Poppins', sans-serif;
-  margin: 0;
-  padding: 0;
-  background: linear-gradient(to bottom right, #0077cc, #00bfff);
-  color: white;
-}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>OnlyBackpackers - Recomendaciones</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-/* MENÚ Y HAMBURGUESA */
-.main-header {
-  background: #004f8c;
-  padding: 10px 20px;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-.menu {
-  list-style: none;
-  display: flex;
-  gap: 10px;
-}
-.menu li a {
-  text-decoration: none;
-  color: white;
-  padding: 8px 15px;
-  border-radius: 5px;
-}
-.menu-toggle {
-  display: none;
-  cursor: pointer;
-}
-.menu-toggle .bar {
-  width: 25px;
-  height: 3px;
-  background: white;
-  margin: 5px 0;
-}
+  <!-- Fuente Poppins -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+    rel="stylesheet"
+  />
 
-/* BOTÓN */
-.cta-button {
-  background-color: #ff6600;
-  color: white;
-  padding: 10px;
-  border-radius: 5px;
-}
+  <!-- Hoja de estilos principal -->
+  <link rel="stylesheet" href="recomendaciones.css" />
+</head>
+<body>
+  <!-- ENCABEZADO -->
+  <header class="main-header">
+    <nav>
+      <div class="menu-toggle" id="menu-toggle">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+      <ul class="menu" id="menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="muro.html">Muro</a></li>
+        <li><a href="muro-personal.html">Mi Muro</a></li>
+        <li><a href="recomendaciones.html" class="active">Recomendaciones</a></li>
+        <li><a href="chats.html">Chats</a></li>
+        <li><a href="eventos.html">Eventos</a></li>
+        <li><a href="worldtrip.html">Worldtrip</a></li>
+        <li><a href="recompensas.html">Recompensas</a></li>
+        <li><a href="expenses.html">Gastos</a></li>
+      </ul>
+    </nav>
+  </header>
 
-/* RESPONSIVE */
-@media (max-width: 768px) {
-  .menu {
-    display: none;
-    flex-direction: column;
-  }
-  .menu.active {
-    display: flex;
-  }
-  .menu-toggle {
-    display: block;
-  }
-}
+  <!-- TÍTULO PRINCIPAL -->
+  <div class="big-title">OnlyBackpackers</div>
+
+  <!-- CONTENEDOR DOS COLUMNAS EN ESCRITORIO -->
+  <main class="content-container">
+    <!-- COLUMNA IZQUIERDA -->
+    <div class="left-column">
+      <!-- GANAR PUNTOS -->
+      <section class="section-block">
+        <p>
+          ¡Gana <strong>10 puntos</strong> (o <strong>15</strong> si tildas el check) recomendando
+          destinos, restaurantes o sitios increíbles! Incluye enlaces de Google Maps, fotos o videos.
+          ¡Anímate a compartir!
+        </p>
+      </section>
+
+      <!-- RECOMENDACIONES DE USUARIOS -->
+      <section class="section-block">
+        <h2>Recomendaciones de los Usuarios</h2>
+        <form id="user-recommendation-form">
+          <textarea
+            id="recommendation-content"
+            placeholder="Comparte tu recomendación..."
+            rows="3"
+            required
+          ></textarea>
+          <input
+            type="file"
+            id="recommendation-media"
+            accept="image/*,video/*"
+            multiple
+          />
+          <input
+            type="url"
+            id="recommendation-link"
+            placeholder="Enlace de Google Maps (opcional)"
+          />
+          <label class="checkbox-label">
+            <input type="checkbox" id="also-community" />
+            Publicar también en la comunidad (+5 puntos)
+          </label>
+          <button type="submit" class="cta-button">Publicar</button>
+        </form>
+        <div id="user-recommendations-list" class="recommendation-list"></div>
+      </section>
+    </div>
+
+    <!-- COLUMNA DERECHA -->
+    <div class="right-column">
+      <!-- RECOMENDACIONES DESTACADAS (Solo Admin) -->
+      <section class="section-block">
+        <h2>Recomendaciones Destacadas</h2>
+        <form id="admin-recommendation-form">
+          <input
+            type="text"
+            id="recommendation-title"
+            placeholder="Título"
+            required
+          />
+          <textarea
+            id="recommendation-description"
+            placeholder="Descripción"
+            rows="2"
+            required
+          ></textarea>
+          <input
+            type="url"
+            id="recommendation-affiliate-link"
+            placeholder="Enlace de afiliado"
+            required
+          />
+          <input
+            type="file"
+            id="recommendation-photo"
+            accept="image/*"
+            required
+          />
+          <button type="submit" class="cta-button">Agregar</button>
+        </form>
+        <div id="featured-list" class="recommendation-list"></div>
+      </section>
+    </div>
+  </main>
+
+  <!-- SCRIPT -->
+  <script src="recomendaciones.js"></script>
+</body>
+</html>
