@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -11,7 +11,6 @@
   <!-- ENCABEZADO -->
   <header class="main-header">
     <nav>
-      <!-- Botón Hamburguesa -->
       <div class="menu-toggle" id="menu-toggle">
         <span class="bar"></span>
         <span class="bar"></span>
@@ -35,9 +34,9 @@
   <div class="big-title">OnlyBackpackers</div>
 
   <!-- CONTENIDO PRINCIPAL -->
-  <main>
+  <main class="content-container">
     <!-- SECCIÓN PUNTOS -->
-    <section class="section-block">
+    <section class="points-section">
       <p>
         ¡Gana <strong>10 puntos</strong> (o <strong>15</strong> si publicas también en la comunidad) 
         recomendando destinos, restaurantes o sitios increíbles! Incluye enlaces de Google Maps, fotos o videos. 
@@ -46,7 +45,7 @@
     </section>
 
     <!-- RECOMENDACIONES USUARIOS -->
-    <section class="section-block">
+    <section class="recommendations-section">
       <h2>Recomendaciones de los Usuarios</h2>
       <form id="user-recommendation-form">
         <textarea id="recommendation-content" placeholder="Comparte tu recomendación..." rows="3" required></textarea>
@@ -57,11 +56,11 @@
         </label>
         <button type="submit" class="cta-button">Publicar</button>
       </form>
-      <div id="user-recommendations-list"></div>
+      <div id="user-recommendations-list" class="recommendation-list"></div>
     </section>
 
     <!-- RECOMENDACIONES DESTACADAS -->
-    <section class="section-block">
+    <section class="recommendations-section">
       <h2>Recomendaciones Destacadas</h2>
       <form id="admin-recommendation-form">
         <input type="text" id="recommendation-title" placeholder="Título" required>
@@ -70,7 +69,7 @@
         <input type="file" id="recommendation-photo" accept="image/*" required>
         <button type="submit" class="cta-button">Agregar</button>
       </form>
-      <div id="featured-list"></div>
+      <div id="featured-list" class="recommendation-list"></div>
     </section>
   </main>
 
