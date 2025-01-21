@@ -27,12 +27,16 @@ body {
   text-decoration: none;
   padding: 8px 15px;
   border-radius: 5px;
+  transition: background-color 0.3s;
 }
 .menu li a.active {
   background-color: #ff6600;
 }
+.menu li a:hover {
+  background-color: #005fa3;
+}
 
-/* Hamburguesa usando "show" (como la de chats) */
+/* Hamburguesa usando .show (como en chats) */
 .menu-toggle {
   display: none;
   cursor: pointer;
@@ -94,8 +98,6 @@ body {
   color: white;
   font-weight: bold;
 }
-
-/* LISTA DE POSTS */
 .post {
   background-color: white;
   color: #333;
@@ -111,6 +113,12 @@ body {
 }
 .post-content {
   margin-bottom: 10px;
+}
+.post-content img,
+.post-content video {
+  max-width: 100%;
+  border-radius: 5px;
+  margin-top: 10px;
 }
 .post-actions {
   display: flex;
@@ -138,7 +146,8 @@ body {
   gap: 5px;
   margin-top: 10px;
 }
-.comment-form input {
+.comment-form input,
+.comment-form .comment-media {
   flex: 1;
   padding: 5px;
   border: 1px solid #ddd;
@@ -188,12 +197,18 @@ body {
 .answer-form {
   display: flex;
   gap: 5px;
+  flex-wrap: wrap; /* para acomodar input file */
   margin-top: 10px;
 }
-.answer-form input {
+.answer-form input[type="text"] {
   flex: 1;
   padding: 5px;
   border: 1px solid #ddd;
+  border-radius: 5px;
+}
+.answer-media {
+  flex: 1;
+  margin: 5px 0;
   border-radius: 5px;
 }
 .answer-form button {
@@ -225,7 +240,6 @@ footer {
     left: 0;
     width: 100%;
   }
-  /* Usa .show en lugar de .active */
   .menu.show {
     display: flex;
   }
