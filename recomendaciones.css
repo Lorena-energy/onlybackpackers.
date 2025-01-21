@@ -1,4 +1,4 @@
-/* ===== ESTILOS GENERALES ===== */
+/* ESTILOS GENERALES */
 body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
@@ -7,6 +7,7 @@ body {
   color: white;
 }
 
+/* MENÚ Y HAMBURGUESA */
 .main-header {
   background: #004f8c;
   padding: 10px 20px;
@@ -14,28 +15,17 @@ body {
   top: 0;
   z-index: 1000;
 }
-
 .menu {
   list-style: none;
   display: flex;
   gap: 10px;
-  margin: 0;
-  padding: 0;
 }
 .menu li a {
   text-decoration: none;
   color: white;
-  font-weight: 600;
   padding: 8px 15px;
   border-radius: 5px;
 }
-.menu li a.active {
-  background-color: #ff6600;
-}
-.menu li a:hover {
-  background-color: #005fa3;
-}
-
 .menu-toggle {
   display: none;
   cursor: pointer;
@@ -47,25 +37,11 @@ body {
   margin: 5px 0;
 }
 
-/* FORMULARIOS Y BOTONES */
+/* BOTÓN */
 .cta-button {
   background-color: #ff6600;
   color: white;
   padding: 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-.cta-button:hover {
-  background-color: #cc5200;
-}
-
-.recommendation {
-  background: white;
-  color: black;
-  padding: 10px;
-  margin: 10px 0;
   border-radius: 5px;
 }
 
