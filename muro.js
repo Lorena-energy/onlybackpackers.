@@ -1,29 +1,37 @@
 document.addEventListener("DOMContentLoaded", () => {
+  console.log("muro.js: usando 'show' en lugar de 'active' para hamburguesa.");
+
   /************************************************************
    * MENÚ HAMBURGUESA
    ************************************************************/
   const menuToggle = document.getElementById("menu-toggle");
   const menu = document.getElementById("menu");
 
+  // Igual que en tu chats page => .show
   menuToggle.addEventListener("click", () => {
     menu.classList.toggle("show");
   });
 
   /************************************************************
-   * LÓGICA DE POSTS
+   * LÓGICA DE POSTS (+10 puntos)
    ************************************************************/
   const postForm = document.getElementById("post-form");
   const postList = document.getElementById("post-list");
-  let posts = []; // array para almacenar las publicaciones
+  let posts = [];
 
-  // Enviar nueva publicación
+  // Nuevo post => +10 puntos
   postForm.addEventListener("submit", (e) => {
     e.preventDefault();
+
     const postContent = document.getElementById("post-content").value.trim();
     const postMedia = document.getElementById("post-media").files;
 
     if (!postContent && postMedia.length === 0) return;
 
+    // Simular +10 puntos => alert
+    alert("¡Has ganado 10 puntos por compartir tu aventura!");
+
+    // Creamos el objeto post
     const newPost = {
       id: Date.now(),
       content: postContent,
@@ -44,6 +52,12 @@ document.addEventListener("DOMContentLoaded", () => {
       postElement.classList.add("post");
       postElement.dataset.id = post.id;
 
+      // Media
+      let mediaHTML = "";
+      if (post.media && post.media.length > 0) {
+        mediaHTML = post.media.map((src) => `<img src="${src}" alt="Media" class="post-media">`).join("");
+      }
+
       postElement.innerHTML = `
         <div class="post-header">
           <h3>Usuario Anónimo</h3>
@@ -51,9 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
         <div class="post-content">
           <p>${post.content}</p>
-          ${post.media
-            .map((src) => `<img src="${src}" alt="Media" class="post-media">`)
-            .join("")}
+          ${mediaHTML}
         </div>
         <div class="post-actions">
           <button class="like-button">👍 Me gusta <span>${post.likes}</span></button>
@@ -96,6 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
   postList.addEventListener("submit", (e) => {
     if (e.target.classList.contains("comment-form")) {
       e.preventDefault();
+
       const postElement = e.target.closest(".post");
       const postId = postElement.dataset.id;
       const post = posts.find((p) => p.id == postId);
@@ -110,17 +123,21 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /************************************************************
-   * LÓGICA DE PREGUNTAS
+   * LÓGICA DE PREGUNTAS (+10 puntos)
    ************************************************************/
   const questionForm = document.getElementById("question-form");
   const questionList = document.getElementById("question-list");
-  let questions = []; // array para almacenar las preguntas
+  let questions = [];
 
-  // Enviar nueva pregunta
+  // Nuevo question => +10 puntos
   questionForm.addEventListener("submit", (e) => {
     e.preventDefault();
+
     const questionContent = document.getElementById("question-content").value.trim();
     if (!questionContent) return;
+
+    // Simular +10 puntos => alert
+    alert("¡Has ganado 10 puntos por tu pregunta!");
 
     const newQuestion = {
       id: Date.now(),
@@ -162,7 +179,6 @@ document.addEventListener("DOMContentLoaded", () => {
           </form>
         </div>
       `;
-
       questionList.appendChild(questionElement);
     });
   }
@@ -171,6 +187,7 @@ document.addEventListener("DOMContentLoaded", () => {
   questionList.addEventListener("submit", (e) => {
     if (e.target.classList.contains("answer-form")) {
       e.preventDefault();
+
       const questionElement = e.target.closest(".question");
       const questionId = questionElement.dataset.id;
       const question = questions.find((qq) => qq.id == questionId);
