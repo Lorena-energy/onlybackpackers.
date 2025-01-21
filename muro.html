@@ -2,13 +2,15 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>OnlyBackpackers - Comunidad</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
   <!-- Fuente Poppins -->
   <link
     href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
     rel="stylesheet"
   />
+
   <!-- Hoja de estilos: "muro.css" -->
   <link rel="stylesheet" href="muro.css" />
 </head>
@@ -37,39 +39,49 @@
   </header>
 
   <!-- Sección principal (2 columnas en escritorio) -->
-  <main class="muro">
+  <main class="muro-container">
     <!-- Columna Izquierda: Crear Post + Lista de Posts -->
     <div class="left-column">
-      <!-- Sección de publicaciones -->
       <section class="create-post">
-        <h2>Comparte tus aventuras</h2>
+        <h2>Comparte tus aventuras (+10 puntos)</h2>
         <form id="post-form">
-          <textarea id="post-content" placeholder="¿Qué quieres compartir?" rows="3" required></textarea>
+          <textarea
+            id="post-content"
+            placeholder="¿Qué quieres compartir?"
+            rows="3"
+            required
+          ></textarea>
           <div class="file-upload">
             <label for="post-media">Subir imágenes o videos</label>
-            <input type="file" id="post-media" multiple accept="image/*, video/*">
+            <input
+              type="file"
+              id="post-media"
+              multiple
+              accept="image/*, video/*"
+            />
           </div>
           <button type="submit" class="cta-button">Publicar</button>
         </form>
       </section>
 
       <!-- Lista de publicaciones -->
-      <section id="post-list">
-        <!-- Publicaciones dinámicas -->
-      </section>
+      <section id="post-list"></section>
     </div>
 
     <!-- Columna Derecha: Preguntas a la comunidad -->
     <div class="right-column">
       <section class="community-questions">
-        <h2>¿Tienes dudas? ¡Pregunta a la comunidad!</h2>
+        <h2>¿Tienes dudas? ¡Pregunta a la comunidad (+10 puntos)!</h2>
         <form id="question-form">
-          <textarea id="question-content" placeholder="Escribe tu pregunta aquí..." rows="3" required></textarea>
+          <textarea
+            id="question-content"
+            placeholder="Escribe tu pregunta aquí..."
+            rows="3"
+            required
+          ></textarea>
           <button type="submit" class="cta-button">Publicar pregunta</button>
         </form>
-        <div id="question-list">
-          <!-- Preguntas dinámicas -->
-        </div>
+        <div id="question-list"></div>
       </section>
     </div>
   </main>
