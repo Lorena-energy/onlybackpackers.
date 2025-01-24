@@ -7,9 +7,9 @@ body {
   color: #333;
 }
 
-/* ===== ENCABEZADO CON MENU ===== */
+/* ===== ENCABEZADO (MENÚ) ===== */
 .main-header {
-  background: #004f8c;
+  background: #004f8c; /* degradado no tocado */
   color: white;
   position: sticky;
   top: 0;
@@ -56,6 +56,8 @@ body {
 .menu li a:hover {
   background-color: #005fa3;
 }
+
+/* MENÚ MÓVIL */
 @media (max-width: 768px) {
   .menu {
     display: none;
@@ -75,14 +77,16 @@ body {
   }
 }
 
-/* ===== HERO SECTION ===== 
-   Imagen de fondo + overlay
+/* ===== HERO-WORLDTRIP (SIN MODIFICAR) =====
+   Mantén tu hero con la imagen de fondo y overlay
+   Tal como lo tenías o como te guste
+   (ejemplo a continuación)
 */
 .hero-worldtrip {
   position: relative;
   min-height: 60vh;
   background: url("https://via.placeholder.com/1600x900") center/cover no-repeat;
-  /* Sustituye con tu imagen real */
+  /* Cambia la URL a tu imagen real */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -114,30 +118,7 @@ body {
   margin-bottom: 20px;
 }
 
-/* BOTÓN degradado AZUL con texto naranja */
-.hero-content .cta-button {
-  display: inline-block;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #ff6600; /* texto naranja */
-  /* Degradado de azul a turquesa */
-  background: linear-gradient(to right, #0077cc, #00bfff);
-  padding: 12px 30px;
-  border: none;
-  border-radius: 50px;
-  cursor: pointer;
-  /* Sombras en azul */
-  box-shadow: 0 4px 10px rgba(0, 119, 204, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-}
-.hero-content .cta-button:hover {
-  /* Al pasar el ratón: un degradado más oscuro */
-  background: linear-gradient(to right, #005fa3, #00a2d6);
-  box-shadow: 0 6px 14px rgba(0, 119, 204, 0.5);
-  transform: scale(1.07);
-}
-
-/* ===== TÍTULO DE SECCIÓN ===== */
+/* ===== GRID TARJETAS, ETC. (SIN CAMBIOS) ===== */
 .section-title {
   text-align: left;
   font-size: 1.8rem;
@@ -145,7 +126,6 @@ body {
   color: #333;
 }
 
-/* ===== GRID DE TARJETAS ===== */
 .worldtrip-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -155,7 +135,6 @@ body {
   padding: 0 20px;
 }
 
-/* ===== TARJETAS ===== */
 .worldtrip-card {
   background: #fff;
   border-radius: 10px;
@@ -188,7 +167,7 @@ body {
   color: #555;
 }
 
-/* ===== FOOTER ===== */
+/* ===== FOOTER (SIN CAMBIOS) ===== */
 footer {
   background: #0077cc;
   color: white;
@@ -197,11 +176,36 @@ footer {
   margin-top: 20px;
 }
 
-/* ===== RESPONSIVE para MÓVILES ===== */
+/* ====== RESPONSIVE MÓVIL (SIN CAMBIOS) ====== */
 @media (max-width: 768px) {
   .worldtrip-grid {
     grid-template-columns: 1fr;
     gap: 15px;
     padding: 0 10px;
   }
+}
+
+/* ====== BOTONES: Degradado azul → turquesa, texto naranja, WOW effect ====== */
+.cta-button {
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: 600;
+  /* Texto naranja */
+  color: #ff6600;
+  /* Degradado: azul (#0077cc) a turquesa (#00bfff) */
+  background: linear-gradient(to right, #0077cc, #00bfff);
+  padding: 12px 25px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  /* Sombra en azul */
+  box-shadow: 0 4px 10px rgba(0,119,204,0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.cta-button:hover {
+  /* Un degradado más oscuro: #005fa3 → #00a2d6 */
+  background: linear-gradient(to right, #005fa3, #00a2d6);
+  box-shadow: 0 6px 14px rgba(0,119,204,0.5);
+  transform: scale(1.07);
 }
