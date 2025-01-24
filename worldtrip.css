@@ -1,118 +1,222 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <title>Worldtrip by OnlyBackpackers</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+/* ===== REGLAS GENERALES ===== */
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f9f9f9;
+  color: #333;
+}
 
-  <!-- Fuente Poppins -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
-    rel="stylesheet"
-  />
+/* ===== ENCABEZADO CON MENU ===== */
+.main-header {
+  background: #004f8c;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 10px 0;
+}
+.main-header nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  position: absolute;
+  left: 20px;
+  top: 15px;
+}
+.menu-toggle .bar {
+  width: 25px;
+  height: 3px;
+  background: white;
+  margin: 5px 0;
+}
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+}
+.menu li a {
+  text-decoration: none;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+.menu li a.active {
+  background-color: #ff6600;
+}
+.menu li a:hover {
+  background-color: #005fa3;
+}
 
-  <!-- Hoja de estilos principal -->
-  <link rel="stylesheet" href="worldtrip.css" />
-</head>
-<body>
-  <!-- ENCABEZADO: Menú + Degradado azul -->
-  <header class="main-header">
-    <nav>
-      <div class="menu-toggle" id="menu-toggle">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </div>
-      <ul class="menu" id="menu">
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="muro.html">Muro</a></li>
-        <li><a href="muro-personal.html">Mi Muro</a></li>
-        <li><a href="recomendaciones.html">Recomendaciones</a></li>
-        <li><a href="chats.html">Chats</a></li>
-        <li><a href="eventos.html">Eventos</a></li>
-        <li><a href="worldtrip.html" class="active">Worldtrip</a></li>
-        <li><a href="recompensas.html">Recompensas</a></li>
-        <li><a href="expenses.html">Gastos</a></li>
-      </ul>
-    </nav>
-  </header>
+/* MENÚ RESPONSIVE */
+@media (max-width: 768px) {
+  .menu {
+    display: none;
+    flex-direction: column;
+    background: #0077cc;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    padding: 10px 0;
+  }
+  .menu.active {
+    display: flex;
+  }
+  .menu-toggle {
+    display: flex;
+  }
+}
 
-  <!-- HERO SECTION con imagen + overlay -->
-  <section class="hero-worldtrip">
-    <div class="hero-content">
-      <h1>Worldtrip by OnlyBackpackers</h1>
-      <p>Descubre viajes grupales y personalizados únicos, donde encontrarás gente con tus mismos intereses.</p>
-      <a href="#viajes-grupales" class="cta-button">Ver Viajes</a>
-    </div>
-  </section>
+/* ===== HERO SECTION ===== */
+.hero-worldtrip {
+  position: relative;
+  min-height: 60vh;
+  background: url("https://via.placeholder.com/1600x900") center/cover no-repeat;
+  /* Reemplaza la URL con tu imagen real */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-worldtrip::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom right,
+    rgba(0,119,204,0.5),
+    rgba(0,191,255,0.5)
+  );
+}
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+  text-align: center;
+  color: white;
+  padding: 20px;
+}
+.hero-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+.hero-content p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+.hero-content .cta-button {
+  display: inline-block;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(to right, #ff6600, #ff9900);
+  padding: 12px 30px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(255, 102, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+.hero-content .cta-button:hover {
+  background: linear-gradient(to right, #ff4500, #ff7800);
+  box-shadow: 0 6px 14px rgba(255, 69, 0, 0.5);
+  transform: scale(1.07);
+}
 
-  <!-- SECCIÓN VIAJES GRUPALES -->
-  <main>
-    <h2 id="viajes-grupales" class="section-title">Viajes Grupales</h2>
+/* ===== SECCIÓN TÍTULO ===== */
+.section-title {
+  text-align: left;
+  font-size: 1.8rem;
+  margin: 40px 20px 20px;
+  color: #333;
+}
 
-    <div class="worldtrip-grid">
-      <!-- Tarjeta 1 -->
-      <div class="worldtrip-card">
-        <h3><a href="worldtrip-economicos.html">Económicos</a></h3>
-        <p>Viajes accesibles con experiencias inolvidables.</p>
-      </div>
+/* ===== GRID DE TARJETAS ===== */
+.worldtrip-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto 40px;
+  padding: 0 20px;
+}
 
-      <!-- Tarjeta 2 -->
-      <div class="worldtrip-card">
-        <h3><a href="worldtrip-premium.html">Premium</a></h3>
-        <p>Estilo, exclusividad y destinos impresionantes.</p>
-      </div>
+/* ===== TARJETAS ===== */
+.worldtrip-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+}
+.worldtrip-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+}
+.worldtrip-card h3 {
+  margin: 0 0 10px;
+  font-size: 1.3rem;
+  color: #0077cc;
+}
+.worldtrip-card h3 a {
+  text-decoration: none;
+  color: #0077cc;
+  transition: color 0.3s;
+}
+.worldtrip-card h3 a:hover {
+  color: #ff6600;
+  text-decoration: underline;
+}
+.worldtrip-card p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #555;
+}
 
-      <!-- Tarjeta 3 -->
-      <div class="worldtrip-card">
-        <h3><a href="worldtrip-solo-mujeres.html">Solo Mujeres</a></h3>
-        <p>Aventura y seguridad para mujeres viajeras.</p>
-      </div>
+/* ===== BOTÓN CTA NARANJA “WOW” ===== */
+.cta-button {
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(to right, #ff6600, #ff9900);
+  padding: 12px 25px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(255, 102, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+.cta-button:hover {
+  background: linear-gradient(to right, #ff4500, #ff7800);
+  box-shadow: 0 6px 14px rgba(255, 69, 0, 0.5);
+  transform: scale(1.07);
+}
 
-      <!-- Tarjeta 4 -->
-      <div class="worldtrip-card">
-        <h3><a href="worldtrip-viajeros-hijos.html">Viajeros con Hijos</a></h3>
-        <p>Socialización y diversión para toda la familia.</p>
-      </div>
+/* ===== FOOTER ===== */
+footer {
+  background: #0077cc;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 20px;
+}
 
-      <!-- Tarjeta 5 -->
-      <div class="worldtrip-card">
-        <h3><a href="worldtrip-grupales-25-35.html">Grupales 25-35</a></h3>
-        <p>Viajes diseñados para jóvenes adultos.</p>
-      </div>
-
-      <!-- Tarjeta 6 -->
-      <div class="worldtrip-card">
-        <h3><a href="worldtrip-grupales-35-45.html">Grupales 35-45</a></h3>
-        <p>Comparte aventuras con tu misma generación.</p>
-      </div>
-
-      <!-- Tarjeta 7 -->
-      <div class="worldtrip-card">
-        <h3><a href="worldtrip-grupales-45.html">Grupales +45</a></h3>
-        <p>Conecta con viajeros con espíritu joven.</p>
-      </div>
-
-      <!-- Tarjeta 8 -->
-      <div class="worldtrip-card">
-        <h3><a href="worldtrip-a-medida.html">A Medida</a></h3>
-        <p>Crea el viaje de tus sueños con nuestros expertos.</p>
-      </div>
-    </div>
-  </main>
-
-  <!-- FOOTER -->
-  <footer>
-    <p>&copy; 2024 Worldtrip by OnlyBackpackers. Todos los derechos reservados.</p>
-  </footer>
-
-  <!-- Script para menú hamburguesa -->
-  <script>
-    const menuToggle = document.getElementById("menu-toggle");
-    const menu = document.getElementById("menu");
-    menuToggle.addEventListener("click", () => {
-      menu.classList.toggle("active");
-    });
-  </script>
-</body>
-</html>
+/* ===== RESPONSIVE para MÓVILES ===== */
+@media (max-width: 768px) {
+  .worldtrip-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 0 10px;
+  }
+}
