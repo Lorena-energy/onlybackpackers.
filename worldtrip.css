@@ -62,35 +62,47 @@ body {
   margin: 5px 0;
 }
 
-/* ====== BOTONES (CTAs) ======
-   Para tus botones principales,
-   mezclamos los degradados naranja-azul
-   o bien solo naranja, segun convenga */
+@media (max-width: 768px) {
+  .menu {
+    display: none;
+    flex-direction: column;
+    background: #0077cc;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    padding: 10px 0;
+  }
+  .menu.active {
+    display: flex;
+  }
+  .menu-toggle {
+    display: block;
+  }
+}
 
+/* ====== BOTONES (CTAs) ====== 
+   - Nuevo degradado naranja
+   - Sombras y animaciones 
+   - Se aplican a .cta-button en toda la página.
+*/
 .cta-button {
-  background: linear-gradient(135deg, #ff6600 0%, #ff9900 100%);
-  color: white;
-  padding: 12px 20px;
+  display: inline-block; /* asegura que respete padding */
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(to right, #ff6600, #ff9900);
+  padding: 12px 25px;
   border: none;
-  border-radius: 50px; /* redondeado más notorio */
-  font-weight: bold;
+  border-radius: 50px;
   cursor: pointer;
-  transition: transform 0.3s, box-shadow 0.3s;
-  box-shadow: 0 4px 10px rgba(255, 102, 0, 0.3); /* sombra con el naranja */
+  box-shadow: 0 4px 10px rgba(255, 102, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
 }
 .cta-button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 14px rgba(255, 102, 0, 0.5);
-}
-
-/* Si en alguna sección quieres botones azules: */
-.cta-button.blue {
-  background: linear-gradient(135deg, #0077cc 0%, #00bfff 100%);
-  box-shadow: 0 4px 10px rgba(0, 119, 204, 0.3);
-}
-.cta-button.blue:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 14px rgba(0, 119, 204, 0.5);
+  background: linear-gradient(to right, #ff4500, #ff7800);
+  box-shadow: 0 6px 14px rgba(255, 69, 0, 0.5);
+  transform: scale(1.07);
 }
 
 /* ====== CATEGORÍAS ====== */
@@ -105,10 +117,10 @@ body {
   width: 300px;
   height: 200px;
   background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.5),
-    rgba(0, 0, 0, 0.7)
-  ),
+      to bottom,
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.7)
+    ),
     url('ruta-de-la-imagen');
   background-size: cover;
   background-position: center;
@@ -125,13 +137,11 @@ body {
 .category:hover {
   transform: scale(1.05);
   box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3); /* Sombra más intensa */
-  /* Ajustamos el degradado al pasar el mouse,
-     para resaltar con naranja-rojizo, por ej.: */
   background: linear-gradient(
-    to bottom right,
-    rgba(255, 102, 0, 0.7),
-    rgba(204, 82, 0, 0.7)
-  ),
+      to bottom right,
+      rgba(255, 102, 0, 0.7),
+      rgba(204, 82, 0, 0.7)
+    ),
     url('ruta-de-la-imagen');
   background-size: cover;
   background-position: center;
@@ -158,38 +168,7 @@ body {
   margin-bottom: 20px;
 }
 /* 
-Si este .cta-button de "Viajes a medida" 
-quieres que sea un estilo distinto (azul),
-puedes añadir la clase "blue" en el HTML:
-<button class="cta-button blue">...</button>
+  Si en custom-trips quieres un botón azul en vez de naranja,
+  podrías usar una clase distinta (ej. "cta-button blue").
+  Por defecto, usará el degradado naranja global de .cta-button.
 */
-
-/* ====== RESPONSIVE (MÓVIL) ====== */
-@media (max-width: 768px) {
-  .menu {
-    display: none;
-    flex-direction: column;
-    background: #0077cc;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    width: 100%;
-    padding: 10px 0;
-  }
-  .menu.active {
-    display: flex;
-  }
-  .menu-toggle {
-    display: block;
-  }
-
-  .categories {
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  .category {
-    width: 100%;
-    height: auto;
-  }
-}
