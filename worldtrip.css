@@ -56,8 +56,6 @@ body {
 .menu li a:hover {
   background-color: #005fa3;
 }
-
-/* MENÚ RESPONSIVE */
 @media (max-width: 768px) {
   .menu {
     display: none;
@@ -77,12 +75,14 @@ body {
   }
 }
 
-/* ===== HERO SECTION ===== */
+/* ===== HERO SECTION ===== 
+   Imagen de fondo + overlay
+*/
 .hero-worldtrip {
   position: relative;
   min-height: 60vh;
   background: url("https://via.placeholder.com/1600x900") center/cover no-repeat;
-  /* Reemplaza la URL con tu imagen real */
+  /* Sustituye con tu imagen real */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -113,26 +113,31 @@ body {
   font-size: 1.1rem;
   margin-bottom: 20px;
 }
+
+/* BOTÓN degradado AZUL con texto naranja */
 .hero-content .cta-button {
   display: inline-block;
   font-size: 1.1rem;
   font-weight: 600;
-  color: #fff;
-  background: linear-gradient(to right, #ff6600, #ff9900);
+  color: #ff6600; /* texto naranja */
+  /* Degradado de azul a turquesa */
+  background: linear-gradient(to right, #0077cc, #00bfff);
   padding: 12px 30px;
   border: none;
   border-radius: 50px;
   cursor: pointer;
-  box-shadow: 0 4px 10px rgba(255, 102, 0, 0.3);
+  /* Sombras en azul */
+  box-shadow: 0 4px 10px rgba(0, 119, 204, 0.3);
   transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
 }
 .hero-content .cta-button:hover {
-  background: linear-gradient(to right, #ff4500, #ff7800);
-  box-shadow: 0 6px 14px rgba(255, 69, 0, 0.5);
+  /* Al pasar el ratón: un degradado más oscuro */
+  background: linear-gradient(to right, #005fa3, #00a2d6);
+  box-shadow: 0 6px 14px rgba(0, 119, 204, 0.5);
   transform: scale(1.07);
 }
 
-/* ===== SECCIÓN TÍTULO ===== */
+/* ===== TÍTULO DE SECCIÓN ===== */
 .section-title {
   text-align: left;
   font-size: 1.8rem;
@@ -181,26 +186,6 @@ body {
   margin: 0;
   font-size: 0.95rem;
   color: #555;
-}
-
-/* ===== BOTÓN CTA NARANJA “WOW” ===== */
-.cta-button {
-  display: inline-block;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #fff;
-  background: linear-gradient(to right, #ff6600, #ff9900);
-  padding: 12px 25px;
-  border: none;
-  border-radius: 50px;
-  cursor: pointer;
-  box-shadow: 0 4px 10px rgba(255, 102, 0, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-}
-.cta-button:hover {
-  background: linear-gradient(to right, #ff4500, #ff7800);
-  box-shadow: 0 6px 14px rgba(255, 69, 0, 0.5);
-  transform: scale(1.07);
 }
 
 /* ===== FOOTER ===== */
