@@ -47,11 +47,8 @@ body {
   border-radius: 5px;
   transition: background-color 0.3s;
 }
-.menu li a.active {
-  background-color: #ff6600;
-}
 .menu li a:hover {
-  background-color: #005fa3;
+  background-color: #ff6600; /* Naranja al pasar el cursor */
 }
 
 .menu-toggle {
@@ -91,8 +88,8 @@ body {
 }
 
 .category {
-  width: 280px;
-  height: 180px;
+  width: 300px;
+  height: 200px;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('ruta-de-la-imagen');
   background-size: cover;
   background-position: center;
@@ -104,11 +101,13 @@ body {
   color: white;
   text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .category:hover {
   transform: scale(1.05);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3); /* Sombra más intensa */
+  background: linear-gradient(to bottom right, #ff6600, #cc5200); /* Degradado naranja */
 }
 
 .category h3 {
