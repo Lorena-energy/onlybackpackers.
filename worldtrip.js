@@ -41,5 +41,21 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 150);
     });
   });
-});
 
+  /************************************************************
+   * ANIMACIÓN DE BOTONES
+   ************************************************************/
+  const buttons = document.querySelectorAll(".cta-button");
+
+  buttons.forEach((button) => {
+    button.addEventListener("mouseover", () => {
+      button.style.transform = "scale(1.1)";
+      button.style.boxShadow = "0 4px 10px rgba(0, 0, 0, 0.2)";
+    });
+
+    button.addEventListener("mouseout", () => {
+      button.style.transform = "scale(1)";
+      button.style.boxShadow = "none";
+    });
+  });
+});
