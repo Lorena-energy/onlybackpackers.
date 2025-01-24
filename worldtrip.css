@@ -6,18 +6,17 @@ body {
   background: #f9f9f9;
 }
 
+/* ENCABEZADO PRINCIPAL */
 .main-header {
   text-align: center;
   padding: 40px 20px;
   color: white;
   background: linear-gradient(to right, #0077cc, #00bfff);
 }
-
 .main-header h1 {
   font-size: 2.5rem;
   margin-bottom: 10px;
 }
-
 .main-header p {
   font-size: 1.5rem;
   font-weight: bold;
@@ -28,7 +27,6 @@ body {
   background-color: rgba(0, 0, 0, 0.8);
   color: white;
 }
-
 .menu {
   list-style: none;
   display: flex;
@@ -51,8 +49,10 @@ body {
   background-color: #ff6600; /* Naranja al pasar el cursor */
 }
 
+/* ====== MENÚ HAMBURGUESA ====== */
 .menu-toggle {
   display: none;
+  flex-direction: column;
   cursor: pointer;
 }
 .menu-toggle .bar {
@@ -62,20 +62,35 @@ body {
   margin: 5px 0;
 }
 
-/* ====== BOTONES ====== */
+/* ====== BOTONES (CTAs) ======
+   Para tus botones principales,
+   mezclamos los degradados naranja-azul
+   o bien solo naranja, segun convenga */
+
 .cta-button {
-  background: linear-gradient(to right, #ff6600, #ff9900);
+  background: linear-gradient(135deg, #ff6600 0%, #ff9900 100%);
   color: white;
   padding: 12px 20px;
   border: none;
-  border-radius: 5px;
+  border-radius: 50px; /* redondeado más notorio */
   font-weight: bold;
   cursor: pointer;
-  transition: transform 0.3s, background 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 10px rgba(255, 102, 0, 0.3); /* sombra con el naranja */
 }
 .cta-button:hover {
-  background: linear-gradient(to right, #ff4500, #ff7800);
   transform: scale(1.05);
+  box-shadow: 0 6px 14px rgba(255, 102, 0, 0.5);
+}
+
+/* Si en alguna sección quieres botones azules: */
+.cta-button.blue {
+  background: linear-gradient(135deg, #0077cc 0%, #00bfff 100%);
+  box-shadow: 0 4px 10px rgba(0, 119, 204, 0.3);
+}
+.cta-button.blue:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 14px rgba(0, 119, 204, 0.5);
 }
 
 /* ====== CATEGORÍAS ====== */
@@ -86,11 +101,15 @@ body {
   justify-content: center;
   margin: 20px 0;
 }
-
 .category {
   width: 300px;
   height: 200px;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('ruta-de-la-imagen');
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.7)
+  ),
+    url('ruta-de-la-imagen');
   background-size: cover;
   background-position: center;
   border-radius: 10px;
@@ -101,19 +120,25 @@ body {
   color: white;
   text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
 }
-
 .category:hover {
   transform: scale(1.05);
   box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3); /* Sombra más intensa */
-  background: linear-gradient(to bottom right, #ff6600, #cc5200); /* Degradado naranja */
+  /* Ajustamos el degradado al pasar el mouse,
+     para resaltar con naranja-rojizo, por ej.: */
+  background: linear-gradient(
+    to bottom right,
+    rgba(255, 102, 0, 0.7),
+    rgba(204, 82, 0, 0.7)
+  ),
+    url('ruta-de-la-imagen');
+  background-size: cover;
+  background-position: center;
 }
-
 .category h3 {
   font-size: 1.5rem;
 }
-
 .category p {
   font-size: 1rem;
 }
@@ -124,30 +149,20 @@ body {
   padding: 40px 20px;
   background: #ffffff;
 }
-
 .custom-trips h2 {
   font-size: 2rem;
   color: #0077cc;
 }
-
 .custom-trips p {
   font-size: 1.2rem;
   margin-bottom: 20px;
 }
-
-.cta-button {
-  background: #0077cc;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.cta-button:hover {
-  background: #005fa3;
-}
+/* 
+Si este .cta-button de "Viajes a medida" 
+quieres que sea un estilo distinto (azul),
+puedes añadir la clase "blue" en el HTML:
+<button class="cta-button blue">...</button>
+*/
 
 /* ====== RESPONSIVE (MÓVIL) ====== */
 @media (max-width: 768px) {
