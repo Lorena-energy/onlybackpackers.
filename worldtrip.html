@@ -1,99 +1,119 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
   <title>Worldtrip by OnlyBackpackers</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="worldtrip.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <!-- Fuente Poppins -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Hoja de estilos principal -->
+  <link rel="stylesheet" href="worldtrip.css" />
 </head>
 <body>
-  <!-- Encabezado -->
+  <!-- ENCABEZADO con degradado azul -->
   <header class="main-header">
+    <nav>
+      <!-- Menú hamburguesa -->
+      <div class="menu-toggle" id="menu-toggle">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+      <ul class="menu" id="menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="muro.html">Muro</a></li>
+        <li><a href="muro-personal.html">Mi Muro</a></li>
+        <li><a href="recomendaciones.html">Recomendaciones</a></li>
+        <li><a href="chats.html">Chats</a></li>
+        <li><a href="eventos.html">Eventos</a></li>
+        <li><a href="worldtrip.html" class="active">Worldtrip</a></li>
+        <li><a href="recompensas.html">Recompensas</a></li>
+        <li><a href="expenses.html">Gastos</a></li>
+      </ul>
+    </nav>
+
     <h1>Worldtrip by OnlyBackpackers</h1>
     <p>¡Explora el mundo con viajes grupales y personalizados únicos!</p>
   </header>
 
- <nav class="menu-container">
-  <div class="menu-toggle" id="menu-toggle">
-    <span class="bar"></span>
-    <span class="bar"></span>
-    <span class="bar"></span>
-  </div>
-  <ul class="menu" id="menu">
-    <li><a href="index.html">Inicio</a></li>
-    <li><a href="muro.html">Muro</a></li>
-    <li><a href="muro-personal.html">Mi Muro</a></li>
-    <li><a href="recomendaciones.html">Recomendaciones</a></li>
-    <li><a href="chats.html">Chats</a></li>
-    <li><a href="eventos.html">Eventos</a></li>
-    <li><a href="worldtrip.html" class="active">Worldtrip</a></li>
-    <li><a href="recompensas.html">Recompensas</a></li>
-    <li><a href="expenses.html">Gastos</a></li>
-  </ul>
-</nav>
+  <main>
+    <!-- Título de la Sección -->
+    <h2 class="section-title">Viajes Grupales</h2>
 
-  <!-- Sección de Viajes Grupales -->
-  <section class="group-trips">
-    <h2>Viajes Grupales</h2>
-    <div class="categories">
-      <div class="category" style="background-image: url('images/economicos.jpg');">
-        <a href="economicos.html">
-          <h3>Económicos</h3>
-          <p>Viajes accesibles con experiencias inolvidables.</p>
-        </a>
+    <!-- Grid de tarjetas -->
+    <div class="worldtrip-grid">
+      <!-- Tarjeta 1 -->
+      <div class="worldtrip-card">
+        <h3><a href="#">Económicos</a></h3>
+        <p>Viajes accesibles con experiencias inolvidables.</p>
       </div>
-      <div class="category" style="background-image: url('images/premium.jpg');">
-        <a href="premium.html">
-          <h3>Premium</h3>
-          <p>Estilo, exclusividad y destinos impresionantes.</p>
-        </a>
+
+      <!-- Tarjeta 2 -->
+      <div class="worldtrip-card">
+        <h3><a href="#">Premium</a></h3>
+        <p>Estilo, exclusividad y destinos impresionantes.</p>
       </div>
-      <div class="category" style="background-image: url('images/solo-mujeres.jpg');">
-        <a href="solo-mujeres.html">
-          <h3>Solo Mujeres</h3>
-          <p>Aventura y seguridad para mujeres viajeras.</p>
-        </a>
+
+      <!-- Tarjeta 3 -->
+      <div class="worldtrip-card">
+        <h3><a href="#">Solo Mujeres</a></h3>
+        <p>Aventura y seguridad para mujeres viajeras.</p>
       </div>
-      <div class="category" style="background-image: url('images/viajeros-hijos.jpg');">
-        <a href="viajeros-con-hijos.html">
-          <h3>Viajeros con Hijos</h3>
-          <p>Socialización para padres e hijos en cada viaje.</p>
-        </a>
+
+      <!-- Tarjeta 4 -->
+      <div class="worldtrip-card">
+        <h3><a href="#">Viajeros con Hijos</a></h3>
+        <p>Socialización para padres e hijos en cada viaje.</p>
       </div>
-      <div class="category" style="background-image: url('images/singles25-35.jpg');">
-        <a href="singles25-35.html">
-          <h3>Singles 25-35</h3>
-          <p>Viajes diseñados para jóvenes adultos.</p>
-        </a>
+
+      <!-- Tarjeta 5 -->
+      <div class="worldtrip-card">
+        <h3><a href="#">Grupales 25-35</a></h3>
+        <p>Viajes diseñados para jóvenes adultos.</p>
       </div>
-      <div class="category" style="background-image: url('images/singles35-45.jpg');">
-        <a href="singles35-45.html">
-          <h3>Singles 35-45</h3>
-          <p>Conoce a otros viajeros con intereses similares.</p>
-        </a>
+
+      <!-- Tarjeta 6 -->
+      <div class="worldtrip-card">
+        <h3><a href="#">Grupales 35-45</a></h3>
+        <p>Comparte aventuras con tu misma generación.</p>
       </div>
-      <div class="category" style="background-image: url('images/singles45-mas.jpg');">
-        <a href="singles45-mas.html">
-          <h3>Singles +45</h3>
-          <p>Conecta con viajeros con espíritu joven.</p>
-        </a>
+
+      <!-- Tarjeta 7 -->
+      <div class="worldtrip-card">
+        <h3><a href="#">Grupales +45</a></h3>
+        <p>Conecta con viajeros con espíritu joven.</p>
       </div>
-      <div class="category" style="background-image: url('images/viaje-a-medida.jpg');">
-        <a href="viaje-a-medida.html">
-          <h3>A Medida</h3>
-          <p>Crea el viaje de tus sueños con nuestros expertos.</p>
-        </a>
+
+      <!-- Tarjeta 8 -->
+      <div class="worldtrip-card">
+        <h3><a href="#">A Medida</a></h3>
+        <p>Crea el viaje de tus sueños con nuestros expertos.</p>
       </div>
     </div>
-  </section>
+  </main>
 
-  <!-- Pie de página -->
+  <!-- BOTÓN DE EJEMPLO (OPCIONAL) 
+  <div style="text-align:center; margin-top:20px;">
+    <button class="cta-button">Reserva tu aventura</button>
+  </div>
+  -->
+
   <footer>
     <p>&copy; 2024 Worldtrip by OnlyBackpackers. Todos los derechos reservados.</p>
   </footer>
 
-  <script src="worldtrip.js"></script>
+  <!-- Script para menú hamburguesa (opcional) -->
+  <script>
+    const menuToggle = document.getElementById("menu-toggle");
+    const menu = document.getElementById("menu");
+    menuToggle.addEventListener("click", () => {
+      menu.classList.toggle("active");
+    });
+  </script>
 </body>
 </html>
