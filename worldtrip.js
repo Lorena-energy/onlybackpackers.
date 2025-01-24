@@ -14,48 +14,47 @@ document.addEventListener("DOMContentLoaded", () => {
   /************************************************************
    * REDIRECCIÓN A SUBPÁGINAS
    ************************************************************/
-  const categories = document.querySelectorAll(".category");
+  const categories = document.querySelectorAll(".worldtrip-card");
 
   categories.forEach((category) => {
     category.addEventListener("click", () => {
-      const categoryId = category.getAttribute("data-category");
-      if (categoryId) {
-        window.location.href = `${categoryId}.html`;
+      const link = category.querySelector("a");
+      if (link) {
+        window.location.href = link.href;
       } else {
-        console.error("A esta categoría no se le ha asignado una subpágina.");
+        console.error("No se encontró un enlace en esta categoría.");
       }
     });
   });
 
   /************************************************************
-   * ANIMACIÓN DE CATEGORÍAS AL HACER CLIC
-   ************************************************************/
-  categories.forEach((category) => {
-    category.addEventListener("mousedown", () => {
-      category.classList.add("clicked");
-    });
-
-    category.addEventListener("mouseup", () => {
-      setTimeout(() => {
-        category.classList.remove("clicked");
-      }, 150);
-    });
-  });
-
-  /************************************************************
-   * ANIMACIÓN DE BOTONES
+   * ANIMACIÓN DE BOTONES Y TARJETAS
    ************************************************************/
   const buttons = document.querySelectorAll(".cta-button");
 
   buttons.forEach((button) => {
     button.addEventListener("mouseover", () => {
       button.style.transform = "scale(1.1)";
-      button.style.boxShadow = "0 4px 10px rgba(0, 0, 0, 0.2)";
+      button.style.boxShadow = "0 6px 15px rgba(0, 119, 204, 0.5)";
     });
 
     button.addEventListener("mouseout", () => {
       button.style.transform = "scale(1)";
       button.style.boxShadow = "none";
+    });
+  });
+
+  const cards = document.querySelectorAll(".worldtrip-card");
+
+  cards.forEach((card) => {
+    card.addEventListener("mouseover", () => {
+      card.style.transform = "translateY(-5px)";
+      card.style.boxShadow = "0 8px 20px rgba(0, 0, 0, 0.3)";
+    });
+
+    card.addEventListener("mouseout", () => {
+      card.style.transform = "translateY(0)";
+      card.style.boxShadow = "0 2px 5px rgba(0, 0, 0, 0.1)";
     });
   });
 });
