@@ -9,12 +9,12 @@ body {
 
 /* ===== ENCABEZADO (MENÚ) ===== */
 .main-header {
-  background: #004f8c; /* degradado no tocado */
+  background: #004f8c;
   color: white;
   position: sticky;
   top: 0;
   z-index: 1000;
-  padding: 10px 0;
+  padding: 5px 0; /* Reducido para cabecera más pequeña */
 }
 .main-header nav {
   display: flex;
@@ -80,9 +80,8 @@ body {
 /* ===== HERO-WORLDTRIP ===== */
 .hero-worldtrip {
   position: relative;
-  min-height: 60vh;
+  min-height: 50vh; /* Reducido para cabecera más compacta */
   background: url("https://via.placeholder.com/1600x900") center/cover no-repeat;
-  /* Cambia la URL a tu imagen real */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -106,12 +105,12 @@ body {
   padding: 20px;
 }
 .hero-content h1 {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
+  font-size: 2rem; /* Reducido */
+  margin-bottom: 15px;
 }
 .hero-content p {
-  font-size: 1.1rem;
-  margin-bottom: 20px;
+  font-size: 1rem; /* Reducido */
+  margin-bottom: 15px;
 }
 
 /* ===== BOTONES ===== */
@@ -119,27 +118,22 @@ body {
   display: inline-block;
   font-size: 1rem;
   font-weight: 600;
-  /* Texto naranja */
-  color: #ff6600;
-  /* Degradado: azul (#0077cc) a turquesa (#00bfff) */
-  background: linear-gradient(to right, #0077cc, #00bfff);
+  color: #ff6600; /* Texto naranja */
+  background: linear-gradient(to right, #0077cc, #00bfff); /* Azul a turquesa */
   padding: 12px 25px;
   border: none;
   border-radius: 50px;
   cursor: pointer;
-  /* Sombra en azul */
   box-shadow: 0 4px 10px rgba(0,119,204,0.3);
   transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
 }
-
 .cta-button:hover {
-  /* Un degradado más oscuro: #005fa3 → #00a2d6 */
-  background: linear-gradient(to right, #005fa3, #00a2d6);
+  background: linear-gradient(to right, #005fa3, #00a2d6); /* Azul oscuro a turquesa oscuro */
   box-shadow: 0 6px 14px rgba(0,119,204,0.5);
   transform: scale(1.07);
 }
 
-/* ===== GRID TARJETAS ===== */
+/* ===== TARJETAS ===== */
 .worldtrip-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -150,12 +144,13 @@ body {
 }
 
 .worldtrip-card {
-  background: #fff;
+  background: linear-gradient(to right, #0077cc, #00bfff); /* Azul a turquesa */
   border-radius: 10px;
   padding: 20px;
   text-align: center;
+  color: #ff6600; /* Texto naranja */
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 .worldtrip-card:hover {
   transform: scale(1.05);
@@ -164,21 +159,19 @@ body {
 .worldtrip-card h3 {
   margin: 0 0 10px;
   font-size: 1.3rem;
-  color: #0077cc;
 }
 .worldtrip-card h3 a {
   text-decoration: none;
-  color: #0077cc;
+  color: #ff6600;
   transition: color 0.3s;
 }
 .worldtrip-card h3 a:hover {
-  color: #ff6600;
+  color: #fff; /* Cambia a blanco al pasar el cursor */
   text-decoration: underline;
 }
 .worldtrip-card p {
   margin: 0;
   font-size: 0.95rem;
-  color: #555;
 }
 
 /* ===== FOOTER ===== */
@@ -190,7 +183,7 @@ footer {
   margin-top: 20px;
 }
 
-/* ===== RESPONSIVE MÓVIL ===== */
+/* ====== RESPONSIVE MÓVIL ====== */
 @media (max-width: 768px) {
   .worldtrip-grid {
     grid-template-columns: 1fr;
