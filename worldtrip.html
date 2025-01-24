@@ -15,10 +15,9 @@
   <link rel="stylesheet" href="worldtrip.css" />
 </head>
 <body>
-  <!-- ENCABEZADO con degradado azul -->
+  <!-- ENCABEZADO: Menú con hamburguesa -->
   <header class="main-header">
     <nav>
-      <!-- Menú hamburguesa -->
       <div class="menu-toggle" id="menu-toggle">
         <span class="bar"></span>
         <span class="bar"></span>
@@ -36,78 +35,78 @@
         <li><a href="expenses.html">Gastos</a></li>
       </ul>
     </nav>
-
-    <h1>Worldtrip by OnlyBackpackers</h1>
-    <p>¡Explora el mundo con viajes grupales y personalizados únicos!</p>
   </header>
 
-  <main>
-    <!-- Título de la Sección -->
-    <h2 class="section-title">Viajes Grupales</h2>
+  <!-- HERO con imagen de fondo + overlay azul -->
+  <section class="hero-worldtrip">
+    <div class="hero-content">
+      <h1>Worldtrip by OnlyBackpackers</h1>
+      <p>Vive experiencias únicas con nuestros viajes grupales y personalizados, perfectos para ti.</p>
+      <!-- Botón con degradado azul → turquesa, texto naranja -->
+      <a href="#viajes-grupales" class="cta-button">Ver Viajes</a>
+    </div>
+  </section>
 
-    <!-- Grid de tarjetas -->
+  <!-- SECCIÓN DE VIAJES GRUPALES -->
+  <main>
+    <h2 id="viajes-grupales" class="section-title">Viajes Grupales</h2>
+
     <div class="worldtrip-grid">
-      <!-- Tarjeta 1 -->
+      <!-- Tarjeta 1: Económicos -->
       <div class="worldtrip-card">
-        <h3><a href="#">Económicos</a></h3>
+        <h3><a href="worldtrip-economicos.html">Económicos</a></h3>
         <p>Viajes accesibles con experiencias inolvidables.</p>
       </div>
 
-      <!-- Tarjeta 2 -->
+      <!-- Tarjeta 2: Premium -->
       <div class="worldtrip-card">
-        <h3><a href="#">Premium</a></h3>
+        <h3><a href="worldtrip-premium.html">Premium</a></h3>
         <p>Estilo, exclusividad y destinos impresionantes.</p>
       </div>
 
-      <!-- Tarjeta 3 -->
+      <!-- Tarjeta 3: Solo Mujeres -->
       <div class="worldtrip-card">
-        <h3><a href="#">Solo Mujeres</a></h3>
+        <h3><a href="worldtrip-solo-mujeres.html">Solo Mujeres</a></h3>
         <p>Aventura y seguridad para mujeres viajeras.</p>
       </div>
 
-      <!-- Tarjeta 4 -->
+      <!-- Tarjeta 4: Viajeros con Hijos -->
       <div class="worldtrip-card">
-        <h3><a href="#">Viajeros con Hijos</a></h3>
+        <h3><a href="worldtrip-viajeros-hijos.html">Viajeros con Hijos</a></h3>
         <p>Socialización para padres e hijos en cada viaje.</p>
       </div>
 
-      <!-- Tarjeta 5 -->
+      <!-- Tarjeta 5: Grupales 25-35 -->
       <div class="worldtrip-card">
-        <h3><a href="#">Grupales 25-35</a></h3>
+        <h3><a href="worldtrip-grupales-25-35.html">Grupales 25-35</a></h3>
         <p>Viajes diseñados para jóvenes adultos.</p>
       </div>
 
-      <!-- Tarjeta 6 -->
+      <!-- Tarjeta 6: Grupales 35-45 -->
       <div class="worldtrip-card">
-        <h3><a href="#">Grupales 35-45</a></h3>
+        <h3><a href="worldtrip-grupales-35-45.html">Grupales 35-45</a></h3>
         <p>Comparte aventuras con tu misma generación.</p>
       </div>
 
-      <!-- Tarjeta 7 -->
+      <!-- Tarjeta 7: Grupales +45 -->
       <div class="worldtrip-card">
-        <h3><a href="#">Grupales +45</a></h3>
+        <h3><a href="worldtrip-grupales-45.html">Grupales +45</a></h3>
         <p>Conecta con viajeros con espíritu joven.</p>
       </div>
 
-      <!-- Tarjeta 8 -->
+      <!-- Tarjeta 8: A Medida -->
       <div class="worldtrip-card">
-        <h3><a href="#">A Medida</a></h3>
+        <h3><a href="worldtrip-a-medida.html">A Medida</a></h3>
         <p>Crea el viaje de tus sueños con nuestros expertos.</p>
       </div>
     </div>
   </main>
 
-  <!-- BOTÓN DE EJEMPLO (OPCIONAL) 
-  <div style="text-align:center; margin-top:20px;">
-    <button class="cta-button">Reserva tu aventura</button>
-  </div>
-  -->
-
   <footer>
     <p>&copy; 2024 Worldtrip by OnlyBackpackers. Todos los derechos reservados.</p>
   </footer>
 
-  <!-- Script para menú hamburguesa (opcional) -->
+  <!-- Script del menú hamburguesa -->
   <script>
     const menuToggle = document.getElementById("menu-toggle");
     const menu = document.getElementById("menu");
