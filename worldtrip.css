@@ -1,16 +1,19 @@
-/* General */
+/* ======= REGLAS GENERALES ======= */
 body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
-  background: #f9f9f9;
+  background: linear-gradient(to bottom right, #eef6fc, #ffffff);
+  color: #333;
 }
 
+/* ======= ENCABEZADO ======= */
 .main-header {
   text-align: center;
   padding: 40px 20px;
   color: white;
   background: linear-gradient(to right, #0077cc, #00bfff);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .main-header h1 {
@@ -19,31 +22,60 @@ body {
 }
 
 .main-header p {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: bold;
 }
 
-/* Menú */
+/* ======= MENÚ ======= */
 .menu-container {
   background-color: rgba(0, 0, 0, 0.8);
   color: white;
 }
 
+.menu {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 0;
+  padding: 10px 0;
+}
+
 .menu a {
-  color: white;
   text-decoration: none;
-  padding: 10px;
+  color: white;
+  font-weight: 600;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
 }
 
 .menu a.active {
-  border-bottom: 2px solid #ff6600;
+  background-color: #ff6600;
 }
 
-/* Categorías de viajes grupales */
+.menu a:hover {
+  background-color: #005fa3;
+}
+
+/* ======= MENÚ HAMBURGUESA ======= */
+.menu-toggle {
+  display: none;
+  cursor: pointer;
+}
+
+.menu-toggle .bar {
+  width: 25px;
+  height: 3px;
+  background: white;
+  margin: 5px 0;
+}
+
+/* ======= CATEGORÍAS DE VIAJES GRUPALES ======= */
 .group-trips {
   padding: 40px 20px;
   text-align: center;
-  background: #eef6fc;
+  background: #ffffff;
 }
 
 .group-trips h2 {
@@ -73,26 +105,28 @@ body {
   color: white;
   text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .category:hover {
   transform: scale(1.05);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
 }
 
 .category h3 {
   font-size: 1.5rem;
+  margin-bottom: 5px;
 }
 
 .category p {
   font-size: 1rem;
 }
 
-/* Viajes a medida */
+/* ======= VIAJES A MEDIDA ======= */
 .custom-trips {
   text-align: center;
   padding: 40px 20px;
-  background: #ffffff;
+  background: #eef6fc;
 }
 
 .custom-trips h2 {
@@ -119,8 +153,29 @@ body {
   background: #005fa3;
 }
 
-/* Media Queries */
+/* ======= RESPONSIVE ======= */
 @media (max-width: 768px) {
+  .menu {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    padding: 10px 0;
+  }
+
+  .menu.active {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+    padding: 10px;
+  }
+
   .categories {
     flex-direction: column;
     gap: 15px;
