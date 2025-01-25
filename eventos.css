@@ -77,11 +77,12 @@ body {
   }
 }
 
-/* ===== HERO EVENTS ===== */
+/* ===== HERO (EVENTOS) ===== */
 .hero-events {
   position: relative;
   min-height: 60vh;
   background: url("https://via.placeholder.com/1600x900") center/cover no-repeat;
+  /* Cambia la URL a tu imagen real */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -112,11 +113,13 @@ body {
   font-size: 1.1rem;
   margin-bottom: 20px;
 }
+
+/* ===== BOTONES CTA (Degradado Azul/Turquesa, texto naranja) ===== */
 .cta-button {
   display: inline-block;
   font-size: 1rem;
   font-weight: 600;
-  color: #ffa94d; /* Naranja más suave */
+  color: #ffa94d; /* Naranja clarito para el texto */
   background: linear-gradient(to right, #0077cc, #00bfff);
   padding: 12px 25px;
   border: none;
@@ -156,6 +159,12 @@ body {
   margin: 20px auto;
   max-width: 800px;
 }
+#filters h2 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #0077cc;
+  text-align: center;
+}
 #filters form {
   display: grid;
   gap: 15px;
@@ -186,15 +195,26 @@ body {
 }
 
 /* ===== LISTADO DE EVENTOS ===== */
+#event-list {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 0 20px;
+}
+#event-list h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: #0077cc;
+  text-align: left;
+}
 .event-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
-  padding: 20px;
+  margin-top: 20px;
 }
 .event-card {
   background: linear-gradient(to bottom, #0077cc, #00bfff);
-  color: #ffa94d; /* Naranja más suave */
+  color: #ffa94d; /* Naranja clarito para el texto */
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -270,6 +290,7 @@ footer {
   color: white;
   text-align: center;
   padding: 20px;
+  margin-top: 20px;
 }
 
 /* ===== RESPONSIVE ===== */
