@@ -72,20 +72,22 @@
       <h2>Próximos Eventos</h2>
       <div class="event-grid">
         <!-- Ejemplo de tarjeta de evento -->
-        <div class="event-card" data-destination="Chamonix, Francia" data-date="2025-03-25" data-type="aventura">
+        <div class="event-card">
           <img src="images/event1.jpg" alt="Senderismo en los Alpes">
           <h3>Senderismo en los Alpes</h3>
           <p><strong>Ubicación:</strong> Chamonix, Francia</p>
           <p><strong>Fecha:</strong> 25 de marzo de 2025</p>
           <p><strong>Organizador:</strong> Juan Pérez</p>
+          <p class="price"><strong>Precio:</strong> $150</p>
           <a href="#" class="cta-button">Más Información</a>
         </div>
-        <div class="event-card" data-destination="Bogotá, Colombia" data-date="2025-04-10" data-type="cultural">
+        <div class="event-card">
           <img src="images/event2.jpg" alt="Tour de Cafés en Bogotá">
           <h3>Tour de Cafés en Bogotá</h3>
           <p><strong>Ubicación:</strong> Bogotá, Colombia</p>
           <p><strong>Fecha:</strong> 10 de abril de 2025</p>
           <p><strong>Organizador:</strong> María Gómez</p>
+          <p class="price"><strong>Precio:</strong> $75</p>
           <a href="#" class="cta-button">Más Información</a>
         </div>
         <!-- Más tarjetas de ejemplo -->
@@ -105,8 +107,14 @@
         <label for="event-date">Fecha:</label>
         <input type="date" id="event-date" name="event-date" required>
 
+        <label for="event-price">Precio:</label>
+        <input type="number" id="event-price" name="event-price" placeholder="Ej. 100 (en USD)" required>
+
         <label for="event-description">Descripción:</label>
         <textarea id="event-description" name="event-description" rows="4" required></textarea>
+
+        <label for="event-image">Imágenes/Videos:</label>
+        <input type="file" id="event-image" name="event-image" accept="image/*,video/*" multiple>
 
         <button type="submit" class="cta-button">Publicar Evento</button>
       </form>
@@ -118,7 +126,27 @@
     <p>&copy; 2025 OnlyBackpackers. Todos los derechos reservados.</p>
   </footer>
 
-  <!-- SCRIPT -->
-  <script src="eventos.js"></script>
+  <!-- SCRIPT DEL MENÚ HAMBURGUESA -->
+  <script>
+    const menuToggle = document.getElementById("menu-toggle");
+    const menu = document.getElementById("menu");
+
+    menuToggle.addEventListener("click", () => {
+      menu.classList.toggle("active");
+    });
+
+    // Filtros de eventos (función inicial para futuro desarrollo)
+    const eventFilters = document.getElementById("event-filters");
+
+    eventFilters.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const location = document.getElementById("filter-location").value;
+      const date = document.getElementById("filter-date").value;
+      const type = document.getElementById("filter-type").value;
+
+      console.log("Filtrando por:", { location, date, type });
+      // Lógica para filtrar eventos aquí
+    });
+  </script>
 </body>
 </html>
