@@ -134,38 +134,55 @@ body {
 }
 
 /* ===== TARJETAS ===== */
+.worldtrip-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto 40px;
+  padding: 0 20px;
+}
+
 .worldtrip-card {
-  background: linear-gradient(to right, #0077cc, #00bfff); /* Azul a turquesa */
-  border-radius: 10px;
+  background: #fff; /* Fondo blanco */
+  border-radius: 10px; /* Bordes redondeados */
   padding: 20px;
   text-align: center;
-  color: #FFA552; /* Naranja claro */
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  color: #ff914d; /* Naranja más suave */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra para realzar */
+  border: 2px solid rgba(0, 119, 204, 0.2); /* Borde suave */
   transition: transform 0.3s, box-shadow 0.3s;
 }
+
 .worldtrip-card:hover {
   transform: scale(1.05);
-  box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
+
 .worldtrip-card h3 {
   margin: 0 0 10px;
   font-size: 1.3rem;
+  background: linear-gradient(to right, #0077cc, #00bfff); /* Azul a turquesa */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
+
 .worldtrip-card h3 a {
   text-decoration: none;
-  color: #FFA552; /* Naranja claro */
+  color: #ff914d; /* Naranja suave */
   transition: color 0.3s;
 }
+
 .worldtrip-card h3 a:hover {
-  color: #fff; /* Cambia a blanco al pasar el cursor */
+  color: #005fa3; /* Azul oscuro al pasar el cursor */
   text-decoration: underline;
 }
+
 .worldtrip-card p {
   margin: 0;
   font-size: 0.95rem;
+  color: #555;
 }
-
-
 
 /* ===== FOOTER ===== */
 footer {
