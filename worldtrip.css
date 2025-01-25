@@ -134,21 +134,12 @@ body {
 }
 
 /* ===== TARJETAS ===== */
-.worldtrip-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 20px;
-  max-width: 1200px;
-  margin: 0 auto 40px;
-  padding: 0 20px;
-}
-
 .worldtrip-card {
   background: linear-gradient(to right, #0077cc, #00bfff); /* Azul a turquesa */
   border-radius: 10px;
   padding: 20px;
   text-align: center;
-  color: #ff6600; /* Texto naranja */
+  color: #FFA552; /* Naranja claro */
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   transition: transform 0.3s, box-shadow 0.3s;
 }
@@ -162,7 +153,7 @@ body {
 }
 .worldtrip-card h3 a {
   text-decoration: none;
-  color: #ff6600;
+  color: #FFA552; /* Naranja claro */
   transition: color 0.3s;
 }
 .worldtrip-card h3 a:hover {
@@ -173,6 +164,8 @@ body {
   margin: 0;
   font-size: 0.95rem;
 }
+
+
 
 /* ===== FOOTER ===== */
 footer {
