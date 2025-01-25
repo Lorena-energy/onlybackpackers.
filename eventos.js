@@ -14,24 +14,24 @@ document.addEventListener("DOMContentLoaded", () => {
   /************************************************************
    * FILTROS DE EVENTOS
    ************************************************************/
-  const filterForm = document.getElementById("filter-form");
+  const filterForm = document.getElementById("event-filters");
   const eventCards = document.querySelectorAll(".event-card");
 
   filterForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    const destination = document.getElementById("filter-destination").value.toLowerCase();
+    const location = document.getElementById("filter-location").value.toLowerCase();
     const date = document.getElementById("filter-date").value;
     const type = document.getElementById("filter-type").value.toLowerCase();
 
     eventCards.forEach((card) => {
-      const cardDestination = card.getAttribute("data-destination").toLowerCase();
-      const cardDate = card.getAttribute("data-date");
-      const cardType = card.getAttribute("data-type").toLowerCase();
+      const cardLocation = card.querySelector("p:nth-of-type(1)").textContent.toLowerCase();
+      const cardDate = card.querySelector("p:nth-of-type(2)").textContent;
+      const cardType = card.getAttribute("data-type")?.toLowerCase() || "";
 
       if (
-        (destination === "" || cardDestination.includes(destination)) &&
-        (date === "" || cardDate === date) &&
+        (location === "" || cardLocation.includes(location)) &&
+        (date === "" || cardDate.includes(date)) &&
         (type === "" || cardType.includes(type))
       ) {
         card.style.display = "block";
@@ -44,9 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
   /************************************************************
    * ANIMACIÓN DE TARJETAS
    ************************************************************/
-  const cards = document.querySelectorAll(".event-card");
-
-  cards.forEach((card) => {
+  eventCards.forEach((card) => {
     card.addEventListener("mouseover", () => {
       card.style.transform = "translateY(-5px)";
       card.style.boxShadow = "0 8px 20px rgba(0, 0, 0, 0.3)";
@@ -67,25 +65,27 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
 
     const title = document.getElementById("event-title").value.trim();
-    const date = document.getElementById("event-date").value;
     const location = document.getElementById("event-location").value.trim();
+    const date = document.getElementById("event-date").value;
     const description = document.getElementById("event-description").value.trim();
 
-    if (!title || !date || !location || !description) {
+    if (!title || !location || !date || !description) {
       alert("Por favor, completa todos los campos del formulario.");
       return;
     }
 
-    alert("¡Evento creado exitosamente! Está pendiente de aprobación.");
+    alert(`¡Evento "${title}" creado exitosamente! Está pendiente de aprobación.`);
     createEventForm.reset();
   });
 
   /************************************************************
    * REDIRECCIÓN A SUBPÁGINA DE COLABORADORES
    ************************************************************/
-  const collaboratorButton = document.getElementById("collaborator-button");
+  const collaboratorButton = document.querySelector("#collaborators .cta-button");
 
-  collaboratorButton.addEventListener("click", () => {
-    window.location.href = "colaboradores.html";
-  });
+  if (collaboratorButton) {
+    collaboratorButton.addEventListener("click", () => {
+      window.location.href = "collaborators.html";
+    });
+  }
 });
