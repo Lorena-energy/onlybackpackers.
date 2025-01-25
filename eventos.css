@@ -116,7 +116,7 @@ body {
   display: inline-block;
   font-size: 1rem;
   font-weight: 600;
-  color: #ff6600;
+  color: #ffa94d; /* Naranja más suave */
   background: linear-gradient(to right, #0077cc, #00bfff);
   padding: 12px 25px;
   border: none;
@@ -193,7 +193,8 @@ body {
   padding: 20px;
 }
 .event-card {
-  background: white;
+  background: linear-gradient(to bottom, #0077cc, #00bfff);
+  color: #ffa94d; /* Naranja más suave */
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -211,12 +212,10 @@ body {
 .event-card h3 {
   font-size: 1.5rem;
   margin: 15px;
-  color: #0077cc;
 }
 .event-card p {
   font-size: 0.95rem;
   margin: 10px 15px;
-  color: #555;
 }
 .event-card .cta-button {
   display: block;
