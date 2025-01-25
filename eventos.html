@@ -3,73 +3,141 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OnlyBackpackers - Eventos por Destino</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Eventos - OnlyBackpackers</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="events.css">
 </head>
 <body>
- <header class="main-header">
-  <nav>
-    <div class="menu-toggle" id="menu-toggle">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <ul class="menu" id="menu">
-      <li><a href="index.html" class="active">Inicio</a></li>
-      <li><a href="muro.html">Muro</a></li>
-      <li><a href="muro-personal.html">Mi Muro</a></li>
-      <li><a href="recomendaciones.html">Recomendaciones</a></li>
-      <li><a href="chats.html">Chats</a></li>
-      <li><a href="eventos.html">Eventos</a></li>
-      <li><a href="worldtrip.html">Worldtrip</a></li>
-      <li><a href="recompensas.html">Recompensas</a></li>
-      <li><a href="gastos.html">Gastos</a></li>
-    </ul>
-  </nav>
-</header>
- 
-  <!-- Cabecera -->
-  <header class="hero">
-    <h1>Eventos por Destino</h1>
-    <p>Encuentra eventos emocionantes en tus destinos favoritos y conecta con otros viajeros.</p>
+  <!-- ENCABEZADO -->
+  <header class="main-header">
+    <nav>
+      <div class="menu-toggle" id="menu-toggle">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+      <ul class="menu" id="menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="muro.html">Muro</a></li>
+        <li><a href="recomendaciones.html">Recomendaciones</a></li>
+        <li><a href="worldtrip.html">Worldtrip</a></li>
+        <li><a href="eventos.html" class="active">Eventos</a></li>
+        <li><a href="recompensas.html">Recompensas</a></li>
+        <li><a href="expenses.html">Gastos</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <!-- Sección de eventos -->
-  <section id="events">
-    <h2>Próximos Eventos</h2>
-    <div class="event-container">
-      <!-- Ejemplo de evento -->
-      <div class="event-item">
-        <h3>🎉 Fiesta en la Playa - Isla Mujeres</h3>
-        <p><strong>Fecha:</strong> 25 de diciembre de 2024</p>
-        <p><strong>Descripción:</strong> Disfruta de una increíble fiesta con música, comida local y juegos en la playa.</p>
-        <button class="join-event">¡Únete!</button>
-      </div>
-
-      <div class="event-item">
-        <h3>🌄 Caminata al Amanecer - Islas Phi Phi</h3>
-        <p><strong>Fecha:</strong> 1 de enero de 2025</p>
-        <p><strong>Descripción:</strong> Explora los paisajes al amanecer con una caminata guiada por expertos.</p>
-        <button class="join-event">¡Únete!</button>
-      </div>
-
-      <div class="event-item">
-        <h3>🎶 Festival de Música - Barcelona</h3>
-        <p><strong>Fecha:</strong> 10 de enero de 2025</p>
-        <p><strong>Descripción:</strong> Vive una experiencia única con artistas locales e internacionales.</p>
-        <button class="join-event">¡Únete!</button>
-      </div>
+  <!-- HERO -->
+  <section class="hero-events">
+    <div class="hero-content">
+      <h1>Explora Eventos Únicos</h1>
+      <p>Descubre, crea y únete a eventos en todo el mundo organizados por viajeros como tú.</p>
+      <a href="#create-event" class="cta-button">Crear un Evento</a>
     </div>
   </section>
 
-  <!-- Script para manejar los eventos -->
+  <!-- SECCIÓN DE COLABORADORES -->
+  <section id="collaborators">
+    <h2>Conviértete en Colaborador</h2>
+    <p>Organiza eventos en tu ciudad, actúa como guía y gana comisiones por tus eventos.</p>
+    <a href="collaborators.html" class="cta-button">Más Información</a>
+  </section>
+
+  <!-- FILTROS Y LISTADO DE EVENTOS -->
+  <main>
+    <section id="filters">
+      <h2>Filtra Eventos</h2>
+      <form id="event-filters">
+        <label for="filter-location">Ubicación:</label>
+        <input type="text" id="filter-location" name="filter-location" placeholder="Ciudad o país">
+
+        <label for="filter-date">Fecha:</label>
+        <input type="date" id="filter-date" name="filter-date">
+
+        <label for="filter-type">Tipo de Evento:</label>
+        <select id="filter-type" name="filter-type">
+          <option value="">Todos</option>
+          <option value="social">Social</option>
+          <option value="aventura">Aventura</option>
+          <option value="cultural">Cultural</option>
+          <option value="gastronomico">Gastronómico</option>
+        </select>
+
+        <button type="submit" class="cta-button">Aplicar Filtros</button>
+      </form>
+    </section>
+
+    <section id="event-list">
+      <h2>Próximos Eventos</h2>
+      <div class="event-grid">
+        <!-- Ejemplo de tarjeta de evento -->
+        <div class="event-card">
+          <img src="images/event1.jpg" alt="Senderismo en los Alpes">
+          <h3>Senderismo en los Alpes</h3>
+          <p><strong>Ubicación:</strong> Chamonix, Francia</p>
+          <p><strong>Fecha:</strong> 25 de marzo de 2025</p>
+          <p><strong>Organizador:</strong> Juan Pérez</p>
+          <a href="#" class="cta-button">Más Información</a>
+        </div>
+        <div class="event-card">
+          <img src="images/event2.jpg" alt="Tour de Cafés en Bogotá">
+          <h3>Tour de Cafés en Bogotá</h3>
+          <p><strong>Ubicación:</strong> Bogotá, Colombia</p>
+          <p><strong>Fecha:</strong> 10 de abril de 2025</p>
+          <p><strong>Organizador:</strong> María Gómez</p>
+          <a href="#" class="cta-button">Más Información</a>
+        </div>
+        <!-- Más tarjetas de ejemplo -->
+      </div>
+    </section>
+
+    <!-- CREAR EVENTO -->
+    <section id="create-event">
+      <h2>Crea tu Propio Evento</h2>
+      <form id="create-event-form">
+        <label for="event-title">Título del Evento:</label>
+        <input type="text" id="event-title" name="event-title" required>
+
+        <label for="event-location">Ubicación:</label>
+        <input type="text" id="event-location" name="event-location" required>
+
+        <label for="event-date">Fecha:</label>
+        <input type="date" id="event-date" name="event-date" required>
+
+        <label for="event-description">Descripción:</label>
+        <textarea id="event-description" name="event-description" rows="4" required></textarea>
+
+        <button type="submit" class="cta-button">Publicar Evento</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- PIE DE PÁGINA -->
+  <footer>
+    <p>&copy; 2025 OnlyBackpackers. Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- SCRIPT DEL MENÚ HAMBURGUESA -->
   <script>
-    const joinButtons = document.querySelectorAll(".join-event");
-    joinButtons.forEach(button => {
-      button.addEventListener("click", () => {
-        alert("¡Te has unido al evento! Nos vemos allí.");
-      });
+    const menuToggle = document.getElementById("menu-toggle");
+    const menu = document.getElementById("menu");
+
+    menuToggle.addEventListener("click", () => {
+      menu.classList.toggle("active");
+    });
+
+    // Filtros de eventos (función inicial para futuro desarrollo)
+    const eventFilters = document.getElementById("event-filters");
+
+    eventFilters.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const location = document.getElementById("filter-location").value;
+      const date = document.getElementById("filter-date").value;
+      const type = document.getElementById("filter-type").value;
+
+      console.log("Filtrando por:", { location, date, type });
+      // Lógica para filtrar eventos aquí
     });
   </script>
 </body>
