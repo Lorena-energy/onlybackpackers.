@@ -4,7 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Eventos - OnlyBackpackers</title>
+  
+  <!-- Fuente Poppins -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  
+  <!-- Si quieres mantener 'style.css', ponlo primero -->
+  <!-- <link rel="stylesheet" href="style.css"> -->
+  
+  <!-- Luego, nuestro 'events.css' final, para sobrescribir -->
   <link rel="stylesheet" href="events.css">
 </head>
 <body>
@@ -50,13 +57,13 @@
       <h2>Filtra Eventos</h2>
       <form id="filter-form">
         <label for="filter-destination">Ubicación:</label>
-        <input type="text" id="filter-destination" name="filter-destination" placeholder="Ciudad o país">
+        <input type="text" id="filter-destination" placeholder="Ciudad o país">
 
         <label for="filter-date">Fecha:</label>
-        <input type="date" id="filter-date" name="filter-date">
+        <input type="date" id="filter-date">
 
         <label for="filter-type">Tipo de Evento:</label>
-        <select id="filter-type" name="filter-type">
+        <select id="filter-type">
           <option value="">Todos</option>
           <option value="social">Social</option>
           <option value="aventura">Aventura</option>
@@ -88,6 +95,7 @@
           <p><strong>Organizador:</strong> María Gómez</p>
           <a href="event-details.html" class="cta-button">Más Información</a>
         </div>
+        <!-- Más event-cards... -->
       </div>
     </section>
 
@@ -96,16 +104,16 @@
       <h2>Crea tu Propio Evento</h2>
       <form id="create-event-form">
         <label for="event-title">Título del Evento:</label>
-        <input type="text" id="event-title" name="event-title" required>
+        <input type="text" id="event-title" required>
 
         <label for="event-location">Ubicación:</label>
-        <input type="text" id="event-location" name="event-location" required>
+        <input type="text" id="event-location" required>
 
         <label for="event-date">Fecha:</label>
-        <input type="date" id="event-date" name="event-date" required>
+        <input type="date" id="event-date" required>
 
         <label for="event-description">Descripción:</label>
-        <textarea id="event-description" name="event-description" rows="4" required></textarea>
+        <textarea id="event-description" rows="4" required></textarea>
 
         <button type="submit" class="cta-button">Publicar Evento</button>
       </form>
@@ -117,7 +125,7 @@
     <p>&copy; 2025 OnlyBackpackers. Todos los derechos reservados.</p>
   </footer>
 
-  <!-- SCRIPT DEL MENÚ HAMBURGUESA -->
+  <!-- SCRIPT DEL MENÚ HAMBURGUESA + EVENTOS -->
   <script src="events.js"></script>
 </body>
 </html>
