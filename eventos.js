@@ -44,7 +44,9 @@ document.addEventListener("DOMContentLoaded", () => {
   /************************************************************
    * ANIMACIÓN DE TARJETAS
    ************************************************************/
-  eventCards.forEach((card) => {
+  const cards = document.querySelectorAll(".event-card");
+
+  cards.forEach((card) => {
     card.addEventListener("mouseover", () => {
       card.style.transform = "translateY(-5px)";
       card.style.boxShadow = "0 8px 20px rgba(0, 0, 0, 0.3)";
@@ -65,16 +67,16 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
 
     const title = document.getElementById("event-title").value.trim();
-    const location = document.getElementById("event-location").value.trim();
     const date = document.getElementById("event-date").value;
+    const location = document.getElementById("event-location").value.trim();
     const description = document.getElementById("event-description").value.trim();
 
-    if (!title || !location || !date || !description) {
+    if (!title || !date || !location || !description) {
       alert("Por favor, completa todos los campos del formulario.");
       return;
     }
 
-    alert(`¡Evento "${title}" creado exitosamente! Está pendiente de aprobación.`);
+    alert("¡Evento creado exitosamente! Está pendiente de aprobación.");
     createEventForm.reset();
   });
 
@@ -83,9 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
    ************************************************************/
   const collaboratorButton = document.querySelector("#collaborators .cta-button");
 
-  if (collaboratorButton) {
-    collaboratorButton.addEventListener("click", () => {
-      window.location.href = "collaborators.html";
-    });
-  }
+  collaboratorButton.addEventListener("click", () => {
+    window.location.href = "colaboradores.html";
+  });
 });
