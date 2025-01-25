@@ -1,34 +1,62 @@
-// Manejo del menú hamburguesa
-const menuToggle = document.getElementById("menu-toggle");
-const menu = document.getElementById("menu");
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("Eventos.js cargado correctamente");
 
-menuToggle.addEventListener("click", () => {
-  menu.classList.toggle("active");
-});
+  /************************************************************
+   * MENÚ HAMBURGUESA
+   ************************************************************/
+  const menuToggle = document.getElementById("menu-toggle");
+  const menu = document.getElementById("menu");
 
-// Manejo del formulario de rutas
-document.getElementById("route-form").addEventListener("submit", (e) => {
-  e.preventDefault();
+  menuToggle.addEventListener("click", () => {
+    menu.classList.toggle("active");
+  });
 
-  const departureCity = document.getElementById("departure-city").value;
-  const duration = document.getElementById("trip-duration").value;
-  const regions = Array.from(document.getElementById("regions").selectedOptions).map(option => option.text);
-  const preferences = Array.from(document.querySelectorAll("input[type=checkbox]:checked")).map(input => input.parentElement.textContent.trim());
+  /************************************************************
+   * FILTROS DE EVENTOS (Ejemplo)
+   ************************************************************/
+  const filterForm = document.getElementById("filter-form");
+  const eventCards = document.querySelectorAll(".event-card");
 
-  const itinerary = document.getElementById("itinerary");
-  itinerary.innerHTML = `
-    <p><strong>Ciudad de Partida:</strong> ${departureCity}</p>
-    <p><strong>Duración:</strong> ${duration} días</p>
-    <p><strong>Destinos seleccionados:</strong> ${regions.join(", ")}</p>
-    <p><strong>Preferencias:</strong> ${preferences.join(", ")}</p>
-    <p><strong>Próxima parada:</strong> <em>Calculando destinos...</em></p>
-  `;
+  filterForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const locationVal = document.getElementById("filter-destination").value.trim().toLowerCase();
+    const dateVal = document.getElementById("filter-date").value;
+    const typeVal = document.getElementById("filter-type").value.trim().toLowerCase();
 
-  document.getElementById("route-results").classList.remove("hidden");
+    eventCards.forEach((card) => {
+      const cardLoc = card.innerText.toLowerCase(); // simplificado
+      const cardDate = card.getAttribute("data-date"); 
+      const cardType = card.getAttribute("data-type")?.toLowerCase() || "";
+      
+      // Comparar
+      const matchLoc = (locationVal === "" || cardLoc.includes(locationVal));
+      const matchDate = (dateVal === "" || cardDate === dateVal);
+      const matchType = (typeVal === "" || cardType.includes(typeVal));
 
-  // Simular IA para generar una ruta
-  setTimeout(() => {
-    const suggestedRoute = regions.map((region, index) => `<li><strong>Día ${index * 3 + 1}-${(index + 1) * 3}:</strong> ${region} - Disfruta tus preferencias</li>`).join("");
-    itinerary.innerHTML += `<ul>${suggestedRoute}</ul>`;
-  }, 2000);
+      if (matchLoc && matchDate && matchType) {
+        card.style.display = "block";
+      } else {
+        card.style.display = "none";
+      }
+    });
+  });
+
+  /************************************************************
+   * CREAR EVENTO
+   ************************************************************/
+  const createEventForm = document.getElementById("create-event-form");
+  createEventForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const title = document.getElementById("event-title").value.trim();
+    const location = document.getElementById("event-location").value.trim();
+    const date = document.getElementById("event-date").value;
+    const description = document.getElementById("event-description").value.trim();
+
+    if (!title || !location || !date || !description) {
+      alert("Por favor, completa todos los campos.");
+      return;
+    }
+    alert(`¡Evento "${title}" creado exitosamente!`);
+    createEventForm.reset();
+  });
 });
