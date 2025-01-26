@@ -1,91 +1,97 @@
-document.addEventListener("DOMContentLoaded", () => {
-  console.log("Eventos.js cargado correctamente");
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Colaboradores - OnlyBackpackers</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="colaboradores.css">
+</head>
+<body>
+  <!-- ENCABEZADO -->
+  <header class="main-header">
+    <nav>
+      <div class="menu-toggle" id="menu-toggle">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+      <ul class="menu" id="menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="eventos.html" class="active">Eventos</a></li>
+        <li><a href="recompensas.html">Recompensas</a></li>
+        <li><a href="worldtrip.html">Worldtrip</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  /************************************************************
-   * MENÚ HAMBURGUESA
-   ************************************************************/
-  const menuToggle = document.getElementById("menu-toggle");
-  const menu = document.getElementById("menu");
+  <!-- HERO -->
+  <section class="hero-colaboradores">
+    <div class="hero-content">
+      <h1>Conviértete en Colaborador</h1>
+      <p>Organiza eventos, gana dinero y conecta con viajeros de todo el mundo.</p>
+    </div>
+  </section>
 
-  menuToggle.addEventListener("click", () => {
-    menu.classList.toggle("active");
-  });
+  <!-- BENEFICIOS -->
+  <section id="benefits">
+    <h2>¿Por qué ser Colaborador?</h2>
+    <ul>
+      <li>Gana el 85% de cada evento que organices.</li>
+      <li>Promociona tus eventos a una audiencia global.</li>
+      <li>Nos encargamos del pago y gestión de comisiones.</li>
+    </ul>
+  </section>
 
-  /************************************************************
-   * FILTROS DE EVENTOS
-   ************************************************************/
-  const filterForm = document.getElementById("event-filters");
-  const eventCards = document.querySelectorAll(".event-card");
+  <!-- FORMULARIO DE REGISTRO -->
+  <section id="register">
+    <h2>Regístrate como Colaborador</h2>
+    <form id="collaborator-form">
+      <label for="name">Nombre Completo:</label>
+      <input type="text" id="name" name="name" placeholder="Escribe tu nombre completo" required>
 
-  filterForm.addEventListener("submit", (e) => {
-    e.preventDefault();
+      <label for="email">Correo Electrónico:</label>
+      <input type="email" id="email" name="email" placeholder="Escribe tu correo electrónico" required>
 
-    const location = document.getElementById("filter-location").value.toLowerCase();
-    const date = document.getElementById("filter-date").value;
-    const type = document.getElementById("filter-type").value.toLowerCase();
+      <label for="nationality">Nacionalidad:</label>
+      <input type="text" id="nationality" name="nationality" placeholder="Ejemplo: Española" required>
 
-    eventCards.forEach((card) => {
-      const cardLocation = card.querySelector("p:nth-of-type(1)").textContent.toLowerCase();
-      const cardDate = card.querySelector("p:nth-of-type(2)").textContent;
-      const cardType = card.getAttribute("data-type")?.toLowerCase() || "";
+      <label for="description">Cuéntanos un poco sobre ti (opcional):</label>
+      <textarea id="description" name="description" rows="4" placeholder="Ejemplo: Experiencia organizando eventos, lugares favoritos..."></textarea>
 
-      if (
-        (location === "" || cardLocation.includes(location)) &&
-        (date === "" || cardDate.includes(date)) &&
-        (type === "" || cardType.includes(type))
-      ) {
-        card.style.display = "block";
-      } else {
-        card.style.display = "none";
-      }
+      <button type="submit" class="cta-button">Regístrate</button>
+    </form>
+  </section>
+
+  <!-- PIE DE PÁGINA -->
+  <footer>
+    <p>&copy; 2025 OnlyBackpackers. Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- SCRIPT DEL MENÚ HAMBURGUESA -->
+  <script>
+    const menuToggle = document.getElementById("menu-toggle");
+    const menu = document.getElementById("menu");
+
+    menuToggle.addEventListener("click", () => {
+      menu.classList.toggle("active");
     });
-  });
 
-  /************************************************************
-   * ANIMACIÓN DE TARJETAS
-   ************************************************************/
-  const cards = document.querySelectorAll(".event-card");
+    // Manejo del formulario (función inicial)
+    const collaboratorForm = document.getElementById("collaborator-form");
 
-  cards.forEach((card) => {
-    card.addEventListener("mouseover", () => {
-      card.style.transform = "translateY(-5px)";
-      card.style.boxShadow = "0 8px 20px rgba(0, 0, 0, 0.3)";
+    collaboratorForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const nationality = document.getElementById("nationality").value;
+      const description = document.getElementById("description").value;
+
+      console.log("Registro enviado:", { name, email, nationality, description });
+      alert("¡Registro enviado! Nos pondremos en contacto contigo pronto.");
+      collaboratorForm.reset();
     });
-
-    card.addEventListener("mouseout", () => {
-      card.style.transform = "translateY(0)";
-      card.style.boxShadow = "0 2px 5px rgba(0, 0, 0, 0.1)";
-    });
-  });
-
-  /************************************************************
-   * FORMULARIO DE CREACIÓN DE EVENTOS
-   ************************************************************/
-  const createEventForm = document.getElementById("create-event-form");
-
-  createEventForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    const title = document.getElementById("event-title").value.trim();
-    const date = document.getElementById("event-date").value;
-    const location = document.getElementById("event-location").value.trim();
-    const description = document.getElementById("event-description").value.trim();
-
-    if (!title || !date || !location || !description) {
-      alert("Por favor, completa todos los campos del formulario.");
-      return;
-    }
-
-    alert("¡Evento creado exitosamente! Está pendiente de aprobación.");
-    createEventForm.reset();
-  });
-
-  /************************************************************
-   * REDIRECCIÓN A SUBPÁGINA DE COLABORADORES
-   ************************************************************/
-  const collaboratorButton = document.querySelector("#collaborators .cta-button");
-
-  collaboratorButton.addEventListener("click", () => {
-    window.location.href = "colaboradores.html";
-  });
-});
+  </script>
+</body>
+</html>
