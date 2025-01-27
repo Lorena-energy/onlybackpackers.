@@ -11,19 +11,34 @@ body {
 header {
   background: #004f8c;
   color: white;
-  padding: 15px 0;
   text-align: center;
+  padding: 15px 0;
 }
 header nav {
   display: flex;
   justify-content: center;
+  position: relative;
+}
+header .menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  position: absolute;
+  left: 15px;
+  top: 15px;
+}
+header .menu-toggle .bar {
+  width: 25px;
+  height: 3px;
+  background: white;
+  margin: 5px 0;
 }
 header ul {
   list-style: none;
-  padding: 0;
-  margin: 0;
   display: flex;
   gap: 15px;
+  margin: 0;
+  padding: 0;
 }
 header ul li a {
   text-decoration: none;
@@ -34,6 +49,34 @@ header ul li a {
 header ul li a:hover {
   background: #0077cc;
   border-radius: 5px;
+}
+header h1 {
+  font-size: 1.8rem;
+  margin: 0;
+  color: #ffffff;
+}
+
+/* ===== MENÚ RESPONSIVE ===== */
+@media (max-width: 768px) {
+  header nav {
+    justify-content: flex-end;
+  }
+  header .menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    background: #004f8c;
+    width: 100%;
+    padding: 10px 0;
+  }
+  header .menu.active {
+    display: flex;
+  }
+  header .menu-toggle {
+    display: flex;
+  }
 }
 
 /* ===== HERO ===== */
@@ -51,45 +94,23 @@ header ul li a:hover {
   font-size: 1.2rem;
 }
 
-/* ===== DESTACADOS ===== */
-#highlight {
-  padding: 40px 20px;
-  background: white;
-  border-radius: 15px;
-  max-width: 800px;
-  margin: 20px auto;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-#highlight h2 {
-  font-size: 2rem;
-  color: #0077cc;
-  margin-bottom: 15px;
-}
-#highlight ul {
-  list-style: none;
-  padding: 0;
-}
-#highlight ul li {
-  font-size: 1.1rem;
-  margin: 10px 0;
-  padding-left: 25px;
-  position: relative;
-}
-#highlight ul li::before {
-  content: '\2713';
-  color: #00bfff;
-  font-weight: bold;
-  position: absolute;
-  left: 0;
-}
-
 /* ===== FORMULARIO ===== */
+#register {
+  padding: 50px 20px;
+  background: linear-gradient(to right, #eef6fc, #ffffff);
+}
+#register h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #0077cc;
+  margin-bottom: 30px;
+}
 form {
   background: white;
   border-radius: 15px;
   padding: 30px 20px;
   max-width: 600px;
-  margin: 20px auto;
+  margin: 0 auto;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 form label {
@@ -121,12 +142,4 @@ form button {
 form button:hover {
   background: linear-gradient(to right, #005fa3, #00a2d6);
   transform: scale(1.05);
-}
-
-/* ===== FOOTER ===== */
-footer {
-  background: #004f8c;
-  color: white;
-  text-align: center;
-  padding: 15px 0;
 }
