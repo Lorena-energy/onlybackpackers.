@@ -8,116 +8,164 @@ body {
 }
 
 /* ===== ENCABEZADO ===== */
-header {
+.main-header {
   background: #004f8c;
   color: white;
+  padding: 10px 0;
   text-align: center;
-  padding: 15px 0;
-}
-header nav {
-  display: flex;
-  justify-content: center;
-  position: relative;
-}
-header .menu-toggle {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-  position: absolute;
-  left: 15px;
-  top: 15px;
-}
-header .menu-toggle .bar {
-  width: 25px;
-  height: 3px;
-  background: white;
-  margin: 5px 0;
-}
-header ul {
-  list-style: none;
-  display: flex;
-  gap: 15px;
-  margin: 0;
-  padding: 0;
-}
-header ul li a {
-  text-decoration: none;
-  color: white;
-  font-size: 1rem;
-  padding: 10px 15px;
-}
-header ul li a:hover {
-  background: #0077cc;
-  border-radius: 5px;
-}
-header h1 {
-  font-size: 1.8rem;
-  margin: 0;
-  color: #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-/* ===== MENÚ RESPONSIVE ===== */
+.main-header h1 {
+  font-size: 1.8rem;
+  margin: 10px 0;
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  gap: 15px;
+}
+
+.menu li a {
+  text-decoration: none;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.menu li a:hover {
+  background: #005fa3;
+}
+
+/* Menú hamburguesa */
+.menu-toggle {
+  display: none;
+}
+
 @media (max-width: 768px) {
-  header nav {
-    justify-content: flex-end;
-  }
-  header .menu {
+  .menu {
     display: none;
     flex-direction: column;
+    background: #0077cc;
     position: absolute;
     top: 60px;
     left: 0;
-    background: #004f8c;
     width: 100%;
     padding: 10px 0;
   }
-  header .menu.active {
+
+  .menu.active {
     display: flex;
   }
-  header .menu-toggle {
-    display: flex;
+
+  .menu-toggle {
+    display: block;
+    position: absolute;
+    left: 20px;
+    top: 15px;
+    cursor: pointer;
+  }
+
+  .menu-toggle .bar {
+    width: 25px;
+    height: 3px;
+    background: white;
+    margin: 5px 0;
   }
 }
 
 /* ===== HERO ===== */
-#hero {
+.hero {
   background: linear-gradient(to right, #0077cc, #00bfff);
   color: white;
   text-align: center;
-  padding: 50px 20px;
+  padding: 60px 20px;
 }
-#hero h1 {
+
+.hero h2 {
   font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 1.2rem;
   margin-bottom: 20px;
 }
-#hero p {
-  font-size: 1.2rem;
+
+/* ===== RAZONES PARA COLABORAR ===== */
+#reasons {
+  background: #eef6fc;
+  padding: 40px 20px;
+  text-align: center;
+  border-radius: 15px;
+  margin: 30px auto;
+  max-width: 800px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#reasons h2 {
+  font-size: 2rem;
+  color: #0077cc;
+  margin-bottom: 20px;
+}
+
+#reasons ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#reasons ul li {
+  font-size: 1.1rem;
+  margin: 10px 0;
+  padding-left: 25px;
+  position: relative;
+}
+
+#reasons ul li::before {
+  content: '✔';
+  color: #00bfff;
+  font-size: 1.5rem;
+  position: absolute;
+  left: 0;
+  top: 0;
 }
 
 /* ===== FORMULARIO ===== */
 #register {
-  padding: 50px 20px;
-  background: linear-gradient(to right, #eef6fc, #ffffff);
+  padding: 40px 20px;
+  background: linear-gradient(to bottom, #eef6fc, #ffffff);
 }
+
 #register h2 {
+  font-size: 2rem;
   text-align: center;
-  font-size: 2.5rem;
   color: #0077cc;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
+
 form {
-  background: white;
-  border-radius: 15px;
-  padding: 30px 20px;
   max-width: 600px;
   margin: 0 auto;
+  background: white;
+  border-radius: 15px;
+  padding: 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
+
 form label {
   font-weight: bold;
-  margin-bottom: 5px;
   display: block;
+  margin-bottom: 5px;
 }
+
 form input,
 form textarea {
   width: 100%;
@@ -127,19 +175,57 @@ form textarea {
   border-radius: 10px;
   font-size: 1rem;
 }
+
+form textarea {
+  resize: none;
+}
+
 form button {
+  display: block;
   width: 100%;
-  padding: 15px;
-  background: linear-gradient(to right, #0077cc, #00bfff);
-  color: white;
+  padding: 12px;
   font-size: 1.2rem;
   font-weight: bold;
+  color: white;
+  background: linear-gradient(to right, #0077cc, #00bfff);
   border: none;
   border-radius: 10px;
   cursor: pointer;
   transition: background 0.3s, transform 0.3s;
 }
+
 form button:hover {
   background: linear-gradient(to right, #005fa3, #00a2d6);
   transform: scale(1.05);
+}
+
+/* ===== PIE DE PÁGINA ===== */
+footer {
+  background: #0077cc;
+  color: white;
+  text-align: center;
+  padding: 15px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .hero h2 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  #reasons h2 {
+    font-size: 1.8rem;
+  }
+
+  form {
+    padding: 15px;
+  }
+
+  form button {
+    font-size: 1rem;
+  }
 }
