@@ -1,16 +1,24 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
   <title>Colaboradores - OnlyBackpackers</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="colaboradores.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <!-- Fuente Poppins -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Hoja de estilos principal -->
+  <link rel="stylesheet" href="colaboradores.css" />
 </head>
 <body>
   <!-- ENCABEZADO -->
   <header class="main-header">
     <nav>
+      <!-- Menú hamburguesa -->
       <div class="menu-toggle" id="menu-toggle">
         <span class="bar"></span>
         <span class="bar"></span>
@@ -29,7 +37,7 @@
     <h1>Worldtrip by OnlyBackpackers</h1>
   </header>
 
-  <!-- HERO -->
+  <!-- HERO: Con degradado turquesa y texto en blanco -->
   <section class="hero">
     <h2>Conviértete en Colaborador</h2>
     <p>Organiza eventos, gana dinero y conecta con viajeros de todo el mundo.</p>
@@ -70,7 +78,7 @@
     </div>
   </section>
 
-  <!-- FORMULARIO -->
+  <!-- FORMULARIO Divertido -->
   <section id="register">
     <h2>Regístrate como Colaborador</h2>
     <form id="collaborator-form">
@@ -86,10 +94,16 @@
       <label for="nationality">Nacionalidad:</label>
       <input type="text" id="nationality" name="nationality" placeholder="Ejemplo: Española" required>
 
-      <label for="events">¿Qué eventos puedes organizar?:</label>
-      <textarea id="events" name="events" placeholder="Ejemplo: Rutas de montaña, snorkel, catas de vino..." rows="4" required></textarea>
+      <label for="languages">¿Qué idiomas hablas?</label>
+      <input type="text" id="languages" name="languages" placeholder="Ej: español, inglés, francés..." required>
 
-      <button type="submit">¡Regístrate!</button>
+      <label for="about-you">Háblanos un poco de ti:</label>
+      <textarea id="about-you" name="about-you" rows="4" placeholder="Ej: Me encanta viajar, soy guía en mi ciudad..." required></textarea>
+
+      <label for="events">¿Qué eventos puedes organizar?:</label>
+      <textarea id="events" name="events" placeholder="Ej: Rutas de montaña, snorkel, catas de vino..." rows="3" required></textarea>
+
+      <button type="submit" class="cta-button">¡Regístrate!</button>
     </form>
   </section>
 
@@ -98,7 +112,7 @@
     <p>&copy; 2025 OnlyBackpackers. Todos los derechos reservados.</p>
   </footer>
 
-  <!-- SCRIPTS -->
+  <!-- Script Colaboradores -->
   <script src="colaboradores.js"></script>
 </body>
 </html>
