@@ -1,9 +1,9 @@
-/* ===== REGLAS GENERALES ===== */
+/* ===== GENERAL ===== */
 body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
-  background: linear-gradient(to bottom, #eef6fc, #d6eaff);
+  background: linear-gradient(to bottom, #f0f9ff, #cfefff);
   color: #333;
 }
 
@@ -11,32 +11,37 @@ body {
 .main-header {
   background: #004f8c;
   color: white;
-  padding: 15px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 10px 0;
   text-align: center;
 }
+
 .main-header h1 {
-  font-size: 2.5rem;
   margin: 0;
+  font-size: 1.5rem;
 }
-.main-header nav {
+
+.menu {
+  list-style: none;
   display: flex;
   justify-content: center;
-  align-items: center;
-  margin-top: 10px;
-}
-.main-header .menu {
-  list-style: none;
   padding: 0;
-  display: flex;
-  gap: 20px;
+  margin: 10px 0 0;
 }
-.main-header .menu li a {
+
+.menu li {
+  margin: 0 10px;
+}
+
+.menu li a {
   text-decoration: none;
   color: white;
   font-weight: bold;
-  transition: color 0.3s;
 }
-.main-header .menu li a:hover {
+
+.menu li a:hover {
   color: #ffcc00;
 }
 
@@ -46,162 +51,148 @@ body {
   padding: 50px 20px;
   background: linear-gradient(to right, #0077cc, #00bfff);
   color: white;
-  margin-bottom: 30px;
 }
+
 .hero h2 {
   font-size: 2.5rem;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
+
 .hero p {
   font-size: 1.2rem;
 }
 
-/* ===== RAZONES PARA COLABORAR ===== */
+/* ===== SECCIÓN: POR QUÉ SER COLABORADOR ===== */
 #reasons {
-  text-align: center;
   padding: 40px 20px;
-  background: #eef6fc;
-  margin-bottom: 30px;
-  border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
 }
+
 #reasons h2 {
   font-size: 2rem;
-  color: #0077cc;
-  margin-bottom: 20px;
+  color: #004f8c;
 }
+
 #reasons ul {
   list-style: none;
   padding: 0;
-}
-#reasons ul li {
-  font-size: 1.2rem;
-  margin: 10px 0;
-  position: relative;
-  padding-left: 30px;
-}
-#reasons ul li::before {
-  content: '✔';
-  color: #00bfff;
-  font-weight: bold;
-  position: absolute;
-  left: 0;
+  margin: 20px 0;
 }
 
-/* ===== SECCIÓN DE EJEMPLOS ===== */
-#activity-ideas {
-  text-align: center;
+#reasons li {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+/* ===== SECCIÓN: EJEMPLOS ===== */
+#examples {
+  background: #eef6fc;
   padding: 40px 20px;
-  background: #f4faff;
-  border-radius: 15px;
-  margin-bottom: 30px;
 }
-#activity-ideas h2 {
+
+#examples h2 {
   font-size: 2rem;
-  margin-bottom: 15px;
-  color: #0077cc;
+  text-align: center;
+  color: #004f8c;
 }
-#activity-ideas .idea-grid {
+
+.example-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
+  margin-top: 20px;
 }
-.idea-card {
+
+.example-card {
   background: white;
   border-radius: 10px;
-  overflow: hidden;
+  padding: 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s, box-shadow 0.3s;
 }
-.idea-card img {
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
-}
-.idea-card h3 {
-  font-size: 1.5rem;
-  margin: 15px;
-  color: #0077cc;
-}
-.idea-card p {
-  font-size: 1rem;
-  margin: 0 15px 15px;
-  color: #555;
-}
-.idea-card:hover {
+
+.example-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* ===== FORMULARIO ===== */
-#register {
-  text-align: center;
-  padding: 40px 20px;
-  background: linear-gradient(to bottom, #eef6fc, #d6eaff);
-  border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+.example-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  color: #0077cc;
 }
+
+.example-card p {
+  margin: 5px 0;
+}
+
+.price-note {
+  font-weight: bold;
+  color: #ff6600;
+}
+
+/* ===== SECCIÓN: FORMULARIO ===== */
+#register {
+  padding: 40px 20px;
+  text-align: center;
+}
+
 #register h2 {
   font-size: 2rem;
-  color: #0077cc;
-  margin-bottom: 20px;
+  color: #004f8c;
 }
-#register form {
+
+#collaborator-form {
   max-width: 600px;
   margin: 0 auto;
-  text-align: left;
   background: white;
   padding: 20px;
-  border-radius: 15px;
+  border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
-#register form label {
+
+#collaborator-form label {
+  display: block;
   font-weight: bold;
   margin-bottom: 5px;
-  display: block;
 }
-#register form input,
-#register form textarea {
+
+#collaborator-form input,
+#collaborator-form textarea,
+#collaborator-form button {
   width: 100%;
   padding: 10px;
   margin-bottom: 15px;
-  border-radius: 10px;
+  border-radius: 5px;
   border: 1px solid #ddd;
   font-size: 1rem;
 }
-#register form button {
-  width: 100%;
-  padding: 15px;
-  font-size: 1.2rem;
-  color: white;
+
+#collaborator-form button {
   background: linear-gradient(to right, #0077cc, #00bfff);
+  color: white;
+  font-weight: bold;
   border: none;
-  border-radius: 10px;
   cursor: pointer;
-  transition: transform 0.3s, background 0.3s;
-}
-#register form button:hover {
-  background: linear-gradient(to right, #005fa3, #00a2d6);
-  transform: scale(1.05);
+  transition: background 0.3s;
 }
 
-/* ===== PIE DE PÁGINA ===== */
-footer {
-  text-align: center;
-  padding: 20px;
-  background: #0077cc;
-  color: white;
+#collaborator-form button:hover {
+  background: linear-gradient(to right, #005fa3, #00a2d6);
 }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
-  .main-header h1 {
-    font-size: 2rem;
+  .menu {
+    flex-direction: column;
   }
-  .hero h2 {
-    font-size: 2rem;
-  }
-  .idea-grid {
+
+  .example-grid {
     grid-template-columns: 1fr;
+  }
+
+  #collaborator-form {
+    width: 90%;
   }
 }
