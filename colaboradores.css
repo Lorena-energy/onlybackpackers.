@@ -1,69 +1,87 @@
-/* ===== REGLAS GENERALES ===== */
+/* ===== GENERAL ===== */
 body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
-  background: linear-gradient(to right, #eef2f3, #8e9eab);
+  background: #f9f9f9;
   color: #333;
 }
 
-/* ENCABEZADO */
+/* ===== MENÚ ===== */
 .main-header {
+  background: linear-gradient(to right, #0077cc, #00bfff);
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 10px 0;
   text-align: center;
-  padding: 20px;
-  background: #0077cc;
-  color: white;
-}
-.main-header h1 {
-  font-size: 2.5rem;
-}
-.menu {
-  display: flex;
-  justify-content: center;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  background: #005fa3;
-}
-.menu li a {
-  text-decoration: none;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 5px;
-}
-.menu li a.active {
-  background-color: #ff6600;
 }
 
-/* HERO */
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+}
+
+.menu li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 8px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.menu li a:hover {
+  background-color: #005fa3;
+}
+
+/* ===== HERO ===== */
 .hero {
   text-align: center;
   padding: 40px 20px;
   background: linear-gradient(to right, #0077cc, #00bfff);
   color: white;
 }
+
 .hero h2 {
-  font-size: 2rem;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
 }
 
-/* EJEMPLOS */
-.examples-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  padding: 20px;
+.hero p {
+  font-size: 1.2rem;
 }
-.example-card {
-  background: white;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+/* ===== FORMULARIO ===== */
+#register {
   text-align: center;
+  padding: 40px 20px;
 }
 
-/* RESPONSIVE */
-@media (max-width: 768px) {
-  .examples-grid {
-    grid-template-columns: 1fr;
-  }
+form {
+  background: #eef6fc;
+  padding: 20px;
+  border-radius: 10px;
+  display: inline-block;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
+
+form label,
+form input,
+form textarea {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+}
+
+/* Botón */
+form button {
+  background: #0077cc;
+  color: white;
+}
+
