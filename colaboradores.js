@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("Colaboradores.js cargado correctamente");
+  console.log("colaboradores.js cargado correctamente");
 
   /************************************************************
    * MENÚ HAMBURGUESA
@@ -12,79 +12,63 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /************************************************************
-   * VALIDACIONES DEL FORMULARIO DE REGISTRO
+   * FORMULARIO DE REGISTRO
    ************************************************************/
-  const registerForm = document.getElementById("register-form");
+  const form = document.getElementById("collaborator-form");
 
-  registerForm.addEventListener("submit", (e) => {
+  form.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    const fullName = document.getElementById("full-name").value.trim();
+    // Obtener los valores del formulario
+    const name = document.getElementById("name").value.trim();
     const email = document.getElementById("email").value.trim();
     const whatsapp = document.getElementById("whatsapp").value.trim();
     const nationality = document.getElementById("nationality").value.trim();
-    const aboutYou = document.getElementById("about-you").value.trim();
+    const about = document.getElementById("about").value.trim();
 
-    // Validaciones básicas
-    if (!fullName || !email || !whatsapp || !nationality || !aboutYou) {
-      alert("Por favor, completa todos los campos del formulario.");
+    // Validar campos obligatorios
+    if (!name || !email || !whatsapp || !nationality || !about) {
+      alert("Por favor, completa todos los campos obligatorios.");
       return;
     }
 
-    if (!validateEmail(email)) {
-      alert("Por favor, introduce un correo electrónico válido.");
-      return;
-    }
-
-    if (!validatePhoneNumber(whatsapp)) {
-      alert("Por favor, introduce un número de WhatsApp válido.");
-      return;
-    }
-
-    alert("¡Registro enviado con éxito! Nos pondremos en contacto contigo pronto.");
-    registerForm.reset();
-  });
-
-  // Validación de correo electrónico
-  const validateEmail = (email) => {
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return regex.test(email);
-  };
-
-  // Validación de número de WhatsApp
-  const validatePhoneNumber = (phoneNumber) => {
-    const regex = /^\+?[0-9]{10,15}$/; // Permite números internacionales con o sin "+"
-    return regex.test(phoneNumber);
-  };
-
-  /************************************************************
-   * ANIMACIONES Y MEJORAS UX
-   ************************************************************/
-  // Botones con efecto hover
-  const buttons = document.querySelectorAll("button, .cta-button");
-
-  buttons.forEach((button) => {
-    button.addEventListener("mouseover", () => {
-      button.style.transform = "scale(1.05)";
-      button.style.boxShadow = "0 6px 14px rgba(0, 119, 204, 0.5)";
-    });
-
-    button.addEventListener("mouseout", () => {
-      button.style.transform = "scale(1)";
-      button.style.boxShadow = "none";
-    });
+    // Mostrar mensaje de éxito
+    alert(`¡Gracias por registrarte, ${name}! Revisa tu correo (${email}) para más información.`);
+    
+    // Resetear formulario
+    form.reset();
   });
 
   /************************************************************
-   * ACCIÓN EN EL FORMULARIO PARA HACERLO MÁS INTERACTIVO
+   * SECCIÓN DE EJEMPLOS DE GANANCIAS
    ************************************************************/
-  const aboutYouField = document.getElementById("about-you");
+  const exampleToggle = document.getElementById("example-toggle");
+  const exampleDetails = document.getElementById("example-details");
 
-  aboutYouField.addEventListener("focus", () => {
-    aboutYouField.placeholder = "Comparte tu experiencia organizando eventos, destinos favoritos, etc.";
+  exampleToggle.addEventListener("click", () => {
+    if (exampleDetails.style.display === "none" || !exampleDetails.style.display) {
+      exampleDetails.style.display = "block";
+      exampleToggle.textContent = "Ocultar Ejemplo";
+    } else {
+      exampleDetails.style.display = "none";
+      exampleToggle.textContent = "Ver Ejemplo de Ganancias";
+    }
   });
 
-  aboutYouField.addEventListener("blur", () => {
-    aboutYouField.placeholder = "Ejemplo: Experiencia organizando eventos...";
+  /************************************************************
+   * ANIMACIÓN DE SECCIONES
+   ************************************************************/
+  const sections = document.querySelectorAll("section");
+
+  sections.forEach((section) => {
+    section.addEventListener("mouseover", () => {
+      section.style.transform = "translateY(-5px)";
+      section.style.boxShadow = "0 8px 20px rgba(0, 0, 0, 0.2)";
+    });
+
+    section.addEventListener("mouseout", () => {
+      section.style.transform = "translateY(0)";
+      section.style.boxShadow = "none";
+    });
   });
 });
