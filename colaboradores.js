@@ -31,16 +31,18 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    alert(`¡Gracias, ${name}, por registrarte como colaborador! Revisaremos tu información y te contactaremos pronto.`);
+    alert(
+      `¡Gracias por registrarte, ${name}! Revisaremos tu información y nos pondremos en contacto contigo pronto.`
+    );
     collaboratorForm.reset();
   });
 
   /************************************************************
    * ANIMACIONES EN LAS TARJETAS DE EJEMPLOS
    ************************************************************/
-  const ideaCards = document.querySelectorAll(".example-card");
+  const exampleCards = document.querySelectorAll(".example-card");
 
-  ideaCards.forEach((card) => {
+  exampleCards.forEach((card) => {
     card.addEventListener("mouseover", () => {
       card.style.transform = "translateY(-5px)";
       card.style.boxShadow = "0 8px 20px rgba(0, 0, 0, 0.3)";
@@ -55,11 +57,31 @@ document.addEventListener("DOMContentLoaded", () => {
   /************************************************************
    * BOTÓN PARA VOLVER AL INICIO
    ************************************************************/
-  const backToTopButton = document.getElementById("back-to-top");
+  const backToTopButton = document.createElement("button");
+  backToTopButton.id = "back-to-top";
+  backToTopButton.textContent = "↑ Volver al Inicio";
+  backToTopButton.style.position = "fixed";
+  backToTopButton.style.bottom = "20px";
+  backToTopButton.style.right = "20px";
+  backToTopButton.style.padding = "10px 20px";
+  backToTopButton.style.border = "none";
+  backToTopButton.style.borderRadius = "5px";
+  backToTopButton.style.background = "#0077cc";
+  backToTopButton.style.color = "white";
+  backToTopButton.style.cursor = "pointer";
+  backToTopButton.style.display = "none";
 
-  if (backToTopButton) {
-    backToTopButton.addEventListener("click", () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    });
-  }
+  document.body.appendChild(backToTopButton);
+
+  backToTopButton.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+      backToTopButton.style.display = "block";
+    } else {
+      backToTopButton.style.display = "none";
+    }
+  });
 });
