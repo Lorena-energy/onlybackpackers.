@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    alert("¡Gracias por registrarte como colaborador! Revisaremos tu información y nos pondremos en contacto contigo.");
+    alert(`¡Gracias, ${name}, por registrarte como colaborador! Revisaremos tu información y te contactaremos pronto.`);
     collaboratorForm.reset();
   });
 
@@ -51,4 +51,15 @@ document.addEventListener("DOMContentLoaded", () => {
       card.style.boxShadow = "0 4px 10px rgba(0, 0, 0, 0.1)";
     });
   });
+
+  /************************************************************
+   * BOTÓN PARA VOLVER AL INICIO
+   ************************************************************/
+  const backToTopButton = document.getElementById("back-to-top");
+
+  if (backToTopButton) {
+    backToTopButton.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
 });
