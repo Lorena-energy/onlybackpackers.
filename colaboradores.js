@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
   /************************************************************
    * ANIMACIONES EN LAS TARJETAS DE EJEMPLOS
    ************************************************************/
-  const ideaCards = document.querySelectorAll(".idea-card");
+  const ideaCards = document.querySelectorAll(".example-card");
 
   ideaCards.forEach((card) => {
     card.addEventListener("mouseover", () => {
@@ -50,14 +50,5 @@ document.addEventListener("DOMContentLoaded", () => {
       card.style.transform = "translateY(0)";
       card.style.boxShadow = "0 4px 10px rgba(0, 0, 0, 0.1)";
     });
-  });
-
-  /************************************************************
-   * BOTÓN PARA VOLVER AL INICIO
-   ************************************************************/
-  const backToTopButton = document.getElementById("back-to-top");
-
-  backToTopButton.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
   });
 });
