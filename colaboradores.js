@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("colaboradores.js cargado correctamente");
+  console.log("Colaboradores.js cargado correctamente");
 
   /************************************************************
    * MENÚ HAMBURGUESA
@@ -12,63 +12,52 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /************************************************************
-   * FORMULARIO DE REGISTRO
+   * ENVÍO DEL FORMULARIO DE COLABORADORES
    ************************************************************/
-  const form = document.getElementById("collaborator-form");
+  const collaboratorForm = document.getElementById("collaborator-form");
 
-  form.addEventListener("submit", (e) => {
+  collaboratorForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    // Obtener los valores del formulario
     const name = document.getElementById("name").value.trim();
     const email = document.getElementById("email").value.trim();
     const whatsapp = document.getElementById("whatsapp").value.trim();
     const nationality = document.getElementById("nationality").value.trim();
     const about = document.getElementById("about").value.trim();
+    const events = document.getElementById("events").value.trim();
 
-    // Validar campos obligatorios
-    if (!name || !email || !whatsapp || !nationality || !about) {
-      alert("Por favor, completa todos los campos obligatorios.");
+    if (!name || !email || !whatsapp || !nationality || !about || !events) {
+      alert("Por favor, completa todos los campos del formulario.");
       return;
     }
 
-    // Mostrar mensaje de éxito
-    alert(`¡Gracias por registrarte, ${name}! Revisa tu correo (${email}) para más información.`);
-    
-    // Resetear formulario
-    form.reset();
+    alert("¡Gracias por registrarte como colaborador! Revisaremos tu información y nos pondremos en contacto contigo.");
+    collaboratorForm.reset();
   });
 
   /************************************************************
-   * SECCIÓN DE EJEMPLOS DE GANANCIAS
+   * ANIMACIONES EN LAS TARJETAS DE EJEMPLOS
    ************************************************************/
-  const exampleToggle = document.getElementById("example-toggle");
-  const exampleDetails = document.getElementById("example-details");
+  const ideaCards = document.querySelectorAll(".idea-card");
 
-  exampleToggle.addEventListener("click", () => {
-    if (exampleDetails.style.display === "none" || !exampleDetails.style.display) {
-      exampleDetails.style.display = "block";
-      exampleToggle.textContent = "Ocultar Ejemplo";
-    } else {
-      exampleDetails.style.display = "none";
-      exampleToggle.textContent = "Ver Ejemplo de Ganancias";
-    }
+  ideaCards.forEach((card) => {
+    card.addEventListener("mouseover", () => {
+      card.style.transform = "translateY(-5px)";
+      card.style.boxShadow = "0 8px 20px rgba(0, 0, 0, 0.3)";
+    });
+
+    card.addEventListener("mouseout", () => {
+      card.style.transform = "translateY(0)";
+      card.style.boxShadow = "0 4px 10px rgba(0, 0, 0, 0.1)";
+    });
   });
 
   /************************************************************
-   * ANIMACIÓN DE SECCIONES
+   * BOTÓN PARA VOLVER AL INICIO
    ************************************************************/
-  const sections = document.querySelectorAll("section");
+  const backToTopButton = document.getElementById("back-to-top");
 
-  sections.forEach((section) => {
-    section.addEventListener("mouseover", () => {
-      section.style.transform = "translateY(-5px)";
-      section.style.boxShadow = "0 8px 20px rgba(0, 0, 0, 0.2)";
-    });
-
-    section.addEventListener("mouseout", () => {
-      section.style.transform = "translateY(0)";
-      section.style.boxShadow = "none";
-    });
+  backToTopButton.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
   });
 });
