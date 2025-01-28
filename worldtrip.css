@@ -15,11 +15,13 @@ body {
   top: 0;
   z-index: 1000;
   padding: 5px 0; /* Reducido para cabecera más pequeña */
+  text-align: center;
 }
 .main-header nav {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 .menu-toggle {
   display: none;
@@ -57,7 +59,6 @@ body {
   background-color: #005fa3;
 }
 
-/* MENÚ MÓVIL */
 @media (max-width: 768px) {
   .menu {
     display: none;
@@ -80,7 +81,7 @@ body {
 /* ===== HERO-WORLDTRIP ===== */
 .hero-worldtrip {
   position: relative;
-  min-height: 50vh; /* Reducido para cabecera más compacta */
+  min-height: 50vh;
   background: url("https://via.placeholder.com/1600x900") center/cover no-repeat;
   display: flex;
   align-items: center;
@@ -113,7 +114,7 @@ body {
   margin-bottom: 15px;
 }
 
-/* ===== BOTONES ===== */
+/* ===== BOTONES (CTA) ===== */
 .cta-button {
   display: inline-block;
   font-size: 1rem;
@@ -128,12 +129,48 @@ body {
   transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
 }
 .cta-button:hover {
-  background: linear-gradient(to right, #005fa3, #00a2d6); /* Azul oscuro a turquesa oscuro */
+  background: linear-gradient(to right, #005fa3, #00a2d6);
   box-shadow: 0 6px 14px rgba(0,119,204,0.5);
   transform: scale(1.07);
 }
 
-/* ===== TARJETAS ===== */
+/* ===== NUEVA SECCIÓN: coordinator-invite ===== */
+.coordinator-invite {
+  background: #d4f0ff; /* Turquesa clarito */
+  padding: 40px 20px;
+  text-align: center;
+  margin: 40px auto;
+  max-width: 1000px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.coordinator-text {
+  margin-bottom: 20px;
+}
+.coordinator-invite h2 {
+  font-size: 1.8rem;
+  color: #0077cc;
+  margin-bottom: 10px;
+}
+.coordinator-invite p {
+  font-size: 1.1rem;
+  color: #333;
+  margin: 0 auto;
+  max-width: 700px;
+}
+/* Botón con un “pulse” sutil */
+.big-coord-btn {
+  font-size: 1.2rem; 
+  padding: 14px 30px;
+  animation: pulse 2.5s infinite ease-in-out;
+}
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.04); }
+  100% { transform: scale(1); }
+}
+
+/* ===== GRID DE VIAJES GRUPALES ===== */
 .worldtrip-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -141,49 +178,40 @@ body {
   max-width: 1200px;
   margin: 0 auto 40px;
   padding: 20px;
-  background: #fff; /* Fondo blanco de la sección */
-  border-radius: 10px; /* Bordes redondeados para toda la sección */
+  background: #fff;
+  border-radius: 10px;
 }
-
-/* Cada tarjeta con degradado y bordes redondeados */
 .worldtrip-card {
-  background: linear-gradient(to right, #0077cc, #00bfff); /* Degradado azul a turquesa */
-  border-radius: 10px; /* Bordes redondeados */
+  background: linear-gradient(to right, #0077cc, #00bfff);
+  border-radius: 10px;
   padding: 20px;
   text-align: center;
   color: #ff914d; /* Naranja suave */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s, box-shadow 0.3s;
 }
-
 .worldtrip-card:hover {
   transform: scale(1.05);
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
-
-/* Títulos dentro de las tarjetas */
 .worldtrip-card h3 {
   margin: 0 0 10px;
   font-size: 1.3rem;
-  color: #fff; /* Letras blancas para mayor contraste */
+  color: #fff; /* Letras blancas */
 }
-
 .worldtrip-card h3 a {
   text-decoration: none;
-  color: #fff; /* Texto blanco */
+  color: #fff; 
   transition: color 0.3s;
 }
-
 .worldtrip-card h3 a:hover {
-  color: #ffe0b2; /* Naranja más claro al pasar el cursor */
+  color: #ffe0b2;
   text-decoration: underline;
 }
-
-/* Descripción dentro de las tarjetas */
 .worldtrip-card p {
   margin: 0;
   font-size: 0.95rem;
-  color: #ff914d; /* Naranja suave */
+  color: #ff914d;
 }
 
 /* ===== FOOTER ===== */
@@ -195,11 +223,16 @@ footer {
   margin-top: 20px;
 }
 
-/* ====== RESPONSIVE MÓVIL ====== */
+/* ===== RESPONSIVE (MÓVILES) ===== */
 @media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 1.5rem;
+  }
+  .coordinator-invite {
+    margin: 20px auto;
+  }
   .worldtrip-grid {
     grid-template-columns: 1fr;
-    gap: 15px;
-    padding: 0 10px;
+    padding: 10px;
   }
 }
