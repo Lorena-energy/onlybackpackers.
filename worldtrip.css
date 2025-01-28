@@ -106,11 +106,11 @@ body {
   padding: 20px;
 }
 .hero-content h1 {
-  font-size: 2rem; /* Reducido */
+  font-size: 2rem;
   margin-bottom: 15px;
 }
 .hero-content p {
-  font-size: 1rem; /* Reducido */
+  font-size: 1rem;
   margin-bottom: 15px;
 }
 
@@ -120,7 +120,7 @@ body {
   font-size: 1rem;
   font-weight: 600;
   color: #ff6600; /* Texto naranja */
-  background: linear-gradient(to right, #0077cc, #00bfff); /* Azul a turquesa */
+  background: linear-gradient(to right, #0077cc, #00bfff);
   padding: 12px 25px;
   border: none;
   border-radius: 50px;
@@ -197,11 +197,11 @@ body {
 .worldtrip-card h3 {
   margin: 0 0 10px;
   font-size: 1.3rem;
-  color: #fff; /* Letras blancas */
+  color: #fff;
 }
 .worldtrip-card h3 a {
   text-decoration: none;
-  color: #fff; 
+  color: #fff;
   transition: color 0.3s;
 }
 .worldtrip-card h3 a:hover {
