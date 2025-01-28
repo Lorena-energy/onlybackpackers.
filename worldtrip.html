@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Worldtrip by OnlyBackpackers</title>
+  <title>OnlyBackpackers - Worldtrip</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
   <!-- Fuente Poppins -->
@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="worldtrip.css" />
 </head>
 <body>
-  <!-- ENCABEZADO: Menú con hamburguesa -->
+  <!-- ENCABEZADO -->
   <header class="main-header">
     <nav>
       <div class="menu-toggle" id="menu-toggle">
@@ -26,93 +26,76 @@
       <ul class="menu" id="menu">
         <li><a href="index.html">Inicio</a></li>
         <li><a href="muro.html">Muro</a></li>
-        <li><a href="muro-personal.html">Mi Muro</a></li>
         <li><a href="recomendaciones.html">Recomendaciones</a></li>
-        <li><a href="chats.html">Chats</a></li>
         <li><a href="eventos.html">Eventos</a></li>
         <li><a href="worldtrip.html" class="active">Worldtrip</a></li>
         <li><a href="recompensas.html">Recompensas</a></li>
         <li><a href="expenses.html">Gastos</a></li>
       </ul>
     </nav>
+    <h1>OnlyBackpackers - Worldtrip</h1>
   </header>
 
-  <!-- HERO con imagen de fondo + overlay azul -->
+  <!-- HERO SECTION -->
   <section class="hero-worldtrip">
     <div class="hero-content">
-      <h1>Worldtrip by OnlyBackpackers</h1>
-      <p>Vive experiencias únicas con nuestros viajes grupales y personalizados, perfectos para ti.</p>
-      <!-- Botón con degradado azul → turquesa, texto naranja -->
-      <a href="#viajes-grupales" class="cta-button">Ver Viajes</a>
+      <h1>Explora Nuestros Viajes Grupales</h1>
+      <p>Descubre destinos únicos y experiencias inolvidables.</p>
+      <!-- Botón si quieres enlazar a algo dentro de esta página -->
+      <!-- <a href="#viajes-grupales" class="cta-button">Ver Viajes</a> -->
     </div>
   </section>
 
-  <!-- SECCIÓN DE VIAJES GRUPALES -->
-  <main>
-    <h2 id="viajes-grupales" class="section-title">Viajes Grupales</h2>
+  <!-- NUEVA SECCIÓN: Botón para ser Coordinador -->
+  <section class="coordinator-invite">
+    <div class="coordinator-text">
+      <h2>¿Te apasiona viajar y liderar grupos?</h2>
+      <p>
+        Conviértete en Coordinador: <strong>viaje pagado, paga diaria y comisiones</strong> 
+        por cada viajero que traigas. ¡Aprovecha esta oportunidad!
+      </p>
+    </div>
+    <!-- El botón que redirige a worldtrip-coordinadores.html -->
+    <a href="worldtrip-coordinadores.html" class="cta-button big-coord-btn">
+      ¡Hazte Coordinador!
+    </a>
+  </section>
 
+  <!-- LISTADO DE VIAJES GRUPALES (EJEMPLO) -->
+  <main>
     <div class="worldtrip-grid">
-      <!-- Tarjeta 1: Económicos -->
+      <!-- Tarjeta 1 -->
       <div class="worldtrip-card">
         <h3><a href="worldtrip-economicos.html">Económicos</a></h3>
         <p>Viajes accesibles con experiencias inolvidables.</p>
       </div>
 
-      <!-- Tarjeta 2: Premium -->
+      <!-- Tarjeta 2 -->
       <div class="worldtrip-card">
         <h3><a href="worldtrip-premium.html">Premium</a></h3>
         <p>Estilo, exclusividad y destinos impresionantes.</p>
       </div>
 
-      <!-- Tarjeta 3: Solo Mujeres -->
+      <!-- Tarjeta 3 -->
       <div class="worldtrip-card">
         <h3><a href="worldtrip-solo-mujeres.html">Solo Mujeres</a></h3>
         <p>Aventura y seguridad para mujeres viajeras.</p>
       </div>
 
-      <!-- Tarjeta 4: Viajeros con Hijos -->
-      <div class="worldtrip-card">
-        <h3><a href="worldtrip-viajeros-hijos.html">Viajeros con Hijos</a></h3>
-        <p>Socialización para padres e hijos en cada viaje.</p>
-      </div>
-
-      <!-- Tarjeta 5: Grupales 25-35 -->
+      <!-- Tarjeta 4 -->
       <div class="worldtrip-card">
         <h3><a href="worldtrip-grupales-25-35.html">Grupales 25-35</a></h3>
         <p>Viajes diseñados para jóvenes adultos.</p>
       </div>
-
-      <!-- Tarjeta 6: Grupales 35-45 -->
-      <div class="worldtrip-card">
-        <h3><a href="worldtrip-grupales-35-45.html">Grupales 35-45</a></h3>
-        <p>Comparte aventuras con tu misma generación.</p>
-      </div>
-
-      <!-- Tarjeta 7: Grupales +45 -->
-      <div class="worldtrip-card">
-        <h3><a href="worldtrip-grupales-45.html">Grupales +45</a></h3>
-        <p>Conecta con viajeros con espíritu joven.</p>
-      </div>
-
-      <!-- Tarjeta 8: A Medida -->
-      <div class="worldtrip-card">
-        <h3><a href="worldtrip-a-medida.html">A Medida</a></h3>
-        <p>Crea el viaje de tus sueños con nuestros expertos.</p>
-      </div>
+      <!-- Agrega más tarjetas según necesites -->
     </div>
   </main>
 
   <footer>
-    <p>&copy; 2024 Worldtrip by OnlyBackpackers. Todos los derechos reservados.</p>
+    <p>&copy; 2025 OnlyBackpackers. Todos los derechos reservados.</p>
   </footer>
 
-  <!-- Script del menú hamburguesa -->
-  <script>
-    const menuToggle = document.getElementById("menu-toggle");
-    const menu = document.getElementById("menu");
-    menuToggle.addEventListener("click", () => {
-      menu.classList.toggle("active");
-    });
-  </script>
+  <!-- Script principal -->
+  <script src="worldtrip.js"></script>
 </body>
 </html>
