@@ -1,57 +1,238 @@
-document.addEventListener("DOMContentLoaded", () => {
-  console.log("Worldtrip.js cargado correctamente");
+/* ===== REGLAS GENERALES ===== */
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f9f9f9;
+  color: #333;
+}
 
-  /************************************************************
-   * MENÚ HAMBURGUESA
-   ************************************************************/
-  const menuToggle = document.getElementById("menu-toggle");
-  const menu = document.getElementById("menu");
+/* ===== ENCABEZADO (MENÚ) ===== */
+.main-header {
+  background: #004f8c;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 5px 0; /* Reducido para cabecera más pequeña */
+  text-align: center;
+}
+.main-header nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  position: absolute;
+  left: 20px;
+  top: 15px;
+}
+.menu-toggle .bar {
+  width: 25px;
+  height: 3px;
+  background: white;
+  margin: 5px 0;
+}
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+}
+.menu li a {
+  text-decoration: none;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+.menu li a.active {
+  background-color: #ff6600;
+}
+.menu li a:hover {
+  background-color: #005fa3;
+}
 
-  menuToggle.addEventListener("click", () => {
-    menu.classList.toggle("active");
-  });
+@media (max-width: 768px) {
+  .menu {
+    display: none;
+    flex-direction: column;
+    background: #0077cc;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    padding: 10px 0;
+  }
+  .menu.active {
+    display: flex;
+  }
+  .menu-toggle {
+    display: flex;
+  }
+}
 
-  /************************************************************
-   * REDIRECCIÓN (Opcional):
-   * Si quieres que el click en .worldtrip-card entera
-   * lleve al enlace interno, mantenlo aquí
-   ************************************************************/
-  const categories = document.querySelectorAll(".worldtrip-card");
-  categories.forEach((category) => {
-    category.addEventListener("click", () => {
-      const link = category.querySelector("a");
-      if (link) {
-        window.location.href = link.href;
-      } else {
-        console.error("No se encontró un enlace en esta tarjeta.");
-      }
-    });
-  });
+/* ===== HERO-WORLDTRIP ===== */
+.hero-worldtrip {
+  position: relative;
+  min-height: 50vh;
+  background: url("https://via.placeholder.com/1600x900") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-worldtrip::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom right,
+    rgba(0,119,204,0.5),
+    rgba(0,191,255,0.5)
+  );
+}
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+  text-align: center;
+  color: white;
+  padding: 20px;
+}
+.hero-content h1 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+.hero-content p {
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
 
-  /************************************************************
-   * ANIMACIÓN DE BOTONES Y TARJETAS
-   ************************************************************/
-  const buttons = document.querySelectorAll(".cta-button");
-  buttons.forEach((button) => {
-    button.addEventListener("mouseover", () => {
-      button.style.transform = "scale(1.1)";
-      button.style.boxShadow = "0 6px 15px rgba(0, 119, 204, 0.5)";
-    });
-    button.addEventListener("mouseout", () => {
-      button.style.transform = "scale(1)";
-      button.style.boxShadow = "none";
-    });
-  });
+/* ===== BOTONES (CTA) ===== */
+.cta-button {
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ff6600; /* Texto naranja */
+  background: linear-gradient(to right, #0077cc, #00bfff);
+  padding: 12px 25px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,119,204,0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+.cta-button:hover {
+  background: linear-gradient(to right, #005fa3, #00a2d6);
+  box-shadow: 0 6px 14px rgba(0,119,204,0.5);
+  transform: scale(1.07);
+}
 
-  const cards = document.querySelectorAll(".worldtrip-card");
-  cards.forEach((card) => {
-    card.addEventListener("mouseover", () => {
-      card.style.transform = "translateY(-5px)";
-      card.style.boxShadow = "0 8px 20px rgba(0, 0, 0, 0.3)";
-    });
-    card.addEventListener("mouseout", () => {
-      card.style.transform = "translateY(0)";
-      card.style.boxShadow = "0 2px 5px rgba(0, 0, 0, 0.1)";
-    });
-  });
-});
+/* ===== NUEVA SECCIÓN: coordinator-invite ===== */
+.coordinator-invite {
+  background: #d4f0ff; /* Turquesa clarito */
+  padding: 40px 20px;
+  text-align: center;
+  margin: 40px auto;
+  max-width: 1000px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.coordinator-text {
+  margin-bottom: 20px;
+}
+.coordinator-invite h2 {
+  font-size: 1.8rem;
+  color: #0077cc;
+  margin-bottom: 10px;
+}
+.coordinator-invite p {
+  font-size: 1.1rem;
+  color: #333;
+  margin: 0 auto;
+  max-width: 700px;
+}
+/* Botón con un “pulse” sutil */
+.big-coord-btn {
+  font-size: 1.2rem; 
+  padding: 14px 30px;
+  animation: pulse 2.5s infinite ease-in-out;
+}
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.04); }
+  100% { transform: scale(1); }
+}
+
+/* ===== GRID DE VIAJES GRUPALES ===== */
+.worldtrip-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto 40px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+}
+.worldtrip-card {
+  background: linear-gradient(to right, #0077cc, #00bfff);
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  color: #ff914d; /* Naranja suave */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.worldtrip-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+.worldtrip-card h3 {
+  margin: 0 0 10px;
+  font-size: 1.3rem;
+  color: #fff;
+}
+.worldtrip-card h3 a {
+  text-decoration: none;
+  color: #fff;
+  transition: color 0.3s;
+}
+.worldtrip-card h3 a:hover {
+  color: #ffe0b2;
+  text-decoration: underline;
+}
+.worldtrip-card p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #ff914d;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background: #0077cc;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+/* ===== RESPONSIVE (MÓVILES) ===== */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 1.5rem;
+  }
+  .coordinator-invite {
+    margin: 20px auto;
+  }
+  .worldtrip-grid {
+    grid-template-columns: 1fr;
+    padding: 10px;
+  }
+}
