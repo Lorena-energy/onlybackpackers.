@@ -7,14 +7,14 @@ body {
   color: #333;
 }
 
-/* ===== ENCABEZADO (MENÚ) ===== */
+/* ===== ENCABEZADO (MENU) ===== */
 .main-header {
   background: #004f8c;
   color: white;
   position: sticky;
   top: 0;
   z-index: 1000;
-  padding: 5px 0; /* Reducido para cabecera más pequeña */
+  padding: 5px 0; /* Smaller header height */
   text-align: center;
 }
 .main-header nav {
@@ -119,7 +119,7 @@ body {
   display: inline-block;
   font-size: 1rem;
   font-weight: 600;
-  color: #ff6600; /* Texto naranja */
+  color: #ff6600; /* Orange text */
   background: linear-gradient(to right, #0077cc, #00bfff);
   padding: 12px 25px;
   border: none;
@@ -134,9 +134,9 @@ body {
   transform: scale(1.07);
 }
 
-/* ===== NUEVA SECCIÓN: coordinator-invite ===== */
+/* ===== NUEVA SECCION: coordinator-invite ===== */
 .coordinator-invite {
-  background: #d4f0ff; /* Turquesa clarito */
+  background: #d4f0ff; /* Light turquoise */
   padding: 40px 20px;
   text-align: center;
   margin: 40px auto;
@@ -158,7 +158,7 @@ body {
   margin: 0 auto;
   max-width: 700px;
 }
-/* Botón con un “pulse” sutil */
+/* Button with subtle pulse */
 .big-coord-btn {
   font-size: 1.2rem; 
   padding: 14px 30px;
@@ -186,7 +186,7 @@ body {
   border-radius: 10px;
   padding: 20px;
   text-align: center;
-  color: #ff914d; /* Naranja suave */
+  color: #ff914d; /* Soft orange */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s, box-shadow 0.3s;
 }
@@ -223,7 +223,7 @@ footer {
   margin-top: 20px;
 }
 
-/* ===== RESPONSIVE (MÓVILES) ===== */
+/* ===== RESPONSIVE (MOVILES) ===== */
 @media (max-width: 768px) {
   .hero-content h1 {
     font-size: 1.5rem;
