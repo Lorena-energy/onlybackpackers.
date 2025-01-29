@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Viajes Económicos - OnlyBackpackers</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="economicos.css">
+</head>
+<body>
+  <header class="main-header">
+    <nav>
+      <div class="menu-toggle" id="menu-toggle">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+      <ul class="menu" id="menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="muro.html">Muro</a></li>
+        <li><a href="recomendaciones.html">Recomendaciones</a></li>
+        <li><a href="worldtrip.html" class="active">Worldtrip</a></li>
+        <li><a href="eventos.html">Eventos</a></li>
+        <li><a href="recompensas.html">Recompensas</a></li>
+      </ul>
+    </nav>
+    <h1>🌍 Viajes Económicos</h1>
+  </header>
+
+  <!-- FORMULARIO OCULTO PARA AÑADIR VIAJES -->
+  <section id="admin-panel" class="hidden">
+    <h2>Agregar un Nuevo Viaje</h2>
+    <form id="add-trip-form">
+      <input type="text" id="trip-title" placeholder="Título del Viaje" required>
+      <input type="text" id="trip-destination" placeholder="Destino" required>
+      <input type="text" id="trip-price" placeholder="Precio (€)" required>
+      <textarea id="trip-description" placeholder="Descripción" required></textarea>
+      <input type="url" id="trip-image" placeholder="URL de la Imagen" required>
+      <button type="submit">Agregar Viaje</button>
+    </form>
+  </section>
+
+  <!-- LISTA DE VIAJES -->
+  <section id="trip-list">
+    <h2>Explora Nuestros Viajes Económicos</h2>
+    <div class="trips-container" id="trips-container"></div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 OnlyBackpackers. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="economicos.js"></script>
+</body>
+</html>
