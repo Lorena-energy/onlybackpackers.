@@ -131,7 +131,7 @@ body {
   transform: scale(1.07);
 }
 
-/* ===== SECCIÓN BENEFICIOS ===== */
+/* ===== SECCION BENEFICIOS ===== */
 .coord-benefits {
   max-width: 1000px;
   margin: 40px auto;
@@ -225,7 +225,7 @@ body {
   font-size: 1rem;
 }
 
-/* ===== GALERÍA ===== */
+/* ===== GALERIA ===== */
 .coord-gallery {
   max-width: 1000px;
   margin: 40px auto;
@@ -283,8 +283,7 @@ body {
   border: 1px solid #ddd;
   font-size: 1rem;
 }
-
-/* Botón del formulario (mismo estilo cta-button) */
+/* Boton del formulario (mismo estilo cta-button) */
 .coordinator-form button {
   display: inline-block;
   font-size: 1rem;
