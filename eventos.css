@@ -7,299 +7,76 @@ body {
   color: #333;
 }
 
-/* ===== ENCABEZADO (MENÚ) ===== */
+/* ===== ENCABEZADO ===== */
 .main-header {
-  background: #004f8c;
+  background: linear-gradient(to right, #0077cc, #00bfff);
   color: white;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  padding: 10px 0;
+  padding: 15px;
+  text-align: center;
 }
-.main-header nav {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.menu-toggle {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-  position: absolute;
-  left: 20px;
-  top: 15px;
-}
-.menu-toggle .bar {
-  width: 25px;
-  height: 3px;
-  background: white;
-  margin: 5px 0;
-}
+
 .menu {
   list-style: none;
   display: flex;
-  gap: 15px;
-  margin: 0;
-  padding: 0;
   justify-content: center;
+  gap: 10px;
+  padding: 0;
 }
+
 .menu li a {
-  text-decoration: none;
   color: white;
+  text-decoration: none;
   padding: 8px 15px;
   border-radius: 5px;
-  transition: background-color 0.3s;
 }
-.menu li a.active {
+
+.menu li a:hover {
   background-color: #ff6600;
 }
-.menu li a:hover {
-  background-color: #005fa3;
-}
 
-/* MENÚ MÓVIL */
-@media (max-width: 768px) {
-  .menu {
-    display: none;
-    flex-direction: column;
-    background: #0077cc;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    width: 100%;
-    padding: 10px 0;
-  }
-  .menu.active {
-    display: flex;
-  }
-  .menu-toggle {
-    display: flex;
-  }
-}
-
-/* ===== HERO EVENTS ===== */
-.hero-events {
-  position: relative;
-  min-height: 60vh;
-  background: url("https://via.placeholder.com/1600x900") center/cover no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.hero-events::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom right,
-    rgba(0, 119, 204, 0.5),
-    rgba(0, 191, 255, 0.5)
-  );
-}
-.hero-content {
-  position: relative;
-  z-index: 1;
-  max-width: 600px;
-  text-align: center;
-  color: white;
-  padding: 20px;
-}
-.hero-content h1 {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-}
-.hero-content p {
-  font-size: 1.1rem;
-  margin-bottom: 20px;
-}
-.cta-button {
-  display: inline-block;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #ff944d;
-  background: linear-gradient(to right, #0077cc, #00bfff);
-  padding: 12px 25px;
-  border: none;
-  border-radius: 50px;
-  cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0, 119, 204, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-}
-.cta-button:hover {
-  background: linear-gradient(to right, #005fa3, #00a2d6);
-  box-shadow: 0 6px 14px rgba(0, 119, 204, 0.5);
-  transform: scale(1.07);
-}
-
-/* ===== SECCIÓN DE COLABORADORES ===== */
-#collaborators {
-  text-align: center;
-  padding: 40px 20px;
-  background: #eef6fc;
-}
-#collaborators h2 {
-  font-size: 2rem;
-  margin-bottom: 10px;
-  color: #0077cc;
-}
-#collaborators p {
-  font-size: 1.1rem;
-  margin-bottom: 20px;
-}
-
-/* ===== FILTROS ===== */
-#filters {
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  margin: 20px auto;
-  max-width: 800px;
-}
-#filters form {
+/* ===== VIAJES ===== */
+.trips-container {
   display: grid;
-  gap: 15px;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-}
-#filters label {
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-#filters input,
-#filters select,
-#filters button {
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ddd;
-  font-size: 1rem;
-}
-#filters button {
-  background: #0077cc;
-  color: white;
-  font-weight: bold;
-  border: none;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-#filters button:hover {
-  background: #005fa3;
-}
-
-/* ===== LISTADO DE EVENTOS ===== */
-.event-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 20px;
   padding: 20px;
+  max-width: 1200px;
+  margin: auto;
 }
-.event-card {
-  background: linear-gradient(to bottom, #ffffff, #f9f9f9);
-  border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+.trip-card {
+  background: white;
+  border-radius: 10px;
   overflow: hidden;
-  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
-}
-.event-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-  background: linear-gradient(to bottom, #f9f9f9, #ffffff);
-}
-.event-card h3 {
-  font-size: 1.8rem;
-  margin: 15px;
-  color: #005fa3;
-}
-.event-card p {
-  font-size: 1rem;
-  margin: 10px 15px;
-  color: #555;
-}
-.event-card .price {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #ff6600;
-  margin: 10px 15px;
-}
-.event-card .cta-button {
-  display: block;
-  margin: 15px auto 20px;
   text-align: center;
-  width: 80%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* ===== CREAR EVENTO ===== */
-#create-event {
-  background: linear-gradient(to bottom, #eef6fc, #d9f0ff);
-  padding: 40px 20px;
-  border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+.trip-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
 }
-#create-event h2 {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-  text-align: center;
-  color: #005fa3;
+
+.trip-card h3 {
+  margin: 10px 0;
+  color: #0077cc;
 }
-#create-event form {
-  max-width: 800px;
-  margin: 0 auto;
-  display: grid;
-  gap: 15px;
+
+.trip-card p {
+  margin: 5px 15px;
+  font-size: 0.95rem;
 }
-#create-event label {
-  font-weight: bold;
-  font-size: 1rem;
-  margin-bottom: 5px;
-}
-#create-event input,
-#create-event textarea,
-#create-event select,
-#create-event button {
+
+.trip-card button {
+  background: #ff6600;
+  color: white;
   padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #ddd;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-}
-#create-event input:focus,
-#create-event textarea:focus,
-#create-event select:focus {
-  outline: none;
-  border-color: #0077cc;
-  box-shadow: 0 0 5px rgba(0, 119, 204, 0.5);
-}
-#create-event button {
-  background: linear-gradient(to right, #0077cc, #00bfff);
-  color: white;
-  font-weight: bold;
   border: none;
+  width: 100%;
   cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0, 119, 204, 0.3);
-  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
-}
-#create-event button:hover {
-  background: linear-gradient(to right, #005fa3, #00a2d6);
-  transform: scale(1.05);
-  box-shadow: 0 6px 15px rgba(0, 119, 204, 0.5);
 }
 
-/* ===== FOOTER ===== */
-footer {
-  background: #0077cc;
-  color: white;
-  text-align: center;
-  padding: 20px;
-}
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 768px) {
-  .hero-content h1 {
-    font-size: 2rem;
-  }
-  .event-grid {
-    grid-template-columns: 1fr;
-  }
-  #filters form {
-    grid-template-columns: 1fr;
-  }
+.trip-card button:hover {
+  background: #cc5200;
 }
