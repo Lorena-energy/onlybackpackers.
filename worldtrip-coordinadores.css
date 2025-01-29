@@ -1,4 +1,4 @@
-/* ===== REGLAS GENERALES ===== */
+/* ===== GENERAL RULES ===== */
 body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
@@ -111,12 +111,12 @@ body {
   margin-bottom: 20px;
 }
 
-/* ===== BOTONES: degradado azul/turquesa, texto naranja claro ===== */
+/* ===== CTA BUTTONS: BLUE/TURQUOISE GRADIENT, ORANGE TEXT ===== */
 .cta-button {
   display: inline-block;
   font-size: 1rem;
   font-weight: 600;
-  color: #ffa94d; /* naranja claro */
+  color: #ffa94d; /* orange text */
   background: linear-gradient(to right, #0077cc, #00bfff);
   padding: 12px 25px;
   border: none;
@@ -131,7 +131,7 @@ body {
   transform: scale(1.07);
 }
 
-/* ===== SECCION BENEFICIOS ===== */
+/* ===== BENEFITS SECTION ===== */
 .coord-benefits {
   max-width: 1000px;
   margin: 40px auto;
@@ -158,7 +158,7 @@ body {
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-/* ===== TESTIMONIOS ===== */
+/* ===== TESTIMONIALS ===== */
 .coord-testimonials {
   max-width: 1000px;
   margin: 40px auto;
@@ -225,7 +225,7 @@ body {
   font-size: 1rem;
 }
 
-/* ===== GALERIA ===== */
+/* ===== GALLERY ===== */
 .coord-gallery {
   max-width: 1000px;
   margin: 40px auto;
@@ -248,7 +248,7 @@ body {
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-/* ===== FORMULARIO DE COORDINADOR ===== */
+/* ===== COORDINATOR FORM ===== */
 .coord-form-section {
   background: #d4f0ff; /* light turquoise */
   padding: 60px 20px;
@@ -283,8 +283,7 @@ body {
   border: 1px solid #ddd;
   font-size: 1rem;
 }
-
-/* Boton del formulario (mismo estilo cta-button) */
+/* same cta style */
 .coordinator-form button {
   display: inline-block;
   font-size: 1rem;
@@ -328,3 +327,4 @@ footer {
     padding: 20px;
   }
 }
+
