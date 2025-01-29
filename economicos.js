@@ -17,8 +17,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const price = document.getElementById("trip-price").value;
     const description = document.getElementById("trip-description").value;
     const image = document.getElementById("trip-image").value;
+    const hostel = document.getElementById("trip-hostel").value || "No especificado";
 
-    const trip = { title, destination, price, description, image };
+    const trip = { title, destination, price, description, image, hostel };
     let trips = JSON.parse(localStorage.getItem("trips")) || [];
     trips.push(trip);
     localStorage.setItem("trips", JSON.stringify(trips));
@@ -39,6 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <p><strong>Destino:</strong> ${trip.destination}</p>
         <p><strong>Precio:</strong> ${trip.price}€</p>
         <p>${trip.description}</p>
+        <p><strong>Hostel recomendado:</strong> ${trip.hostel}</p>
         <button class="delete-trip" data-index="${index}">Eliminar</button>
       `;
       tripsContainer.appendChild(tripCard);
