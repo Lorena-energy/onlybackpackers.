@@ -1,141 +1,17 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <title>Coordinadores Worldtrip - OnlyBackpackers</title>
+  <meta charset="UTF-8">
+  <title>Coordinadores Worldtrip</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-  <!-- Fuente Poppins -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
-    rel="stylesheet"
-  />
-
-  <!-- Hoja de estilos principal -->
-  <link rel="stylesheet" href="coordinadores.css" />
+  <!-- Asegúrate de que el nombre coincide EXACTO con tu archivo CSS -->
+  <link rel="stylesheet" href="worldtrip-coordinadores.css">
 </head>
 <body>
-  <!-- ENCABEZADO -->
-  <header class="main-header">
-    <nav>
-      <div class="menu-toggle" id="menu-toggle">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </div>
-      <ul class="menu" id="menu">
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="muro.html">Muro</a></li>
-        <li><a href="recomendaciones.html">Recomendaciones</a></li>
-        <li><a href="eventos.html">Eventos</a></li>
-        <li><a href="worldtrip.html">Worldtrip</a></li>
-        <li><a href="worldtrip-coordinadores.html" class="active">Coordinadores</a></li>
-        <li><a href="recompensas.html">Recompensas</a></li>
-        <li><a href="expenses.html">Gastos</a></li>
-      </ul>
-    </nav>
-    <h1>Coordinadores Worldtrip</h1>
-  </header>
+  <!-- Tu menú, hero, secciones, etc. -->
+  <h1>Coordinadores Worldtrip</h1>
 
-  <!-- HERO -->
-  <section class="hero-coord">
-    <div class="hero-content">
-      <h2>¡Conviértete en Coordinador!</h2>
-      <p>Viaje pagado, paga diaria y <strong>comisiones</strong> por cada viajero que traigas.</p>
-      <a href="#benefits" class="cta-button">Más Información</a>
-    </div>
-  </section>
-
-  <!-- BENEFICIOS SIN CIFRAS -->
-  <section class="coord-benefits" id="benefits">
-    <h2>Ventajas de Ser Coordinador</h2>
-    <ul>
-      <li>Disfruta de tu viaje sin coste (transporte y alojamiento incluidos).</li>
-      <li>Recibe una paga diaria por tu labor de coordinación.</li>
-      <li><strong>Gana comisiones</strong> adicionales por cada viajero que reclutes.</li>
-      <li>Conoce gente de todo el mundo y haz de tu pasión tu profesión.</li>
-    </ul>
-    <p>¿Te intriga saber más? ¡Mira los testimonios de nuestros coordinadores!</p>
-  </section>
-
-  <!-- TESTIMONIOS -->
-  <section class="coord-testimonials" id="testimonios">
-    <h2>Testimonios de Nuestros Coordinadores</h2>
-    <div class="testimonial-grid">
-      <div class="testimonial-card">
-        <img src="images/coordinador1.jpg" alt="Foto Coordinador 1" />
-        <p>"Coordinar con OnlyBackpackers ha sido una experiencia increíble. Viajo gratis, gano algo de dinero y encima conozco viajeros geniales."</p>
-        <p><strong>- Marta (Especialista en Sudeste Asiático)</strong></p>
-      </div>
-      <div class="testimonial-card">
-        <img src="images/coordinador2.jpg" alt="Foto Coordinador 2" />
-        <p>"Ser coordinador me ha permitido ganar comisiones adicionales y liderar grupos en mis destinos favoritos."</p>
-        <p><strong>- Carlos (Coordinador en Europa del Este)</strong></p>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="coord-faq" id="faq">
-    <h2>Preguntas Frecuentes</h2>
-    <div class="faq-item">
-      <h3>¿Cuánto puedo ganar exactamente?</h3>
-      <p>Tu viaje está cubierto y recibes una paga diaria. Además, existen comisiones por cada persona que traigas al viaje. Más detalles en la entrevista personal tras tu postulación.</p>
-    </div>
-    <div class="faq-item">
-      <h3>¿Necesito experiencia previa?</h3>
-      <p>No es imprescindible, pero valoramos la experiencia en viajes, habilidades de liderazgo y organización. ¡Cuéntanos en el formulario!</p>
-    </div>
-    <div class="faq-item">
-      <h3>¿Quién se encarga de la logística y reservas?</h3>
-      <p>OnlyBackpackers se encarga de la reserva principal (vuelos, hoteles, etc.). Tu rol es acompañar al grupo, gestionar imprevistos y animar la experiencia.</p>
-    </div>
-  </section>
-
-  <!-- MINI GALERÍA OPCIONAL -->
-  <section class="coord-gallery" id="galeria">
-    <h2>Un Vistazo a Nuestros Viajes</h2>
-    <div class="photo-grid">
-      <img src="images/viaje1.jpg" alt="Grupo de viaje en montaña" />
-      <img src="images/viaje2.jpg" alt="Grupo divirtiéndose en la playa" />
-      <!-- Añade más imágenes si deseas -->
-    </div>
-  </section>
-
-  <!-- FORMULARIO DE COORDINADOR -->
-  <section class="coord-form-section" id="coord-form">
-    <h2>¿Listo para Ser Coordinador?</h2>
-    <form id="coordinator-form" class="coordinator-form">
-      <label for="fullname">Nombre Completo:</label>
-      <input type="text" id="fullname" required />
-
-      <label for="email">Correo Electrónico:</label>
-      <input type="email" id="email" required />
-
-      <label for="whatsapp">Número de WhatsApp:</label>
-      <input type="tel" id="whatsapp" placeholder="+34 600 123 456" required />
-
-      <label for="destinos">Destinos que dominas:</label>
-      <input type="text" id="destinos" placeholder="Ej: Sudamérica, Sudeste Asiático" required />
-
-      <label for="experiencia">Experiencia liderando viajes:</label>
-      <textarea id="experiencia" rows="3" placeholder="Cuéntanos brevemente..." required></textarea>
-
-      <label for="idiomas">Idiomas que hablas:</label>
-      <input type="text" id="idiomas" placeholder="Inglés, Francés..." required />
-
-      <label for="disponibilidad">Disponibilidad de fechas:</label>
-      <input type="text" id="disponibilidad" placeholder="Ej: Fines de semana, verano..." />
-
-      <button type="submit" class="cta-button">Enviar Solicitud</button>
-    </form>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 OnlyBackpackers. Todos los derechos reservados.</p>
-  </footer>
-
-  <!-- Script Coordinadores -->
+  <!-- scripts -->
   <script src="coordinadores.js"></script>
 </body>
 </html>
