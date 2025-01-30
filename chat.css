@@ -4,13 +4,12 @@ body {
   margin: 0;
   padding: 0;
   color: #333;
-  /* Degradado azul oscuro a turquesa */
   background: linear-gradient(to bottom right, #004f8c, #00c8e0);
 }
 
 /* Encabezado */
 .main-header {
-  background-color: #004f8c; /* barrita superior */
+  background-color: #004f8c;
   padding: 10px 20px;
   position: sticky;
   top: 0;
@@ -80,8 +79,6 @@ body {
 /* Contenido principal */
 .chat-destinations {
   padding: 20px;
-  /* Fondo blanco para ver la sección, 
-     o si quieres transparente, quita background. */
   background: #fff;
   border-radius: 10px;
   margin: 20px auto;
@@ -132,7 +129,7 @@ body {
   background: #cc5200;
 }
 
-/* Ciudades (dropdown) */
+/* Ciudades */
 .city-list {
   list-style: none;
   padding-left: 20px;
@@ -156,6 +153,48 @@ body {
 }
 .city:hover {
   background: #e0f3ff;
+}
+
+/* Formulario para agregar ciudades */
+.suggest-city {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 30px auto;
+  max-width: 600px;
+  text-align: center;
+}
+.suggest-city h2 {
+  color: #004f8c;
+}
+.suggest-city form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.suggest-city label {
+  font-weight: bold;
+  color: #004f8c;
+}
+.suggest-city select,
+.suggest-city input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+}
+.suggest-city button {
+  background: #ff6600;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.suggest-city button:hover {
+  background: #cc5200;
 }
 
 /* Ventana de Chat */
@@ -216,5 +255,4 @@ body {
   padding: 8px;
   width: fit-content;
   max-width: 80%;
-  /* Podrías alinear a la derecha si deseas: margin-left: auto; */
 }
