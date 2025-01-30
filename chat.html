@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>OnlyBackpackers - Chats por Destino</title>
+
+  <!-- Fuente Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"/>
+
+  <!-- Hoja de estilos del chat (chat.css) -->
+  <link rel="stylesheet" href="chat.css" />
+  
+  <!-- Iconos FontAwesome (opcional) -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <!-- Encabezado (menú) -->
+  <header class="main-header">
+    <nav>
+      <!-- Menú hamburguesa (mobile) -->
+      <div class="menu-toggle" id="menu-toggle">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+      <!-- Menú principal -->
+      <ul class="menu" id="menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="muro.html">Muro</a></li>
+        <li><a href="muro-personal.html">Mi Muro</a></li>
+        <li><a href="recomendaciones.html">Recomendaciones</a></li>
+        <li><a href="chats.html" class="active">Chats</a></li>
+        <li><a href="eventos.html">Eventos</a></li>
+        <li><a href="worldtrip.html">Worldtrip</a></li>
+        <li><a href="recompensas.html">Recompensas</a></li>
+        <li><a href="gastos.html">Gastos</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Contenido principal de la página -->
+  <main class="chat-destinations">
+    <h1>Chats por Destino</h1>
+    <p>Conéctate con viajeros en los destinos más populares.  
+       <br />Selecciona un continente y luego elige una ciudad para chatear.</p>
+
+    <section class="destination-menu">
+      <h2>Explora por Continentes</h2>
+      <ul class="continent-list">
+        
+        <!-- Europa -->
+        <li>
+          <button class="continent" data-continent="europe">Europa</button>
+          <ul class="city-list hidden" id="europe">
+            <li><button class="city">París</button></li>
+            <li><button class="city">Roma</button></li>
+            <li><button class="city">Ámsterdam</button></li>
+          </ul>
+        </li>
+
+        <!-- Asia -->
+        <li>
+          <button class="continent" data-continent="asia">Asia</button>
+          <ul class="city-list hidden" id="asia">
+            <li><button class="city">Tokio</button></li>
+            <li><button class="city">Bali</button></li>
+            <li><button class="city">Bangkok</button></li>
+          </ul>
+        </li>
+
+        <!-- América -->
+        <li>
+          <button class="continent" data-continent="america">América</button>
+          <ul class="city-list hidden" id="america">
+            <li><button class="city">Nueva York</button></li>
+            <li><button class="city">Buenos Aires</button></li>
+            <li><button class="city">Ciudad de México</button></li>
+          </ul>
+        </li>
+
+        <!-- Oceanía -->
+        <li>
+          <button class="continent" data-continent="oceania">Oceanía</button>
+          <ul class="city-list hidden" id="oceania">
+            <li><button class="city">Sídney</button></li>
+            <li><button class="city">Melbourne</button></li>
+            <li><button class="city">Auckland</button></li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Formulario para agregar nuevas ciudades -->
+    <section class="suggest-city">
+      <h2>¿Falta tu destino? Agrégalo aquí:</h2>
+      <form id="suggest-city-form">
+        <label for="continent">Selecciona el continente:</label>
+        <select id="continent" required>
+          <option value="europe">Europa</option>
+          <option value="asia">Asia</option>
+          <option value="america">América</option>
+          <option value="oceania">Oceanía</option>
+        </select>
+
+        <label for="new-city">Nombre de la ciudad:</label>
+        <input type="text" id="new-city" placeholder="Ejemplo: Cusco" required>
+
+        <button type="submit">Agregar Ciudad</button>
+      </form>
+    </section>
+
+    <!-- Ventana de Chat -->
+    <section class="chat-window hidden">
+      <h2 id="chat-destination-title">Chat - [Destino]</h2>
+      <div class="messages" id="chat-messages">
+        <!-- Mensajes se cargarán dinámicamente -->
+      </div>
+      <form id="chat-form">
+        <input type="text" id="chat-input" placeholder="Escribe un mensaje..." required />
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- Script de chat (chat.js) -->
+  <script src="chat.js"></script>
+</body>
+</html>
