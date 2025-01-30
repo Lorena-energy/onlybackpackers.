@@ -54,4 +54,35 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+
+  // Agregar nueva ciudad sugerida dinámicamente
+  const suggestForm = document.getElementById("suggest-city-form");
+  suggestForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const newCity = document.getElementById("new-city").value.trim();
+    const continent = document.getElementById("continent").value;
+
+    if (newCity && continent) {
+      const continentList = document.getElementById(continent.toLowerCase());
+      if (continentList) {
+        const cityItem = document.createElement("li");
+        const cityButton = document.createElement("button");
+        cityButton.textContent = newCity;
+        cityButton.classList.add("city");
+        cityItem.appendChild(cityButton);
+        continentList.appendChild(cityItem);
+
+        // Agregar funcionalidad al nuevo botón de ciudad
+        cityButton.addEventListener("click", () => {
+          chatTitle.textContent = `Chat - ${newCity}`;
+          chatMessages.innerHTML = ""; // limpiar chat
+          chatWindow.classList.remove("hidden");
+        });
+      }
+
+      // Limpiar formulario después de agregar la ciudad
+      suggestForm.reset();
+      alert("Ciudad sugerida añadida correctamente.");
+    }
+  });
 });
