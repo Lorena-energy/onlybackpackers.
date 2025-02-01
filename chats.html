@@ -4,10 +4,8 @@
   <meta charset="UTF-8">
   <title>OnlyBackpackers - Chats por Destino</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <!-- Fuente Poppins -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
   <!-- Enlazamos el CSS -->
   <link rel="stylesheet" href="chat.css">
 </head>
@@ -39,9 +37,9 @@
 
   <!-- Secciones de Continentes -->
   <main class="chat-destinations">
-
-    <!-- ===== ASIA (50 Destinos) ===== -->
+    <!-- ===== ASIA ===== -->
     <section class="continent-section">
+      <!-- El atributo data-continent se usará para hacer toggle de la lista -->
       <h2 class="continent" data-continent="asia">Asia</h2>
       <ul class="city-list" id="asia" data-continent="asia">
         <li><button class="city" data-city="Tokio (Japón)">Tokio (Japón)</button></li>
@@ -97,7 +95,7 @@
       </ul>
     </section>
 
-    <!-- ===== EUROPA (50 Destinos) ===== -->
+    <!-- ===== EUROPA ===== -->
     <section class="continent-section">
       <h2 class="continent" data-continent="europa">Europa</h2>
       <ul class="city-list" id="europa" data-continent="europa">
@@ -155,7 +153,7 @@
       </ul>
     </section>
 
-    <!-- ===== ÁFRICA (50 Destinos) ===== -->
+    <!-- ===== ÁFRICA ===== -->
     <section class="continent-section">
       <h2 class="continent" data-continent="africa">África</h2>
       <ul class="city-list" id="africa" data-continent="africa">
@@ -211,7 +209,7 @@
       </ul>
     </section>
 
-    <!-- ===== AMÉRICA (50 Destinos) ===== -->
+    <!-- ===== AMÉRICA ===== -->
     <section class="continent-section">
       <h2 class="continent" data-continent="america">América</h2>
       <ul class="city-list" id="america" data-continent="america">
@@ -268,7 +266,7 @@
       </ul>
     </section>
 
-    <!-- ===== OCEANÍA (50 Destinos) ===== -->
+    <!-- ===== OCEANÍA ===== -->
     <section class="continent-section">
       <h2 class="continent" data-continent="oceania">Oceanía</h2>
       <ul class="city-list" id="oceania" data-continent="oceania">
@@ -300,7 +298,7 @@
         <li><button class="city" data-city="Rangiroa (Polinesia Francesa)">Rangiroa (Polinesia Francesa)</button></li>
         <li><button class="city" data-city="Numea (Nueva Caledonia)">Numea (Nueva Caledonia)</button></li>
         <li><button class="city" data-city="Isla de Pinos (Nueva Caledonia)">Isla de Pinos (Nueva Caledonia)</button></li>
-        <li><button class="city" data-city="Port Vila (Vanuatu)">Vanuatu (Port Vila)</button></li>
+        <li><button class="city" data-city="Port Vila (Vanuatu)">Port Vila (Vanuatu)</button></li>
         <li><button class="city" data-city="Espíritu Santo (Vanuatu)">Espíritu Santo (Vanuatu)</button></li>
         <li><button class="city" data-city="Apia (Samoa)">Apia (Samoa)</button></li>
         <li><button class="city" data-city="Savai'i (Samoa)">Savai'i (Samoa)</button></li>
@@ -330,7 +328,7 @@
   <section class="chat-window hidden" id="chat-window">
     <h2 id="chat-destination-title">Chat - [Ciudad]</h2>
     <div class="messages" id="chat-messages">
-      <!-- Mensajes se cargarán aquí dinámicamente -->
+      <!-- Los mensajes se cargarán aquí dinámicamente -->
     </div>
     <form id="chat-form">
       <input type="text" id="chat-input" placeholder="Escribe un mensaje..." required>
@@ -339,7 +337,7 @@
   </section>
 
   <!-- Botón flotante para Sugerir Ciudad -->
-  <button class="floating-button" id="suggest-city-btn" title="Sugerir Ciudad">+</button>
+  <button class="floating-button" id="suggest-city-btn" title="Sugerir Ciudad">Añade ciudad</button>
 
   <!-- Formulario flotante para sugerir nueva ciudad -->
   <div class="suggest-city-form hidden" id="suggest-form-container">
@@ -382,3 +380,5 @@
   <script src="chat.js"></script>
 </body>
 </html>
+
+    
