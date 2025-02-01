@@ -1,89 +1,110 @@
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("Chat.js cargado correctamente");
-
-  // Menú hamburguesa
+  // MENÚ HAMBURGUESA
   const menuToggle = document.getElementById("menu-toggle");
   const menu = document.getElementById("menu");
   menuToggle.addEventListener("click", () => {
     menu.classList.toggle("show");
   });
 
-  // Gestionar desplegables de continentes
-  const continentButtons = document.querySelectorAll(".continent");
-  continentButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const continentId = button.dataset.continent;
-      const continentCities = document.getElementById(continentId);
-      continentCities.classList.toggle("hidden");
-    });
-  });
-
-  // Chat funcional
+  // CIUDADES: Al hacer click en una ciudad, abrimos la ventana de chat
   const cityButtons = document.querySelectorAll(".city");
-  const chatWindow = document.querySelector(".chat-window");
-  const chatMessages = document.getElementById("chat-messages");
-  const chatInput = document.getElementById("chat-input");
-  const chatForm = document.getElementById("chat-form");
+  const chatWindow = document.getElementById("chat-window");
   const chatTitle = document.getElementById("chat-destination-title");
+  const chatMessages = document.getElementById("chat-messages");
+  const chatForm = document.getElementById("chat-form");
+  const chatInput = document.getElementById("chat-input");
 
   cityButtons.forEach((button) => {
     button.addEventListener("click", () => {
-      const cityName = button.textContent;
-      chatTitle.textContent = `Chat - ${cityName}`;
-      chatMessages.innerHTML = ""; // Limpiar mensajes previos
+      // Muestra la ventana de chat
       chatWindow.classList.remove("hidden");
+      // Cambia el titulo segun la ciudad
+      const cityName = button.dataset.city;
+      chatTitle.textContent = `Chat - ${cityName}`;
+      // Limpia los mensajes
+      chatMessages.innerHTML = "";
     });
   });
 
-  // Enviar mensaje
-  if (chatForm) {
-    chatForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const message = chatInput.value.trim();
-      if (message) {
-        const newMessage = document.createElement("div");
-        newMessage.textContent = message;
-        newMessage.classList.add("sent-message");
-        chatMessages.appendChild(newMessage);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-        chatInput.value = "";
-      }
-    });
-  }
+  // Enviar mensaje en el chat
+  chatForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const message = chatInput.value.trim();
+    if (message) {
+      const newMsg = document.createElement("div");
+      newMsg.classList.add("message");
+      newMsg.textContent = message;
+      chatMessages.appendChild(newMsg);
+      chatInput.value = "";
+      // Auto-scroll al final
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+  });
 
-  // Agregar nueva ciudad sugerida dinámicamente
-  const suggestForm = document.getElementById("suggest-city-form");
+  // BOTÓN FLOTANTE para Sugerir Ciudad
+  const suggestBtn = document.getElementById("suggest-city-btn");
+  const suggestFormContainer = document.getElementById("suggest-form-container");
+  const suggestForm = document.getElementById("suggest-form");
+  const confirmationMessage = document.getElementById("confirmation-message");
+  const closeConfirmation = document.getElementById("close-confirmation");
+  const closeSuggestForm = document.getElementById("close-suggest-form");
 
+  // Mostrar/ocultar formulario
+  suggestBtn.addEventListener("click", () => {
+    suggestFormContainer.classList.toggle("hidden");
+  });
+  closeSuggestForm.addEventListener("click", () => {
+    suggestFormContainer.classList.add("hidden");
+  });
+
+  // Al enviar nueva ciudad
   suggestForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    const newCity = document.getElementById("new-city").value.trim();
-    const continent = document.getElementById("continent").value;
+    const continent = document.getElementById("continent-select").value;
+    const cityName = document.getElementById("city-name").value.trim();
+    const countryName = document.getElementById("country-name").value.trim();
+    const reason = document.getElementById("reason").value.trim();
+    // const comments = document.getElementById("comments").value; // OPCIONAL
 
-    if (newCity && continent) {
-      const continentList = document.getElementById(continent.toLowerCase());
-
-      if (continentList) {
-        const cityItem = document.createElement("li");
-        const cityButton = document.createElement("button");
-        cityButton.textContent = newCity;
-        cityButton.classList.add("city");
-        cityItem.appendChild(cityButton);
-        continentList.appendChild(cityItem);
-
-        // Agregar funcionalidad al nuevo botón de ciudad
-        cityButton.addEventListener("click", () => {
-          chatTitle.textContent = `Chat - ${newCity}`;
-          chatMessages.innerHTML = ""; // Limpiar mensajes previos
-          chatWindow.classList.remove("hidden");
-        });
-
-        alert(`Ciudad "${newCity}" agregada exitosamente en ${continent}.`);
-      } else {
-        alert("Error: No se pudo encontrar la lista del continente.");
-      }
-
-      // Limpiar formulario después de agregar la ciudad
-      suggestForm.reset();
+    if (!continent || !cityName || !countryName || !reason) {
+      alert("Por favor, completa todos los campos requeridos.");
+      return;
     }
+
+    // Buscamos la ul de ese continente
+    const ul = document.querySelector(`.city-list[data-continent="${continent}"]`);
+    if (!ul) {
+      alert("No se encontró la lista para ese continente.");
+      return;
+    }
+
+    // Creamos un nuevo <li><button></button></li>
+    const li = document.createElement("li");
+    const btn = document.createElement("button");
+    btn.classList.add("city");
+    btn.dataset.city = `${cityName} (${countryName})`;
+    btn.textContent = `${cityName} (${countryName})`;
+
+    // Añadimos evento para abrir chat
+    btn.addEventListener("click", () => {
+      chatWindow.classList.remove("hidden");
+      chatTitle.textContent = `Chat - ${btn.dataset.city}`;
+      chatMessages.innerHTML = "";
+    });
+
+    li.appendChild(btn);
+    ul.appendChild(li);
+
+    // Ocultamos formulario
+    suggestFormContainer.classList.add("hidden");
+    suggestForm.reset();
+
+    // Mostramos mensaje confirmación
+    confirmationMessage.classList.remove("hidden");
+  });
+
+  // Cerrar mensaje confirmación
+  closeConfirmation.addEventListener("click", () => {
+    confirmationMessage.classList.add("hidden");
   });
 });
