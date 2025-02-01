@@ -35,13 +35,13 @@
   <h1>Chats por Destino</h1>
   <p>Conéctate con viajeros en los destinos más populares de cada continente.</p>
 
-  <!-- Secciones de Continentes -->
+  <!-- Secciones de Continentes (solo 5) -->
   <main class="chat-destinations">
     <!-- ===== ASIA ===== -->
     <section class="continent-section">
-      <!-- El atributo data-continent se usará para hacer toggle de la lista -->
       <h2 class="continent" data-continent="asia">Asia</h2>
-      <ul class="city-list" id="asia" data-continent="asia">
+      <!-- La clase "hidden" hace que la lista esté colapsada por defecto -->
+      <ul class="city-list hidden" id="asia" data-continent="asia">
         <li><button class="city" data-city="Tokio (Japón)">Tokio (Japón)</button></li>
         <li><button class="city" data-city="Kioto (Japón)">Kioto (Japón)</button></li>
         <li><button class="city" data-city="Osaka (Japón)">Osaka (Japón)</button></li>
@@ -98,7 +98,7 @@
     <!-- ===== EUROPA ===== -->
     <section class="continent-section">
       <h2 class="continent" data-continent="europa">Europa</h2>
-      <ul class="city-list" id="europa" data-continent="europa">
+      <ul class="city-list hidden" id="europa" data-continent="europa">
         <li><button class="city" data-city="París (Francia)">París (Francia)</button></li>
         <li><button class="city" data-city="Londres (Reino Unido)">Londres (Reino Unido)</button></li>
         <li><button class="city" data-city="Roma (Italia)">Roma (Italia)</button></li>
@@ -156,7 +156,7 @@
     <!-- ===== ÁFRICA ===== -->
     <section class="continent-section">
       <h2 class="continent" data-continent="africa">África</h2>
-      <ul class="city-list" id="africa" data-continent="africa">
+      <ul class="city-list hidden" id="africa" data-continent="africa">
         <li><button class="city" data-city="Marrakech (Marruecos)">Marrakech (Marruecos)</button></li>
         <li><button class="city" data-city="Fez (Marruecos)">Fez (Marruecos)</button></li>
         <li><button class="city" data-city="Casablanca (Marruecos)">Casablanca (Marruecos)</button></li>
@@ -212,7 +212,7 @@
     <!-- ===== AMÉRICA ===== -->
     <section class="continent-section">
       <h2 class="continent" data-continent="america">América</h2>
-      <ul class="city-list" id="america" data-continent="america">
+      <ul class="city-list hidden" id="america" data-continent="america">
         <li><button class="city" data-city="Nueva York (EE.UU.)">Nueva York (EE.UU.)</button></li>
         <li><button class="city" data-city="Los Ángeles (EE.UU.)">Los Ángeles (EE.UU.)</button></li>
         <li><button class="city" data-city="Las Vegas (EE.UU.)">Las Vegas (EE.UU.)</button></li>
@@ -269,7 +269,7 @@
     <!-- ===== OCEANÍA ===== -->
     <section class="continent-section">
       <h2 class="continent" data-continent="oceania">Oceanía</h2>
-      <ul class="city-list" id="oceania" data-continent="oceania">
+      <ul class="city-list hidden" id="oceania" data-continent="oceania">
         <li><button class="city" data-city="Sídney (Australia)">Sídney (Australia)</button></li>
         <li><button class="city" data-city="Melbourne (Australia)">Melbourne (Australia)</button></li>
         <li><button class="city" data-city="Brisbane (Australia)">Brisbane (Australia)</button></li>
@@ -324,7 +324,7 @@
     </section>
   </main>
 
-  <!-- Ventana de Chat -->
+  <!-- Ventana de Chat (más grande) -->
   <section class="chat-window hidden" id="chat-window">
     <h2 id="chat-destination-title">Chat - [Ciudad]</h2>
     <div class="messages" id="chat-messages">
@@ -347,9 +347,9 @@
       <select id="continent-select" required>
         <option value="">--Selecciona Continente--</option>
         <option value="asia">Asia</option>
-        <option value="europa">Europa</option>
         <option value="africa">África</option>
         <option value="america">América</option>
+        <option value="europa">Europa</option>
         <option value="oceania">Oceanía</option>
       </select>
 
