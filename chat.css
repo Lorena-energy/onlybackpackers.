@@ -11,7 +11,7 @@ body {
   color: #333;
 }
 
-/* Encabezado */
+/* Encabezado y menú */
 .main-header {
   background-color: #004f8c;
   color: white;
@@ -43,7 +43,7 @@ body {
   flex-direction: column;
   cursor: pointer;
 }
-.menu-toggle span {
+.menu-toggle .bar {
   width: 25px;
   height: 3px;
   background: white;
@@ -69,22 +69,7 @@ body {
   }
 }
 
-/* Contenido principal */
-h1 {
-  text-align: center;
-  margin: 20px 0 0;
-  color: white;
-}
-p {
-  text-align: center;
-  color: white;
-  margin-bottom: 20px;
-}
-
-/* Secciones de continentes */
-.chat-destinations {
-  padding: 20px;
-}
+/* Sección de continentes */
 .continent-section {
   background: rgba(255, 255, 255, 0.2);
   margin: 20px auto;
@@ -93,11 +78,15 @@ p {
   max-width: 900px;
 }
 .continent-section h2 {
-  color: #fff;
+  background: #ff6600;  /* naranja */
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
   margin-bottom: 10px;
-  font-size: 1.5rem;
   cursor: pointer; /* Indica que es interactivo */
 }
+
+/* Lista de ciudades */
 .city-list {
   list-style: none;
   padding: 0;
@@ -121,12 +110,12 @@ p {
   background: #e0f3ff;
 }
 
-/* Ventana de Chat */
+/* Ventana de Chat (más grande) */
 .chat-window {
   position: fixed;
   bottom: 0;
   right: 10px;
-  width: 300px;
+  width: 400px;  /* ancho incrementado */
   max-height: 70%;
   background: white;
   border-radius: 10px 10px 0 0;
@@ -174,7 +163,7 @@ p {
   cursor: pointer;
 }
 
-/* Botón flotante para "Sugerir Ciudad" */
+/* Botón flotante para "Añade ciudad" */
 .floating-button {
   position: fixed;
   bottom: 80px;
@@ -182,14 +171,9 @@ p {
   background: #ff6600;
   color: white;
   border: none;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  font-size: 2rem;
-  line-height: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  border-radius: 5px;  /* forma rectangular con bordes redondeados */
+  padding: 10px 15px;
+  font-size: 1rem;
   cursor: pointer;
   z-index: 1000;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
