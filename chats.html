@@ -8,8 +8,8 @@
   <!-- Fuente Poppins -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-  <!-- Aquí enlazas tu CSS (por ejemplo, chats.css) -->
-  <link rel="stylesheet" href="chats.css">
+  <!-- Enlazamos el CSS -->
+  <link rel="stylesheet" href="chat.css">
 </head>
 <body>
   <!-- Encabezado -->
@@ -37,13 +37,13 @@
   <h1>Chats por Destino</h1>
   <p>Conéctate con viajeros en los destinos más populares de cada continente.</p>
 
-  <!-- Secciones de continentes -->
+  <!-- Secciones de Continentes -->
   <main class="chat-destinations">
 
     <!-- ===== ASIA (50 Destinos) ===== -->
     <section class="continent-section">
-      <h2>Asia</h2>
-      <ul class="city-list" data-continent="asia">
+      <h2 class="continent" data-continent="asia">Asia</h2>
+      <ul class="city-list" id="asia" data-continent="asia">
         <li><button class="city" data-city="Tokio (Japón)">Tokio (Japón)</button></li>
         <li><button class="city" data-city="Kioto (Japón)">Kioto (Japón)</button></li>
         <li><button class="city" data-city="Osaka (Japón)">Osaka (Japón)</button></li>
@@ -99,8 +99,8 @@
 
     <!-- ===== EUROPA (50 Destinos) ===== -->
     <section class="continent-section">
-      <h2>Europa</h2>
-      <ul class="city-list" data-continent="europa">
+      <h2 class="continent" data-continent="europa">Europa</h2>
+      <ul class="city-list" id="europa" data-continent="europa">
         <li><button class="city" data-city="París (Francia)">París (Francia)</button></li>
         <li><button class="city" data-city="Londres (Reino Unido)">Londres (Reino Unido)</button></li>
         <li><button class="city" data-city="Roma (Italia)">Roma (Italia)</button></li>
@@ -157,8 +157,8 @@
 
     <!-- ===== ÁFRICA (50 Destinos) ===== -->
     <section class="continent-section">
-      <h2>África</h2>
-      <ul class="city-list" data-continent="africa">
+      <h2 class="continent" data-continent="africa">África</h2>
+      <ul class="city-list" id="africa" data-continent="africa">
         <li><button class="city" data-city="Marrakech (Marruecos)">Marrakech (Marruecos)</button></li>
         <li><button class="city" data-city="Fez (Marruecos)">Fez (Marruecos)</button></li>
         <li><button class="city" data-city="Casablanca (Marruecos)">Casablanca (Marruecos)</button></li>
@@ -172,10 +172,10 @@
         <li><button class="city" data-city="Luxor (Egipto)">Luxor (Egipto)</button></li>
         <li><button class="city" data-city="Sharm el-Sheij (Egipto)">Sharm el-Sheij (Egipto)</button></li>
         <li><button class="city" data-city="Alejandría (Egipto)">Alejandría (Egipto)</button></li>
-        <li><button class="city" data-city="Giza (Egipto)">Giza (Pirámides, Egipto)</button></li>
+        <li><button class="city" data-city="Giza (Pirámides, Egipto)">Giza (Pirámides, Egipto)</button></li>
         <li><button class="city" data-city="Dahab (Egipto)">Dahab (Egipto)</button></li>
         <li><button class="city" data-city="Zanzíbar (Tanzania)">Zanzíbar (Tanzania)</button></li>
-        <li><button class="city" data-city="Serengeti (Tanzania)">Parque del Serengeti (Tanzania)</button></li>
+        <li><button class="city" data-city="Parque del Serengeti (Tanzania)">Parque del Serengeti (Tanzania)</button></li>
         <li><button class="city" data-city="Monte Kilimanjaro (Tanzania)">Monte Kilimanjaro (Tanzania)</button></li>
         <li><button class="city" data-city="Nairobi (Kenia)">Nairobi (Kenia)</button></li>
         <li><button class="city" data-city="Masai Mara (Kenia)">Masai Mara (Kenia)</button></li>
@@ -185,7 +185,7 @@
         <li><button class="city" data-city="Ruanda (Volcanes y gorilas)">Ruanda (Volcanes y gorilas)</button></li>
         <li><button class="city" data-city="Adís Abeba (Etiopía)">Adís Abeba (Etiopía)</button></li>
         <li><button class="city" data-city="Lalibela (Etiopía)">Lalibela (Etiopía)</button></li>
-        <li><button class="city" data-city="Victoria Falls (Zambia/Zimbabue)">Cataratas Victoria (Zambia/Zimbabue)</button></li>
+        <li><button class="city" data-city="Cataratas Victoria (Zambia/Zimbabue)">Cataratas Victoria (Zambia/Zimbabue)</button></li>
         <li><button class="city" data-city="Harare (Zimbabue)">Harare (Zimbabue)</button></li>
         <li><button class="city" data-city="Lagos (Nigeria)">Lagos (Nigeria)</button></li>
         <li><button class="city" data-city="Abiyán (Costa de Marfil)">Abiyán (Costa de Marfil)</button></li>
@@ -213,8 +213,8 @@
 
     <!-- ===== AMÉRICA (50 Destinos) ===== -->
     <section class="continent-section">
-      <h2>América</h2>
-      <ul class="city-list" data-continent="america">
+      <h2 class="continent" data-continent="america">América</h2>
+      <ul class="city-list" id="america" data-continent="america">
         <li><button class="city" data-city="Nueva York (EE.UU.)">Nueva York (EE.UU.)</button></li>
         <li><button class="city" data-city="Los Ángeles (EE.UU.)">Los Ángeles (EE.UU.)</button></li>
         <li><button class="city" data-city="Las Vegas (EE.UU.)">Las Vegas (EE.UU.)</button></li>
@@ -270,8 +270,8 @@
 
     <!-- ===== OCEANÍA (50 Destinos) ===== -->
     <section class="continent-section">
-      <h2>Oceanía</h2>
-      <ul class="city-list" data-continent="oceania">
+      <h2 class="continent" data-continent="oceania">Oceanía</h2>
+      <ul class="city-list" id="oceania" data-continent="oceania">
         <li><button class="city" data-city="Sídney (Australia)">Sídney (Australia)</button></li>
         <li><button class="city" data-city="Melbourne (Australia)">Melbourne (Australia)</button></li>
         <li><button class="city" data-city="Brisbane (Australia)">Brisbane (Australia)</button></li>
@@ -341,7 +341,7 @@
   <!-- Botón flotante para Sugerir Ciudad -->
   <button class="floating-button" id="suggest-city-btn" title="Sugerir Ciudad">+</button>
 
-  <!-- Formulario flotante de sugerencia de ciudad -->
+  <!-- Formulario flotante para sugerir nueva ciudad -->
   <div class="suggest-city-form hidden" id="suggest-form-container">
     <h2>Sugerir Nueva Ciudad</h2>
     <form id="suggest-form">
@@ -378,7 +378,7 @@
     <button id="close-confirmation">Cerrar</button>
   </div>
 
-  <!-- Aquí enlazas tu JS (por ejemplo, chat.js) -->
+  <!-- Enlazamos el JS -->
   <script src="chat.js"></script>
 </body>
 </html>
