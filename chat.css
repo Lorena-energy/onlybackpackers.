@@ -2,27 +2,19 @@
 body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
-  padding: 0;
-  color: #333;
   background: linear-gradient(to bottom right, #004f8c, #00c8e0);
+  color: #333;
 }
 
 /* Encabezado */
 .main-header {
   background-color: #004f8c;
+  color: white;
   padding: 10px 20px;
   position: sticky;
   top: 0;
   z-index: 1000;
 }
-
-.main-header nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-/* Menú y hamburguesa */
 .menu {
   list-style: none;
   display: flex;
@@ -30,7 +22,7 @@ body {
   margin: 0;
   padding: 0;
 }
-.menu li a {
+.menu a {
   text-decoration: none;
   color: white;
   padding: 8px 15px;
@@ -41,15 +33,12 @@ body {
 .menu a.active {
   background-color: #005fa3;
 }
-
-/* Hamburguesa */
 .menu-toggle {
   display: none;
   flex-direction: column;
   cursor: pointer;
-  margin-right: 10px;
 }
-.menu-toggle .bar {
+.menu-toggle span {
   width: 25px;
   height: 3px;
   background: white;
@@ -66,7 +55,6 @@ body {
     right: 0;
     width: 100%;
     z-index: 1000;
-    padding: 10px 0;
   }
   .menu.show {
     display: flex;
@@ -77,182 +65,217 @@ body {
 }
 
 /* Contenido principal */
-.chat-destinations {
-  padding: 20px;
-  background: #fff;
-  border-radius: 10px;
-  margin: 20px auto;
-  max-width: 1200px;
-  min-height: 80vh;
-}
-
-.chat-destinations h1 {
+h1 {
   text-align: center;
-  color: #004f8c;
-  margin-bottom: 10px;
+  margin: 20px 0 0;
+  color: white;
 }
-.chat-destinations p {
+p {
   text-align: center;
-  color: #333;
+  color: white;
   margin-bottom: 20px;
 }
 
-/* Menú de continentes */
-.destination-menu {
+/* Secciones de continentes */
+.chat-destinations {
+  padding: 20px;
+}
+.continent-section {
+  background: rgba(255, 255, 255, 0.2);
   margin: 20px auto;
-  max-width: 800px;
-  text-align: center;
+  border-radius: 10px;
+  padding: 10px;
+  max-width: 900px;
 }
-.destination-menu h2 {
-  color: #004f8c;
-  margin-bottom: 15px;
+.continent-section h2 {
+  color: #fff;
+  margin-bottom: 10px;
+  font-size: 1.5rem;
 }
-.continent-list {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-  padding: 0;
-}
-.continent {
-  background: #ff6600;
-  color: white;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  min-width: 120px;
-  transition: background-color 0.3s ease;
-}
-.continent:hover {
-  background: #cc5200;
-}
-
-/* Ciudades */
 .city-list {
   list-style: none;
-  padding-left: 20px;
-  margin: 10px auto;
+  padding: 0;
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  justify-content: center;
 }
-.city-list.hidden {
-  display: none;
+.city-list li {
+  margin: 0;
 }
-.city {
+.city-list button.city {
   background: white;
   color: #004f8c;
-  padding: 5px 10px;
   border: none;
-  border-radius: 3px;
+  border-radius: 5px;
+  padding: 5px 10px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background 0.3s ease;
 }
-.city:hover {
+.city-list button.city:hover {
   background: #e0f3ff;
 }
 
-/* Formulario para agregar ciudades */
-.suggest-city {
+/* Chat Window */
+.chat-window {
+  position: fixed;
+  bottom: 0;
+  right: 10px;
+  width: 300px;
+  max-height: 70%;
   background: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin: 30px auto;
-  max-width: 600px;
-  text-align: center;
-}
-.suggest-city h2 {
-  color: #004f8c;
-}
-.suggest-city form {
+  border-radius: 10px 10px 0 0;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
-  gap: 10px;
-}
-.suggest-city label {
-  font-weight: bold;
-  color: #004f8c;
-}
-.suggest-city select,
-.suggest-city input {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  width: 100%;
-}
-.suggest-city button {
-  background: #ff6600;
-  color: white;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-.suggest-city button:hover {
-  background: #cc5200;
-}
-
-/* Ventana de Chat */
-.chat-window {
-  margin-top: 30px;
-  padding: 20px;
-  background: white;
-  border-radius: 10px;
-  max-width: 800px;
-  margin: 30px auto 50px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transform: translateY(0);
+  z-index: 999;
 }
 .chat-window.hidden {
   display: none;
 }
-.chat-window h2 {
-  color: #004f8c;
-  margin-bottom: 10px;
-  text-align: center;
+#chat-destination-title {
+  background: #004f8c;
+  color: white;
+  margin: 0;
+  padding: 10px;
+  border-radius: 10px 10px 0 0;
+  font-size: 1.1rem;
 }
 .messages {
-  height: 300px;
-  overflow-y: scroll;
-  border: 1px solid #ccc;
-  margin-bottom: 15px;
+  flex: 1;
+  overflow-y: auto;
   padding: 10px;
-  background: #f9f9f9;
+  border-top: 1px solid #ddd;
+}
+.message {
+  margin-bottom: 10px;
+  font-size: 0.9rem;
 }
 #chat-form {
   display: flex;
   gap: 10px;
-  justify-content: center;
+  padding: 10px;
+  border-top: 1px solid #ddd;
 }
 #chat-input {
-  flex: 1;
-  padding: 10px;
-  border: 1px solid #ccc;
+  flex-grow: 1;
+  padding: 5px;
   border-radius: 5px;
+  border: 1px solid #ccc;
 }
 #chat-form button {
   background: #004f8c;
   color: white;
   border: none;
-  padding: 10px 20px;
+  padding: 5px 10px;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
 }
-#chat-form button:hover {
+
+/* Botón flotante para "Sugerir Ciudad" */
+.floating-button {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  background: #ff6600;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 2rem;
+  line-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: background 0.3s;
+}
+.floating-button:hover {
+  background: #cc5200;
+}
+
+/* Formulario flotante para sugerir ciudad */
+.suggest-city-form {
+  position: fixed;
+  bottom: 140px;
+  right: 20px;
+  width: 300px;
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  z-index: 1001;
+}
+.suggest-city-form.hidden {
+  display: none;
+}
+.suggest-city-form h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #004f8c;
+}
+.suggest-city-form label {
+  display: block;
+  margin: 10px 0 5px;
+}
+.suggest-city-form input,
+.suggest-city-form select,
+.suggest-city-form textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+.suggest-city-form button {
+  background: #004f8c;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+.suggest-city-form button:hover {
   background: #005fa3;
 }
 
-/* Mensajes Enviados */
-.sent-message {
-  background-color: #d1ecf1;
-  border-radius: 5px;
-  margin: 5px 0;
-  padding: 8px;
-  width: fit-content;
-  max-width: 80%;
+/* Mensaje de confirmacion */
+.confirmation-message {
+  position: fixed;
+  bottom: 50%;
+  right: 50%;
+  transform: translate(50%, 50%);
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  z-index: 2000;
+  text-align: center;
+  width: 250px;
+}
+.confirmation-message.hidden {
+  display: none;
+}
+.confirmation-message p {
+  margin: 0 0 10px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .chat-window {
+    width: 90%;
+    right: 5%;
+  }
+  .suggest-city-form {
+    width: 90%;
+    right: 5%;
+  }
+  .floating-button {
+    bottom: 60px;
+    right: 10px;
+  }
 }
