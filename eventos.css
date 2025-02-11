@@ -143,7 +143,7 @@ body {
 }
 
 /* ===== EVENTOS GRID ===== */
-.event-grid {
+.event-grid, #filters, #create-event {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 20px;
@@ -152,9 +152,10 @@ body {
   padding: 20px;
   background: #fff;
   border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.event-card {
+.event-card, #filters, #create-event {
   background: linear-gradient(to right, #0077cc, #00bfff);
   border-radius: 10px;
   padding: 20px;
@@ -164,29 +165,18 @@ body {
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.event-card:hover {
+.event-card:hover, #filters:hover, #create-event:hover {
   transform: scale(1.05);
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
 
-.event-card h3 {
+.event-card h3, #filters h2, #create-event h2 {
   margin: 0 0 10px;
   font-size: 1.3rem;
   color: #fff;
 }
 
-.event-card h3 a {
-  text-decoration: none;
-  color: #fff;
-  transition: color 0.3s;
-}
-
-.event-card h3 a:hover {
-  color: #ffe0b2;
-  text-decoration: underline;
-}
-
-.event-card p {
+.event-card p, #filters p, #create-event p {
   margin: 0;
   font-size: 0.95rem;
   color: #ff914d;
@@ -197,7 +187,7 @@ body {
   .hero-content h1 {
     font-size: 1.5rem;
   }
-  .event-grid {
+  .event-grid, #filters, #create-event {
     grid-template-columns: 1fr;
     padding: 10px;
   }
