@@ -48,12 +48,19 @@
       </div>
     </div>
 
-    <!-- SECCIÓN SOLO PARA ADMINISTRADORES -->
-    <div id="admin-section" style="display: none; text-align: center; margin-top: 30px;">
-      <h2>Administración de Viajes</h2>
-      <p>Puedes agregar nuevos viajes aquí.</p>
-      <button class="cta-button" onclick="addNewTrip()">Añadir Nuevo Viaje</button>
-    </div>
+     <!-- SECCIÓN SOLO PARA ADMINISTRADORES -->
+  <div id="admin-section" style="display: none; text-align: center; margin-top: 30px;">
+    <h2>Administración de Viajes</h2>
+    <p>Puedes agregar nuevos viajes aquí.</p>
+    <form id="trip-form">
+      <input type="text" id="trip-name" placeholder="Nombre del viaje" required>
+      <input type="text" id="trip-description" placeholder="Descripción" required>
+      <input type="text" id="trip-duration" placeholder="Duración" required>
+      <input type="number" id="trip-price" placeholder="Precio (€)" required>
+      <input type="url" id="trip-image" placeholder="URL de la imagen" required>
+      <button type="submit" class="cta-button">Añadir Viaje</button>
+    </form>
+  </div>
 
     <!-- MENSAJE SI NO HAY MÁS VIAJES -->
     <div id="no-trips-message" style="text-align: center; margin-top: 20px; display: none;">
