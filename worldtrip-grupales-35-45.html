@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Worldtrip - [Categoría]</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="worldtrip.css" />
+</head>
+<body>
+  <!-- ENCABEZADO -->
+  <header class="main-header">
+    <nav>
+      <ul class="menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="worldtrip.html" class="active">Worldtrip</a></li>
+      </ul>
+    </nav>
+    <h1>Viajes [Categoría]</h1>
+  </header>
+
+  <!-- LISTADO DE VIAJES -->
+  <main>
+    <div class="worldtrip-grid">
+      <!-- Ejemplo de Viaje 1 -->
+      <div class="trip-card" onclick="toggleTripDetails('trip1')">
+        <h3>Viaje Destacado 1</h3>
+        <p>Descripción breve del viaje.</p>
+      </div>
+      <div id="trip1" class="trip-details">
+        <img src="images/viaje1.jpg" alt="Viaje 1" />
+        <p>Descripción completa del viaje, qué incluye, duración, etc.</p>
+        <p><strong>Precio:</strong> XXX€</p>
+        <button class="cta-button" onclick="openPayment()">Paga ahora</button>
+        <a href="https://wa.me/123456789?text=Hola,%20quiero%20más%20información%20sobre%20[Nombre del viaje]" class="cta-button">Más Info por WhatsApp</a>
+      </div>
+
+      <!-- Ejemplo de Viaje 2 -->
+      <div class="trip-card" onclick="toggleTripDetails('trip2')">
+        <h3>Viaje Destacado 2</h3>
+        <p>Descripción breve del viaje.</p>
+      </div>
+      <div id="trip2" class="trip-details">
+        <img src="images/viaje2.jpg" alt="Viaje 2" />
+        <p>Descripción completa del viaje, qué incluye, duración, etc.</p>
+        <p><strong>Precio:</strong> XXX€</p>
+        <button class="cta-button" onclick="openPayment()">Paga ahora</button>
+        <a href="https://wa.me/123456789?text=Hola,%20quiero%20más%20información%20sobre%20[Nombre del viaje]" class="cta-button">Más Info por WhatsApp</a>
+      </div>
+    </div>
+
+    <!-- SECCIÓN SOLO PARA ADMINISTRADORES -->
+    <div id="admin-section" style="display: none; text-align: center; margin-top: 30px;">
+      <h2>Administración de Viajes</h2>
+      <p>Puedes agregar nuevos viajes aquí.</p>
+      <button class="cta-button" onclick="addNewTrip()">Añadir Nuevo Viaje</button>
+    </div>
+
+    <!-- MENSAJE SI NO HAY MÁS VIAJES -->
+    <div id="no-trips-message" style="text-align: center; margin-top: 20px; display: none;">
+      <p>Próximamente más viajes disponibles. ¡Vuelve pronto!</p>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 OnlyBackpackers. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    function toggleTripDetails(id) {
+      let trip = document.getElementById(id);
+      trip.style.display = trip.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function openPayment() {
+      alert("La integración del TPV virtual estará disponible pronto.");
+    }
+
+    // SIMULACIÓN DE ACCESO ADMINISTRADOR
+    const isAdmin = true; // CAMBIA ESTO A FALSE PARA PROBAR COMO USUARIO NORMAL
+    if (isAdmin) {
+      document.getElementById("admin-section").style.display = "block";
+    }
+
+    // FUNCIÓN PARA AÑADIR UN NUEVO VIAJE (DEMO)
+    function addNewTrip() {
+      alert("Aquí podrás subir nuevos viajes en el futuro.");
+    }
+  </script>
+</body>
+</html>
