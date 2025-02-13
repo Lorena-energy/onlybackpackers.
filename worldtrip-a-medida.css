@@ -1,7 +1,7 @@
 /* ===== ESTILOS GENERALES ===== */
 body {
   font-family: 'Poppins', sans-serif;
-  background: #f2f2f2;
+  background: #f0f0f0;
   color: #333;
   margin: 0;
   padding: 0;
@@ -9,29 +9,36 @@ body {
 
 /* ===== ENCABEZADO ===== */
 .main-header {
-  background: linear-gradient(135deg, #FF512F, #F09819);
-  color: white;
-  padding: 20px;
+  background: #1a1a1a;
+  color: #fff;
+  padding: 20px 10px;
   text-align: center;
+  border-bottom: 3px solid #FF512F;
 }
 
 .main-header .menu {
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 0 0 10px 0;
   display: flex;
   justify-content: center;
   gap: 20px;
 }
 
 .main-header .menu li a {
-  color: white;
+  color: #fff;
   text-decoration: none;
   font-weight: 500;
+  transition: color 0.3s;
+}
+
+.main-header .menu li a:hover,
+.main-header .menu li a.active {
+  color: #FF512F;
 }
 
 .main-header h1 {
-  margin: 10px 0 0;
+  margin: 5px 0 0;
   font-size: 2rem;
 }
 
@@ -39,19 +46,18 @@ body {
 .form-container {
   max-width: 600px;
   margin: 40px auto;
-  background: white;
-  border-radius: 12px;
+  background: #fff;
+  border-radius: 8px;
   padding: 30px 40px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-/* ===== ENCABEZADO DEL FORMULARIO ===== */
 .form-container h2 {
   text-align: center;
   color: #FF512F;
   margin-bottom: 25px;
   font-size: 1.8rem;
-  border-bottom: 2px solid #F09819;
+  border-bottom: 2px solid #FF512F;
   padding-bottom: 10px;
 }
 
@@ -59,16 +65,17 @@ body {
 #custom-trip-request {
   display: flex;
   flex-direction: column;
+  gap: 15px;
 }
 
 .form-group {
-  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
 }
 
 .form-group label {
-  display: block;
-  margin-bottom: 8px;
   font-weight: 600;
+  margin-bottom: 5px;
   color: #555;
 }
 
@@ -80,7 +87,7 @@ body {
   font-size: 1rem;
   border: 2px solid #ddd;
   border-radius: 6px;
-  transition: border 0.3s, box-shadow 0.3s;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
 }
 
 .form-group input:focus,
@@ -99,7 +106,7 @@ body {
 /* ===== CHECKBOXES ===== */
 .checkboxes {
   display: flex;
-  justify-content: space-between;
+  gap: 20px;
 }
 
 .checkboxes label {
@@ -111,14 +118,14 @@ body {
 
 /* ===== BOTÓN DE ENVÍO ===== */
 .cta-button {
-  background: linear-gradient(135deg, #F09819, #FF512F);
-  color: white;
-  font-weight: bold;
+  background: linear-gradient(135deg, #FF512F, #F09819);
   border: none;
+  color: #fff;
   padding: 15px;
   border-radius: 6px;
+  font-weight: bold;
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
   margin-top: 10px;
 }
 
@@ -133,7 +140,6 @@ body {
     max-width: 90%;
     padding: 20px;
   }
-  
   .checkboxes {
     flex-direction: column;
     gap: 10px;
