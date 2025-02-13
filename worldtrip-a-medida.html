@@ -5,7 +5,9 @@
   <title>Worldtrip - Viajes a Medida</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="stylesheet" href="worldtrip.css" />
-  <link rel="stylesheet" href="worldtrip-viajes-a-medida.css" />
+  <link rel="stylesheet" href="worldtrip-a-medida.css" />
+  <!-- Fuente Poppins -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,700&display=swap" rel="stylesheet">
 </head>
 <body>
   <!-- ENCABEZADO -->
@@ -21,34 +23,66 @@
 
   <!-- FORMULARIO PARA SOLICITAR VIAJES A MEDIDA -->
   <main>
-    <section id="custom-trip-form">
+    <section id="custom-trip-form" class="form-container">
       <h2>Solicita tu Viaje Personalizado</h2>
       <form id="custom-trip-request">
-        <input type="text" id="user-name" placeholder="Nombre y Apellidos" required>
-        <input type="email" id="user-email" placeholder="Correo Electrónico" required>
-        <input type="tel" id="user-phone" placeholder="Teléfono (WhatsApp)" required>
-        <input type="text" id="trip-destination" placeholder="Destino(s) Deseado(s)" required>
-        <input type="text" id="trip-duration" placeholder="Duración del Viaje (días/noches)" required>
-        <input type="number" id="trip-budget" placeholder="Presupuesto Aproximado (€)" required>
-        <input type="number" id="trip-people" placeholder="Cantidad de personas" required>
-        <select id="trip-style" required>
-          <option value="">Estilo de Viaje</option>
-          <option value="economico">Económico</option>
-          <option value="premium">Premium</option>
-          <option value="aventura">Aventura</option>
-          <option value="relax">Relax</option>
-          <option value="cultural">Cultural</option>
-        </select>
-        <select id="trip-hotel-plan" required>
-          <option value="">Régimen en Hotel</option>
-          <option value="solo-alojamiento">Solo Alojamiento</option>
-          <option value="desayuno">Alojamiento y Desayuno</option>
-          <option value="media-pension">Media Pensión</option>
-          <option value="todo-incluido">Todo Incluido</option>
-        </select>
-        <label><input type="checkbox" id="include-flights"> Incluir Vuelos</label>
-        <label><input type="checkbox" id="include-activities"> Incluir Actividades</label>
-        <textarea id="trip-comments" placeholder="Comentarios Adicionales"></textarea>
+        <div class="form-group">
+          <label for="user-name">Nombre y Apellidos</label>
+          <input type="text" id="user-name" placeholder="Tu nombre completo" required>
+        </div>
+        <div class="form-group">
+          <label for="user-email">Correo Electrónico</label>
+          <input type="email" id="user-email" placeholder="Tu correo electrónico" required>
+        </div>
+        <div class="form-group">
+          <label for="user-phone">Teléfono (WhatsApp)</label>
+          <input type="tel" id="user-phone" placeholder="Tu número de teléfono" required>
+        </div>
+        <div class="form-group">
+          <label for="trip-destination">Destino(s) Deseado(s)</label>
+          <input type="text" id="trip-destination" placeholder="Ej: París, Roma, etc." required>
+        </div>
+        <div class="form-group">
+          <label for="trip-duration">Duración del Viaje</label>
+          <input type="text" id="trip-duration" placeholder="días/noches" required>
+        </div>
+        <div class="form-group">
+          <label for="trip-budget">Presupuesto Aproximado (€)</label>
+          <input type="number" id="trip-budget" placeholder="Ej: 1500" required>
+        </div>
+        <div class="form-group">
+          <label for="trip-people">Cantidad de Personas</label>
+          <input type="number" id="trip-people" placeholder="Ej: 2" required>
+        </div>
+        <div class="form-group">
+          <label for="trip-style">Estilo de Viaje</label>
+          <select id="trip-style" required>
+            <option value="">Selecciona una opción</option>
+            <option value="economico">Económico</option>
+            <option value="premium">Premium</option>
+            <option value="aventura">Aventura</option>
+            <option value="relax">Relax</option>
+            <option value="cultural">Cultural</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="trip-hotel-plan">Régimen en Hotel</label>
+          <select id="trip-hotel-plan" required>
+            <option value="">Selecciona una opción</option>
+            <option value="solo-alojamiento">Solo Alojamiento</option>
+            <option value="desayuno">Alojamiento y Desayuno</option>
+            <option value="media-pension">Media Pensión</option>
+            <option value="todo-incluido">Todo Incluido</option>
+          </select>
+        </div>
+        <div class="form-group checkboxes">
+          <label><input type="checkbox" id="include-flights"> Incluir Vuelos</label>
+          <label><input type="checkbox" id="include-activities"> Incluir Actividades</label>
+        </div>
+        <div class="form-group">
+          <label for="trip-comments">Comentarios Adicionales</label>
+          <textarea id="trip-comments" placeholder="Escribe aquí tus comentarios"></textarea>
+        </div>
         <button type="submit" class="cta-button">Solicitar Presupuesto</button>
       </form>
     </section>
