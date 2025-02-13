@@ -15,59 +15,58 @@ body {
   background: white;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
 #custom-trip-form h2 {
   text-align: center;
   color: #0077cc;
   margin-bottom: 20px;
+  font-size: 1.8rem;
 }
 
 /* ===== ESTILOS DEL FORMULARIO ===== */
 #custom-trip-request {
   display: flex;
   flex-direction: column;
+  gap: 15px;
 }
 
 #custom-trip-request input,
 #custom-trip-request select,
 #custom-trip-request textarea,
 #custom-trip-request button {
-  margin-bottom: 15px;
-  padding: 10px;
+  padding: 12px;
   font-size: 1rem;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+}
+
+#custom-trip-request input:focus,
+#custom-trip-request select:focus,
+#custom-trip-request textarea:focus {
+  border-color: #0077cc;
+  box-shadow: 0 0 8px rgba(0, 119, 204, 0.3);
+  outline: none;
 }
 
 #custom-trip-request textarea {
   resize: vertical;
-  min-height: 100px;
+  min-height: 120px;
 }
 
 #custom-trip-request label {
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
-  font-size: 0.95rem;
-}
-
-#custom-trip-request label input {
-  margin-right: 10px;
-}
-
-/* ===== NUEVO CAMPO: CANTIDAD DE PERSONAS ===== */
-#custom-trip-request #trip-people {
-  margin-bottom: 15px;
-  padding: 10px;
+  gap: 10px;
   font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  justify-content: center;
 }
 
 /* ===== BOTÓN DE ENVÍO ===== */
 #custom-trip-request button {
-  background: #0077cc;
+  background: linear-gradient(to right, #0077cc, #00bfff);
   color: white;
   font-weight: bold;
   border: none;
@@ -76,8 +75,9 @@ body {
 }
 
 #custom-trip-request button:hover {
-  background: #005fa3;
+  background: linear-gradient(to right, #005fa3, #0099dd);
   transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 119, 204, 0.3);
 }
 
 /* ===== RESPONSIVE ===== */
