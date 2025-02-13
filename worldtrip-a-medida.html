@@ -1,69 +1,88 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <title>Worldtrip - Viajes a Medida</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="stylesheet" href="worldtrip.css" />
-</head>
-<body>
-  <!-- ENCABEZADO -->
-  <header class="main-header">
-    <nav>
-      <ul class="menu">
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="worldtrip.html" class="active">Worldtrip</a></li>
-      </ul>
-    </nav>
-    <h1>Viajes a Medida</h1>
-  </header>
+/* ===== ESTILOS GENERALES ===== */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #f9f9f9;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
 
-  <!-- FORMULARIO PARA SOLICITAR VIAJES A MEDIDA -->
-  <main>
-    <section id="custom-trip-form">
-      <h2>Solicita tu Viaje Personalizado</h2>
-      <form id="custom-trip-request">
-        <input type="text" id="user-name" placeholder="Nombre y Apellidos" required>
-        <input type="email" id="user-email" placeholder="Correo Electrónico" required>
-        <input type="tel" id="user-phone" placeholder="Teléfono (WhatsApp)" required>
-        <input type="text" id="trip-destination" placeholder="Destino(s) Deseado(s)" required>
-        <input type="text" id="trip-duration" placeholder="Duración del Viaje (días/noches)" required>
-        <input type="number" id="trip-budget" placeholder="Presupuesto Aproximado (€)" required>
-        <select id="trip-style" required>
-          <option value="">Estilo de Viaje</option>
-          <option value="economico">Económico</option>
-          <option value="premium">Premium</option>
-          <option value="aventura">Aventura</option>
-          <option value="relax">Relax</option>
-          <option value="cultural">Cultural</option>
-        </select>
-        <select id="trip-hotel-plan" required>
-          <option value="">Régimen en Hotel</option>
-          <option value="solo-alojamiento">Solo Alojamiento</option>
-          <option value="desayuno">Alojamiento y Desayuno</option>
-          <option value="media-pension">Media Pensión</option>
-          <option value="todo-incluido">Todo Incluido</option>
-        </select>
-        <label><input type="checkbox" id="include-flights"> Incluir Vuelos</label>
-        <label><input type="checkbox" id="include-activities"> Incluir Actividades</label>
-        <textarea id="trip-comments" placeholder="Comentarios Adicionales"></textarea>
-        <button type="submit" class="cta-button">Solicitar Presupuesto</button>
-      </form>
-    </section>
-  </main>
+/* ===== CONTENEDOR DEL FORMULARIO ===== */
+#custom-trip-form {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-  <link rel="stylesheet" href="worldtrip-viajes-a-medida.css">
+#custom-trip-form h2 {
+  text-align: center;
+  color: #0077cc;
+  margin-bottom: 20px;
+}
 
-  <footer>
-    <p>&copy; 2025 OnlyBackpackers. Todos los derechos reservados.</p>
-  </footer>
+/* ===== ESTILOS DEL FORMULARIO ===== */
+#custom-trip-request {
+  display: flex;
+  flex-direction: column;
+}
 
-  <script>
-    document.getElementById("custom-trip-request").addEventListener("submit", function(event) {
-      event.preventDefault();
-      alert("Tu solicitud ha sido enviada. Nos pondremos en contacto contigo pronto.");
-      this.reset();
-    });
-  </script>
-</body>
-</html>
+#custom-trip-request input,
+#custom-trip-request select,
+#custom-trip-request textarea,
+#custom-trip-request button {
+  margin-bottom: 15px;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#custom-trip-request textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+#custom-trip-request label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+}
+
+#custom-trip-request label input {
+  margin-right: 10px;
+}
+
+/* ===== NUEVO CAMPO: CANTIDAD DE PERSONAS ===== */
+#custom-trip-request #trip-people {
+  margin-bottom: 15px;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* ===== BOTÓN DE ENVÍO ===== */
+#custom-trip-request button {
+  background: #0077cc;
+  color: white;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+#custom-trip-request button:hover {
+  background: #005fa3;
+  transform: scale(1.05);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  #custom-trip-form {
+    max-width: 90%;
+  }
+}
