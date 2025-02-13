@@ -7,82 +7,121 @@ body {
   padding: 0;
 }
 
-/* ===== CONTENEDOR DEL FORMULARIO ===== */
-#custom-trip-form {
-  max-width: 600px;
-  margin: 40px auto;
+/* ===== ENCABEZADO ===== */
+.main-header {
+  background: linear-gradient(135deg, #0077cc, #00aaff);
+  color: white;
   padding: 20px;
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
 
-#custom-trip-form h2 {
+.main-header .menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.main-header .menu li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* ===== CONTENEDOR DEL FORMULARIO ===== */
+.form-container {
+  max-width: 600px;
+  margin: 40px auto;
+  background: white;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== ENCABEZADO DEL FORMULARIO ===== */
+.form-container h2 {
   text-align: center;
   color: #0077cc;
   margin-bottom: 20px;
-  font-size: 1.8rem;
 }
 
 /* ===== ESTILOS DEL FORMULARIO ===== */
 #custom-trip-request {
   display: flex;
   flex-direction: column;
-  gap: 15px;
 }
 
-#custom-trip-request input,
-#custom-trip-request select,
-#custom-trip-request textarea,
-#custom-trip-request button {
-  padding: 12px;
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
   font-size: 1rem;
   border: 1px solid #ccc;
-  border-radius: 10px;
-  transition: all 0.3s ease-in-out;
+  border-radius: 5px;
+  transition: border 0.3s;
 }
 
-#custom-trip-request input:focus,
-#custom-trip-request select:focus,
-#custom-trip-request textarea:focus {
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
   border-color: #0077cc;
-  box-shadow: 0 0 8px rgba(0, 119, 204, 0.3);
   outline: none;
 }
 
-#custom-trip-request textarea {
+.form-group textarea {
   resize: vertical;
-  min-height: 120px;
+  min-height: 100px;
 }
 
-#custom-trip-request label {
+/* ===== CHECKBOXES ===== */
+.checkboxes {
   display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 1rem;
-  justify-content: center;
+  justify-content: space-between;
+}
+
+.checkboxes label {
+  font-weight: 400;
 }
 
 /* ===== BOTÓN DE ENVÍO ===== */
-#custom-trip-request button {
-  background: linear-gradient(to right, #0077cc, #00bfff);
+.cta-button {
+  background: #0077cc;
   color: white;
   font-weight: bold;
   border: none;
+  padding: 15px;
+  border-radius: 5px;
   cursor: pointer;
   transition: background 0.3s, transform 0.2s;
 }
 
-#custom-trip-request button:hover {
-  background: linear-gradient(to right, #005fa3, #0099dd);
-  transform: scale(1.05);
-  box-shadow: 0 4px 10px rgba(0, 119, 204, 0.3);
+.cta-button:hover {
+  background: #005fa3;
+  transform: scale(1.03);
 }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
-  #custom-trip-form {
+  .form-container {
     max-width: 90%;
+    padding: 20px;
+  }
+  
+  .checkboxes {
+    flex-direction: column;
+    gap: 10px;
   }
 }
