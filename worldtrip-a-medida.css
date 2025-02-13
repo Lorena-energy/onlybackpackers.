@@ -56,6 +56,15 @@ body {
   margin-right: 10px;
 }
 
+/* ===== NUEVO CAMPO: CANTIDAD DE PERSONAS ===== */
+#custom-trip-request #trip-people {
+  margin-bottom: 15px;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
 /* ===== BOTÓN DE ENVÍO ===== */
 #custom-trip-request button {
   background: #0077cc;
