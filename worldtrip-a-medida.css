@@ -47,17 +47,18 @@ body {
   max-width: 600px;
   margin: 40px auto;
   background: #fff;
-  border-radius: 8px;
+  border: 3px solid #00c6ff;
+  border-radius: 12px;
   padding: 30px 40px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .form-container h2 {
   text-align: center;
-  color: #FF512F;
+  color: #0077cc;
   margin-bottom: 25px;
   font-size: 1.8rem;
-  border-bottom: 2px solid #FF512F;
+  border-bottom: 2px solid #00c6ff;
   padding-bottom: 10px;
 }
 
@@ -93,8 +94,8 @@ body {
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
-  border-color: #FF512F;
-  box-shadow: 0 0 8px rgba(255,81,47, 0.3);
+  border-color: #00c6ff;
+  box-shadow: 0 0 8px rgba(0, 198, 255, 0.3);
   outline: none;
 }
 
@@ -118,7 +119,7 @@ body {
 
 /* ===== BOTÓN DE ENVÍO ===== */
 .cta-button {
-  background: linear-gradient(135deg, #FF512F, #F09819);
+  background: linear-gradient(135deg, #0077cc, #00c6ff);
   border: none;
   color: #fff;
   padding: 15px;
@@ -131,7 +132,7 @@ body {
 
 .cta-button:hover {
   transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(255,81,47, 0.4);
+  box-shadow: 0 5px 15px rgba(0, 198, 255, 0.4);
 }
 
 /* ===== RESPONSIVE ===== */
@@ -140,6 +141,7 @@ body {
     max-width: 90%;
     padding: 20px;
   }
+  
   .checkboxes {
     flex-direction: column;
     gap: 10px;
