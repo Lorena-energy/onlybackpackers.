@@ -9,7 +9,7 @@ body {
 
 /* ===== ENCABEZADO ===== */
 .main-header {
-  background: #1a1a1a;
+  background: linear-gradient(135deg, #0077cc, #00c6ff);
   color: #fff;
   padding: 20px 10px;
   text-align: center;
