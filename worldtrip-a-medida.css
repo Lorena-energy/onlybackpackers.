@@ -1,7 +1,7 @@
 /* ===== ESTILOS GENERALES ===== */
 body {
   font-family: 'Poppins', sans-serif;
-  background: #f9f9f9;
+  background: #f2f2f2;
   color: #333;
   margin: 0;
   padding: 0;
@@ -9,7 +9,7 @@ body {
 
 /* ===== ENCABEZADO ===== */
 .main-header {
-  background: linear-gradient(135deg, #0077cc, #00aaff);
+  background: linear-gradient(135deg, #FF512F, #F09819);
   color: white;
   padding: 20px;
   text-align: center;
@@ -30,21 +30,29 @@ body {
   font-weight: 500;
 }
 
+.main-header h1 {
+  margin: 10px 0 0;
+  font-size: 2rem;
+}
+
 /* ===== CONTENEDOR DEL FORMULARIO ===== */
 .form-container {
   max-width: 600px;
   margin: 40px auto;
   background: white;
-  border-radius: 10px;
-  padding: 30px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  padding: 30px 40px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 /* ===== ENCABEZADO DEL FORMULARIO ===== */
 .form-container h2 {
   text-align: center;
-  color: #0077cc;
-  margin-bottom: 20px;
+  color: #FF512F;
+  margin-bottom: 25px;
+  font-size: 1.8rem;
+  border-bottom: 2px solid #F09819;
+  padding-bottom: 10px;
 }
 
 /* ===== ESTILOS DEL FORMULARIO ===== */
@@ -54,36 +62,38 @@ body {
 }
 
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 18px;
 }
 
 .form-group label {
   display: block;
-  margin-bottom: 5px;
-  font-weight: 500;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #555;
 }
 
 .form-group input,
 .form-group select,
 .form-group textarea {
   width: 100%;
-  padding: 10px;
+  padding: 12px 15px;
   font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  transition: border 0.3s;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  transition: border 0.3s, box-shadow 0.3s;
 }
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
-  border-color: #0077cc;
+  border-color: #FF512F;
+  box-shadow: 0 0 8px rgba(255,81,47, 0.3);
   outline: none;
 }
 
 .form-group textarea {
   resize: vertical;
-  min-height: 100px;
+  min-height: 120px;
 }
 
 /* ===== CHECKBOXES ===== */
@@ -93,24 +103,28 @@ body {
 }
 
 .checkboxes label {
-  font-weight: 400;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 /* ===== BOTÓN DE ENVÍO ===== */
 .cta-button {
-  background: #0077cc;
+  background: linear-gradient(135deg, #F09819, #FF512F);
   color: white;
   font-weight: bold;
   border: none;
   padding: 15px;
-  border-radius: 5px;
+  border-radius: 6px;
   cursor: pointer;
-  transition: background 0.3s, transform 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s;
+  margin-top: 10px;
 }
 
 .cta-button:hover {
-  background: #005fa3;
-  transform: scale(1.03);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(255,81,47, 0.4);
 }
 
 /* ===== RESPONSIVE ===== */
