@@ -24,4 +24,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     updatePointsDisplay();
+
+    document.querySelectorAll(".reward-card").forEach(card => {
+        card.addEventListener("click", () => {
+            card.classList.toggle("active");
+        });
+    });
+
+    function toggleReward(element) {
+        element.classList.toggle("active");
+    }
 });
