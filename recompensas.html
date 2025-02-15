@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recompensas - OnlyBackpackers</title>
     <link rel="stylesheet" href="recompensas.css">
+    <script defer src="recompensas.js"></script>
 </head>
 <body>
     <header class="main-header">
         <h1>🎁 Recompensas OnlyBackpackers</h1>
         <p>¡Gana puntos mientras viajas y canjéalos por premios increíbles!</p>
+        <p>💰 Tus puntos: <span id="user-points">0</span></p>
     </header>
     
     <section class="earn-points">
@@ -40,12 +42,12 @@
     <section class="rewards">
         <h2>🎁 ¿Qué puedes ganar?</h2>
         <ul>
-            <li>🎒 <strong>Mochila de viajero:</strong> 20,000 puntos</li>
-            <li>🎟️ <strong>Experiencia y actividades destacadas:</strong> 30,000 puntos</li>
-            <li>🏨 <strong>Fin de semana en hotel:</strong> 40,000 puntos</li>
-            <li>✈️ <strong>Vuelos cortos (Europa o LATAM regional):</strong> 100,000 puntos</li>
-            <li>🎟️ <strong>Sorteo Gran Viaje (ticket de participación):</strong> 110,000 puntos</li>
-            <li>✈️💎 <strong>🔥 GRAN VIAJE (Tailandia, Zanzíbar, Riviera Maya, Punta Cana) - Recompensa directa:</strong> 1,000,000 puntos</li>
+            <li>🎒 <strong>Mochila de viajero:</strong> 20,000 puntos <button class="redeem-btn" data-cost="20000" data-reward="Mochila de viajero">Canjear 🎒</button></li>
+            <li>🎟️ <strong>Experiencia y actividades destacadas:</strong> 30,000 puntos <button class="redeem-btn" data-cost="30000" data-reward="Experiencia destacada">Canjear 🎟️</button></li>
+            <li>🏨 <strong>Fin de semana en hotel:</strong> 40,000 puntos <button class="redeem-btn" data-cost="40000" data-reward="Fin de semana en hotel">Canjear 🏨</button></li>
+            <li>✈️ <strong>Vuelos cortos (Europa o LATAM regional):</strong> 100,000 puntos <button class="redeem-btn" data-cost="100000" data-reward="Vuelo corto">Canjear ✈️</button></li>
+            <li>🎟️ <strong>Sorteo Gran Viaje (ticket de participación):</strong> 110,000 puntos <button class="redeem-btn" data-cost="110000" data-reward="Sorteo Gran Viaje">Canjear 🎟️</button></li>
+            <li>✈️💎 <strong>🔥 GRAN VIAJE (Tailandia, Zanzíbar, Riviera Maya, Punta Cana) - Recompensa directa:</strong> 1,000,000 puntos <button class="redeem-btn" data-cost="1000000" data-reward="Gran Viaje">Canjear ✈️💎</button></li>
         </ul>
     </section>
     
@@ -64,4 +66,3 @@
     </footer>
 </body>
 </html>
-
