@@ -40,7 +40,7 @@ h1, h2 {
 /* ===== TARJETAS EXPANDIBLES ===== */
 .rewards-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 20px;
     max-width: 1200px;
     margin: 20px auto;
@@ -51,10 +51,11 @@ h1, h2 {
     background: linear-gradient(to right, #0077cc, #00bfff);
     color: white;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 15px;
     text-align: center;
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
 }
 
 .reward-card:hover {
@@ -67,19 +68,73 @@ h1, h2 {
     background: white;
     color: #333;
     padding: 15px;
-    border-radius: 10px;
+    border-radius: 15px;
     margin-top: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .reward-card.active .reward-content {
     display: block;
-    animation: fadeIn 0.5s ease-in-out;
+    animation: star-animation 0.5s ease-in-out;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
+@keyframes star-animation {
+    0% { opacity: 0; transform: scale(0.8) rotate(10deg); }
+    100% { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+/* BOTONES */
+.redeem-btn {
+    background: #ff6600;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s;
+}
+
+.redeem-btn:hover {
+    background: #cc5200;
+}
+
+/* MENÚ HAMBURGUESA */
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 25px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.menu-toggle .bar {
+    width: 100%;
+    height: 4px;
+    background-color: white;
+}
+
+@media (max-width: 768px) {
+    .menu {
+        display: none;
+        flex-direction: column;
+        background: #0077cc;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        padding: 10px 0;
+    }
+    .menu.active {
+        display: flex;
+    }
+    .menu-toggle {
+        display: flex;
+    }
 }
 
 footer {
@@ -88,4 +143,3 @@ footer {
     padding: 15px;
     margin-top: 20px;
 }
-
