@@ -1,149 +1,155 @@
 /* ===== ESTILOS GENERALES ===== */
 body {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #f9f9f9;
-    color: #333;
-    text-align: center;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f9f9f9;
+  color: #333;
+  text-align: center;
 }
 
 .main-header {
-    background: linear-gradient(to right, #0077cc, #00bfff);
-    color: white;
-    padding: 20px;
-    text-align: center;
-    position: relative;
+  background: linear-gradient(to right, #0077cc, #00bfff);
+  color: white;
+  padding: 20px;
+  text-align: center;
+  position: relative;
 }
 
-h1, h2 {
-    color: #0077cc;
-    margin-bottom: 10px;
+h1 {
+  font-size: 2.5rem;
+}
+h2 {
+  color: white;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
 }
 
+/* ===== MENÚ ===== */
 .menu {
-    display: flex;
-    justify-content: center;
-    list-style: none;
-    padding: 10px;
-    background: #0077cc;
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 10px;
+  background: #0077cc;
 }
 .menu li {
-    margin: 0 15px;
+  margin: 0 15px;
 }
 .menu li a {
-    color: white;
-    text-decoration: none;
-    font-size: 1rem;
-    font-weight: bold;
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: bold;
 }
 
 /* ===== TARJETAS EXPANDIBLES ===== */
 .rewards-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 20px;
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
 }
 
 .reward-card {
-    background: linear-gradient(to right, #0077cc, #00bfff);
-    color: white;
-    padding: 20px;
-    border-radius: 15px;
-    text-align: center;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    position: relative;
+  background: linear-gradient(to right, #0077cc, #00bfff);
+  color: white;
+  padding: 30px; /* mayor padding para destacar */
+  border-radius: 15px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
 }
 
 .reward-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 10px 25px rgba(0, 119, 204, 0.3);
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(0, 119, 204, 0.3);
 }
 
 .reward-content {
-    display: none;
-    background: white;
-    color: #333;
-    padding: 15px;
-    border-radius: 15px;
-    margin-top: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: none;
+  background: white;
+  color: #333;
+  padding: 20px;
+  border-radius: 15px;
+  margin-top: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: left;
 }
 
 .reward-card.active .reward-content {
-    display: block;
-    animation: star-animation 0.5s ease-in-out;
+  display: block;
+  animation: star-animation 0.5s ease-in-out;
 }
 
 @keyframes star-animation {
-    0% { opacity: 0; transform: scale(0.8) rotate(10deg); }
-    100% { opacity: 1; transform: scale(1) rotate(0deg); }
+  0% { opacity: 0; transform: scale(0.8) rotate(10deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0deg); }
 }
 
 /* BOTONES */
 .redeem-btn {
-    background: #ff6600;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background 0.3s;
+  background: #ff6600;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s;
 }
 
 .redeem-btn:hover {
-    background: #cc5200;
+  background: #cc5200;
 }
 
 /* MENÚ HAMBURGUESA */
 .menu-toggle {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 25px;
-    cursor: pointer;
-    position: absolute;
-    top: 15px;
-    left: 20px;
-    z-index: 1001;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 25px;
+  cursor: pointer;
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  z-index: 1001;
 }
 
 .menu-toggle .bar {
-    width: 100%;
-    height: 4px;
-    background-color: white;
-    margin: 3px 0;
+  width: 100%;
+  height: 4px;
+  background-color: white;
+  margin: 3px 0;
 }
 
 @media (max-width: 768px) {
-    .menu {
-        display: none;
-        flex-direction: column;
-        background: #0077cc;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        width: 100%;
-        padding: 10px 0;
-        z-index: 1000;
-    }
-    .menu.active {
-        display: flex;
-    }
-    .menu-toggle {
-        display: flex;
-    }
+  .menu {
+    display: none;
+    flex-direction: column;
+    background: #0077cc;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    padding: 10px 0;
+    z-index: 1000;
+  }
+  .menu.active {
+    display: flex;
+  }
+  .menu-toggle {
+    display: flex;
+  }
 }
 
 footer {
-    background: #0077cc;
-    color: white;
-    padding: 15px;
-    margin-top: 20px;
+  background: #0077cc;
+  color: white;
+  padding: 15px;
+  margin-top: 20px;
 }
