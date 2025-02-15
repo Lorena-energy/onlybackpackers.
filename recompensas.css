@@ -19,6 +19,7 @@ body {
 h1 {
   font-size: 2.5rem;
 }
+
 h2 {
   color: white;
   font-size: 1.8rem;
@@ -33,9 +34,11 @@ h2 {
   padding: 10px;
   background: #0077cc;
 }
+
 .menu li {
   margin: 0 15px;
 }
+
 .menu li a {
   color: white;
   text-decoration: none;
@@ -56,7 +59,7 @@ h2 {
 .reward-card {
   background: linear-gradient(to right, #0077cc, #00bfff);
   color: white;
-  padding: 30px; /* mayor padding para destacar */
+  padding: 30px;
   border-radius: 15px;
   text-align: center;
   cursor: pointer;
@@ -90,6 +93,12 @@ h2 {
   100% { opacity: 1; transform: scale(1) rotate(0deg); }
 }
 
+/* Estilo para el texto de beneficios */
+.benefits {
+  font-size: 0.9rem;
+  margin: 5px 0 15px;
+}
+
 /* BOTONES */
 .redeem-btn {
   background: #ff6600;
@@ -106,7 +115,7 @@ h2 {
   background: #cc5200;
 }
 
-/* MENÚ HAMBURGUESA */
+/* ===== MENÚ HAMBURGUESA ===== */
 .menu-toggle {
   display: flex;
   flex-direction: column;
