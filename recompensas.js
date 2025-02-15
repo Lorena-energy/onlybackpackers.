@@ -28,10 +28,11 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".reward-card").forEach(card => {
         card.addEventListener("click", () => {
             card.classList.toggle("active");
+            const content = card.querySelector(".reward-content");
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+                content.classList.add("star-animation");
+            }
         });
-    });
-
-    function toggleReward(element) {
-        element.classList.toggle("active");
-    }
-});
