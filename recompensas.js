@@ -1,38 +1,20 @@
 document.addEventListener("DOMContentLoaded", () => {
-    let userPoints = 50000; // Simulación de puntos del usuario (esto luego se integrará con una base de datos)
-
-    function updatePointsDisplay() {
-        document.getElementById("user-points").textContent = userPoints;
-    }
-
-    function redeemReward(cost, rewardName) {
-        if (userPoints >= cost) {
-            userPoints -= cost;
-            updatePointsDisplay();
-            alert(`🎉 ¡Felicidades! Has canjeado ${rewardName}. Te quedan ${userPoints} puntos.`);
-        } else {
-            alert("❌ No tienes suficientes puntos para canjear esta recompensa.");
-        }
-    }
-
-    document.querySelectorAll(".redeem-btn").forEach(button => {
-        button.addEventListener("click", (e) => {
-            const cost = parseInt(e.target.getAttribute("data-cost"));
-            const rewardName = e.target.getAttribute("data-reward");
-            redeemReward(cost, rewardName);
-        });
+  // Menú hamburguesa
+  const menuToggle = document.getElementById("menu-toggle");
+  const menu = document.getElementById("menu");
+  menuToggle.addEventListener("click", () => {
+    menu.classList.toggle("active");
+  });
+  
+  // Para cada tarjeta, al hacer clic se alterna la clase "active"
+  const rewardCards = document.querySelectorAll('.reward-card');
+  rewardCards.forEach(card => {
+    card.addEventListener('click', function(e) {
+      // Si se hace clic en el botón "Canjear", no se despliega la tarjeta
+      if(e.target.classList.contains('redeem-btn')){
+          return;
+      }
+      this.classList.toggle('active');
     });
-
-    updatePointsDisplay();
-
-    document.querySelectorAll(".reward-card").forEach(card => {
-        card.addEventListener("click", () => {
-            card.classList.toggle("active");
-            const content = card.querySelector(".reward-content");
-            if (content.style.display === "block") {
-                content.style.display = "none";
-            } else {
-                content.style.display = "block";
-                content.classList.add("star-animation");
-            }
-        });
+  });
+});
