@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Recompensas - OnlyBackpackers</title>
-  <link rel="stylesheet" href="recompensas.css">
+  <link rel="stylesheet" href="recompensas.css" />
   <script defer src="recompensas.js"></script>
 </head>
 <body>
@@ -26,8 +26,9 @@
       </ul>
     </nav>
   </header>
-  
+
   <div class="rewards-container">
+    <!-- Tarjeta: ¿Cómo ganar puntos? -->
     <div class="reward-card">
       <h2>🎯 ¿Cómo ganar puntos?</h2>
       <div class="reward-content">
@@ -44,33 +45,74 @@
         </ul>
       </div>
     </div>
-    
+
+    <!-- Tarjeta: Rangos de Usuario con explicación de beneficios -->
     <div class="reward-card">
       <h2>🏆 Rangos de Usuario</h2>
       <div class="reward-content">
         <ul>
-          <li>🆕 Principiante: 0 - 10,000 puntos</li>
-          <li>🥉 Bronce: 10,000 - 50,000 puntos</li>
-          <li>🥈 Gold: 50,000 - 150,000 puntos</li>
-          <li>🏆 Platinum: 150,000+ puntos</li>
+          <li>
+            🆕 Principiante: 0 - 10,000 puntos
+            <p class="benefits">
+              Beneficios: Acceso a promociones básicas y descuentos limitados.
+            </p>
+          </li>
+          <li>
+            🥉 Bronce: 10,000 - 50,000 puntos
+            <p class="benefits">
+              Beneficios: Descuentos adicionales y prioridad en reservas.
+            </p>
+          </li>
+          <li>
+            🥈 Gold: 50,000 - 150,000 puntos
+            <p class="benefits">
+              Beneficios: Acceso a eventos exclusivos y ofertas personalizadas.
+            </p>
+          </li>
+          <li>
+            🏆 Platinum: 150,000+ puntos
+            <p class="benefits">
+              Beneficios: Recompensas premium, servicio VIP y atención personalizada.
+            </p>
+          </li>
         </ul>
       </div>
     </div>
-    
+
+    <!-- Tarjeta: ¿Qué puedes ganar? -->
     <div class="reward-card">
       <h2>🎁 ¿Qué puedes ganar?</h2>
       <div class="reward-content">
         <ul>
-          <li>🎒 Mochila de viajero: 20,000 puntos <button class="redeem-btn" data-cost="20000" data-reward="Mochila de viajero">Canjear 🎒</button></li>
-          <li>🎟️ Experiencia destacada: 30,000 puntos <button class="redeem-btn" data-cost="30000" data-reward="Experiencia destacada">Canjear 🎟️</button></li>
-          <li>🏨 Fin de semana en hotel: 40,000 puntos <button class="redeem-btn" data-cost="40000" data-reward="Fin de semana en hotel">Canjear 🏨</button></li>
-          <li>✈️ Vuelos cortos (Europa o LATAM regional): 100,000 puntos <button class="redeem-btn" data-cost="100000" data-reward="Vuelo corto">Canjear ✈️</button></li>
-          <li>🎟️ Sorteo Gran Viaje: 110,000 puntos <button class="redeem-btn" data-cost="110000" data-reward="Sorteo Gran Viaje">Canjear 🎟️</button></li>
-          <li>✈️💎 GRAN VIAJE (Tailandia, Zanzíbar, Riviera Maya, Punta Cana): 1,000,000 puntos <button class="redeem-btn" data-cost="1000000" data-reward="Gran Viaje">Canjear ✈️💎</button></li>
+          <li>
+            🎒 Mochila de viajero: 20,000 puntos 
+            <button class="redeem-btn" data-cost="20000" data-reward="Mochila de viajero">Canjear 🎒</button>
+          </li>
+          <li>
+            🎟️ Experiencia destacada: 30,000 puntos 
+            <button class="redeem-btn" data-cost="30000" data-reward="Experiencia destacada">Canjear 🎟️</button>
+          </li>
+          <li>
+            🏨 Fin de semana en hotel: 40,000 puntos 
+            <button class="redeem-btn" data-cost="40000" data-reward="Fin de semana en hotel">Canjear 🏨</button>
+          </li>
+          <li>
+            ✈️ Vuelos cortos (Europa o LATAM regional): 100,000 puntos 
+            <button class="redeem-btn" data-cost="100000" data-reward="Vuelo corto">Canjear ✈️</button>
+          </li>
+          <li>
+            🎟️ Sorteo Gran Viaje: 110,000 puntos 
+            <button class="redeem-btn" data-cost="110000" data-reward="Sorteo Gran Viaje">Canjear 🎟️</button>
+          </li>
+          <li>
+            ✈️💎 GRAN VIAJE (Tailandia, Zanzíbar, Riviera Maya, Punta Cana): 1,000,000 puntos 
+            <button class="redeem-btn" data-cost="1000000" data-reward="Gran Viaje">Canjear ✈️💎</button>
+          </li>
         </ul>
       </div>
     </div>
-    
+
+    <!-- Tarjeta: Bases del Sorteo Gran Viaje -->
     <div class="reward-card">
       <h2>🎟️ Bases del Sorteo Gran Viaje</h2>
       <div class="reward-content">
@@ -83,9 +125,10 @@
       </div>
     </div>
   </div>
-  
+
   <footer>
     <p>&copy; 2025 OnlyBackpackers. Todos los derechos reservados.</p>
   </footer>
 </body>
 </html>
+
