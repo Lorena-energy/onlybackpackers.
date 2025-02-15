@@ -1,129 +1,91 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <title>OnlyBackpackers - Recomendaciones</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- Fuente Poppins -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
-    rel="stylesheet"
-  />
-
-  <!-- Hoja de estilos principal -->
-  <link rel="stylesheet" href="recomendaciones.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recompensas - OnlyBackpackers</title>
+  <link rel="stylesheet" href="recompensas.css">
+  <script defer src="recompensas.js"></script>
 </head>
 <body>
-  <!-- ENCABEZADO -->
   <header class="main-header">
+    <h1>🎁 Recompensas OnlyBackpackers</h1>
+    <p>¡Gana puntos mientras viajas y canjéalos por premios increíbles!</p>
     <nav>
-      <!-- Menú hamburguesa -->
-      <div class="menu-toggle" id="menu-toggle">
+      <div id="menu-toggle" class="menu-toggle">
         <span class="bar"></span>
         <span class="bar"></span>
         <span class="bar"></span>
       </div>
-      <!-- Menú principal -->
       <ul class="menu" id="menu">
         <li><a href="index.html">Inicio</a></li>
         <li><a href="muro.html">Muro</a></li>
-        <li><a href="muro-personal.html">Mi Muro</a></li>
-        <li><a href="recomendaciones.html" class="active">Recomendaciones</a></li>
-        <li><a href="chats.html">Chats</a></li>
         <li><a href="eventos.html">Eventos</a></li>
         <li><a href="worldtrip.html">Worldtrip</a></li>
-        <li><a href="recompensas.html">Recompensas</a></li>
-        <li><a href="expenses.html">Gastos</a></li>
+        <li><a href="recompensas.html" class="active">Recompensas</a></li>
       </ul>
     </nav>
   </header>
-
-  <!-- TÍTULO PRINCIPAL -->
-  <div class="big-title">OnlyBackpackers</div>
-
-  <!-- CONTENEDOR DOS COLUMNAS EN ESCRITORIO -->
-  <main class="content-container">
-    <!-- COLUMNA IZQUIERDA -->
-    <div class="left-column">
-      <!-- GANAR PUNTOS -->
-      <section class="section-block">
-        <p>
-          ¡Gana <strong>10 puntos</strong> (o <strong>15</strong> si publicas también en la comunidad) 
-          recomendando destinos, restaurantes o sitios increíbles! Incluye enlaces de Google Maps, fotos o videos. 
-          ¡Anímate a compartir!
-        </p>
-      </section>
-
-      <!-- RECOMENDACIONES DE USUARIOS -->
-      <section class="section-block">
-        <h2>Recomendaciones de los Usuarios</h2>
-        <form id="user-recommendation-form">
-          <textarea
-            id="recommendation-content"
-            placeholder="Comparte tu recomendación..."
-            rows="3"
-            required
-          ></textarea>
-          <input
-            type="file"
-            id="recommendation-media"
-            accept="image/*,video/*"
-            multiple
-          />
-          <input
-            type="url"
-            id="recommendation-link"
-            placeholder="Enlace de Google Maps (opcional)"
-          />
-          <label class="checkbox-label">
-            <input type="checkbox" id="also-community" />
-            Publicar también en la comunidad (+5 puntos)
-          </label>
-          <button type="submit" class="cta-button">Publicar</button>
-        </form>
-        <div id="user-recommendations-list" class="recommendation-list"></div>
-      </section>
+  
+  <div class="rewards-container">
+    <div class="reward-card" onclick="toggleReward(this)">
+      <h2>🎯 ¿Cómo ganar puntos?</h2>
+      <div class="reward-content">
+        <ul>
+          <li>🎯 Completar la encuesta: 1,000 puntos</li>
+          <li>👥 Invitar un amigo: 100 puntos</li>
+          <li>🏨 Reservar una experiencia destacada: 250 puntos</li>
+          <li>🌍 Reservar un viaje en Worldtrip: 500 puntos</li>
+          <li>📝 Publicar una recomendación: 25 puntos</li>
+          <li>⭐ Si tu recomendación recibe 25+ likes: 100 puntos</li>
+          <li>💬 Comentar en una publicación: 10 puntos</li>
+          <li>🎟️ Responder preguntas en la comunidad: 10 puntos</li>
+          <li>📷 Publicar un viaje con fotos y descripción: 30 puntos</li>
+        </ul>
+      </div>
     </div>
-
-    <!-- COLUMNA DERECHA -->
-    <div class="right-column">
-      <!-- RECOMENDACIONES DESTACADAS (Solo Admin) -->
-      <section class="section-block">
-        <h2>Recomendaciones Destacadas</h2>
-        <form id="admin-recommendation-form">
-          <input
-            type="text"
-            id="recommendation-title"
-            placeholder="Título"
-            required
-          />
-          <textarea
-            id="recommendation-description"
-            placeholder="Descripción"
-            rows="2"
-            required
-          ></textarea>
-          <input
-            type="url"
-            id="recommendation-affiliate-link"
-            placeholder="Enlace de afiliado"
-            required
-          />
-          <input
-            type="file"
-            id="recommendation-photo"
-            accept="image/*"
-            required
-          />
-          <button type="submit" class="cta-button">Agregar</button>
-        </form>
-        <div id="featured-list" class="recommendation-list"></div>
-      </section>
+    
+    <div class="reward-card" onclick="toggleReward(this)">
+      <h2>🏆 Rangos de Usuario</h2>
+      <div class="reward-content">
+        <ul>
+          <li>🆕 Principiante: 0 - 10,000 puntos</li>
+          <li>🥉 Bronce: 10,000 - 50,000 puntos</li>
+          <li>🥈 Gold: 50,000 - 150,000 puntos</li>
+          <li>🏆 Platinum: 150,000+ puntos</li>
+        </ul>
+      </div>
     </div>
-  </main>
-
-  <!-- SCRIPT -->
-  <script src="recomendaciones.js"></script>
+    
+    <div class="reward-card" onclick="toggleReward(this)">
+      <h2>🎁 ¿Qué puedes ganar?</h2>
+      <div class="reward-content">
+        <ul>
+          <li>🎒 Mochila de viajero: 20,000 puntos <button class="redeem-btn" data-cost="20000" data-reward="Mochila de viajero">Canjear 🎒</button></li>
+          <li>🎟️ Experiencia destacada: 30,000 puntos <button class="redeem-btn" data-cost="30000" data-reward="Experiencia destacada">Canjear 🎟️</button></li>
+          <li>🏨 Fin de semana en hotel: 40,000 puntos <button class="redeem-btn" data-cost="40000" data-reward="Fin de semana en hotel">Canjear 🏨</button></li>
+          <li>✈️ Vuelos cortos (Europa o LATAM regional): 100,000 puntos <button class="redeem-btn" data-cost="100000" data-reward="Vuelo corto">Canjear ✈️</button></li>
+          <li>🎟️ Sorteo Gran Viaje: 110,000 puntos <button class="redeem-btn" data-cost="110000" data-reward="Sorteo Gran Viaje">Canjear 🎟️</button></li>
+          <li>✈️💎 GRAN VIAJE (Tailandia, Zanzíbar, Riviera Maya, Punta Cana): 1,000,000 puntos <button class="redeem-btn" data-cost="1000000" data-reward="Gran Viaje">Canjear ✈️💎</button></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="reward-card" onclick="toggleReward(this)">
+      <h2>🎟️ Bases del Sorteo Gran Viaje</h2>
+      <div class="reward-content">
+        <p>📌 Cada usuario puede participar en el sorteo canjeando 110,000 puntos por un ticket.</p>
+        <p>📌 El sorteo se activa cuando haya 100 participantes.</p>
+        <p>📌 La fecha del sorteo se anunciará la semana siguiente de alcanzar los 100 participantes.</p>
+        <p>📌 Cada participante recibe un número (000-999).</p>
+        <p>📌 El ganador será el usuario cuyo número coincida con los 3 últimos números del sorteo de la ONCE.</p>
+        <p>📌 Si nadie gana, el sorteo se repite la semana siguiente con los mismos y nuevos participantes.</p>
+      </div>
+    </div>
+  </div>
+  
+  <footer>
+    <p>&copy; 2025 OnlyBackpackers. Todos los derechos reservados.</p>
+  </footer>
 </body>
 </html>
