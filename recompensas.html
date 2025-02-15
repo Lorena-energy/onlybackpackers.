@@ -1,121 +1,67 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OnlyBackpackers - Recompensas</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recompensas - OnlyBackpackers</title>
+    <link rel="stylesheet" href="recompensas.css">
 </head>
 <body>
-  <!-- Cabecera -->
-  <header>
-    <img src="logo.png" alt="OnlyBackpackers Logo" class="logo">
-    <h1>OnlyBackpackers</h1>
-    <p>¡Gana puntos y canjéalos por increíbles premios!</p>
-  </header>
-
-  <header class="main-header">
-  <nav>
-    <div class="menu-toggle" id="menu-toggle">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <ul class="menu" id="menu">
-      <li><a href="index.html" class="active">Inicio</a></li>
-      <li><a href="muro.html">Muro</a></li>
-      <li><a href="muro-personal.html">Mi Muro</a></li>
-      <li><a href="recomendaciones.html">Recomendaciones</a></li>
-      <li><a href="chats.html">Chats</a></li>
-      <li><a href="eventos.html">Eventos</a></li>
-      <li><a href="worldtrip.html">Worldtrip</a></li>
-      <li><a href="recompensas.html">Recompensas</a></li>
-      <li><a href="gastos.html">Gastos</a></li>
-    </ul>
-  </nav>
-</header>
-
- <!-- Sección de Recompensas -->
-  <section id="rewards">
-    <h2>🎁 Gana Puntos y Canjea Recompensas</h2>
-    <p>Participa, acumula puntos y canjéalos por premios increíbles o sorteos exclusivos.</p>
-
-    <!-- Puntos actuales -->
-    <div id="user-points">
-      <h3>Tus puntos: <span id="points-count">0</span></h3>
-    </div>
-
-    <!-- Recompensas directas -->
-    <div class="rewards-category">
-      <h3>🎯 Regalos Directos</h3>
-      <div class="reward-item">
-        <img src="camiseta.png" alt="Camiseta OnlyBackpackers">
-        <div class="reward-details">
-          <h4>Camiseta OnlyBackpackers</h4>
-          <p>1,500 puntos</p>
-          <button class="redeem-button" data-points="1500">Canjear</button>
-        </div>
-      </div>
-      <div class="reward-item">
-        <img src="mochila.png" alt="Mochila tipo bolsa">
-        <div class="reward-details">
-          <h4>Mochila tipo bolsa</h4>
-          <p>3,000 puntos</p>
-          <button class="redeem-button" data-points="3000">Canjear</button>
-        </div>
-      </div>
-      <div class="reward-item">
-        <img src="mochila_viajera.png" alt="Mochila viajera personalizada">
-        <div class="reward-details">
-          <h4>Mochila viajera personalizada</h4>
-          <p>8,000 puntos</p>
-          <button class="redeem-button" data-points="8000">Canjear</button>
-        </div>
-      </div>
-      <div class="reward-item">
-        <img src="experiencia.png" alt="Experiencia local">
-        <div class="reward-details">
-          <h4>Experiencia local</h4>
-          <p>15,000 puntos</p>
-          <button class="redeem-button" data-points="15000">Canjear</button>
-        </div>
-      </div>
-      <div class="reward-item">
-        <img src="fin_semana.png" alt="Fin de semana en hostels">
-        <div class="reward-details">
-          <h4>Fin de semana en hostels</h4>
-          <p>20,000 puntos</p>
-          <button class="redeem-button" data-points="20000">Canjear</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Sorteos -->
-    <div class="rewards-category">
-      <h3>🎟️ Sorteos</h3>
-      <div class="reward-item">
-        <img src="gran_viaje.png" alt="Sorteo Gran Viaje">
-        <div class="reward-details">
-          <h4>Sorteo de Gran Viaje</h4>
-          <p>25,000 puntos por entrada</p>
-          <p><strong>Entradas actuales:</strong> <span id="entries-count">0</span>/100</p>
-          <button class="redeem-button" data-points="25000" data-sorteo="gran-viaje">Participar</button>
-        </div>
-      </div>
-      <div class="reward-item">
-        <img src="sorteo_semana.png" alt="Sorteo Fin de Semana">
-        <div class="reward-details">
-          <h4>Sorteo de Fin de Semana</h4>
-          <p>10,000 puntos por entrada</p>
-          <p><strong>Entradas actuales:</strong> <span id="weekend-entries">0</span>/100</p>
-          <button class="redeem-button" data-points="10000" data-sorteo="fin-semana">Participar</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Script de recompensas -->
-  <script src="recompensas.js"></script>
+    <header class="main-header">
+        <h1>🎁 Recompensas OnlyBackpackers</h1>
+        <p>¡Gana puntos mientras viajas y canjéalos por premios increíbles!</p>
+    </header>
+    
+    <section class="earn-points">
+        <h2>🎯 ¿Cómo ganar puntos?</h2>
+        <ul>
+            <li><strong>🎯 Completar la encuesta:</strong> 1,000 puntos</li>
+            <li><strong>👥 Invitar un amigo:</strong> 100 puntos</li>
+            <li><strong>🏨 Reservar una experiencia destacada:</strong> 250 puntos</li>
+            <li><strong>🌍 Reservar un viaje en Worldtrip:</strong> 500 puntos</li>
+            <li><strong>📝 Publicar una recomendación en la comunidad:</strong> 25 puntos</li>
+            <li><strong>⭐ Si tu recomendación recibe 25+ likes:</strong> 100 puntos</li>
+            <li><strong>💬 Comentar en una publicación:</strong> 10 puntos</li>
+            <li><strong>🎟️ Responder preguntas en la comunidad:</strong> 10 puntos</li>
+            <li><strong>📷 Publicar un viaje con fotos y descripción:</strong> 30 puntos</li>
+        </ul>
+    </section>
+    
+    <section class="ranks">
+        <h2>🏆 Rangos de Usuario</h2>
+        <ul>
+            <li>🆕 <strong>Principiante:</strong> 0 - 10,000 puntos</li>
+            <li>🥉 <strong>Bronce:</strong> 10,000 - 50,000 puntos</li>
+            <li>🥈 <strong>Gold:</strong> 50,000 - 150,000 puntos</li>
+            <li>🏆 <strong>Platinum:</strong> 150,000+ puntos</li>
+        </ul>
+    </section>
+    
+    <section class="rewards">
+        <h2>🎁 ¿Qué puedes ganar?</h2>
+        <ul>
+            <li>🎒 <strong>Mochila de viajero:</strong> 20,000 puntos</li>
+            <li>🎟️ <strong>Experiencia y actividades destacadas:</strong> 30,000 puntos</li>
+            <li>🏨 <strong>Fin de semana en hotel:</strong> 40,000 puntos</li>
+            <li>✈️ <strong>Vuelos cortos (Europa o LATAM regional):</strong> 100,000 puntos</li>
+            <li>🎟️ <strong>Sorteo Gran Viaje (ticket de participación):</strong> 110,000 puntos</li>
+            <li>✈️💎 <strong>🔥 GRAN VIAJE (Tailandia, Zanzíbar, Riviera Maya, Punta Cana) - Recompensa directa:</strong> 1,000,000 puntos</li>
+        </ul>
+    </section>
+    
+    <section class="raffle">
+        <h2>🎟️ Sorteo Gran Viaje - Mecánica</h2>
+        <p>📌 Cada usuario puede participar en el sorteo canjeando <strong>110,000 puntos</strong> por un ticket.</p>
+        <p>📌 <strong>El sorteo se activa cuando haya 100 participantes.</strong></p>
+        <p>📌 La fecha del sorteo se anunciará la semana siguiente de alcanzar los 100 participantes.</p>
+        <p>📌 Cada participante recibe un número (000-999).</p>
+        <p>📌 <strong>El ganador será el usuario cuyo número coincida con los 3 últimos números del sorteo de la ONCE.</strong></p>
+        <p>📌 Si nadie gana, el sorteo se repite la semana siguiente con los mismos y nuevos participantes.</p>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 OnlyBackpackers. Todos los derechos reservados.</p>
+    </footer>
 </body>
 </html>
+
