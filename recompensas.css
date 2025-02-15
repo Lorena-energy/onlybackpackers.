@@ -1,0 +1,46 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f9f9f9;
+    color: #333;
+    text-align: center;
+}
+
+.main-header {
+    background: linear-gradient(to right, #0077cc, #00bfff);
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+h1, h2 {
+    color: #0077cc;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background: white;
+    margin: 10px auto;
+    padding: 15px;
+    max-width: 600px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.raffle p {
+    background: #d4f0ff;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+footer {
+    background: #0077cc;
+    color: white;
+    padding: 15px;
+    margin-top: 20px;
+}
