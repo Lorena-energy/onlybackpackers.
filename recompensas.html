@@ -12,7 +12,12 @@
         <h1>🎁 Recompensas OnlyBackpackers</h1>
         <p>¡Gana puntos mientras viajas y canjéalos por premios increíbles!</p>
         <nav>
-            <ul class="menu">
+            <div id="menu-toggle" class="menu-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="menu" id="menu">
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="muro.html">Muro</a></li>
                 <li><a href="eventos.html">Eventos</a></li>
@@ -56,12 +61,12 @@
             <h2>🎁 ¿Qué puedes ganar?</h2>
             <div class="reward-content">
                 <ul>
-                    <li>🎒 Mochila de viajero: 20,000 puntos</li>
-                    <li>🎟️ Experiencia destacada: 30,000 puntos</li>
-                    <li>🏨 Fin de semana en hotel: 40,000 puntos</li>
-                    <li>✈️ Vuelos cortos (Europa o LATAM regional): 100,000 puntos</li>
-                    <li>🎟️ Sorteo Gran Viaje: 110,000 puntos</li>
-                    <li>✈️💎 GRAN VIAJE (Tailandia, Zanzíbar, Riviera Maya, Punta Cana): 1,000,000 puntos</li>
+                    <li>🎒 Mochila de viajero: 20,000 puntos <button class="redeem-btn" data-cost="20000" data-reward="Mochila de viajero">Canjear 🎒</button></li>
+                    <li>🎟️ Experiencia destacada: 30,000 puntos <button class="redeem-btn" data-cost="30000" data-reward="Experiencia destacada">Canjear 🎟️</button></li>
+                    <li>🏨 Fin de semana en hotel: 40,000 puntos <button class="redeem-btn" data-cost="40000" data-reward="Fin de semana en hotel">Canjear 🏨</button></li>
+                    <li>✈️ Vuelos cortos (Europa o LATAM regional): 100,000 puntos <button class="redeem-btn" data-cost="100000" data-reward="Vuelo corto">Canjear ✈️</button></li>
+                    <li>🎟️ Sorteo Gran Viaje: 110,000 puntos <button class="redeem-btn" data-cost="110000" data-reward="Sorteo Gran Viaje">Canjear 🎟️</button></li>
+                    <li>✈️💎 GRAN VIAJE (Tailandia, Zanzíbar, Riviera Maya, Punta Cana): 1,000,000 puntos <button class="redeem-btn" data-cost="1000000" data-reward="Gran Viaje">Canjear ✈️💎</button></li>
                 </ul>
             </div>
         </div>
