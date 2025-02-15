@@ -20,71 +20,66 @@ h1, h2 {
     margin-bottom: 10px;
 }
 
-ul {
+.menu {
+    display: flex;
+    justify-content: center;
     list-style: none;
-    padding: 0;
+    padding: 10px;
+    background: #0077cc;
+}
+.menu li {
+    margin: 0 15px;
+}
+.menu li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
 }
 
-li {
-    background: white;
-    margin: 15px auto;
-    padding: 15px;
-    max-width: 600px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-li:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-}
-
-.rewards ul {
+/* ===== TARJETAS EXPANDIBLES ===== */
+.rewards-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
-    max-width: 1000px;
-    margin: auto;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
 }
 
-.rewards li {
+.reward-card {
     background: linear-gradient(to right, #0077cc, #00bfff);
     color: white;
     padding: 20px;
-    text-align: center;
     border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.rewards li:hover {
-    transform: scale(1.07);
+.reward-card:hover {
+    transform: scale(1.05);
     box-shadow: 0 10px 25px rgba(0, 119, 204, 0.3);
 }
 
-.rewards button {
-    background: #ff6600;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    margin-top: 10px;
-    font-size: 1rem;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background 0.3s ease, transform 0.2s ease;
-}
-
-.rewards button:hover {
-    background: #cc5200;
-    transform: scale(1.1);
-}
-
-.raffle p {
-    background: #d4f0ff;
+.reward-content {
+    display: none;
+    background: white;
+    color: #333;
     padding: 15px;
-    border-radius: 5px;
-    max-width: 800px;
-    margin: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.reward-card.active .reward-content {
+    display: block;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 footer {
@@ -93,3 +88,4 @@ footer {
     padding: 15px;
     margin-top: 20px;
 }
+
