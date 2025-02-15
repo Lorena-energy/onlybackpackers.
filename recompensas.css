@@ -13,6 +13,7 @@ body {
     color: white;
     padding: 20px;
     text-align: center;
+    position: relative;
 }
 
 h1, h2 {
@@ -101,21 +102,23 @@ h1, h2 {
 
 /* MENÚ HAMBURGUESA */
 .menu-toggle {
-    display: none;
-    cursor: pointer;
+    display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: 30px;
     height: 25px;
+    cursor: pointer;
     position: absolute;
-    top: 20px;
+    top: 15px;
     left: 20px;
+    z-index: 1001;
 }
 
 .menu-toggle .bar {
     width: 100%;
     height: 4px;
     background-color: white;
+    margin: 3px 0;
 }
 
 @media (max-width: 768px) {
@@ -128,6 +131,7 @@ h1, h2 {
         left: 0;
         width: 100%;
         padding: 10px 0;
+        z-index: 1000;
     }
     .menu.active {
         display: flex;
