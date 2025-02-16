@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Muro de Recomendaciones - OnlyBackpackers</title>
+  <title>Recomendaciones - OnlyBackpackers</title>
   <!-- Fuente de Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="recomendaciones.css" />
   <script defer src="recomendaciones.js"></script>
 </head>
 <body>
-  <header class="main-header">
+  <header class="header">
     <div class="header-overlay">
       <h1>OnlyBackpackers</h1>
-      <p>Muro de Recomendaciones</p>
+      <p>Comparte tus experiencias y recomendaciones</p>
     </div>
     <nav>
       <div id="menu-toggle" class="menu-toggle">
@@ -23,8 +23,11 @@
       </div>
       <ul class="menu" id="menu">
         <li><a href="index.html">Inicio</a></li>
-        <li><a href="recomendaciones.html" class="active">Recomendaciones</a></li>
+        <li><a href="muro.html">Muro</a></li>
+        <li><a href="eventos.html">Eventos</a></li>
+        <li><a href="worldtrip.html">Worldtrip</a></li>
         <li><a href="recompensas.html">Recompensas</a></li>
+        <li><a href="recomendaciones.html" class="active">Recomendaciones</a></li>
       </ul>
     </nav>
   </header>
@@ -35,12 +38,12 @@
       <h2>Muro de Recomendaciones</h2>
       <div class="form-container">
         <form id="user-recommendation-form">
-          <textarea id="recommendation-content" placeholder="Escribe tu recomendación..." required></textarea>
+          <textarea id="recommendation-content" placeholder="Comparte tu recomendación..." required></textarea>
           <input type="file" id="recommendation-media" multiple>
-          <input type="text" id="recommendation-link" placeholder="Link (opcional)">
+          <input type="text" id="recommendation-link" placeholder="Enlace (opcional)">
           <label>
             <input type="checkbox" id="also-community">
-            Compartir en la comunidad
+            Publicar en la comunidad
           </label>
           <button type="submit">Publicar</button>
         </form>
@@ -50,14 +53,14 @@
       </div>
     </section>
     
-    <!-- Recomendaciones Destacadas (solo Admin) -->
+    <!-- Recomendaciones Destacadas (Admin) -->
     <section id="admin-recommendations" class="section">
       <h2>Recomendaciones Destacadas</h2>
       <div class="form-container">
         <form id="admin-recommendation-form">
           <input type="text" id="recommendation-title" placeholder="Título" required>
           <textarea id="recommendation-description" placeholder="Descripción" required></textarea>
-          <input type="text" id="recommendation-affiliate-link" placeholder="Link de afiliado" required>
+          <input type="text" id="recommendation-affiliate-link" placeholder="Enlace de afiliado" required>
           <input type="file" id="recommendation-photo" required>
           <button type="submit">Publicar Destacada</button>
         </form>
