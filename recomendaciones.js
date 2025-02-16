@@ -97,9 +97,9 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("image-modal").style.display = "none";
   });
 
-  // Delegación: Si se hace clic en una imagen dentro de una tarjeta, se abre el modal
+  // Delegación: Detecta clic en cualquier imagen dentro de una tarjeta de recomendación
   document.addEventListener("click", (e) => {
-    if (e.target.tagName === "IMG" && e.target.closest(".recommendation")) {
+    if (e.target.tagName.toUpperCase() === "IMG" && e.target.closest(".recommendation")) {
       openModal(e.target.src);
     }
   });
