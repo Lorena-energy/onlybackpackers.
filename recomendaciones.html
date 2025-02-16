@@ -4,13 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Muro de Recomendaciones - OnlyBackpackers</title>
+  <!-- Fuente de Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="recomendaciones.css" />
   <script defer src="recomendaciones.js"></script>
 </head>
 <body>
   <header class="main-header">
-    <h1>OnlyBackpackers</h1>
-    <p>Muro de Recomendaciones</p>
+    <div class="header-overlay">
+      <h1>OnlyBackpackers</h1>
+      <p>Muro de Recomendaciones</p>
+    </div>
     <nav>
       <div id="menu-toggle" class="menu-toggle">
         <span class="bar"></span>
@@ -26,8 +30,8 @@
   </header>
   
   <main>
-    <!-- Muro de Recomendaciones (usuarios) -->
-    <section id="user-recommendations">
+    <!-- Muro de Recomendaciones (Usuarios) -->
+    <section id="user-recommendations" class="section">
       <h2>Muro de Recomendaciones</h2>
       <div class="form-container">
         <form id="user-recommendation-form">
@@ -38,28 +42,28 @@
             <input type="checkbox" id="also-community">
             Compartir en la comunidad
           </label>
-          <button type="submit">Publicar Recomendación</button>
+          <button type="submit">Publicar</button>
         </form>
       </div>
       <div id="user-recommendations-list" class="recommendations-wall">
-        <!-- Aquí se mostrarán las recomendaciones de usuarios -->
+        <!-- Aquí se agregarán dinámicamente las recomendaciones de usuarios -->
       </div>
     </section>
     
     <!-- Recomendaciones Destacadas (solo Admin) -->
-    <section id="admin-recommendations">
-      <h2>Recomendaciones Destacadas (Admin)</h2>
+    <section id="admin-recommendations" class="section">
+      <h2>Recomendaciones Destacadas</h2>
       <div class="form-container">
         <form id="admin-recommendation-form">
           <input type="text" id="recommendation-title" placeholder="Título" required>
           <textarea id="recommendation-description" placeholder="Descripción" required></textarea>
           <input type="text" id="recommendation-affiliate-link" placeholder="Link de afiliado" required>
           <input type="file" id="recommendation-photo" required>
-          <button type="submit">Publicar Recomendación Destacada</button>
+          <button type="submit">Publicar Destacada</button>
         </form>
       </div>
       <div id="featured-list" class="recommendations-wall">
-        <!-- Aquí se mostrarán las recomendaciones destacadas -->
+        <!-- Aquí se agregarán dinámicamente las recomendaciones destacadas -->
       </div>
     </section>
   </main>
