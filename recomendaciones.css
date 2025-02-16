@@ -9,6 +9,7 @@
 
 body {
   font-family: 'Poppins', sans-serif;
+  /* Fondo degradado: azul a turquesa */
   background: linear-gradient(to bottom right, #0077cc, #00c8e0);
   color: white;
 }
@@ -38,7 +39,7 @@ p, label, input, button, textarea, span {
 
 /* Encabezado */
 .header {
-  background: #004f8c;
+  background: #004f8c; /* Azul oscuro */
   padding: 10px 20px;
   position: sticky;
   top: 0;
@@ -101,10 +102,11 @@ p, label, input, button, textarea, span {
 }
 
 /* Secciones */
-.section h2 {
+.column h2 {
   text-align: center;
   margin-bottom: 20px;
   font-size: 2rem;
+  /* Títulos en naranja */
   color: #ff6600;
 }
 
@@ -172,7 +174,7 @@ form button:hover {
   transform: translateY(-5px);
 }
 .recommendation h3 {
-  color: #0077cc;
+  color: #ff6600;  /* Títulos en naranja */
   margin-bottom: 10px;
 }
 .recommendation p {
@@ -188,7 +190,7 @@ form button:hover {
   object-fit: cover;
   border-radius: 5px;
   margin-top: 10px;
-  cursor: pointer; /* Para indicar que se pueden hacer clic */
+  cursor: pointer; /* Indica que se puede hacer clic */
 }
 
 /* Modal (Lightbox) para ampliar imágenes */
