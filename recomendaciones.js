@@ -1,6 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("recomendaciones.js cargado");
-
   // Menú hamburguesa
   const menuToggle = document.getElementById("menu-toggle");
   const menu = document.getElementById("menu");
@@ -8,18 +6,18 @@ document.addEventListener("DOMContentLoaded", () => {
     menu.classList.toggle("show");
   });
 
-  // Variable de control: simula si el usuario es administrador
-  const isAdmin = true; // Cambia a false para ocultar la sección de admin
+  // Variable para simular si el usuario es administrador (para mostrar/ocultar sección admin)
+  const isAdmin = true; // Cambia a false para ocultar las recomendaciones destacadas
   if (!isAdmin) {
     const adminSection = document.getElementById("admin-recommendations");
     if (adminSection) adminSection.style.display = "none";
   }
 
-  // Muro de Recomendaciones de Usuarios
-  const userRecommendationForm = document.getElementById("user-recommendation-form");
-  const userRecommendationsList = document.getElementById("user-recommendations-list");
+  // Muro de Recomendaciones (Usuarios)
+  const userForm = document.getElementById("user-recommendation-form");
+  const userList = document.getElementById("user-recommendations-list");
 
-  userRecommendationForm.addEventListener("submit", (e) => {
+  userForm.addEventListener("submit", (e) => {
     e.preventDefault();
     const content = document.getElementById("recommendation-content").value.trim();
     const mediaFiles = document.getElementById("recommendation-media").files;
@@ -31,7 +29,6 @@ document.addEventListener("DOMContentLoaded", () => {
     let points = 10;
     if (alsoCommunity) points += 5;
 
-    // Crear bloque de recomendación
     const recDiv = document.createElement("div");
     recDiv.classList.add("recommendation");
 
@@ -49,24 +46,24 @@ document.addEventListener("DOMContentLoaded", () => {
       mediaHTML += "</div>";
     }
 
-    let finalHTML = `
+    let html = `
       <p><strong>Usuario:</strong> ${content}</p>
       ${link ? `<p><a href="${link}" target="_blank" style="color:#0077cc;">Ver en Google Maps</a></p>` : ""}
       ${mediaHTML}
       <p><em>Has ganado ${points} puntos.</em></p>
     `;
-    recDiv.innerHTML = finalHTML;
-    userRecommendationsList.prepend(recDiv);
+    recDiv.innerHTML = html;
+    userList.prepend(recDiv);
     alert(`¡Tu recomendación ha sido publicada y has ganado ${points} puntos!`);
-    userRecommendationForm.reset();
+    userForm.reset();
   });
 
   // Recomendaciones Destacadas (Admin)
-  const adminRecommendationForm = document.getElementById("admin-recommendation-form");
+  const adminForm = document.getElementById("admin-recommendation-form");
   const featuredList = document.getElementById("featured-list");
 
-  if (adminRecommendationForm) {
-    adminRecommendationForm.addEventListener("submit", (e) => {
+  if (adminForm) {
+    adminForm.addEventListener("submit", (e) => {
       e.preventDefault();
       const title = document.getElementById("recommendation-title").value.trim();
       const description = document.getElementById("recommendation-description").value.trim();
@@ -84,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
       `;
       featuredList.prepend(featDiv);
       alert("Recomendación destacada publicada.");
-      adminRecommendationForm.reset();
+      adminForm.reset();
     });
   }
 });
