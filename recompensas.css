@@ -46,6 +46,13 @@ h2 {
   font-weight: bold;
 }
 
+/* ===== SECCIÓN DE PUNTOS ===== */
+.user-points {
+  font-size: 1.2rem;
+  margin: 10px 0;
+  color: #003366;
+}
+
 /* ===== TARJETAS EXPANDIBLES ===== */
 .rewards-container {
   display: grid;
@@ -99,7 +106,7 @@ h2 {
   margin: 5px 0 15px;
 }
 
-/* BOTONES */
+/* ===== BOTONES ===== */
 .redeem-btn {
   background: #ff6600;
   color: white;
