@@ -33,43 +33,51 @@
   </header>
   
   <main>
-    <!-- Muro de Recomendaciones (Usuarios) -->
-    <section id="user-recommendations" class="section">
-      <h2>Muro de Recomendaciones</h2>
-      <div class="form-container">
-        <form id="user-recommendation-form">
-          <textarea id="recommendation-content" placeholder="Comparte tu recomendación..." required></textarea>
-          <input type="file" id="recommendation-media" multiple>
-          <input type="text" id="recommendation-link" placeholder="Enlace (opcional)">
-          <label>
-            <input type="checkbox" id="also-community">
-            Publicar en la comunidad
-          </label>
-          <button type="submit">Publicar</button>
-        </form>
-      </div>
-      <div id="user-recommendations-list" class="recommendations-wall">
-        <!-- Aquí se agregarán dinámicamente las recomendaciones de usuarios -->
-      </div>
-    </section>
-    
-    <!-- Recomendaciones Destacadas (Admin) -->
-    <section id="admin-recommendations" class="section">
-      <h2>Recomendaciones Destacadas</h2>
-      <div class="form-container">
-        <form id="admin-recommendation-form">
-          <input type="text" id="recommendation-title" placeholder="Título" required>
-          <textarea id="recommendation-description" placeholder="Descripción" required></textarea>
-          <input type="text" id="recommendation-affiliate-link" placeholder="Enlace de afiliado" required>
-          <input type="file" id="recommendation-photo" required>
-          <button type="submit">Publicar Destacada</button>
-        </form>
-      </div>
-      <div id="featured-list" class="recommendations-wall">
-        <!-- Aquí se agregarán dinámicamente las recomendaciones destacadas -->
-      </div>
-    </section>
+    <div class="recommendations-container">
+      <!-- Columna 1: Muro de Recomendaciones (Usuarios) -->
+      <section id="user-recommendations" class="column">
+        <h2>Muro de Recomendaciones</h2>
+        <div class="form-container">
+          <form id="user-recommendation-form">
+            <textarea id="recommendation-content" placeholder="Comparte tu recomendación..." required></textarea>
+            <input type="file" id="recommendation-media" multiple>
+            <input type="text" id="recommendation-link" placeholder="Enlace (opcional)">
+            <label>
+              <input type="checkbox" id="also-community">
+              Publicar en la comunidad
+            </label>
+            <button type="submit">Publicar</button>
+          </form>
+        </div>
+        <div id="user-recommendations-list" class="recommendations-wall">
+          <!-- Las recomendaciones de usuarios se agregarán aquí -->
+        </div>
+      </section>
+      
+      <!-- Columna 2: Recomendaciones Destacadas (Admin) -->
+      <section id="admin-recommendations" class="column">
+        <h2>Recomendaciones Destacadas</h2>
+        <div class="form-container">
+          <form id="admin-recommendation-form">
+            <input type="text" id="recommendation-title" placeholder="Título" required>
+            <textarea id="recommendation-description" placeholder="Descripción" required></textarea>
+            <input type="text" id="recommendation-affiliate-link" placeholder="Enlace de afiliado" required>
+            <input type="file" id="recommendation-photo" required>
+            <button type="submit">Publicar Destacada</button>
+          </form>
+        </div>
+        <div id="featured-list" class="recommendations-wall">
+          <!-- Las recomendaciones destacadas se agregarán aquí -->
+        </div>
+      </section>
+    </div>
   </main>
+  
+  <!-- Modal para ampliar imágenes -->
+  <div id="image-modal" class="image-modal" style="display: none;">
+    <span id="close-modal" class="close-modal">&times;</span>
+    <img id="modal-image" class="modal-image" src="" alt="Imagen ampliada">
+  </div>
   
   <footer>
     <p>&copy; 2025 OnlyBackpackers. Todos los derechos reservados.</p>
