@@ -3,13 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Recomendaciones - OnlyBackpackers</title>
+  <title>Muro de Recomendaciones - OnlyBackpackers</title>
   <link rel="stylesheet" href="recomendaciones.css" />
   <script defer src="recomendaciones.js"></script>
 </head>
 <body>
   <header class="main-header">
-    <h1>Recomendaciones OnlyBackpackers</h1>
+    <h1>OnlyBackpackers</h1>
+    <p>Muro de Recomendaciones</p>
     <nav>
       <div id="menu-toggle" class="menu-toggle">
         <span class="bar"></span>
@@ -23,37 +24,46 @@
       </ul>
     </nav>
   </header>
-
+  
   <main>
-    <!-- Sección para recomendaciones de usuarios -->
+    <!-- Muro de Recomendaciones (usuarios) -->
     <section id="user-recommendations">
-      <h2>Recomendaciones de Usuarios</h2>
-      <form id="user-recommendation-form">
-        <textarea id="recommendation-content" placeholder="Escribe tu recomendación" required></textarea>
-        <input type="file" id="recommendation-media" multiple>
-        <input type="text" id="recommendation-link" placeholder="Link (opcional)">
-        <label>
-          <input type="checkbox" id="also-community"> Compartir en la comunidad
-        </label>
-        <button type="submit">Enviar Recomendación</button>
-      </form>
-      <div id="user-recommendations-list"></div>
+      <h2>Muro de Recomendaciones</h2>
+      <div class="form-container">
+        <form id="user-recommendation-form">
+          <textarea id="recommendation-content" placeholder="Escribe tu recomendación..." required></textarea>
+          <input type="file" id="recommendation-media" multiple>
+          <input type="text" id="recommendation-link" placeholder="Link (opcional)">
+          <label>
+            <input type="checkbox" id="also-community">
+            Compartir en la comunidad
+          </label>
+          <button type="submit">Publicar Recomendación</button>
+        </form>
+      </div>
+      <div id="user-recommendations-list" class="recommendations-wall">
+        <!-- Aquí se mostrarán las recomendaciones de usuarios -->
+      </div>
     </section>
-
-    <!-- Sección para recomendaciones destacadas (solo para admin) -->
+    
+    <!-- Recomendaciones Destacadas (solo Admin) -->
     <section id="admin-recommendations">
-      <h2>Recomendaciones Destacadas</h2>
-      <form id="admin-recommendation-form">
-        <input type="text" id="recommendation-title" placeholder="Título" required>
-        <textarea id="recommendation-description" placeholder="Descripción" required></textarea>
-        <input type="text" id="recommendation-affiliate-link" placeholder="Link de afiliado" required>
-        <input type="file" id="recommendation-photo" required>
-        <button type="submit">Publicar Recomendación Destacada</button>
-      </form>
-      <div id="featured-list"></div>
+      <h2>Recomendaciones Destacadas (Admin)</h2>
+      <div class="form-container">
+        <form id="admin-recommendation-form">
+          <input type="text" id="recommendation-title" placeholder="Título" required>
+          <textarea id="recommendation-description" placeholder="Descripción" required></textarea>
+          <input type="text" id="recommendation-affiliate-link" placeholder="Link de afiliado" required>
+          <input type="file" id="recommendation-photo" required>
+          <button type="submit">Publicar Recomendación Destacada</button>
+        </form>
+      </div>
+      <div id="featured-list" class="recommendations-wall">
+        <!-- Aquí se mostrarán las recomendaciones destacadas -->
+      </div>
     </section>
   </main>
-
+  
   <footer>
     <p>&copy; 2025 OnlyBackpackers. Todos los derechos reservados.</p>
   </footer>
