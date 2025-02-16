@@ -1,15 +1,19 @@
 /* ---------------------------------------------------------
    REGLAS GENERALES
    --------------------------------------------------------- */
-body {
-  font-family: 'Poppins', sans-serif;
+* {
   margin: 0;
   padding: 0;
-  /* Fondo en degradado: azul a turquesa */
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
   background: linear-gradient(to bottom right, #0077cc, #00c8e0);
   color: white;
 }
 
+/* Tipografía */
 h1, h2, h3 {
   font-weight: 600;
 }
@@ -32,22 +36,22 @@ p, label, input, button, textarea, span {
   background: #cc5200;
 }
 
-/* Encabezado (Header) */
+/* Encabezado */
 .header {
-  background: #004f8c; /* Azul oscuro */
+  background: #004f8c;
   padding: 10px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   position: sticky;
   top: 0;
   z-index: 1000;
 }
-.header h1 {
-  margin: 0;
-  font-size: 2rem;
+.header-overlay {
+  text-align: center;
+  padding: 20px;
 }
-.header p {
+.header-overlay h1 {
+  font-size: 2.5rem;
+}
+.header-overlay p {
   font-size: 1rem;
 }
 
@@ -56,8 +60,8 @@ p, label, input, button, textarea, span {
   list-style: none;
   display: flex;
   gap: 15px;
-  margin: 0;
-  padding: 0;
+  justify-content: center;
+  padding: 10px 0;
 }
 .menu li a {
   text-decoration: none;
@@ -66,7 +70,8 @@ p, label, input, button, textarea, span {
   border-radius: 5px;
   font-weight: 400;
 }
-.menu a.active, .menu li a:hover {
+.menu a.active,
+.menu li a:hover {
   background: #ff6600;
 }
 
@@ -84,20 +89,22 @@ p, label, input, button, textarea, span {
   transition: 0.3s;
 }
 
-/* Main */
-main {
-  padding: 40px 20px;
+/* Contenedor de columnas para recomendaciones */
+.recommendations-container {
+  display: flex;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 40px auto;
+}
+.column {
+  flex: 1;
 }
 
 /* Secciones */
-.section {
-  margin-bottom: 60px;
-}
 .section h2 {
   text-align: center;
   margin-bottom: 20px;
   font-size: 2rem;
-  /* Usamos naranja para resaltar los títulos de sección */
   color: #ff6600;
 }
 
@@ -147,7 +154,7 @@ form button:hover {
   background: #005fa3;
 }
 
-/* Muro de Recomendaciones (grid de tarjetas) */
+/* Grid de tarjetas de recomendaciones */
 .recommendations-wall {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -172,11 +179,50 @@ form button:hover {
   margin: 10px 0;
   line-height: 1.5;
 }
+
+/* Reducir el tamaño de las imágenes dentro de las tarjetas */
 .recommendation img,
 .recommendation video {
   max-width: 100%;
+  max-height: 200px;
+  object-fit: cover;
   border-radius: 5px;
   margin-top: 10px;
+  cursor: pointer; /* Para indicar que se pueden hacer clic */
+}
+
+/* Modal (Lightbox) para ampliar imágenes */
+.image-modal {
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-image {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+.close-modal {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  font-size: 3rem;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+.close-modal:hover {
+  color: #ff6600;
 }
 
 /* Footer */
@@ -204,5 +250,10 @@ footer {
   }
   .menu-toggle {
     display: block;
+  }
+  .recommendations-container {
+    flex-direction: column;
+    gap: 20px;
+    margin: 20px;
   }
 }
