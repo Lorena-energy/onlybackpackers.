@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     menu.classList.toggle("show");
   });
 
-  // Simulación: variable isAdmin para controlar la visibilidad del formulario admin
+  // Variable de control: simula si el usuario es administrador
   const isAdmin = true; // Cambia a false para ocultar la sección de admin
   if (!isAdmin) {
     const adminSection = document.getElementById("admin-recommendations");
@@ -25,14 +25,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const mediaFiles = document.getElementById("recommendation-media").files;
     const link = document.getElementById("recommendation-link").value.trim();
     const alsoCommunity = document.getElementById("also-community").checked;
-
     if (!content) return;
 
     // (Opcional) Lógica de puntos
     let points = 10;
     if (alsoCommunity) points += 5;
 
-    // Crear el bloque de recomendación
+    // Crear bloque de recomendación
     const recDiv = document.createElement("div");
     recDiv.classList.add("recommendation");
 
@@ -73,9 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const description = document.getElementById("recommendation-description").value.trim();
       const affiliateLink = document.getElementById("recommendation-affiliate-link").value.trim();
       const photoFile = document.getElementById("recommendation-photo").files[0];
-
       if (!title || !description || !affiliateLink || !photoFile) return;
-
       const photoURL = URL.createObjectURL(photoFile);
       const featDiv = document.createElement("div");
       featDiv.classList.add("recommendation");
@@ -91,4 +88,3 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
-
