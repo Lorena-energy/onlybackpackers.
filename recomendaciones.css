@@ -1,149 +1,142 @@
-/* ===== ESTILOS GENERALES ===== */
+/* Estilos generales */
 body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
   background: #f9f9f9;
   color: #333;
-  text-align: center;
 }
 
 .main-header {
-  background: linear-gradient(to right, #0077cc, #00bfff);
+  background: #0077cc;
   color: white;
   padding: 20px;
   text-align: center;
   position: relative;
 }
 
-h1, h2 {
-  color: #0077cc;
-  margin-bottom: 10px;
+.main-header h1 {
+  margin: 0;
 }
 
+/* Menú de navegación */
 .menu {
   display: flex;
   justify-content: center;
   list-style: none;
-  padding: 10px;
-  background: #0077cc;
+  padding: 0;
+  margin: 10px 0 0;
+  background: #005fa3;
 }
+
 .menu li {
   margin: 0 15px;
 }
+
 .menu li a {
   color: white;
   text-decoration: none;
-  font-size: 1rem;
   font-weight: bold;
 }
 
-/* ===== TARJETAS EXPANDIBLES ===== */
-.rewards-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 20px;
-  max-width: 1200px;
-  margin: 20px auto;
-  padding: 20px;
+.menu li a.active {
+  text-decoration: underline;
 }
 
-.reward-card {
-  background: linear-gradient(to right, #0077cc, #00bfff);
-  color: white;
-  padding: 20px;
-  border-radius: 15px;
-  text-align: center;
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  position: relative;
-}
-
-.reward-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 10px 25px rgba(0, 119, 204, 0.3);
-}
-
-.reward-content {
-  display: none;
-  background: white;
-  color: #333;
-  padding: 15px;
-  border-radius: 15px;
-  margin-top: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.reward-card.active .reward-content {
-  display: block;
-  animation: star-animation 0.5s ease-in-out;
-}
-
-@keyframes star-animation {
-  0% { opacity: 0; transform: scale(0.8) rotate(10deg); }
-  100% { opacity: 1; transform: scale(1) rotate(0deg); }
-}
-
-/* BOTONES */
-.redeem-btn {
-  background: #ff6600;
-  color: white;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background 0.3s;
-}
-
-.redeem-btn:hover {
-  background: #cc5200;
-}
-
-/* MENÚ HAMBURGUESA */
+/* Menú hamburguesa (visible en móviles) */
 .menu-toggle {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 30px;
-  height: 25px;
-  cursor: pointer;
   position: absolute;
-  top: 15px;
   left: 20px;
-  z-index: 1001;
+  top: 20px;
+  display: none;
 }
 
 .menu-toggle .bar {
-  width: 100%;
-  height: 4px;
-  background-color: white;
-  margin: 3px 0;
+  width: 25px;
+  height: 3px;
+  background: white;
+  margin: 4px 0;
 }
 
+/* Mostrar menú hamburguesa en dispositivos pequeños */
 @media (max-width: 768px) {
   .menu {
     display: none;
     flex-direction: column;
-    background: #0077cc;
-    position: absolute;
-    top: 60px;
-    left: 0;
     width: 100%;
-    padding: 10px 0;
-    z-index: 1000;
   }
-  .menu.active {
+  .menu.show {
     display: flex;
   }
   .menu-toggle {
-    display: flex;
+    display: block;
   }
 }
 
-footer {
+/* Contenido principal */
+main {
+  padding: 20px;
+}
+
+section {
+  margin-bottom: 40px;
+}
+
+h2 {
+  margin-bottom: 15px;
+  color: #0077cc;
+}
+
+/* Formularios */
+form {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+form textarea,
+form input[type="text"],
+form input[type="file"] {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+form label {
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+}
+
+form button {
+  padding: 10px;
   background: #0077cc;
   color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background: #005fa3;
+}
+
+/* Bloques de recomendación */
+#user-recommendations-list .recommendation,
+#featured-list .recommendation {
+  background: white;
+  border: 1px solid #ddd;
   padding: 15px;
-  margin-top: 20px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+}
+
+.media-container {
+  margin-top: 10px;
+}
+
+.media-container img,
+.media-container video {
+  max-width: 100%;
+  border-radius: 4px;
 }
