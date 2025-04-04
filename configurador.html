@@ -1,80 +1,34 @@
-<!-- Archivo: pages/configurador.html -->
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OnlyBackpackers - Configurador de Rutas</title>
-  <link rel="stylesheet" href="../styles/configurador.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-</head>
-<body>
-  <header class="main-header">
-    <div class="menu-toggle" id="menu-toggle">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <nav>
-      <ul class="menu" id="menu">
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="muro.html">Comunidad</a></li>
-        <li><a href="muro-personal.html">Mi Muro</a></li>
-        <li><a href="recomendaciones.html">Recomendaciones</a></li>
-        <li><a href="chats.html">Chats</a></li>
-        <li><a href="eventos.html">Eventos</a></li>
-        <li><a href="worldtrip.html">Worldtrip</a></li>
-        <li><a href="recompensas.html">Recompensas</a></li>
-        <li><a href="expenses.html">Gastos</a></li>
-        <li><a href="configurador.html" class="active">Configurador</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <main class="configurator">
-    <h1>Configurador de Rutas</h1>
-    <p>Personaliza tu viaje eligiendo tu ciudad de partida, destinos favoritos y actividades recomendadas.</p>
+ <h1>Configurador de Rutas con IA</h1>
+    <p>Personaliza tu viaje y deja que nuestro asistente inteligente ob.packersGPT cree la ruta ideal para ti.</p>
     <form id="route-form" class="form-container">
       <div class="form-group">
-        <label for="departure-city">Ciudad de Partida:</label>
-        <input type="text" id="departure-city" placeholder="Introduce tu ciudad de partida" required>
+        <label for="departure-city">Ciudad de partida:</label>
+        <input type="text" id="departure-city" placeholder="Introduce tu ciudad" required>
       </div>
       <div class="form-group">
-        <label for="trip-duration">¿Cuántos días dura tu viaje?</label>
-        <input type="number" id="trip-duration" placeholder="Número de días" required>
+        <label for="trip-duration">Duración del viaje (días):</label>
+        <input type="number" id="trip-duration" placeholder="Ej. 7" required>
       </div>
       <div class="form-group">
-        <label for="regions">Elige tus destinos:</label>
-        <select id="regions" multiple>
-          <option value="paris">París</option>
-          <option value="londres">Londres</option>
-          <option value="roma">Roma</option>
-          <option value="amsterdam">Ámsterdam</option>
-          <option value="berlin">Berlín</option>
-          <option value="praga">Praga</option>
-          <option value="barcelona">Barcelona</option>
-          <option value="venecia">Venecia</option>
-          <option value="budapest">Budapest</option>
+        <label for="preferences">¿Qué tipo de viaje te gustaría?</label>
+        <select id="preferences">
+          <option value="aventura">Aventura</option>
+          <option value="playa">Playa</option>
+          <option value="cultural">Cultural</option>
+          <option value="gastronomia">Gastronómico</option>
+          <option value="naturaleza">Naturaleza</option>
         </select>
-      </div>
-      <div class="form-group">
-        <label>¿Qué actividades prefieres?</label>
-        <div class="checkbox-container">
-          <label><input type="checkbox" value="museos"> Visitar museos</label>
-          <label><input type="checkbox" value="gastronomia"> Gastronomía</label>
-          <label><input type="checkbox" value="naturaleza"> Naturaleza</label>
-          <label><input type="checkbox" value="playas"> Playas</label>
-          <label><input type="checkbox" value="cultura"> Cultura</label>
-        </div>
       </div>
       <button type="submit" class="cta-button">Generar Ruta</button>
     </form>
+
     <section id="route-results" class="hidden">
       <h2>Tu Ruta Personalizada</h2>
       <div id="itinerary"></div>
     </section>
   </main>
 
-  <script src="../scripts/configurador.js"></script>
+  <script src="configurador.js"></script>
 </body>
 </html>
