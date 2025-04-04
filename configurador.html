@@ -23,7 +23,18 @@
       <button type="submit" class="cta-button">Generar Ruta</button>
     </form>
 
-    <section id="route-results" class="hidden">
+<section id="obpackersGPT" class="chat-container">
+  <h2>¿Tienes dudas sobre tu ruta? Pregunta a ob.packersGPT 🧠</h2>
+  <div id="chat-box" class="chat-box"></div>
+  <form id="chat-form">
+    <input type="text" id="user-input" placeholder="Escribe tu pregunta..." required>
+    <button type="submit">Enviar</button>
+  </form>
+</section>
+
+<script src="obpackersGPT.js"></script>
+
+  <section id="route-results" class="hidden">
       <h2>Tu Ruta Personalizada</h2>
       <div id="itinerary"></div>
     </section>
