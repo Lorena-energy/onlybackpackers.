@@ -10,7 +10,7 @@
 <body>
   <header class="main-header">
     <div class="menu-toggle" id="menu-toggle">
-      <span></span><span></span><span></span>
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
     </div>
     <nav>
       <ul class="menu" id="menu">
@@ -25,9 +25,11 @@
   </header>
 
   <main class="zona-camper">
-    <section class="intro">
-      <h1>Zona Camper 🚐</h1>
-      <p>Explora y comparte los mejores lugares para tu viaje en furgo o camper. ¡Comparte tu spot favorito o encuentra el próximo destino perfecto!</p>
+    <section class="hero-worldtrip">
+      <div class="hero-content">
+        <h1>Zona Camper 🚐</h1>
+        <p>Explora y comparte los mejores lugares para tu viaje en furgo o camper. ¡Comparte tu spot favorito o encuentra el próximo destino perfecto!</p>
+      </div>
     </section>
 
     <section class="formulario">
@@ -43,7 +45,7 @@
         </select>
         <input type="text" id="servicios" placeholder="Servicios (agua, luz, ducha...)" required>
         <textarea id="comentarios" placeholder="Comentarios adicionales"></textarea>
-        <button type="submit">Subir zona</button>
+        <button type="submit" class="cta-button">Subir zona</button>
       </form>
     </section>
 
@@ -59,11 +61,14 @@
         </select>
       </div>
       <div id="lista-zonas" class="lista-zonas"></div>
-      <p class="proximamente">✨ ¡Atentos! Pronto añadiremos más funcionalidades como mapas interactivos, favoritos, una IA específica para que te ayude con tus rutas, recompensas por recomendar y mucho más! 🧡</p>
+      <p class="proximamente">✨ ¡Atentos! Pronto añadiremos más funcionalidades como mapas interactivos, favoritos, una IA específica para ayudarte con tus rutas, recompensas por recomendar y mucho más! 🧡</p>
     </section>
   </main>
+
+  <footer>
+    <p>&copy; 2024 OnlyBackpackers. Vive tu aventura con nosotros.</p>
+  </footer>
 
   <script src="zona-camper.js"></script>
 </body>
 </html>
-
