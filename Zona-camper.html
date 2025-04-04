@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zona Camper - OnlyBackpackers</title>
+  <link rel="stylesheet" href="zona-camper.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="main-header">
+    <div class="menu-toggle" id="menu-toggle">
+      <span></span><span></span><span></span>
+    </div>
+    <nav>
+      <ul class="menu" id="menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="muro.html">Comunidad</a></li>
+        <li><a href="configurador.html">Configurador</a></li>
+        <li><a href="worldtrip.html">Worldtrip</a></li>
+        <li><a href="zona-camper.html" class="active">Zona Camper</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="zona-camper">
+    <section class="intro">
+      <h1>Zona Camper 🚐</h1>
+      <p>Explora y comparte los mejores lugares para tu viaje en furgo o camper. ¡Comparte tu spot favorito o encuentra el próximo destino perfecto!</p>
+    </section>
+
+    <section class="formulario">
+      <h2>🎯 Sube tu lugar camper favorito</h2>
+      <form id="camper-form">
+        <input type="text" id="nombre-lugar" placeholder="Nombre del lugar" required>
+        <input type="text" id="ubicacion" placeholder="Ubicación (Ej: Cullera, Valencia)" required>
+        <select id="tipo-zona">
+          <option value="">Tipo de zona</option>
+          <option value="parking">Parking</option>
+          <option value="salvaje">Zona Salvaje</option>
+          <option value="camping">Camping</option>
+        </select>
+        <input type="text" id="servicios" placeholder="Servicios (agua, luz, ducha...)" required>
+        <textarea id="comentarios" placeholder="Comentarios adicionales"></textarea>
+        <button type="submit">Subir zona</button>
+      </form>
+    </section>
+
+    <section class="spots">
+      <h2>📍 Zonas Camper recomendadas por la comunidad</h2>
+      <div class="filtros">
+        <input type="text" id="filtro-ubicacion" placeholder="Filtrar por ubicación...">
+        <select id="filtro-tipo">
+          <option value="">Todos los tipos</option>
+          <option value="parking">Parking</option>
+          <option value="salvaje">Zona Salvaje</option>
+          <option value="camping">Camping</option>
+        </select>
+      </div>
+      <div id="lista-zonas" class="lista-zonas"></div>
+      <p class="proximamente">✨ ¡Atentos! Pronto añadiremos más funcionalidades como mapas interactivos y favoritos. 🧡</p>
+    </section>
+  </main>
+
+  <script src="zona-camper.js"></script>
+</body>
+</html>
