@@ -1,41 +1,86 @@
+// zona-camper.js
+
+// Datos simulados para pruebas (esto puede ir luego a Firebase)
+const zonas = [
+  {
+    nombre: "Mirador del Silencio",
+    ubicacion: "Asturias",
+    tipo: "salvaje",
+    servicios: "Agua, duchas, luz solar",
+    comentarios: "Vistas espectaculares al mar, muy tranquilo."
+  },
+  {
+    nombre: "Parking Playa San Juan",
+    ubicacion: "Alicante",
+    tipo: "parking",
+    servicios: "Baños públicos, cafetería cerca",
+    comentarios: "Ideal para dormir cerca del mar."
+  },
+  {
+    nombre: "Camping Sierra Verde",
+    ubicacion: "Granada",
+    tipo: "camping",
+    servicios: "Electricidad, piscina, bar",
+    comentarios: "Perfecto para familias."
+  }
+];
+
+// Mostrar zonas al cargar
 document.addEventListener("DOMContentLoaded", () => {
-  const camperData = [
-    {
-      title: "📍 Playa de los Genoveses, Almería",
-      description: "Ideal para campers que buscan tranquilidad y naturaleza. Acceso sencillo y vistas increíbles.",
-      tag: "Costa"
-    },
-    {
-      title: "🌄 Lago de Sanabria, Zamora",
-      description: "Área habilitada para autocaravanas, rodeada de naturaleza pura. Perfecta para desconectar.",
-      tag: "Naturaleza"
-    },
-    {
-      title: "🔧 Consejo Viajero",
-      description: "Antes de salir, revisa siempre los niveles del vehículo y lleva un bidón extra de agua. ¡Nunca falla!",
-      tag: "Consejo"
-    }
-  ];
+  mostrarZonas(zonas);
 
-  const grid = document.querySelector(".card-grid");
+  // Filtros
+  document.getElementById("filtro-ubicacion").addEventListener("input", aplicarFiltros);
+  document.getElementById("filtro-tipo").addEventListener("change", aplicarFiltros);
 
-  camperData.forEach(item => {
-    const card = document.createElement("div");
-    card.className = "card";
-
-    const h3 = document.createElement("h3");
-    h3.textContent = item.title;
-
-    const p = document.createElement("p");
-    p.textContent = item.description;
-
-    const span = document.createElement("span");
-    span.className = "tag";
-    span.textContent = item.tag;
-
-    card.appendChild(h3);
-    card.appendChild(p);
-    card.appendChild(span);
-    grid.appendChild(card);
+  // Envío del formulario
+  document.getElementById("camper-form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const nuevaZona = {
+      nombre: document.getElementById("nombre-lugar").value,
+      ubicacion: document.getElementById("ubicacion").value,
+      tipo: document.getElementById("tipo-zona").value,
+      servicios: document.getElementById("servicios").value,
+      comentarios: document.getElementById("comentarios").value,
+    };
+    zonas.unshift(nuevaZona); // Añadir al inicio del array
+    mostrarZonas(zonas);
+    e.target.reset();
   });
 });
+
+function mostrarZonas(lista) {
+  const contenedor = document.getElementById("lista-zonas");
+  contenedor.innerHTML = "";
+
+  if (lista.length === 0) {
+    contenedor.innerHTML = "<p>No se encontraron zonas.</p>";
+    return;
+  }
+
+  lista.forEach(zona => {
+    const div = document.createElement("div");
+    div.classList.add("zona");
+    div.innerHTML = `
+      <h3>${zona.nombre}</h3>
+      <p><strong>Ubicación:</strong> ${zona.ubicacion}</p>
+      <p><strong>Tipo:</strong> ${zona.tipo}</p>
+      <p><strong>Servicios:</strong> ${zona.servicios}</p>
+      <p><strong>Comentarios:</strong> ${zona.comentarios}</p>
+    `;
+    contenedor.appendChild(div);
+  });
+}
+
+function aplicarFiltros() {
+  const ubicacionFiltro = document.getElementById("filtro-ubicacion").value.toLowerCase();
+  const tipoFiltro = document.getElementById("filtro-tipo").value;
+
+  const zonasFiltradas = zonas.filter(zona => {
+    const coincideUbicacion = zona.ubicacion.toLowerCase().includes(ubicacionFiltro);
+    const coincideTipo = tipoFiltro === "" || zona.tipo === tipoFiltro;
+    return coincideUbicacion && coincideTipo;
+  });
+
+  mostrarZonas(zonasFiltradas);
+}
