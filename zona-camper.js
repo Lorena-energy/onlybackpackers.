@@ -10,6 +10,21 @@ document.addEventListener("DOMContentLoaded", () => {
   let puntos = 0;
   let zonas = [];
 
+  function crearCardZona(zona) {
+    const card = document.createElement("div");
+    card.classList.add("zona-card");
+    card.innerHTML = `
+      <h3>${zona.nombre}</h3>
+      <p><strong>Ubicación:</strong> ${zona.ubicacion}</p>
+      <p><strong>Tipo:</strong> ${zona.tipo}</p>
+      <p><strong>Servicios:</strong> ${zona.servicios}</p>
+      <p><strong>Comentarios:</strong> ${zona.comentarios}</p>
+      <p><strong>Valoración:</strong> ${zona.valoracion || "No valorado"}</p>
+      <button onclick="window.open('https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(zona.ubicacion)}', '_blank')">📍 Ver en Google Maps</button>
+    `;
+    return card;
+  }
+
   function actualizarListaZonas() {
     listaZonas.innerHTML = "";
     const ubicacion = filtroUbicacion.value.toLowerCase();
@@ -20,15 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const coincideTipo = tipo === "" || zona.tipo === tipo;
 
       if (coincideUbicacion && coincideTipo) {
-        const card = document.createElement("div");
-        card.classList.add("zona-card");
-        card.innerHTML = `
-          <h3>${zona.nombre}</h3>
-          <p><strong>Ubicación:</strong> ${zona.ubicacion}</p>
-          <p><strong>Tipo:</strong> ${zona.tipo}</p>
-          <p><strong>Servicios:</strong> ${zona.servicios}</p>
-          <p><strong>Comentarios:</strong> ${zona.comentarios}</p>
-        `;
+        const card = crearCardZona(zona);
         listaZonas.appendChild(card);
       }
     });
@@ -43,6 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
       tipo: document.getElementById("tipo-zona").value,
       servicios: document.getElementById("servicios").value,
       comentarios: document.getElementById("comentarios").value,
+      valoracion: "⭐⭐⭐⭐⭐" // Aquí puedes integrar un input de estrellas en el futuro
     };
 
     zonas.push(nuevaZona);
