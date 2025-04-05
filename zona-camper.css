@@ -1,4 +1,5 @@
-/* ===== REGLAS GENERALES ===== */
+/* zona-camper.css actualizado con estilo OnlyBackpackers */
+
 body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
@@ -7,14 +8,13 @@ body {
   color: #333;
 }
 
-/* ===== ENCABEZADO ===== */
 .main-header {
   background: #004f8c;
   color: white;
   position: sticky;
   top: 0;
   z-index: 1000;
-  padding: 5px 0;
+  padding: 10px 0;
   text-align: center;
 }
 .main-header nav {
@@ -29,13 +29,13 @@ body {
   cursor: pointer;
   position: absolute;
   left: 20px;
-  top: 15px;
+  top: 10px;
 }
 .menu-toggle .bar {
   width: 25px;
   height: 3px;
   background: white;
-  margin: 5px 0;
+  margin: 4px 0;
 }
 .menu {
   list-style: none;
@@ -46,17 +46,18 @@ body {
   justify-content: center;
 }
 .menu li a {
-  text-decoration: none;
   color: white;
+  text-decoration: none;
+  font-weight: 600;
   padding: 8px 15px;
   border-radius: 5px;
   transition: background-color 0.3s;
 }
-.menu li a.active {
-  background-color: #ff6600;
-}
 .menu li a:hover {
   background-color: #005fa3;
+}
+.menu li a.active {
+  background-color: #ff6600;
 }
 
 @media (max-width: 768px) {
@@ -65,7 +66,7 @@ body {
     flex-direction: column;
     background: #0077cc;
     position: absolute;
-    top: 60px;
+    top: 50px;
     left: 0;
     width: 100%;
     padding: 10px 0;
@@ -78,124 +79,102 @@ body {
   }
 }
 
-/* ===== HERO DE ZONA CAMPER ===== */
-.hero-worldtrip {
-  position: relative;
-  min-height: 50vh;
-  background: url("https://source.unsplash.com/1600x900/?campervan,nature") center/cover no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.hero-worldtrip::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom right, rgba(0,119,204,0.5), rgba(0,191,255,0.5));
-}
-.hero-content {
-  position: relative;
-  z-index: 1;
-  max-width: 600px;
-  text-align: center;
-  color: white;
+main.zona-camper {
   padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
 }
-.hero-content h1 {
-  font-size: 2rem;
-  margin-bottom: 15px;
+.intro {
+  text-align: center;
+  margin-bottom: 30px;
 }
-.hero-content p {
-  font-size: 1rem;
-}
-
-/* ===== FORMULARIO CAMPER ===== */
 .formulario {
-  padding: 30px 20px;
-  background: #ffffff;
-  max-width: 800px;
-  margin: 40px auto;
+  background: #d4f0ff;
+  padding: 20px;
   border-radius: 10px;
+  margin-bottom: 30px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 .formulario h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #004f8c;
+  color: #0077cc;
+  margin-bottom: 15px;
+}
+.formulario form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 .formulario input,
 .formulario select,
-.formulario textarea {
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 15px;
+.formulario textarea,
+.formulario button {
+  padding: 10px;
+  border-radius: 5px;
   border: 1px solid #ccc;
-  border-radius: 8px;
-  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
 }
-.cta-button {
-  display: inline-block;
-  background: linear-gradient(to right, #0077cc, #00bfff);
-  color: #fff;
-  font-weight: 600;
-  border: none;
-  border-radius: 50px;
-  padding: 12px 30px;
+.formulario button {
+  background-color: #0077cc;
+  color: white;
+  font-weight: bold;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background 0.3s;
 }
-.cta-button:hover {
-  background: linear-gradient(to right, #005fa3, #00a2d6);
+.formulario button:hover {
+  background-color: #005fa3;
 }
-
-/* ===== SECCIÓN SPOTS ===== */
 .spots {
-  max-width: 1000px;
-  margin: 40px auto;
-  padding: 0 20px;
-}
-.spots h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #004f8c;
+  margin-top: 40px;
 }
 .filtros {
   display: flex;
+  gap: 10px;
   flex-wrap: wrap;
-  gap: 15px;
   margin-bottom: 20px;
-}
-.filtros input,
-.filtros select {
-  flex: 1;
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
 }
 .lista-zonas {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
-.lista-zonas .zona {
-  background: #fff;
+.zona-card {
+  background: linear-gradient(to right, #0077cc, #00bfff);
+  color: white;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.zona-card button {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #ff6600;
+  border: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.zona-card button:hover {
+  background-color: #e05500;
+}
+.puntos {
+  margin-top: 30px;
+  background: #fff0d9;
   padding: 15px;
   border-radius: 10px;
-  border-left: 5px solid #0077cc;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-}
-.proximamente {
   text-align: center;
-  margin-top: 40px;
-  font-style: italic;
-  color: #ff6600;
+  color: #b3541e;
 }
-
-/* ===== FOOTER ===== */
 footer {
   background: #0077cc;
   color: white;
   text-align: center;
   padding: 20px;
-  margin-top: 40px;
+  margin-top: 20px;
+}
+.proximamente {
+  text-align: center;
+  font-style: italic;
+  color: #666;
+  margin-top: 30px;
 }
