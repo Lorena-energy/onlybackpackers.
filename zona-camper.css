@@ -113,6 +113,9 @@ main.zona-camper {
   border: 1px solid #ccc;
   font-size: 1rem;
 }
+.formulario input[type="file"] {
+  padding: 5px;
+}
 .formulario button {
   background-color: #0077cc;
   color: white;
@@ -143,6 +146,13 @@ main.zona-camper {
   border-radius: 10px;
   padding: 15px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.zona-card img, .zona-card video {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  max-height: 200px;
+  object-fit: cover;
 }
 .zona-card button {
   margin-top: 10px;
