@@ -1,41 +1,42 @@
 // zona-camper.js
 
-// Datos simulados para pruebas (esto puede ir luego a Firebase)
-const zonas = [
-  {
-    nombre: "Mirador del Silencio",
-    ubicacion: "Asturias",
-    tipo: "salvaje",
-    servicios: "Agua, duchas, luz solar",
-    comentarios: "Vistas espectaculares al mar, muy tranquilo."
-  },
-  {
-    nombre: "Parking Playa San Juan",
-    ubicacion: "Alicante",
-    tipo: "parking",
-    servicios: "Baños públicos, cafetería cerca",
-    comentarios: "Ideal para dormir cerca del mar."
-  },
-  {
-    nombre: "Camping Sierra Verde",
-    ubicacion: "Granada",
-    tipo: "camping",
-    servicios: "Electricidad, piscina, bar",
-    comentarios: "Perfecto para familias."
-  }
-];
-
-// Mostrar zonas al cargar
 document.addEventListener("DOMContentLoaded", () => {
-  mostrarZonas(zonas);
+  const form = document.getElementById("camper-form");
+  const listaZonas = document.getElementById("lista-zonas");
+  const contadorPuntos = document.getElementById("contador-puntos");
+  const filtroUbicacion = document.getElementById("filtro-ubicacion");
+  const filtroTipo = document.getElementById("filtro-tipo");
 
-  // Filtros
-  document.getElementById("filtro-ubicacion").addEventListener("input", aplicarFiltros);
-  document.getElementById("filtro-tipo").addEventListener("change", aplicarFiltros);
+  let puntos = 0;
+  let zonas = [];
 
-  // Envío del formulario
-  document.getElementById("camper-form").addEventListener("submit", (e) => {
+  function actualizarListaZonas() {
+    listaZonas.innerHTML = "";
+    const ubicacion = filtroUbicacion.value.toLowerCase();
+    const tipo = filtroTipo.value;
+
+    zonas.forEach((zona) => {
+      const coincideUbicacion = zona.ubicacion.toLowerCase().includes(ubicacion);
+      const coincideTipo = tipo === "" || zona.tipo === tipo;
+
+      if (coincideUbicacion && coincideTipo) {
+        const card = document.createElement("div");
+        card.classList.add("zona-card");
+        card.innerHTML = `
+          <h3>${zona.nombre}</h3>
+          <p><strong>Ubicación:</strong> ${zona.ubicacion}</p>
+          <p><strong>Tipo:</strong> ${zona.tipo}</p>
+          <p><strong>Servicios:</strong> ${zona.servicios}</p>
+          <p><strong>Comentarios:</strong> ${zona.comentarios}</p>
+        `;
+        listaZonas.appendChild(card);
+      }
+    });
+  }
+
+  form.addEventListener("submit", (e) => {
     e.preventDefault();
+
     const nuevaZona = {
       nombre: document.getElementById("nombre-lugar").value,
       ubicacion: document.getElementById("ubicacion").value,
@@ -43,44 +44,22 @@ document.addEventListener("DOMContentLoaded", () => {
       servicios: document.getElementById("servicios").value,
       comentarios: document.getElementById("comentarios").value,
     };
-    zonas.unshift(nuevaZona); // Añadir al inicio del array
-    mostrarZonas(zonas);
-    e.target.reset();
+
+    zonas.push(nuevaZona);
+    form.reset();
+    puntos += 10;
+    contadorPuntos.textContent = puntos;
+    actualizarListaZonas();
+  });
+
+  filtroUbicacion.addEventListener("input", actualizarListaZonas);
+  filtroTipo.addEventListener("change", actualizarListaZonas);
+
+  // Menú hamburguesa
+  const menuToggle = document.getElementById("menu-toggle");
+  const menu = document.getElementById("menu");
+
+  menuToggle.addEventListener("click", () => {
+    menu.classList.toggle("active");
   });
 });
-
-function mostrarZonas(lista) {
-  const contenedor = document.getElementById("lista-zonas");
-  contenedor.innerHTML = "";
-
-  if (lista.length === 0) {
-    contenedor.innerHTML = "<p>No se encontraron zonas.</p>";
-    return;
-  }
-
-  lista.forEach(zona => {
-    const div = document.createElement("div");
-    div.classList.add("zona");
-    div.innerHTML = `
-      <h3>${zona.nombre}</h3>
-      <p><strong>Ubicación:</strong> ${zona.ubicacion}</p>
-      <p><strong>Tipo:</strong> ${zona.tipo}</p>
-      <p><strong>Servicios:</strong> ${zona.servicios}</p>
-      <p><strong>Comentarios:</strong> ${zona.comentarios}</p>
-    `;
-    contenedor.appendChild(div);
-  });
-}
-
-function aplicarFiltros() {
-  const ubicacionFiltro = document.getElementById("filtro-ubicacion").value.toLowerCase();
-  const tipoFiltro = document.getElementById("filtro-tipo").value;
-
-  const zonasFiltradas = zonas.filter(zona => {
-    const coincideUbicacion = zona.ubicacion.toLowerCase().includes(ubicacionFiltro);
-    const coincideTipo = tipoFiltro === "" || zona.tipo === tipoFiltro;
-    return coincideUbicacion && coincideTipo;
-  });
-
-  mostrarZonas(zonasFiltradas);
-}
