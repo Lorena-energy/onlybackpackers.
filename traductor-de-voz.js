@@ -1,21 +1,23 @@
-// 🔐 Pon aquí tu API Key de Google Cloud Translation
+// 🔐 Pon tu API Key real aquí
 const GOOGLE_API_KEY = AIzaSyAwz3Oz9kwjud8hHozWyly-CJxZvU94qdI;
 
-// 🎙️ Captura de voz a texto
 const micBtn = document.getElementById('mic-btn');
 const inputText = document.getElementById('input-text');
+const sourceLang = document.getElementById('source-language');
 const targetLang = document.getElementById('target-language');
 const translateBtn = document.getElementById('translate-btn');
 const translatedText = document.getElementById('translated-text');
 
 let recognition;
+
+// 🟢 CONFIGURACIÓN DEL RECONOCIMIENTO DE VOZ
 if ('webkitSpeechRecognition' in window) {
   recognition = new webkitSpeechRecognition();
-  recognition.lang = 'es-ES'; // idioma de entrada
   recognition.continuous = false;
   recognition.interimResults = false;
 
   micBtn.addEventListener('click', () => {
+    recognition.lang = sourceLang.value;
     recognition.start();
     micBtn.textContent = '🎙️ Escuchando...';
   });
@@ -39,7 +41,7 @@ if ('webkitSpeechRecognition' in window) {
   micBtn.textContent = '🎙️ No compatible 😢';
 }
 
-// 🔄 Traducir texto con Google Translate
+// 🔄 TRADUCCIÓN CON GOOGLE TRANSLATE
 translateBtn.addEventListener('click', async () => {
   const text = inputText.value.trim();
   const target = targetLang.value;
@@ -67,7 +69,7 @@ translateBtn.addEventListener('click', async () => {
 
     translatedText.innerText = translated;
 
-    // 🔊 Hablar traducción con voz (SpeechSynthesis)
+    // 🔊 VOZ DE SALIDA
     const utterance = new SpeechSynthesisUtterance(translated);
     utterance.lang = target;
     speechSynthesis.speak(utterance);
