@@ -18,7 +18,7 @@
         <li><a href="muro.html">Comunidad</a></li>
         <li><a href="chats.html">Chats</a></li>
         <li><a href="zona-camper.html">Zona Camper</a></li>
-        <li><a href="traductor.html" class="active">Traductor</a></li>
+        <li><a href="traductor-de-voz.html" class="active">Traductor</a></li>
       </ul>
     </nav>
   </header>
@@ -29,78 +29,36 @@
 
     <div class="translator-box">
       <textarea id="input-text" placeholder="Escribe aquí lo que quieras decir..."></textarea>
-      <select id="target-language">
-        <option value="en">Inglés</option>
-        <option value="fr">Francés</option>
-        <option value="de">Alemán</option>
-        <option value="it">Italiano</option>
-        <option value="pt">Portugués</option>
-        <option value="th">Tailandés</option>
-        <option value="ja">Japonés</option>
-        <option value="ja">Checo</option>
-        <option value="ja">Español</option>
-        <option value="ja">Ruso</option>
-        <!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Traductor por Voz - OnlyBackpackers</title>
-  <link rel="stylesheet" href="traductor.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-</head>
-<body>
-  <header class="main-header">
-    <div class="menu-toggle" id="menu-toggle">
-      <span></span><span></span><span></span>
-    </div>
-    <nav>
-      <ul class="menu" id="menu">
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="muro.html">Comunidad</a></li>
-        <li><a href="chats.html">Chats</a></li>
-        <li><a href="zona-camper.html">Zona Camper</a></li>
-        <li><a href="traductor.html" class="active">Traductor</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <main class="traductor">
-    <h1>🗣️ Traductor por Voz</h1>
-    <p>Habla o escribe lo que necesitas decir y deja que nosotros lo traduzcamos por ti. ¡Ideal para tus aventuras por el mundo! 🌍</p>
+      <div class="selectors">
+        <label for="target-language">🌐 Idioma de destino:</label>
+        <select id="target-language">
+          <option value="en">🇬🇧 Inglés</option>
+          <option value="fr">🇫🇷 Francés</option>
+          <option value="de">🇩🇪 Alemán</option>
+          <option value="it">🇮🇹 Italiano</option>
+          <option value="pt">🇵🇹 Portugués</option>
+          <option value="th">🇹🇭 Tailandés</option>
+          <option value="zh">🇨🇳 Chino (Mandarín)</option>
+          <option value="ja">🇯🇵 Japonés</option>
+          <option value="ko">🇰🇷 Coreano</option>
+          <option value="tr">🇹🇷 Turco</option>
+          <option value="hi">🇮🇳 Hindi</option>
+          <option value="ru">🇷🇺 Ruso</option>
+          <option value="nl">🇳🇱 Neerlandés</option>
+          <option value="cs">🇨🇿 Checo</option>
+          <option value="el">🇬🇷 Griego</option>
+          <option value="ar">🇸🇦 Árabe</option>
+          <option value="es">🇪🇸 Español</option>
+        </select>
+      </div>
 
-    <div class="translator-box">
-      <textarea id="input-text" placeholder="Escribe aquí lo que quieras decir..."></textarea>
-      <select id="target-language">
-        <option value="en">Inglés</option>
-        <option value="fr">Francés</option>
-        <option value="de">Alemán</option>
-        <option value="it">Italiano</option>
-        <option value="pt">Portugués</option>
-        <option value="th">Tailandés</option>
-        <option value="ja">Japonés</option>
-        <option value="ja">Ruso</option>
-        <option value="ja">Coreano</option>
-        <option value="ja">Turco</option>
-        <option value="ja">JChino</option>
-        <option value="ja">Hindi</option>
-      </select>
-      <button id="translate-btn">🔄 Traducir y Reproducir</button>
-      <div id="translated-text"></div>
-    </div>
-  </main>
+      <div class="botones-traductor">
+        <button id="mic-btn">🎙️ Hablar</button>
+        <button id="translate-btn">🔄 Traducir y Reproducir</button>
+      </div>
 
-  <footer>
-    <p>&copy; 2024 OnlyBackpackers. Traductor por Voz powered by IA.</p>
-  </footer>
-
-  <script src="traductor.js"></script>
-</body>
-</html>
-
-      </select>
-      <button id="translate-btn">🔄 Traducir y Reproducir</button>
-      <div id="translated-text"></div>
+      <div id="translated-text" class="output"></div>
     </div>
   </main>
 
