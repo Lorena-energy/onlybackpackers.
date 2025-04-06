@@ -1,0 +1,150 @@
+/* 🎨 Tipografía y colores */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #fffefc;
+  color: #333;
+}
+
+/* 🚩 HEADER */
+.main-header {
+  background-color: #ff914d;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main-header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.main-header nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.main-header .active {
+  text-decoration: underline;
+}
+
+/* 🧠 CONTENIDO PRINCIPAL */
+.traductor {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background-color: #ffffff;
+  border-radius: 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.traductor h1 {
+  text-align: center;
+  font-size: 2rem;
+  color: #ff914d;
+  margin-bottom: 0.5rem;
+}
+
+.traductor p {
+  text-align: center;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  color: #666;
+}
+
+/* 📝 ÁREA DE TRADUCCIÓN */
+.translator-box {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+textarea {
+  width: 100%;
+  height: 100px;
+  padding: 1rem;
+  font-size: 1rem;
+  border-radius: 15px;
+  border: 1px solid #ccc;
+  resize: none;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* 🌐 SELECTORES DE IDIOMA */
+.selectors {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+select {
+  padding: 0.7rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  background-color: #fafafa;
+  font-weight: 500;
+}
+
+/* 🎙️ BOTONES */
+.botones-traductor {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+button {
+  flex: 1;
+  background-color: #ff914d;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  padding: 0.8rem 1rem;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #ff7300;
+  transform: scale(1.03);
+}
+
+/* 🗣️ TEXTO TRADUCIDO */
+.output {
+  padding: 1rem;
+  background-color: #f5f5f5;
+  border-radius: 15px;
+  font-size: 1.2rem;
+  color: #444;
+  text-align: center;
+  min-height: 50px;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* 📱 RESPONSIVE */
+@media (max-width: 480px) {
+  .traductor {
+    margin: 1rem;
+    padding: 1rem;
+  }
+
+  button {
+    font-size: 0.95rem;
+    padding: 0.7rem;
+  }
+}
+
+/* ⚓ FOOTER */
+footer {
+  margin-top: 3rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #aaa;
+}
