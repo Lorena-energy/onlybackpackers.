@@ -2,9 +2,12 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Traductor por Voz - OnlyBackpackers</title>
-  <link rel="stylesheet" href="traductor.css" />
+
+  <!-- Verifica que traductor-de-voz.css esté en la misma carpeta (o ajusta la ruta) -->
+  <link rel="stylesheet" href="traductor-de-voz.css" />
+
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
 </head>
 <body>
@@ -32,9 +35,10 @@
     </nav>
   </header>
 
-  <main class="traductor-de-voz">
+  <!-- Usamos la clase "traductor" para que apliquen los estilos del CSS -->
+  <main class="traductor">
     <h1>🗣️ Traductor por Voz</h1>
-    <p>Habla o escribe lo que necesitas decir y deja que nosotros lo traduzcamos por ti. 🌍</p>
+    <p>Habla o escribe lo que necesites decir y deja que nosotros lo traduzcamos por ti. 🌍</p>
 
     <div class="translator-box">
       <textarea id="input-text" placeholder="Escribe aquí lo que quieras decir..."></textarea>
@@ -42,44 +46,92 @@
       <div class="selectors">
         <label for="source-language">🗣️ Idioma de entrada:</label>
         <select id="source-language">
-          <option value="es-ES">🇪🇸 Español</option>
-          <option value="en-US">🇺🇸 Inglés</option>
-          <option value="fr-FR">🇫🇷 Francés</option>
-          <option value="de-DE">🇩🇪 Alemán</option>
-          <option value="it-IT">🇮🇹 Italiano</option>
-          <option value="pt-PT">🇵🇹 Portugués</option>
-          <option value="zh-CN">🇨🇳 Chino</option>
-          <option value="ja-JP">🇯🇵 Japonés</option>
-          <option value="ko-KR">🇰🇷 Coreano</option>
-          <option value="th-TH">🇹🇭 Tailandés</option>
-          <option value="tr-TR">🇹🇷 Turco</option>
-          <option value="hi-IN">🇮🇳 Hindi</option>
-          <option value="ru-RU">🇷🇺 Ruso</option>
-          <option value="nl-NL">🇳🇱 Neerlandés</option>
-          <option value="cs-CZ">🇨🇿 Checo</option>
-          <option value="el-GR">🇬🇷 Griego</option>
-          <option value="ar-SA">🇸🇦 Árabe</option>
+          <!-- Lista de "locale" (país) para reconocimiento con webkitSpeechRecognition -->
+          <option value="af-ZA">Afrikáans (Sudáfrica)</option>
+          <option value="ar-SA">Árabe (Arabia Saudita)</option>
+          <option value="bn-BD">Bengalí (Bangladesh)</option>
+          <option value="bg-BG">Búlgaro (Bulgaria)</option>
+          <option value="ca-ES">Catalán (España)</option>
+          <option value="zh-CN">Chino (Mandarín)</option>
+          <option value="hr-HR">Croata (Croacia)</option>
+          <option value="cs-CZ">Checo (Rep. Checa)</option>
+          <option value="da-DK">Danés (Dinamarca)</option>
+          <option value="nl-NL">Neerlandés (Países Bajos)</option>
+          <option value="en-US" selected>Inglés (Estados Unidos)</option>
+          <option value="en-GB">Inglés (Reino Unido)</option>
+          <option value="et-EE">Estonio (Estonia)</option>
+          <option value="fi-FI">Finés (Finlandia)</option>
+          <option value="fr-FR">Francés (Francia)</option>
+          <option value="de-DE">Alemán (Alemania)</option>
+          <option value="el-GR">Griego (Grecia)</option>
+          <option value="he-IL">Hebreo (Israel)</option>
+          <option value="hi-IN">Hindi (India)</option>
+          <option value="hu-HU">Húngaro (Hungría)</option>
+          <option value="id-ID">Indonesio (Indonesia)</option>
+          <option value="it-IT">Italiano (Italia)</option>
+          <option value="ja-JP">Japonés (Japón)</option>
+          <option value="ko-KR">Coreano (Corea)</option>
+          <option value="lt-LT">Lituano (Lituania)</option>
+          <option value="ms-MY">Malayo (Malasia)</option>
+          <option value="nb-NO">Noruego (Noruega)</option>
+          <option value="pl-PL">Polaco (Polonia)</option>
+          <option value="pt-BR">Portugués (Brasil)</option>
+          <option value="pt-PT">Portugués (Portugal)</option>
+          <option value="ro-RO">Rumano (Rumanía)</option>
+          <option value="ru-RU">Ruso (Rusia)</option>
+          <option value="sk-SK">Eslovaco (Eslovaquia)</option>
+          <option value="sl-SI">Esloveno (Eslovenia)</option>
+          <option value="sv-SE">Sueco (Suecia)</option>
+          <option value="th-TH">Tailandés (Tailandia)</option>
+          <option value="tr-TR">Turco (Turquía)</option>
+          <option value="uk-UA">Ucraniano (Ucrania)</option>
+          <option value="vi-VN">Vietnamita (Vietnam)</option>
+          <option value="es-ES">Español (España)</option>
+          <!-- Agrega más si lo deseas -->
         </select>
 
         <label for="target-language">🌐 Idioma de destino:</label>
         <select id="target-language">
-          <option value="en">🇬🇧 Inglés</option>
-          <option value="fr">🇫🇷 Francés</option>
-          <option value="de">🇩🇪 Alemán</option>
-          <option value="it">🇮🇹 Italiano</option>
-          <option value="pt">🇵🇹 Portugués</option>
-          <option value="zh">🇨🇳 Chino</option>
-          <option value="ja">🇯🇵 Japonés</option>
-          <option value="ko">🇰🇷 Coreano</option>
-          <option value="th">🇹🇭 Tailandés</option>
-          <option value="tr">🇹🇷 Turco</option>
-          <option value="hi">🇮🇳 Hindi</option>
-          <option value="ru">🇷🇺 Ruso</option>
-          <option value="nl">🇳🇱 Neerlandés</option>
-          <option value="cs">🇨🇿 Checo</option>
-          <option value="el">🇬🇷 Griego</option>
-          <option value="ar">🇸🇦 Árabe</option>
-          <option value="es">🇪🇸 Español</option>
+          <!-- Para la traducción, solo se usan los códigos ISO cortos. -->
+          <option value="af">Afrikáans</option>
+          <option value="ar">Árabe</option>
+          <option value="bn">Bengalí</option>
+          <option value="bg">Búlgaro</option>
+          <option value="ca">Catalán</option>
+          <option value="zh">Chino (Mandarín)</option>
+          <option value="hr">Croata</option>
+          <option value="cs">Checo</option>
+          <option value="da">Danés</option>
+          <option value="nl">Neerlandés</option>
+          <option value="en">Inglés</option>
+          <option value="et">Estonio</option>
+          <option value="fi">Finés</option>
+          <option value="fr">Francés</option>
+          <option value="de">Alemán</option>
+          <option value="el">Griego</option>
+          <option value="he">Hebreo</option>
+          <option value="hi">Hindi</option>
+          <option value="hu">Húngaro</option>
+          <option value="id">Indonesio</option>
+          <option value="it">Italiano</option>
+          <option value="ja">Japonés</option>
+          <option value="ko">Coreano</option>
+          <option value="lt">Lituano</option>
+          <option value="ms">Malayo</option>
+          <option value="no">Noruego</option>
+          <option value="pl">Polaco</option>
+          <option value="pt">Portugués</option>
+          <option value="ro">Rumano</option>
+          <option value="ru">Ruso</option>
+          <option value="sk">Eslovaco</option>
+          <option value="sl">Esloveno</option>
+          <option value="sv">Sueco</option>
+          <option value="th">Tailandés</option>
+          <option value="tr">Turco</option>
+          <option value="uk">Ucraniano</option>
+          <option value="vi">Vietnamita</option>
+          <option value="es" selected>Español</option>
+          <!-- Agrega más si deseas -->
         </select>
       </div>
 
@@ -96,6 +148,7 @@
     <p>&copy; 2024 OnlyBackpackers. Traductor por Voz powered by IA.</p>
   </footer>
 
+  <!-- Verifica que traductor-de-voz.js esté en la misma carpeta (o ajusta la ruta) -->
   <script src="traductor-de-voz.js"></script>
   <script>
     const menuToggle = document.getElementById("menu-toggle");
