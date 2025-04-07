@@ -1,5 +1,5 @@
-// 🔐 Pon tu API Key real aquí
-const GOOGLE_API_KEY = AIzaSyAwz3Oz9kwjud8hHozWyly-CJxZvU94qdI;
+// 🔐 Reemplaza esta línea con tu API key real de Google Cloud
+const GOOGLE_API_KEY = 'AIzaSyAwz3Oz9kwjud8hHozWyly-CJxZvU94qdI';
 
 const micBtn = document.getElementById('mic-btn');
 const inputText = document.getElementById('input-text');
@@ -10,7 +10,6 @@ const translatedText = document.getElementById('translated-text');
 
 let recognition;
 
-// 🟢 CONFIGURACIÓN DEL RECONOCIMIENTO DE VOZ
 if ('webkitSpeechRecognition' in window) {
   recognition = new webkitSpeechRecognition();
   recognition.continuous = false;
@@ -28,9 +27,9 @@ if ('webkitSpeechRecognition' in window) {
     micBtn.textContent = '🎙️ Hablar';
   };
 
-  recognition.onerror = (event) => {
-    console.error('Error en reconocimiento de voz:', event.error);
+  recognition.onerror = () => {
     micBtn.textContent = '🎙️ Hablar';
+    alert('Error al reconocer la voz. Intenta de nuevo.');
   };
 
   recognition.onend = () => {
@@ -38,10 +37,10 @@ if ('webkitSpeechRecognition' in window) {
   };
 } else {
   micBtn.disabled = true;
-  micBtn.textContent = '🎙️ No compatible 😢';
+  micBtn.textContent = '🎙️ No compatible';
 }
 
-// 🔄 TRADUCCIÓN CON GOOGLE TRANSLATE
+// 🔄 Traducción con Google Translate API
 translateBtn.addEventListener('click', async () => {
   const text = inputText.value.trim();
   const target = targetLang.value;
@@ -69,7 +68,7 @@ translateBtn.addEventListener('click', async () => {
 
     translatedText.innerText = translated;
 
-    // 🔊 VOZ DE SALIDA
+    // 🗣️ Voz del resultado traducido
     const utterance = new SpeechSynthesisUtterance(translated);
     utterance.lang = target;
     speechSynthesis.speak(utterance);
