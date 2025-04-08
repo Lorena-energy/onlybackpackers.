@@ -98,13 +98,9 @@ translateBtn.addEventListener('click', async () => {
     switch (targetShort) {
       case 'en': utterance.lang = 'en-US'; break;
       case 'es': utterance.lang = 'es-ES'; break;
-      case 'pt': 
-        // Podrías distinguir si es pt-BR o pt-PT con algo extra
-        utterance.lang = 'pt-BR'; 
-        break;
-      // ... añade más dialectos si quieres
+      case 'pt': utterance.lang = 'pt-BR'; break;
       default:
-        utterance.lang = targetShort; // usa el valor ISO
+        utterance.lang = targetShort; 
         break;
     }
 
@@ -115,3 +111,15 @@ translateBtn.addEventListener('click', async () => {
     translatedText.innerText = '❌ Error al traducir. Intenta de nuevo.';
   }
 });
+
+
+// 5) 🧡 Banner informativo para iPhone y usuarios en general
+const aviso = document.createElement('div');
+aviso.classList.add('aviso-banner');
+aviso.innerHTML = `
+  ⚠️ En iPhone, la función de reconocimiento de voz aún no está disponible por limitaciones de su navegador.<br>
+  Pero no te preocupes, estamos trabajando para que próximamente también puedas usar esta función desde tu dispositivo 🍏.<br>
+  Mientras tanto, puedes escribir tu mensaje y traducirlo igual. ¡Gracias por tu comprensión 💛!
+`;
+
+document.querySelector('.traductor').insertBefore(aviso, document.querySelector('.translator-box'));
