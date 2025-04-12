@@ -7,8 +7,31 @@ const sourceLang = document.getElementById('source-language');
 const targetLang = document.getElementById('target-language');
 const translateBtn = document.getElementById('translate-btn');
 const translatedText = document.getElementById('translated-text');
+const swapBtn = document.getElementById('swap-btn'); // Nuevo botón para intercambiar idiomas
 
 let recognition;
+
+/* 
+  Diccionario para mapear el idioma corto (p.e. 'en') al largo (p.e. 'en-US'),
+  y viceversa. Añade todas las equivalencias que uses en tu app. 
+*/
+const recognitionMap = {
+  // corto -> largo
+  en: 'en-US',
+  es: 'es-ES',
+  fr: 'fr-FR',
+  de: 'de-DE',
+  it: 'it-IT',
+  pt: 'pt-PT',
+  ko: 'ko-KR',
+  ja: 'ja-JP',
+  zh: 'zh-CN',
+  ar: 'ar-SA',
+  // etc...
+
+  // Si quisieras usarlo al revés, puedes hacer otra estructura,
+  // pero en este caso solo necesitamos "corto -> largo".
+};
 
 // 1) Verificamos compatibilidad con SpeechRecognition (solo Chrome / Android, Edge Chromium, etc.)
 if ('webkitSpeechRecognition' in window) {
@@ -42,8 +65,7 @@ if ('webkitSpeechRecognition' in window) {
   micBtn.textContent = '🎙️ No compatible';
 }
 
-// 2) Función para convertir 'pt-BR' -> 'pt', 'en-US' -> 'en', etc.
-// (Google Translate solo necesita el código corto en 'source')
+// 2) Función para convertir 'pt-BR' -> 'pt', 'en-US' -> 'en', etc. (código corto para Google Translate)
 function getShortLangCode(fullCode) {
   // Toma la parte antes del guión, p.e. 'en-US' -> ['en', 'US'] -> 'en'
   return fullCode.split('-')[0]; 
@@ -94,7 +116,7 @@ translateBtn.addEventListener('click', async () => {
     // 4) Reproducimos el resultado (Text-to-Speech)
     const utterance = new SpeechSynthesisUtterance(translated);
 
-    // Opcional: if quieres forzar dialectos en la voz sintetizada, usa un switch:
+    // Opcional: si quieres forzar dialectos en la voz sintetizada, usa un switch:
     switch (targetShort) {
       case 'en': utterance.lang = 'en-US'; break;
       case 'es': utterance.lang = 'es-ES'; break;
@@ -113,13 +135,36 @@ translateBtn.addEventListener('click', async () => {
 });
 
 
-// 5) 🧡 Banner informativo para iPhone y usuarios en general
+// 4) Evento para intercambiar los idiomas al pulsar el botón "swap-btn"
+swapBtn.addEventListener('click', () => {
+  // Obtenemos los valores actuales
+  const currentSource = sourceLang.value;  // p.ej. "es-ES"
+  const currentTarget = targetLang.value;  // p.ej. "en"
+
+  // 4.1) El sourceLang pasará a ser lo que antes era targetLang,
+  // pero en código "largo" para reconocimiento (webkitSpeechRecognition).
+  // Para lograrlo:
+  //   - Buscamos en recognitionMap[currentTarget]
+  //   - Si no lo encontramos, dejamos algo por defecto (por ej. "en-US")
+  const newSource = recognitionMap[currentTarget] || 'en-US';
+  
+  // 4.2) El targetLang pasa a ser la versión "corta" de currentSource.
+  // p.ej. "es-ES" -> "es"
+  const newTarget = getShortLangCode(currentSource);
+
+  // 4.3) Asignamos
+  sourceLang.value = newSource;
+  targetLang.value = newTarget;
+});
+
+
+// 5) 🧡 Banner informativo para iPhone
 const aviso = document.createElement('div');
 aviso.classList.add('aviso-banner');
 aviso.innerHTML = `
   ⚠️ En iPhone, la función de reconocimiento de voz aún no está disponible por limitaciones de su navegador.<br>
-  Pero no te preocupes, estamos trabajando para que próximamente también puedas usar esta función desde tu dispositivo 🍏.<br>
-  Mientras tanto, puedes escribir tu mensaje y traducirlo igual. ¡Gracias por tu comprensión 💛!
+  Pero no te preocupes, puedes escribir tu mensaje y traducirlo igual. ¡Gracias por tu comprensión 💛!
 `;
 
 document.querySelector('.traductor').insertBefore(aviso, document.querySelector('.translator-box'));
+
