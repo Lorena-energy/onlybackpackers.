@@ -38,7 +38,7 @@
   <!-- Usamos la clase "traductor" para que apliquen los estilos del CSS -->
   <main class="traductor">
     <h1>🗣️ Traductor por Voz</h1>
-    <p>Habla o escribe lo que necesites decir y deja que nosotros lo traduzcamos por ti. 🌍</p>
+    <p>Habla o escribe lo que quieras decir y deja que nosotros lo traduzcamos por ti. 🌍</p>
 
     <div class="translator-box">
       <textarea id="input-text" placeholder="Escribe aquí lo que quieras decir..."></textarea>
@@ -87,12 +87,14 @@
           <option value="uk-UA">Ucraniano (Ucrania)</option>
           <option value="vi-VN">Vietnamita (Vietnam)</option>
           <option value="es-ES">Español (España)</option>
-          <!-- Agrega más si lo deseas -->
         </select>
+
+        <!-- BOTÓN DE INTERCAMBIO -->
+        <button id="swap-btn" type="button">⇄</button>
 
         <label for="target-language">🌐 Idioma de destino:</label>
         <select id="target-language">
-          <!-- Para la traducción, solo se usan los códigos ISO cortos. -->
+          <!-- Para la traducción, solo se usan códigos ISO cortos. -->
           <option value="af">Afrikáans</option>
           <option value="ar">Árabe</option>
           <option value="bn">Bengalí</option>
@@ -131,7 +133,6 @@
           <option value="uk">Ucraniano</option>
           <option value="vi">Vietnamita</option>
           <option value="es" selected>Español</option>
-          <!-- Agrega más si deseas -->
         </select>
       </div>
 
