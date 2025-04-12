@@ -172,19 +172,23 @@ button:hover {
   }
 }
 
-/* Botón de intercambio */
+/* Botón de intercambio en azul turquesa */
 #swap-btn {
   margin: 0.5rem 0;
-  background: none;
+  background-color: #40E0D0; /* Turquesa */
   border: none;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  color: #fff; /* Texto blanco para contraste */
   cursor: pointer;
   line-height: 1;
-  transition: transform 0.2s;
+  padding: 0.5rem 1rem; /* Espacio alrededor */
+  border-radius: 8px;
+  transition: transform 0.2s, background-color 0.3s ease;
 }
 
 #swap-btn:hover {
-  transform: scale(1.2);
+  transform: scale(1.05);
+  background-color: #30bfbf; /* Un turquesa un poco más oscuro */
 }
 
 /* 🧭 Footer */
@@ -194,3 +198,4 @@ footer {
   font-size: 0.9rem;
   color: #999;
 }
+
