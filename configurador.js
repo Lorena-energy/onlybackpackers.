@@ -1,62 +1,59 @@
-document.addEventListener("DOMContentLoaded", () => {
-  console.log("Eventos.js cargado correctamente");
+const apiKey = "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";
 
-  /************************************************************
-   * MENÚ HAMBURGUESA
-   ************************************************************/
-  const menuToggle = document.getElementById("menu-toggle");
-  const menu = document.getElementById("menu");
+const chatBox = document.getElementById("chat-box");
+const chatForm = document.getElementById("chat-form");
+const userInput = document.getElementById("user-input");
 
-  menuToggle.addEventListener("click", () => {
-    menu.classList.toggle("active");
-  });
+chatForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const message = userInput.value.trim();
+  if (!message) return;
 
-  /************************************************************
-   * FILTROS DE EVENTOS (Ejemplo)
-   ************************************************************/
-  const filterForm = document.getElementById("filter-form");
-  const eventCards = document.querySelectorAll(".event-card");
+  // Mostrar mensaje del usuario
+  const userMsg = document.createElement("div");
+  userMsg.textContent = "Tú: " + message;
+  chatBox.appendChild(userMsg);
+  userInput.value = "";
 
-  filterForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const locationVal = document.getElementById("filter-destination").value.trim().toLowerCase();
-    const dateVal = document.getElementById("filter-date").value;
-    const typeVal = document.getElementById("filter-type").value.trim().toLowerCase();
+  // Mostrar mensaje de carga
+  const loadingMsg = document.createElement("div");
+  loadingMsg.textContent = "ob.packersGPT está escribiendo...";
+  chatBox.appendChild(loadingMsg);
 
-    eventCards.forEach((card) => {
-      const cardLoc = card.innerText.toLowerCase(); // simplificado
-      const cardDate = card.getAttribute("data-date"); 
-      const cardType = card.getAttribute("data-type")?.toLowerCase() || "";
-      
-      // Comparar
-      const matchLoc = (locationVal === "" || cardLoc.includes(locationVal));
-      const matchDate = (dateVal === "" || cardDate === dateVal);
-      const matchType = (typeVal === "" || cardType.includes(typeVal));
-
-      if (matchLoc && matchDate && matchType) {
-        card.style.display = "block";
-      } else {
-        card.style.display = "none";
-      }
+  // Llamada a OpenAI API
+  try {
+    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + apiKey
+      },
+      body: JSON.stringify({
+        model: "gpt-4o",
+        messages: [
+          {
+            role: "system",
+            content: "Eres ob.packersGPT, un guía de viajes amigable y experto en crear rutas personalizadas para viajeros de todo tipo. Tu tono es cercano, motivador y práctico."
+          },
+          {
+            role: "user",
+            content: message
+          }
+        ]
+      })
     });
-  });
 
-  /************************************************************
-   * CREAR EVENTO
-   ************************************************************/
-  const createEventForm = document.getElementById("create-event-form");
-  createEventForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const title = document.getElementById("event-title").value.trim();
-    const location = document.getElementById("event-location").value.trim();
-    const date = document.getElementById("event-date").value;
-    const description = document.getElementById("event-description").value.trim();
+    const data = await response.json();
+    loadingMsg.remove();
 
-    if (!title || !location || !date || !description) {
-      alert("Por favor, completa todos los campos.");
-      return;
-    }
-    alert(`¡Evento "${title}" creado exitosamente!`);
-    createEventForm.reset();
-  });
+    const aiMsg = document.createElement("div");
+    aiMsg.textContent = "ob.packersGPT: " + data.choices[0].message.content;
+    chatBox.appendChild(aiMsg);
+    chatBox.scrollTop = chatBox.scrollHeight;
+  } catch (error) {
+    loadingMsg.remove();
+    const errorMsg = document.createElement("div");
+    errorMsg.textContent = "Error al conectar con ob.packersGPT.";
+    chatBox.appendChild(errorMsg);
+  }
 });
