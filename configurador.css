@@ -37,13 +37,14 @@ body {
   background: #ff6600;
 }
 
-.form-container, .chat-container {
+.form-container,
+.chat-container {
   max-width: 600px;
   margin: 20px auto;
   padding: 20px;
   background: white;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .form-group {
@@ -56,14 +57,16 @@ body {
   margin-bottom: 5px;
 }
 
-.form-group input, .form-group select {
+.form-group input,
+.form-group select {
   width: 100%;
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
 
-.cta-button, button[type="submit"] {
+.cta-button,
+button[type="submit"] {
   background: #ff6600;
   color: white;
   padding: 10px 15px;
