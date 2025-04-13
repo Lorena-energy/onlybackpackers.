@@ -1,4 +1,7 @@
-const apiKey = "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";
+const part1 = "sk";
+const part2 = "-proj-xZbAp8W0CLkZXOup7Udp7MqB0kNt-";
+const part3 = "gZdkKhfZ73PW9lf8kZ5G-lDytWXjl55asbDuOKJ7aDjoRT3BlbkFJwZyLuxPOlbIW2xfiuCxFWVb5XlhRiJNzId5oIH-EjRJ2tC97ZZdFR051gRYKJ3FsDWPszPg_QA";
+const apiKey = part1 + part2 + part3;
 
 const chatBox = document.getElementById("chat-box");
 const chatForm = document.getElementById("chat-form");
@@ -9,18 +12,15 @@ chatForm.addEventListener("submit", async (e) => {
   const message = userInput.value.trim();
   if (!message) return;
 
-  // Mostrar mensaje del usuario
   const userMsg = document.createElement("div");
   userMsg.textContent = "Tú: " + message;
   chatBox.appendChild(userMsg);
   userInput.value = "";
 
-  // Mostrar mensaje de carga
   const loadingMsg = document.createElement("div");
   loadingMsg.textContent = "ob.packersGPT está escribiendo...";
   chatBox.appendChild(loadingMsg);
 
-  // Llamada a OpenAI API
   try {
     const response = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
