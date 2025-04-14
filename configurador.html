@@ -2,36 +2,65 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Configurador con ob.packersGPT</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Configurador de Rutas - OnlyBackpackers</title>
   <link rel="stylesheet" href="configurador.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
   <header class="main-header">
     <nav>
       <div class="menu-toggle" id="menu-toggle">
-        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
       </div>
       <ul class="menu" id="menu">
         <li><a href="index.html">Inicio</a></li>
-        <li><a href="configurador.html" class="active">Configurador</a></li>
-        <li><a href="muro.html">Muro</a></li>
+        <li><a href="login-register.html">Iniciar Sesión</a></li>
+        <li><a href="muro.html">Muro Comunidad</a></li>
+        <li><a href="muro-personal.html">Muro Personal</a></li>
+        <li><a href="chats.html">Chat por Destino</a></li>
+        <li><a href="traductor-de-voz.html">Traductor de voz</a></li>
+        <li><a href="recomendaciones.html">Recomendaciones</a></li>
+        <li><a href="eventos.html">Eventos</a></li>
+        <li><a href="configurador.html" class="active">Configurador de Rutas</a></li>
+        <li><a href="expenses.html">Gastos</a></li>
+        <li><a href="zona-camper.html">Zona Camper</a></li>
+        <li><a href="recompensas.html">Recompensas</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
-    <h1>Configurador de Rutas con IA</h1>
-    <p>Personaliza tu viaje y deja que nuestro asistente inteligente ob.packersGPT cree la ruta ideal para ti.</p>
+    <section class="configurador-hero">
+      <div class="hero-content">
+        <h1>🧭 Configurador de Rutas con IA</h1>
+        <p>Personaliza tu viaje y deja que nuestro asistente inteligente ob.packersGPT cree la ruta ideal para ti.</p>
+      </div>
+    </section>
 
     <form id="route-form" class="form-container">
       <div class="form-group">
         <label for="departure-city">Ciudad de partida:</label>
         <input type="text" id="departure-city" placeholder="Introduce tu ciudad" required>
       </div>
+
       <div class="form-group">
         <label for="trip-duration">Duración del viaje (días):</label>
         <input type="number" id="trip-duration" placeholder="Ej. 7" required>
       </div>
+
+      <div class="form-group">
+        <label for="trip-budget">Presupuesto aproximado (opcional):</label>
+        <input type="text" id="trip-budget" placeholder="Ej. 300€">
+      </div>
+
+      <div class="form-group">
+        <label for="trip-zones">Zona o país que quieres visitar (opcional):</label>
+        <input type="text" id="trip-zones" placeholder="Ej. Sudeste Asiático, Italia, Patagonia">
+      </div>
+
       <div class="form-group">
         <label for="preferences">¿Qué tipo de viaje te gustaría?</label>
         <select id="preferences">
@@ -42,8 +71,16 @@
           <option value="naturaleza">Naturaleza</option>
         </select>
       </div>
-      <button type="submit" class="cta-button">Generar Ruta</button>
+
+      <button type="submit" class="cta-button">✨ Generar Ruta con ob.packersGPT</button>
     </form>
+
+    <section id="route-results" class="hidden">
+      <h2>🌍 Tu Ruta Personalizada</h2>
+      <div id="itinerary"></div>
+      <button id="guardar-ruta" class="cta-button">💾 Guardar Ruta</button>
+      <button id="compartir-ruta" class="cta-button">📣 Compartir en la Comunidad</button>
+    </section>
 
     <section id="obpackersGPT" class="chat-container">
       <h2>¿Tienes dudas sobre tu ruta? Pregunta a ob.packersGPT 🧠</h2>
@@ -54,10 +91,6 @@
       </form>
     </section>
 
-    <section id="route-results" class="hidden">
-      <h2>Tu Ruta Personalizada</h2>
-      <div id="itinerary"></div>
-    </section>
   </main>
 
   <script src="configurador.js"></script>
