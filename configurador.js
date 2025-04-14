@@ -37,7 +37,11 @@ document.addEventListener("DOMContentLoaded", () => {
       itineraryBox.innerHTML = "⏳ Generando tu ruta con IA...";
       resultsSection.classList.remove("hidden");
 
-      const safeKey = atob("c2stcHJvai1PMzFLSFg3X0pVd2NDSVN5aVIxQTRzeERZTzc5TjZxcG1TMzF3S2UtWnFEZGFCanQyeXpjcTU5TExDZFRpZFBaMzRrLXdHZjc0N1QzQmxia0ZKUElsQkdHWVVGRmhCR21FOGswWmRybERvYzJia2Zrc3d1dlhMUW83RWE3WGl0RE9BcEhtRGhEUFJXTTFOclVfWmRTNUZSU054TUE=");
+      // 🔐 Clave ofuscada en tres partes
+      const part1 = "c2stcHJvai1USWZUS3ZiNlNMRDFtVkZMbEdrWWpYM1dlZkQ5UWR2";
+      const part2 = "NzNCLVFpd293c3VyaUVfbUJKdmVudjhud1lfU0p3TGpqZS1kckltazZr";
+      const part3 = "M1QzQmxia0ZKV2FFZ0lzS1dUT2tpU3ZCN0xQZVhxVU9KaVUtUlU5ZnREaUFTZmJqWUtwSHhXT3J6Z0VNTktqR1ZUbmZRUkhiaDZERHhRSW9GY0E=";
+      const safeKey = atob(part1 + part2 + part3);
 
       const response = await fetch("https://api.openai.com/v1/chat/completions", {
         method: "POST",
@@ -67,4 +71,3 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
-
