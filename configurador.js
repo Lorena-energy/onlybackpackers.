@@ -25,11 +25,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const zones = document.getElementById("trip-zones").value.trim();
     const preferences = document.getElementById("preferences").value;
     const dates = document.getElementById("trip-dates").value.trim();
+    const groupSize = document.getElementById("group-size").value.trim();
 
     const prompt = `Hola ob.packersGPT. Necesito que crees una ruta personalizada para un viaje desde ${departureCity} de ${tripDuration} días, centrado en un viaje de tipo ${preferences}. ` +
                    `${budget ? `El presupuesto aproximado es ${budget}. ` : ""}` +
                    `${zones ? `La zona que me gustaría visitar es: ${zones}. ` : ""}` +
                    `${dates ? `Las fechas del viaje son: ${dates}. ` : ""}` +
+                   `${groupSize ? `Viajamos ${groupSize} personas. ` : ""}` +
                    `Por favor, detalla los días o lugares a visitar, actividades recomendadas, transportes y consejos. ` +
                    `Se claro, ordenado y separa los días con títulos si es posible.`;
 
