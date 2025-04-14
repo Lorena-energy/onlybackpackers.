@@ -39,23 +39,12 @@ document.addEventListener("DOMContentLoaded", () => {
       itineraryBox.innerHTML = "⏳ Generando tu ruta con IA...";
       resultsSection.classList.remove("hidden");
 
-      // 🔐 Nueva clave API ofuscada en tres partes
-      const part1 = "c2stcHJvai0xMTN3bG9rU2lZeFJ3QlBMWERJVXpJcDZLMFIt";
-      const part2 = "STVISjNYeDFteUJuSDVVZ3FIa20ySThOUi1DOW56S0JDOElJbzl5";
-      const part3 = "OXR0VFZPMFR3Qmxia0ZKcTdPbEFQSWwtN2wyeHVxd0xqT1NzelpHZFVjdVJPY0hVR0hnOXExSWVRRTBIUnFDRi1CaDZUV3djUW1jOHl3S2FLV0wxRXVzNEE=";
-      const safeKey = atob(part1 + part2 + part3);
-
-      const response = await fetch("https://api.openai.com/v1/chat/completions", {
+      const response = await fetch("http://localhost:3001/api/obpackers-gpt", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${safeKey}`
+          "Content-Type": "application/json"
         },
-        body: JSON.stringify({
-          model: "gpt-4o",
-          messages: [{ role: "user", content: prompt }],
-          temperature: 0.7
-        })
+        body: JSON.stringify({ prompt })
       });
 
       const data = await response.json();
