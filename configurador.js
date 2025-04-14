@@ -39,10 +39,10 @@ document.addEventListener("DOMContentLoaded", () => {
       itineraryBox.innerHTML = "⏳ Generando tu ruta con IA...";
       resultsSection.classList.remove("hidden");
 
-      // 🔐 Clave ofuscada en tres partes
-      const part1 = "c2stcHJvai1USWZUS3ZiNlNMRDFtVkZMbEdrWWpYM1dlZkQ5UWR2";
-      const part2 = "NzNCLVFpd293c3VyaUVfbUJKdmVudjhud1lfU0p3TGpqZS1kckltazZr";
-      const part3 = "M1QzQmxia0ZKV2FFZ0lzS1dUT2tpU3ZCN0xQZVhxVU9KaVUtUlU5ZnREaUFTZmJqWUtwSHhXT3J6Z0VNTktqR1ZUbmZRUkhiaDZERHhRSW9GY0E=";
+      // 🔐 Nueva clave API ofuscada en tres partes
+      const part1 = "c2stcHJvai0xMTN3bG9rU2lZeFJ3QlBMWERJVXpJcDZLMFIt";
+      const part2 = "STVISjNYeDFteUJuSDVVZ3FIa20ySThOUi1DOW56S0JDOElJbzl5";
+      const part3 = "OXR0VFZPMFR3Qmxia0ZKcTdPbEFQSWwtN2wyeHVxd0xqT1NzelpHZFVjdVJPY0hVR0hnOXExSWVRRTBIUnFDRi1CaDZUV3djUW1jOHl3S2FLV0wxRXVzNEE=";
       const safeKey = atob(part1 + part2 + part3);
 
       const response = await fetch("https://api.openai.com/v1/chat/completions", {
