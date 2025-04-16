@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
       itineraryBox.innerHTML = "⏳ Generando tu ruta con IA...";
       resultsSection.classList.remove("hidden");
 
-      const response = await fetch("http://localhost:3001/api/obpackers-gpt", {
+      const response = await fetch("https://obpackers-backend.onrender.com/api/obpackers-gpt", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
