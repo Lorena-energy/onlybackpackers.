@@ -8,6 +8,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const resultsSection = document.getElementById("route-results");
   const guardarBtn = document.getElementById("guardar-ruta");
   const compartirBtn = document.getElementById("compartir-ruta");
+  const chatForm = document.getElementById("chat-form");
+  const userInput = document.getElementById("user-input");
+  const chatBox = document.getElementById("chat-box");
 
   const menuToggle = document.getElementById("menu-toggle");
   const menu = document.getElementById("menu");
@@ -56,10 +59,24 @@ document.addEventListener("DOMContentLoaded", () => {
           <a href="worldtrip.html#viajes-a-medida" class="cta-button" style="background:#00897B;">👩‍💼 ¿Quieres atención personalizada? Haz clic aquí</a>
         </div>
       `;
-        // === CHAT DIRECTO CON ob.packersGPT ===
-  const chatForm = document.getElementById("chat-form");
-  const userInput = document.getElementById("user-input");
-  const chatBox = document.getElementById("chat-box");
+    } catch (err) {
+      console.error("Error generando ruta:", err);
+      itineraryBox.innerHTML = "❌ Ocurrió un error al generar la ruta. Intenta de nuevo más tarde.";
+    }
+  });
+
+  guardarBtn.addEventListener("click", () => {
+    const contenido = itineraryBox.innerText;
+    localStorage.setItem("rutaPersonalizada", contenido);
+    alert("✅ Ruta guardada en tu dispositivo (temporal)");
+  });
+
+  compartirBtn.addEventListener("click", () => {
+    const ruta = itineraryBox.innerText;
+    localStorage.setItem("rutaParaCompartir", ruta);
+    alert("🚀 Ruta preparada para compartir. Redirigiendo al muro...");
+    window.location.href = "muro.html";
+  });
 
   chatForm.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -86,12 +103,6 @@ document.addEventListener("DOMContentLoaded", () => {
     } catch (err) {
       console.error("Error en el chat:", err);
       chatBox.innerHTML += `<div style="color:red;">❌ Hubo un error al contactar con ob.packersGPT</div>`;
-    }
-  });
-
-    } catch (err) {
-      console.error("Error generando ruta:", err);
-      itineraryBox.innerHTML = "❌ Ocurrió un error al generar la ruta. Intenta de nuevo más tarde.";
     }
   });
 });
