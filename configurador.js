@@ -53,10 +53,25 @@ document.addEventListener("DOMContentLoaded", () => {
       const data = await response.json();
       const output = data.choices?.[0]?.message?.content || "No se pudo generar la ruta.";
 
+      const mensaje = `Ruta generada por ob.packersGPT:\n\n${output}`;
+      localStorage.setItem("rutaParaCompartir", mensaje);
+
       itineraryBox.innerHTML = `
         <div class="respuestaGPT">${output.replace(/\n/g, '<br>')}</div>
         <div style="text-align:center; margin-top:20px;">
           <a href="worldtrip.html#viajes-a-medida" class="cta-button" style="background:#00897B;">👩‍💼 ¿Quieres atención personalizada? Haz clic aquí</a>
+        </div>
+        <div class="social-share" style="margin-top:20px;">
+          <p style="text-align:center; font-weight:600;">Comparte esta ruta en:</p>
+          <div style="text-align:center; display:flex; flex-wrap:wrap; justify-content:center; gap:10px;">
+            <button onclick="shareTo('twitter')">🐦 Twitter</button>
+            <button onclick="shareTo('facebook')">📘 Facebook</button>
+            <button onclick="shareTo('whatsapp')">💬 WhatsApp</button>
+            <button onclick="shareTo('telegram')">📲 Telegram</button>
+            <button onclick="shareTo('instagram')">📸 Instagram</button>
+            <button onclick="shareTo('tiktok')">🎵 TikTok</button>
+            <button onclick="copyRoute()">📋 Copiar Ruta</button>
+          </div>
         </div>
       `;
     } catch (err) {
@@ -73,7 +88,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   compartirBtn.addEventListener("click", () => {
     const ruta = itineraryBox.innerText;
-    localStorage.setItem("rutaParaCompartir", ruta);
+    const mensaje = `Ruta generada por ob.packersGPT:\n\n${ruta}`;
+    localStorage.setItem("rutaParaCompartir", mensaje);
     alert("🚀 Ruta preparada para compartir. Redirigiendo al muro...");
     window.location.href = "muro.html";
   });
@@ -106,3 +122,40 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+function shareTo(platform) {
+  const ruta = localStorage.getItem("rutaParaCompartir") || "¡Mira esta ruta viajera creada con ob.packersGPT!";
+  const url = encodeURIComponent("https://onlybackpackers.es");
+  const text = encodeURIComponent(ruta);
+  let shareUrl = "";
+
+  switch (platform) {
+    case "twitter":
+      shareUrl = `https://twitter.com/intent/tweet?text=${text}&url=${url}`;
+      break;
+    case "facebook":
+      shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${text}`;
+      break;
+    case "whatsapp":
+      shareUrl = `https://wa.me/?text=${text}%20${url}`;
+      break;
+    case "telegram":
+      shareUrl = `https://t.me/share/url?url=${url}&text=${text}`;
+      break;
+    case "instagram":
+      alert("📸 Para compartir en Instagram, copia la ruta y pégala manualmente en tus stories o publicaciones. Puedes subir capturas desde ob.packersGPT ✨");
+      return;
+    case "tiktok":
+      alert("🎵 Para compartir en TikTok, graba un vídeo mostrando tu ruta y menciona @onlybackpackers o añade el link en tu bio ✈️");
+      return;
+  }
+
+  window.open(shareUrl, "_blank");
+}
+
+function copyRoute() {
+  const ruta = localStorage.getItem("rutaParaCompartir");
+  navigator.clipboard.writeText(ruta || "").then(() => {
+    alert("📋 Ruta copiada al portapapeles");
+  });
+}
