@@ -1,5 +1,3 @@
-// configurador.js
-
 document.addEventListener("DOMContentLoaded", () => {
   console.log("configurador.js cargado correctamente");
 
@@ -11,13 +9,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const chatForm = document.getElementById("chat-form");
   const userInput = document.getElementById("user-input");
   const chatBox = document.getElementById("chat-box");
-
   const menuToggle = document.getElementById("menu-toggle");
   const menu = document.getElementById("menu");
 
   menuToggle.addEventListener("click", () => {
     menu.classList.toggle("active");
   });
+
+  let rutaGenerada = "";
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -53,13 +52,14 @@ document.addEventListener("DOMContentLoaded", () => {
       const data = await response.json();
       const output = data.choices?.[0]?.message?.content || "No se pudo generar la ruta.";
 
+      rutaGenerada = output;
       const mensaje = `Ruta generada por ob.packersGPT:\n\n${output}`;
       localStorage.setItem("rutaParaCompartir", mensaje);
 
       itineraryBox.innerHTML = `
         <div class="respuestaGPT">${output.replace(/\n/g, '<br>')}</div>
         <div style="text-align:center; margin-top:20px;">
-          <a href="worldtrip.html#formulario-viajes-a-medida" class="cta-button" style="background:#00897B;">👩‍💼 ¿Quieres atención personalizada? Haz clic aquí</a>
+          <a href="worldtrip-a-medida.html" class="cta-button" style="background:#00897B;">👩‍💼 ¿Quieres atención personalizada? Haz clic aquí</a>
         </div>
         <div class="social-share" style="margin-top:20px;">
           <p style="text-align:center; font-weight:600;">Comparte esta ruta en:</p>
@@ -105,13 +105,17 @@ document.addEventListener("DOMContentLoaded", () => {
     chatBox.innerHTML += `<div><strong>Tú:</strong> ${question}</div>`;
     userInput.value = "";
 
+    const contextPrompt = rutaGenerada
+      ? `Basándote en esta ruta generada: \n${rutaGenerada}\n\n${question}`
+      : question;
+
     try {
       const response = await fetch("https://obpackers-backend.onrender.com/api/obpackers-gpt", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({ prompt: question })
+        body: JSON.stringify({ prompt: contextPrompt })
       });
 
       const data = await response.json();
