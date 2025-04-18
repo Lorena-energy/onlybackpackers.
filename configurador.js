@@ -35,8 +35,8 @@ document.addEventListener("DOMContentLoaded", () => {
                    `${zones ? `La zona que me gustaría visitar es: ${zones}. ` : ""}` +
                    `${dates ? `Las fechas del viaje son: ${dates}. ` : ""}` +
                    `${groupSize ? `Viajamos ${groupSize} personas. ` : ""}` +
-                   `Por favor, detalla los días o lugares a visitar, actividades recomendadas, transportes y consejos. ` +
-                   `Se claro, ordenado y separa los días con títulos si es posible.`;
+                   `Por favor, detalla los días o lugares a visitar, actividades recomendadas (idealmente enlazables a plataformas como Civitatis o GetYourGuide), transportes y consejos. ` +
+                   `Hazlo con un estilo visual agradable: usa emojis para secciones como transporte (✈️), actividades (🎯), consejos (💡), y títulos de día como estrellas (⭐). También incluye una frase de cierre con enlace a OnlyBackpackers para compartir.`;
 
     try {
       itineraryBox.innerHTML = "⏳ Generando tu ruta con IA...";
@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
       itineraryBox.innerHTML = `
         <div class="respuestaGPT">${output.replace(/\n/g, '<br>')}</div>
         <div style="text-align:center; margin-top:20px;">
-          <a href="worldtrip.html#viajes-a-medida" class="cta-button" style="background:#00897B;">👩‍💼 ¿Quieres atención personalizada? Haz clic aquí</a>
+          <a href="worldtrip.html#formulario-viajes-a-medida" class="cta-button" style="background:#00897B;">👩‍💼 ¿Quieres atención personalizada? Haz clic aquí</a>
         </div>
         <div class="social-share" style="margin-top:20px;">
           <p style="text-align:center; font-weight:600;">Comparte esta ruta en:</p>
@@ -72,6 +72,9 @@ document.addEventListener("DOMContentLoaded", () => {
             <button onclick="shareTo('tiktok')">🎵 TikTok</button>
             <button onclick="copyRoute()">📋 Copiar Ruta</button>
           </div>
+        </div>
+        <div style="text-align:center; margin-top:15px; font-size:0.9em;">
+          🌐 Descúbrelo en <a href="https://onlybackpackers.es" target="_blank">OnlyBackpackers.es</a>
         </div>
       `;
     } catch (err) {
