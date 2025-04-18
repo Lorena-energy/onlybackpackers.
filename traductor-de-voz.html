@@ -4,10 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Traductor por Voz - OnlyBackpackers</title>
-
-  <!-- Verifica que traductor-de-voz.css esté en la misma carpeta (o ajusta la ruta) -->
   <link rel="stylesheet" href="traductor-de-voz.css" />
-
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
 </head>
 <body>
@@ -35,7 +32,6 @@
     </nav>
   </header>
 
-  <!-- Usamos la clase "traductor" para que apliquen los estilos del CSS -->
   <main class="traductor">
     <h1>🗣️ Traductor por Voz</h1>
     <p>Habla o escribe lo que quieras decir y deja que nosotros lo traduzcamos por ti. 🌍</p>
@@ -46,7 +42,6 @@
       <div class="selectors">
         <label for="source-language">🗣️ Idioma de entrada:</label>
         <select id="source-language">
-          <!-- Lista de "locale" (país) para reconocimiento con webkitSpeechRecognition -->
           <option value="af-ZA">Afrikáans (Sudáfrica)</option>
           <option value="ar-SA">Árabe (Arabia Saudita)</option>
           <option value="bn-BD">Bengalí (Bangladesh)</option>
@@ -89,12 +84,10 @@
           <option value="es-ES">Español (España)</option>
         </select>
 
-        <!-- BOTÓN DE INTERCAMBIO -->
         <button id="swap-btn" type="button">⇄</button>
 
         <label for="target-language">🌐 Idioma de destino:</label>
         <select id="target-language">
-          <!-- Para la traducción, solo se usan códigos ISO cortos. -->
           <option value="af">Afrikáans</option>
           <option value="ar">Árabe</option>
           <option value="bn">Bengalí</option>
@@ -149,7 +142,6 @@
     <p>&copy; 2024 OnlyBackpackers. Traductor por Voz powered by IA.</p>
   </footer>
 
-  <!-- Verifica que traductor-de-voz.js esté en la misma carpeta (o ajusta la ruta) -->
   <script src="traductor-de-voz.js"></script>
   <script>
     const menuToggle = document.getElementById("menu-toggle");
