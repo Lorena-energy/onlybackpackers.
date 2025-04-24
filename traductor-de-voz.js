@@ -1,5 +1,221 @@
-// ⚠️ Solo para pruebas, en producción oculta esta clave en tu backend
-const GOOGLE_API_KEY = 'AIzaSyAwz3Oz9kwjud8hHozWyly-CJxZvU94qdI';
+// traductor-de-voz.js actualizado para traducir por voz e imagen
+
+const GOOGLE_API_KEY = 'AIzaSyAwz3Oz9kwjud8hHozWyly-CJxZvU94qdI' <!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Traductor por Voz e Imagen - OnlyBackpackers</title>
+  <link rel="stylesheet" href="traductor-de-voz.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="main-header">
+    <nav>
+      <div class="menu-toggle" id="menu-toggle">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+      <ul class="menu" id="menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="login-register.html">Iniciar Sesión</a></li>
+        <li><a href="muro.html">Muro Comunidad</a></li>
+        <li><a href="muro-personal.html">Muro Personal</a></li>
+        <li><a href="chats.html">Chat por Destino</a></li>
+        <li><a href="traductor-de-voz.html" class="active">Traductor</a></li>
+        <li><a href="recomendaciones.html">Recomendaciones</a></li>
+        <li><a href="eventos.html">Eventos</a></li>
+        <li><a href="configurador.html">Configurador de Rutas</a></li>
+        <li><a href="expenses.html">Gastos</a></li>
+        <li><a href="zona-camper.html">Zona Camper</a></li>
+        <li><a href="recompensas.html">Recompensas</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="traductor">
+    <h1>🗣️🖼️ Traductor por Voz e Imagen</h1>
+    <p>Habla, escribe o sube una imagen. Nosotros lo traducimos por ti. 🌍</p>
+
+    <div class="traductor-flex">
+      <!-- 🎙️ Sección de voz -->
+      <div class="voz-box">
+        <h2>🎧 Traductor de Voz</h2>
+        <textarea id="input-text" placeholder="Escribe aquí lo que quieras decir..."></textarea>
+
+        <div class="selectors">
+          <label for="source-language">🗣️ Idioma de entrada:</label>
+          <select id="source-language">
+            <option value="af">Afrikáans</option>
+            <option value="ar">Árabe</option>
+            <option value="bn">Bengalí</option>
+            <option value="bg">Búlgaro</option>
+            <option value="ca">Catalán</option>
+            <option value="zh">Chino (Mandarín)</option>
+            <option value="hr">Croata</option>
+            <option value="cs">Checo</option>
+            <option value="da">Danés</option>
+            <option value="nl">Neerlandés</option>
+            <option value="en">Inglés</option>
+            <option value="et">Estonio</option>
+            <option value="fi">Finés</option>
+            <option value="fr">Francés</option>
+            <option value="de">Alemán</option>
+            <option value="el">Griego</option>
+            <option value="he">Hebreo</option>
+            <option value="hi">Hindi</option>
+            <option value="hu">Húngaro</option>
+            <option value="id">Indonesio</option>
+            <option value="it">Italiano</option>
+            <option value="ja">Japonés</option>
+            <option value="ko">Coreano</option>
+            <option value="lt">Lituano</option>
+            <option value="ms">Malayo</option>
+            <option value="no">Noruego</option>
+            <option value="pl">Polaco</option>
+            <option value="pt">Portugués</option>
+            <option value="ro">Rumano</option>
+            <option value="ru">Ruso</option>
+            <option value="sk">Eslovaco</option>
+            <option value="sl">Esloveno</option>
+            <option value="sv">Sueco</option>
+            <option value="th">Tailandés</option>
+            <option value="tr">Turco</option>
+            <option value="uk">Ucraniano</option>
+            <option value="vi">Vietnamita</option>
+            <option value="es" selected>Español</option>
+          </select>
+
+          <button id="swap-btn" type="button">⇄</button>
+
+          <label for="target-language">🌐 Idioma de destino:</label>
+          <select id="target-language">
+            <option value="af">Afrikáans</option>
+            <option value="ar">Árabe</option>
+            <option value="bn">Bengalí</option>
+            <option value="bg">Búlgaro</option>
+            <option value="ca">Catalán</option>
+            <option value="zh">Chino (Mandarín)</option>
+            <option value="hr">Croata</option>
+            <option value="cs">Checo</option>
+            <option value="da">Danés</option>
+            <option value="nl">Neerlandés</option>
+            <option value="en">Inglés</option>
+            <option value="et">Estonio</option>
+            <option value="fi">Finés</option>
+            <option value="fr">Francés</option>
+            <option value="de">Alemán</option>
+            <option value="el">Griego</option>
+            <option value="he">Hebreo</option>
+            <option value="hi">Hindi</option>
+            <option value="hu">Húngaro</option>
+            <option value="id">Indonesio</option>
+            <option value="it">Italiano</option>
+            <option value="ja">Japonés</option>
+            <option value="ko">Coreano</option>
+            <option value="lt">Lituano</option>
+            <option value="ms">Malayo</option>
+            <option value="no">Noruego</option>
+            <option value="pl">Polaco</option>
+            <option value="pt">Portugués</option>
+            <option value="ro">Rumano</option>
+            <option value="ru">Ruso</option>
+            <option value="sk">Eslovaco</option>
+            <option value="sl">Esloveno</option>
+            <option value="sv">Sueco</option>
+            <option value="th">Tailandés</option>
+            <option value="tr">Turco</option>
+            <option value="uk">Ucraniano</option>
+            <option value="vi">Vietnamita</option>
+            <option value="es" selected>Español</option>
+          </select>
+        </div>
+
+        <div class="botones-traductor">
+          <button id="mic-btn">🎧 Hablar</button>
+          <button id="translate-btn">🔄 Traducir y Reproducir</button>
+        </div>
+
+        <div id="translated-text" class="output"></div>
+      </div>
+
+      <!-- 🖼️ Sección de imagen -->
+      <div class="imagen-box">
+        <h2>📷 Traductor de Imagen</h2>
+        <label for="image-upload">Sube una imagen con texto para traducir:</label>
+        <input type="file" id="image-upload" accept="image/*" />
+
+        <div class="selectors">
+          <label for="image-target-language">🌐 Idioma de destino:</label>
+          <select id="image-target-language">
+            <option value="af">Afrikáans</option>
+            <option value="ar">Árabe</option>
+            <option value="bn">Bengalí</option>
+            <option value="bg">Búlgaro</option>
+            <option value="ca">Catalán</option>
+            <option value="zh">Chino (Mandarín)</option>
+            <option value="hr">Croata</option>
+            <option value="cs">Checo</option>
+            <option value="da">Danés</option>
+            <option value="nl">Neerlandés</option>
+            <option value="en">Inglés</option>
+            <option value="et">Estonio</option>
+            <option value="fi">Finés</option>
+            <option value="fr">Francés</option>
+            <option value="de">Alemán</option>
+            <option value="el">Griego</option>
+            <option value="he">Hebreo</option>
+            <option value="hi">Hindi</option>
+            <option value="hu">Húngaro</option>
+            <option value="id">Indonesio</option>
+            <option value="it">Italiano</option>
+            <option value="ja">Japonés</option>
+            <option value="ko">Coreano</option>
+            <option value="lt">Lituano</option>
+            <option value="ms">Malayo</option>
+            <option value="no">Noruego</option>
+            <option value="pl">Polaco</option>
+            <option value="pt">Portugués</option>
+            <option value="ro">Rumano</option>
+            <option value="ru">Ruso</option>
+            <option value="sk">Eslovaco</option>
+            <option value="sl">Esloveno</option>
+            <option value="sv">Sueco</option>
+            <option value="th">Tailandés</option>
+            <option value="tr">Turco</option>
+            <option value="uk">Ucraniano</option>
+            <option value="vi">Vietnamita</option>
+            <option value="es" selected>Español</option>
+          </select>
+        </div>
+
+        <div class="botones-traductor">
+          <button id="image-translate-btn">🖼️ Traducir Imagen</button>
+        </div>
+
+        <div id="image-output" class="output"></div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 OnlyBackpackers. Traductor por Voz e Imagen powered by IA.</p>
+  </footer>
+
+  <script src="traductor-de-voz.js"></script>
+  <script>
+    const menuToggle = document.getElementById("menu-toggle");
+    const menu = document.getElementById("menu");
+    if (menuToggle && menu) {
+      menuToggle.addEventListener("click", () => {
+        menu.classList.toggle("active");
+      });
+    }
+  </script>
+</body>
+</html>
+'; // <-- Sustituye esto por tu clave real
 
 const micBtn = document.getElementById('mic-btn');
 const inputText = document.getElementById('input-text');
@@ -7,164 +223,139 @@ const sourceLang = document.getElementById('source-language');
 const targetLang = document.getElementById('target-language');
 const translateBtn = document.getElementById('translate-btn');
 const translatedText = document.getElementById('translated-text');
-const swapBtn = document.getElementById('swap-btn'); // Nuevo botón para intercambiar idiomas
+const swapBtn = document.getElementById('swap-btn');
 
 let recognition;
 
-/* 
-  Diccionario para mapear el idioma corto (p.e. 'en') al largo (p.e. 'en-US'),
-  y viceversa. Añade todas las equivalencias que uses en tu app. 
-*/
-const recognitionMap = {
-  // corto -> largo
-  en: 'en-US',
-  es: 'es-ES',
-  fr: 'fr-FR',
-  de: 'de-DE',
-  it: 'it-IT',
-  pt: 'pt-PT',
-  ko: 'ko-KR',
-  ja: 'ja-JP',
-  zh: 'zh-CN',
-  ar: 'ar-SA',
-  // etc...
-
-  // Si quisieras usarlo al revés, puedes hacer otra estructura,
-  // pero en este caso solo necesitamos "corto -> largo".
-};
-
-// 1) Verificamos compatibilidad con SpeechRecognition (solo Chrome / Android, Edge Chromium, etc.)
 if ('webkitSpeechRecognition' in window) {
   recognition = new webkitSpeechRecognition();
   recognition.continuous = false;
   recognition.interimResults = false;
 
   micBtn.addEventListener('click', () => {
-    // Asignamos el idioma tal cual está en sourceLang (e.g. 'es-ES', 'en-US')
-    recognition.lang = sourceLang.value;
+    recognition.lang = sourceLang.value + '-' + sourceLang.value.toUpperCase();
     recognition.start();
-    micBtn.textContent = '🎙️ Escuchando...';
+    micBtn.textContent = '🎧 Escuchando...';
   });
 
   recognition.onresult = (event) => {
-    const result = event.results[0][0].transcript;
-    inputText.value = result;
-    micBtn.textContent = '🎙️ Hablar';
+    inputText.value = event.results[0][0].transcript;
+    micBtn.textContent = '🎧 Hablar';
   };
 
   recognition.onerror = () => {
-    micBtn.textContent = '🎙️ Hablar';
-    alert('Error al reconocer la voz. Intenta de nuevo.');
+    micBtn.textContent = '🎧 Hablar';
+    alert('Error al reconocer la voz.');
   };
 
   recognition.onend = () => {
-    micBtn.textContent = '🎙️ Hablar';
+    micBtn.textContent = '🎧 Hablar';
   };
 } else {
   micBtn.disabled = true;
-  micBtn.textContent = '🎙️ No compatible';
+  micBtn.textContent = '🎧 No compatible';
 }
 
-// 2) Función para convertir 'pt-BR' -> 'pt', 'en-US' -> 'en', etc. (código corto para Google Translate)
-function getShortLangCode(fullCode) {
-  // Toma la parte antes del guión, p.e. 'en-US' -> ['en', 'US'] -> 'en'
-  return fullCode.split('-')[0]; 
-}
-
-// 3) Evento para traducir con la API de Google
 translateBtn.addEventListener('click', async () => {
   const text = inputText.value.trim();
-  
-  if (!text) {
-    alert('Por favor, escribe o habla algo primero.');
-    return;
-  }
-
-  // Convertimos el idioma de origen al código corto (ej. 'es', 'en', 'fr')
-  const sourceShort = getShortLangCode(sourceLang.value);
-  // El idioma de destino se asume que ya es ISO corto (ej. 'en', 'fr', 'de', etc.)
-  const targetShort = targetLang.value;
+  if (!text) return alert('Por favor, escribe o habla algo primero.');
 
   try {
-    // Llamada a la API de traducción de Google
     const response = await fetch(
-      `https://translation.googleapis.com/language/translate/v2?key=${GOOGLE_API_KEY}`, 
+      `https://translation.googleapis.com/language/translate/v2?key=${GOOGLE_API_KEY}`,
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           q: text,
-          source: sourceShort,   // idioma de origen
-          target: targetShort,   // idioma de destino
+          source: sourceLang.value,
+          target: targetLang.value,
           format: 'text'
         })
       }
     );
 
     const data = await response.json();
-    
-    if (data.error) {
-      console.error('Error en la API de Google:', data.error);
-      translatedText.innerText = '❌ Error con la API de traducción.';
-      return;
-    }
+    if (data.error) throw new Error(data.error.message);
 
-    // Recuperamos el texto traducido
     const translated = data.data.translations[0].translatedText;
     translatedText.innerText = translated;
 
-    // 4) Reproducimos el resultado (Text-to-Speech)
     const utterance = new SpeechSynthesisUtterance(translated);
-
-    // Opcional: si quieres forzar dialectos en la voz sintetizada, usa un switch:
-    switch (targetShort) {
-      case 'en': utterance.lang = 'en-US'; break;
-      case 'es': utterance.lang = 'es-ES'; break;
-      case 'pt': utterance.lang = 'pt-BR'; break;
-      default:
-        utterance.lang = targetShort; 
-        break;
-    }
-
+    utterance.lang = targetLang.value;
     speechSynthesis.speak(utterance);
-
-  } catch (error) {
-    console.error('Error en la traducción:', error);
-    translatedText.innerText = '❌ Error al traducir. Intenta de nuevo.';
+  } catch (err) {
+    translatedText.innerText = '❌ Error en la traducción';
+    console.error(err);
   }
 });
 
-
-// 4) Evento para intercambiar los idiomas al pulsar el botón "swap-btn"
 swapBtn.addEventListener('click', () => {
-  // Obtenemos los valores actuales
-  const currentSource = sourceLang.value;  // p.ej. "es-ES"
-  const currentTarget = targetLang.value;  // p.ej. "en"
-
-  // 4.1) El sourceLang pasará a ser lo que antes era targetLang,
-  // pero en código "largo" para reconocimiento (webkitSpeechRecognition).
-  // Para lograrlo:
-  //   - Buscamos en recognitionMap[currentTarget]
-  //   - Si no lo encontramos, dejamos algo por defecto (por ej. "en-US")
-  const newSource = recognitionMap[currentTarget] || 'en-US';
-  
-  // 4.2) El targetLang pasa a ser la versión "corta" de currentSource.
-  // p.ej. "es-ES" -> "es"
-  const newTarget = getShortLangCode(currentSource);
-
-  // 4.3) Asignamos
-  sourceLang.value = newSource;
-  targetLang.value = newTarget;
+  const temp = sourceLang.value;
+  sourceLang.value = targetLang.value;
+  targetLang.value = temp;
 });
 
+// Traductor de imagen
+const imageUpload = document.getElementById('image-upload');
+const imageTranslateBtn = document.getElementById('image-translate-btn');
+const imageTargetLang = document.getElementById('image-target-language');
+const imageOutput = document.getElementById('image-output');
 
-// 5) 🧡 Banner informativo para iPhone
-const aviso = document.createElement('div');
-aviso.classList.add('aviso-banner');
-aviso.innerHTML = `
-  ⚠️ En iPhone, la función de reconocimiento de voz aún no está disponible por limitaciones de su navegador.<br>
-  Pero no te preocupes, puedes escribir tu mensaje y traducirlo igual. ¡Gracias por tu comprensión 💛!
-`;
+imageTranslateBtn.addEventListener('click', async () => {
+  const file = imageUpload.files[0];
+  if (!file) return alert('Por favor, sube una imagen.');
 
-document.querySelector('.traductor').insertBefore(aviso, document.querySelector('.translator-box'));
+  const reader = new FileReader();
+  reader.onloadend = async () => {
+    const base64Image = reader.result.replace(/^data:image\/\w+;base64,/, '');
+    try {
+      const visionRes = await fetch(
+        `https://vision.googleapis.com/v1/images:annotate?key=${GOOGLE_API_KEY}`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            requests: [
+              {
+                image: { content: base64Image },
+                features: [{ type: 'TEXT_DETECTION' }]
+              }
+            ]
+          })
+        }
+      );
+
+      const visionData = await visionRes.json();
+      const text = visionData.responses[0].fullTextAnnotation?.text || '';
+
+      if (!text) return (imageOutput.innerText = '❌ No se encontró texto.');
+
+      const translateRes = await fetch(
+        `https://translation.googleapis.com/language/translate/v2?key=${GOOGLE_API_KEY}`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            q: text,
+            target: imageTargetLang.value,
+            format: 'text'
+          })
+        }
+      );
+
+      const translated = await translateRes.json();
+      const translatedText = translated.data.translations[0].translatedText;
+      imageOutput.innerText = translatedText;
+
+      const utterance = new SpeechSynthesisUtterance(translatedText);
+      utterance.lang = imageTargetLang.value;
+      speechSynthesis.speak(utterance);
+    } catch (err) {
+      imageOutput.innerText = '❌ Error procesando la imagen o traducción';
+      console.error(err);
+    }
+  };
+  reader.readAsDataURL(file);
+});
 
