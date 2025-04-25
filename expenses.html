@@ -13,7 +13,9 @@
   <header class="main-header">
     <nav>
       <div class="menu-toggle" id="menu-toggle">
-        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
       </div>
       <ul class="menu" id="menu">
         <li><a href="index.html">Inicio</a></li>
@@ -29,22 +31,30 @@
     </nav>
   </header>
 
-  <h1>Registro de Gastos</h1>
-
-  <section id="currency-converter">
-    <h2>Conversor de Monedas</h2>
-    <form id="currency-form">
-      <input type="number" id="convert-amount" placeholder="Cantidad a convertir" required />
-      <select id="from-currency"></select>
-      <select id="to-currency"></select>
-      <button type="submit">Convertir</button>
-    </form>
-    <p id="conversion-result"></p>
-  </section>
-
   <main>
-    <section id="add-expense">
-      <h2>Gastos Personales</h2>
+    <h1>💰 Registro de Gastos</h1>
+
+    <div class="tab-buttons">
+      <button class="tab-btn active" data-tab="converter">Conversor</button>
+      <button class="tab-btn" data-tab="personal">Gastos Personales</button>
+      <button class="tab-btn" data-tab="group">Gastos Grupales</button>
+    </div>
+
+    <!-- Conversor de Moneda -->
+    <section id="tab-converter" class="tab-content active">
+      <h2>Conversor de Monedas</h2>
+      <form id="currency-form">
+        <input type="number" id="convert-amount" placeholder="Cantidad a convertir" required />
+        <select id="from-currency"></select>
+        <select id="to-currency"></select>
+        <button type="submit">Convertir</button>
+      </form>
+      <p id="conversion-result"></p>
+    </section>
+
+    <!-- Gastos Personales -->
+    <section id="tab-personal" class="tab-content">
+      <h2>Añadir Gasto Personal</h2>
       <form id="expense-form">
         <input type="text" id="expense-name" placeholder="Nombre del gasto" required />
         <select id="expense-category" required>
@@ -60,29 +70,22 @@
         <textarea id="expense-notes" placeholder="Notas (opcional)"></textarea>
         <button type="submit">Añadir</button>
       </form>
-    </section>
-
-    <section id="expense-summary">
-      <h2>Resumen</h2>
       <ul id="expense-list"></ul>
-      <h3 id="total-expenses">Total: $0</h3>
-    </section>
-
-    <section id="expense-chart">
-      <h2>Análisis de gastos</h2>
+      <h3 id="total-expenses">Total: 0 €</h3>
       <canvas id="expense-chart-canvas"></canvas>
     </section>
 
-    <section id="group-expense">
-      <h2>Gastos Grupales</h2>
+    <!-- Gastos Grupales -->
+    <section id="tab-group" class="tab-content">
+      <h2>Gasto Grupal</h2>
       <form id="group-expense-form">
         <input type="text" id="group-name" placeholder="Nombre del gasto" required />
-        <input type="number" id="group-amount" placeholder="Cantidad total" required />
-        <input type="text" id="group-members" placeholder="Participantes (ej. Ana, Juan, Sofía)" required />
-        <button type="submit">Dividir gasto</button>
+        <input type="number" id="group-amount" placeholder="Cantidad total (€)" required />
+        <input type="text" id="group-members" placeholder="Participantes (separados por coma)" required />
+        <button type="submit">Dividir</button>
       </form>
       <ul id="group-expense-list"></ul>
-      <h3 id="group-total">Total grupal: 0€</h3>
+      <h3 id="group-total">Total grupal: 0 €</h3>
     </section>
   </main>
 </body>
