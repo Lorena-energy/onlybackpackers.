@@ -2,14 +2,13 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>OnlyBackpackers - Registro de Gastos</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="expenses.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="expenses.js" defer></script>
 </head>
-
 <body>
   <header class="main-header">
     <nav>
@@ -30,40 +29,61 @@
     </nav>
   </header>
 
-  <h1>🧾 Registro de Gastos</h1>
+  <h1>Registro de Gastos</h1>
 
-  <!-- Conversor de monedas -->
   <section id="currency-converter">
-    <h2>💱 Conversor de Monedas</h2>
+    <h2>Conversor de Monedas</h2>
     <form id="currency-form">
       <input type="number" id="convert-amount" placeholder="Cantidad a convertir" required />
-      <select id="from-currency">
-        <option value="USD">USD - Dólar</option>
-        <option value="EUR">EUR - Euro</option>
-        <option value="GBP">GBP - Libra</option>
-        <option value="JPY">JPY - Yen</option>
-        <option value="MXN">MXN - Peso mexicano</option>
-      </select>
-      <select id="to-currency">
-        <option value="USD">USD - Dólar</option>
-        <option value="EUR">EUR - Euro</option>
-        <option value="GBP">GBP - Libra</option>
-        <option value="JPY">JPY - Yen</option>
-        <option value="MXN">MXN - Peso mexicano</option>
-      </select>
+      <select id="from-currency"></select>
+      <select id="to-currency"></select>
       <button type="submit">Convertir</button>
     </form>
     <p id="conversion-result"></p>
   </section>
 
-  <!-- Formulario de gastos -->
   <main>
     <section id="add-expense">
-      <h2>➕ Añadir Gasto</h2>
+      <h2>Gastos Personales</h2>
       <form id="expense-form">
         <input type="text" id="expense-name" placeholder="Nombre del gasto" required />
         <select id="expense-category" required>
-          <option value="">Selecciona categoría</option>
+          <option value="">Categoría</option>
           <option value="transporte">Transporte</option>
           <option value="comidas">Comidas</option>
-          <option
+          <option value="alojamiento">Alojamiento</option>
+          <option value="actividades">Actividades</option>
+          <option value="otros">Otros</option>
+        </select>
+        <input type="number" id="expense-amount" placeholder="Cantidad" required />
+        <input type="text" id="expense-currency" placeholder="Moneda (ej. EUR)" required />
+        <textarea id="expense-notes" placeholder="Notas (opcional)"></textarea>
+        <button type="submit">Añadir</button>
+      </form>
+    </section>
+
+    <section id="expense-summary">
+      <h2>Resumen</h2>
+      <ul id="expense-list"></ul>
+      <h3 id="total-expenses">Total: $0</h3>
+    </section>
+
+    <section id="expense-chart">
+      <h2>Análisis de gastos</h2>
+      <canvas id="expense-chart-canvas"></canvas>
+    </section>
+
+    <section id="group-expense">
+      <h2>Gastos Grupales</h2>
+      <form id="group-expense-form">
+        <input type="text" id="group-name" placeholder="Nombre del gasto" required />
+        <input type="number" id="group-amount" placeholder="Cantidad total" required />
+        <input type="text" id="group-members" placeholder="Participantes (ej. Ana, Juan, Sofía)" required />
+        <button type="submit">Dividir gasto</button>
+      </form>
+      <ul id="group-expense-list"></ul>
+      <h3 id="group-total">Total grupal: 0€</h3>
+    </section>
+  </main>
+</body>
+</html>
