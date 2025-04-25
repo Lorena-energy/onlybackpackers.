@@ -4,36 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>OnlyBackpackers - Registro de Gastos</title>
-
-  <!-- Fuente Poppins -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
-    rel="stylesheet"
-  />
-
-  <!-- Hoja de estilos principal -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="expenses.css" />
-
-  <!-- Librería Chart.js (si usas el gráfico) -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-  <!-- Script principal (defer) -->
   <script src="expenses.js" defer></script>
 </head>
 
 <body>
-  <!-- Encabezado principal (unificado) -->
   <header class="main-header">
     <nav>
-      <!-- Menú hamburguesa -->
       <div class="menu-toggle" id="menu-toggle">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
       </div>
-      <!-- Menú principal -->
       <ul class="menu" id="menu">
-        <li><a href="index.html" class="active">Inicio</a></li>
+        <li><a href="index.html">Inicio</a></li>
         <li><a href="muro.html">Muro</a></li>
         <li><a href="muro-personal.html">Mi Muro</a></li>
         <li><a href="recomendaciones.html">Recomendaciones</a></li>
@@ -41,74 +25,45 @@
         <li><a href="eventos.html">Eventos</a></li>
         <li><a href="worldtrip.html">Worldtrip</a></li>
         <li><a href="recompensas.html">Recompensas</a></li>
-        <li><a href="gastos.html">Gastos</a></li>
+        <li><a href="gastos.html" class="active">Gastos</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- Título principal -->
-  <h1>Registro de Gastos</h1>
+  <h1>🧾 Registro de Gastos</h1>
 
-  <!-- Conversor de moneda -->
+  <!-- Conversor de monedas -->
   <section id="currency-converter">
-    <h2>Conversor de Monedas</h2>
+    <h2>💱 Conversor de Monedas</h2>
     <form id="currency-form">
       <input type="number" id="convert-amount" placeholder="Cantidad a convertir" required />
       <select id="from-currency">
-        <option value="USD">USD - Dólar estadounidense</option>
+        <option value="USD">USD - Dólar</option>
         <option value="EUR">EUR - Euro</option>
-        <option value="GBP">GBP - Libra esterlina</option>
-        <option value="JPY">JPY - Yen japonés</option>
+        <option value="GBP">GBP - Libra</option>
+        <option value="JPY">JPY - Yen</option>
         <option value="MXN">MXN - Peso mexicano</option>
-        <!-- ... resto de opciones ... -->
       </select>
       <select id="to-currency">
-        <!-- Mismas opciones que "from-currency" -->
-        <option value="USD">USD - Dólar estadounidense</option>
+        <option value="USD">USD - Dólar</option>
         <option value="EUR">EUR - Euro</option>
-        <option value="GBP">GBP - Libra esterlina</option>
-        <option value="JPY">JPY - Yen japonés</option>
+        <option value="GBP">GBP - Libra</option>
+        <option value="JPY">JPY - Yen</option>
         <option value="MXN">MXN - Peso mexicano</option>
-        <!-- ... etc ... -->
       </select>
       <button type="submit">Convertir</button>
     </form>
     <p id="conversion-result"></p>
   </section>
 
+  <!-- Formulario de gastos -->
   <main>
-    <!-- Formulario para agregar un gasto -->
     <section id="add-expense">
-      <h2>Añadir Gasto</h2>
+      <h2>➕ Añadir Gasto</h2>
       <form id="expense-form">
         <input type="text" id="expense-name" placeholder="Nombre del gasto" required />
         <select id="expense-category" required>
-          <option value="">Categoría</option>
+          <option value="">Selecciona categoría</option>
           <option value="transporte">Transporte</option>
           <option value="comidas">Comidas</option>
-          <option value="alojamiento">Alojamiento</option>
-          <option value="actividades">Actividades</option>
-          <option value="otros">Otros</option>
-        </select>
-        <input type="number" id="expense-amount" placeholder="Cantidad" required />
-        <input type="text" id="expense-currency" placeholder="Moneda (ej. USD)" required />
-        <textarea id="expense-notes" placeholder="Notas (opcional)"></textarea>
-        <button type="submit">Añadir</button>
-      </form>
-    </section>
-
-    <!-- Resumen de gastos -->
-    <section id="expense-summary">
-      <h2>Resumen</h2>
-      <ul id="expense-list"></ul>
-      <h3 id="total-expenses">Total: $0</h3>
-    </section>
-
-    <!-- Gráficos -->
-    <section id="expense-chart">
-      <h2>Análisis de gastos</h2>
-      <canvas id="expense-chart-canvas"></canvas>
-    </section>
-  </main>
-</body>
-</html>
+          <option
