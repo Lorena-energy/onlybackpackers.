@@ -1,7 +1,6 @@
 // traductor-de-voz.js actualizado para traducir por voz e imagen
 
 const GOOGLE_API_KEY = 'AIzaSyAwz3Oz9kwjud8hHozWyly-CJxZvU94qdI'
-<html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
