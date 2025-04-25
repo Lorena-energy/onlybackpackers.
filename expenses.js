@@ -1,4 +1,4 @@
-// expenses.js actualizado con exchangerate.host y estructura limpia
+// expenses.js actualizado con exchangerate.host y estructura limpia + gastos grupales
 
 document.addEventListener("DOMContentLoaded", () => {
   // MENÚ HAMBURGUESA
@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const currencyForm = document.getElementById("currency-form");
   const conversionResult = document.getElementById("conversion-result");
 
-  // Cargar todas las monedas automáticamente en los select
   async function loadCurrencyOptions() {
     try {
       const res = await fetch('https://api.exchangerate.host/symbols');
@@ -70,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // FORMULARIO DE GASTOS
+  // FORMULARIO DE GASTOS PERSONALES
   const expenseForm = document.getElementById("expense-form");
   const expenseList = document.getElementById("expense-list");
   const totalExpenses = document.getElementById("total-expenses");
@@ -125,6 +124,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
       updateChart();
       expenseForm.reset();
+    }
+  });
+
+  // GASTOS GRUPALES
+  const groupForm = document.getElementById("group-expense-form");
+  const groupList = document.getElementById("group-expense-list");
+  const groupTotal = document.getElementById("group-total");
+
+  let groupExpenses = [];
+
+  groupForm?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const name = document.getElementById("group-name").value.trim();
+    const amount = parseFloat(document.getElementById("group-amount").value);
+    const members = document.getElementById("group-members").value.trim().split(",").map(m => m.trim()).filter(Boolean);
+
+    if (name && members.length && !isNaN(amount)) {
+      const perPerson = (amount / members.length).toFixed(2);
+      groupExpenses.push({ name, amount, members });
+
+      const li = document.createElement("li");
+      li.innerHTML = `<strong>${name}</strong> - ${amount}€ dividido entre ${members.length} personas (${perPerson}€ cada una)`;
+      groupList.appendChild(li);
+
+      const total = groupExpenses.reduce((sum, exp) => sum + exp.amount, 0);
+      groupTotal.textContent = `Total grupal: ${total.toFixed(2)}€`;
+
+      groupForm.reset();
     }
   });
 });
