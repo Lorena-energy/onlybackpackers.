@@ -12,6 +12,35 @@ document.addEventListener("DOMContentLoaded", () => {
   const currencyForm = document.getElementById("currency-form");
   const conversionResult = document.getElementById("conversion-result");
 
+  // Cargar todas las monedas automáticamente en los select
+  async function loadCurrencyOptions() {
+    try {
+      const res = await fetch('https://api.exchangerate.host/symbols');
+      const data = await res.json();
+      const symbols = data.symbols;
+
+      const fromSelect = document.getElementById('from-currency');
+      const toSelect = document.getElementById('to-currency');
+      fromSelect.innerHTML = '';
+      toSelect.innerHTML = '';
+
+      for (const code in symbols) {
+        const option = document.createElement('option');
+        option.value = code;
+        option.textContent = `${code} - ${symbols[code].description}`;
+        fromSelect.appendChild(option.cloneNode(true));
+        toSelect.appendChild(option);
+      }
+
+      fromSelect.value = 'EUR';
+      toSelect.value = 'USD';
+    } catch (err) {
+      console.error('Error al cargar monedas:', err);
+    }
+  }
+
+  loadCurrencyOptions();
+
   async function convertCurrency(amount, from, to) {
     try {
       const response = await fetch(`https://api.exchangerate.host/convert?from=${from}&to=${to}&amount=${amount}`);
