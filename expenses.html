@@ -2,85 +2,95 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>OnlyBackpackers - Registro de Gastos</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="expenses.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="expenses.js" defer></script>
 </head>
+
 <body>
   <header class="main-header">
     <nav>
       <div class="menu-toggle" id="menu-toggle">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
       </div>
       <ul class="menu" id="menu">
-        <li><a href="index.html">Inicio</a></li>
+        <li><a href="index.html" class="active">Inicio</a></li>
         <li><a href="muro.html">Muro</a></li>
-        <li><a href="recomendaciones.html">Recomendaciones</a></li>
         <li><a href="chats.html">Chats</a></li>
         <li><a href="eventos.html">Eventos</a></li>
-        <li><a href="gastos.html" class="active">Gastos</a></li>
+        <li><a href="gastos.html">Gastos</a></li>
       </ul>
     </nav>
   </header>
 
-  <main>
-    <h1>Registro de Gastos</h1>
+  <h1>💸 Gestión de Gastos</h1>
 
-    <section class="tabs">
-      <button class="tab-btn active" data-tab="conversor">Conversor de Monedas</button>
-      <button class="tab-btn" data-tab="personal">Gastos Personales</button>
-      <button class="tab-btn" data-tab="grupal">Gastos Grupales</button>
-    </section>
+  <!-- Pestañas -->
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="personal">Gastos Personales</button>
+    <button class="tab-btn" data-tab="group">Gastos Grupales</button>
+    <button class="tab-btn" data-tab="converter">Conversor de Moneda</button>
+  </div>
 
-    <section id="tab-conversor" class="tab-content active">
-      <h2>Conversor de Monedas</h2>
-      <form id="currency-form">
-        <input type="number" id="convert-amount" placeholder="Cantidad a convertir" required />
-        <select id="from-currency"></select>
-        <select id="to-currency"></select>
-        <button type="submit">Convertir</button>
-      </form>
-      <p id="conversion-result"></p>
-    </section>
+  <!-- Contenido de pestañas -->
+  <div id="tab-personal" class="tab-content active">
+    <h2>🧾 Gastos Personales</h2>
+    <form id="expense-form">
+      <input type="text" id="expense-name" placeholder="Nombre del gasto" required />
+      <select id="expense-category" required>
+        <option value="">Categoría</option>
+        <option value="transporte">Transporte</option>
+        <option value="comidas">Comidas</option>
+        <option value="alojamiento">Alojamiento</option>
+        <option value="actividades">Actividades</option>
+        <option value="otros">Otros</option>
+      </select>
+      <input type="number" id="expense-amount" placeholder="Cantidad" required />
+      <input type="text" id="expense-currency" placeholder="Moneda (ej. USD)" required />
+      <textarea id="expense-notes" placeholder="Notas (opcional)"></textarea>
+      <button type="submit">Añadir Gasto</button>
+    </form>
+    <ul id="expense-list"></ul>
+    <h3 id="total-expenses">Total: $0</h3>
+    <canvas id="expense-chart-canvas"></canvas>
+  </div>
 
-    <section id="tab-personal" class="tab-content">
-      <h2>Gastos Personales</h2>
-      <form id="expense-form">
-        <input type="text" id="expense-name" placeholder="Nombre del gasto" required />
-        <select id="expense-category">
-          <option value="transporte">Transporte</option>
-          <option value="comidas">Comidas</option>
-          <option value="alojamiento">Alojamiento</option>
-          <option value="actividades">Actividades</option>
-          <option value="otros">Otros</option>
-        </select>
-        <input type="number" id="expense-amount" placeholder="Cantidad" required />
-        <input type="text" id="expense-currency" placeholder="Moneda (ej. EUR)" required />
-        <textarea id="expense-notes" placeholder="Notas"></textarea>
-        <button type="submit">Añadir Gasto</button>
-      </form>
-      <ul id="expense-list"></ul>
-      <p id="total-expenses">Total: 0 €</p>
-      <canvas id="expense-chart-canvas"></canvas>
-    </section>
+  <div id="tab-group" class="tab-content">
+    <h2>👥 Gastos Grupales</h2>
+    <form id="group-expense-form">
+      <input type="text" id="group-name" placeholder="Nombre del gasto grupal" required />
+      <input type="number" id="group-amount" placeholder="Cantidad total" required />
+      <input type="text" id="group-paidBy" placeholder="Pagado por (nombre)" required />
+      <input type="text" id="group-members" placeholder="Participantes (separados por coma)" required />
+      <button type="submit">Añadir Gasto Grupal</button>
+    </form>
+    <ul id="group-expense-list"></ul>
+    <h3 id="group-total">Total Grupal: $0</h3>
+    <h3>💬 Balances:</h3>
+    <ul id="group-balances"></ul>
 
-    <section id="tab-grupal" class="tab-content">
-      <h2>Gastos Grupales</h2>
-      <form id="group-expense-form">
-        <input type="text" id="group-name" placeholder="Concepto del gasto" required />
-        <input type="number" id="group-amount" placeholder="Cantidad total" required />
-        <textarea id="group-members" placeholder="Miembros separados por comas" required></textarea>
-        <button type="submit">Dividir Gasto</button>
-      </form>
-      <ul id="group-expense-list"></ul>
-      <p id="group-total">Total Grupal: 0 €</p>
-    </section>
-  </main>
+    <h3>💸 Registrar Pago entre Usuarios</h3>
+    <form id="payment-form">
+      <input type="text" id="payment-from" placeholder="Quien paga" required />
+      <input type="text" id="payment-to" placeholder="A quién paga" required />
+      <input type="number" id="payment-amount" placeholder="Cantidad pagada" required />
+      <button type="submit">Registrar Pago</button>
+    </form>
+  </div>
 
-  <script src="expenses.js" defer></script>
+  <div id="tab-converter" class="tab-content">
+    <h2>🌍 Conversor de Monedas</h2>
+    <form id="currency-form">
+      <input type="number" id="convert-amount" placeholder="Cantidad a convertir" required />
+      <select id="from-currency"></select>
+      <select id="to-currency"></select>
+      <button type="submit">Convertir</button>
+    </form>
+    <p id="conversion-result"></p>
+  </div>
+
 </body>
 </html>
