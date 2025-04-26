@@ -138,3 +138,21 @@ document.addEventListener("DOMContentLoaded", () => {
   const groupTotal = document.getElementById("group-total");
 
   groupForm?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const name = document.getElementById("group-name").value.trim();
+    const amount = parseFloat(document.getElementById("group-amount").value);
+    const members = document.getElementById("group-members").value.split(",").map(m => m.trim()).filter(m => m);
+
+    if (name && !isNaN(amount) && members.length > 0) {
+      const share = (amount / members.length).toFixed(2);
+      members.forEach(member => {
+        const li = document.createElement("li");
+        li.innerText = `${member} debe pagar ${share} € por ${name}`;
+        groupList.appendChild(li);
+      });
+
+      groupTotal.textContent = `Total grupal: ${amount.toFixed(2)} €`;
+      groupForm.reset();
+    }
+  });
+});
