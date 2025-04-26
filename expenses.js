@@ -1,158 +1,108 @@
-document.addEventListener("DOMContentLoaded", () => {
-  /************************************************************
-   * MENÚ HAMBURGUESA
-   ************************************************************/
-  const menuToggle = document.getElementById("menu-toggle");
-  const menu = document.getElementById("menu");
+document.addEventListener('DOMContentLoaded', () => {
 
-  menuToggle?.addEventListener("click", () => {
-    menu.classList.toggle("active");
-  });
+  // Menú hamburguesa
+  const menuToggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('menu');
+  menuToggle.addEventListener('click', () => menu.classList.toggle('active'));
 
-  /************************************************************
-   * PESTAÑAS
-   ************************************************************/
-  const tabButtons = document.querySelectorAll(".tab-btn");
-  const tabContents = document.querySelectorAll(".tab-content");
+  // Cambio entre pestañas
+  const tabs = document.querySelectorAll('.tab-btn');
+  const tabContents = document.querySelectorAll('.tab-content');
 
-  tabButtons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      tabButtons.forEach((b) => b.classList.remove("active"));
-      tabContents.forEach((c) => c.classList.remove("active"));
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
 
-      btn.classList.add("active");
-      document.getElementById(`tab-${btn.dataset.tab}`).classList.add("active");
+      tabContents.forEach(content => content.classList.remove('active'));
+      document.getElementById(`tab-${tab.dataset.tab}`).classList.add('active');
     });
   });
 
-  /************************************************************
-   * CONVERSOR DE MONEDA
-   ************************************************************/
-  async function cargarMonedas() {
-    try {
-      const res = await fetch('https://api.exchangerate.host/symbols');
-      const data = await res.json();
-      const symbols = data.symbols;
-      const fromSelect = document.getElementById("from-currency");
-      const toSelect = document.getElementById("to-currency");
+  // Cargar monedas en el conversor automáticamente
+  const fromCurrency = document.getElementById('from-currency');
+  const toCurrency = document.getElementById('to-currency');
 
-      for (let code in symbols) {
-        const optionFrom = document.createElement("option");
-        optionFrom.value = code;
-        optionFrom.textContent = `${code} - ${symbols[code].description}`;
-        fromSelect.appendChild(optionFrom);
+  fetch('https://api.exchangerate.host/symbols')
+    .then(res => res.json())
+    .then(data => {
+      Object.entries(data.symbols).forEach(([code, { description }]) => {
+        const optionFrom = new Option(`${code} - ${description}`, code);
+        const optionTo = new Option(`${code} - ${description}`, code);
+        fromCurrency.appendChild(optionFrom);
+        toCurrency.appendChild(optionTo);
+      });
+    });
 
-        const optionTo = document.createElement("option");
-        optionTo.value = code;
-        optionTo.textContent = `${code} - ${symbols[code].description}`;
-        toSelect.appendChild(optionTo);
-      }
-    } catch (err) {
-      console.error("Error cargando monedas", err);
-    }
-  }
-  cargarMonedas();
-
-  const currencyForm = document.getElementById("currency-form");
-  const conversionResult = document.getElementById("conversion-result");
-
-  currencyForm?.addEventListener("submit", async (e) => {
+  // Conversión de monedas
+  document.getElementById('currency-form').addEventListener('submit', async (e) => {
     e.preventDefault();
-    const amount = parseFloat(document.getElementById("convert-amount").value);
-    const from = document.getElementById("from-currency").value;
-    const to = document.getElementById("to-currency").value;
+    const amount = document.getElementById('convert-amount').value;
+    const from = fromCurrency.value;
+    const to = toCurrency.value;
 
-    if (isNaN(amount) || !from || !to) {
-      conversionResult.textContent = "Por favor, completa todos los campos correctamente.";
-      return;
-    }
+    const response = await fetch(`https://api.exchangerate.host/convert?from=${from}&to=${to}&amount=${amount}`);
+    const result = await response.json();
 
-    try {
-      const res = await fetch(`https://api.exchangerate.host/convert?from=${from}&to=${to}&amount=${amount}`);
-      const data = await res.json();
-      conversionResult.textContent = `${amount} ${from} = ${data.result.toFixed(2)} ${to}`;
-    } catch (err) {
-      console.error("Error en la conversión", err);
-      conversionResult.textContent = "Error al convertir moneda.";
-    }
+    document.getElementById('conversion-result').textContent =
+      `${amount} ${from} equivale a ${result.result.toFixed(2)} ${to}`;
   });
 
-  /************************************************************
-   * GASTOS PERSONALES
-   ************************************************************/
-  const expenseForm = document.getElementById("expense-form");
-  const expenseList = document.getElementById("expense-list");
-  const totalExpenses = document.getElementById("total-expenses");
-  const ctx = document.getElementById("expense-chart-canvas")?.getContext("2d");
+  // Gestión de gastos personales
+  const expenseForm = document.getElementById('expense-form');
+  const expenseList = document.getElementById('expense-list');
+  const totalExpenses = document.getElementById('total-expenses');
+  const ctx = document.getElementById('expense-chart-canvas').getContext('2d');
 
   let expenses = [];
-  const categories = ["transporte", "comidas", "alojamiento", "actividades", "otros"];
-  const chartData = {
-    labels: ["Transporte", "Comidas", "Alojamiento", "Actividades", "Otros"],
-    datasets: [{ data: [0, 0, 0, 0, 0], backgroundColor: ["#0077cc", "#ff6600", "#00bfff", "#66cc66", "#cccccc"] }]
-  };
-
-  let expenseChart = null;
-  if (ctx) {
-    expenseChart = new Chart(ctx, { type: "pie", data: chartData, options: { responsive: true } });
-  }
-
-  const updateChart = () => {
-    if (!expenseChart) return;
-    const totals = categories.map(cat =>
-      expenses.filter(exp => exp.category === cat).reduce((sum, exp) => sum + exp.amount, 0)
-    );
-    expenseChart.data.datasets[0].data = totals;
-    expenseChart.update();
-  };
-
-  expenseForm?.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const name = document.getElementById("expense-name").value.trim();
-    const category = document.getElementById("expense-category").value;
-    const amount = parseFloat(document.getElementById("expense-amount").value);
-    const currency = document.getElementById("expense-currency").value.trim();
-    const notes = document.getElementById("expense-notes").value.trim();
-
-    if (name && category && !isNaN(amount) && currency) {
-      const expense = { name, category, amount, currency, notes };
-      expenses.push(expense);
-
-      const li = document.createElement("li");
-      li.innerHTML = `<strong>${name}</strong> - ${amount} ${currency} (${category})<br>${notes}`;
-      expenseList.appendChild(li);
-
-      const total = expenses.reduce((sum, exp) => sum + exp.amount, 0);
-      totalExpenses.textContent = `Total: ${total.toFixed(2)} €`;
-
-      updateChart();
-      expenseForm.reset();
-    }
+  const categories = ['transporte', 'comidas', 'alojamiento', 'actividades', 'otros'];
+  let expenseChart = new Chart(ctx, {
+    type: 'pie',
+    data: { labels: categories, datasets: [{ data: [0, 0, 0, 0, 0], backgroundColor: ['#0077cc', '#ff6600', '#00bfff', '#66cc66', '#cccccc'] }] }
   });
 
-  /************************************************************
-   * GASTOS GRUPALES
-   ************************************************************/
-  const groupForm = document.getElementById("group-expense-form");
-  const groupList = document.getElementById("group-expense-list");
-  const groupTotal = document.getElementById("group-total");
-
-  groupForm?.addEventListener("submit", (e) => {
+  expenseForm.addEventListener('submit', e => {
     e.preventDefault();
-    const name = document.getElementById("group-name").value.trim();
-    const amount = parseFloat(document.getElementById("group-amount").value);
-    const members = document.getElementById("group-members").value.split(",").map(m => m.trim()).filter(m => m);
+    const name = document.getElementById('expense-name').value;
+    const category = document.getElementById('expense-category').value;
+    const amount = parseFloat(document.getElementById('expense-amount').value);
+    const currency = document.getElementById('expense-currency').value;
+    const notes = document.getElementById('expense-notes').value;
 
-    if (name && !isNaN(amount) && members.length > 0) {
-      const share = (amount / members.length).toFixed(2);
-      members.forEach(member => {
-        const li = document.createElement("li");
-        li.innerText = `${member} debe pagar ${share} € por ${name}`;
-        groupList.appendChild(li);
-      });
+    expenses.push({ name, category, amount, currency, notes });
+    expenseList.innerHTML += `<li>${name}: ${amount} ${currency} (${category})<br>${notes}</li>`;
 
-      groupTotal.textContent = `Total grupal: ${amount.toFixed(2)} €`;
-      groupForm.reset();
-    }
+    const total = expenses.reduce((sum, exp) => sum + exp.amount, 0);
+    totalExpenses.textContent = `Total: ${total.toFixed(2)} ${currency}`;
+
+    const categoryTotals = categories.map(cat => expenses.filter(exp => exp.category === cat).reduce((sum, exp) => sum + exp.amount, 0));
+    expenseChart.data.datasets[0].data = categoryTotals;
+    expenseChart.update();
+
+    expenseForm.reset();
+  });
+
+  // Gastos grupales (tipo Splitwise)
+  const groupExpenseForm = document.getElementById('group-expense-form');
+  const groupExpenseList = document.getElementById('group-expense-list');
+  const groupTotal = document.getElementById('group-total');
+
+  let groupExpenses = [];
+
+  groupExpenseForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const name = document.getElementById('group-name').value;
+    const amount = parseFloat(document.getElementById('group-amount').value);
+    const members = document.getElementById('group-members').value.split(',').map(m => m.trim());
+
+    const amountPerMember = (amount / members.length).toFixed(2);
+    groupExpenses.push({ name, amount, members, amountPerMember });
+
+    groupExpenseList.innerHTML += `<li>${name}: ${amount.toFixed(2)} € dividido entre ${members.length} personas (${amountPerMember} € cada uno)</li>`;
+
+    const total = groupExpenses.reduce((sum, exp) => sum + exp.amount, 0);
+    groupTotal.textContent = `Total Grupal: ${total.toFixed(2)} €`;
+
+    groupExpenseForm.reset();
   });
 });
