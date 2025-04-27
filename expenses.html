@@ -2,12 +2,11 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>OnlyBackpackers - Registro de Gastos</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="expenses.css" />
-
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="expenses.js" defer></script>
 </head>
@@ -34,18 +33,19 @@
     </nav>
   </header>
 
-  <main>
-    <h1>Registro de Gastos</h1>
+  <h1>Registro de Gastos</h1>
 
-    <!-- Botones de pestañas -->
-    <div class="tab-buttons">
-      <button class="tab-btn active" data-tab="1">💱 Conversor</button>
-      <button class="tab-btn" data-tab="2">🧾 Gastos Personales</button>
-      <button class="tab-btn" data-tab="3">👥 Gastos Grupales</button>
-    </div>
+  <!-- Pestañas -->
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="converter">Conversor de Monedas</button>
+    <button class="tab-btn" data-tab="personal">Gastos Personales</button>
+    <button class="tab-btn" data-tab="group">Gastos Grupales</button>
+  </div>
 
-    <!-- Conversor de moneda -->
-    <section id="tab-1" class="tab-content active">
+  <!-- Contenido de pestañas -->
+
+  <div id="tab-converter" class="tab-content active">
+    <section id="currency-converter">
       <h2>Conversor de Monedas</h2>
       <form id="currency-form">
         <input type="number" id="convert-amount" placeholder="Cantidad a convertir" required />
@@ -55,10 +55,11 @@
       </form>
       <p id="conversion-result"></p>
     </section>
+  </div>
 
-    <!-- Gastos personales -->
-    <section id="tab-2" class="tab-content">
-      <h2>Gastos Personales</h2>
+  <div id="tab-personal" class="tab-content">
+    <section id="add-expense">
+      <h2>Añadir Gasto Personal</h2>
       <form id="expense-form">
         <input type="text" id="expense-name" placeholder="Nombre del gasto" required />
         <select id="expense-category" required>
@@ -72,32 +73,39 @@
         <input type="number" id="expense-amount" placeholder="Cantidad" required />
         <input type="text" id="expense-currency" placeholder="Moneda (ej. USD)" required />
         <textarea id="expense-notes" placeholder="Notas (opcional)"></textarea>
-        <button type="submit">Añadir Gasto</button>
+        <button type="submit">Añadir</button>
       </form>
+    </section>
 
+    <section id="expense-summary">
+      <h2>Resumen</h2>
       <ul id="expense-list"></ul>
       <h3 id="total-expenses">Total: 0</h3>
+    </section>
 
+    <section id="expense-chart">
+      <h2>Gráfica de Gastos</h2>
       <canvas id="expense-chart-canvas"></canvas>
     </section>
+  </div>
 
-    <!-- Gastos grupales -->
-    <section id="tab-3" class="tab-content">
-      <h2>Gastos Grupales</h2>
+  <div id="tab-group" class="tab-content">
+    <section id="add-group-expense">
+      <h2>Añadir Gasto Grupal</h2>
       <form id="group-expense-form">
-        <input type="text" id="group-name" placeholder="Nombre del gasto" required />
-        <input type="number" id="group-amount" placeholder="Importe total" required />
-        <input type="text" id="group-members" placeholder="Participantes separados por coma" required />
-        <button type="submit">Añadir Gasto Grupal</button>
+        <input type="text" id="group-name" placeholder="Nombre del gasto grupal" required />
+        <input type="number" id="group-amount" placeholder="Cantidad total" required />
+        <input type="text" id="group-members" placeholder="Participantes (separados por coma)" required />
+        <button type="submit">Añadir</button>
       </form>
-
-      <ul id="group-expense-list"></ul>
-      <h3 id="group-total">Total Grupal: 0</h3>
-
-      <h2>Saldos entre Participantes</h2>
-      <ul id="group-balances"></ul>
     </section>
 
-  </main>
+    <section id="group-expense-summary">
+      <h2>Resumen Grupal</h2>
+      <ul id="group-expense-list"></ul>
+      <h3 id="group-total">Total Grupal: 0</h3>
+    </section>
+  </div>
+
 </body>
 </html>
