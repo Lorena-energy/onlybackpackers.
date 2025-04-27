@@ -3,11 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OnlyBackpackers - Registro de Gastos</title>
+  <title>OnlyBackpackers - Gastos y Conversor</title>
 
+  <!-- Fuentes -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  
+  <!-- Estilos -->
   <link rel="stylesheet" href="expenses.css" />
+
+  <!-- Chart.js para los gráficos -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Script principal (lo pasamos luego) -->
   <script src="expenses.js" defer></script>
 </head>
 
@@ -15,51 +22,39 @@
   <header class="main-header">
     <nav>
       <div class="menu-toggle" id="menu-toggle">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
       </div>
       <ul class="menu" id="menu">
-        <li><a href="index.html">Inicio</a></li>
+        <li><a href="index.html" class="active">Inicio</a></li>
         <li><a href="muro.html">Muro</a></li>
-        <li><a href="muro-personal.html">Mi Muro</a></li>
         <li><a href="recomendaciones.html">Recomendaciones</a></li>
         <li><a href="chats.html">Chats</a></li>
         <li><a href="eventos.html">Eventos</a></li>
         <li><a href="worldtrip.html">Worldtrip</a></li>
         <li><a href="recompensas.html">Recompensas</a></li>
-        <li><a href="expenses.html" class="active">Gastos</a></li>
       </ul>
     </nav>
   </header>
 
-  <h1>Registro de Gastos</h1>
+  <main class="container">
+    <h1>💸 Gestión de Gastos</h1>
+    <p>Organiza tus gastos personales, de grupo y convierte monedas fácilmente.</p>
 
-  <!-- Pestañas -->
-  <div class="tabs">
-    <button class="tab-btn active" data-tab="converter">Conversor de Monedas</button>
-    <button class="tab-btn" data-tab="personal">Gastos Personales</button>
-    <button class="tab-btn" data-tab="group">Gastos Grupales</button>
-  </div>
-
-  <!-- Contenido de pestañas -->
-
-  <div id="tab-converter" class="tab-content active">
-    <section id="currency-converter">
-      <h2>Conversor de Monedas</h2>
+    <!-- 🔹 Conversor de Monedas -->
+    <section id="currency-converter" class="section-box">
+      <h2>🌎 Conversor de Moneda</h2>
       <form id="currency-form">
-        <input type="number" id="convert-amount" placeholder="Cantidad a convertir" required />
+        <input type="number" id="convert-amount" placeholder="Cantidad" required />
         <select id="from-currency"></select>
         <select id="to-currency"></select>
         <button type="submit">Convertir</button>
       </form>
       <p id="conversion-result"></p>
     </section>
-  </div>
 
-  <div id="tab-personal" class="tab-content">
-    <section id="add-expense">
-      <h2>Añadir Gasto Personal</h2>
+    <!-- 🔹 Gastos Personales -->
+    <section id="personal-expenses" class="section-box">
+      <h2>🧾 Gastos Personales</h2>
       <form id="expense-form">
         <input type="text" id="expense-name" placeholder="Nombre del gasto" required />
         <select id="expense-category" required>
@@ -71,41 +66,35 @@
           <option value="otros">Otros</option>
         </select>
         <input type="number" id="expense-amount" placeholder="Cantidad" required />
-        <input type="text" id="expense-currency" placeholder="Moneda (ej. USD)" required />
+        <input type="text" id="expense-currency" placeholder="Moneda (ej: USD, EUR)" required />
         <textarea id="expense-notes" placeholder="Notas (opcional)"></textarea>
-        <button type="submit">Añadir</button>
+        <button type="submit">Añadir Gasto</button>
       </form>
-    </section>
-
-    <section id="expense-summary">
-      <h2>Resumen</h2>
       <ul id="expense-list"></ul>
       <h3 id="total-expenses">Total: 0</h3>
+
+      <div class="chart-container">
+        <canvas id="expense-chart-canvas"></canvas>
+      </div>
     </section>
 
-    <section id="expense-chart">
-      <h2>Gráfica de Gastos</h2>
-      <canvas id="expense-chart-canvas"></canvas>
-    </section>
-  </div>
-
-  <div id="tab-group" class="tab-content">
-    <section id="add-group-expense">
-      <h2>Añadir Gasto Grupal</h2>
+    <!-- 🔹 Gastos Grupales -->
+    <section id="group-expenses" class="section-box">
+      <h2>👥 Gastos Grupales</h2>
       <form id="group-expense-form">
-        <input type="text" id="group-name" placeholder="Nombre del gasto grupal" required />
-        <input type="number" id="group-amount" placeholder="Cantidad total" required />
+        <input type="text" id="group-expense-name" placeholder="Descripción del gasto" required />
+        <input type="number" id="group-expense-amount" placeholder="Importe total" required />
         <input type="text" id="group-members" placeholder="Participantes (separados por coma)" required />
-        <button type="submit">Añadir</button>
+        <button type="submit">Añadir Gasto Grupal</button>
       </form>
-    </section>
-
-    <section id="group-expense-summary">
-      <h2>Resumen Grupal</h2>
       <ul id="group-expense-list"></ul>
-      <h3 id="group-total">Total Grupal: 0</h3>
+      <h3 id="group-expense-summary">Resumen de deudas</h3>
+      <ul id="group-debts-list"></ul>
     </section>
-  </div>
+  </main>
 
+  <footer>
+    <p>&copy; 2024 OnlyBackpackers. Todos los derechos reservados.</p>
+  </footer>
 </body>
 </html>
