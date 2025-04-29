@@ -1,89 +1,108 @@
-/* === utilidades pequeñas ================================= */
-const € = sel => document.querySelector(sel);
-const li = txt => {
-  const el = document.createElement('li');
-  el.textContent = txt;
-  return el;
-};
+/* helpers cortos */
+const $  = s => document.querySelector(s);
+const li = t => {const e=document.createElement('li');e.textContent=t;return e;};
 
-/* === 1. GASTOS PERSONALES ================================ */
-const personal = {
-  list: [],
-  add(name, amount) {
-    this.list.push(+amount);
-    $('#personal-list').append(li(`${name}: ${(+amount).toFixed(2)} €`));
-    const total = this.list.reduce((s, v) => s + v, 0);
-    $('#personal-total').textContent = `Total: ${total.toFixed(2)} €`;
-  }
-};
-
-$('#personal-form').addEventListener('submit', e => {
+/* ============ 1. GASTOS PERSONALES ============ */
+let pSum = 0;
+$('#personal-form').addEventListener('submit', e=>{
   e.preventDefault();
-  personal.add($('#p-name').value, $('#p-amount').value);
+  const name = $('#p-name').value.trim();
+  const amt  = +$('#p-amount').value;
+  if (!name || !amt) return;
+  $('#personal-list').append(li(`${name}: ${amt.toFixed(2)} €`));
+  pSum += amt;
+  $('#personal-total').textContent = `Total: ${pSum.toFixed(2)} €`;
   e.target.reset();
 });
 
-/* === 2. GASTOS GRUPALES ================================= */
-let currentGroup = null;   // {name, members:[], expenses:[]}
+/* ============ 2. GASTOS GRUPALES ============== */
+const gContainer = $('#groups-container');
+const groups     = [];  //  [{name,members:[…],expenses:[…],balances:{m:saldo}}]
 
-$('#group-create').addEventListener('submit', e => {
+$('#g-create').addEventListener('submit', e=>{
   e.preventDefault();
-  const name    = $('#g-name').value.trim() || 'Sin nombre';
+  const name    = $('#g-name').value.trim() || 'Grupo';
   const members = $('#g-members').value.split(',').map(m=>m.trim()).filter(Boolean);
-  if (!members.length) { alert('Añade al menos un miembro'); return; }
+  if (!members.length){alert('Añade miembros');return;}
 
-  currentGroup = { name, members, expenses: [] };
-  initGroupPanel();
+  groups.push({name, members, expenses:[]});
+  renderGroups();
   e.target.reset();
+  updateTotalGroups();
 });
 
-function initGroupPanel() {
-  $('#group-title').textContent = currentGroup.name;
-  $('#group-list').innerHTML = '';
-  $('#group-balances').innerHTML = '';
-  $('#group-panel').style.display = 'block';
+/* ---- renderizar todos los grupos ---- */
+function renderGroups(){
+  gContainer.innerHTML = '';
+  groups.forEach((g,idx)=>{
+    const div = document.createElement('div');
+    div.innerHTML = `
+      <h3>${g.name}</h3>
+      <p><strong>Miembros:</strong> ${g.members.join(', ')}</p>
 
-  // rellenar selector "quién pagó"
-  const sel = $('#ge-paidBy');
-  sel.innerHTML = '<option value="">¿Quién pagó?</option>';
-  currentGroup.members.forEach(m=>{
-    const o=document.createElement('option'); o.value=o.textContent=m; sel.append(o);
+      <form class="gx-form" data-idx="${idx}">
+        <input  placeholder="Concepto" required>
+        <input  type="number" step="0.01" placeholder="Importe (€)" required>
+        <select required>
+          <option value="">¿Quién pagó?</option>
+          ${g.members.map(m=>`<option value="${m}">${m}</option>`).join('')}
+        </select>
+        <button>Añadir gasto</button>
+      </form>
+
+      <ul class="gx-list">
+        ${g.expenses.map(e=>`<li>${e.concept}: ${e.amount.toFixed(2)} € (pagó ${e.payer})</li>`).join('')}
+      </ul>
+
+      <h4>Balances</h4>
+      <ul class="gx-balances">
+        ${makeBalancesHTML(g)}
+      </ul>
+    `;
+    gContainer.append(div);
+  });
+
+  /* añadir oyentes a cada nuevo formulario de gasto */
+  document.querySelectorAll('.gx-form').forEach(f=>{
+    f.addEventListener('submit', addGroupExpense);
   });
 }
 
-$('#group-expense').addEventListener('submit', e=>{
+/* ---- añadir gasto a grupo ---- */
+function addGroupExpense(e){
   e.preventDefault();
-  const concept = $('#ge-name').value.trim();
-  const amt     = +$('#ge-amount').value;
-  const payer   = $('#ge-paidBy').value;
-  if (!concept || !amt || !payer) { alert('Completa todos los campos'); return; }
+  const idx     = +e.target.dataset.idx;
+  const concept = e.target.children[0].value.trim();
+  const amount  = +e.target.children[1].value;
+  const payer   = e.target.children[2].value;
+  if (!concept || !amount || !payer){alert('Completa todos los campos');return;}
 
-  currentGroup.expenses.push({ concept, amt, payer });
-  $('#group-list').append(li(`${concept}: ${amt.toFixed(2)} € — pagó ${payer}`));
-  showBalances();
-  e.target.reset();
-});
-
-function showBalances() {
-  const balances = {};            // miembro => saldo (+ cobra / - debe)
-  currentGroup.members.forEach(m=>balances[m]=0);
-
-  currentGroup.expenses.forEach(exp=>{
-    const share = exp.amt / currentGroup.members.length;
-    currentGroup.members.forEach(m=>{
-      balances[m] -= share;
-    });
-    balances[exp.payer] += exp.amt;  // el que pagó recupera el total pagado
-  });
-
-  $('#group-balances').innerHTML = '';
-  for (const [m, bal] of Object.entries(balances)) {
-    const txt = bal>0.01 ? `${m} debe recibir ${bal.toFixed(2)} €`
-           : bal<-0.01 ? `${m} debe pagar ${(-bal).toFixed(2)} €`
-           : `${m} está saldado.`;
-    $('#group-balances').append(li(txt));
-  }
+  groups[idx].expenses.push({concept, amount, payer});
+  renderGroups();          // vuelve a pintar todo
+  updateTotalGroups();
 }
 
-/* === helpers DOM ========================================= */
-function $(sel){return document.querySelector(sel);}
+/* ---- balances por grupo ---- */
+function computeBalances(g){
+  const bal={}; g.members.forEach(m=>bal[m]=0);
+  g.expenses.forEach(ex=>{
+    const share = ex.amount / g.members.length;
+    g.members.forEach(m=>bal[m]-=share);
+    bal[ex.payer]+=ex.amount;
+  });
+  return bal;
+}
+function makeBalancesHTML(g){
+  const b = computeBalances(g);
+  return Object.entries(b).map(([m,val])=>{
+    if (val>0.01)  return `<li>${m} debe recibir ${val.toFixed(2)} €</li>`;
+    if (val<-0.01) return `<li>${m} debe pagar   ${(-val).toFixed(2)} €</li>`;
+    return `<li>${m} está saldado.</li>`;
+  }).join('');
+}
+
+/* ---- total de todos los grupos ---- */
+function updateTotalGroups(){
+  const total = groups.reduce((s,g)=>s+g.expenses.reduce((a,e)=>a+e.amount,0),0);
+  $('#all-groups-total').textContent = `Total de todos los grupos: ${total.toFixed(2)} €`;
+}
