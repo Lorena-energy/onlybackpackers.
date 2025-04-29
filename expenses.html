@@ -3,59 +3,62 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OnlyBackpackers – Gastos</title>
+  <title>OnlyBackpackers • Gestión de gastos</title>
 
+  <!-- Fuente -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="expenses.css" />
+
+  <!-- (estilos mínimos solo para que no se vea roto) -->
+  <style>
+    *{box-sizing:border-box;font-family:Poppins,Arial,sans-serif}
+    body{margin:0;background:#f5f7fa;color:#333;padding:1rem}
+    h1{text-align:center;margin:1rem 0 2rem}
+    section{background:#fff;border-radius:12px;margin-bottom:1.8rem;padding:1rem;box-shadow:0 2px 6px rgba(0,0,0,.1)}
+    section h2{margin-bottom:.7rem}
+    form{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:1rem}
+    form input,form select,form button{flex:1 1 100%;padding:.55rem;border:1px solid #ccc;border-radius:8px;font-size:.9rem}
+    form button{background:#ff7b29;border:none;color:#fff;font-weight:600;cursor:pointer}
+    ul{margin:.4rem 0 0 1rem;padding-left:0;list-style:none}
+    li{margin-bottom:.35rem}
+    #groups-container>div{border:1px solid #ddd;border-radius:8px;padding:.8rem;margin-bottom:.8rem}
+    #groups-container h3{margin:.2rem 0 .6rem}
+    #groups-container form select{height:2.3rem}
+  </style>
+
+  <!-- JavaScript externo -->
   <script src="expenses.js" defer></script>
 </head>
+
 <body>
-<header class="main-header">
-  <h1>💸 Gastos</h1>
-</header>
+  <h1>💸 Gestión de gastos</h1>
 
-<main>
-
-  <!-- ── GASTOS PERSONALES ─────────────────────────────── -->
+  <!-- ── 1 · GASTOS PERSONALES ─────────────────────────── -->
   <section id="personal">
     <h2>Mis gastos</h2>
     <form id="personal-form">
-      <input id="p-name"  placeholder="Concepto" required />
-      <input id="p-amount" type="number" step="0.01" placeholder="Importe" required />
-      <button>Añadir</button>
+      <input  id="p-name"   placeholder="Concepto" required>
+      <input  id="p-amount" type="number" step="0.01" placeholder="Importe (€)" required>
+      <button>Añadir gasto</button>
     </form>
     <ul id="personal-list"></ul>
-    <p id="personal-total">Total: 0 €</p>
+    <p  id="personal-total">Total: 0 €</p>
   </section>
 
-  <!-- ── GASTOS GRUPALES ───────────────────────────────── -->
+  <!-- ── 2 · GASTOS GRUPALES ───────────────────────────── -->
   <section id="group">
     <h2>Gastos grupales</h2>
 
     <!-- crear grupo -->
-    <form id="group-create">
-      <input id="g-name"    placeholder="Nombre del grupo" required />
-      <input id="g-members" placeholder="Miembros (Ana, Luis…)" required />
+    <form id="g-create">
+      <input id="g-name"    placeholder="Nombre del grupo" required>
+      <input id="g-members" placeholder="Miembros separados por coma (Ana, Luis…)" required>
       <button>Crear grupo</button>
     </form>
 
-    <!-- añadir gasto al grupo -->
-    <div id="group-panel" style="display:none">
-      <h3 id="group-title"></h3>
+    <!-- contenedor de grupos -->
+    <div id="groups-container"></div>
 
-      <form id="group-expense">
-        <input id="ge-name"   placeholder="Concepto" required />
-        <input id="ge-amount" type="number" step="0.01" placeholder="Importe" required />
-        <select id="ge-paidBy" required></select>
-        <button>Añadir gasto</button>
-      </form>
-
-      <ul id="group-list"></ul>
-      <h4 id="group-balances-title">Balances</h4>
-      <ul id="group-balances"></ul>
-    </div>
+    <p id="all-groups-total">Total de todos los grupos: 0 €</p>
   </section>
-
-</main>
 </body>
 </html>
