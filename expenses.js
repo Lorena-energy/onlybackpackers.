@@ -11,108 +11,148 @@ document.addEventListener('DOMContentLoaded', () => {
   /************************************************************
    * GASTOS PERSONALES
    ************************************************************/
-  const personalForm = document.getElementById('expense-form');
-  const personalList = document.getElementById('expense-list');
-  const personalTotal = document.getElementById('total-expenses');
+  const expenseForm = document.getElementById('expense-form');
+  const expenseList = document.getElementById('expense-list');
+  const totalExpenses = document.getElementById('total-expenses');
+  const ctx = document.getElementById('expense-chart-canvas')?.getContext('2d');
 
-  let personalExpenses = [];
+  let expenses = [];
+  const categories = ['transporte', 'comidas', 'alojamiento', 'actividades', 'otros'];
+  let expenseChart = null;
 
-  personalForm?.addEventListener('submit', (e) => {
+  if (ctx) {
+    expenseChart = new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: categories,
+        datasets: [{
+          data: [0, 0, 0, 0, 0],
+          backgroundColor: ['#0077cc', '#ff6600', '#00bfff', '#66cc66', '#cccccc'],
+        }]
+      },
+      options: { responsive: true }
+    });
+  }
+
+  expenseForm?.addEventListener('submit', (e) => {
     e.preventDefault();
     const name = document.getElementById('expense-name').value.trim();
+    const category = document.getElementById('expense-category').value;
     const amount = parseFloat(document.getElementById('expense-amount').value);
-    const currency = document.getElementById('expense-currency').value.trim().toUpperCase();
+    const currency = document.getElementById('expense-currency').value.trim();
     const notes = document.getElementById('expense-notes').value.trim();
 
-    if (name && !isNaN(amount) && currency) {
-      personalExpenses.push({ name, amount, currency, notes });
-
-      const li = document.createElement('li');
-      li.innerHTML = `<strong>${name}</strong>: ${amount.toFixed(2)} ${currency}<br>${notes ? notes : ''}`;
-      personalList.appendChild(li);
-
-      const total = personalExpenses.reduce((sum, exp) => sum + exp.amount, 0);
-      personalTotal.textContent = `Total: ${total.toFixed(2)} ${currency}`;
-
-      personalForm.reset();
+    if (!name || !category || isNaN(amount) || !currency) {
+      alert('Por favor, completa todos los campos obligatorios.');
+      return;
     }
+
+    const expense = { name, category, amount, currency, notes };
+    expenses.push(expense);
+
+    const li = document.createElement('li');
+    li.innerHTML = `<strong>${name}</strong> - ${amount} ${currency} (${category})<br>${notes ? notes : ""}`;
+    expenseList.appendChild(li);
+
+    const total = expenses.reduce((sum, exp) => sum + exp.amount, 0);
+    totalExpenses.textContent = `Total: ${total.toFixed(2)} ${currency}`;
+
+    const categoryTotals = categories.map(cat => expenses
+      .filter(exp => exp.category === cat)
+      .reduce((sum, exp) => sum + exp.amount, 0));
+    expenseChart.data.datasets[0].data = categoryTotals;
+    expenseChart.update();
+
+    expenseForm.reset();
   });
 
   /************************************************************
-   * GASTOS GRUPALES
+   * GASTOS GRUPALES (VERSIÓN MEJORADA)
    ************************************************************/
   const createGroupForm = document.getElementById('create-group-form');
-  const groupExpenseForm = document.getElementById('group-expense-form');
-  const groupMembersList = document.getElementById('group-members-list');
-  const groupExpenseList = document.getElementById('group-expense-list');
+  const groupsContainer = document.getElementById('groups-container');
   const groupTotal = document.getElementById('group-total');
 
-  let group = {
-    name: '',
-    members: [],
-    expenses: []
-  };
+  let groups = [];
 
   createGroupForm?.addEventListener('submit', (e) => {
     e.preventDefault();
     const groupName = document.getElementById('group-name').value.trim();
     const membersInput = document.getElementById('group-members').value.trim();
+    const members = membersInput.split(',').map(m => m.trim()).filter(m => m);
 
-    if (!membersInput) {
-      alert('Debes introducir al menos un miembro.');
+    if (!groupName || members.length === 0) {
+      alert('Por favor, introduce el nombre del grupo y al menos un participante.');
       return;
     }
 
-    group.name = groupName || 'Grupo Sin Nombre';
-    group.members = membersInput.split(',').map(m => m.trim());
-    group.expenses = [];
+    const group = {
+      name: groupName,
+      members,
+      expenses: []
+    };
 
-    // Mostrar miembros
-    groupMembersList.innerHTML = `<strong>Miembros:</strong> ${group.members.join(', ')}`;
-
-    // Reset gastos anteriores
-    groupExpenseList.innerHTML = '';
-    groupTotal.textContent = 'Total grupal: 0 €';
-
+    groups.push(group);
+    renderGroups();
     createGroupForm.reset();
   });
 
-  groupExpenseForm?.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const expenseName = document.getElementById('group-expense-name').value.trim();
-    const expenseAmount = parseFloat(document.getElementById('group-expense-amount').value);
-    const paidBy = document.getElementById('paid-by').value.trim();
+  function renderGroups() {
+    groupsContainer.innerHTML = '';
 
-    if (!expenseName || isNaN(expenseAmount) || !paidBy) {
-      alert('Por favor, rellena todos los campos.');
-      return;
-    }
+    groups.forEach((group, index) => {
+      const groupDiv = document.createElement('div');
+      groupDiv.classList.add('group');
 
-    if (!group.members.includes(paidBy)) {
-      alert('El pagador debe ser un miembro del grupo.');
-      return;
-    }
+      groupDiv.innerHTML = `
+        <h3>${group.name}</h3>
+        <p>Participantes: ${group.members.join(', ')}</p>
+        <form class="add-expense-form" data-group-index="${index}">
+          <input type="text" placeholder="Concepto del gasto" required />
+          <input type="number" placeholder="Cantidad" required />
+          <select multiple required>
+            ${group.members.map(member => `<option value="${member}">${member}</option>`).join('')}
+          </select>
+          <button type="submit">Añadir Gasto</button>
+        </form>
+        <ul class="group-expenses">
+          ${group.expenses.map(exp => `<li>${exp.name}: ${exp.amount}€ (${exp.paidBy.join(', ')})</li>`).join('')}
+        </ul>
+      `;
 
-    const amountPerPerson = (expenseAmount / group.members.length).toFixed(2);
-
-    group.expenses.push({
-      name: expenseName,
-      amount: expenseAmount,
-      paidBy,
-      amountPerPerson
+      groupsContainer.appendChild(groupDiv);
     });
 
-    const li = document.createElement('li');
-    li.innerHTML = `
-      <strong>${expenseName}</strong> - Total: ${expenseAmount.toFixed(2)} €
-      <br>Pagado por: ${paidBy}
-      <br>Cada uno debe: ${amountPerPerson} €
-    `;
-    groupExpenseList.appendChild(li);
+    addExpenseFormListeners();
+  }
 
-    const total = group.expenses.reduce((sum, exp) => sum + exp.amount, 0);
-    groupTotal.textContent = `Total grupal: ${total.toFixed(2)} €`;
+  function addExpenseFormListeners() {
+    const expenseForms = document.querySelectorAll('.add-expense-form');
+    expenseForms.forEach(form => {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const index = form.dataset.groupIndex;
+        const name = form.querySelector('input[type="text"]').value;
+        const amount = parseFloat(form.querySelector('input[type="number"]').value);
+        const paidBy = Array.from(form.querySelector('select').selectedOptions).map(opt => opt.value);
 
-    groupExpenseForm.reset();
-  });
+        if (!name || isNaN(amount) || paidBy.length === 0) {
+          alert('Completa todos los campos del gasto grupal.');
+          return;
+        }
+
+        groups[index].expenses.push({ name, amount, paidBy });
+        renderGroups();
+        updateGroupTotals();
+      });
+    });
+  }
+
+  function updateGroupTotals() {
+    let total = 0;
+    groups.forEach(group => {
+      total += group.expenses.reduce((sum, exp) => sum + exp.amount, 0);
+    });
+    groupTotal.textContent = `Total Grupal: ${total.toFixed(2)} €`;
+  }
 });
