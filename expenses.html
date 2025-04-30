@@ -2,24 +2,24 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OnlyBackpackers • Gastos</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>OnlyBackpackers · Gastos</title>
 
+  <!-- Fuente y (opcional) tu hoja de estilos -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="expenses.css"><!--  usa tu hoja o quita esta línea si aún no la tienes -->
+  <link rel="stylesheet" href="expenses.css"><!-- quítalo si aún no la tienes -->
 </head>
 <body>
 
+<!-- ╔══ Menú / hamburguesa ════════════════════════════════════ -->
 <header class="main-header">
   <nav>
     <h2>OnlyBackpackers</h2>
 
-    <!-- ☰ hamburguesa -->
     <div id="menu-toggle" class="menu-toggle">
       <span class="bar"></span><span class="bar"></span><span class="bar"></span>
     </div>
 
-    <!-- menú -->
     <ul id="menu" class="menu">
       <li><a href="index.html">Inicio</a></li>
       <li><a href="muro.html">Muro</a></li>
@@ -29,15 +29,16 @@
   </nav>
 </header>
 
+<!-- ══ Contenido principal ══ -->
 <main>
   <h1 style="text-align:center;margin:1rem 0">💸 Gestión de Gastos</h1>
 
-  <!-- ── 1 · Gastos personales ─────────────────────────── -->
+  <!-- ── 1 · Gastos personales ────────────────────────────── -->
   <section id="personal-expenses">
     <h2>Gastos personales</h2>
 
     <form id="expense-form">
-      <input id="expense-name"   placeholder="Concepto" required>
+      <input  id="expense-name"  placeholder="Concepto" required>
       <select id="expense-category">
         <option value="">Categoría</option>
         <option value="transporte">Transporte</option>
@@ -46,21 +47,25 @@
         <option value="actividades">Actividades</option>
         <option value="otros">Otros</option>
       </select>
-      <input id="expense-amount" type="number" step="0.01" placeholder="Cantidad" required>
-      <select id="expense-currency"><!-- se rellena por JS --></select>
+      <input  id="expense-amount" type="number" step="0.01" placeholder="Cantidad" required>
+      <!-- selector de divisa relleno por JS -->
+      <select id="expense-currency"></select>
+
       <textarea id="expense-notes" placeholder="Notas (opcional)"></textarea>
       <button>Añadir gasto</button>
     </form>
 
     <ul id="expense-list"></ul>
-    <p id="total-expenses">Total: 0</p>
+    <p  id="total-expenses">Total: 0</p>
   </section>
 
-  <!-- ── 2 · Gastos grupales ───────────────────────────── -->
+  <hr>
+
+  <!-- ── 2 · Gastos grupales ───────────────────────────────── -->
   <section id="group-expenses">
     <h2>Gastos grupales</h2>
 
-    <!-- creación de grupo -->
+    <!-- Crear grupo -->
     <form id="group-form">
       <input id="group-name"    placeholder="Nombre del grupo" required>
       <input id="group-members" placeholder="Miembros (Ana, Luis…)" required>
@@ -68,14 +73,18 @@
     </form>
     <ul id="group-list"></ul>
 
-    <!-- añadir gasto -->
+    <!-- Añadir gasto al grupo -->
     <form id="group-expense-form">
-      <select id="group-select"><option value="">— Selecciona grupo —</option></select>
+      <select id="group-select"><option value="">— Grupo —</option></select>
+
       <input  id="group-expense-name"   placeholder="Concepto" required>
       <input  id="group-expense-amount" type="number" step="0.01" placeholder="Cantidad" required>
+      <!-- nuevo selector de divisa para el grupo -->
+      <select id="group-currency"></select>
+
       <select id="group-expense-payer"></select>
 
-      <label><input type="radio" name="split-type" value="equal" checked> Partes iguales</label>
+      <label><input type="radio" name="split-type" value="equal"  checked> Partes iguales</label>
       <label><input type="radio" name="split-type" value="custom"> Personalizada</label>
 
       <div id="custom-split-container" style="display:none;margin:.5rem 0;"></div>
@@ -88,6 +97,7 @@
   </section>
 </main>
 
+<!-- script con defer para que el DOM exista antes de ejecutarse -->
 <script src="expenses.js" defer></script>
 </body>
 </html>
