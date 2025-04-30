@@ -1,107 +1,133 @@
-/* === MENÚ HAMBURGUESA ================================ */
-document.getElementById('hamburger').onclick = () =>
-  document.getElementById('menu').classList.toggle('active');
+document.addEventListener('DOMContentLoaded', () => {
 
-/* === 1. GASTOS PERSONALES ============================ */
-{
-  const form = document.getElementById('p-form');
-  const list = document.getElementById('p-list');
-  const totalEl = document.getElementById('p-total');
-  let total = 0;
-
-  form.addEventListener('submit', e=>{
-    e.preventDefault();
-    const name = document.getElementById('p-name').value.trim();
-    const amt  = +document.getElementById('p-amt').value;
-    if(!name||!amt){alert('Completa los campos');return;}
-    list.insertAdjacentHTML('beforeend',`<li>${name}: ${amt.toFixed(2)} €</li>`);
-    total += amt;
-    totalEl.textContent = `Total: ${total.toFixed(2)} €`;
-    form.reset();
-  });
-}
-
-/* === 2. GASTOS GRUPALES ============================== */
-{
-  const gForm  = document.getElementById('g-form');
-  const gWrap  = document.getElementById('groups');
-  const gTot   = document.getElementById('g-total-global');
-  const groups = [];   // [{name,members,expenses:[]}]
-
-  gForm.addEventListener('submit', e=>{
-    e.preventDefault();
-    const name    = document.getElementById('g-name').value.trim() || 'Grupo';
-    const members = document.getElementById('g-members').value
-                     .split(',').map(m=>m.trim()).filter(Boolean);
-    if(!members.length){alert('Añade miembros');return;}
-    groups.push({name,members,expenses:[]});
-    render();
-    gForm.reset();
-  });
-
-  function render(){
-    gWrap.innerHTML='';
-    let global = 0;
-
-    groups.forEach((g,idx)=>{
-      global += g.expenses.reduce((s,e)=>s+e.amount,0);
-
-      const box=document.createElement('div');
-      box.className='group-box';
-      box.innerHTML=`
-        <h3>${g.name}</h3>
-        <p><em>${g.members.join(', ')}</em></p>
-
-        <form class="gx-form" data-i="${idx}">
-          <input  placeholder="Concepto" required>
-          <input  type="number" step="0.01" placeholder="Importe (€)" required>
-          <select required>
-            <option value="">Pagó…</option>
-            ${g.members.map(m=>`<option value="${m}">${m}</option>`).join('')}
-          </select>
-          <button>Añadir gasto</button>
-        </form>
-
-        <ul class="gx-list">
-          ${g.expenses.map(e=>`<li>${e.concept}: ${e.amount.toFixed(2)} € (pagó ${e.payer})</li>`).join('')}
-        </ul>
-
-        <strong>Balances</strong>
-        <ul class="gx-balances">${balancesHTML(g)}</ul>
-      `;
-      gWrap.append(box);
-    });
-
-    gTot.textContent = `Total de todos los grupos: ${global.toFixed(2)} €`;
-    addGastoListeners();
-  }
-
-  function addGastoListeners(){
-    gWrap.querySelectorAll('.gx-form').forEach(f=>{
-      f.onsubmit = ev=>{
-        ev.preventDefault();
-        const idx   = +f.dataset.i;
-        const cpt   = f.children[0].value.trim();
-        const amt   = +f.children[1].value;
-        const payer = f.children[2].value;
-        if(!cpt||!amt||!payer){alert('Completa todo');return;}
-        groups[idx].expenses.push({concept:cpt, amount:amt, payer});
-        render();
-      };
+  // Menú hamburguesa
+  const menuToggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('menu');
+  if (menuToggle && menu) {
+    menuToggle.addEventListener('click', () => {
+      menu.classList.toggle('active');
     });
   }
 
-  function balancesHTML(g){
-    const bal={}; g.members.forEach(m=>bal[m]=0);
-    g.expenses.forEach(e=>{
-      const share = e.amount / g.members.length;
-      g.members.forEach(m=>bal[m]-=share);
-      bal[e.payer]+=e.amount;
+  // =====================
+  // GASTOS PERSONALES
+  // =====================
+  const expenseForm = document.getElementById('expense-form');
+  const expenseList = document.getElementById('expense-list');
+  const totalExpenses = document.getElementById('total-expenses');
+
+  let personalExpenses = [];
+
+  if (expenseForm) {
+    expenseForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById('expense-name').value;
+      const category = document.getElementById('expense-category').value;
+      const amount = parseFloat(document.getElementById('expense-amount').value);
+      const notes = document.getElementById('expense-notes').value;
+
+      if (!name || isNaN(amount)) return;
+
+      personalExpenses.push({ name, category, amount, notes });
+
+      const li = document.createElement('li');
+      li.innerHTML = `<strong>${name}</strong> - ${amount.toFixed(2)}€ (${category})<br>${notes}`;
+      expenseList.appendChild(li);
+
+      const total = personalExpenses.reduce((sum, e) => sum + e.amount, 0);
+      totalExpenses.textContent = `Total: ${total.toFixed(2)}€`;
+
+      expenseForm.reset();
     });
-    return Object.entries(bal).map(([m,v])=>{
-      if(v>0.01)  return `<li>${m} debe recibir ${v.toFixed(2)} €</li>`;
-      if(v<-0.01) return `<li>${m} debe pagar ${(-v).toFixed(2)} €</li>`;
-      return `<li>${m} está saldado.</li>`;
-    }).join('');
   }
-}
+
+  // =====================
+  // GASTOS GRUPALES
+  // =====================
+  const groupForm = document.getElementById('group-form');
+  const groupList = document.getElementById('group-list');
+  const groupSelect = document.getElementById('group-select');
+  const groupSummary = document.getElementById('group-summary');
+
+  let groups = {};
+
+  if (groupForm) {
+    groupForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const groupName = document.getElementById('group-name').value.trim();
+      const members = document.getElementById('group-members').value.split(',').map(m => m.trim()).filter(Boolean);
+
+      if (!groupName || members.length < 2) return;
+
+      groups[groupName] = { members, expenses: [] };
+
+      const option = document.createElement('option');
+      option.value = groupName;
+      option.textContent = groupName;
+      groupSelect.appendChild(option);
+
+      const li = document.createElement('li');
+      li.textContent = `${groupName}: ${members.join(', ')}`;
+      groupList.appendChild(li);
+
+      groupForm.reset();
+    });
+  }
+
+  // Añadir gastos a un grupo
+  const groupExpenseForm = document.getElementById('group-expense-form');
+  const groupExpenseList = document.getElementById('group-expense-list');
+
+  if (groupExpenseForm) {
+    groupExpenseForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const groupName = groupSelect.value;
+      if (!groupName || !groups[groupName]) return;
+
+      const payer = document.getElementById('payer').value;
+      const amount = parseFloat(document.getElementById('group-amount').value);
+      const description = document.getElementById('group-description').value;
+
+      if (!payer || isNaN(amount) || !description) return;
+
+      const expense = { payer, amount, description };
+      groups[groupName].expenses.push(expense);
+
+      const li = document.createElement('li');
+      li.innerHTML = `<strong>${description}</strong> - ${amount.toFixed(2)}€ pagado por ${payer}`;
+      groupExpenseList.appendChild(li);
+
+      updateGroupSummary(groupName);
+
+      groupExpenseForm.reset();
+    });
+  }
+
+  function updateGroupSummary(groupName) {
+    const group = groups[groupName];
+    const balances = {};
+
+    group.members.forEach(member => balances[member] = 0);
+
+    group.expenses.forEach(exp => {
+      const share = exp.amount / group.members.length;
+      group.members.forEach(member => {
+        if (member === exp.payer) {
+          balances[member] += exp.amount - share;
+        } else {
+          balances[member] -= share;
+        }
+      });
+    });
+
+    groupSummary.innerHTML = `<h3>Resumen de saldos (${groupName}):</h3>`;
+    Object.entries(balances).forEach(([member, balance]) => {
+      const p = document.createElement('p');
+      p.textContent = `${member}: ${balance.toFixed(2)}€`;
+      groupSummary.appendChild(p);
+    });
+  }
+
+});
+
