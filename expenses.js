@@ -46,17 +46,23 @@ document.addEventListener('DOMContentLoaded', () => {
   // GASTOS GRUPALES
   // =====================
   const groupForm = document.getElementById('group-form');
-  const groupList = document.getElementById('group-list');
   const groupSelect = document.getElementById('group-select');
   const groupSummary = document.getElementById('group-summary');
+  const payerSelect = document.getElementById('group-expense-payer');
+  const groupExpenseForm = document.getElementById('group-expense-form');
+  const groupExpenseList = document.getElementById('group-expense-list');
 
   let groups = {};
 
+  // Crear grupo
   if (groupForm) {
     groupForm.addEventListener('submit', (e) => {
       e.preventDefault();
       const groupName = document.getElementById('group-name').value.trim();
-      const members = document.getElementById('group-members').value.split(',').map(m => m.trim()).filter(Boolean);
+      const members = document.getElementById('group-members').value
+        .split(',')
+        .map(m => m.trim())
+        .filter(Boolean);
 
       if (!groupName || members.length < 2) return;
 
@@ -67,32 +73,55 @@ document.addEventListener('DOMContentLoaded', () => {
       option.textContent = groupName;
       groupSelect.appendChild(option);
 
-      const li = document.createElement('li');
-      li.textContent = `${groupName}: ${members.join(', ')}`;
-      groupList.appendChild(li);
+      document.getElementById('group-create-msg').textContent = `Grupo "${groupName}" creado con éxito`;
 
       groupForm.reset();
     });
   }
 
-  // Añadir gastos a un grupo
-  const groupExpenseForm = document.getElementById('group-expense-form');
-  const groupExpenseList = document.getElementById('group-expense-list');
+  // Cambiar miembros cuando se selecciona un grupo
+  groupSelect.addEventListener('change', () => {
+    const group = groups[groupSelect.value];
+    payerSelect.innerHTML = '';
+    if (group) {
+      group.members.forEach(member => {
+        const option = document.createElement('option');
+        option.value = member;
+        option.textContent = member;
+        payerSelect.appendChild(option);
+      });
+    }
+  });
 
+  // Añadir gasto al grupo
   if (groupExpenseForm) {
     groupExpenseForm.addEventListener('submit', (e) => {
       e.preventDefault();
       const groupName = groupSelect.value;
       if (!groupName || !groups[groupName]) return;
 
-      const payer = document.getElementById('payer').value;
-      const amount = parseFloat(document.getElementById('group-amount').value);
-      const description = document.getElementById('group-description').value;
+      const payer = document.getElementById('group-expense-payer').value;
+      const amount = parseFloat(document.getElementById('group-expense-amount').value);
+      const description = document.getElementById('group-expense-name').value;
+      const splitType = document.querySelector('input[name="split-type"]:checked').value;
 
       if (!payer || isNaN(amount) || !description) return;
 
-      const expense = { payer, amount, description };
-      groups[groupName].expenses.push(expense);
+      let shares = {};
+      const members = groups[groupName].members;
+
+      if (splitType === 'equal') {
+        const share = amount / members.length;
+        members.forEach(m => shares[m] = share);
+      } else {
+        const inputs = document.querySelectorAll('.custom-share-input');
+        inputs.forEach(input => {
+          const member = input.dataset.member;
+          shares[member] = parseFloat(input.value) || 0;
+        });
+      }
+
+      groups[groupName].expenses.push({ payer, amount, description, shares });
 
       const li = document.createElement('li');
       li.innerHTML = `<strong>${description}</strong> - ${amount.toFixed(2)}€ pagado por ${payer}`;
@@ -101,8 +130,30 @@ document.addEventListener('DOMContentLoaded', () => {
       updateGroupSummary(groupName);
 
       groupExpenseForm.reset();
+      document.getElementById('custom-split-container').style.display = 'none';
     });
   }
+
+  // Mostrar campos personalizados si se elige "custom"
+  document.querySelectorAll('input[name="split-type"]').forEach(input => {
+    input.addEventListener('change', () => {
+      const customContainer = document.getElementById('custom-split-container');
+      if (input.value === 'custom') {
+        const group = groups[groupSelect.value];
+        customContainer.innerHTML = '';
+        if (group) {
+          group.members.forEach(member => {
+            const div = document.createElement('div');
+            div.innerHTML = `${member}: <input type="number" data-member="${member}" class="custom-share-input" placeholder="€" />`;
+            customContainer.appendChild(div);
+          });
+        }
+        customContainer.style.display = 'block';
+      } else {
+        document.getElementById('custom-split-container').style.display = 'none';
+      }
+    });
+  });
 
   function updateGroupSummary(groupName) {
     const group = groups[groupName];
@@ -111,8 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
     group.members.forEach(member => balances[member] = 0);
 
     group.expenses.forEach(exp => {
-      const share = exp.amount / group.members.length;
-      group.members.forEach(member => {
+      Object.entries(exp.shares).forEach(([member, share]) => {
         if (member === exp.payer) {
           balances[member] += exp.amount - share;
         } else {
@@ -130,4 +180,3 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 });
-
