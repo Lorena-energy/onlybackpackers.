@@ -1,111 +1,93 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>OnlyBackpackers - Gastos</title>
-  <link rel="stylesheet" href="expenses.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OnlyBackpackers • Gastos</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="expenses.css"><!--  usa tu hoja o quita esta línea si aún no la tienes -->
 </head>
 <body>
 
-  <!-- 🌍 Menú -->
-  <header class="main-header">
-    <nav>
-      <div class="menu-toggle" id="menu-toggle">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </div>
-      <ul class="menu" id="menu">
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="muro.html">Muro</a></li>
-        <li><a href="recomendaciones.html">Recomendaciones</a></li>
-        <li><a href="chats.html">Chats</a></li>
-        <li><a href="eventos.html">Eventos</a></li>
-        <li><a href="expenses.html" class="active">Gastos</a></li>
-      </ul>
-    </nav>
-  </header>
+<header class="main-header">
+  <nav>
+    <h2>OnlyBackpackers</h2>
 
-  <main class="gastos-content">
-    <h1>💸 Gestión de Gastos</h1>
+    <!-- ☰ hamburguesa -->
+    <div id="menu-toggle" class="menu-toggle">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </div>
 
-    <!-- ✅ Gastos personales -->
-    <section id="personal-expenses">
-      <h2>Gastos Personales</h2>
-      <form id="expense-form">
-        <input type="text" id="expense-name" placeholder="Nombre del gasto" required />
-        <select id="expense-category">
-          <option value="">Categoría</option>
-          <option value="transporte">Transporte</option>
-          <option value="comidas">Comidas</option>
-          <option value="alojamiento">Alojamiento</option>
-          <option value="actividades">Actividades</option>
-          <option value="otros">Otros</option>
-        </select>
-        <input type="number" id="expense-amount" placeholder="Cantidad (€)" required />
-        <textarea id="expense-notes" placeholder="Notas (opcional)"></textarea>
-        <button type="submit">Añadir</button>
-      </form>
-      <ul id="expense-list"></ul>
-      <p id="total-expenses">Total: 0 €</p>
-    </section>
+    <!-- menú -->
+    <ul id="menu" class="menu">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="muro.html">Muro</a></li>
+      <li><a href="recomendaciones.html">Recomendaciones</a></li>
+      <li><a href="expenses.html" style="text-decoration:underline">Gastos</a></li>
+    </ul>
+  </nav>
+</header>
 
-    <hr />
+<main>
+  <h1 style="text-align:center;margin:1rem 0">💸 Gestión de Gastos</h1>
 
-    <!-- 🧑‍🤝‍🧑 Gastos grupales -->
-    <section id="group-expenses">
-      <h2>Gastos Grupales</h2>
+  <!-- ── 1 · Gastos personales ─────────────────────────── -->
+  <section id="personal-expenses">
+    <h2>Gastos personales</h2>
 
-      <!-- Crear grupo -->
-      <div class="group-create">
-        <h3>➕ Crear grupo</h3>
-        <form id="group-form">
-          <input type="text" id="group-name" placeholder="Nombre del grupo" required />
-          <input type="text" id="group-members" placeholder="Miembros (separados por coma)" required />
-          <button type="submit">Crear grupo</button>
-        </form>
-        <p id="group-create-msg"></p>
-      </div>
+    <form id="expense-form">
+      <input id="expense-name"   placeholder="Concepto" required>
+      <select id="expense-category">
+        <option value="">Categoría</option>
+        <option value="transporte">Transporte</option>
+        <option value="comidas">Comidas</option>
+        <option value="alojamiento">Alojamiento</option>
+        <option value="actividades">Actividades</option>
+        <option value="otros">Otros</option>
+      </select>
+      <input id="expense-amount" type="number" step="0.01" placeholder="Cantidad" required>
+      <select id="expense-currency"><!-- se rellena por JS --></select>
+      <textarea id="expense-notes" placeholder="Notas (opcional)"></textarea>
+      <button>Añadir gasto</button>
+    </form>
 
-      <!-- Añadir gasto a grupo -->
-      <div class="group-add-expense">
-        <h3>➕ Añadir gasto al grupo</h3>
-        <form id="group-expense-form">
-          <select id="group-select"></select>
-          <input type="text" id="group-expense-name" placeholder="Nombre del gasto" required />
-          <input type="number" id="group-expense-amount" placeholder="Cantidad (€)" required />
-          <select id="group-expense-payer"></select>
+    <ul id="expense-list"></ul>
+    <p id="total-expenses">Total: 0</p>
+  </section>
 
-          <label>
-            <input type="radio" name="split-type" value="equal" checked />
-            Dividir en partes iguales
-          </label>
-          <label>
-            <input type="radio" name="split-type" value="custom" />
-            División personalizada
-          </label>
+  <!-- ── 2 · Gastos grupales ───────────────────────────── -->
+  <section id="group-expenses">
+    <h2>Gastos grupales</h2>
 
-          <div id="custom-split-container" style="display: none;"></div>
+    <!-- creación de grupo -->
+    <form id="group-form">
+      <input id="group-name"    placeholder="Nombre del grupo" required>
+      <input id="group-members" placeholder="Miembros (Ana, Luis…)" required>
+      <button>Crear grupo</button>
+    </form>
+    <ul id="group-list"></ul>
 
-          <button type="submit">Registrar gasto</button>
-        </form>
-      </div>
+    <!-- añadir gasto -->
+    <form id="group-expense-form">
+      <select id="group-select"><option value="">— Selecciona grupo —</option></select>
+      <input  id="group-expense-name"   placeholder="Concepto" required>
+      <input  id="group-expense-amount" type="number" step="0.01" placeholder="Cantidad" required>
+      <select id="group-expense-payer"></select>
 
-      <!-- 🧾 Resumen de gastos del grupo -->
-      <div id="group-summary">
-        <h3>📋 Resumen del grupo</h3>
-        <div id="group-expense-list"></div>
-        <div id="group-balances"></div>
-      </div>
-    </section>
-  </main>
+      <label><input type="radio" name="split-type" value="equal" checked> Partes iguales</label>
+      <label><input type="radio" name="split-type" value="custom"> Personalizada</label>
 
-  <footer>
-    <p>&copy; 2024 OnlyBackpackers. Todos los derechos reservados.</p>
-  </footer>
+      <div id="custom-split-container" style="display:none;margin:.5rem 0;"></div>
 
-  <script src="expenses.js"></script>
+      <button>Registrar gasto</button>
+    </form>
+
+    <ul id="group-expense-list"></ul>
+    <div id="group-balances"></div>
+  </section>
+</main>
+
+<script src="expenses.js" defer></script>
 </body>
 </html>
