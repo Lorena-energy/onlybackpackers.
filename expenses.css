@@ -1,189 +1,103 @@
-/* Fondo y tipografías */
-body {
-  font-family: 'Poppins', sans-serif;
-  margin: 0;
-  padding: 0;
-  color: #333;
-  background: linear-gradient(to bottom right, #0077cc, #00c8e0);
+/* 🌍 Estilo base idéntico al traductor */
+body{
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  background:#f2f2f2;
+  color:#333;
 }
 
-/* Cabecera principal */
-.main-header {
-  background-color: #004f8c;
-  padding: 10px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+/* 🔷 Encabezado + menú hamburguesa (mismos colores) */
+.main-header{
+  background:#003366;
+  padding:1rem;
+  color:#fff;
 }
-.main-header nav {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  justify-content: space-between;
+.menu-toggle{display:none;cursor:pointer;}
+.menu-toggle .bar{
+  width:25px;height:3px;margin:5px auto;background:#fff;display:block;
+}
+.menu{
+  list-style:none;display:flex;gap:1rem;margin:0;padding-left:0;
+}
+.menu a{color:#fff;text-decoration:none;font-weight:600;}
+.menu a.active{text-decoration:underline;}
+
+@media(max-width:768px){
+  .menu{display:none;flex-direction:column;position:absolute;top:60px;left:0;width:100%;background:#003366;z-index:1000;padding:10px 0;}
+  .menu.active{display:flex;}
+  .menu-toggle{display:block;}
+  .menu li{padding:10px;}
 }
 
-/* Menú y hamburguesa */
-.menu {
-  list-style: none;
-  display: flex;
-  gap: 15px;
-  margin: 0;
-  padding: 0;
+/* 📦 Tarjetas/secciones (idéntico look) */
+section{
+  max-width:1100px;
+  margin:2rem auto;
+  padding:1.5rem;
+  background:#fff;
+  border-radius:20px;
+  box-shadow:0 0 20px rgba(0,0,0,.05);
 }
-.menu li a {
-  text-decoration: none;
-  color: white;
-  padding: 8px 15px;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
+h1{text-align:center;font-size:2rem;color:#003366;margin:2rem 0 1rem;}
+h2{margin:0 0 1rem;color:#003366;}
+
+/* Formularios flex como en el traductor */
+form{display:flex;flex-wrap:wrap;gap:1rem;}
+input,select,textarea,button{
+  font-family:inherit;font-size:1rem;
+  padding:.8rem;
+  border:1px solid #ccc;border-radius:15px;
 }
-.menu li a:hover,
-.menu li a.active {
-  background-color: #005fa3;
+input[type="number"]{max-width:120px;}
+select{background:#fff;}
+textarea{flex:1 1 100%;height:100px;resize:none;}
+button{
+  flex:1;
+  background:#ff914d;color:#fff;border:none;
+  cursor:pointer;border-radius:15px;
+  transition:background .3s,transform .2s;
 }
-/* Hamburguesa (por defecto, oculto en desktop) */
-.menu-toggle {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-}
-.menu-toggle .bar {
-  width: 25px;
-  height: 3px;
-  background: white;
-  margin: 4px 0;
+button:hover{background:#ff7300;transform:scale(1.03);}
+
+/* Listas de gastos igual que cajas del traductor */
+ul{padding-left:1.2rem;margin:1rem 0;}
+#expense-list li,
+#group-expense-list li{
+  background:#f9f9f9;
+  padding:.8rem;
+  border-radius:15px;
+  box-shadow:inset 0 0 5px rgba(0,0,0,.05);
+  margin-bottom:.6rem;
 }
 
-/* Título principal */
-h1 {
-  text-align: center;
-  color: white;
-  margin: 20px auto;
+/* Contenedor para inputs personalizados */
+#custom-split-container{
+  background:#f9f9f9;
+  padding:.8rem;
+  border-radius:15px;
+  box-shadow:inset 0 0 5px rgba(0,0,0,.05);
 }
 
-/* Sección del conversor */
-#currency-converter {
-  background: #0077cc;
-  color: white;
-  padding: 20px;
-  border-radius: 10px;
-  max-width: 500px;
-  margin: 20px auto;
-  text-align: center;
+/* Resúmenes / totales */
+#total-expenses,
+#group-balances{
+  font-weight:600;
+  margin-top:1rem;
 }
-#currency-converter h2 {
-  font-size: 1.8rem;
-  margin-bottom: 10px;
-}
-#currency-converter input,
-#currency-converter select,
-#currency-converter button {
-  padding: 10px;
-  font-size: 1rem;
-  margin: 5px 0;
-  border-radius: 5px;
-  border: none;
-}
-#currency-converter button {
-  background: #ff6600;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-#currency-converter button:hover {
-  background-color: #cc5200;
-}
-#conversion-result {
-  margin-top: 15px;
-  font-size: 1.2rem;
-  font-weight: bold;
+#group-balances p{margin:.4rem 0;color:#003366;}
+
+/* Responsive ajustes */
+@media(max-width:768px){
+  form{flex-direction:column;}
+  input[type="number"]{max-width:100%;}
+  section{margin:1rem; padding:1rem;}
+  button{font-size:.95rem;padding:.7rem;}
 }
 
-/* Contenedor del gráfico */
-#expense-chart {
-  padding: 20px;
-  text-align: center;
-}
-#expense-chart h2 {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-}
-#expense-chart-canvas {
-  max-width: 100%;
-  max-height: 400px;
-  margin: 0 auto;
-  display: block;
-}
-
-/* Lista de gastos */
-#expense-list {
-  padding: 0;
-  margin: 20px 0;
-  list-style: none;
-}
-#expense-list li {
-  background-color: #f9f9f9;
-  margin-bottom: 10px;
-  padding: 10px;
-  border-radius: 5px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-/* Formulario de gastos */
-#expense-form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-#expense-form input,
-#expense-form select,
-#expense-form textarea,
-#expense-form button {
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  font-size: 1rem;
-}
-#expense-form button {
-  background-color: #0077cc;
-  color: white;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s;
-}
-#expense-form button:hover {
-  background-color: #005fa3;
-}
-
-/* Total de gastos */
-#total-expenses {
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-top: 10px;
-  text-align: center;
-}
-
-/* RESPONSIVE (móvil) */
-@media (max-width: 768px) {
-  .menu {
-    display: none; /* Oculto en móviles hasta que hagamos clic */
-    flex-direction: column;
-    background-color: #004f8c;
-    position: absolute;
-    top: 60px;
-    right: 0;
-    width: 100%;
-    z-index: 1000;
-    padding: 10px 0;
-  }
-  /* Clase que activamos con JS */
-  .menu.active {
-    display: flex;
-  }
-
-  .menu-toggle {
-    display: flex; /* hamburguesa se muestra en móvil */
-  }
+/* 🧭 Footer igual que traductor */
+footer{
+  margin:3rem 0;
+  text-align:center;
+  font-size:.9rem;
+  color:#999;
 }
