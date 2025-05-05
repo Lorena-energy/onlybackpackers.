@@ -1,34 +1,40 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>OnlyBackpackers - Inicio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="main.css" />
-  <link rel="stylesheet" href="style.css"> 
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="index.css" />
 </head>
 
 <body>
+  <!-- 🔷 Encabezado -->
   <header class="main-header">
     <nav>
-      <div class="menu-toggle" id="menu-toggle">
+      <h2 style="margin: 0 0 1rem 0;">OnlyBackpackers</h2>
+
+      <div id="menu-toggle" class="menu-toggle">
         <span class="bar"></span><span class="bar"></span><span class="bar"></span>
       </div>
+
       <ul class="menu" id="menu">
         <li><a href="index.html" class="active">Inicio</a></li>
-        <li><a href="muro.html">Muro</a></li>
+        <li><a href="login-register.html">Login</a></li>
+        <li><a href="muro.html">Muro Comunidad</a></li>
         <li><a href="muro-personal.html">Mi Muro</a></li>
-        <li><a href="chats.html">Chats</a></li>
-        <li><a href="eventos.html">Eventos</a></li>
-        <li><a href="worldtrip.html">Worldtrip</a></li>
+        <li><a href="configurador.html">Configurador</a></li>
+        <li><a href="traductor-de-voz.html">Traductor</a></li>
         <li><a href="expenses.html">Gastos</a></li>
         <li><a href="recomendaciones.html">Recomendaciones</a></li>
+        <li><a href="worldtrip.html">Worldtrip</a></li>
+        <li><a href="zona-camper.html">Zona Camper</a></li>
         <li><a href="recompensas.html">Recompensas</a></li>
       </ul>
     </nav>
   </header>
 
+  <!-- 🌍 Contenido principal -->
   <main>
     <section class="hero">
       <h1>Bienvenida a OnlyBackpackers 🌍</h1>
@@ -38,15 +44,24 @@
 
     <section class="destacados">
       <h2>Rutas populares</h2>
-      <!-- Aquí luego puedes poner tarjetas o destinos -->
       <p>¿Buscas inspiración para tu próximo viaje? 🧳✨</p>
     </section>
   </main>
 
+  <!-- 🧭 Footer -->
   <footer>
     <p>&copy; 2024 OnlyBackpackers - Todos los derechos reservados.</p>
   </footer>
 
-  <script src="main.js"></script> <!-- Tu script de hamburguesa/menu -->
+  <!-- JS del menú hamburguesa -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggle = document.getElementById('menu-toggle');
+      const menu = document.getElementById('menu');
+      toggle.addEventListener('click', () => {
+        menu.classList.toggle('active');
+      });
+    });
+  </script>
 </body>
 </html>
