@@ -1,18 +1,51 @@
-/* 🌍 Estilo principal para OnlyBackpackers */
+/* General */
 body {
-  margin: 0;
   font-family: 'Poppins', sans-serif;
-  background-color: #f2f2f2;
+  margin: 0;
+  padding: 0;
   color: #333;
+  background-color: #f9f9f9;
 }
 
-/* 🔷 Encabezado y menú hamburguesa */
+/* Cabecera */
 .main-header {
   background-color: #003366;
-  padding: 1rem;
   color: white;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding: 10px 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li {
+  margin: 0;
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+.menu a:hover,
+.menu a.active {
+  background-color: #005fa3;
+}
+
+/* Menú hamburguesa */
 .menu-toggle {
   display: none;
   cursor: pointer;
@@ -24,23 +57,6 @@ body {
   height: 3px;
   margin: 5px auto;
   background-color: white;
-}
-
-.menu {
-  display: flex;
-  list-style: none;
-  gap: 1rem;
-  padding-left: 0;
-}
-
-.menu li a {
-  color: white;
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.menu li a.active {
-  text-decoration: underline;
 }
 
 @media (max-width: 768px) {
@@ -65,17 +81,17 @@ body {
   }
 
   .menu li {
-    padding: 10px;
+    text-align: center;
+    margin: 10px 0;
   }
 }
 
-/* 🎯 Hero Section */
+/* Hero */
 .hero {
   background: linear-gradient(to right, #003366, #00bfff);
   color: white;
   text-align: center;
   padding: 80px 20px;
-  border-radius: 0 0 40px 40px;
 }
 
 .hero h1 {
@@ -88,46 +104,75 @@ body {
   margin-bottom: 20px;
 }
 
-.hero .btn {
-  background-color: #ff914d;
+.cta-button {
+  background-color: #ff6600;
   color: white;
-  padding: 12px 25px;
+  padding: 10px 20px;
   border-radius: 50px;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   text-decoration: none;
-  transition: background-color 0.3s, transform 0.2s;
+  transition: background-color 0.3s;
 }
 
-.hero .btn:hover {
-  background-color: #ff7300;
-  transform: scale(1.05);
+.cta-button:hover {
+  background-color: #cc5200;
 }
 
-/* 📌 Sección destacados */
-.destacados {
-  max-width: 1100px;
+/* Carrusel */
+.carousel {
+  position: relative;
+  max-width: 900px;
   margin: 2rem auto;
-  padding: 1.5rem;
-  background-color: white;
+  overflow: hidden;
   border-radius: 20px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
-.destacados h2 {
-  color: #003366;
-  text-align: center;
-  margin-bottom: 1rem;
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
 }
 
-.destacados p {
-  color: #666;
-  text-align: center;
+.carousel img {
+  min-width: 100%;
+  height: auto;
+  object-fit: cover;
 }
 
-/* 🧭 Footer */
+/* Botones del carrusel */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  border: none;
+  font-size: 2rem;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 2;
+  transition: background 0.3s;
+}
+
+.carousel-btn:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.prev {
+  left: 15px;
+}
+
+.next {
+  right: 15px;
+}
+
+/* Footer */
 footer {
-  margin-top: 3rem;
+  background-color: #003366;
+  color: white;
   text-align: center;
+  padding: 20px 0;
+  margin-top: 3rem;
   font-size: 0.9rem;
-  color: #999;
 }
