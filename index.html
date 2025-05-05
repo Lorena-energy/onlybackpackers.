@@ -9,19 +9,15 @@
 </head>
 
 <body>
-  <!-- 🔷 Encabezado -->
   <header class="main-header">
     <nav>
-      <h2 style="margin: 0 0 1rem 0;">OnlyBackpackers</h2>
-
-      <div id="menu-toggle" class="menu-toggle">
+      <div class="menu-toggle" id="menu-toggle">
         <span class="bar"></span><span class="bar"></span><span class="bar"></span>
       </div>
-
       <ul class="menu" id="menu">
         <li><a href="index.html" class="active">Inicio</a></li>
         <li><a href="login-register.html">Login</a></li>
-        <li><a href="muro.html">Muro Comunidad</a></li>
+        <li><a href="muro.html">Muro comunidad</a></li>
         <li><a href="muro-personal.html">Mi Muro</a></li>
         <li><a href="configurador.html">Configurador</a></li>
         <li><a href="traductor-de-voz.html">Traductor</a></li>
@@ -34,34 +30,35 @@
     </nav>
   </header>
 
-  <!-- 🌍 Contenido principal -->
   <main>
     <section class="hero">
       <h1>Bienvenida a OnlyBackpackers 🌍</h1>
       <p>Tu comunidad de viajeros, aventuras y nuevas amistades. 🚀</p>
-      <a href="muro.html" class="btn">Explora el Muro</a>
+      <a href="muro.html" class="cta-button">Explora el Muro</a>
     </section>
 
+    <!-- ⭐ Carrusel de imágenes en Rutas populares -->
     <section class="destacados">
       <h2>Rutas populares</h2>
       <p>¿Buscas inspiración para tu próximo viaje? 🧳✨</p>
+
+      <div class="carousel">
+        <div class="carousel-track" id="carousel-track">
+          <img src="https://source.unsplash.com/800x400/?travel,beach" alt="Playa" />
+          <img src="https://source.unsplash.com/800x400/?travel,mountains" alt="Montañas" />
+          <img src="https://source.unsplash.com/800x400/?travel,city" alt="Ciudad" />
+          <img src="https://source.unsplash.com/800x400/?travel,forest" alt="Bosque" />
+        </div>
+        <button class="carousel-btn prev" id="prevBtn">&#10094;</button>
+        <button class="carousel-btn next" id="nextBtn">&#10095;</button>
+      </div>
     </section>
   </main>
 
-  <!-- 🧭 Footer -->
   <footer>
     <p>&copy; 2024 OnlyBackpackers - Todos los derechos reservados.</p>
   </footer>
 
-  <!-- JS del menú hamburguesa -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const toggle = document.getElementById('menu-toggle');
-      const menu = document.getElementById('menu');
-      toggle.addEventListener('click', () => {
-        menu.classList.toggle('active');
-      });
-    });
-  </script>
+  <script src="index.js"></script>
 </body>
 </html>
