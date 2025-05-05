@@ -2,22 +2,25 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>OnlyBackpackers - Inicio</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="index.css" />
 </head>
 
 <body>
+  <!-- Encabezado -->
   <header class="main-header">
     <nav>
       <div class="menu-toggle" id="menu-toggle">
-        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
       </div>
       <ul class="menu" id="menu">
         <li><a href="index.html" class="active">Inicio</a></li>
         <li><a href="login-register.html">Login</a></li>
-        <li><a href="muro.html">Muro comunidad</a></li>
+        <li><a href="muro.html">Muro Comunidad</a></li>
         <li><a href="muro-personal.html">Mi Muro</a></li>
         <li><a href="configurador.html">Configurador</a></li>
         <li><a href="traductor-de-voz.html">Traductor</a></li>
@@ -30,31 +33,35 @@
     </nav>
   </header>
 
-  <main>
-    <section class="hero">
-      <h1>Bienvenida a OnlyBackpackers 🌍</h1>
-      <p>Tu comunidad de viajeros, aventuras y nuevas amistades. 🚀</p>
-      <a href="muro.html" class="cta-button">Explora el Muro</a>
-    </section>
+  <!-- Hero principal -->
+  <section class="hero">
+    <h1>Bienvenida a OnlyBackpackers 🌍</h1>
+    <p>Tu comunidad de viajeros, aventuras y nuevas amistades. 🚀</p>
+    <a href="muro.html" class="cta-button">Explora el Muro</a>
+  </section>
 
-    <!-- ⭐ Carrusel de imágenes en Rutas populares -->
-    <section class="destacados">
-      <h2>Rutas populares</h2>
-      <p>¿Buscas inspiración para tu próximo viaje? 🧳✨</p>
-
-      <div class="carousel">
-        <div class="carousel-track" id="carousel-track">
-          <img src="https://source.unsplash.com/800x400/?travel,beach" alt="Playa" />
-          <img src="https://source.unsplash.com/800x400/?travel,mountains" alt="Montañas" />
-          <img src="https://source.unsplash.com/800x400/?travel,city" alt="Ciudad" />
-          <img src="https://source.unsplash.com/800x400/?travel,forest" alt="Bosque" />
-        </div>
-        <button class="carousel-btn prev" id="prevBtn">&#10094;</button>
-        <button class="carousel-btn next" id="nextBtn">&#10095;</button>
+  <!-- Carrusel de imágenes -->
+  <section class="carousel-section">
+    <h2>🌟 Descubre nuestros destinos</h2>
+    <div class="carousel-container">
+      <button class="prev">&#10094;</button>
+      <div class="carousel-track">
+        <img src="https://source.unsplash.com/800x400/?mountains,travel" alt="Montañas" />
+        <img src="https://source.unsplash.com/800x400/?beach,travel" alt="Playa" />
+        <img src="https://source.unsplash.com/800x400/?city,travel" alt="Ciudad" />
+        <img src="https://source.unsplash.com/800x400/?forest,travel" alt="Bosque" />
       </div>
-    </section>
-  </main>
+      <button class="next">&#10095;</button>
+    </div>
+  </section>
 
+  <!-- Destacados -->
+  <section class="features">
+    <h2>¿Buscas inspiración para tu próximo viaje? 🧳✨</h2>
+    <p style="text-align:center">Únete a miles de viajeros que ya están conectando. ❤️</p>
+  </section>
+
+  <!-- Footer -->
   <footer>
     <p>&copy; 2024 OnlyBackpackers - Todos los derechos reservados.</p>
   </footer>
