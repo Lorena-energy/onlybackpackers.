@@ -9,28 +9,31 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Carrusel
+  // === Carrusel ===
   const track = document.querySelector(".carousel-track");
-  const slides = Array.from(track.children);
-  const prevButton = document.querySelector(".prev");
-  const nextButton = document.querySelector(".next");
-
-  let currentIndex = 0;
+  const prev = document.querySelector(".prev");
+  const next = document.querySelector(".next");
+  let index = 0;
 
   function updateCarousel() {
-    const slideWidth = slides[0].getBoundingClientRect().width;
-    track.style.transform = `translateX(-${slideWidth * currentIndex}px)`;
+    track.style.transform = `translateX(-${index * 100}%)`;
   }
 
-  nextButton.addEventListener("click", () => {
-    currentIndex = (currentIndex + 1) % slides.length;
-    updateCarousel();
-  });
+  if (track && prev && next) {
+    next.addEventListener("click", () => {
+      index = (index + 1) % track.children.length;
+      updateCarousel();
+    });
 
-  prevButton.addEventListener("click", () => {
-    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-    updateCarousel();
-  });
+    prev.addEventListener("click", () => {
+      index = (index - 1 + track.children.length) % track.children.length;
+      updateCarousel();
+    });
 
-  window.addEventListener("resize", updateCarousel);
+    // Rotación automática cada 5 segundos
+    setInterval(() => {
+      index = (index + 1) % track.children.length;
+      updateCarousel();
+    }, 5000);
+  }
 });
