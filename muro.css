@@ -1,4 +1,4 @@
-/* 🌍 Estilo general */
+/* 🌍 Base */
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
@@ -6,25 +6,22 @@ body {
   color: #333;
 }
 
-/* 🔷 Encabezado y menú */
+/* 🔷 Encabezado + menú */
 .main-header {
   background-color: #003366;
   padding: 1rem;
   color: white;
 }
 
-.main-header nav h2 {
+.main-header h2 {
   margin: 0 0 0.5rem 0;
   font-size: 1.5rem;
-  font-weight: 600;
-  color: #fff;
 }
 
 .menu-toggle {
   display: none;
   cursor: pointer;
 }
-
 .menu-toggle .bar {
   display: block;
   width: 25px;
@@ -38,15 +35,14 @@ body {
   list-style: none;
   gap: 1rem;
   padding-left: 0;
+  margin: 0;
   flex-wrap: wrap;
 }
-
 .menu li a {
   color: white;
   text-decoration: none;
   font-weight: 600;
 }
-
 .menu li a.active {
   text-decoration: underline;
 }
@@ -63,66 +59,54 @@ body {
     z-index: 1000;
     padding: 10px 0;
   }
-
   .menu.active {
     display: flex;
   }
-
   .menu-toggle {
     display: block;
   }
-
   .menu li {
     padding: 10px;
   }
 }
 
-/* 📦 Contenedor principal */
+/* 🧱 Contenedor general del muro */
 .muro-container {
+  display: flex;
+  gap: 2rem;
   max-width: 1100px;
   margin: 2rem auto;
-  padding: 1.5rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
+  padding: 0 1rem;
 }
-
-/* 🎛️ Columnas */
 .left-column,
 .right-column {
-  flex: 1 1 45%;
+  flex: 1 1 50%;
   background-color: #ffffff;
   border-radius: 20px;
   padding: 1.5rem;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
 }
 
-/* 📝 Crear publicación y preguntas */
-.create-post,
-.community-questions {
-  margin-bottom: 2rem;
-}
-
-h2 {
-  color: #003366;
-  margin-bottom: 1rem;
-}
-
-/* 📄 Formularios */
-textarea,
-input[type="text"],
-input[type="file"] {
+/* 📝 Crear publicación / pregunta */
+textarea {
   width: 100%;
+  height: 100px;
   padding: 1rem;
   font-size: 1rem;
-  border-radius: 12px;
+  border-radius: 15px;
   border: 1px solid #ccc;
-  margin-bottom: 1rem;
   resize: none;
-  font-family: 'Poppins', sans-serif;
+  margin-bottom: 1rem;
 }
 
+.file-upload {
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+/* 🎙️ Botones */
 button {
+  flex: 1;
   background-color: #ff914d;
   color: white;
   border: none;
@@ -131,16 +115,74 @@ button {
   font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
-  width: 100%;
 }
-
 button:hover {
   background-color: #ff7300;
   transform: scale(1.03);
 }
 
 /* 🧾 Publicaciones */
-.post,
+.post {
+  background-color: #f9f9f9;
+  padding: 1rem;
+  border-radius: 15px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.05);
+  margin-bottom: 1rem;
+}
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  color: #003366;
+}
+.post-content img,
+.post-content video {
+  max-width: 100%;
+  margin-top: 10px;
+  border-radius: 10px;
+}
+
+/* ❤️ Me gusta / comentar */
+.post-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.post-actions button {
+  font-size: 0.9rem;
+}
+
+/* 💬 Comentarios */
+.comment {
+  margin-top: 0.8rem;
+  background-color: #ffffff;
+  padding: 0.8rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  box-shadow: 0 0 3px rgba(0,0,0,0.05);
+}
+.comment img {
+  max-width: 100px;
+  margin-top: 5px;
+  border-radius: 5px;
+}
+.comment-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+.comment-form input[type="text"] {
+  flex: 1;
+  padding: 0.5rem;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+.comment-form input[type="file"] {
+  flex: 1;
+}
+
+/* ❓ Preguntas */
 .question {
   background-color: #f9f9f9;
   padding: 1rem;
@@ -148,50 +190,38 @@ button:hover {
   box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.05);
   margin-bottom: 1rem;
 }
-
-/* Comentarios y respuestas */
-.comment-section,
-.answer-section {
-  margin-top: 1rem;
-  border-top: 1px solid #ddd;
-  padding-top: 1rem;
+.question-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  color: #003366;
 }
-
-.comment-form,
+.answer {
+  background-color: #ffffff;
+  padding: 0.8rem;
+  border-radius: 10px;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+.answer img {
+  max-width: 100px;
+  margin-top: 5px;
+  border-radius: 5px;
+}
 .answer-form {
   display: flex;
-  gap: 0.5rem;
   flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
 }
-
-.comment-form input,
 .answer-form input[type="text"] {
   flex: 1;
-  border: 1px solid #ccc;
-  border-radius: 10px;
   padding: 0.5rem;
-}
-
-/* Imágenes y videos */
-.post-content img,
-.post-content video {
-  width: 100%;
   border-radius: 10px;
-  margin-top: 10px;
+  border: 1px solid #ccc;
 }
-
-/* 📱 Responsive */
-@media (max-width: 768px) {
-  .muro-container {
-    flex-direction: column;
-    margin: 1rem;
-    padding: 1rem;
-  }
-
-  button {
-    font-size: 0.95rem;
-    padding: 0.7rem;
-  }
+.answer-form input[type="file"] {
+  flex: 1;
 }
 
 /* 🧭 Footer */
@@ -200,4 +230,19 @@ footer {
   text-align: center;
   font-size: 0.9rem;
   color: #999;
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  .muro-container {
+    flex-direction: column;
+    margin: 1rem;
+  }
+  .left-column, .right-column {
+    padding: 1rem;
+  }
+  button {
+    font-size: 0.95rem;
+    padding: 0.7rem;
+  }
 }
