@@ -2,85 +2,61 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <h2>OnlyBackpackers</h2>
   <title>OnlyBackpackers - Comunidad</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-  <!-- Fuente Poppins -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
-    rel="stylesheet"
-  />
-
-  <!-- Hoja de estilos: "muro.css" -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="main.css" />
   <link rel="stylesheet" href="muro.css" />
 </head>
 <body>
-  <!-- Encabezado -->
+
+  <!-- 🔷 Cabecera y Menú completo -->
   <header class="main-header">
     <nav>
-      <!-- Botón hamburguesa -->
+      <h2>OnlyBackpackers</h2>
       <div class="menu-toggle" id="menu-toggle">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
       </div>
       <ul class="menu" id="menu">
         <li><a href="index.html">Inicio</a></li>
-        <li><a href="muro.html" class="active">Comunidad</a></li>
+        <li><a href="login-register.html">Login</a></li>
+        <li><a href="muro.html" class="active">Muro Comunidad</a></li>
         <li><a href="muro-personal.html">Mi Muro</a></li>
-        <li><a href="recomendaciones.html">Recomendaciones</a></li>
-        <li><a href="chats.html">Chats</a></li>
-        <li><a href="eventos.html">Eventos</a></li>
-        <li><a href="worldtrip.html">Worldtrip</a></li>
-        <li><a href="recompensas.html">Recompensas</a></li>
+        <li><a href="configurador.html">Configurador</a></li>
+        <li><a href="traductor-de-voz.html">Traductor</a></li>
         <li><a href="expenses.html">Gastos</a></li>
+        <li><a href="recomendaciones.html">Recomendaciones</a></li>
+        <li><a href="worldtrip.html">Worldtrip</a></li>
+        <li><a href="zona-camper.html">Zona Camper</a></li>
+        <li><a href="recompensas.html">Recompensas</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- Sección principal (2 columnas en escritorio) -->
+  <!-- 🌍 Muro principal en dos columnas -->
   <main class="muro-container">
-    <!-- Columna Izquierda: Crear Post + Lista de Posts -->
+    <!-- 📝 Columna izquierda: publicaciones -->
     <div class="left-column">
       <section class="create-post">
         <h2>Comparte tus aventuras (+10 puntos)</h2>
         <form id="post-form">
-          <textarea
-            id="post-content"
-            placeholder="¿Qué quieres compartir?"
-            rows="3"
-            required
-          ></textarea>
+          <textarea id="post-content" placeholder="¿Qué quieres compartir?" rows="3" required></textarea>
           <div class="file-upload">
-            <label for="post-media">Subir imágenes o videos</label>
-            <input
-              type="file"
-              id="post-media"
-              multiple
-              accept="image/*, video/*"
-            />
+            <label for="post-media">Sube imágenes o videos</label>
+            <input type="file" id="post-media" multiple accept="image/*, video/*" />
           </div>
           <button type="submit" class="cta-button">Publicar</button>
         </form>
       </section>
-
-      <!-- Lista de publicaciones -->
       <section id="post-list"></section>
     </div>
 
-    <!-- Columna Derecha: Preguntas a la comunidad -->
+    <!-- ❓ Columna derecha: preguntas -->
     <div class="right-column">
       <section class="community-questions">
-        <h2>¿Tienes dudas? ¡Pregunta! (0 puntos) - ¡Responder da +10 puntos!</h2>
+        <h2>¿Tienes dudas? ¡Pregunta! (0 puntos) — ¡Responde y gana +10 puntos!</h2>
         <form id="question-form">
-          <textarea
-            id="question-content"
-            placeholder="Escribe tu pregunta aquí..."
-            rows="3"
-            required
-          ></textarea>
+          <textarea id="question-content" placeholder="Escribe tu pregunta aquí..." rows="3" required></textarea>
           <button type="submit" class="cta-button">Publicar pregunta</button>
         </form>
         <div id="question-list"></div>
@@ -88,12 +64,12 @@
     </div>
   </main>
 
-  <!-- Pie de página -->
+  <!-- 🧭 Footer -->
   <footer>
     <p>&copy; 2024 OnlyBackpackers. Conecta y comparte el mundo.</p>
   </footer>
 
-  <!-- Script principal -->
+  <!-- Scripts -->
   <script src="muro.js"></script>
 </body>
 </html>
