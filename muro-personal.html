@@ -4,130 +4,108 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>OnlyBackpackers - Mi Muro</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="main.css" />
   <link rel="stylesheet" href="muro-personal.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
-
-  <!-- 🔷 CABECERA -->
   <header class="main-header">
-    <h1 class="logo">OnlyBackpackers</h1>
-    <nav>
+    <div class="container-header">
+      <h1>OnlyBackpackers</h1>
       <div class="menu-toggle" id="menu-toggle">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
       </div>
       <ul class="menu" id="menu">
         <li><a href="index.html">Inicio</a></li>
-        <li><a href="login-register.html">Login</a></li>
-        <li><a href="muro.html">Muro Comunidad</a></li>
+        <li><a href="muro.html">Muro</a></li>
         <li><a href="muro-personal.html" class="active">Mi Muro</a></li>
-        <li><a href="configurador.html">Configurador</a></li>
-        <li><a href="traductor-de-voz.html">Traductor</a></li>
-        <li><a href="expenses.html">Gastos</a></li>
         <li><a href="recomendaciones.html">Recomendaciones</a></li>
         <li><a href="chats.html">Chats</a></li>
         <li><a href="eventos.html">Eventos</a></li>
-        <li><a href="zona-camper.html">Zona Camper</a></li>
         <li><a href="worldtrip.html">Worldtrip</a></li>
+        <li><a href="traductor-de-voz.html">Traductor</a></li>
+        <li><a href="configurador.html">Configurador</a></li>
+        <li><a href="expenses.html">Gastos</a></li>
         <li><a href="recompensas.html">Recompensas</a></li>
       </ul>
-    </nav>
+    </div>
   </header>
 
-  <!-- 📸 Portada -->
-  <div class="cover-photo" id="cover-photo">
-    <label for="cover-upload" class="upload-label"><i class="fas fa-camera"></i> Cambiar portada</label>
-    <input type="file" id="cover-upload" accept="image/*" hidden />
-    <img src="https://via.placeholder.com/1500x400" alt="Portada" class="cover-image" id="cover-image" />
+  <!-- Imagen de portada -->
+  <div class="cover-section">
+    <label for="cover-upload" class="cover-upload-btn">Cambiar portada</label>
+    <input type="file" id="cover-upload" hidden accept="image/*" />
+    <img id="cover-image" src="https://via.placeholder.com/1500x400" alt="Portada" class="cover-image" />
   </div>
 
-  <!-- 👤 Perfil y Detalles -->
-  <section class="profile-section">
-    <div class="profile-container">
-      <div class="profile-pic-wrapper">
-        <img src="https://via.placeholder.com/150" alt="Foto de perfil" class="profile-pic" id="profile-pic" />
-        <label for="profile-upload" class="upload-label upload-label-profile"><i class="fas fa-camera"></i></label>
-        <input type="file" id="profile-upload" accept="image/*" hidden />
-      </div>
-
-      <div class="profile-info">
-        <h2 id="username">Nombre del Usuario</h2>
-        <p>Puntos: <span id="user-points">125</span></p>
-        <button id="add-friend" class="cta-button">Agregar amigo/a</button>
-        <div id="invite-section">
-          <p><strong>Código de invitación:</strong> <span id="invite-code">ABCD1234</span></p>
-          <button id="copy-invite-link" class="cta-button">Copiar enlace de invitación</button>
-        </div>
-      </div>
+  <!-- Sección de perfil -->
+  <section class="profile-area">
+    <div class="profile-pic-wrapper">
+      <label for="profile-upload" class="profile-upload-btn">📸</label>
+      <input type="file" id="profile-upload" hidden accept="image/*" />
+      <img id="profile-pic" src="https://via.placeholder.com/150" alt="Foto perfil" class="profile-pic" />
+    </div>
+    <div class="profile-info">
+      <h2 id="username">Tu Nombre</h2>
+      <p>Puntos: <span id="user-points">125</span></p>
+      <button id="add-friend" class="cta-button">Agregar amigo/a</button>
+      <p><strong>Código de invitación:</strong> <span id="invite-code">ABC1234</span></p>
+      <button id="copy-invite-link" class="cta-button">Copiar enlace</button>
     </div>
 
-    <!-- 🔽 Detalles del usuario -->
-    <div class="user-details" id="user-details">
-      <form id="details-form">
-        <label for="user-about">Sobre mí:</label>
-        <textarea id="user-about" placeholder="Escribe algo sobre ti..."></textarea>
-
-        <label for="user-interests">Intereses:</label>
-        <input type="text" id="user-interests" placeholder="Ej: senderismo, gastronomía..." />
-
-        <label for="user-fav-destinations">Destinos favoritos:</label>
-        <input type="text" id="user-fav-destinations" placeholder="Ej: Bali, México..." />
-
-        <label for="user-country">País:</label>
-        <input type="text" id="user-country" placeholder="Ej: España..." />
-
-        <label for="user-languages">Idiomas:</label>
-        <input type="text" id="user-languages" placeholder="Ej: español, inglés..." />
-
-        <label for="user-travel-style">Forma preferida de viajar:</label>
-        <input type="text" id="user-travel-style" placeholder="Ej: mochilero, hotel..." />
-
-        <button type="submit" class="cta-button">Guardar</button>
-      </form>
+    <!-- Botón y panel desplegable de detalles -->
+    <div class="user-details-wrapper">
+      <button class="user-details-toggle">👤 Detalles del usuario</button>
+      <div class="user-details">
+        <form id="details-form">
+          <label for="user-about">Sobre mí:</label>
+          <textarea id="user-about" placeholder="Escribe algo..."></textarea>
+          <label for="user-country">País:</label>
+          <input type="text" id="user-country" />
+          <label for="user-interests">Intereses:</label>
+          <input type="text" id="user-interests" />
+          <label for="user-languages">Idiomas:</label>
+          <input type="text" id="user-languages" />
+          <label for="user-travel-style">Forma de viajar:</label>
+          <input type="text" id="user-travel-style" />
+        </form>
+      </div>
     </div>
   </section>
 
-  <!-- ✍️ Crear publicación -->
+  <!-- Crear publicación -->
   <section class="create-post">
     <h2>Publica algo nuevo</h2>
     <form id="post-form">
-      <textarea id="post-content" placeholder="Escribe algo..." rows="3" required></textarea>
-
-      <button type="button" class="emoji-toggle-post">😀</button>
-      <div class="emoji-panel-post" style="display: none;">
-        <span>😀</span><span>😁</span><span>🤣</span><span>❤️</span><span>🥰</span>
-      </div>
-
-      <label for="post-media" class="upload-label"><i class="fas fa-camera"></i> Subir fotos/videos</label>
-      <input type="file" id="post-media" accept="image/*, video/*" multiple hidden />
-
-      <div class="post-visibility">
+      <textarea id="post-content" placeholder="¿Qué estás pensando?" required></textarea>
+      <label for="post-media" class="upload-label">📷 Subir foto o video</label>
+      <input type="file" id="post-media" accept="image/*,video/*" multiple hidden />
+      <div class="post-options">
         <input type="checkbox" id="post-community" />
         <label for="post-community">Publicar también en la comunidad</label>
       </div>
-
       <button type="submit" class="cta-button">Publicar</button>
     </form>
   </section>
 
-  <!-- 🧱 Muro personal -->
+  <!-- Publicaciones -->
   <main class="muro-personal">
     <section id="user-posts">
-      <h2>Mis Publicaciones</h2>
+      <h2>Mis publicaciones</h2>
+      <!-- Publicaciones dinámicas aquí -->
     </section>
   </main>
 
-  <!-- 🖼️ Modal -->
+  <!-- Modal para ver imágenes -->
   <div id="image-modal" class="image-modal" style="display: none;">
     <span id="close-modal" class="close-modal">&times;</span>
     <img id="modal-image" class="modal-image" alt="Imagen ampliada" />
   </div>
 
-  <!-- 📜 JS -->
+  <footer>
+    <p>&copy; 2025 OnlyBackpackers</p>
+  </footer>
+
   <script src="muro-personal.js"></script>
 </body>
 </html>
