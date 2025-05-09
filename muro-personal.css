@@ -1,4 +1,3 @@
-/* 🌍 General */
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
@@ -6,21 +5,18 @@ body {
   color: #333;
 }
 
-h1.logo {
-  margin: 0;
-  padding-left: 1rem;
-  font-size: 1.5rem;
-}
-
-/* 🔷 Encabezado */
 .main-header {
   background-color: #003366;
   padding: 1rem;
   color: white;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.main-header h1 {
+  margin: 0;
+  font-size: 1.5rem;
 }
 
 .menu-toggle {
@@ -32,15 +28,15 @@ h1.logo {
   width: 25px;
   height: 3px;
   background-color: white;
-  margin: 5px auto;
+  margin: 4px 0;
   display: block;
 }
 
 .menu {
   display: flex;
-  gap: 1rem;
   list-style: none;
-  padding-left: 0;
+  gap: 1rem;
+  padding: 0;
   margin: 0;
 }
 
@@ -56,13 +52,14 @@ h1.logo {
 
 @media (max-width: 768px) {
   .menu {
-    flex-direction: column;
     display: none;
+    flex-direction: column;
     background-color: #003366;
     position: absolute;
     top: 60px;
     left: 0;
     width: 100%;
+    z-index: 1000;
   }
 
   .menu.active {
@@ -78,258 +75,98 @@ h1.logo {
   }
 }
 
-/* 🌄 Portada */
+/* Estilo general */
+main {
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+}
+
+/* Foto portada y perfil */
 .cover-photo {
   position: relative;
   width: 100%;
+  height: 200px;
   overflow: hidden;
-  height: 250px;
 }
 
-.cover-photo img.cover-image {
+.cover-photo img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
-}
-
-.upload-label {
-  position: absolute;
-  top: 10px;
-  right: 20px;
-  background-color: #ff914d;
-  color: white;
-  padding: 6px 12px;
-  border-radius: 12px;
-  cursor: pointer;
-  font-size: 0.9rem;
-}
-
-.upload-label i {
-  margin-right: 5px;
-}
-
-/* 👤 Perfil + Detalles */
-.profile-section {
-  max-width: 1100px;
-  margin: 2rem auto 1rem auto;
-  display: flex;
-  gap: 2rem;
-  flex-wrap: wrap;
-  justify-content: center;
-  padding: 0 1rem;
 }
 
 .profile-container {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  width: 100%;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
 }
 
 .profile-pic-wrapper {
   position: relative;
-  margin-top: -75px;
-  margin-left: 2rem;
 }
 
 .profile-pic {
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
-  border: 4px solid white;
   object-fit: cover;
+  border: 3px solid white;
 }
 
 .upload-label-profile {
   position: absolute;
   bottom: 0;
   right: 0;
-  background-color: #ff914d;
-  color: white;
-  padding: 6px 10px;
+  background: #ff914d;
   border-radius: 50%;
-  font-size: 0.9rem;
+  padding: 5px;
   cursor: pointer;
 }
 
-.profile-info {
-  flex: 1;
-  padding: 1rem 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 0.5rem;
-}
-
-.user-details {
-  flex: 1 1 100%;
-  background: #fff;
-  padding: 1rem;
-  border-radius: 15px;
-  margin-top: 1rem;
-  box-shadow: 0 0 10px rgba(0,0,0,0.05);
-}
-
-/* 📝 Formulario publicación */
-.create-post {
-  max-width: 1100px;
-  margin: 2rem auto 1rem auto;
-  background-color: #ffffff;
-  padding: 1.5rem;
-  border-radius: 20px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
-}
-
-.create-post textarea {
-  width: 100%;
-  padding: 1rem;
-  font-size: 1rem;
-  border-radius: 12px;
-  border: 1px solid #ccc;
-  resize: none;
-}
-
-.post-visibility {
-  margin: 1rem 0;
-}
-
-/* 🧾 Muro personal */
-.muro-personal {
-  max-width: 1100px;
-  margin: 2rem auto;
-  padding: 1.5rem;
-  background-color: #ffffff;
-  border-radius: 20px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
-}
-
-/* 💬 Publicaciones */
-.post {
-  background-color: #f9f9f9;
-  padding: 1rem;
-  border-radius: 15px;
-  margin-bottom: 1rem;
-  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.05);
-}
-
-.post h3 {
-  margin: 0 0 0.5rem;
+.profile-info h2 {
+  margin: 0;
   color: #003366;
 }
 
-.post p {
-  margin: 0.5rem 0;
-}
-
-.post-media {
-  max-width: 100%;
-  border-radius: 10px;
-  margin-top: 10px;
-}
-
-.post-header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 0.5rem;
-}
-
-.profile-thumbnail {
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid #003366;
-}
-
-.media-container {
-  margin-top: 0.5rem;
-}
-
-.post-actions {
-  display: flex;
-  gap: 1rem;
-  margin-top: 0.5rem;
-}
-
-.comments {
-  margin-top: 0.5rem;
-}
-
-.comment-input {
-  width: 100%;
-  padding: 0.6rem;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
-}
-
-/* ✨ Botones */
-button,
 .cta-button {
   background-color: #ff914d;
   color: white;
   border: none;
   padding: 0.8rem 1.2rem;
-  border-radius: 15px;
+  border-radius: 12px;
   font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: 0.3s ease;
+  margin-top: 10px;
 }
 
-button:hover,
 .cta-button:hover {
   background-color: #ff7300;
   transform: scale(1.03);
 }
 
-/* 📷 Modal imagen */
-.image-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
+.create-post textarea {
   width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.75);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2000;
+  padding: 1rem;
+  border-radius: 15px;
+  border: 1px solid #ccc;
+  resize: none;
 }
 
-.modal-image {
-  max-width: 90%;
-  max-height: 90%;
-  border-radius: 10px;
-}
-
-.close-modal {
-  position: absolute;
-  top: 2rem;
-  right: 2rem;
-  font-size: 2rem;
+footer {
+  margin-top: 3rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #999;
+  background-color: #003366;
   color: white;
-  cursor: pointer;
-}
-
-/* 📱 Responsive */
-@media (max-width: 768px) {
-  .profile-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .profile-info {
-    padding: 1rem;
-    text-align: center;
-  }
-
-  .user-details {
-    width: 100%;
-  }
-
-  .post-actions {
-    flex-direction: column;
-  }
+  padding: 1rem;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
 }
