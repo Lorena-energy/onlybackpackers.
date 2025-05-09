@@ -1,4 +1,4 @@
-/* 🌍 Estilo general */
+/* 🌍 General */
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
@@ -6,17 +6,21 @@ body {
   color: #333;
 }
 
-/* 🔷 Cabecera y menú */
+h1.logo {
+  margin: 0;
+  padding-left: 1rem;
+  font-size: 1.5rem;
+}
+
+/* 🔷 Encabezado */
 .main-header {
   background-color: #003366;
   padding: 1rem;
   color: white;
-}
-
-.main-header h1 {
-  margin: 0 0 10px 0;
-  text-align: center;
-  font-size: 1.6rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .menu-toggle {
@@ -25,21 +29,19 @@ body {
 }
 
 .menu-toggle .bar {
-  display: block;
   width: 25px;
   height: 3px;
-  margin: 5px auto;
   background-color: white;
+  margin: 5px auto;
+  display: block;
 }
 
 .menu {
   display: flex;
-  list-style: none;
   gap: 1rem;
-  justify-content: center;
+  list-style: none;
   padding-left: 0;
   margin: 0;
-  flex-wrap: wrap;
 }
 
 .menu li a {
@@ -54,15 +56,13 @@ body {
 
 @media (max-width: 768px) {
   .menu {
-    display: none;
     flex-direction: column;
+    display: none;
     background-color: #003366;
     position: absolute;
     top: 60px;
     left: 0;
     width: 100%;
-    z-index: 1000;
-    padding: 10px 0;
   }
 
   .menu.active {
@@ -75,54 +75,70 @@ body {
 
   .menu li {
     padding: 10px;
-    text-align: center;
   }
 }
 
-/* 🖼️ Portada y perfil */
+/* 🌄 Portada */
 .cover-photo {
   position: relative;
-  text-align: center;
+  width: 100%;
+  overflow: hidden;
+  height: 250px;
 }
 
-.cover-image {
+.cover-photo img.cover-image {
   width: 100%;
-  max-height: 300px;
+  height: 100%;
   object-fit: cover;
-  border-radius: 0;
+  display: block;
 }
 
 .upload-label {
-  display: inline-block;
-  margin: 10px;
-  font-weight: bold;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  background-color: #ff914d;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 12px;
   cursor: pointer;
-  color: #003366;
+  font-size: 0.9rem;
 }
 
+.upload-label i {
+  margin-right: 5px;
+}
+
+/* 👤 Perfil + Detalles */
 .profile-section {
+  max-width: 1100px;
+  margin: 2rem auto 1rem auto;
   display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
   justify-content: center;
-  padding: 1rem;
+  padding: 0 1rem;
 }
 
 .profile-container {
   display: flex;
-  gap: 2rem;
-  align-items: center;
   flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .profile-pic-wrapper {
   position: relative;
+  margin-top: -75px;
+  margin-left: 2rem;
 }
 
 .profile-pic {
-  width: 120px;
-  height: 120px;
-  object-fit: cover;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
-  border: 3px solid #003366;
+  border: 4px solid white;
+  object-fit: cover;
 }
 
 .upload-label-profile {
@@ -131,128 +147,131 @@ body {
   right: 0;
   background-color: #ff914d;
   color: white;
-  padding: 5px;
+  padding: 6px 10px;
   border-radius: 50%;
+  font-size: 0.9rem;
+  cursor: pointer;
 }
 
-/* 👤 Panel Detalles */
+.profile-info {
+  flex: 1;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
 .user-details {
+  flex: 1 1 100%;
+  background: #fff;
+  padding: 1rem;
+  border-radius: 15px;
+  margin-top: 1rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+/* 📝 Formulario publicación */
+.create-post {
   max-width: 1100px;
-  margin: 1rem auto;
+  margin: 2rem auto 1rem auto;
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+}
+
+.create-post textarea {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1rem;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  resize: none;
+}
+
+.post-visibility {
+  margin: 1rem 0;
+}
+
+/* 🧾 Muro personal */
+.muro-personal {
+  max-width: 1100px;
+  margin: 2rem auto;
   padding: 1.5rem;
   background-color: #ffffff;
   border-radius: 20px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
 }
 
-.user-details h3 {
-  margin-bottom: 1rem;
-}
-
-.user-details input,
-.user-details textarea {
-  width: 100%;
-  margin-bottom: 10px;
-}
-
-/* ✍️ Publicación */
-.create-post {
-  max-width: 1100px;
-  margin: 2rem auto;
-  padding: 1.5rem;
-  background-color: #ffffff;
-  border-radius: 20px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
-}
-
-.upload-row {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.emoji-panel-post {
-  gap: 5px;
-  margin-top: 10px;
-}
-
-.emoji-panel-post span {
-  font-size: 1.2rem;
-  cursor: pointer;
-}
-
-/* 🧱 Muro Personal */
-.muro-personal {
-  max-width: 1100px;
-  margin: 1rem auto;
-  padding: 1.5rem;
-  background-color: #ffffff;
-  border-radius: 20px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
-}
-
+/* 💬 Publicaciones */
 .post {
   background-color: #f9f9f9;
   padding: 1rem;
   border-radius: 15px;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.05);
+}
+
+.post h3 {
+  margin: 0 0 0.5rem;
+  color: #003366;
+}
+
+.post p {
+  margin: 0.5rem 0;
+}
+
+.post-media {
+  max-width: 100%;
+  border-radius: 10px;
+  margin-top: 10px;
 }
 
 .post-header {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 1rem;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .profile-thumbnail {
   width: 45px;
   height: 45px;
-  object-fit: cover;
   border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #003366;
 }
 
-.post-content p {
-  margin-bottom: 0.5rem;
-}
-
-.media-container img,
-.media-container video {
-  max-width: 100%;
+.media-container {
   margin-top: 0.5rem;
-  border-radius: 10px;
 }
 
 .post-actions {
   display: flex;
-  gap: 10px;
-  margin-top: 10px;
-  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0.5rem;
 }
 
-.emoji-panel {
-  display: flex;
-  gap: 5px;
-  margin: 10px 0;
+.comments {
+  margin-top: 0.5rem;
 }
 
 .comment-input {
   width: 100%;
-  padding: 0.5rem;
-  margin-top: 10px;
+  padding: 0.6rem;
   border-radius: 10px;
   border: 1px solid #ccc;
+  font-size: 1rem;
 }
 
-/* 🔘 Botones */
-.cta-button,
-button {
+/* ✨ Botones */
+button,
+.cta-button {
   background-color: #ff914d;
   color: white;
   border: none;
-  padding: 0.8rem 1rem;
+  padding: 0.8rem 1.2rem;
   border-radius: 15px;
   font-size: 1rem;
   cursor: pointer;
@@ -265,32 +284,32 @@ button:hover,
   transform: scale(1.03);
 }
 
-/* 🖼️ Modal */
+/* 📷 Modal imagen */
 .image-modal {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   position: fixed;
-  background: rgba(0, 0, 0, 0.8);
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 9999;
+  background: rgba(0,0,0,0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
 }
 
 .modal-image {
   max-width: 90%;
-  max-height: 80vh;
+  max-height: 90%;
   border-radius: 10px;
 }
 
 .close-modal {
   position: absolute;
-  top: 30px;
-  right: 40px;
-  color: white;
+  top: 2rem;
+  right: 2rem;
   font-size: 2rem;
+  color: white;
   cursor: pointer;
 }
 
@@ -301,29 +320,16 @@ button:hover,
     align-items: center;
   }
 
-  .post-header {
-    flex-direction: row;
-    align-items: center;
+  .profile-info {
+    padding: 1rem;
+    text-align: center;
   }
 
-  .menu.active {
-    display: flex;
+  .user-details {
+    width: 100%;
   }
 
-  .emoji-panel-post {
-    justify-content: center;
+  .post-actions {
+    flex-direction: column;
   }
-}
-
-/* 🧭 Footer */
-footer {
-  margin-top: 3rem;
-  text-align: center;
-  font-size: 0.9rem;
-  color: #999;
-  background-color: #003366;
-  color: white;
-  padding: 1.5rem 1rem;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
 }
