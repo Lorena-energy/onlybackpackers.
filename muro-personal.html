@@ -5,36 +5,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>OnlyBackpackers - Mi Muro</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <!-- Fuente Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+
+  <!-- Estilos -->
   <link rel="stylesheet" href="main.css" />
   <link rel="stylesheet" href="muro-personal.css" />
+
+  <!-- Iconos -->
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-  <!-- 🌍 CABECERA -->
+  <!-- CABECERA -->
   <header class="main-header">
-    <h1>OnlyBackpackers</h1>
+    <h1 class="logo">OnlyBackpackers</h1>
     <nav>
       <div class="menu-toggle" id="menu-toggle">
         <span class="bar"></span><span class="bar"></span><span class="bar"></span>
       </div>
       <ul class="menu" id="menu">
         <li><a href="index.html">Inicio</a></li>
-        <li><a href="muro.html">Muro Comunidad</a></li>
+        <li><a href="muro.html">Muro</a></li>
         <li><a href="muro-personal.html" class="active">Mi Muro</a></li>
-        <li><a href="configurador.html">Configurador</a></li>
-        <li><a href="traductor-de-voz.html">Traductor</a></li>
-        <li><a href="expenses.html">Gastos</a></li>
         <li><a href="recomendaciones.html">Recomendaciones</a></li>
+        <li><a href="chats.html">Chats</a></li>
+        <li><a href="eventos.html">Eventos</a></li>
         <li><a href="worldtrip.html">Worldtrip</a></li>
         <li><a href="zona-camper.html">Zona Camper</a></li>
+        <li><a href="expenses.html">Gastos</a></li>
         <li><a href="recompensas.html">Recompensas</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- 🖼️ Portada -->
+  <!-- PORTADA -->
   <div class="cover-photo" id="cover-photo">
     <label for="cover-upload" class="upload-label">
       <i class="fas fa-camera"></i> Cambiar portada
@@ -43,9 +48,10 @@
     <img src="https://via.placeholder.com/1500x400" alt="Portada" class="cover-image" id="cover-image" />
   </div>
 
-  <!-- 👤 Perfil de Usuario -->
+  <!-- PERFIL + DETALLES -->
   <section class="profile-section">
     <div class="profile-container">
+      <!-- FOTO PERFIL -->
       <div class="profile-pic-wrapper">
         <img src="https://via.placeholder.com/150" alt="Foto de perfil" class="profile-pic" id="profile-pic" />
         <label for="profile-upload" class="upload-label upload-label-profile">
@@ -53,83 +59,73 @@
         </label>
         <input type="file" id="profile-upload" accept="image/*" hidden />
       </div>
+
+      <!-- INFO USUARIO -->
       <div class="profile-info">
         <h2 id="username">Nombre del Usuario</h2>
         <p>Puntos: <span id="user-points">125</span></p>
         <button id="add-friend" class="cta-button">Agregar amigo/a</button>
         <p><strong>Código de invitación:</strong> <span id="invite-code">ABCD1234</span></p>
-        <button id="copy-invite-link" class="cta-button">Copiar enlace de invitación</button>
+        <button id="copy-invite-link" class="cta-button">Copiar enlace</button>
+      </div>
+
+      <!-- DETALLES DEL USUARIO -->
+      <div class="user-details">
+        <h3>🧳 Detalles de tu perfil</h3>
+        <form id="details-form">
+          <label for="user-about">Sobre mí:</label>
+          <textarea id="user-about" placeholder="Escribe algo sobre ti..."></textarea>
+
+          <label for="user-interests">Intereses:</label>
+          <input type="text" id="user-interests" placeholder="Ej: senderismo, gastronomía..." />
+
+          <label for="user-fav-destinations">Destinos favoritos:</label>
+          <input type="text" id="user-fav-destinations" placeholder="Ej: Bali, México..." />
+
+          <label for="user-country">País:</label>
+          <input type="text" id="user-country" placeholder="Ej: España..." />
+
+          <label for="user-travel-style">Estilo de viaje:</label>
+          <input type="text" id="user-travel-style" placeholder="Ej: Mochilero/a, vanlife..." />
+
+          <button type="submit" class="cta-button">Guardar</button>
+        </form>
       </div>
     </div>
   </section>
 
-  <!-- 📝 Detalles Usuario -->
-  <div class="user-details">
-    <h3>Detalles del Usuario</h3>
-    <form id="details-form">
-      <label for="user-about">Sobre mí:</label>
-      <textarea id="user-about" placeholder="Escribe algo sobre ti..."></textarea>
-
-      <label for="user-interests">Intereses:</label>
-      <input type="text" id="user-interests" placeholder="Ej: senderismo, gastronomía..." />
-
-      <label for="user-fav-destinations">Destinos favoritos:</label>
-      <input type="text" id="user-fav-destinations" placeholder="Ej: Bali, México..." />
-
-      <label for="user-fav-route">Tu ruta preferida:</label>
-      <input type="text" id="user-fav-route" placeholder="Ej: Camino de Santiago..." />
-
-      <label for="user-country">País:</label>
-      <input type="text" id="user-country" placeholder="Ej: España..." />
-
-      <label for="user-languages">Idiomas:</label>
-      <input type="text" id="user-languages" placeholder="Ej: español, inglés..." />
-
-      <label for="user-travel-style">Forma preferida de viajar:</label>
-      <input type="text" id="user-travel-style" placeholder="Ej: mochilero, hotel..." />
-
-      <button type="submit" class="cta-button">Guardar</button>
-    </form>
-  </div>
-
-  <!-- ✍️ Crear publicación -->
+  <!-- FORMULARIO DE PUBLICACIÓN -->
   <section class="create-post">
     <h2>Publica algo nuevo</h2>
     <form id="post-form">
       <textarea id="post-content" placeholder="Escribe algo..." rows="3" required></textarea>
-
-      <div class="upload-row">
-        <label for="post-media" class="upload-label"><i class="fas fa-camera"></i> Subir fotos/videos</label>
-        <input type="file" id="post-media" accept="image/*,video/*" multiple hidden />
-        <button type="button" class="emoji-toggle-post">😀</button>
-        <div class="emoji-panel-post" style="display: none;">
-          <span>😀</span><span>😁</span><span>🤣</span><span>❤️</span><span>🥰</span>
-        </div>
-      </div>
-
+      <label for="post-media" class="upload-label">
+        <i class="fas fa-camera"></i> Subir fotos/videos
+      </label>
+      <input type="file" id="post-media" accept="image/*, video/*" multiple hidden />
       <div class="post-visibility">
         <input type="checkbox" id="post-community" />
         <label for="post-community">Publicar también en la comunidad</label>
       </div>
-
       <button type="submit" class="cta-button">Publicar</button>
     </form>
   </section>
 
-  <!-- 🧱 Muro personal -->
+  <!-- MURO PERSONAL -->
   <main class="muro-personal">
     <section id="user-posts">
       <h2>Mis Publicaciones</h2>
+      <!-- Aquí se generan los posts dinámicamente -->
     </section>
   </main>
 
-  <!-- 🖼️ Modal -->
+  <!-- MODAL IMÁGENES -->
   <div id="image-modal" class="image-modal" style="display: none;">
     <span id="close-modal" class="close-modal">&times;</span>
     <img id="modal-image" class="modal-image" alt="Imagen ampliada" />
   </div>
 
-  <!-- Script principal -->
+  <!-- JS -->
   <script src="muro-personal.js"></script>
 </body>
 </html>
