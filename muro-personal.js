@@ -193,3 +193,131 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.target === modal) modal.style.display = "none";
   });
 });
+
+/************************************************************
+ * 👥 LÓGICA DE AMISTADES (añadida)
+ ************************************************************/
+
+// ⚙️ Configuración inicial de usuarios simulados
+const currentUserId = "user1"; // Suplantamos a Lorena
+let users = JSON.parse(localStorage.getItem("users")) || [
+  {
+    id: "user1",
+    name: "Lorena",
+    friends: ["user2"],
+    friendRequestsSent: [],
+    friendRequestsReceived: ["user3"]
+  },
+  {
+    id: "user2",
+    name: "Unai",
+    friends: ["user1"],
+    friendRequestsSent: ["user1"],
+    friendRequestsReceived: []
+  },
+  {
+    id: "user3",
+    name: "Sasha",
+    friends: [],
+    friendRequestsSent: ["user1"],
+    friendRequestsReceived: []
+  }
+];
+
+function saveUsers() {
+  localStorage.setItem("users", JSON.stringify(users));
+}
+
+// 🧠 Buscar usuario por ID
+function getUser(id) {
+  return users.find(u => u.id === id);
+}
+
+// ✅ Verifica el estado de amistad
+function getFriendStatus(current, other) {
+  if (current.friends.includes(other.id)) return "friends";
+  if (current.friendRequestsSent.includes(other.id)) return "sent";
+  if (current.friendRequestsReceived.includes(other.id)) return "received";
+  return "none";
+}
+
+// 💌 Enviar solicitud
+function sendFriendRequest(otherId) {
+  const current = getUser(currentUserId);
+  const other = getUser(otherId);
+  if (!current || !other) return;
+
+  if (!current.friendRequestsSent.includes(otherId)) {
+    current.friendRequestsSent.push(otherId);
+    other.friendRequestsReceived.push(currentUserId);
+    saveUsers();
+    updateFriendUI(otherId);
+  }
+}
+
+// ✅ Aceptar solicitud
+function acceptFriendRequest(otherId) {
+  const current = getUser(currentUserId);
+  const other = getUser(otherId);
+  if (!current || !other) return;
+
+  current.friends.push(otherId);
+  other.friends.push(currentUserId);
+
+  current.friendRequestsReceived = current.friendRequestsReceived.filter(id => id !== otherId);
+  other.friendRequestsSent = other.friendRequestsSent.filter(id => id !== currentUserId);
+
+  saveUsers();
+  alert("¡Has ganado 10 puntos por aceptar una amistad!");
+  updateFriendUI(otherId);
+}
+
+// ❌ Rechazar solicitud
+function rejectFriendRequest(otherId) {
+  const current = getUser(currentUserId);
+  const other = getUser(otherId);
+  if (!current || !other) return;
+
+  current.friendRequestsReceived = current.friendRequestsReceived.filter(id => id !== otherId);
+  other.friendRequestsSent = other.friendRequestsSent.filter(id => id !== currentUserId);
+
+  saveUsers();
+  updateFriendUI(otherId);
+}
+
+// 🖼️ Actualizar botón de amistad
+function updateFriendUI(otherId) {
+  const status = getFriendStatus(getUser(currentUserId), getUser(otherId));
+  const btn = document.getElementById("add-friend");
+
+  if (!btn) return;
+
+  switch (status) {
+    case "friends":
+      btn.textContent = "✅ Ya sois amigos";
+      btn.disabled = true;
+      break;
+    case "sent":
+      btn.textContent = "Solicitud enviada";
+      btn.disabled = true;
+      break;
+    case "received":
+      btn.outerHTML = `
+        <div id="friend-actions">
+          <button class="cta-button" onclick="acceptFriendRequest('${otherId}')">Aceptar amistad</button>
+          <button class="cta-button" onclick="rejectFriendRequest('${otherId}')">Rechazar</button>
+        </div>
+      `;
+      break;
+    default:
+      btn.textContent = "Agregar amigo/a";
+      btn.disabled = false;
+      btn.onclick = () => sendFriendRequest(otherId);
+  }
+}
+
+// 🔄 Inicializar en muro-personal.html (simulando que visitamos perfil de otro)
+document.addEventListener("DOMContentLoaded", () => {
+  const viewedUserId = "user2"; // Simula que vemos perfil de Unai
+  updateFriendUI(viewedUserId);
+});
