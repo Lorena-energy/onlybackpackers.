@@ -24,6 +24,21 @@ body {
   font-size: 1.8rem;
 }
 
+.branding h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: white;
+  text-align: center;
+}
+
+@media (min-width: 769px) {
+  .branding {
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+}
+
 /* 🍔 Menú hamburguesa */
 .menu-toggle {
   display: none;
