@@ -1,12 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // 📱 MENÚ HAMBURGUESA
   const toggleBtn = document.getElementById("menu-toggle");
   const menu = document.getElementById("menu");
   toggleBtn?.addEventListener("click", () => {
     menu.classList.toggle("active");
   });
 
-  // 🌄 CAMBIO DE PORTADA
   const coverUpload = document.getElementById("cover-upload");
   const coverImage = document.getElementById("cover-image");
   coverUpload?.addEventListener("change", (e) => {
@@ -18,7 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // 👤 CAMBIO DE FOTO DE PERFIL
   const profileUpload = document.getElementById("profile-upload");
   const profilePic = document.getElementById("profile-pic");
   profileUpload?.addEventListener("change", (e) => {
@@ -35,7 +32,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // 📝 CREAR PUBLICACIONES
   const postForm = document.getElementById("post-form");
   const userPosts = document.getElementById("user-posts");
   const userPoints = document.getElementById("user-points");
@@ -44,13 +40,12 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
     const content = document.getElementById("post-content").value.trim();
     const mediaFiles = document.getElementById("post-media").files;
-    const alsoCommunity = document.getElementById("post-community").checked;
+    const alsoCommunity = document.getElementById("post-community")?.checked;
 
     if (!content && mediaFiles.length === 0) return;
 
     const post = document.createElement("div");
     post.classList.add("post");
-
     const thumbnailSrc = profilePic?.src || "https://via.placeholder.com/150";
 
     let mediaContent = "";
@@ -92,12 +87,9 @@ document.addEventListener("DOMContentLoaded", () => {
     let points = parseInt(userPoints.textContent) || 0;
     points += 5;
     userPoints.textContent = points;
+    alert("¡Has ganado 5 puntos por tu publicación!");
 
-    postForm.reset();
-  });
-
-  // ❤️ Me gusta y comentarios + emojis
-  document.addEventListener("click", (e) => {
+      document.addEventListener("click", (e) => {
     if (e.target.classList.contains("like-button")) {
       const span = e.target.querySelector("span");
       span.textContent = parseInt(span.textContent) + 1;
@@ -120,7 +112,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // 😀 Emojis en publicación
   const emojiTogglePost = document.querySelector(".emoji-toggle-post");
   const emojiPanelPost = document.querySelector(".emoji-panel-post");
   emojiTogglePost?.addEventListener("click", () => {
@@ -132,7 +123,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // 📎 Detalles del usuario
   const inviteCode = document.getElementById("invite-code");
   const copyInviteLink = document.getElementById("copy-invite-link");
   copyInviteLink?.addEventListener("click", () => {
@@ -166,19 +156,16 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   document.querySelector(".user-details")?.appendChild(resetBtn);
 
-  // 👤 Toggle detalles usuario
   document.querySelector(".user-details-toggle")?.addEventListener("click", () => {
     document.querySelector(".user-details")?.classList.toggle("open");
   });
 
-  // Mostrar nombre si está guardado
   const savedName = localStorage.getItem("username");
   if (savedName) {
     const userDetailsBtnText = document.getElementById("user-details-btn-text");
     if (userDetailsBtnText) userDetailsBtnText.textContent = savedName;
   }
 
-  // Ampliar fotos (perfil, portada, post)
   const modal = document.getElementById("image-modal");
   const modalImg = document.getElementById("modal-image");
   const closeModal = document.getElementById("close-modal");
@@ -195,11 +182,11 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /************************************************************
- * 👥 LÓGICA DE AMISTADES (añadida)
+ * 👥 LÓGICA DE AMISTADES
  ************************************************************/
 
-// ⚙️ Configuración inicial de usuarios simulados
-const currentUserId = "user1"; // Suplantamos a Lorena
+const currentUserId = "user1"; // Simula a Lorena como usuaria actual
+
 let users = JSON.parse(localStorage.getItem("users")) || [
   {
     id: "user1",
@@ -228,12 +215,10 @@ function saveUsers() {
   localStorage.setItem("users", JSON.stringify(users));
 }
 
-// 🧠 Buscar usuario por ID
 function getUser(id) {
-  return users.find(u => u.id === id);
+  return users.find((u) => u.id === id);
 }
 
-// ✅ Verifica el estado de amistad
 function getFriendStatus(current, other) {
   if (current.friends.includes(other.id)) return "friends";
   if (current.friendRequestsSent.includes(other.id)) return "sent";
@@ -241,7 +226,6 @@ function getFriendStatus(current, other) {
   return "none";
 }
 
-// 💌 Enviar solicitud
 function sendFriendRequest(otherId) {
   const current = getUser(currentUserId);
   const other = getUser(otherId);
@@ -255,7 +239,6 @@ function sendFriendRequest(otherId) {
   }
 }
 
-// ✅ Aceptar solicitud
 function acceptFriendRequest(otherId) {
   const current = getUser(currentUserId);
   const other = getUser(otherId);
@@ -272,7 +255,6 @@ function acceptFriendRequest(otherId) {
   updateFriendUI(otherId);
 }
 
-// ❌ Rechazar solicitud
 function rejectFriendRequest(otherId) {
   const current = getUser(currentUserId);
   const other = getUser(otherId);
@@ -285,7 +267,6 @@ function rejectFriendRequest(otherId) {
   updateFriendUI(otherId);
 }
 
-// 🖼️ Actualizar botón de amistad
 function updateFriendUI(otherId) {
   const status = getFriendStatus(getUser(currentUserId), getUser(otherId));
   const btn = document.getElementById("add-friend");
@@ -316,8 +297,11 @@ function updateFriendUI(otherId) {
   }
 }
 
-// 🔄 Inicializar en muro-personal.html (simulando que visitamos perfil de otro)
+// Simular que estamos viendo el perfil de otro usuario (Unai, por ejemplo)
 document.addEventListener("DOMContentLoaded", () => {
-  const viewedUserId = "user2"; // Simula que vemos perfil de Unai
+  const viewedUserId = "user2"; // 👈 Cambia esto dinámicamente en el futuro si visitas perfiles reales
   updateFriendUI(viewedUserId);
 });
+
+    postForm.reset();
+  });
