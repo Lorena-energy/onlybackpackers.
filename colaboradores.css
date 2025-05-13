@@ -240,3 +240,16 @@ footer {
   }
 }
 
+/* ► mejora visibilidad del botón flotante */
+.floating-button{
+  z-index:1200;
+  background:#ff914d;
+  border-radius:50%;
+  width:56px;height:56px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem;line-height:1;
+}
+/* ► cabecera “OnlyBackpackers” alineada al centro */
+.main-header .brand{
+  font-weight:700;font-size:1.1rem;margin-right:auto;color:#fff
+}
