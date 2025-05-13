@@ -1,300 +1,89 @@
-/* RESET Y BASE */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+document.addEventListener("DOMContentLoaded", () => {
 
-body {
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(to bottom right, #004f8c, #00c8e0);
-  color: #fff;
-  line-height: 1.5;
-  min-height: 100vh;
-  padding-bottom: 100px;
-}
+  /* ╔═ MENÚ HAMBURGUESA ════════════════════════ */
+  const menuToggle = document.getElementById("menu-toggle");
+  const menu       = document.getElementById("menu");
+  menuToggle?.addEventListener("click", () => menu.classList.toggle("active"));
 
-/* HEADER */
-.main-header {
-  background-color: #002f5c;
-  padding: 10px 20px;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
+  /* ╔═ COLAPSAR / EXPANDIR CONTINENTES ═════════ */
+  document.querySelectorAll(".continent-header").forEach(header=>{
+    header.addEventListener("click",()=>{
+      const ul = header.nextElementSibling;
+      ul?.classList.toggle("hidden");
+    });
+  });
 
-.menu {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
-  list-style: none;
-}
+  /* ╔═ REFERENCIAS DE CHAT ═════════════════════ */
+  const chatPanel   = document.querySelector(".chat-panel");
+  const chatTitle   = document.querySelector(".chat-title");
+  const chatMsgs    = document.querySelector(".messages");
+  const chatForm    = document.getElementById("chat-form");
+  const chatInput   = document.getElementById("chat-input");
 
-.menu a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 500;
-  padding: 8px 12px;
-  border-radius: 5px;
-  transition: background 0.3s;
-}
+  /* ╔═ ABRIR CHAT DE UNA CIUDAD ═════════════════ */
+  document.querySelectorAll(".city-btn").forEach(btn=>{
+    btn.addEventListener("click",()=>{
+      chatTitle.textContent = "Chat - " + btn.dataset.city;
+      chatMsgs.innerHTML = "";          // ← aquí se cargarían mensajes remotos 
+      chatPanel.style.display = "flex"; // muestra el panel derecho
+      chatInput.focus();
+    });
+  });
 
-.menu a.active,
-.menu a:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-}
+  /* ╔═ ENVIAR MENSAJE (local) ══════════════════ */
+  chatForm?.addEventListener("submit",e=>{
+    e.preventDefault();
+    const txt = chatInput.value.trim();
+    if(!txt) return;
+    const div = document.createElement("div");
+    div.className = "message";
+    div.textContent = txt;
+    chatMsgs.appendChild(div);
+    chatInput.value = "";
+    chatMsgs.scrollTop = chatMsgs.scrollHeight;  // auto-scroll
+  });
 
-.menu-toggle {
-  display: none;
-}
+  /* ╔═ BOTÓN FLOTANTE “AÑADE CIUDAD” ═══════════ */
+  const btnAdd     = document.getElementById("suggest-city-btn");
+  const formWrap   = document.getElementById("suggest-form-container");
+  const form       = document.getElementById("suggest-form");
+  const confirmBox = document.getElementById("confirmation-message");
 
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-  }
+  btnAdd?.addEventListener("click",()=>formWrap.classList.toggle("hidden"));
+  document.getElementById("close-suggest-form")
+           ?.addEventListener("click",()=>formWrap.classList.add("hidden"));
+  document.getElementById("close-confirmation")
+           ?.addEventListener("click",()=>confirmBox.classList.add("hidden"));
 
-  .menu-toggle .bar {
-    width: 25px;
-    height: 3px;
-    background: white;
-    margin: 4px 0;
-  }
+  /* ╔═ AÑADIR NUEVA CIUDAD DINÁMICAMENTE ═══════ */
+  form?.addEventListener("submit",e=>{
+    e.preventDefault();
+    const cont = document.getElementById("continent-select").value;
+    const city = document.getElementById("city-name").value.trim();
+    const country = document.getElementById("country-name").value.trim();
+    const reason  = document.getElementById("reason").value.trim();
+    if(!cont||!city||!country||!reason){alert("Rellena todos los campos");return;}
 
-  .menu {
-    flex-direction: column;
-    display: none;
-    background-color: #002f5c;
-    width: 100%;
-  }
+    const ul = document.querySelector(`.city-list[data-continent='${cont}']`);
+    if(!ul){alert("Continente no encontrado");return;}
 
-  .menu.show {
-    display: flex;
-  }
-}
+    const li = document.createElement("li");
+    const btn = document.createElement("button");
+    btn.className = "city-btn";
+    btn.dataset.city = `${city} (${country})`;
+    btn.textContent  = `${city} (${country})`;
+    btn.addEventListener("click",()=>{
+      chatTitle.textContent = "Chat - " + btn.dataset.city;
+      chatMsgs.innerHTML="";
+      chatPanel.style.display="flex";
+      chatInput.focus();
+    });
+    li.appendChild(btn);
+    ul.appendChild(li);
 
-/* TÍTULOS */
-h1, p {
-  text-align: center;
-  margin: 20px auto;
-  max-width: 800px;
-}
+    form.reset();
+    formWrap.classList.add("hidden");
+    confirmBox.classList.remove("hidden");
+  });
 
-h1 {
-  font-size: 2rem;
-  color: #fff;
-}
-
-p {
-  color: #f0f0f0;
-}
-
-/* CONTINENTES Y CIUDADES */
-.continent-section {
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-  margin: 20px auto;
-  padding: 10px 20px;
-  max-width: 900px;
-}
-
-.continent-section h2 {
-  background-color: #ff6600;
-  color: white;
-  padding: 10px;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-bottom: 10px;
-  font-size: 1.2rem;
-}
-
-.city-list {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.city-list.hidden {
-  display: none;
-}
-
-.city-list li {
-  margin: 0;
-}
-
-.city-list button.city {
-  background: #fff;
-  color: #004f8c;
-  border: none;
-  border-radius: 5px;
-  padding: 6px 12px;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.city-list button.city:hover {
-  background: #e0f3ff;
-}
-
-/* CHAT WINDOW */
-.chat-window {
-  position: fixed;
-  bottom: 0;
-  right: 10px;
-  width: 400px;
-  max-height: 70%;
-  background: white;
-  color: #333;
-  border-radius: 10px 10px 0 0;
-  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.3);
-  display: flex;
-  flex-direction: column;
-  z-index: 999;
-}
-
-#chat-destination-title {
-  background: #004f8c;
-  color: white;
-  margin: 0;
-  padding: 12px;
-  border-radius: 10px 10px 0 0;
-  font-size: 1rem;
-}
-
-.messages {
-  flex: 1;
-  overflow-y: auto;
-  padding: 10px;
-}
-
-.message {
-  background: #f0f0f0;
-  color: #333;
-  padding: 8px;
-  margin-bottom: 8px;
-  border-radius: 5px;
-  font-size: 0.9rem;
-}
-
-#chat-form {
-  display: flex;
-  gap: 10px;
-  padding: 10px;
-  border-top: 1px solid #ddd;
-  background: #fafafa;
-}
-
-#chat-input {
-  flex: 1;
-  padding: 6px 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-#chat-form button {
-  background: #004f8c;
-  color: white;
-  border: none;
-  padding: 6px 12px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-/* BOTÓN FLOTANTE */
-.floating-button {
-  position: fixed;
-  bottom: 80px;
-  right: 20px;
-  background: #ff6600;
-  color: white;
-  border: none;
-  border-radius: 50px;
-  padding: 12px 18px;
-  font-size: 1rem;
-  cursor: pointer;
-  z-index: 1000;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: background 0.3s;
-}
-
-.floating-button:hover {
-  background: #cc5200;
-}
-
-/* FORMULARIO DE SUGERENCIA */
-.suggest-city-form {
-  position: fixed;
-  bottom: 140px;
-  right: 20px;
-  width: 300px;
-  background: white;
-  color: #333;
-  border-radius: 10px;
-  padding: 20px;
-  z-index: 1001;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-}
-
-.suggest-city-form label {
-  display: block;
-  margin: 10px 0 5px;
-}
-
-.suggest-city-form input,
-.suggest-city-form select,
-.suggest-city-form textarea {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 12px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-}
-
-.suggest-city-form button {
-  background: #004f8c;
-  color: white;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-right: 5px;
-}
-
-/* CONFIRMACIÓN */
-.confirmation-message {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: white;
-  color: #004f8c;
-  padding: 20px;
-  border-radius: 10px;
-  z-index: 2000;
-  text-align: center;
-  width: 280px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.3);
-}
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-  .chat-window {
-    width: 90%;
-    right: 5%;
-  }
-
-  .suggest-city-form {
-    width: 90%;
-    right: 5%;
-  }
-
-  .floating-button {
-    bottom: 60px;
-    right: 10px;
-  }
-}
-
+});
