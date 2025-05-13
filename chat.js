@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // MENÚ HAMBURGUESA
+  // ===== MENÚ HAMBURGUESA =====
   const menuToggle = document.getElementById("menu-toggle");
   const menu = document.getElementById("menu");
   if (menuToggle) {
@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Toggle de lista de ciudades por continente
+  // ===== MOSTRAR/OCULTAR LISTA DE CIUDADES =====
   const continentHeaders = document.querySelectorAll(".continent");
   continentHeaders.forEach(header => {
     header.addEventListener("click", () => {
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Funcionalidad del Chat
+  // ===== MOSTRAR CHAT CUANDO SE CLICA UNA CIUDAD =====
   const cityButtons = document.querySelectorAll(".city");
   const chatWindow = document.getElementById("chat-window");
   const chatTitle = document.getElementById("chat-destination-title");
@@ -30,13 +30,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   cityButtons.forEach(button => {
     button.addEventListener("click", () => {
+      const cityName = button.dataset.city;
       chatWindow.classList.remove("hidden");
-      chatTitle.textContent = `Chat - ${button.dataset.city}`;
-      chatMessages.innerHTML = "";
+      chatTitle.textContent = `Chat - ${cityName}`;
+      chatMessages.innerHTML = ""; // Podríamos cargar historial aquí si lo tuvieras.
     });
   });
 
-  // Enviar mensaje en el chat
+  // ===== ENVIAR MENSAJE EN CHAT =====
   chatForm.addEventListener("submit", (e) => {
     e.preventDefault();
     const message = chatInput.value.trim();
@@ -50,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Funcionalidad para sugerir una nueva ciudad
+  // ===== BOTÓN "AÑADIR CIUDAD" =====
   const suggestBtn = document.getElementById("suggest-city-btn");
   const suggestFormContainer = document.getElementById("suggest-form-container");
   const suggestForm = document.getElementById("suggest-form");
@@ -58,17 +59,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeConfirmation = document.getElementById("close-confirmation");
   const closeSuggestForm = document.getElementById("close-suggest-form");
 
-  // Mostrar/ocultar formulario de sugerencia
+  // Mostrar formulario
   suggestBtn.addEventListener("click", () => {
     suggestFormContainer.classList.toggle("hidden");
   });
+
+  // Ocultar formulario
   if (closeSuggestForm) {
     closeSuggestForm.addEventListener("click", () => {
       suggestFormContainer.classList.add("hidden");
     });
   }
 
-  // Al enviar el formulario de sugerencia de ciudad
+  // ===== SUGERIR NUEVA CIUDAD =====
   suggestForm.addEventListener("submit", (e) => {
     e.preventDefault();
     const continent = document.getElementById("continent-select").value;
@@ -81,39 +84,38 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // Buscar la lista de ciudades del continente seleccionado
     const cityList = document.querySelector(`.city-list[data-continent="${continent}"]`);
     if (!cityList) {
       alert("No se encontró la lista para ese continente.");
       return;
     }
 
-    // Crear el nuevo botón de ciudad
+    // Crear nuevo botón de ciudad
     const li = document.createElement("li");
     const newCityBtn = document.createElement("button");
-    newCityBtn.classList.add("city");
-    newCityBtn.dataset.city = `${cityName} (${countryName})`;
-    newCityBtn.textContent = `${cityName} (${countryName})`;
+    const fullCityName = `${cityName} (${countryName})`;
 
-    // Asignar funcionalidad al nuevo botón
+    newCityBtn.classList.add("city");
+    newCityBtn.dataset.city = fullCityName;
+    newCityBtn.textContent = fullCityName;
+
+    // Evento para abrir chat
     newCityBtn.addEventListener("click", () => {
       chatWindow.classList.remove("hidden");
-      chatTitle.textContent = `Chat - ${newCityBtn.dataset.city}`;
+      chatTitle.textContent = `Chat - ${fullCityName}`;
       chatMessages.innerHTML = "";
     });
 
     li.appendChild(newCityBtn);
     cityList.appendChild(li);
 
-    // Ocultar el formulario y reiniciar sus campos
-    suggestFormContainer.classList.add("hidden");
+    // Reset y mostrar confirmación
     suggestForm.reset();
-
-    // Mostrar mensaje de confirmación
+    suggestFormContainer.classList.add("hidden");
     confirmationMessage.classList.remove("hidden");
   });
 
-  // Cerrar mensaje de confirmación
+  // ===== CERRAR CONFIRMACIÓN =====
   closeConfirmation.addEventListener("click", () => {
     confirmationMessage.classList.add("hidden");
   });
