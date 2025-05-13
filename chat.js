@@ -6,31 +6,31 @@ document.addEventListener("DOMContentLoaded", () => {
   menuToggle?.addEventListener("click", () => menu.classList.toggle("active"));
 
   /* ╔═ COLAPSAR / EXPANDIR CONTINENTES ═════════ */
-  document.querySelectorAll(".continent-header").forEach(header=>{
+  document.querySelectorAll(".continent").forEach(header=>{
     header.addEventListener("click",()=>{
-      const ul = header.nextElementSibling;
+      const ul = header.nextElementSibling;          // la <ul> justo debajo
       ul?.classList.toggle("hidden");
     });
   });
 
   /* ╔═ REFERENCIAS DE CHAT ═════════════════════ */
-  const chatPanel   = document.querySelector(".chat-panel");
-  const chatTitle   = document.querySelector(".chat-title");
-  const chatMsgs    = document.querySelector(".messages");
-  const chatForm    = document.getElementById("chat-form");
-  const chatInput   = document.getElementById("chat-input");
+  const chatWindow = document.getElementById("chat-window"); // ← sección real
+  const chatTitle  = document.getElementById("chat-destination-title");
+  const chatMsgs   = document.getElementById("chat-messages");
+  const chatForm   = document.getElementById("chat-form");
+  const chatInput  = document.getElementById("chat-input");
 
   /* ╔═ ABRIR CHAT DE UNA CIUDAD ═════════════════ */
-  document.querySelectorAll(".city-btn").forEach(btn=>{
+  document.querySelectorAll(".city").forEach(btn=>{
     btn.addEventListener("click",()=>{
       chatTitle.textContent = "Chat - " + btn.dataset.city;
-      chatMsgs.innerHTML = "";          // ← aquí se cargarían mensajes remotos 
-      chatPanel.style.display = "flex"; // muestra el panel derecho
+      chatMsgs.innerHTML = "";                 // aquí irían mensajes remotos
+      chatWindow.classList.remove("hidden");   // mostrar panel
       chatInput.focus();
     });
   });
 
-  /* ╔═ ENVIAR MENSAJE (local) ══════════════════ */
+  /* ╔═ ENVIAR MENSAJE LOCAL ════════════════════ */
   chatForm?.addEventListener("submit",e=>{
     e.preventDefault();
     const txt = chatInput.value.trim();
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
     div.textContent = txt;
     chatMsgs.appendChild(div);
     chatInput.value = "";
-    chatMsgs.scrollTop = chatMsgs.scrollHeight;  // auto-scroll
+    chatMsgs.scrollTop = chatMsgs.scrollHeight;
   });
 
   /* ╔═ BOTÓN FLOTANTE “AÑADE CIUDAD” ═══════════ */
@@ -55,29 +55,34 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("close-confirmation")
            ?.addEventListener("click",()=>confirmBox.classList.add("hidden"));
 
-  /* ╔═ AÑADIR NUEVA CIUDAD DINÁMICAMENTE ═══════ */
+  /* ╔═ AÑADIR CIUDAD DINÁMICAMENTE ═════════════ */
   form?.addEventListener("submit",e=>{
     e.preventDefault();
-    const cont = document.getElementById("continent-select").value;
-    const city = document.getElementById("city-name").value.trim();
+
+    const cont    = document.getElementById("continent-select").value;
+    const city    = document.getElementById("city-name").value.trim();
     const country = document.getElementById("country-name").value.trim();
     const reason  = document.getElementById("reason").value.trim();
-    if(!cont||!city||!country||!reason){alert("Rellena todos los campos");return;}
+
+    if(!cont||!city||!country||!reason){
+      alert("Rellena todos los campos obligatorios"); return;
+    }
 
     const ul = document.querySelector(`.city-list[data-continent='${cont}']`);
-    if(!ul){alert("Continente no encontrado");return;}
+    if(!ul){alert("Continente no encontrado"); return;}
 
-    const li = document.createElement("li");
+    const li  = document.createElement("li");
     const btn = document.createElement("button");
-    btn.className = "city-btn";
-    btn.dataset.city = `${city} (${country})`;
-    btn.textContent  = `${city} (${country})`;
+    btn.className   = "city";
+    btn.dataset.city= `${city} (${country})`;
+    btn.textContent = `${city} (${country})`;
     btn.addEventListener("click",()=>{
       chatTitle.textContent = "Chat - " + btn.dataset.city;
       chatMsgs.innerHTML="";
-      chatPanel.style.display="flex";
+      chatWindow.classList.remove("hidden");
       chatInput.focus();
     });
+
     li.appendChild(btn);
     ul.appendChild(li);
 
@@ -85,5 +90,4 @@ document.addEventListener("DOMContentLoaded", () => {
     formWrap.classList.add("hidden");
     confirmBox.classList.remove("hidden");
   });
-
 });
