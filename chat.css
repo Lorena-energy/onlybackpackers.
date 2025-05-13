@@ -87,3 +87,58 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+
+/* ———————————————————
+   LAYOUT 2-COLUMNAS
+————————————————————— */
+.chat-layout{
+  display:flex;        /* side-by-side */
+  max-width:1200px;
+  margin:0 auto;
+  gap:1.5rem;
+  padding:1rem;
+}
+
+/* columna IZQUIERDA = continentes */
+.chat-destinations{
+  flex:0 0 40%;        /* 40 % ancho – ajusta si quieres */
+}
+
+/* columna DERECHA = chat */
+.chat-window{
+  flex:1 1 60%;
+  position:relative;   /* ya no fixed */
+  max-height:80vh;
+}
+
+/* el chat sólo se ve en desktop; en móvil vuelve a fixed */
+@media(max-width:768px){
+  .chat-layout{flex-direction:column;}
+  .chat-window{position:fixed;right:5%;bottom:0;width:90%;}
+}
+
+/* ———————————————————
+   CABECERA
+————————————————————— */
+.brand{
+  font-weight:700;
+  font-size:1.1rem;
+  margin-right:auto;
+  color:#fff;
+}
+
+/* ———————————————————
+   BOTÓN FLOTANTE ARRIBA-DCHA
+————————————————————— */
+.floating-button{
+  top:20px;            /* antes bottom… */
+  bottom:auto;
+  right:20px;
+  width:52px;height:52px;
+  border-radius:50%;
+  padding:0;
+  font-size:1.4rem;
+  display:flex;align-items:center;justify-content:center;
+  background:#ff914d;
+  z-index:1200;
+}
