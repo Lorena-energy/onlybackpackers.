@@ -7,7 +7,7 @@
   <!-- Fuente Poppins -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <!-- Enlazamos el CSS -->
-  <link rel="stylesheet" href="main.css" />
+  <link rel="stylesheet" href="main.css">
   <link rel="stylesheet" href="chat.css">
 </head>
 <body>
@@ -33,15 +33,13 @@
     </nav>
   </header>
 
-  <h1>Chats por Destino</h1>
+  <h1>OnlyBackpackers - Chats por Destino</h1>
   <p>Conéctate con viajeros en los destinos más populares de cada continente.</p>
 
-  <!-- Secciones de Continentes (solo 5) -->
   <main class="chat-destinations">
     <!-- ===== ASIA ===== -->
     <section class="continent-section">
       <h2 class="continent" data-continent="asia">Asia</h2>
-      <!-- La clase "hidden" hace que la lista esté colapsada por defecto -->
       <ul class="city-list hidden" id="asia" data-continent="asia">
         <li><button class="city" data-city="Tokio (Japón)">Tokio (Japón)</button></li>
         <li><button class="city" data-city="Kioto (Japón)">Kioto (Japón)</button></li>
@@ -153,7 +151,6 @@
         <li><button class="city" data-city="Colmar (Francia)">Colmar (Francia)</button></li>
       </ul>
     </section>
-
     <!-- ===== ÁFRICA ===== -->
     <section class="continent-section">
       <h2 class="continent" data-continent="africa">África</h2>
@@ -293,7 +290,7 @@
         <li><button class="city" data-city="Suva (Fiyi)">Suva (Fiyi)</button></li>
         <li><button class="city" data-city="Rarotonga (Islas Cook)">Rarotonga (Islas Cook)</button></li>
         <li><button class="city" data-city="Aitutaki (Islas Cook)">Aitutaki (Islas Cook)</button></li>
-        <li><button class="city" data-city="Papeete (Tahití)">Papeete (Tahití, Polinesia Francesa)</button></li>
+        <li><button class="city" data-city="Papeete (Tahití, Polinesia Francesa)">Papeete (Tahití, Polinesia Francesa)</button></li>
         <li><button class="city" data-city="Bora Bora (Polinesia Francesa)">Bora Bora (Polinesia Francesa)</button></li>
         <li><button class="city" data-city="Moorea (Polinesia Francesa)">Moorea (Polinesia Francesa)</button></li>
         <li><button class="city" data-city="Rangiroa (Polinesia Francesa)">Rangiroa (Polinesia Francesa)</button></li>
@@ -309,7 +306,7 @@
         <li><button class="city" data-city="Funafuti (Tuvalu)">Funafuti (Tuvalu)</button></li>
         <li><button class="city" data-city="Tarawa (Kiribati)">Tarawa (Kiribati)</button></li>
         <li><button class="city" data-city="Majuro (Islas Marshall)">Majuro (Islas Marshall)</button></li>
-        <li><button class="city" data-city="Palikir (Micronesia)">Palikir (Estados Federados de Micronesia)</button></li>
+        <li><button class="city" data-city="Palikir (Estados Federados de Micronesia)">Palikir (Estados Federados de Micronesia)</button></li>
         <li><button class="city" data-city="Koror (Palaos)">Koror (Palaos)</button></li>
         <li><button class="city" data-city="Islas Rock (Palaos)">Islas Rock (Palaos)</button></li>
         <li><button class="city" data-city="Yaren (Nauru)">Yaren (Nauru)</button></li>
@@ -325,11 +322,11 @@
     </section>
   </main>
 
-  <!-- Ventana de Chat (más grande) -->
+    <!-- Ventana de Chat -->
   <section class="chat-window hidden" id="chat-window">
     <h2 id="chat-destination-title">Chat - [Ciudad]</h2>
     <div class="messages" id="chat-messages">
-      <!-- Los mensajes se cargarán aquí dinámicamente -->
+      <!-- Aquí se cargarán los mensajes -->
     </div>
     <form id="chat-form">
       <input type="text" id="chat-input" placeholder="Escribe un mensaje..." required>
@@ -377,9 +374,7 @@
     <button id="close-confirmation">Cerrar</button>
   </div>
 
-  <!-- Enlazamos el JS -->
+  <!-- Script principal -->
   <script src="chat.js"></script>
 </body>
 </html>
-
-    
