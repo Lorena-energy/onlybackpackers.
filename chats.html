@@ -152,6 +152,7 @@
         <li><button class="city" data-city="Colmar (Francia)">Colmar (Francia)</button></li>
       </ul>
     </section>
+    
     <!-- ===== ÁFRICA ===== -->
     <section class="continent-section">
       <h2 class="continent" data-continent="africa">África</h2>
@@ -324,18 +325,30 @@
   </main>
 
     <!-- Ventana de Chat -->
-  <section class="chat-window hidden" id="chat-window">
-    <h2 id="chat-destination-title">Chat - [Ciudad]</h2>
-    <div class="messages" id="chat-messages">
-      <!-- Aquí se cargarán los mensajes -->
-    </div>
-    <form id="chat-form">
-      <input type="text" id="chat-input" placeholder="Escribe un mensaje..." required>
+  <!-- ▸ NUEVO WRAPPER  -->
+<main class="chat-wrapper">
+
+  <!-- ── Columna izquierda ── -->
+  <aside class="sidebar">
+    <!-- ⬇️ pega aquí, SIN CAMBIAR, TODAS tus <section class="continent-section"> -->
+    … (todas las secciones de Asia, Europa, África, América, Oceanía) …
+  </aside>
+
+  <!-- ── Columna derecha / panel de chat ── -->
+  <section class="chat-panel" id="chat-panel">
+    <h2 class="chat-title">Selecciona una ciudad</h2>
+
+    <div class="messages" id="chat-messages"></div>
+
+    <!-- el form aparecerá sólo cuando se abra una ciudad -->
+    <form id="chat-form" class="hidden">
+      <input type="text" id="chat-input" placeholder="Escribe un mensaje…" required>
       <button type="submit">Enviar</button>
     </form>
   </section>
+</main>
 
-  <!-- Botón flotante para Sugerir Ciudad -->
+ <!-- Botón flotante para Sugerir Ciudad -->
   <button class="floating-button" id="suggest-city-btn" title="Sugerir Ciudad">Añade ciudad</button>
 
   <!-- Formulario flotante para sugerir nueva ciudad -->
