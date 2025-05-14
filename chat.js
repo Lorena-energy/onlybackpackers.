@@ -1,83 +1,89 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* ═ MENÚ ═ */
-  document.getElementById("menu-toggle")
-          ?.addEventListener("click",
-            () => document.getElementById("menu").classList.toggle("active"));
+  /* ▄ MENU HAMBURGUESA ▄ */
+  const menuToggle = document.getElementById("menu-toggle");
+  const menu       = document.getElementById("menu");
+  menuToggle?.addEventListener("click", () => menu.classList.toggle("active"));
 
-  /* ═ Colapsar/expandir continentes ═ */
-  document.querySelectorAll(".continent-header").forEach(h=>{
-    h.addEventListener("click",()=>h.nextElementSibling.classList.toggle("hidden"));
-  });
-
-  /* ═ Chat refs ═ */
-  const panel   = document.getElementById("chat-panel");
-  const title   = panel.querySelector(".chat-title");
-  const msgs    = document.getElementById("chat-messages");
-  const form    = document.getElementById("chat-form");
-  const input   = document.getElementById("chat-input");
-
-  /* ═ Abrir chat ciudad ═ */
-  document.querySelectorAll(".city").forEach(btn=>{
-    btn.classList.add("city-btn");               // por si no la tenías
-    btn.addEventListener("click",()=>{
-      title.textContent = "Chat – " + btn.dataset.city;
-      msgs.innerHTML = "";                       // aquí iría Firebase
-      form.classList.remove("hidden");           // muestra caja de texto
-      input.focus();
+  /* ▄ COLAPSAR / EXPANDIR CONTINENTES ▄ */
+  document.querySelectorAll(".continent").forEach(header=>{
+    header.addEventListener("click",()=>{
+      const ul = header.nextElementSibling;
+      ul?.classList.toggle("hidden");
     });
   });
 
-  /* ═ Enviar mensaje local ═ */
-  form.addEventListener("submit",e=>{
-    e.preventDefault();
-    const txt = input.value.trim(); if(!txt) return;
-    msgs.insertAdjacentHTML("beforeend",
-      `<div class="message">${txt}</div>`);
-    input.value="";
-    msgs.scrollTop = msgs.scrollHeight;
+  /* ▄ REFERENCIAS DE CHAT ▄ */
+  const chatPanel = document.querySelector(".chat-panel");
+  const chatTitle = document.querySelector(".chat-title");
+  const chatMsgs  = document.querySelector(".messages");
+  const chatForm  = document.getElementById("chat-form");
+  const chatInput = document.getElementById("chat-input");
+
+  /* ▄ ABRIR CHAT ▄ */
+  document.querySelectorAll(".city-btn").forEach(btn=>{
+    btn.addEventListener("click",()=>{
+      chatTitle.textContent = "Chat - " + btn.dataset.city;
+      chatMsgs.innerHTML = "";          // ← aquí podrías cargar mensajes desde tu base de datos
+      chatPanel.style.display = "flex";
+      chatInput.focus();
+    });
   });
 
-  /* ═ Botón flotante / formulario ═ */
-  const addBtn   = document.getElementById("suggest-city-btn");
-  const formBox  = document.getElementById("suggest-form-container");
-  const confBox  = document.getElementById("confirmation-message");
-  const sugForm  = document.getElementById("suggest-form");
-
-  addBtn.addEventListener("click",()=>formBox.classList.toggle("hidden"));
-  document.getElementById("close-suggest-form")
-          .addEventListener("click",()=>formBox.classList.add("hidden"));
-  document.getElementById("close-confirmation")
-          .addEventListener("click",()=>confBox.classList.add("hidden"));
-
-  /* Añadir nueva ciudad */
-  sugForm.addEventListener("submit",e=>{
+  /* ▄ ENVIAR MENSAJE LOCAL ▄ */
+  chatForm?.addEventListener("submit",e=>{
     e.preventDefault();
-    const cont   = document.getElementById("continent-select").value;
-    const city   = document.getElementById("city-name").value.trim();
-    const country= document.getElementById("country-name").value.trim();
-    const reason = document.getElementById("reason").value.trim();
-    if(!cont||!city||!country||!reason){alert("Completa los campos");return;}
+    const txt = chatInput.value.trim();
+    if(!txt) return;
+    const div = document.createElement("div");
+    div.className = "message";
+    div.textContent = txt;
+    chatMsgs.appendChild(div);
+    chatInput.value = "";
+    chatMsgs.scrollTop = chatMsgs.scrollHeight;
+  });
+
+  /* ▄ BOTÓN FLOTANTE  “AÑADE CIUDAD” ▄ */
+  const btnAdd     = document.getElementById("suggest-city-btn");
+  const formWrap   = document.getElementById("suggest-form-container");
+  const form       = document.getElementById("suggest-form");
+  const confirmBox = document.getElementById("confirmation-message");
+
+  btnAdd?.addEventListener("click",()=>formWrap.classList.toggle("hidden"));
+  document.getElementById("close-suggest-form")
+           ?.addEventListener("click",()=>formWrap.classList.add("hidden"));
+  document.getElementById("close-confirmation")
+           ?.addEventListener("click",()=>confirmBox.classList.add("hidden"));
+
+  /* ▄ AÑADIR NUEVA CIUDAD ▄ */
+  form?.addEventListener("submit",e=>{
+    e.preventDefault();
+    const cont    = document.getElementById("continent-select").value;
+    const city    = document.getElementById("city-name").value.trim();
+    const country = document.getElementById("country-name").value.trim();
+    const reason  = document.getElementById("reason").value.trim();
+    if(!cont||!city||!country||!reason){alert("Rellena todos los campos");return;}
 
     const ul = document.querySelector(`.city-list[data-continent='${cont}']`);
     if(!ul){alert("Continente no encontrado");return;}
 
-    const li = document.createElement("li");
-    li.innerHTML = `<button class="city city-btn"
-                     data-city="${city} (${country})">
-                     ${city} (${country})</button>`;
+    const li  = document.createElement("li");
+    const btn = document.createElement("button");
+    btn.className   = "city-btn";
+    btn.dataset.city= `${city} (${country})`;
+    btn.textContent = `${city} (${country})`;
+    btn.addEventListener("click",()=>{
+      chatTitle.textContent = "Chat - " + btn.dataset.city;
+      chatMsgs.innerHTML="";
+      chatPanel.style.display="flex";
+      chatInput.focus();
+    });
+    li.appendChild(btn);
     ul.appendChild(li);
 
-    /* reutilizamos el mismo listener para el nuevo botón */
-    li.querySelector("button").addEventListener("click",()=>{
-      title.textContent = "Chat – " + city + " ("+country+")";
-      msgs.innerHTML="";
-      form.classList.remove("hidden");
-      input.focus();
-    });
-
-    sugForm.reset();
-    formBox.classList.add("hidden");
-    confBox.classList.remove("hidden");
+    form.reset();
+    formWrap.classList.add("hidden");
+    confirmBox.classList.remove("hidden");
   });
+
 });
