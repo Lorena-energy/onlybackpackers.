@@ -1,122 +1,83 @@
-/* chat.js — OnlyBackpackers (versión revisada) */
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* ╔══════════ MENÚ HAMBURGUESA ═════════════╗ */
-  const menuToggle = document.getElementById("menu-toggle");
-  const menu       = document.getElementById("menu");
-  menuToggle?.addEventListener("click", () => menu.classList.toggle("show"));   // «show» = clase en tu CSS
+  /* ═ MENÚ ═ */
+  document.getElementById("menu-toggle")
+          ?.addEventListener("click",
+            () => document.getElementById("menu").classList.toggle("active"));
 
+  /* ═ Colapsar/expandir continentes ═ */
+  document.querySelectorAll(".continent-header").forEach(h=>{
+    h.addEventListener("click",()=>h.nextElementSibling.classList.toggle("hidden"));
+  });
 
+  /* ═ Chat refs ═ */
+  const panel   = document.getElementById("chat-panel");
+  const title   = panel.querySelector(".chat-title");
+  const msgs    = document.getElementById("chat-messages");
+  const form    = document.getElementById("chat-form");
+  const input   = document.getElementById("chat-input");
 
-  /* ╔══════ COLAPSAR / EXPANDIR CONTINENTES ═══╗ */
-  /*  ▼▼  selector corregido:  .continent  ▼▼   */
-  document.querySelectorAll(".continent").forEach(header => {
-    header.addEventListener("click", () => {
-      const list = header.nextElementSibling;          // el UL sigue justo después
-      list?.classList.toggle("hidden");
+  /* ═ Abrir chat ciudad ═ */
+  document.querySelectorAll(".city").forEach(btn=>{
+    btn.classList.add("city-btn");               // por si no la tenías
+    btn.addEventListener("click",()=>{
+      title.textContent = "Chat – " + btn.dataset.city;
+      msgs.innerHTML = "";                       // aquí iría Firebase
+      form.classList.remove("hidden");           // muestra caja de texto
+      input.focus();
     });
   });
 
-
-
-  /* ╔════════════ REFERENCIAS DE CHAT ═════════╗ */
-  const chatPanel = document.getElementById("chat-window");   // panel derecho
-  const chatTitle = document.getElementById("chat-destination-title");
-  const chatMsgs  = document.getElementById("chat-messages");
-  const chatForm  = document.getElementById("chat-form");
-  const chatInput = document.getElementById("chat-input");
-
-
-
-  /* ╔══════════ ABRIR CHAT DE CIUDAD ══════════╗ */
-  /*  ▼▼  selector corregido:  .city  ▼▼        */
-  document.querySelectorAll(".city").forEach(btn => {
-    btn.addEventListener("click", () => {
-      chatTitle.textContent = "Chat - " + btn.dataset.city;
-      chatMsgs.innerHTML = "";            // ← aquí podrás cargar mensajes remotos
-      chatPanel.classList.remove("hidden");
-      chatInput.focus();
-    });
-  });
-
-
-
-  /* ╔═════════ ENVIAR MENSAJE (local) ═════════╗ */
-  chatForm?.addEventListener("submit", e => {
+  /* ═ Enviar mensaje local ═ */
+  form.addEventListener("submit",e=>{
     e.preventDefault();
-    const txt = chatInput.value.trim();
-    if (!txt) return;
-
-    const div = document.createElement("div");
-    div.className = "message";
-    div.textContent = txt;
-    chatMsgs.appendChild(div);
-
-    chatInput.value = "";
-    chatMsgs.scrollTop = chatMsgs.scrollHeight;   // auto-scroll al final
+    const txt = input.value.trim(); if(!txt) return;
+    msgs.insertAdjacentHTML("beforeend",
+      `<div class="message">${txt}</div>`);
+    input.value="";
+    msgs.scrollTop = msgs.scrollHeight;
   });
 
+  /* ═ Botón flotante / formulario ═ */
+  const addBtn   = document.getElementById("suggest-city-btn");
+  const formBox  = document.getElementById("suggest-form-container");
+  const confBox  = document.getElementById("confirmation-message");
+  const sugForm  = document.getElementById("suggest-form");
 
-
-  /* ╔════ BOTÓN FLOTANTE “AÑADE CIUDAD” ═══════╗ */
-  const btnAdd     = document.getElementById("suggest-city-btn");
-  const formWrap   = document.getElementById("suggest-form-container");
-  const form       = document.getElementById("suggest-form");
-  const confirmBox = document.getElementById("confirmation-message");
-
-  btnAdd?.addEventListener("click", () =>
-    formWrap.classList.toggle("hidden")
-  );
-
+  addBtn.addEventListener("click",()=>formBox.classList.toggle("hidden"));
   document.getElementById("close-suggest-form")
-           ?.addEventListener("click", () =>
-             formWrap.classList.add("hidden")
-           );
-
+          .addEventListener("click",()=>formBox.classList.add("hidden"));
   document.getElementById("close-confirmation")
-           ?.addEventListener("click", () =>
-             confirmBox.classList.add("hidden")
-           );
+          .addEventListener("click",()=>confBox.classList.add("hidden"));
 
-
-
-  /* ╔══════ AÑADIR NUEVA CIUDAD (dinámico) ════╗ */
-  form?.addEventListener("submit", e => {
+  /* Añadir nueva ciudad */
+  sugForm.addEventListener("submit",e=>{
     e.preventDefault();
-
-    const cont     = document.getElementById("continent-select").value;
-    const city     = document.getElementById("city-name").value.trim();
-    const country  = document.getElementById("country-name").value.trim();
-    const reason   = document.getElementById("reason").value.trim();
-
-    if (!cont || !city || !country || !reason) {
-      alert("Rellena todos los campos obligatorios.");
-      return;
-    }
+    const cont   = document.getElementById("continent-select").value;
+    const city   = document.getElementById("city-name").value.trim();
+    const country= document.getElementById("country-name").value.trim();
+    const reason = document.getElementById("reason").value.trim();
+    if(!cont||!city||!country||!reason){alert("Completa los campos");return;}
 
     const ul = document.querySelector(`.city-list[data-continent='${cont}']`);
-    if (!ul) { alert("Continente no encontrado."); return; }
+    if(!ul){alert("Continente no encontrado");return;}
 
-    // crea nuevo botón de ciudad
-    const li  = document.createElement("li");
-    const btn = document.createElement("button");
-    btn.className   = "city";
-    btn.dataset.city = `${city} (${country})`;
-    btn.textContent = `${city} (${country})`;
-
-    btn.addEventListener("click", () => {
-      chatTitle.textContent = "Chat - " + btn.dataset.city;
-      chatMsgs.innerHTML = "";
-      chatPanel.classList.remove("hidden");
-      chatInput.focus();
-    });
-
-    li.appendChild(btn);
+    const li = document.createElement("li");
+    li.innerHTML = `<button class="city city-btn"
+                     data-city="${city} (${country})">
+                     ${city} (${country})</button>`;
     ul.appendChild(li);
 
-    form.reset();
-    formWrap.classList.add("hidden");
-    confirmBox.classList.remove("hidden");
-  });
+    /* reutilizamos el mismo listener para el nuevo botón */
+    li.querySelector("button").addEventListener("click",()=>{
+      title.textContent = "Chat – " + city + " ("+country+")";
+      msgs.innerHTML="";
+      form.classList.remove("hidden");
+      input.focus();
+    });
 
+    sugForm.reset();
+    formBox.classList.add("hidden");
+    confBox.classList.remove("hidden");
+  });
 });
