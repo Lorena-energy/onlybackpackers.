@@ -1,31 +1,34 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <header class="main-header">
-  <span class="brand">OnlyBackpackers</span>
-  <nav>…</nav>
-</header>
+  <meta charset="UTF-8" />
+  <title>OnlyBackpackers – Chats por Destino</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <!-- Fuente Poppins -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <!-- Enlazamos el CSS -->
-  <link rel="stylesheet" href="main.css">
-  <link rel="stylesheet" href="chat.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="main.css" />
+  <link rel="stylesheet" href="chat.css" />
 </head>
+
 <body>
-  <!-- Encabezado -->
+  <!-- ╔═ CABECERA ════════════════════════════════════════════════════ -->
   <header class="main-header">
+    <span class="brand">OnlyBackpackers</span>
+
     <nav>
       <div class="menu-toggle" id="menu-toggle">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
       </div>
+
       <ul class="menu" id="menu">
         <li><a href="index.html">Inicio</a></li>
         <li><a href="muro.html">Muro</a></li>
         <li><a href="muro-personal.html">Mi Muro</a></li>
         <li><a href="recomendaciones.html">Recomendaciones</a></li>
-        <li><a href="chats.html" class="active">Chats</a></li>
+        <li><a class="active" href="chats.html">Chats</a></li>
         <li><a href="eventos.html">Eventos</a></li>
         <li><a href="worldtrip.html">Worldtrip</a></li>
         <li><a href="recompensas.html">Recompensas</a></li>
@@ -34,345 +37,337 @@
     </nav>
   </header>
 
-  <h1>OnlyBackpackers - Chats por Destino</h1>
+  <h1>Chats por Destino</h1>
   <p>Conéctate con viajeros en los destinos más populares de cada continente.</p>
 
-  <main class="chat-destinations">
-    <!-- ===== ASIA ===== -->
-    <section class="continent-section">
-      <h2 class="continent" data-continent="asia">Asia</h2>
-      <ul class="city-list hidden" id="asia" data-continent="asia">
-        <li><button class="city" data-city="Tokio (Japón)">Tokio (Japón)</button></li>
-        <li><button class="city" data-city="Kioto (Japón)">Kioto (Japón)</button></li>
-        <li><button class="city" data-city="Osaka (Japón)">Osaka (Japón)</button></li>
-        <li><button class="city" data-city="Sapporo (Japón)">Sapporo (Japón)</button></li>
-        <li><button class="city" data-city="Hiroshima (Japón)">Hiroshima (Japón)</button></li>
-        <li><button class="city" data-city="Bali (Indonesia)">Bali (Indonesia)</button></li>
-        <li><button class="city" data-city="Yogyakarta (Indonesia)">Yogyakarta (Indonesia)</button></li>
-        <li><button class="city" data-city="Bangkok (Tailandia)">Bangkok (Tailandia)</button></li>
-        <li><button class="city" data-city="Chiang Mai (Tailandia)">Chiang Mai (Tailandia)</button></li>
-        <li><button class="city" data-city="Phuket (Tailandia)">Phuket (Tailandia)</button></li>
-        <li><button class="city" data-city="Singapur">Singapur</button></li>
-        <li><button class="city" data-city="Kuala Lumpur (Malasia)">Kuala Lumpur (Malasia)</button></li>
-        <li><button class="city" data-city="Penang (Malasia)">Penang (Malasia)</button></li>
-        <li><button class="city" data-city="Hong Kong (China)">Hong Kong (China)</button></li>
-        <li><button class="city" data-city="Macao (China)">Macao (China)</button></li>
-        <li><button class="city" data-city="Shanghái (China)">Shanghái (China)</button></li>
-        <li><button class="city" data-city="Pekín/Beijing (China)">Pekín/Beijing (China)</button></li>
-        <li><button class="city" data-city="Xi'an (China)">Xi'an (China)</button></li>
-        <li><button class="city" data-city="Guilin (China)">Guilin (China)</button></li>
-        <li><button class="city" data-city="Taipéi (Taiwán)">Taipéi (Taiwán)</button></li>
-        <li><button class="city" data-city="Seúl (Corea del Sur)">Seúl (Corea del Sur)</button></li>
-        <li><button class="city" data-city="Busán (Corea del Sur)">Busán (Corea del Sur)</button></li>
-        <li><button class="city" data-city="Jeju (Corea del Sur)">Jeju (Corea del Sur)</button></li>
-        <li><button class="city" data-city="Dubái (EAU)">Dubái (EAU)</button></li>
-        <li><button class="city" data-city="Abu Dabi (EAU)">Abu Dabi (EAU)</button></li>
-        <li><button class="city" data-city="Doha (Catar)">Doha (Catar)</button></li>
-        <li><button class="city" data-city="Manamá (Baréin)">Manamá (Baréin)</button></li>
-        <li><button class="city" data-city="Bombay (India)">Bombay (India)</button></li>
-        <li><button class="city" data-city="Delhi (India)">Delhi (India)</button></li>
-        <li><button class="city" data-city="Agra (India)">Agra (India)</button></li>
-        <li><button class="city" data-city="Jaipur (India)">Jaipur (India)</button></li>
-        <li><button class="city" data-city="Katmandú (Nepal)">Katmandú (Nepal)</button></li>
-        <li><button class="city" data-city="Pokhara (Nepal)">Pokhara (Nepal)</button></li>
-        <li><button class="city" data-city="Hanói (Vietnam)">Hanói (Vietnam)</button></li>
-        <li><button class="city" data-city="Bahía de Halong (Vietnam)">Bahía de Halong (Vietnam)</button></li>
-        <li><button class="city" data-city="Ciudad Ho Chi Minh (Vietnam)">Ciudad Ho Chi Minh (Vietnam)</button></li>
-        <li><button class="city" data-city="Siem Riep (Camboya)">Siem Riep (Camboya)</button></li>
-        <li><button class="city" data-city="Phnom Penh (Camboya)">Phnom Penh (Camboya)</button></li>
-        <li><button class="city" data-city="Yangón (Myanmar)">Yangón (Myanmar)</button></li>
-        <li><button class="city" data-city="Malé (Maldivas)">Malé (Maldivas)</button></li>
-        <li><button class="city" data-city="Riad (Arabia Saudita)">Riad (Arabia Saudita)</button></li>
-        <li><button class="city" data-city="Yeda (Arabia Saudita)">Yeda (Arabia Saudita)</button></li>
-        <li><button class="city" data-city="Tashkent (Uzbekistán)">Tashkent (Uzbekistán)</button></li>
-        <li><button class="city" data-city="Samarcanda (Uzbekistán)">Samarcanda (Uzbekistán)</button></li>
-        <li><button class="city" data-city="Bujará (Uzbekistán)">Bujará (Uzbekistán)</button></li>
-        <li><button class="city" data-city="Almaty (Kazajistán)">Almaty (Kazajistán)</button></li>
-        <li><button class="city" data-city="Tel Aviv (Israel)">Tel Aviv (Israel)</button></li>
-        <li><button class="city" data-city="Jerusalén (Israel)">Jerusalén (Israel)</button></li>
-        <li><button class="city" data-city="Petra (Jordania)">Petra (Jordania)</button></li>
-        <li><button class="city" data-city="Manila (Filipinas)">Manila (Filipinas)</button></li>
-      </ul>
-    </section>
+  <!-- ╔═  LAYOUT DOS COLUMNAS  ═══════════════════════════════════════ -->
+  <main class="chat-wrapper">
 
-    <!-- ===== EUROPA ===== -->
-    <section class="continent-section">
-      <h2 class="continent" data-continent="europa">Europa</h2>
-      <ul class="city-list hidden" id="europa" data-continent="europa">
-        <li><button class="city" data-city="París (Francia)">París (Francia)</button></li>
-        <li><button class="city" data-city="Londres (Reino Unido)">Londres (Reino Unido)</button></li>
-        <li><button class="city" data-city="Roma (Italia)">Roma (Italia)</button></li>
-        <li><button class="city" data-city="Milán (Italia)">Milán (Italia)</button></li>
-        <li><button class="city" data-city="Venecia (Italia)">Venecia (Italia)</button></li>
-        <li><button class="city" data-city="Florencia (Italia)">Florencia (Italia)</button></li>
-        <li><button class="city" data-city="Barcelona (España)">Barcelona (España)</button></li>
-        <li><button class="city" data-city="Madrid (España)">Madrid (España)</button></li>
-        <li><button class="city" data-city="Lisboa (Portugal)">Lisboa (Portugal)</button></li>
-        <li><button class="city" data-city="Ámsterdam (Países Bajos)">Ámsterdam (Países Bajos)</button></li>
-        <li><button class="city" data-city="Brujas (Bélgica)">Brujas (Bélgica)</button></li>
-        <li><button class="city" data-city="Berlín (Alemania)">Berlín (Alemania)</button></li>
-        <li><button class="city" data-city="Múnich (Alemania)">Múnich (Alemania)</button></li>
-        <li><button class="city" data-city="Viena (Austria)">Viena (Austria)</button></li>
-        <li><button class="city" data-city="Praga (Rep. Checa)">Praga (Rep. Checa)</button></li>
-        <li><button class="city" data-city="Budapest (Hungría)">Budapest (Hungría)</button></li>
-        <li><button class="city" data-city="Cracovia (Polonia)">Cracovia (Polonia)</button></li>
-        <li><button class="city" data-city="Estocolmo (Suecia)">Estocolmo (Suecia)</button></li>
-        <li><button class="city" data-city="Copenhague (Dinamarca)">Copenhague (Dinamarca)</button></li>
-        <li><button class="city" data-city="Oslo (Noruega)">Oslo (Noruega)</button></li>
-        <li><button class="city" data-city="Helsinki (Finlandia)">Helsinki (Finlandia)</button></li>
-        <li><button class="city" data-city="Dublín (Irlanda)">Dublín (Irlanda)</button></li>
-        <li><button class="city" data-city="Edimburgo (Escocia)">Edimburgo (Escocia)</button></li>
-        <li><button class="city" data-city="Reikiavik (Islandia)">Reikiavik (Islandia)</button></li>
-        <li><button class="city" data-city="Zúrich (Suiza)">Zúrich (Suiza)</button></li>
-        <li><button class="city" data-city="Ginebra (Suiza)">Ginebra (Suiza)</button></li>
-        <li><button class="city" data-city="Bratislava (Eslovaquia)">Bratislava (Eslovaquia)</button></li>
-        <li><button class="city" data-city="Liubliana (Eslovenia)">Liubliana (Eslovenia)</button></li>
-        <li><button class="city" data-city="Dubrovnik (Croacia)">Dubrovnik (Croacia)</button></li>
-        <li><button class="city" data-city="Atenas (Grecia)">Atenas (Grecia)</button></li>
-        <li><button class="city" data-city="Santorini (Grecia)">Santorini (Grecia)</button></li>
-        <li><button class="city" data-city="Estambul (Turquía, parte europea)">Estambul (Turquía, parte europea)</button></li>
-        <li><button class="city" data-city="San Petersburgo (Rusia)">San Petersburgo (Rusia)</button></li>
-        <li><button class="city" data-city="Moscú (Rusia)">Moscú (Rusia)</button></li>
-        <li><button class="city" data-city="Tallín (Estonia)">Tallín (Estonia)</button></li>
-        <li><button class="city" data-city="Riga (Letonia)">Riga (Letonia)</button></li>
-        <li><button class="city" data-city="Vilna (Lituania)">Vilna (Lituania)</button></li>
-        <li><button class="city" data-city="Malta (Isla-país)">Malta (Isla-país)</button></li>
-        <li><button class="city" data-city="Mónaco (Principado)">Mónaco (Principado)</button></li>
-        <li><button class="city" data-city="Costa Amalfitana (Italia)">Costa Amalfitana (Italia)</button></li>
-        <li><button class="city" data-city="Nápoles (Italia)">Nápoles (Italia)</button></li>
-        <li><button class="city" data-city="Costa del Algarve (Portugal)">Costa del Algarve (Portugal)</button></li>
-        <li><button class="city" data-city="Fiordos Noruegos (Bergen)">Fiordos Noruegos (Bergen)</button></li>
-        <li><button class="city" data-city="Gante (Bélgica)">Gante (Bélgica)</button></li>
-        <li><button class="city" data-city="Cádiz (España)">Cádiz (España)</button></li>
-        <li><button class="city" data-city="Oporto (Portugal)">Oporto (Portugal)</button></li>
-        <li><button class="city" data-city="Varsovia (Polonia)">Varsovia (Polonia)</button></li>
-        <li><button class="city" data-city="Transilvania (Rumanía)">Transilvania (Rumanía)</button></li>
-        <li><button class="city" data-city="Sarajevo (Bosnia y Herzegovina)">Sarajevo (Bosnia y Herzegovina)</button></li>
-        <li><button class="city" data-city="Kotor (Montenegro)">Kotor (Montenegro)</button></li>
-        <li><button class="city" data-city="Colmar (Francia)">Colmar (Francia)</button></li>
-      </ul>
-    </section>
-    
-    <!-- ===== ÁFRICA ===== -->
-    <section class="continent-section">
-      <h2 class="continent" data-continent="africa">África</h2>
-      <ul class="city-list hidden" id="africa" data-continent="africa">
-        <li><button class="city" data-city="Marrakech (Marruecos)">Marrakech (Marruecos)</button></li>
-        <li><button class="city" data-city="Fez (Marruecos)">Fez (Marruecos)</button></li>
-        <li><button class="city" data-city="Casablanca (Marruecos)">Casablanca (Marruecos)</button></li>
-        <li><button class="city" data-city="Chefchauen (Marruecos)">Chefchauen (Marruecos)</button></li>
-        <li><button class="city" data-city="Tánger (Marruecos)">Tánger (Marruecos)</button></li>
-        <li><button class="city" data-city="Ciudad del Cabo (Sudáfrica)">Ciudad del Cabo (Sudáfrica)</button></li>
-        <li><button class="city" data-city="Johannesburgo (Sudáfrica)">Johannesburgo (Sudáfrica)</button></li>
-        <li><button class="city" data-city="Durban (Sudáfrica)">Durban (Sudáfrica)</button></li>
-        <li><button class="city" data-city="Parque Kruger (Sudáfrica)">Parque Kruger (Sudáfrica)</button></li>
-        <li><button class="city" data-city="El Cairo (Egipto)">El Cairo (Egipto)</button></li>
-        <li><button class="city" data-city="Luxor (Egipto)">Luxor (Egipto)</button></li>
-        <li><button class="city" data-city="Sharm el-Sheij (Egipto)">Sharm el-Sheij (Egipto)</button></li>
-        <li><button class="city" data-city="Alejandría (Egipto)">Alejandría (Egipto)</button></li>
-        <li><button class="city" data-city="Giza (Pirámides, Egipto)">Giza (Pirámides, Egipto)</button></li>
-        <li><button class="city" data-city="Dahab (Egipto)">Dahab (Egipto)</button></li>
-        <li><button class="city" data-city="Zanzíbar (Tanzania)">Zanzíbar (Tanzania)</button></li>
-        <li><button class="city" data-city="Parque del Serengeti (Tanzania)">Parque del Serengeti (Tanzania)</button></li>
-        <li><button class="city" data-city="Monte Kilimanjaro (Tanzania)">Monte Kilimanjaro (Tanzania)</button></li>
-        <li><button class="city" data-city="Nairobi (Kenia)">Nairobi (Kenia)</button></li>
-        <li><button class="city" data-city="Masai Mara (Kenia)">Masai Mara (Kenia)</button></li>
-        <li><button class="city" data-city="Mombasa (Kenia)">Mombasa (Kenia)</button></li>
-        <li><button class="city" data-city="Mogadiscio (Somalia)">Mogadiscio (Somalia)</button></li>
-        <li><button class="city" data-city="Kampala (Uganda)">Kampala (Uganda)</button></li>
-        <li><button class="city" data-city="Ruanda (Volcanes y gorilas)">Ruanda (Volcanes y gorilas)</button></li>
-        <li><button class="city" data-city="Adís Abeba (Etiopía)">Adís Abeba (Etiopía)</button></li>
-        <li><button class="city" data-city="Lalibela (Etiopía)">Lalibela (Etiopía)</button></li>
-        <li><button class="city" data-city="Cataratas Victoria (Zambia/Zimbabue)">Cataratas Victoria (Zambia/Zimbabue)</button></li>
-        <li><button class="city" data-city="Harare (Zimbabue)">Harare (Zimbabue)</button></li>
-        <li><button class="city" data-city="Lagos (Nigeria)">Lagos (Nigeria)</button></li>
-        <li><button class="city" data-city="Abiyán (Costa de Marfil)">Abiyán (Costa de Marfil)</button></li>
-        <li><button class="city" data-city="Dakar (Senegal)">Dakar (Senegal)</button></li>
-        <li><button class="city" data-city="Acra (Ghana)">Acra (Ghana)</button></li>
-        <li><button class="city" data-city="Maputo (Mozambique)">Maputo (Mozambique)</button></li>
-        <li><button class="city" data-city="Windhoek (Namibia)">Windhoek (Namibia)</button></li>
-        <li><button class="city" data-city="Sossusvlei (Namibia)">Sossusvlei (Namibia)</button></li>
-        <li><button class="city" data-city="Túnez (Túnez)">Túnez (Túnez)</button></li>
-        <li><button class="city" data-city="Cartago (Túnez)">Cartago (Túnez)</button></li>
-        <li><button class="city" data-city="Monastir (Túnez)">Monastir (Túnez)</button></li>
-        <li><button class="city" data-city="Islas Mauricio">Islas Mauricio</button></li>
-        <li><button class="city" data-city="Madagascar">Madagascar</button></li>
-        <li><button class="city" data-city="Rodrigues (Mascareñas)">Rodrigues (Mascareñas)</button></li>
-        <li><button class="city" data-city="Arusha (Tanzania)">Arusha (Tanzania)</button></li>
-        <li><button class="city" data-city="Monrovia (Liberia)">Monrovia (Liberia)</button></li>
-        <li><button class="city" data-city="Luanda (Angola)">Luanda (Angola)</button></li>
-        <li><button class="city" data-city="Gambia">Gambia</button></li>
-        <li><button class="city" data-city="Freetown (Sierra Leona)">Freetown (Sierra Leona)</button></li>
-        <li><button class="city" data-city="Zamalek (El Cairo, Egipto)">Zamalek (El Cairo, Egipto)</button></li>
-        <li><button class="city" data-city="Asuán (Egipto)">Asuán (Egipto)</button></li>
-        <li><button class="city" data-city="Dunas del Sáhara">Dunas del Sáhara</button></li>
-      </ul>
-    </section>
+    <!-- ▸ COLUMNA IZQUIERDA  (sidebar) -->
+    <aside class="sidebar">
 
-    <!-- ===== AMÉRICA ===== -->
-    <section class="continent-section">
-      <h2 class="continent" data-continent="america">América</h2>
-      <ul class="city-list hidden" id="america" data-continent="america">
-        <li><button class="city" data-city="Nueva York (EE.UU.)">Nueva York (EE.UU.)</button></li>
-        <li><button class="city" data-city="Los Ángeles (EE.UU.)">Los Ángeles (EE.UU.)</button></li>
-        <li><button class="city" data-city="Las Vegas (EE.UU.)">Las Vegas (EE.UU.)</button></li>
-        <li><button class="city" data-city="San Francisco (EE.UU.)">San Francisco (EE.UU.)</button></li>
-        <li><button class="city" data-city="Chicago (EE.UU.)">Chicago (EE.UU.)</button></li>
-        <li><button class="city" data-city="Miami (EE.UU.)">Miami (EE.UU.)</button></li>
-        <li><button class="city" data-city="Cancún (México)">Cancún (México)</button></li>
-        <li><button class="city" data-city="Ciudad de México (México)">Ciudad de México (México)</button></li>
-        <li><button class="city" data-city="Tulum (México)">Tulum (México)</button></li>
-        <li><button class="city" data-city="Guadalajara (México)">Guadalajara (México)</button></li>
-        <li><button class="city" data-city="La Habana (Cuba)">La Habana (Cuba)</button></li>
-        <li><button class="city" data-city="Punta Cana (Rep. Dominicana)">Punta Cana (Rep. Dominicana)</button></li>
-        <li><button class="city" data-city="San Juan (Puerto Rico)">San Juan (Puerto Rico)</button></li>
-        <li><button class="city" data-city="Montego Bay (Jamaica)">Montego Bay (Jamaica)</button></li>
-        <li><button class="city" data-city="San José (Costa Rica)">San José (Costa Rica)</button></li>
-        <li><button class="city" data-city="Bocas del Toro (Panamá)">Bocas del Toro (Panamá)</button></li>
-        <li><button class="city" data-city="Cartagena de Indias (Colombia)">Cartagena de Indias (Colombia)</button></li>
-        <li><button class="city" data-city="Bogotá (Colombia)">Bogotá (Colombia)</button></li>
-        <li><button class="city" data-city="Medellín (Colombia)">Medellín (Colombia)</button></li>
-        <li><button class="city" data-city="Quito (Ecuador)">Quito (Ecuador)</button></li>
-        <li><button class="city" data-city="Islas Galápagos (Ecuador)">Islas Galápagos (Ecuador)</button></li>
-        <li><button class="city" data-city="Lima (Perú)">Lima (Perú)</button></li>
-        <li><button class="city" data-city="Cuzco (Perú)">Cuzco (Perú)</button></li>
-        <li><button class="city" data-city="Machu Picchu (Perú)">Machu Picchu (Perú)</button></li>
-        <li><button class="city" data-city="La Paz (Bolivia)">La Paz (Bolivia)</button></li>
-        <li><button class="city" data-city="Salar de Uyuni (Bolivia)">Salar de Uyuni (Bolivia)</button></li>
-        <li><button class="city" data-city="Santiago (Chile)">Santiago (Chile)</button></li>
-        <li><button class="city" data-city="San Pedro de Atacama (Chile)">San Pedro de Atacama (Chile)</button></li>
-        <li><button class="city" data-city="Buenos Aires (Argentina)">Buenos Aires (Argentina)</button></li>
-        <li><button class="city" data-city="Mendoza (Argentina)">Mendoza (Argentina)</button></li>
-        <li><button class="city" data-city="Bariloche (Argentina)">Bariloche (Argentina)</button></li>
-        <li><button class="city" data-city="Iguazú (Argentina/Brasil)">Iguazú (Argentina/Brasil)</button></li>
-        <li><button class="city" data-city="Río de Janeiro (Brasil)">Río de Janeiro (Brasil)</button></li>
-        <li><button class="city" data-city="Sao Paulo (Brasil)">Sao Paulo (Brasil)</button></li>
-        <li><button class="city" data-city="Salvador de Bahía (Brasil)">Salvador de Bahía (Brasil)</button></li>
-        <li><button class="city" data-city="Manaos (Brasil)">Manaos (Brasil)</button></li>
-        <li><button class="city" data-city="Montevideo (Uruguay)">Montevideo (Uruguay)</button></li>
-        <li><button class="city" data-city="Punta del Este (Uruguay)">Punta del Este (Uruguay)</button></li>
-        <li><button class="city" data-city="Asunción (Paraguay)">Asunción (Paraguay)</button></li>
-        <li><button class="city" data-city="Ciudad del Este (Paraguay)">Ciudad del Este (Paraguay)</button></li>
-        <li><button class="city" data-city="Caracas (Venezuela)">Caracas (Venezuela)</button></li>
-        <li><button class="city" data-city="Isla Margarita (Venezuela)">Isla Margarita (Venezuela)</button></li>
-        <li><button class="city" data-city="Canaima/Salto Ángel (Venezuela)">Canaima/Salto Ángel (Venezuela)</button></li>
-        <li><button class="city" data-city="Georgetown (Guyana)">Georgetown (Guyana)</button></li>
-        <li><button class="city" data-city="Paramaribo (Surinam)">Paramaribo (Surinam)</button></li>
-        <li><button class="city" data-city="Belo Horizonte (Brasil)">Belo Horizonte (Brasil)</button></li>
-        <li><button class="city" data-city="Toronto (Canadá)">Toronto (Canadá)</button></li>
-        <li><button class="city" data-city="Vancouver (Canadá)">Vancouver (Canadá)</button></li>
-        <li><button class="city" data-city="Quebec (Canadá)">Quebec (Canadá)</button></li>
-        <li><button class="city" data-city="San Martín de los Andes (Argentina)">San Martín de los Andes (Argentina)</button></li>
-      </ul>
-    </section>
+      <!-- ░░░░░  ASIA  ░░░░░ -->
+      <section class="continent-section">
+        <h2 class="continent-header">Asia</h2>
+        <ul class="city-list hidden" data-continent="asia">
+          <li><button class="city-btn" data-city="Tokio (Japón)">Tokio (Japón)</button></li>
+          <li><button class="city-btn" data-city="Kioto (Japón)">Kioto (Japón)</button></li>
+          <li><button class="city-btn" data-city="Osaka (Japón)">Osaka (Japón)</button></li>
+          <li><button class="city-btn" data-city="Sapporo (Japón)">Sapporo (Japón)</button></li>
+          <li><button class="city-btn" data-city="Hiroshima (Japón)">Hiroshima (Japón)</button></li>
+          <li><button class="city-btn" data-city="Bali (Indonesia)">Bali (Indonesia)</button></li>
+          <li><button class="city-btn" data-city="Yogyakarta (Indonesia)">Yogyakarta (Indonesia)</button></li>
+          <li><button class="city-btn" data-city="Bangkok (Tailandia)">Bangkok (Tailandia)</button></li>
+          <li><button class="city-btn" data-city="Chiang Mai (Tailandia)">Chiang Mai (Tailandia)</button></li>
+          <li><button class="city-btn" data-city="Phuket (Tailandia)">Phuket (Tailandia)</button></li>
+          <li><button class="city-btn" data-city="Singapur">Singapur</button></li>
+          <li><button class="city-btn" data-city="Kuala Lumpur (Malasia)">Kuala Lumpur (Malasia)</button></li>
+          <li><button class="city-btn" data-city="Penang (Malasia)">Penang (Malasia)</button></li>
+          <li><button class="city-btn" data-city="Hong Kong (China)">Hong Kong (China)</button></li>
+          <li><button class="city-btn" data-city="Macao (China)">Macao (China)</button></li>
+          <li><button class="city-btn" data-city="Shanghái (China)">Shanghái (China)</button></li>
+          <li><button class="city-btn" data-city="Pekín/Beijing (China)">Pekín/Beijing (China)</button></li>
+          <li><button class="city-btn" data-city="Xi'an (China)">Xi'an (China)</button></li>
+          <li><button class="city-btn" data-city="Guilin (China)">Guilin (China)</button></li>
+          <li><button class="city-btn" data-city="Taipéi (Taiwán)">Taipéi (Taiwán)</button></li>
+          <li><button class="city-btn" data-city="Seúl (Corea del Sur)">Seúl (Corea del Sur)</button></li>
+          <li><button class="city-btn" data-city="Busán (Corea del Sur)">Busán (Corea del Sur)</button></li>
+          <li><button class="city-btn" data-city="Jeju (Corea del Sur)">Jeju (Corea del Sur)</button></li>
+          <li><button class="city-btn" data-city="Dubái (EAU)">Dubái (EAU)</button></li>
+          <li><button class="city-btn" data-city="Abu Dabi (EAU)">Abu Dabi (EAU)</button></li>
+          <li><button class="city-btn" data-city="Doha (Catar)">Doha (Catar)</button></li>
+          <li><button class="city-btn" data-city="Manamá (Baréin)">Manamá (Baréin)</button></li>
+          <li><button class="city-btn" data-city="Bombay (India)">Bombay (India)</button></li>
+          <li><button class="city-btn" data-city="Delhi (India)">Delhi (India)</button></li>
+          <li><button class="city-btn" data-city="Agra (India)">Agra (India)</button></li>
+          <li><button class="city-btn" data-city="Jaipur (India)">Jaipur (India)</button></li>
+          <li><button class="city-btn" data-city="Katmandú (Nepal)">Katmandú (Nepal)</button></li>
+          <li><button class="city-btn" data-city="Pokhara (Nepal)">Pokhara (Nepal)</button></li>
+          <li><button class="city-btn" data-city="Hanói (Vietnam)">Hanói (Vietnam)</button></li>
+          <li><button class="city-btn" data-city="Bahía de Halong (Vietnam)">Bahía de Halong (Vietnam)</button></li>
+          <li><button class="city-btn" data-city="Ciudad Ho Chi Minh (Vietnam)">Ciudad Ho Chi Minh (Vietnam)</button></li>
+          <li><button class="city-btn" data-city="Siem Riep (Camboya)">Siem Riep (Camboya)</button></li>
+          <li><button class="city-btn" data-city="Phnom Penh (Camboya)">Phnom Penh (Camboya)</button></li>
+          <li><button class="city-btn" data-city="Yangón (Myanmar)">Yangón (Myanmar)</button></li>
+          <li><button class="city-btn" data-city="Malé (Maldivas)">Malé (Maldivas)</button></li>
+          <li><button class="city-btn" data-city="Riad (Arabia Saudita)">Riad (Arabia Saudita)</button></li>
+          <li><button class="city-btn" data-city="Yeda (Arabia Saudita)">Yeda (Arabia Saudita)</button></li>
+          <li><button class="city-btn" data-city="Tashkent (Uzbekistán)">Tashkent (Uzbekistán)</button></li>
+          <li><button class="city-btn" data-city="Samarcanda (Uzbekistán)">Samarcanda (Uzbekistán)</button></li>
+          <li><button class="city-btn" data-city="Bujará (Uzbekistán)">Bujará (Uzbekistán)</button></li>
+          <li><button class="city-btn" data-city="Almaty (Kazajistán)">Almaty (Kazajistán)</button></li>
+          <li><button class="city-btn" data-city="Tel Aviv (Israel)">Tel Aviv (Israel)</button></li>
+          <li><button class="city-btn" data-city="Jerusalén (Israel)">Jerusalén (Israel)</button></li>
+          <li><button class="city-btn" data-city="Petra (Jordania)">Petra (Jordania)</button></li>
+          <li><button class="city-btn" data-city="Manila (Filipinas)">Manila (Filipinas)</button></li>
+        </ul>
+      </section>
 
-    <!-- ===== OCEANÍA ===== -->
-    <section class="continent-section">
-      <h2 class="continent" data-continent="oceania">Oceanía</h2>
-      <ul class="city-list hidden" id="oceania" data-continent="oceania">
-        <li><button class="city" data-city="Sídney (Australia)">Sídney (Australia)</button></li>
-        <li><button class="city" data-city="Melbourne (Australia)">Melbourne (Australia)</button></li>
-        <li><button class="city" data-city="Brisbane (Australia)">Brisbane (Australia)</button></li>
-        <li><button class="city" data-city="Costa Dorada (Australia)">Costa Dorada (Australia)</button></li>
-        <li><button class="city" data-city="Cairns y Gran Barrera de Coral (Australia)">Cairns y Gran Barrera de Coral (Australia)</button></li>
-        <li><button class="city" data-city="Perth (Australia)">Perth (Australia)</button></li>
-        <li><button class="city" data-city="Adelaida (Australia)">Adelaida (Australia)</button></li>
-        <li><button class="city" data-city="Uluru/Ayers Rock (Australia)">Uluru/Ayers Rock (Australia)</button></li>
-        <li><button class="city" data-city="Tasmania (Australia)">Tasmania (Australia)</button></li>
-        <li><button class="city" data-city="Darwin (Australia)">Darwin (Australia)</button></li>
-        <li><button class="city" data-city="Auckland (Nueva Zelanda)">Auckland (Nueva Zelanda)</button></li>
-        <li><button class="city" data-city="Wellington (Nueva Zelanda)">Wellington (Nueva Zelanda)</button></li>
-        <li><button class="city" data-city="Christchurch (Nueva Zelanda)">Christchurch (Nueva Zelanda)</button></li>
-        <li><button class="city" data-city="Queenstown (Nueva Zelanda)">Queenstown (Nueva Zelanda)</button></li>
-        <li><button class="city" data-city="Rotorua (Nueva Zelanda)">Rotorua (Nueva Zelanda)</button></li>
-        <li><button class="city" data-city="Taupo (Nueva Zelanda)">Taupo (Nueva Zelanda)</button></li>
-        <li><button class="city" data-city="Bahía de las Islas (Nueva Zelanda)">Bahía de las Islas (Nueva Zelanda)</button></li>
-        <li><button class="city" data-city="Nadi (Fiyi)">Nadi (Fiyi)</button></li>
-        <li><button class="city" data-city="Islas Yasawa (Fiyi)">Islas Yasawa (Fiyi)</button></li>
-        <li><button class="city" data-city="Suva (Fiyi)">Suva (Fiyi)</button></li>
-        <li><button class="city" data-city="Rarotonga (Islas Cook)">Rarotonga (Islas Cook)</button></li>
-        <li><button class="city" data-city="Aitutaki (Islas Cook)">Aitutaki (Islas Cook)</button></li>
-        <li><button class="city" data-city="Papeete (Tahití, Polinesia Francesa)">Papeete (Tahití, Polinesia Francesa)</button></li>
-        <li><button class="city" data-city="Bora Bora (Polinesia Francesa)">Bora Bora (Polinesia Francesa)</button></li>
-        <li><button class="city" data-city="Moorea (Polinesia Francesa)">Moorea (Polinesia Francesa)</button></li>
-        <li><button class="city" data-city="Rangiroa (Polinesia Francesa)">Rangiroa (Polinesia Francesa)</button></li>
-        <li><button class="city" data-city="Numea (Nueva Caledonia)">Numea (Nueva Caledonia)</button></li>
-        <li><button class="city" data-city="Isla de Pinos (Nueva Caledonia)">Isla de Pinos (Nueva Caledonia)</button></li>
-        <li><button class="city" data-city="Port Vila (Vanuatu)">Port Vila (Vanuatu)</button></li>
-        <li><button class="city" data-city="Espíritu Santo (Vanuatu)">Espíritu Santo (Vanuatu)</button></li>
-        <li><button class="city" data-city="Apia (Samoa)">Apia (Samoa)</button></li>
-        <li><button class="city" data-city="Savai'i (Samoa)">Savai'i (Samoa)</button></li>
-        <li><button class="city" data-city="Pago Pago (Samoa Americana)">Pago Pago (Samoa Americana)</button></li>
-        <li><button class="city" data-city="Nukualofa (Tonga)">Nukualofa (Tonga)</button></li>
-        <li><button class="city" data-city="Islas Ha'apai (Tonga)">Islas Ha'apai (Tonga)</button></li>
-        <li><button class="city" data-city="Funafuti (Tuvalu)">Funafuti (Tuvalu)</button></li>
-        <li><button class="city" data-city="Tarawa (Kiribati)">Tarawa (Kiribati)</button></li>
-        <li><button class="city" data-city="Majuro (Islas Marshall)">Majuro (Islas Marshall)</button></li>
-        <li><button class="city" data-city="Palikir (Estados Federados de Micronesia)">Palikir (Estados Federados de Micronesia)</button></li>
-        <li><button class="city" data-city="Koror (Palaos)">Koror (Palaos)</button></li>
-        <li><button class="city" data-city="Islas Rock (Palaos)">Islas Rock (Palaos)</button></li>
-        <li><button class="city" data-city="Yaren (Nauru)">Yaren (Nauru)</button></li>
-        <li><button class="city" data-city="Honiara (Islas Salomón)">Honiara (Islas Salomón)</button></li>
-        <li><button class="city" data-city="Guadalcanal (Islas Salomón)">Guadalcanal (Islas Salomón)</button></li>
-        <li><button class="city" data-city="Port Moresby (Papúa Nueva Guinea)">Port Moresby (Papúa Nueva Guinea)</button></li>
-        <li><button class="city" data-city="Monte Hagen (Papúa Nueva Guinea)">Monte Hagen (Papúa Nueva Guinea)</button></li>
-        <li><button class="city" data-city="Islas Trobriand (Papúa Nueva Guinea)">Islas Trobriand (Papúa Nueva Guinea)</button></li>
-        <li><button class="city" data-city="Alofi (Niue)">Alofi (Niue)</button></li>
-        <li><button class="city" data-city="Rota (Islas Marianas del Norte)">Rota (Islas Marianas del Norte)</button></li>
-        <li><button class="city" data-city="Guam (Islas Marianas del Norte)">Guam (Islas Marianas del Norte)</button></li>
-      </ul>
+      <!-- ░░░░░  EUROPA  ░░░░░ -->
+      <section class="continent-section">
+        <h2 class="continent-header">Europa</h2>
+        <ul class="city-list hidden" data-continent="europa">
+          <li><button class="city-btn" data-city="París (Francia)">París (Francia)</button></li>
+          <li><button class="city-btn" data-city="Londres (Reino Unido)">Londres (Reino Unido)</button></li>
+          <li><button class="city-btn" data-city="Roma (Italia)">Roma (Italia)</button></li>
+          <li><button class="city-btn" data-city="Milán (Italia)">Milán (Italia)</button></li>
+          <li><button class="city-btn" data-city="Venecia (Italia)">Venecia (Italia)</button></li>
+          <li><button class="city-btn" data-city="Florencia (Italia)">Florencia (Italia)</button></li>
+          <li><button class="city-btn" data-city="Barcelona (España)">Barcelona (España)</button></li>
+          <li><button class="city-btn" data-city="Madrid (España)">Madrid (España)</button></li>
+          <li><button class="city-btn" data-city="Lisboa (Portugal)">Lisboa (Portugal)</button></li>
+          <li><button class="city-btn" data-city="Ámsterdam (Países Bajos)">Ámsterdam (Países Bajos)</button></li>
+          <li><button class="city-btn" data-city="Brujas (Bélgica)">Brujas (Bélgica)</button></li>
+          <li><button class="city-btn" data-city="Berlín (Alemania)">Berlín (Alemania)</button></li>
+          <li><button class="city-btn" data-city="Múnich (Alemania)">Múnich (Alemania)</button></li>
+          <li><button class="city-btn" data-city="Viena (Austria)">Viena (Austria)</button></li>
+          <li><button class="city-btn" data-city="Praga (Rep. Checa)">Praga (Rep. Checa)</button></li>
+          <li><button class="city-btn" data-city="Budapest (Hungría)">Budapest (Hungría)</button></li>
+          <li><button class="city-btn" data-city="Cracovia (Polonia)">Cracovia (Polonia)</button></li>
+          <li><button class="city-btn" data-city="Estocolmo (Suecia)">Estocolmo (Suecia)</button></li>
+          <li><button class="city-btn" data-city="Copenhague (Dinamarca)">Copenhague (Dinamarca)</button></li>
+          <li><button class="city-btn" data-city="Oslo (Noruega)">Oslo (Noruega)</button></li>
+          <li><button class="city-btn" data-city="Helsinki (Finlandia)">Helsinki (Finlandia)</button></li>
+          <li><button class="city-btn" data-city="Dublín (Irlanda)">Dublín (Irlanda)</button></li>
+          <li><button class="city-btn" data-city="Edimburgo (Escocia)">Edimburgo (Escocia)</button></li>
+          <li><button class="city-btn" data-city="Reikiavik (Islandia)">Reikiavik (Islandia)</button></li>
+          <li><button class="city-btn" data-city="Zúrich (Suiza)">Zúrich (Suiza)</button></li>
+          <li><button class="city-btn" data-city="Ginebra (Suiza)">Ginebra (Suiza)</button></li>
+          <li><button class="city-btn" data-city="Bratislava (Eslovaquia)">Bratislava (Eslovaquia)</button></li>
+          <li><button class="city-btn" data-city="Liubliana (Eslovenia)">Liubliana (Eslovenia)</button></li>
+          <li><button class="city-btn" data-city="Dubrovnik (Croacia)">Dubrovnik (Croacia)</button></li>
+          <li><button class="city-btn" data-city="Atenas (Grecia)">Atenas (Grecia)</button></li>
+          <li><button class="city-btn" data-city="Santorini (Grecia)">Santorini (Grecia)</button></li>
+          <li><button class="city-btn" data-city="Estambul (Turquía, parte europea)">Estambul (Turquía, parte europea)</button></li>
+          <li><button class="city-btn" data-city="San Petersburgo (Rusia)">San Petersburgo (Rusia)</button></li>
+          <li><button class="city-btn" data-city="Moscú (Rusia)">Moscú (Rusia)</button></li>
+          <li><button class="city-btn" data-city="Tallín (Estonia)">Tallín (Estonia)</button></li>
+          <li><button class="city-btn" data-city="Riga (Letonia)">Riga (Letonia)</button></li>
+          <li><button class="city-btn" data-city="Vilna (Lituania)">Vilna (Lituania)</button></li>
+          <li><button class="city-btn" data-city="Malta">Malta</button></li>
+          <li><button class="city-btn" data-city="Mónaco">Mónaco</button></li>
+          <li><button class="city-btn" data-city="Costa Amalfitana (Italia)">Costa Amalfitana (Italia)</button></li>
+          <li><button class="city-btn" data-city="Nápoles (Italia)">Nápoles (Italia)</button></li>
+          <li><button class="city-btn" data-city="Costa del Algarve (Portugal)">Costa del Algarve (Portugal)</button></li>
+          <li><button class="city-btn" data-city="Fiordos Noruegos (Bergen)">Fiordos Noruegos (Bergen)</button></li>
+          <li><button class="city-btn" data-city="Gante (Bélgica)">Gante (Bélgica)</button></li>
+          <li><button class="city-btn" data-city="Cádiz (España)">Cádiz (España)</button></li>
+          <li><button class="city-btn" data-city="Oporto (Portugal)">Oporto (Portugal)</button></li>
+          <li><button class="city-btn" data-city="Varsovia (Polonia)">Varsovia (Polonia)</button></li>
+          <li><button class="city-btn" data-city="Transilvania (Rumanía)">Transilvania (Rumanía)</button></li>
+          <li><button class="city-btn" data-city="Sarajevo (Bosnia y Herzegovina)">Sarajevo (Bosnia y Herzegovina)</button></li>
+          <li><button class="city-btn" data-city="Kotor (Montenegro)">Kotor (Montenegro)</button></li>
+          <li><button class="city-btn" data-city="Colmar (Francia)">Colmar (Francia)</button></li>
+        </ul>
+      </section>
+
+      <!-- ░░░░░  ÁFRICA  ░░░░░ -->
+      <section class="continent-section">
+        <h2 class="continent-header">África</h2>
+        <ul class="city-list hidden" data-continent="africa">
+          <li><button class="city-btn" data-city="Marrakech (Marruecos)">Marrakech (Marruecos)</button></li>
+          <li><button class="city-btn" data-city="Fez (Marruecos)">Fez (Marruecos)</button></li>
+          <li><button class="city-btn" data-city="Casablanca (Marruecos)">Casablanca (Marruecos)</button></li>
+          <li><button class="city-btn" data-city="Chefchauen (Marruecos)">Chefchauen (Marruecos)</button></li>
+          <li><button class="city-btn" data-city="Tánger (Marruecos)">Tánger (Marruecos)</button></li>
+          <li><button class="city-btn" data-city="Ciudad del Cabo (Sudáfrica)">Ciudad del Cabo (Sudáfrica)</button></li>
+          <li><button class="city-btn" data-city="Johannesburgo (Sudáfrica)">Johannesburgo (Sudáfrica)</button></li>
+          <li><button class="city-btn" data-city="Durban (Sudáfrica)">Durban (Sudáfrica)</button></li>
+          <li><button class="city-btn" data-city="Parque Kruger (Sudáfrica)">Parque Kruger (Sudáfrica)</button></li>
+          <li><button class="city-btn" data-city="El Cairo (Egipto)">El Cairo (Egipto)</button></li>
+          <li><button class="city-btn" data-city="Luxor (Egipto)">Luxor (Egipto)</button></li>
+          <li><button class="city-btn" data-city="Sharm el-Sheij (Egipto)">Sharm el-Sheij (Egipto)</button></li>
+          <li><button class="city-btn" data-city="Alejandría (Egipto)">Alejandría (Egipto)</button></li>
+          <li><button class="city-btn" data-city="Giza (Pirámides, Egipto)">Giza (Pirámides, Egipto)</button></li>
+          <li><button class="city-btn" data-city="Dahab (Egipto)">Dahab (Egipto)</button></li>
+          <li><button class="city-btn" data-city="Zanzíbar (Tanzania)">Zanzíbar (Tanzania)</button></li>
+          <li><button class="city-btn" data-city="Parque del Serengeti (Tanzania)">Parque del Serengeti (Tanzania)</button></li>
+          <li><button class="city-btn" data-city="Monte Kilimanjaro (Tanzania)">Monte Kilimanjaro (Tanzania)</button></li>
+          <li><button class="city-btn" data-city="Nairobi (Kenia)">Nairobi (Kenia)</button></li>
+          <li><button class="city-btn" data-city="Masai Mara (Kenia)">Masai Mara (Kenia)</button></li>
+          <li><button class="city-btn" data-city="Mombasa (Kenia)">Mombasa (Kenia)</button></li>
+          <li><button class="city-btn" data-city="Mogadiscio (Somalia)">Mogadiscio (Somalia)</button></li>
+          <li><button class="city-btn" data-city="Kampala (Uganda)">Kampala (Uganda)</button></li>
+          <li><button class="city-btn" data-city="Ruanda (Volcanes y gorilas)">Ruanda (Volcanes y gorilas)</button></li>
+          <li><button class="city-btn" data-city="Adís Abeba (Etiopía)">Adís Abeba (Etiopía)</button></li>
+          <li><button class="city-btn" data-city="Lalibela (Etiopía)">Lalibela (Etiopía)</button></li>
+          <li><button class="city-btn" data-city="Cataratas Victoria (Zambia/Zimbabue)">Cataratas Victoria (Zambia/Zimbabue)</button></li>
+          <li><button class="city-btn" data-city="Harare (Zimbabue)">Harare (Zimbabue)</button></li>
+          <li><button class="city-btn" data-city="Lagos (Nigeria)">Lagos (Nigeria)</button></li>
+          <li><button class="city-btn" data-city="Abiyán (Costa de Marfil)">Abiyán (Costa de Marfil)</button></li>
+          <li><button class="city-btn" data-city="Dakar (Senegal)">Dakar (Senegal)</button></li>
+          <li><button class="city-btn" data-city="Acra (Ghana)">Acra (Ghana)</button></li>
+          <li><button class="city-btn" data-city="Maputo (Mozambique)">Maputo (Mozambique)</button></li>
+          <li><button class="city-btn" data-city="Windhoek (Namibia)">Windhoek (Namibia)</button></li>
+          <li><button class="city-btn" data-city="Sossusvlei (Namibia)">Sossusvlei (Namibia)</button></li>
+          <li><button class="city-btn" data-city="Túnez (Túnez)">Túnez (Túnez)</button></li>
+          <li><button class="city-btn" data-city="Cartago (Túnez)">Cartago (Túnez)</button></li>
+          <li><button class="city-btn" data-city="Monastir (Túnez)">Monastir (Túnez)</button></li>
+          <li><button class="city-btn" data-city="Islas Mauricio">Islas Mauricio</button></li>
+          <li><button class="city-btn" data-city="Madagascar">Madagascar</button></li>
+          <li><button class="city-btn" data-city="Rodrigues (Mascareñas)">Rodrigues (Mascareñas)</button></li>
+          <li><button class="city-btn" data-city="Arusha (Tanzania)">Arusha (Tanzania)</button></li>
+          <li><button class="city-btn" data-city="Monrovia (Liberia)">Monrovia (Liberia)</button></li>
+          <li><button class="city-btn" data-city="Luanda (Angola)">Luanda (Angola)</button></li>
+          <li><button class="city-btn" data-city="Gambia">Gambia</button></li>
+          <li><button class="city-btn" data-city="Freetown (Sierra Leona)">Freetown (Sierra Leona)</button></li>
+          <li><button class="city-btn" data-city="Zamalek (El Cairo, Egipto)">Zamalek (El Cairo, Egipto)</button></li>
+          <li><button class="city-btn" data-city="Asuán (Egipto)">Asuán (Egipto)</button></li>
+          <li><button class="city-btn" data-city="Dunas del Sáhara">Dunas del Sáhara</button></li>
+        </ul>
+      </section>
+
+      <!-- ░░░░░  AMÉRICA  ░░░░░ -->
+      <section class="continent-section">
+        <h2 class="continent-header">América</h2>
+        <ul class="city-list hidden" data-continent="america">
+          <li><button class="city-btn" data-city="Nueva York (EE.UU.)">Nueva York (EE.UU.)</button></li>
+          <li><button class="city-btn" data-city="Los Ángeles (EE.UU.)">Los Ángeles (EE.UU.)</button></li>
+          <li><button class="city-btn" data-city="Las Vegas (EE.UU.)">Las Vegas (EE.UU.)</button></li>
+          <li><button class="city-btn" data-city="San Francisco (EE.UU.)">San Francisco (EE.UU.)</button></li>
+          <li><button class="city-btn" data-city="Chicago (EE.UU.)">Chicago (EE.UU.)</button></li>
+          <li><button class="city-btn" data-city="Miami (EE.UU.)">Miami (EE.UU.)</button></li>
+          <li><button class="city-btn" data-city="Cancún (México)">Cancún (México)</button></li>
+          <li><button class="city-btn" data-city="Ciudad de México (México)">Ciudad de México (México)</button></li>
+          <li><button class="city-btn" data-city="Tulum (México)">Tulum (México)</button></li>
+          <li><button class="city-btn" data-city="Guadalajara (México)">Guadalajara (México)</button></li>
+          <li><button class="city-btn" data-city="La Habana (Cuba)">La Habana (Cuba)</button></li>
+          <li><button class="city-btn" data-city="Punta Cana (Rep. Dominicana)">Punta Cana (Rep. Dominicana)</button></li>
+          <li><button class="city-btn" data-city="San Juan (Puerto Rico)">San Juan (Puerto Rico)</button></li>
+          <li><button class="city-btn" data-city="Montego Bay (Jamaica)">Montego Bay (Jamaica)</button></li>
+          <li><button class="city-btn" data-city="San José (Costa Rica)">San José (Costa Rica)</button></li>
+          <li><button class="city-btn" data-city="Bocas del Toro (Panamá)">Bocas del Toro (Panamá)</button></li>
+          <li><button class="city-btn" data-city="Cartagena de Indias (Colombia)">Cartagena de Indias (Colombia)</button></li>
+          <li><button class="city-btn" data-city="Bogotá (Colombia)">Bogotá (Colombia)</button></li>
+          <li><button class="city-btn" data-city="Medellín (Colombia)">Medellín (Colombia)</button></li>
+          <li><button class="city-btn" data-city="Quito (Ecuador)">Quito (Ecuador)</button></li>
+          <li><button class="city-btn" data-city="Islas Galápagos (Ecuador)">Islas Galápagos (Ecuador)</button></li>
+          <li><button class="city-btn" data-city="Lima (Perú)">Lima (Perú)</button></li>
+          <li><button class="city-btn" data-city="Cuzco (Perú)">Cuzco (Perú)</button></li>
+          <li><button class="city-btn" data-city="Machu Picchu (Perú)">Machu Picchu (Perú)</button></li>
+          <li><button class="city-btn" data-city="La Paz (Bolivia)">La Paz (Bolivia)</button></li>
+          <li><button class="city-btn" data-city="Salar de Uyuni (Bolivia)">Salar de Uyuni (Bolivia)</button></li>
+          <li><button class="city-btn" data-city="Santiago (Chile)">Santiago (Chile)</button></li>
+          <li><button class="city-btn" data-city="San Pedro de Atacama (Chile)">San Pedro de Atacama (Chile)</button></li>
+          <li><button class="city-btn" data-city="Buenos Aires (Argentina)">Buenos Aires (Argentina)</button></li>
+          <li><button class="city-btn" data-city="Mendoza (Argentina)">Mendoza (Argentina)</button></li>
+          <li><button class="city-btn" data-city="Bariloche (Argentina)">Bariloche (Argentina)</button></li>
+          <li><button class="city-btn" data-city="Iguazú (Argentina/Brasil)">Iguazú (Argentina/Brasil)</button></li>
+          <li><button class="city-btn" data-city="Río de Janeiro (Brasil)">Río de Janeiro (Brasil)</button></li>
+          <li><button class="city-btn" data-city="Sao Paulo (Brasil)">Sao Paulo (Brasil)</button></li>
+          <li><button class="city-btn" data-city="Salvador de Bahía (Brasil)">Salvador de Bahía (Brasil)</button></li>
+          <li><button class="city-btn" data-city="Manaos (Brasil)">Manaos (Brasil)</button></li>
+          <li><button class="city-btn" data-city="Montevideo (Uruguay)">Montevideo (Uruguay)</button></li>
+          <li><button class="city-btn" data-city="Punta del Este (Uruguay)">Punta del Este (Uruguay)</button></li>
+          <li><button class="city-btn" data-city="Asunción (Paraguay)">Asunción (Paraguay)</button></li>
+          <li><button class="city-btn" data-city="Ciudad del Este (Paraguay)">Ciudad del Este (Paraguay)</button></li>
+          <li><button class="city-btn" data-city="Caracas (Venezuela)">Caracas (Venezuela)</button></li>
+          <li><button class="city-btn" data-city="Isla Margarita (Venezuela)">Isla Margarita (Venezuela)</button></li>
+          <li><button class="city-btn" data-city="Canaima/Salto Ángel (Venezuela)">Canaima/Salto Ángel (Venezuela)</button></li>
+          <li><button class="city-btn" data-city="Georgetown (Guyana)">Georgetown (Guyana)</button></li>
+          <li><button class="city-btn" data-city="Paramaribo (Surinam)">Paramaribo (Surinam)</button></li>
+          <li><button class="city-btn" data-city="Belo Horizonte (Brasil)">Belo Horizonte (Brasil)</button></li>
+          <li><button class="city-btn" data-city="Toronto (Canadá)">Toronto (Canadá)</button></li>
+          <li><button class="city-btn" data-city="Vancouver (Canadá)">Vancouver (Canadá)</button></li>
+          <li><button class="city-btn" data-city="Quebec (Canadá)">Quebec (Canadá)</button></li>
+          <li><button class="city-btn" data-city="San Martín de los Andes (Argentina)">San Martín de los Andes (Argentina)</button></li>
+        </ul>
+      </section>
+
+      <!-- ░░░░░  OCEANÍA  ░░░░░ -->
+      <section class="continent-section">
+        <h2 class="continent-header">Oceanía</h2>
+        <ul class="city-list hidden" data-continent="oceania">
+          <li><button class="city-btn" data-city="Sídney (Australia)">Sídney (Australia)</button></li>
+          <li><button class="city-btn" data-city="Melbourne (Australia)">Melbourne (Australia)</button></li>
+          <li><button class="city-btn" data-city="Brisbane (Australia)">Brisbane (Australia)</button></li>
+          <li><button class="city-btn" data-city="Costa Dorada (Australia)">Costa Dorada (Australia)</button></li>
+          <li><button class="city-btn" data-city="Cairns y Gran Barrera de Coral (Australia)">Cairns y Gran Barrera de Coral (Australia)</button></li>
+          <li><button class="city-btn" data-city="Perth (Australia)">Perth (Australia)</button></li>
+          <li><button class="city-btn" data-city="Adelaida (Australia)">Adelaida (Australia)</button></li>
+          <li><button class="city-btn" data-city="Uluru/Ayers Rock (Australia)">Uluru/Ayers Rock (Australia)</button></li>
+          <li><button class="city-btn" data-city="Tasmania (Australia)">Tasmania (Australia)</button></li>
+          <li><button class="city-btn" data-city="Darwin (Australia)">Darwin (Australia)</button></li>
+          <li><button class="city-btn" data-city="Auckland (Nueva Zelanda)">Auckland (Nueva Zelanda)</button></li>
+          <li><button class="city-btn" data-city="Wellington (Nueva Zelanda)">Wellington (Nueva Zelanda)</button></li>
+          <li><button class="city-btn" data-city="Christchurch (Nueva Zelanda)">Christchurch (Nueva Zelanda)</button></li>
+          <li><button class="city-btn" data-city="Queenstown (Nueva Zelanda)">Queenstown (Nueva Zelanda)</button></li>
+          <li><button class="city-btn" data-city="Rotorua (Nueva Zelanda)">Rotorua (Nueva Zelanda)</button></li>
+          <li><button class="city-btn" data-city="Taupo (Nueva Zelanda)">Taupo (Nueva Zelanda)</button></li>
+          <li><button class="city-btn" data-city="Bahía de las Islas (Nueva Zelanda)">Bahía de las Islas (Nueva Zelanda)</button></li>
+          <li><button class="city-btn" data-city="Nadi (Fiyi)">Nadi (Fiyi)</button></li>
+          <li><button class="city-btn" data-city="Islas Yasawa (Fiyi)">Islas Yasawa (Fiyi)</button></li>
+          <li><button class="city-btn" data-city="Suva (Fiyi)">Suva (Fiyi)</button></li>
+          <li><button class="city-btn" data-city="Rarotonga (Islas Cook)">Rarotonga (Islas Cook)</button></li>
+          <li><button class="city-btn" data-city="Aitutaki (Islas Cook)">Aitutaki (Islas Cook)</button></li>
+          <li><button class="city-btn" data-city="Papeete (Tahití, Polinesia Francesa)">Papeete (Tahití, Polinesia Francesa)</button></li>
+          <li><button class="city-btn" data-city="Bora Bora (Polinesia Francesa)">Bora Bora (Polinesia Francesa)</button></li>
+          <li><button class="city-btn" data-city="Moorea (Polinesia Francesa)">Moorea (Polinesia Francesa)</button></li>
+          <li><button class="city-btn" data-city="Rangiroa (Polinesia Francesa)">Rangiroa (Polinesia Francesa)</button></li>
+          <li><button class="city-btn" data-city="Numea (Nueva Caledonia)">Numea (Nueva Caledonia)</button></li>
+          <li><button class="city-btn" data-city="Isla de Pinos (Nueva Caledonia)">Isla de Pinos (Nueva Caledonia)</button></li>
+          <li><button class="city-btn" data-city="Port Vila (Vanuatu)">Port Vila (Vanuatu)</button></li>
+          <li><button class="city-btn" data-city="Espíritu Santo (Vanuatu)">Espíritu Santo (Vanuatu)</button></li>
+          <li><button class="city-btn" data-city="Apia (Samoa)">Apia (Samoa)</button></li>
+          <li><button class="city-btn" data-city="Savai'i (Samoa)">Savai'i (Samoa)</button></li>
+          <li><button class="city-btn" data-city="Pago Pago (Samoa Americana)">Pago Pago (Samoa Americana)</button></li>
+          <li><button class="city-btn" data-city="Nukualofa (Tonga)">Nukualofa (Tonga)</button></li>
+          <li><button class="city-btn" data-city="Islas Ha'apai (Tonga)">Islas Ha'apai (Tonga)</button></li>
+          <li><button class="city-btn" data-city="Funafuti (Tuvalu)">Funafuti (Tuvalu)</button></li>
+          <li><button class="city-btn" data-city="Tarawa (Kiribati)">Tarawa (Kiribati)</button></li>
+          <li><button class="city-btn" data-city="Majuro (Islas Marshall)">Majuro (Islas Marshall)</button></li>
+          <li><button class="city-btn" data-city="Palikir (Estados Federados de Micronesia)">Palikir (Estados Federados de Micronesia)</button></li>
+          <li><button class="city-btn" data-city="Koror (Palaos)">Koror (Palaos)</button></li>
+          <li><button class="city-btn" data-city="Islas Rock (Palaos)">Islas Rock (Palaos)</button></li>
+          <li><button class="city-btn" data-city="Yaren (Nauru)">Yaren (Nauru)</button></li>
+          <li><button class="city-btn" data-city="Honiara (Islas Salomón)">Honiara (Islas Salomón)</button></li>
+          <li><button class="city-btn" data-city="Guadalcanal (Islas Salomón)">Guadalcanal (Islas Salomón)</button></li>
+          <li><button class="city-btn" data-city="Port Moresby (Papúa Nva. Guinea)">Port Moresby (Papúa Nueva Guinea)</button></li>
+          <li><button class="city-btn" data-city="Monte Hagen (Papúa Nva. Guinea)">Monte Hagen (Papúa Nueva Guinea)</button></li>
+          <li><button class="city-btn" data-city="Islas Trobriand (Papúa Nva. Guinea)">Islas Trobriand (Papúa Nueva Guinea)</button></li>
+          <li><button class="city-btn" data-city="Alofi (Niue)">Alofi (Niue)</button></li>
+          <li><button class="city-btn" data-city="Rota (Islas Marianas del Norte)">Rota (Islas Marianas del Norte)</button></li>
+          <li><button class="city-btn" data-city="Guam (Islas Marianas del Norte)">Guam (Islas Marianas del Norte)</button></li>
+        </ul>
+      </section>
+
+    </aside><!-- /sidebar -->
+
+    <!-- ▸ PANEL DE CHAT (columna derecha) -->
+    <section class="chat-panel" id="chat-panel">
+      <h2 class="chat-title">Selecciona una ciudad</h2>
+
+      <div class="messages" id="chat-messages"></div>
+
+      <form id="chat-form" class="hidden">
+        <input type="text" id="chat-input" placeholder="Escribe un mensaje…" required />
+        <button type="submit">Enviar</button>
+      </form>
     </section>
   </main>
 
-    <!-- Ventana de Chat -->
-  <!-- ▸ NUEVO WRAPPER  -->
-<main class="chat-wrapper">
+  <!-- ╔═ BOTÓN FLOTANTE + FORMULARIO “AÑADE CIUDAD” ═════════════════ -->
+  <button class="floating-button" id="suggest-city-btn" title="Añade ciudad">＋</button>
 
-  <!-- ── Columna izquierda ── -->
-  <aside class="sidebar">
-    <!-- ⬇️ pega aquí, SIN CAMBIAR, TODAS tus <section class="continent-section"> -->
-    … (todas las secciones de Asia, Europa, África, América, Oceanía) …
-  </aside>
-
-  <!-- ── Columna derecha / panel de chat ── -->
-  <section class="chat-panel" id="chat-panel">
-    <h2 class="chat-title">Selecciona una ciudad</h2>
-
-    <div class="messages" id="chat-messages"></div>
-
-    <!-- el form aparecerá sólo cuando se abra una ciudad -->
-    <form id="chat-form" class="hidden">
-      <input type="text" id="chat-input" placeholder="Escribe un mensaje…" required>
-      <button type="submit">Enviar</button>
-    </form>
-  </section>
-</main>
-
- <!-- Botón flotante para Sugerir Ciudad -->
-  <button class="floating-button" id="suggest-city-btn" title="Sugerir Ciudad">Añade ciudad</button>
-
-  <!-- Formulario flotante para sugerir nueva ciudad -->
   <div class="suggest-city-form hidden" id="suggest-form-container">
     <h2>Sugerir Nueva Ciudad</h2>
     <form id="suggest-form">
       <label for="continent-select">Continente:</label>
       <select id="continent-select" required>
         <option value="">--Selecciona Continente--</option>
-        <option value="asia">Asia</option>
-        <option value="africa">África</option>
-        <option value="america">América</option>
-        <option value="europa">Europa</option>
+        <option value="asia">Asia</option><option value="africa">África</option>
+        <option value="america">América</option><option value="europa">Europa</option>
         <option value="oceania">Oceanía</option>
       </select>
 
       <label for="city-name">Nombre de la Ciudad:</label>
-      <input type="text" id="city-name" required>
+      <input type="text" id="city-name" required />
 
       <label for="country-name">País:</label>
-      <input type="text" id="country-name" required>
+      <input type="text" id="country-name" required />
 
       <label for="reason">Motivo por el cual debería añadirse:</label>
-      <input type="text" id="reason" required>
+      <input type="text" id="reason" required />
 
       <label for="comments">Comentario adicional (opcional):</label>
       <textarea id="comments" rows="3"></textarea>
@@ -382,13 +377,14 @@
     <button id="close-suggest-form">Cerrar</button>
   </div>
 
-  <!-- Mensaje de confirmación -->
   <div class="confirmation-message hidden" id="confirmation-message">
     <p>¡Gracias! Tu ciudad se ha añadido a la lista.</p>
     <button id="close-confirmation">Cerrar</button>
   </div>
 
-  <!-- Script principal -->
+  <!-- ╔═ SCRIPTS ════════════════════════════════════════════════════ -->
   <script src="chat.js"></script>
 </body>
 </html>
+
+
