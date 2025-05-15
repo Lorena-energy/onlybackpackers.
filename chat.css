@@ -1,94 +1,59 @@
-/* ───────────────────────────────
-   RESET & TIPOGRAFÍA
-──────────────────────────────── */
+/* RESET + BASE */
 *{box-sizing:border-box;margin:0;padding:0}
-body{
-  font-family:'Poppins',sans-serif;
-  background:linear-gradient(to bottom right,#004f8c,#00c8e0);
-  color:#333;min-height:100vh;padding-bottom:100px
-}
+body{font-family:Poppins,Arial,Helvetica,sans-serif;min-height:100vh;background:#f0f7ff}
 
-/* ───────────────────────────────
-   CABECERA + MENÚ
-──────────────────────────────── */
-.main-header{background:#003366;color:#fff;padding:10px 20px;position:sticky;top:0;z-index:900;display:flex;align-items:center}
-.brand{font-weight:700;font-size:1.2rem;margin-right:auto}
-.menu{list-style:none;display:flex;gap:15px}
-.menu a{color:#fff;text-decoration:none;padding:8px 12px;border-radius:5px;transition:background .3s}
-.menu a:hover,.menu a.active{background:rgba(255,255,255,.25)}
-.menu-toggle{display:none}
+/* ── CABECERA ─────────────────────────────────── */
+.main-header{background:#003366;color:#fff;display:flex;align-items:center;padding:0.8rem 1rem;position:sticky;top:0;z-index:1000}
+.brand{font-weight:700;margin-right:auto}
+.menu{list-style:none;display:flex;gap:1rem}
+.menu a{color:#fff;text-decoration:none;font-weight:600}
+.menu a.active{text-decoration:underline}
+.menu-toggle{display:none;background:none;border:none}
+.menu-toggle .bar{display:block;width:24px;height:3px;background:#fff;margin:4px 0}
+
 @media(max-width:768px){
-  .menu{flex-direction:column;display:none;width:100%}
+  .menu{display:none;flex-direction:column;position:absolute;top:60px;left:0;width:100%;background:#003366;padding:1rem 0}
   .menu.active{display:flex}
-  .menu-toggle{display:flex;flex-direction:column;gap:4px;cursor:pointer;margin-left:auto}
-  .menu-toggle .bar{width:25px;height:3px;background:#fff}
+  .menu-toggle{display:block;margin-left:auto}
 }
 
-/* ───────────────────────────────
-   LAYOUT 2 COLUMNAS
-──────────────────────────────── */
-.chat-wrapper{display:flex;gap:1rem;max-width:1100px;margin:2rem auto;height:calc(100vh - 180px)}
-.sidebar{flex:0 0 280px;overflow-y:auto;padding-right:.5rem}
-.chat-panel{flex:1;background:#fff;border-radius:15px;display:flex;flex-direction:column}
-.chat-title{background:#003366;color:#fff;padding:1rem;margin:0;border-radius:15px 15px 0 0}
-.messages{flex:1;padding:1rem;overflow-y:auto}
-.message{background:#f1f1f1;border-radius:8px;padding:.6rem;margin-bottom:.6rem;font-size:.9rem}
-#chat-form{display:flex;gap:.5rem;padding:1rem;border-top:1px solid #ddd}
-#chat-input{flex:1;padding:.6rem .8rem;border:1px solid #ccc;border-radius:8px}
-#chat-form button{background:#003366;color:#fff;border:0;border-radius:8px;padding:.6rem 1rem;cursor:pointer}
+/* ── ENCABEZADOS GENERALES ───────────────────── */
+h1{text-align:center;margin:1rem 0 0.3rem}
+p   {text-align:center;margin-bottom:1rem;color:#555}
 
-/* ───────────────────────────────
-   CONTINENTES / CIUDADES
-──────────────────────────────── */
-.continent{background:#ff6600;color:#fff;padding:10px;border-radius:5px;margin-bottom:8px;cursor:pointer}
-.city-list{list-style:none;display:flex;flex-wrap:wrap;gap:6px}
+/* ── LAYOUT 2-COLUMNAS ───────────────────────── */
+.chat-wrapper{max-width:1200px;margin:0 auto;padding:1rem;display:flex;gap:1rem}
+.sidebar{flex:0 0 38%;max-height:80vh;overflow-y:auto;padding-right:.5rem}
+.chat-panel{flex:1;background:#fff;border-radius:12px;display:flex;flex-direction:column;box-shadow:0 0 6px rgba(0,0,0,.08)}
+@media(max-width:768px){.chat-wrapper{flex-direction:column}.sidebar{max-height:50vh}}
+
+.continent-header{background:#ff914d;color:#fff;padding:.6rem .9rem;border-radius:6px;cursor:pointer;margin:.4rem 0;font-size:1rem}
+.city-list{list-style:none;display:flex;flex-wrap:wrap;gap:.4rem .6rem;padding:.4rem .2rem}
 .city-list.hidden{display:none}
-.city-btn{background:#fff;color:#004f8c;border:0;border-radius:5px;padding:6px 10px;font-size:.85rem;cursor:pointer}
-.city-btn:hover{background:#e0f3ff}
+.city-btn{background:#fff;color:#003366;border:1px solid #003366;padding:.3rem .6rem;border-radius:6px;cursor:pointer;font-size:.85rem}
+.city-btn:hover{background:#e8f0ff}
 
-/* ───────────────────────────────
-   BOTÓN FLOTANTE “AÑADE CIUDAD”
-──────────────────────────────── */
-.floating-button{
-  position:fixed;top:110px;right:25px;z-index:950;
-  width:52px;height:52px;border-radius:50%;
-  background:#ff914d;color:#fff;font-size:1.6rem;
-  display:flex;align-items:center;justify-content:center;
-  border:0;cursor:pointer;box-shadow:0 4px 8px rgba(0,0,0,.3);
-}
-.floating-button:hover{background:#ff7300}
+/* ── PANEL DE CHAT ───────────────────────────── */
+.chat-title{background:#003366;color:#fff;padding:.8rem 1rem;border-radius:12px 12px 0 0;font-size:1rem}
+.messages{flex:1;padding:1rem;overflow-y:auto}
+.message{background:#eaf3ff;padding:.5rem .7rem;border-radius:6px;margin-bottom:.5rem;font-size:.9rem}
+#chat-form{display:flex;gap:.5rem;padding:1rem;border-top:1px solid #ddd}
+#chat-input{flex:1;padding:.45rem .6rem;border:1px solid #bbb;border-radius:6px}
+#chat-form button{background:#003366;color:#fff;border:none;padding:.5rem .9rem;border-radius:6px;cursor:pointer}
 
-/* ───────────────────────────────
-   FORMULARIO “SUGERIR CIUDAD”
-──────────────────────────────── */
-.suggest-city-form{
-  position:fixed;top:170px;right:20px;width:300px;
-  background:#fff;color:#333;border-radius:10px;padding:20px;
-  box-shadow:0 4px 10px rgba(0,0,0,.25);z-index:960
-}
-.suggest-city-form.hidden{display:none}
-.suggest-city-form h2{margin-top:0;font-size:1rem;color:#003366}
-.suggest-city-form label{margin:10px 0 4px;display:block;font-weight:600}
-.suggest-city-form input,.suggest-city-form select,.suggest-city-form textarea{
-  width:100%;padding:8px;border:1px solid #ccc;border-radius:6px;margin-bottom:10px
-}
-.suggest-city-form button{background:#003366;color:#fff;border:0;padding:8px 12px;border-radius:6px;cursor:pointer}
+/* ── BOTÓN FLOTANTE ─────────────────────────── */
+.floating-button{position:fixed;top:85px;right:20px;width:52px;height:52px;border-radius:50%;background:#ff914d;color:#fff;font-size:2rem;display:flex;align-items:center;justify-content:center;border:none;cursor:pointer;box-shadow:0 3px 8px rgba(0,0,0,.25);z-index:1200}
+.floating-button:hover{filter:brightness(1.1)}
 
-/* ───────────────────────────────
-   MENSAJE DE CONFIRMACIÓN
-──────────────────────────────── */
-.confirmation-message{
-  position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
-  background:#fff;color:#003366;padding:20px;border-radius:10px;
-  box-shadow:0 4px 12px rgba(0,0,0,.25);z-index:970;text-align:center;width:260px
-}
-.confirmation-message.hidden{display:none}
+/* ── FORMULARIO SUGERIR ──────────────────────── */
+.suggest-city-form{position:fixed;top:150px;right:20px;width:290px;background:#fff;border-radius:12px;padding:1rem;box-shadow:0 4px 12px rgba(0,0,0,.2);z-index:1300}
+.suggest-city-form h2{margin-bottom:.6rem;font-size:1.1rem}
+.suggest-city-form label{display:block;font-size:.88rem;margin:.4rem 0}
+.suggest-city-form input,.suggest-city-form textarea,.suggest-city-form select{width:100%;padding:.45rem;border:1px solid #ccc;border-radius:6px;margin-top:.15rem;font-size:.85rem}
+.suggest-city-form button{margin-top:.6rem;background:#003366;color:#fff;border:none;padding:.45rem;border-radius:6px;width:100%;cursor:pointer}
+.suggest-city-form button:hover{filter:brightness(1.1)}
 
-/* ───────────────────────────────
-   RESPONSIVE
-──────────────────────────────── */
-@media(max-width:768px){
-  .chat-wrapper{flex-direction:column;height:auto}
-  .sidebar{flex:1 1 100%;max-height:260px}
-  .chat-panel{height:60vh}
-}
+.confirmation-message{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;padding:1.2rem;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.25);z-index:1400;text-align:center}
+
+/* UTILITY */
+.hidden{display:none !important}
