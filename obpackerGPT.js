@@ -1,59 +1,65 @@
-// 🔐 Clave camuflada para evitar detección automática
+/* ─────────────────────────────
+   ob.packersGPT  ·  v2 “híbrido”
+   – Usa enlaces específicos guardados en enlaces.json
+   – Si el destino no está, genera links genéricos al vuelo
+─────────────────────────────*/
+
+// 🔐 Clave camuflada
 const part1 = "sk";
 const part2 = "-proj-xZbAp8W0CLkZXOup7Udp7MqB0kNt-";
 const part3 = "gZdkKhfZ73PW9lf8kZ5G-lDytWXjl55asbDuOKJ7aDjoRT3BlbkFJwZyLuxPOlbIW2xfiuCxFWVb5XlhRiJNzId5oIH-EjRJ2tC97ZZdFR051gRYKJ3FsDWPszPg_QA";
 const apiKey = part1 + part2 + part3;
 
-const chatBox = document.getElementById("chat-box");
+const chatBox  = document.getElementById("chat-box");
 const chatForm = document.getElementById("chat-form");
 const userInput = document.getElementById("user-input");
 
-// Cargar enlaces desde JSON
-let enlacesAfiliados = {};
+// Cargar enlaces específicos
+let enlacesJSON = {};
 fetch('enlaces.json')
-  .then(res => res.json())
-  .then(data => {
-    enlacesAfiliados = data;
-  })
-  .catch(err => console.error("No se pudo cargar enlaces.json", err));
+  .then(r => r.json())
+  .then(d => enlacesJSON = d)
+  .catch(() => console.warn("⚠️ No se encontró enlaces.json; se usarán sólo los genéricos."));
 
 chatForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   const formData = userInput.value.trim();
   if (!formData) return;
 
-  const userMsg = document.createElement("div");
-  userMsg.textContent = "Tú: " + formData;
-  chatBox.appendChild(userMsg);
+  chatBox.appendChild(Object.assign(document.createElement('div'), {textContent: "Tú: " + formData}));
   userInput.value = "";
 
-  const loadingMsg = document.createElement("div");
-  loadingMsg.textContent = "ob.packersGPT está escribiendo...";
-  chatBox.appendChild(loadingMsg);
+  const load = document.createElement('div');
+  load.textContent = "ob.packersGPT está escribiendo…";
+  chatBox.appendChild(load);
 
-  // Buscar destino mencionado
-  let enlacesExtra = "";
-  const lowerMsg = formData.toLowerCase();
-  for (const destino in enlacesAfiliados) {
-    if (lowerMsg.includes(destino)) {
-      const act = enlacesAfiliados[destino].actividades;
-      const hos = enlacesAfiliados[destino].hostels;
-      enlacesExtra = `
-
-Si buscas actividades increíbles en ${destino}, echa un vistazo 👉 ${act}
-Y para dormir, nada mejor que estos hostels 👉 ${hos}`;
-      break;
-    }
+  /* ── Detectar destino ───────────────────────── */
+  let destinoDetectado = "";
+  const lower = formData.toLowerCase();
+  for (const destino in enlacesJSON) {
+    if (lower.includes(destino)) { destinoDetectado = destino; break; }
+  }
+  if (!destinoDetectado) {
+    // intento simple: usar la última palabra relevante como destino
+    const palabras = lower.split(/\s+/);
+    destinoDetectado = palabras[palabras.length - 1];
   }
 
-  const promptBase = `Estoy organizando un viaje. Aquí tienes la información del usuario:
+  /* ── Obtener enlaces ────────────────────────── */
+  let actLink, hosLink;
+  if (enlacesJSON[destinoDetectado]) {
+    actLink = enlacesJSON[destinoDetectado].actividades;
+    hosLink = enlacesJSON[destinoDetectado].hostels;
+  } else {
+    const encoded = encodeURIComponent(destinoDetectado);
+    actLink = `https://www.getyourguide.com/?q=${encoded}&partner_id=0PBI9YH&cmp=share_to_earn`;
+    hosLink = `https://hostelworld.prf.hn/click/camref:1101l52sgW/destination:${encoded}`;
+  }
+  const extraLinks = `\n\n👉 Actividades recomendadas: ${actLink}\n👉 Hostels económicos: ${hosLink}`;
 
-${formData}
-
-Por favor, incluye sugerencias reales de actividades y excursiones que se puedan hacer en el destino, y recomiéndale algún alojamiento tipo hostel.`;
-
+  /* ── Enviar a GPT ───────────────────────────── */
   try {
-    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+    const res = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -62,29 +68,24 @@ Por favor, incluye sugerencias reales de actividades y excursiones que se puedan
       body: JSON.stringify({
         model: "gpt-4o",
         messages: [
-          {
-            role: "system",
-            content: `Eres ob.packersGPT, un guía mochilero amigable y experto. Tu estilo es cercano y útil, como un colega viajero. Responde con tono cercano, alegre y motivador.`
-          },
-          {
-            role: "user",
-            content: promptBase + enlacesExtra
-          }
+          { role: "system",
+            content: "Eres ob.packersGPT, un guía mochilero cercano, divertido y muy práctico." },
+          { role: "user",
+            content: `${formData}\n\nNecesito ideas de actividades y hostels. Añade tus enlaces.` + extraLinks }
         ]
       })
     });
-
-    const data = await response.json();
-    loadingMsg.remove();
-
-    const aiMsg = document.createElement("div");
-    aiMsg.textContent = "ob.packersGPT: " + data.choices[0].message.content;
-    chatBox.appendChild(aiMsg);
+    const data = await res.json();
+    load.remove();
+    chatBox.appendChild(Object.assign(document.createElement('div'), {
+      textContent: "ob.packersGPT: " + data.choices[0].message.content
+    }));
     chatBox.scrollTop = chatBox.scrollHeight;
-  } catch (error) {
-    loadingMsg.remove();
-    const errorMsg = document.createElement("div");
-    errorMsg.textContent = "❌ Error al conectar con ob.packersGPT.";
-    chatBox.appendChild(errorMsg);
+  } catch (err) {
+    load.remove();
+    chatBox.appendChild(Object.assign(document.createElement('div'), {
+      textContent: "❌ Error al conectar con ob.packersGPT."
+    }));
   }
 });
+
