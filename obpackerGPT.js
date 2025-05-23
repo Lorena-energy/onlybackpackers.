@@ -1,4 +1,3 @@
-
 // 🔐 Clave camuflada para evitar detección automática
 const part1 = "sk";
 const part2 = "-proj-xZbAp8W0CLkZXOup7Udp7MqB0kNt-";
