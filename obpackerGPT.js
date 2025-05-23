@@ -8,11 +8,14 @@ const chatBox = document.getElementById("chat-box");
 const chatForm = document.getElementById("chat-form");
 const userInput = document.getElementById("user-input");
 
-// 🔗 Enlaces de afiliado
-const afiliados = {
-  actividades: "https://www.getyourguide.com?partner_id=0PBI9YH&cmp=share_to_earn",
-  hostels: "https://hostelworld.prf.hn/click/camref:1101l52sgW"
-};
+// Cargar enlaces desde JSON
+let enlacesAfiliados = {};
+fetch('enlaces.json')
+  .then(res => res.json())
+  .then(data => {
+    enlacesAfiliados = data;
+  })
+  .catch(err => console.error("No se pudo cargar enlaces.json", err));
 
 chatForm.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -24,29 +27,32 @@ chatForm.addEventListener("submit", async (e) => {
   chatBox.appendChild(userMsg);
   userInput.value = "";
 
-  const message = `Estoy organizando un viaje. Aquí tienes la información del usuario:
-
-${formData}
-
-Por favor, incluye sugerencias reales de actividades y excursiones que se puedan hacer en el destino, y recomiéndale algún alojamiento tipo hostel. Incluye estos enlaces de afiliación si mencionas actividades o alojamiento:
-- Actividades: ${afiliados.actividades}
-- Hostels: ${afiliados.hostels}`;
-
   const loadingMsg = document.createElement("div");
   loadingMsg.textContent = "ob.packersGPT está escribiendo...";
   chatBox.appendChild(loadingMsg);
 
+  // Buscar destino mencionado
+  let enlacesExtra = "";
+  const lowerMsg = formData.toLowerCase();
+  for (const destino in enlacesAfiliados) {
+    if (lowerMsg.includes(destino)) {
+      const act = enlacesAfiliados[destino].actividades;
+      const hos = enlacesAfiliados[destino].hostels;
+      enlacesExtra = `
+
+Si buscas actividades increíbles en ${destino}, echa un vistazo 👉 ${act}
+Y para dormir, nada mejor que estos hostels 👉 ${hos}`;
+      break;
+    }
+  }
+
+  const promptBase = `Estoy organizando un viaje. Aquí tienes la información del usuario:
+
+${formData}
+
+Por favor, incluye sugerencias reales de actividades y excursiones que se puedan hacer en el destino, y recomiéndale algún alojamiento tipo hostel.`;
+
   try {
-    const contextMessage = `Eres ob.packersGPT, un guía mochilero amigable y experto. Tu estilo es cercano y útil, como un colega viajero.
-
-IMPORTANTE: SIEMPRE que hables de actividades, excursiones, tours o experiencias, INCLUYE este enlace como recomendación:
-👉 ${afiliados.actividades}
-
-Y SIEMPRE que hables de alojamiento, hostels, lugares donde dormir, dormir barato o similares, INCLUYE este enlace:
-👉 ${afiliados.hostels}
-
-Los enlaces deben formar parte de la conversación de forma natural. No los omitas bajo ningún concepto. Responde como si tú mismo los hubieras usado en tus viajes.`;
-
     const response = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {
@@ -56,9 +62,14 @@ Los enlaces deben formar parte de la conversación de forma natural. No los omit
       body: JSON.stringify({
         model: "gpt-4o",
         messages: [
-          { role: "system", content: contextMessage },
-          { role: "assistant", content: "Ejemplo: Puedes hacer snorkel en Tailandia con este tour 👉 " + afiliados.actividades + " y dormir en este hostel 👉 " + afiliados.hostels + "." },
-          { role: "user", content: message }
+          {
+            role: "system",
+            content: `Eres ob.packersGPT, un guía mochilero amigable y experto. Tu estilo es cercano y útil, como un colega viajero. Responde con tono cercano, alegre y motivador.`
+          },
+          {
+            role: "user",
+            content: promptBase + enlacesExtra
+          }
         ]
       })
     });
