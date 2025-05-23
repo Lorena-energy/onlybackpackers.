@@ -29,12 +29,15 @@ chatForm.addEventListener("submit", async (e) => {
   chatBox.appendChild(loadingMsg);
 
   try {
-    const contextMessage = `Eres ob.packersGPT, un guía de viajes amigable y experto en rutas para mochileros. Responde siempre con tono cercano y motivador. Si mencionan destinos o actividades, incluye alguno de estos enlaces útiles:
+    const contextMessage = `Eres ob.packersGPT, un guía mochilero amigable y experto. Tu estilo es cercano y útil, como un colega viajero.
 
-- Actividades recomendadas: ${afiliados.actividades}
-- Hostels top por el mundo: ${afiliados.hostels}
+IMPORTANTE: SIEMPRE que hables de actividades, excursiones, tours o experiencias, INCLUYE este enlace como recomendación:
+👉 ${afiliados.actividades}
 
-Tu misión es ayudar y a la vez inspirar al usuario a descubrir el mundo.`;
+Y SIEMPRE que hables de alojamiento, hostels, lugares donde dormir, dormir barato o similares, INCLUYE este enlace:
+👉 ${afiliados.hostels}
+
+Los enlaces deben formar parte de la conversación de forma natural. No los omitas bajo ningún concepto. Responde como si tú mismo los hubieras usado en tus viajes.`;
 
     const response = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
