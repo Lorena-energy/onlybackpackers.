@@ -1,3 +1,4 @@
+
 // 🔐 Clave camuflada para evitar detección automática
 const part1 = "sk";
 const part2 = "-proj-xZbAp8W0CLkZXOup7Udp7MqB0kNt-";
@@ -16,13 +17,21 @@ const afiliados = {
 
 chatForm.addEventListener("submit", async (e) => {
   e.preventDefault();
-  const message = userInput.value.trim();
-  if (!message) return;
+  const formData = userInput.value.trim();
+  if (!formData) return;
 
   const userMsg = document.createElement("div");
-  userMsg.textContent = "Tú: " + message;
+  userMsg.textContent = "Tú: " + formData;
   chatBox.appendChild(userMsg);
   userInput.value = "";
+
+  const message = `Estoy organizando un viaje. Aquí tienes la información del usuario:
+
+${formData}
+
+Por favor, incluye sugerencias reales de actividades y excursiones que se puedan hacer en el destino, y recomiéndale algún alojamiento tipo hostel. Incluye estos enlaces de afiliación si mencionas actividades o alojamiento:
+- Actividades: ${afiliados.actividades}
+- Hostels: ${afiliados.hostels}`;
 
   const loadingMsg = document.createElement("div");
   loadingMsg.textContent = "ob.packersGPT está escribiendo...";
@@ -48,14 +57,9 @@ Los enlaces deben formar parte de la conversación de forma natural. No los omit
       body: JSON.stringify({
         model: "gpt-4o",
         messages: [
-          {
-            role: "system",
-            content: contextMessage
-          },
-          {
-            role: "user",
-            content: message
-          }
+          { role: "system", content: contextMessage },
+          { role: "assistant", content: "Ejemplo: Puedes hacer snorkel en Tailandia con este tour 👉 " + afiliados.actividades + " y dormir en este hostel 👉 " + afiliados.hostels + "." },
+          { role: "user", content: message }
         ]
       })
     });
