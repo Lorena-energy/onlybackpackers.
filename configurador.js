@@ -1,63 +1,79 @@
 document.addEventListener("DOMContentLoaded", () => {
   console.log("configurador.js cargado correctamente");
 
-  const form = document.getElementById("route-form");
-  const itineraryBox = document.getElementById("itinerary");
-  const resultsSection = document.getElementById("route-results");
-  const guardarBtn = document.getElementById("guardar-ruta");
-  const compartirBtn = document.getElementById("compartir-ruta");
-  const chatForm = document.getElementById("chat-form");
-  const userInput = document.getElementById("user-input");
-  const chatBox = document.getElementById("chat-box");
-  const menuToggle = document.getElementById("menu-toggle");
-  const menu = document.getElementById("menu");
+  /* ───────── Elementos DOM ───────── */
+  const form            = document.getElementById("route-form");
+  const itineraryBox    = document.getElementById("itinerary");
+  const resultsSection  = document.getElementById("route-results");
+  const guardarBtn      = document.getElementById("guardar-ruta");
+  const compartirBtn    = document.getElementById("compartir-ruta");
+  const chatForm        = document.getElementById("chat-form");
+  const userInput       = document.getElementById("user-input");
+  const chatBox         = document.getElementById("chat-box");
+  const menuToggle      = document.getElementById("menu-toggle");
+  const menu            = document.getElementById("menu");
 
-  menuToggle.addEventListener("click", () => {
-    menu.classList.toggle("active");
-  });
+  menuToggle.addEventListener("click", () => menu.classList.toggle("active"));
 
   let rutaGenerada = "";
 
+  /* ───────── FORM PRINCIPAL ───────── */
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const departureCity = document.getElementById("departure-city").value.trim();
-    const tripDuration = document.getElementById("trip-duration").value.trim();
-    const budget = document.getElementById("trip-budget").value.trim();
-    const zones = document.getElementById("trip-zones").value.trim();
-    const preferences = document.getElementById("preferences").value;
-    const dates = document.getElementById("trip-dates").value.trim();
-    const groupSize = document.getElementById("group-size").value.trim();
+    const tripDuration  = document.getElementById("trip-duration").value.trim();
+    const budget        = document.getElementById("trip-budget").value.trim();
+    const zones         = document.getElementById("trip-zones").value.trim();
+    const preferences   = document.getElementById("preferences").value;
+    const dates         = document.getElementById("trip-dates").value.trim();
+    const groupSize     = document.getElementById("group-size").value.trim();
 
-    const prompt = `Hola ob.packersGPT. Necesito que crees una ruta personalizada para un viaje desde ${departureCity} de ${tripDuration} días, centrado en un viaje de tipo ${preferences}. ` +
-                   `${budget ? `El presupuesto aproximado es ${budget}. ` : ""}` +
-                   `${zones ? `La zona que me gustaría visitar es: ${zones}. ` : ""}` +
-                   `${dates ? `Las fechas del viaje son: ${dates}. ` : ""}` +
-                   `${groupSize ? `Viajamos ${groupSize} personas. ` : ""}` +
-                   `Por favor, detalla los días o lugares a visitar, actividades recomendadas (idealmente enlazables a plataformas como Civitatis o GetYourGuide), transportes y consejos. ` +
-                   `Hazlo con un estilo visual agradable: usa emojis para secciones como transporte (✈️), actividades (🎯), consejos (💡), y títulos de día como estrellas (⭐). También incluye una frase de cierre con enlace a OnlyBackpackers para compartir.`;
+    /* ── Detectar destino para crear enlaces afiliados ── */
+    const destino = zones || preferences || departureCity || "el destino";
+    const destURL = encodeURIComponent(destino.toLowerCase());
+    const ORIGEN  = "MAD"; // cámbialo a origen real si lo capturas
+
+    const prompt = `
+Hola ob.packersGPT 🧭.
+Crea una ruta personalizada de ${tripDuration || "varios"} días desde ${departureCity || "mi ciudad"} a ${destino}.
+Tipo de viaje: ${preferences}.
+${budget ? `Presupuesto aproximado: ${budget} €. ` : ""} 
+${dates  ? `Fechas: ${dates}. ` : ""} 
+${groupSize ? `Grupo: ${groupSize} personas. ` : ""}
+
+Incluye actividades, excursiones y hostels CON ENLACES AFILIADOS:
+👉 Actividades: https://www.getyourguide.com/?q=${destURL}&partner_id=0PBI9YH&cmp=share_to_earn
+👉 Hostels:     https://hostelworld.prf.hn/click/camref:1101l52sgW/destination:${destURL}
+✈️ Vuelos:      https://trip.tp.st/PNFLiA2f?origin=${ORIGEN}&destination=${destURL}
+✈️ Vuelos alt.: https://trip.tp.st/PNFLiA2f?origin=${ORIGEN}&destination=${destURL}  (Kiwi)
+📶 eSIM:        https://airalo.tp.st/11fkPqA8
+
+Usa emojis: ✈️ transporte, 🎯 actividades, 💡 consejos, y títulos de día con ⭐.
+Termina con una frase que invite a compartir en OnlyBackpackers.
+`;
 
     try {
       itineraryBox.innerHTML = "⏳ Generando tu ruta con IA...";
       resultsSection.classList.remove("hidden");
 
-      const response = await fetch("https://obpackers-backend.onrender.com/api/obpackers-gpt", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ prompt })
-      });
+      const response = await fetch(
+        "https://obpackers-backend.onrender.com/api/obpackers-gpt",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ prompt })
+        }
+      );
 
-      const data = await response.json();
+      const data   = await response.json();
       const output = data.choices?.[0]?.message?.content || "No se pudo generar la ruta.";
 
       rutaGenerada = output;
-      const mensaje = `Ruta generada por ob.packersGPT:\n\n${output}`;
-      localStorage.setItem("rutaParaCompartir", mensaje);
+      localStorage.setItem("rutaParaCompartir", `Ruta generada por ob.packersGPT:\n\n${output}`);
 
       itineraryBox.innerHTML = `
-        <div class="respuestaGPT">${output.replace(/\n/g, '<br>')}</div>
+        <div class="respuestaGPT">${output.replace(/\n/g, "<br>")}</div>
         <div style="text-align:center; margin-top:20px;">
           <a href="worldtrip-a-medida.html" class="cta-button" style="background:#00897B;">👩‍💼 ¿Quieres atención personalizada? Haz clic aquí</a>
         </div>
@@ -75,28 +91,26 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
         <div style="text-align:center; margin-top:15px; font-size:0.9em;">
           🌐 Descúbrelo en <a href="https://onlybackpackers.es" target="_blank">OnlyBackpackers.es</a>
-        </div>
-      `;
+        </div>`;
     } catch (err) {
       console.error("Error generando ruta:", err);
-      itineraryBox.innerHTML = "❌ Ocurrió un error al generar la ruta. Intenta de nuevo más tarde.";
+      itineraryBox.innerHTML = "❌ Ocurrió un error al generar la ruta. Inténtalo más tarde.";
     }
   });
 
+  /* ───────── GUARDAR & COMPARTIR ───────── */
   guardarBtn.addEventListener("click", () => {
-    const contenido = itineraryBox.innerText;
-    localStorage.setItem("rutaPersonalizada", contenido);
+    localStorage.setItem("rutaPersonalizada", itineraryBox.innerHTML);
     alert("✅ Ruta guardada en tu dispositivo (temporal)");
   });
 
   compartirBtn.addEventListener("click", () => {
-    const ruta = itineraryBox.innerText;
-    const mensaje = `Ruta generada por ob.packersGPT:\n\n${ruta}`;
-    localStorage.setItem("rutaParaCompartir", mensaje);
+    localStorage.setItem("rutaParaCompartir", itineraryBox.innerHTML);
     alert("🚀 Ruta preparada para compartir. Redirigiendo al muro...");
     window.location.href = "muro.html";
   });
 
+  /* ───────── CHAT RÁPIDO SOBRE LA RUTA ───────── */
   chatForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     const question = userInput.value.trim();
@@ -106,63 +120,53 @@ document.addEventListener("DOMContentLoaded", () => {
     userInput.value = "";
 
     const contextPrompt = rutaGenerada
-      ? `Basándote en esta ruta generada: \n${rutaGenerada}\n\n${question}`
+      ? `Basándote en esta ruta: \n${rutaGenerada}\n\n${question}`
       : question;
 
     try {
-      const response = await fetch("https://obpackers-backend.onrender.com/api/obpackers-gpt", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ prompt: contextPrompt })
-      });
-
-      const data = await response.json();
+      const response = await fetch(
+        "https://obpackers-backend.onrender.com/api/obpackers-gpt",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ prompt: contextPrompt })
+        }
+      );
+      const data   = await response.json();
       const output = data.choices?.[0]?.message?.content || "No se pudo generar respuesta.";
 
       chatBox.innerHTML += `<div><strong>ob.packersGPT:</strong> ${output.replace(/\n/g, "<br>")}</div>`;
       chatBox.scrollTop = chatBox.scrollHeight;
     } catch (err) {
       console.error("Error en el chat:", err);
-      chatBox.innerHTML += `<div style="color:red;">❌ Hubo un error al contactar con ob.packersGPT</div>`;
+      chatBox.innerHTML += `<div style="color:red;">❌ Error al contactar con ob.packersGPT</div>`;
     }
   });
 });
 
+/* ───────── Compartir / Copiar ───────── */
 function shareTo(platform) {
-  const ruta = localStorage.getItem("rutaParaCompartir") || "¡Mira esta ruta viajera creada con ob.packersGPT!";
-  const url = encodeURIComponent("https://onlybackpackers.es");
+  const ruta = localStorage.getItem("rutaParaCompartir") || "¡Mira esta ruta creada con ob.packersGPT!";
+  const url  = encodeURIComponent("https://onlybackpackers.es");
   const text = encodeURIComponent(ruta);
   let shareUrl = "";
 
   switch (platform) {
-    case "twitter":
-      shareUrl = `https://twitter.com/intent/tweet?text=${text}&url=${url}`;
-      break;
-    case "facebook":
-      shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${text}`;
-      break;
-    case "whatsapp":
-      shareUrl = `https://wa.me/?text=${text}%20${url}`;
-      break;
-    case "telegram":
-      shareUrl = `https://t.me/share/url?url=${url}&text=${text}`;
-      break;
-    case "instagram":
-      alert("📸 Para compartir en Instagram, copia la ruta y pégala manualmente en tus stories o publicaciones. Puedes subir capturas desde ob.packersGPT ✨");
-      return;
-    case "tiktok":
-      alert("🎵 Para compartir en TikTok, graba un vídeo mostrando tu ruta y menciona @onlybackpackers o añade el link en tu bio ✈️");
-      return;
+    case "twitter":   shareUrl = `https://twitter.com/intent/tweet?text=${text}&url=${url}`; break;
+    case "facebook":  shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${text}`; break;
+    case "whatsapp":  shareUrl = `https://wa.me/?text=${text}%20${url}`; break;
+    case "telegram":  shareUrl = `https://t.me/share/url?url=${url}&text=${text}`; break;
+    case "instagram": alert("📸 Para Instagram, copia la ruta y pégala manualmente en stories o post."); return;
+    case "tiktok":    alert("🎵 Para TikTok, graba un vídeo mostrando tu ruta y menciona @onlybackpackers."); return;
   }
-
   window.open(shareUrl, "_blank");
 }
 
 function copyRoute() {
-  const ruta = localStorage.getItem("rutaParaCompartir");
-  navigator.clipboard.writeText(ruta || "").then(() => {
-    alert("📋 Ruta copiada al portapapeles");
-  });
+  const ruta = localStorage.getItem("rutaParaCompartir") || "";
+  navigator.clipboard.writeText(ruta.replace(/<br>/g, "\n")).then(() =>
+    alert("📋 Ruta copiada al portapapeles")
+  );
 }
+
+  
