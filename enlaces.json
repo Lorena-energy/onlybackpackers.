@@ -1,0 +1,21 @@
+{
+  "sri lanka": {
+    "actividades": "https://www.getyourguide.com/?q=sri%20lanka&partner_id=0PBI9YH&cmp=share_to_earn",
+    "hostels": "https://hostelworld.prf.hn/click/camref:1101l52sgW/destination:sri%20lanka"
+  },
+  "mexico": {
+    "actividades": "https://www.getyourguide.com/?q=mexico&partner_id=0PBI9YH&cmp=share_to_earn",
+    "hostels": "https://hostelworld.prf.hn/click/camref:1101l52sgW/destination:mexico"
+  },
+
+  /* ─────────── LINKS GENÉRICOS ─────────── */
+  "vuelos": {
+    "generico": "https://trip.tp.st/PNFLiA2f?origin=ORIGEN&destination=DESTINO"
+  },
+  "vuelos_alt": {
+    "kiwi": "https://trip.tp.st/PNFLiA2f?origin=ORIGEN&destination=DESTINO"
+  },
+  "esim": {
+    "generico": "https://airalo.tp.st/11fkPqA8"
+  }
+}
