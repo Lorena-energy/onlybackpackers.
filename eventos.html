@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Eventos - OnlyBackpackers</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="main.css" />
-  <link rel="stylesheet" href="eventos.css">
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/eventos.css">
 </head>
 <body>
   <!-- ENCABEZADO -->
@@ -18,7 +18,7 @@
         <span class="bar"></span>
       </div>
       <ul class="menu" id="menu">
-      <li><a href="index.html" class="active">Inicio</a></li>
+        <li><a href="index.html" class="active">Inicio</a></li>
         <li><a href="login-register.html">Login</a></li>
         <li><a href="muro.html">Muro Comunidad</a></li>
         <li><a href="muro-personal.html">Mi Muro</a></li>
@@ -96,7 +96,6 @@
           <p class="price"><strong>Precio:</strong> $75</p>
           <a href="#" class="cta-button">Más Información</a>
         </div>
-        <!-- Más tarjetas de ejemplo -->
       </div>
     </section>
 
@@ -141,18 +140,15 @@
       menu.classList.toggle("active");
     });
 
-    // Filtros de eventos (función inicial para futuro desarrollo)
     const eventFilters = document.getElementById("event-filters");
-
     eventFilters.addEventListener("submit", (e) => {
       e.preventDefault();
       const location = document.getElementById("filter-location").value;
       const date = document.getElementById("filter-date").value;
       const type = document.getElementById("filter-type").value;
-
       console.log("Filtrando por:", { location, date, type });
-      // Lógica para filtrar eventos aquí
     });
   </script>
 </body>
 </html>
+
