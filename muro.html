@@ -2,21 +2,28 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>OnlyBackpackers - Comunidad</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/main.css" />
-  <link rel="stylesheet" href="css/muro.css" />
+  <title>OnlyBackpackers - Mi Muro</title>
+
+  <!-- Fuente Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"/>
+
+  <!-- Estilos principales -->
+  <link rel="stylesheet" href="main.css" />
+  <link rel="stylesheet" href="muro-personal.css" />
 </head>
 <body>
-
-  <!-- 🔷 Cabecera y Menú completo -->
+  <!-- Cabecera -->
   <header class="main-header">
+    <div class="branding">
+      <h1>OnlyBackpackers</h1>
+    </div>
+    <div class="menu-toggle" id="menu-toggle">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
     <nav>
-      <h2>OnlyBackpackers</h2>
-      <div class="menu-toggle" id="menu-toggle">
-        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
-      </div>
       <ul class="menu" id="menu">
         <li><a href="index.html" class="active">Inicio</a></li>
         <li><a href="login-register.html">Login</a></li>
@@ -28,4 +35,119 @@
         <li><a href="expenses.html">Gastos</a></li>
         <li><a href="recomendaciones.html">Recomendaciones</a></li>
         <li><a href="worldtrip.html">Worldtrip</a></li>
-        <li
+        <li><a href="zona-camper.html">Zona Camper</a></li>
+        <li><a href="recompensas.html">Recompensas</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Imagen de portada -->
+  <div class="cover-container">
+    <img src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=1500&q=80" alt="Portada por defecto" id="cover-image" class="cover-image"/>
+    <label for="cover-upload" class="upload-label cover-upload-label">
+      <i class="fas fa-camera"></i> Cambiar portada
+    </label>
+    <input type="file" id="cover-upload" accept="image/*" hidden />
+  </div>
+
+  <!-- Perfil + Detalles -->
+  <section class="profile-section">
+    <div class="profile-box">
+      <div class="profile-pic-wrapper">
+        <img src="https://images.unsplash.com/photo-1504203700686-f21c9ff6375e?auto=format&fit=crop&w=150&q=80" alt="Foto de perfil por defecto" class="profile-pic" id="profile-pic"/>
+        <label for="profile-upload" class="upload-label upload-label-profile">
+          <i class="fas fa-camera"></i>
+        </label>
+        <input type="file" id="profile-upload" accept="image/*" hidden />
+      </div>
+
+      <div class="profile-info">
+        <h2 id="username">Nombre del Usuario</h2>
+        <p>Puntos: <span id="user-points">125</span></p>
+        <button id="add-friend" class="cta-button">Agregar amigo/a</button>
+        <p><strong>Código de invitación:</strong> <span id="invite-code">ABCD1234</span></p>
+        <button id="copy-invite-link" class="cta-button">Copiar enlace de invitación</button>
+      </div>
+    </div>
+
+    <!-- Botón Detalles Usuario -->
+    <div class="user-details-toggle-box">
+      <button class="user-details-toggle cta-button" aria-label="Detalles del usuario">
+        <i class="fas fa-user"></i>
+        <span id="user-details-btn-text">Detalles del usuario</span>
+      </button>
+    </div>
+
+    <!-- Panel oculto de detalles -->
+    <div class="user-details" id="user-details">
+      <h3>Detalles del Usuario</h3>
+      <form id="details-form">
+        <label for="user-about">Sobre mí:</label>
+        <textarea id="user-about" placeholder="Escribe algo sobre ti..."></textarea>
+
+        <label for="user-interests">Intereses:</label>
+        <input type="text" id="user-interests" placeholder="Ej: senderismo, gastronomía..."/>
+
+        <label for="user-fav-destinations">Destinos favoritos:</label>
+        <input type="text" id="user-fav-destinations" placeholder="Ej: Bali, México..."/>
+
+        <label for="user-fav-route">Tu ruta preferida:</label>
+        <input type="text" id="user-fav-route" placeholder="Ej: Camino de Santiago..."/>
+
+        <label for="user-country">País:</label>
+        <input type="text" id="user-country" placeholder="Ej: España..."/>
+
+        <label for="user-languages">Idiomas:</label>
+        <input type="text" id="user-languages" placeholder="Ej: español, inglés..."/>
+
+        <label for="user-travel-style">Forma de viajar:</label>
+        <input type="text" id="user-travel-style" placeholder="Ej: mochilero, hotel..."/>
+
+        <button type="submit" class="cta-button">Guardar</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Crear publicación -->
+  <section class="create-post">
+    <h2>Publica algo nuevo</h2>
+    <form id="post-form">
+      <textarea id="post-content" placeholder="Escribe algo..." rows="3" required></textarea>
+
+      <!-- Emojis -->
+      <button type="button" class="emoji-toggle-post">😀</button>
+      <div class="emoji-panel-post" style="display: none;">
+        <span>😀</span><span>😁</span><span>🤣</span><span>❤️</span><span>🥰</span>
+      </div>
+
+      <label for="post-media" class="upload-label">
+        <i class="fas fa-camera"></i> Subir fotos/videos
+      </label>
+      <input type="file" id="post-media" accept="image/*, video/*" multiple hidden />
+
+      <div class="post-visibility">
+        <input type="checkbox" id="post-community" />
+        <label for="post-community">Publicar también en la comunidad</label>
+      </div>
+
+      <button type="submit" class="cta-button">Publicar</button>
+    </form>
+  </section>
+
+  <!-- Muro personal -->
+  <main class="muro-personal">
+    <section id="user-posts">
+      <h2>Mis Publicaciones</h2>
+    </section>
+  </main>
+
+  <!-- Modal de imagen ampliada -->
+  <div id="image-modal" class="image-modal" style="display: none;">
+    <span id="close-modal" class="close-modal">&times;</span>
+    <img id="modal-image" class="modal-image" alt="Imagen ampliada" />
+  </div>
+
+  <!-- Script principal -->
+  <script src="muro-personal.js"></script>
+</body>
+</html>
