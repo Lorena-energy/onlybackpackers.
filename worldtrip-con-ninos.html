@@ -2,10 +2,12 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Worldtrip - [Categoría]</title>
+  <title>Worldtrip - Viajes con Niños</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="stylesheet" href="main.css" />
-  <link rel="stylesheet" href="worldtrip.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/worldtrip.css" />
+  <link rel="stylesheet" href="css/worldtrip-con-ninos.css" />
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,700&display=swap" rel="stylesheet">
 </head>
 <body>
   <!-- ENCABEZADO -->
@@ -16,7 +18,7 @@
         <li><a href="worldtrip.html" class="active">Worldtrip</a></li>
       </ul>
     </nav>
-    <h1>Viajes con niños </h1>
+    <h1>Viajes con Niños</h1>
   </header>
 
   <!-- LISTADO DE VIAJES -->
@@ -24,44 +26,44 @@
     <div class="worldtrip-grid">
       <!-- Ejemplo de Viaje 1 -->
       <div class="trip-card" onclick="toggleTripDetails('trip1')">
-        <h3>Viaje Destacado 1</h3>
-        <p>Descripción breve del viaje.</p>
+        <h3>París para Familias</h3>
+        <p>Explora Disneyland, museos y parques en un viaje mágico.</p>
       </div>
       <div id="trip1" class="trip-details">
         <img src="images/viaje1.jpg" alt="Viaje 1" />
-        <p>Descripción completa del viaje, qué incluye, duración, etc.</p>
-        <p><strong>Precio:</strong> XXX€</p>
+        <p>Incluye entradas a Disneyland, paseos en barco por el Sena y alojamiento familiar.</p>
+        <p><strong>Precio:</strong> 950€</p>
         <button class="cta-button" onclick="openPayment()">Paga ahora</button>
-        <a href="https://wa.me/123456789?text=Hola,%20quiero%20más%20información%20sobre%20[Nombre del viaje]" class="cta-button">Más Info por WhatsApp</a>
+        <a href="https://wa.me/123456789?text=Hola,%20quiero%20más%20información%20sobre%20París%20para%20Familias" class="cta-button">Más Info por WhatsApp</a>
       </div>
 
       <!-- Ejemplo de Viaje 2 -->
       <div class="trip-card" onclick="toggleTripDetails('trip2')">
-        <h3>Viaje Destacado 2</h3>
-        <p>Descripción breve del viaje.</p>
+        <h3>Aventura en Costa Rica</h3>
+        <p>Selvas, animales y diversión en familia.</p>
       </div>
       <div id="trip2" class="trip-details">
         <img src="images/viaje2.jpg" alt="Viaje 2" />
-        <p>Descripción completa del viaje, qué incluye, duración, etc.</p>
-        <p><strong>Precio:</strong> XXX€</p>
+        <p>Explora volcanes, playas y reservas naturales con los peques.</p>
+        <p><strong>Precio:</strong> 1200€</p>
         <button class="cta-button" onclick="openPayment()">Paga ahora</button>
-        <a href="https://wa.me/123456789?text=Hola,%20quiero%20más%20información%20sobre%20[Nombre del viaje]" class="cta-button">Más Info por WhatsApp</a>
+        <a href="https://wa.me/123456789?text=Hola,%20quiero%20más%20información%20sobre%20Aventura%20en%20Costa%20Rica" class="cta-button">Más Info por WhatsApp</a>
       </div>
     </div>
 
-     <!-- SECCIÓN SOLO PARA ADMINISTRADORES -->
-  <div id="admin-section" style="display: none; text-align: center; margin-top: 30px;">
-    <h2>Administración de Viajes</h2>
-    <p>Puedes agregar nuevos viajes aquí.</p>
-    <form id="trip-form">
-      <input type="text" id="trip-name" placeholder="Nombre del viaje" required>
-      <input type="text" id="trip-description" placeholder="Descripción" required>
-      <input type="text" id="trip-duration" placeholder="Duración" required>
-      <input type="number" id="trip-price" placeholder="Precio (€)" required>
-      <input type="url" id="trip-image" placeholder="URL de la imagen" required>
-      <button type="submit" class="cta-button">Añadir Viaje</button>
-    </form>
-  </div>
+    <!-- SECCIÓN SOLO PARA ADMINISTRADORES -->
+    <div id="admin-section" style="display: none; text-align: center; margin-top: 30px;">
+      <h2>Administración de Viajes</h2>
+      <p>Puedes agregar nuevos viajes aquí.</p>
+      <form id="trip-form">
+        <input type="text" id="trip-name" placeholder="Nombre del viaje" required>
+        <input type="text" id="trip-description" placeholder="Descripción" required>
+        <input type="text" id="trip-duration" placeholder="Duración" required>
+        <input type="number" id="trip-price" placeholder="Precio (€)" required>
+        <input type="url" id="trip-image" placeholder="URL de la imagen" required>
+        <button type="submit" class="cta-button">Añadir Viaje</button>
+      </form>
+    </div>
 
     <!-- MENSAJE SI NO HAY MÁS VIAJES -->
     <div id="no-trips-message" style="text-align: center; margin-top: 20px; display: none;">
@@ -75,7 +77,7 @@
 
   <script>
     function toggleTripDetails(id) {
-      let trip = document.getElementById(id);
+      const trip = document.getElementById(id);
       trip.style.display = trip.style.display === 'block' ? 'none' : 'block';
     }
 
@@ -84,15 +86,17 @@
     }
 
     // SIMULACIÓN DE ACCESO ADMINISTRADOR
-    const isAdmin = true; // CAMBIA ESTO A FALSE PARA PROBAR COMO USUARIO NORMAL
+    const isAdmin = true; // CAMBIA ESTO A false para ocultar sección admin
     if (isAdmin) {
       document.getElementById("admin-section").style.display = "block";
     }
 
-    // FUNCIÓN PARA AÑADIR UN NUEVO VIAJE (DEMO)
-    function addNewTrip() {
-      alert("Aquí podrás subir nuevos viajes en el futuro.");
-    }
+    // FUTURA FUNCIÓN PARA GUARDAR VIAJES
+    document.getElementById("trip-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+      alert("Viaje añadido (solo demo). Pronto podrás gestionarlo desde Firebase.");
+      this.reset();
+    });
   </script>
 </body>
 </html>
