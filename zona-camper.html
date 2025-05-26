@@ -1,17 +1,25 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Zona Camper - OnlyBackpackers</title>
-  <link rel="stylesheet" href="main.css" />
-  <link rel="stylesheet" href="zona-camper.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  
+  <!-- Fuente Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/zona-camper.css" />
 </head>
 <body>
+
+  <!-- ENCABEZADO -->
   <header class="main-header">
     <div class="menu-toggle" id="menu-toggle">
-      <span></span><span></span><span></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
     </div>
     <nav>
       <ul class="menu" id="menu">
@@ -19,7 +27,7 @@
         <li><a href="login-register.html">Login</a></li>
         <li><a href="muro.html">Muro Comunidad</a></li>
         <li><a href="muro-personal.html">Mi Muro</a></li>
-        <li><a href="chats.html">Chats</a></li> 
+        <li><a href="chats.html">Chats</a></li>
         <li><a href="configurador.html">Configurador</a></li>
         <li><a href="traductor-de-voz.html">Traductor</a></li>
         <li><a href="expenses.html">Gastos</a></li>
@@ -31,17 +39,22 @@
     </nav>
   </header>
 
+  <!-- CONTENIDO PRINCIPAL -->
   <main class="zona-camper">
+
+    <!-- Intro -->
     <section class="intro">
       <h1>Zona Camper 🚐</h1>
-      <p>Explora y comparte los mejores lugares para tu viaje en furgo o camper. ¡Comparte tu spot favorito o encuentra el próximo destino perfecto!</p>
+      <p>Explora y comparte los mejores lugares para tu viaje en furgo o camper. ¡Comparte tu spot favorito o encuentra tu próximo destino perfecto!</p>
     </section>
 
+    <!-- Formulario -->
     <section class="formulario">
       <h2>🎯 Sube tu lugar camper favorito</h2>
       <form id="camper-form">
-        <input type="text" id="nombre-lugar" placeholder="Nombre del lugar" required>
-        <input type="text" id="ubicacion" placeholder="Ubicación (Ej: Cullera, Valencia)" required>
+        <input type="text" id="nombre-lugar" placeholder="Nombre del lugar" required />
+        <input type="text" id="ubicacion" placeholder="Ubicación (Ej: Cullera, Valencia)" required />
+        
         <select id="tipo-zona">
           <option value="">Tipo de zona</option>
           <option value="parking">Parking</option>
@@ -52,17 +65,20 @@
           <option value="piscina">Con piscina</option>
           <option value="sin-piscina">Sin piscina</option>
         </select>
-        <input type="text" id="servicios" placeholder="Servicios (agua, luz, ducha...)" required>
-        <input type="file" id="media" accept="image/*,video/*">
+        
+        <input type="text" id="servicios" placeholder="Servicios (agua, luz, ducha...)" required />
+        <input type="file" id="media" accept="image/*,video/*" />
         <textarea id="comentarios" placeholder="Comentarios adicionales"></textarea>
-        <button type="submit">Subir zona</button>
+        
+        <button type="submit" class="cta-button">Subir zona</button>
       </form>
     </section>
 
+    <!-- Listado de zonas -->
     <section class="spots">
       <h2>📍 Zonas Camper recomendadas por la comunidad</h2>
       <div class="filtros">
-        <input type="text" id="filtro-ubicacion" placeholder="Filtrar por ubicación...">
+        <input type="text" id="filtro-ubicacion" placeholder="Filtrar por ubicación..." />
         <select id="filtro-tipo">
           <option value="">Todos los tipos</option>
           <option value="parking">Parking</option>
@@ -71,19 +87,23 @@
         </select>
       </div>
       <div id="lista-zonas" class="lista-zonas"></div>
-      <p class="proximamente">✨ ¡Atentos! Pronto añadiremos mapas interactivos, puntuaciones, IA de rutas, y más funcionalidades camper. 🧡</p>
+      <p class="proximamente">✨ ¡Atentos! Pronto añadiremos mapas interactivos, puntuaciones, IA de rutas y muchas más funcionalidades camper. 🧡</p>
     </section>
 
+    <!-- Puntos por participación -->
     <section class="puntos">
       <h3>🎁 ¡Cada recomendación suma puntos!</h3>
       <p>Cuantas más aportes, ¡más recompensas puedes desbloquear!</p>
     </section>
+
   </main>
 
   <footer>
-    <p>&copy; 2024 OnlyBackpackers. Vive tu aventura con nosotros.</p>
+    <p>&copy; 2025 OnlyBackpackers. Vive tu aventura con nosotros.</p>
   </footer>
 
-  <script src="zona-camper.js"></script>
+  <script src="js/zona-camper.js"></script>
 </body>
 </html>
+
+
