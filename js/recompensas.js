@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Variable para simular los puntos del usuario (inicialmente 100,000)
+  // Simulación de puntos del usuario
   let userPoints = 100000;
   const userPointsEl = document.getElementById("userPoints");
   userPointsEl.textContent = userPoints;
@@ -11,17 +11,16 @@ document.addEventListener("DOMContentLoaded", () => {
     menu.classList.toggle("active");
   });
 
-  // Determinar si el dispositivo es táctil
+  // Detectar si es dispositivo táctil
   const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-  // Función para alternar el despliegue de la tarjeta
+  // Alternar visualización del contenido de la tarjeta
   const toggleCardHandler = (e) => {
-    // Evitar que el clic/tap en el botón "Canjear" active la tarjeta
     if (e.target.classList.contains("redeem-btn")) return;
     e.currentTarget.classList.toggle("active");
   };
 
-  // Asignar el evento adecuado (touchend para móviles, click para desktop)
+  // Asignar evento a cada tarjeta
   const rewardCards = document.querySelectorAll(".reward-card");
   rewardCards.forEach((card) => {
     if (isTouchDevice) {
@@ -31,30 +30,23 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Eventos para los botones "Canjear"
+  // Lógica de canjeo de recompensas
   const redeemButtons = document.querySelectorAll(".redeem-btn");
   redeemButtons.forEach((btn) => {
     btn.addEventListener("click", (e) => {
-      e.stopPropagation(); // Evita que se active la tarjeta
+      e.stopPropagation(); // No activar el toggle de tarjeta
       const reward = btn.dataset.reward;
       const cost = parseInt(btn.dataset.cost, 10);
 
-      console.log(`Intentando canjear "${reward}" por ${cost} puntos. Puntos actuales: ${userPoints}`);
-
-      // Mostrar confirmación para el canje
-      const confirmar = confirm(`Vas a canjear "${reward}" por ${cost} puntos. ¿Estás de acuerdo?`);
+      const confirmar = confirm(`¿Seguro que deseas canjear "${reward}" por ${cost} puntos?`);
       if (confirmar) {
         if (userPoints >= cost) {
           userPoints -= cost;
           userPointsEl.textContent = userPoints;
-          alert(`¡Felicidades! Has canjeado "${reward}".`);
-          console.log(`Canje exitoso. Puntos restantes: ${userPoints}`);
+          alert(`¡Canje realizado! Has obtenido "${reward}".`);
         } else {
-          alert("No tienes puntos suficientes para canjear este premio.");
-          console.log("Canje fallido: puntos insuficientes.");
+          alert("No tienes suficientes puntos para canjear esta recompensa.");
         }
-      } else {
-        console.log("El canje fue cancelado por el usuario.");
       }
     });
   });
