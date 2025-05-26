@@ -4,11 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Recomendaciones - OnlyBackpackers</title>
-  <!-- Fuente de Google Fonts -->
+
+  <!-- Fuente Google -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="main.css" />
-  <link rel="stylesheet" href="recomendaciones.css" />
-  <script defer src="recomendaciones.js"></script>
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/recomendaciones.css" />
+
+  <!-- JS -->
+  <script defer src="js/recomendaciones.js"></script>
 </head>
 <body>
   <header class="header">
@@ -41,7 +46,7 @@
   
   <main>
     <div class="recommendations-container">
-      <!-- Columna 1: Muro de Recomendaciones (Usuarios) -->
+      <!-- Recomendaciones de usuarios -->
       <section id="user-recommendations" class="column">
         <h2>Muro de Recomendaciones</h2>
         <div class="form-container">
@@ -56,12 +61,10 @@
             <button type="submit">Publicar</button>
           </form>
         </div>
-        <div id="user-recommendations-list" class="recommendations-wall">
-          <!-- Las recomendaciones de usuarios se agregarán aquí -->
-        </div>
+        <div id="user-recommendations-list" class="recommendations-wall"></div>
       </section>
       
-      <!-- Columna 2: Recomendaciones Destacadas (Admin) -->
+      <!-- Recomendaciones destacadas -->
       <section id="admin-recommendations" class="column">
         <h2>Recomendaciones Destacadas</h2>
         <div class="form-container">
@@ -73,14 +76,12 @@
             <button type="submit">Publicar Destacada</button>
           </form>
         </div>
-        <div id="featured-list" class="recommendations-wall">
-          <!-- Las recomendaciones destacadas se agregarán aquí -->
-        </div>
+        <div id="featured-list" class="recommendations-wall"></div>
       </section>
     </div>
   </main>
   
-  <!-- Modal para ampliar imágenes -->
+  <!-- Modal -->
   <div id="image-modal" class="image-modal" style="display: none;">
     <span id="close-modal" class="close-modal">&times;</span>
     <img id="modal-image" class="modal-image" src="" alt="Imagen ampliada">
