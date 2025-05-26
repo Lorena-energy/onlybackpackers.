@@ -2,12 +2,16 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Worldtrip - [Grupales de 35 a 45 años]</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="stylesheet" href="main.css" />
-  <link rel="stylesheet" href="worldtrip.css" />
+  <title>Worldtrip - Grupales 35 a 45 años</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Fuente + Estilos -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/worldtrip.css" />
 </head>
 <body>
+
   <!-- ENCABEZADO -->
   <header class="main-header">
     <nav>
@@ -16,56 +20,57 @@
         <li><a href="worldtrip.html" class="active">Worldtrip</a></li>
       </ul>
     </nav>
-    <h1>Viajes Grupales de 35 a 45 años </h1>
+    <h1>Viajes Grupales de 35 a 45 años</h1>
   </header>
 
   <!-- LISTADO DE VIAJES -->
   <main>
     <div class="worldtrip-grid">
-      <!-- Viaje Real 1: Tailandia Low Cost -->
+
+      <!-- Viaje 1 -->
       <div class="trip-card" onclick="toggleTripDetails('trip1')">
         <h3>Tailandia Low Cost</h3>
         <p>Un viaje económico para explorar los mejores rincones de Tailandia.</p>
       </div>
       <div id="trip1" class="trip-details">
         <img src="images/tailandia.jpg" alt="Tailandia" />
-        <p>Recorre Bangkok, Chiang Mai y las paradisíacas islas del sur con alojamientos económicos y experiencias inolvidables.</p>
+        <p>Recorre Bangkok, Chiang Mai y las islas del sur con alojamientos económicos y experiencias inolvidables.</p>
         <p><strong>Duración:</strong> 10 días</p>
         <p><strong>Precio:</strong> 990€</p>
         <button class="cta-button" onclick="openPayment()">Paga ahora</button>
         <a href="https://wa.me/123456789?text=Hola,%20quiero%20más%20información%20sobre%20Tailandia%20Low%20Cost" class="cta-button">Más Info por WhatsApp</a>
       </div>
 
-      <!-- Viaje Real 2: Ruta Andina en Perú -->
+      <!-- Viaje 2 -->
       <div class="trip-card" onclick="toggleTripDetails('trip2')">
         <h3>Ruta Andina en Perú</h3>
         <p>Explora Machu Picchu y la belleza de los Andes con un presupuesto ajustado.</p>
       </div>
       <div id="trip2" class="trip-details">
         <img src="images/peru.jpg" alt="Perú" />
-        <p>Un recorrido inolvidable desde Lima hasta Cusco, pasando por el Valle Sagrado y finalizando en la imponente ciudadela de Machu Picchu.</p>
+        <p>Un recorrido inolvidable desde Lima hasta Cusco, pasando por el Valle Sagrado y terminando en Machu Picchu.</p>
         <p><strong>Duración:</strong> 12 días</p>
         <p><strong>Precio:</strong> 1.200€</p>
         <button class="cta-button" onclick="openPayment()">Paga ahora</button>
-        <a href="https://wa.me/123456789?text=Hola,%20quiero%20más%20información%20sobre%20la%20Ruta%20Andina%20en%20Per%C3%BA" class="cta-button">Más Info por WhatsApp</a>
+        <a href="https://wa.me/123456789?text=Hola,%20quiero%20más%20información%20sobre%20la%20Ruta%20Andina%20en%20Perú" class="cta-button">Más Info por WhatsApp</a>
       </div>
+
     </div>
 
-    <!-- SECCIÓN SOLO PARA ADMINISTRADORES -->
-  <div id="admin-section" style="display: none; text-align: center; margin-top: 30px;">
-    <h2>Administración de Viajes</h2>
-    <p>Puedes agregar nuevos viajes aquí.</p>
-    <form id="trip-form">
-      <input type="text" id="trip-name" placeholder="Nombre del viaje" required>
-      <input type="text" id="trip-description" placeholder="Descripción" required>
-      <input type="text" id="trip-duration" placeholder="Duración" required>
-      <input type="number" id="trip-price" placeholder="Precio (€)" required>
-      <input type="url" id="trip-image" placeholder="URL de la imagen" required>
-      <button type="submit" class="cta-button">Añadir Viaje</button>
-    </form>
-  </div>
+    <!-- SECCIÓN ADMIN -->
+    <div id="admin-section" style="display: none; text-align: center; margin-top: 30px;">
+      <h2>Administración de Viajes</h2>
+      <form id="trip-form">
+        <input type="text" id="trip-name" placeholder="Nombre del viaje" required>
+        <input type="text" id="trip-description" placeholder="Descripción" required>
+        <input type="text" id="trip-duration" placeholder="Duración" required>
+        <input type="number" id="trip-price" placeholder="Precio (€)" required>
+        <input type="url" id="trip-image" placeholder="URL de la imagen" required>
+        <button type="submit" class="cta-button">Añadir Viaje</button>
+      </form>
+    </div>
 
-    <!-- MENSAJE SI NO HAY MÁS VIAJES -->
+    <!-- MENSAJE SIN VIAJES -->
     <div id="no-trips-message" style="text-align: center; margin-top: 20px; display: none;">
       <p>Próximamente más viajes disponibles. ¡Vuelve pronto!</p>
     </div>
@@ -75,9 +80,10 @@
     <p>&copy; 2025 OnlyBackpackers. Todos los derechos reservados.</p>
   </footer>
 
+  <!-- JS Embebido -->
   <script>
     function toggleTripDetails(id) {
-      let trip = document.getElementById(id);
+      const trip = document.getElementById(id);
       trip.style.display = trip.style.display === 'block' ? 'none' : 'block';
     }
 
@@ -85,16 +91,11 @@
       alert("La integración del TPV virtual estará disponible pronto.");
     }
 
-    // SIMULACIÓN DE ACCESO ADMINISTRADOR
-    const isAdmin = true; // CAMBIA ESTO A FALSE PARA PROBAR COMO USUARIO NORMAL
+    const isAdmin = true; // Cambiar a false para ocultar el formulario de administración
     if (isAdmin) {
       document.getElementById("admin-section").style.display = "block";
-    }
-
-    // FUNCIÓN PARA AÑADIR UN NUEVO VIAJE (DEMO)
-    function addNewTrip() {
-      alert("Aquí podrás subir nuevos viajes en el futuro.");
     }
   </script>
 </body>
 </html>
+
