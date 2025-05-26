@@ -18,6 +18,7 @@ body {
 
 h1 {
   font-size: 2.5rem;
+  margin-bottom: 0.5rem;
 }
 
 h2 {
@@ -33,6 +34,8 @@ h2 {
   list-style: none;
   padding: 10px;
   background: #0077cc;
+  flex-wrap: wrap;
+  margin: 0;
 }
 
 .menu li {
@@ -53,7 +56,7 @@ h2 {
   color: #003366;
 }
 
-/* ===== TARJETAS EXPANDIBLES ===== */
+/* ===== CONTENEDOR DE TARJETAS ===== */
 .rewards-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -63,6 +66,7 @@ h2 {
   padding: 20px;
 }
 
+/* ===== TARJETAS DE RECOMPENSAS ===== */
 .reward-card {
   background: linear-gradient(to right, #0077cc, #00bfff);
   color: white;
@@ -79,6 +83,7 @@ h2 {
   box-shadow: 0 10px 25px rgba(0, 119, 204, 0.3);
 }
 
+/* ===== CONTENIDO OCULTO ===== */
 .reward-content {
   display: none;
   background: white;
@@ -100,7 +105,7 @@ h2 {
   100% { opacity: 1; transform: scale(1) rotate(0deg); }
 }
 
-/* Estilo para el texto de beneficios */
+/* ===== BENEFICIOS DE RANGOS ===== */
 .benefits {
   font-size: 0.9rem;
   margin: 5px 0 15px;
@@ -116,6 +121,7 @@ h2 {
   cursor: pointer;
   font-size: 1rem;
   transition: background 0.3s;
+  margin-top: 10px;
 }
 
 .redeem-btn:hover {
@@ -124,7 +130,7 @@ h2 {
 
 /* ===== MENÚ HAMBURGUESA ===== */
 .menu-toggle {
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: space-between;
   width: 30px;
@@ -155,14 +161,17 @@ h2 {
     padding: 10px 0;
     z-index: 1000;
   }
+
   .menu.active {
     display: flex;
   }
+
   .menu-toggle {
     display: flex;
   }
 }
 
+/* ===== FOOTER ===== */
 footer {
   background: #0077cc;
   color: white;
